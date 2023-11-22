@@ -123,6 +123,7 @@ import * as witherable from './Witherable'
 import * as writer from './Writer'
 import * as writerT from './WriterT'
 import * as zero from './Zero'
+
 export {
   /**
    * @category model
@@ -256,6 +257,11 @@ export {
    * @since 2.11.0
    */
   endomorphism,
+  /**
+   * @category model
+   * @since 2.0.0
+   */
+  eq,
   /**
    * @category model
    * @since 2.0.0
@@ -504,6 +510,11 @@ export {
   readerT,
   /**
    * @category data types
+   * @since 2.3.0
+   */
+  readerTask,
+  /**
+   * @category data types
    * @since 2.0.0
    */
   readerTaskEither,
@@ -537,11 +548,6 @@ export {
    * @since 2.5.0
    */
   readonlyTuple,
-  /**
-   * @category data types
-   * @since 2.3.0
-   */
-  readerTask,
   /**
    * @category data types
    * @since 2.0.0
@@ -582,11 +588,6 @@ export {
    * @since 2.0.0
    */
   set,
-  /**
-   * @category model
-   * @since 2.0.0
-   */
-  eq,
   /**
    * @category model
    * @since 2.0.0

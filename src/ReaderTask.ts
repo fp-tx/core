@@ -1,52 +1,50 @@
 /**
  * @since 2.3.0
  */
-import { Applicative2, getApplicativeMonoid } from './Applicative'
+import { type Applicative2, getApplicativeMonoid } from './Applicative'
 import {
   apFirst as apFirst_,
-  Apply2,
+  type Apply2,
   apS as apS_,
   apSecond as apSecond_,
   getApplySemigroup as getApplySemigroup_
 } from './Apply'
-import { bind as bind_, Chain2, chainFirst as chainFirst_ } from './Chain'
-import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, FromIO2, fromIOK as fromIOK_ } from './FromIO'
+import { bind as bind_, type Chain2, chainFirst as chainFirst_ } from './Chain'
+import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, type FromIO2, fromIOK as fromIOK_ } from './FromIO'
 import {
   ask as ask_,
   asks as asks_,
   chainFirstReaderK as chainFirstReaderK_,
   chainReaderK as chainReaderK_,
-  FromReader2,
+  type FromReader2,
   fromReaderK as fromReaderK_
 } from './FromReader'
 import {
   chainFirstTaskK as chainFirstTaskK_,
   chainTaskK as chainTaskK_,
-  FromTask2,
+  type FromTask2,
   fromTaskK as fromTaskK_
 } from './FromTask'
 import { flow, identity, pipe, SK } from './function'
-import { let as let__, bindTo as bindTo_, flap as flap_, Functor2 } from './Functor'
+import { bindTo as bindTo_, flap as flap_, type Functor2, let as let__ } from './Functor'
 import * as _ from './internal'
-import { IO } from './IO'
-import { Monad2 } from './Monad'
-import { MonadIO2 } from './MonadIO'
-import { MonadTask2 } from './MonadTask'
-import { Monoid } from './Monoid'
-import { Pointed2 } from './Pointed'
+import { type IO } from './IO'
+import { type Monad2 } from './Monad'
+import { type MonadIO2 } from './MonadIO'
+import { type MonadTask2 } from './MonadTask'
+import { type Monoid } from './Monoid'
+import { type Pointed2 } from './Pointed'
 import * as R from './Reader'
-import * as RIO from './ReaderIO'
+import { type ReaderIO } from './ReaderIO'
 import * as RT from './ReaderT'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
-import { Semigroup } from './Semigroup'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { type Semigroup } from './Semigroup'
 import * as T from './Task'
+import { type Task } from './Task'
 
 // -------------------------------------------------------------------------------------
 // model
 // -------------------------------------------------------------------------------------
-
-import ReaderIO = RIO.ReaderIO
-import Task = T.Task
 
 /**
  * @category model

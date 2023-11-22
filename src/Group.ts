@@ -5,7 +5,7 @@
  *
  * @since 2.0.0
  */
-import { Monoid } from './Monoid'
+import { type Monoid } from './Monoid'
 
 // -------------------------------------------------------------------------------------
 // model

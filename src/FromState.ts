@@ -3,13 +3,12 @@
  *
  * @since 2.11.0
  */
-import { Chain, Chain2, Chain3, Chain4 } from './Chain'
-import { Endomorphism } from './Endomorphism'
+import { type Chain, type Chain2, type Chain3, type Chain4 } from './Chain'
+import { type Endomorphism } from './Endomorphism'
 import { flow } from './function'
-import { HKT2, Kind2, Kind3, Kind4, URIS2, URIS3, URIS4 } from './HKT'
+import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, type URIS4 } from './HKT'
 import * as S from './State'
-
-import State = S.State
+import { type State } from './State'
 
 // -------------------------------------------------------------------------------------
 // model

@@ -9,12 +9,12 @@
  *
  * @since 2.0.0
  */
-import { Contravariant1 } from './Contravariant'
-import { Eq, eqStrict } from './Eq'
+import { type Contravariant1 } from './Contravariant'
+import { type Eq, eqStrict } from './Eq'
 import { constant, constTrue, pipe } from './function'
-import { Monoid } from './Monoid'
-import { Ordering } from './Ordering'
-import { Semigroup } from './Semigroup'
+import { type Monoid } from './Monoid'
+import { type Ordering } from './Ordering'
+import { type Semigroup } from './Semigroup'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -403,7 +403,7 @@ export const clamp = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => A) => {
 export const between = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => boolean) => {
   const ltO = lt(O)
   const gtO = gt(O)
-  return (low, hi) => (a) => ltO(a, low) || gtO(a, hi) ? false : true
+  return (low, hi) => (a) => (ltO(a, low) || gtO(a, hi) ? false : true)
 }
 
 // -------------------------------------------------------------------------------------

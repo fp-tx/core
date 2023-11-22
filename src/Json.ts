@@ -1,7 +1,7 @@
 /**
  * @since 2.10.0
  */
-import { Either, tryCatch } from './Either'
+import { type Either, tryCatch } from './Either'
 import { identity } from './function'
 
 /**

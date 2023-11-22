@@ -9,29 +9,39 @@
  *
  * @since 2.0.0
  */
-import { Either } from './Either'
+import { type Either } from './Either'
 import { pipe } from './function'
 import {
-  Functor,
-  Functor1,
-  Functor2,
-  Functor2C,
-  Functor3C,
-  FunctorComposition,
-  FunctorComposition11,
-  FunctorComposition12,
-  FunctorComposition12C,
-  FunctorComposition21,
-  FunctorComposition22,
-  FunctorComposition22C,
-  FunctorComposition23,
-  FunctorComposition23C,
-  FunctorComposition2C1,
+  type Functor,
+  type Functor1,
+  type Functor2,
+  type Functor2C,
+  type Functor3C,
+  type FunctorComposition,
+  type FunctorComposition2C1,
+  type FunctorComposition11,
+  type FunctorComposition12,
+  type FunctorComposition12C,
+  type FunctorComposition21,
+  type FunctorComposition22,
+  type FunctorComposition22C,
+  type FunctorComposition23,
+  type FunctorComposition23C,
   getFunctorComposition,
   map
 } from './Functor'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
-import { getLeft, getRight, Option } from './Option'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
+import { getLeft, getRight, type Option } from './Option'
 import * as S from './Separated'
 
 // -------------------------------------------------------------------------------------

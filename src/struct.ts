@@ -2,7 +2,7 @@
  * @since 2.10.0
  */
 import * as _ from './internal'
-import { Semigroup } from './Semigroup'
+import { type Semigroup } from './Semigroup'
 
 // -------------------------------------------------------------------------------------
 // instances

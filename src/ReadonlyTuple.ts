@@ -1,23 +1,23 @@
 /**
  * @since 2.5.0
  */
-import { Applicative, Applicative2C } from './Applicative'
-import { Apply2C } from './Apply'
-import { Bifunctor2 } from './Bifunctor'
-import { Chain2C } from './Chain'
-import { ChainRec2C } from './ChainRec'
-import { Comonad2 } from './Comonad'
-import { Either } from './Either'
-import { Foldable2 } from './Foldable'
+import { type Applicative, type Applicative2C } from './Applicative'
+import { type Apply2C } from './Apply'
+import { type Bifunctor2 } from './Bifunctor'
+import { type Chain2C } from './Chain'
+import { type ChainRec2C } from './ChainRec'
+import { type Comonad2 } from './Comonad'
+import { type Either } from './Either'
+import { type Extend2 } from './Extend'
+import { type Foldable2 } from './Foldable'
 import { identity, pipe } from './function'
-import { flap as flap_, Functor2 } from './Functor'
-import { HKT } from './HKT'
-import { Monad2C } from './Monad'
-import { Monoid } from './Monoid'
-import { Semigroup } from './Semigroup'
-import { Semigroupoid2 } from './Semigroupoid'
-import { PipeableTraverse2, Traversable2 } from './Traversable'
-import { Extend2 } from './Extend'
+import { flap as flap_, type Functor2 } from './Functor'
+import { type HKT } from './HKT'
+import { type Monad2C } from './Monad'
+import { type Monoid } from './Monoid'
+import { type Semigroup } from './Semigroup'
+import { type Semigroupoid2 } from './Semigroupoid'
+import { type PipeableTraverse2, type Traversable2 } from './Traversable'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -184,8 +184,10 @@ export const bimap: <E, G, A, B>(
  * @category mapping
  * @since 2.10.0
  */
-export const mapFst: <A, B>(f: (a: A) => B) => <E>(fa: readonly [A, E]) => readonly [B, E] = (f) => (fa) =>
-  [f(fst(fa)), snd(fa)]
+export const mapFst: <A, B>(f: (a: A) => B) => <E>(fa: readonly [A, E]) => readonly [B, E] = (f) => (fa) => [
+  f(fst(fa)),
+  snd(fa)
+]
 
 /**
  * Map a function over the second component of a `ReadonlyTuple`.
@@ -195,21 +197,24 @@ export const mapFst: <A, B>(f: (a: A) => B) => <E>(fa: readonly [A, E]) => reado
  * @category mapping
  * @since 2.10.0
  */
-export const mapSnd: <E, G>(f: (e: E) => G) => <A>(fa: readonly [A, E]) => readonly [A, G] = (f) => (fa) =>
-  [fst(fa), f(snd(fa))]
+export const mapSnd: <E, G>(f: (e: E) => G) => <A>(fa: readonly [A, E]) => readonly [A, G] = (f) => (fa) => [
+  fst(fa),
+  f(snd(fa))
+]
 
 /**
  * @since 2.5.0
  */
-export const compose: <A, B>(ab: readonly [B, A]) => <C>(bc: readonly [C, B]) => readonly [C, A] = (ab) => (bc) =>
-  [fst(bc), snd(ab)]
+export const compose: <A, B>(ab: readonly [B, A]) => <C>(bc: readonly [C, B]) => readonly [C, A] = (ab) => (bc) => [
+  fst(bc),
+  snd(ab)
+]
 
 /**
  * @since 2.5.0
  */
 export const extend: <E, A, B>(f: (wa: readonly [A, E]) => B) => (wa: readonly [A, E]) => readonly [B, E] =
-  (f) => (wa) =>
-    [f(wa), snd(wa)]
+  (f) => (wa) => [f(wa), snd(wa)]
 
 /**
  * @category Extract

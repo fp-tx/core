@@ -6,14 +6,14 @@
  *
  * @since 2.0.0
  */
-import { Chain, Chain1, Chain2, Chain2C, Chain3, Chain3C } from './Chain'
+import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C } from './Chain'
 import { pipe } from './function'
-import { Functor, Functor1, Functor2, Functor2C, Functor3, Functor3C } from './Functor'
-import { HKT, Kind, Kind2, Kind3, URIS, URIS2, URIS3 } from './HKT'
-import { Monad, Monad1, Monad2, Monad2C, Monad3, Monad3C } from './Monad'
-import { Pointed, Pointed1, Pointed2, Pointed2C, Pointed3, Pointed3C } from './Pointed'
+import { type Functor, type Functor1, type Functor2, type Functor2C, type Functor3, type Functor3C } from './Functor'
+import { type HKT, type Kind, type Kind2, type Kind3, type URIS, type URIS2, type URIS3 } from './HKT'
+import { type Monad, type Monad1, type Monad2, type Monad2C, type Monad3, type Monad3C } from './Monad'
+import { type Pointed, type Pointed1, type Pointed2, type Pointed2C, type Pointed3, type Pointed3C } from './Pointed'
 import { snd } from './ReadonlyTuple'
-import { State } from './State'
+import { type State } from './State'
 
 /**
  * @category model

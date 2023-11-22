@@ -1,14 +1,15 @@
 import * as assert from 'assert'
+
 import { getMonoid } from '../src/Array'
 import { left, right } from '../src/Either'
 import * as Eq from '../src/Eq'
 import { pipe } from '../src/function'
+import * as N from '../src/number'
 import { none, some as optionSome } from '../src/Option'
 import * as _ from '../src/ReadonlySet'
-import * as S from '../src/string'
-import * as N from '../src/number'
-import * as U from './util'
 import { separated } from '../src/Separated'
+import * as S from '../src/string'
+import * as U from './util'
 
 const gte2 = (n: number) => n >= 2
 
@@ -69,7 +70,7 @@ describe('ReadonlySet', () => {
   })
 
   it('filter', () => {
-    U.deepStrictEqual(_.filter(gte2)(new Set([1, 2, 3])), new Set([2, 3]))
+    U.deepStrictEqual(_.filter(gte2)(new Set([1, 2, 3])), new Set([2, 3]) as ReadonlySet<number>)
 
     // refinements
     const isNumber = (u: string | number): u is number => typeof u === 'number'
@@ -83,7 +84,7 @@ describe('ReadonlySet', () => {
     U.deepStrictEqual(_.partition(() => false)(new Set([1])), separated(new Set([1]), new Set([])))
     U.deepStrictEqual(
       _.partition((n: number) => n % 2 === 0)(new Set([1, 2, 3, 4])),
-      separated(new Set([1, 3]), new Set([2, 4]))
+      separated(new Set([1, 3]) as ReadonlySet<number>, new Set([2, 4]) as ReadonlySet<number>)
     )
 
     // refinements

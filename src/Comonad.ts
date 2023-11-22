@@ -1,8 +1,26 @@
 /**
  * @since 2.0.0
  */
-import { Extend, Extend1, Extend2, Extend2C, Extend3, Extend3C, Extend4 } from './Extend'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
+import {
+  type Extend,
+  type Extend1,
+  type Extend2,
+  type Extend2C,
+  type Extend3,
+  type Extend3C,
+  type Extend4
+} from './Extend'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
 
 // -------------------------------------------------------------------------------------
 // model

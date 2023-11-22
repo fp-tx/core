@@ -14,21 +14,31 @@
  *
  * @since 2.0.0
  */
-import { Alt, Alt1, Alt2, Alt2C, Alt3, Alt3C, Alt4, altAll as altAll_ } from './Alt'
+import { type Alt, type Alt1, type Alt2, type Alt2C, type Alt3, type Alt3C, type Alt4, altAll as altAll_ } from './Alt'
 import {
-  Applicative,
-  Applicative1,
-  Applicative2,
-  Applicative2C,
-  Applicative3,
-  Applicative3C,
-  Applicative4
+  type Applicative,
+  type Applicative1,
+  type Applicative2,
+  type Applicative2C,
+  type Applicative3,
+  type Applicative3C,
+  type Applicative4
 } from './Applicative'
 import { getApplySemigroup } from './Apply'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
-import { Zero, Zero1, Zero2, Zero2C, Zero3, Zero3C, Zero4 } from './Zero'
-import { Monoid } from './Monoid'
-import { Semigroup } from './Semigroup'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
+import { type Monoid } from './Monoid'
+import { type Semigroup } from './Semigroup'
+import { type Zero, type Zero1, type Zero2, type Zero2C, type Zero3, type Zero3C, type Zero4 } from './Zero'
 
 // -------------------------------------------------------------------------------------
 // model

@@ -10,8 +10,8 @@
  *
  * @since 2.0.0
  */
-import { HeytingAlgebra } from './HeytingAlgebra'
 import { getBooleanAlgebra } from './function'
+import { type HeytingAlgebra } from './HeytingAlgebra'
 
 // -------------------------------------------------------------------------------------
 // model

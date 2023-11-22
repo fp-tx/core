@@ -6,8 +6,8 @@
  * @since 2.0.0
  */
 
-import { Endomorphism } from './Endomorphism'
-import { Predicate } from './Predicate'
+import { type Endomorphism } from './Endomorphism'
+import { type Predicate } from './Predicate'
 
 // -------------------------------------------------------------------------------------
 // model

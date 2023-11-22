@@ -1,7 +1,7 @@
 /**
  * @since 2.11.0
  */
-import * as M from './Monoid'
+import type * as M from './Monoid'
 import * as Se from './Semigroup'
 
 // -------------------------------------------------------------------------------------

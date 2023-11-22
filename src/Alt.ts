@@ -10,9 +10,27 @@
  *
  * @since 2.0.0
  */
-import { Lazy } from './function'
-import { Functor, Functor1, Functor2, Functor2C, Functor3, Functor3C, Functor4 } from './Functor'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
+import { type Lazy } from './function'
+import {
+  type Functor,
+  type Functor1,
+  type Functor2,
+  type Functor2C,
+  type Functor3,
+  type Functor3C,
+  type Functor4
+} from './Functor'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
 
 // -------------------------------------------------------------------------------------
 // model

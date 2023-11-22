@@ -28,11 +28,11 @@
  *
  * @since 2.0.0
  */
-import { Either } from './Either'
-import { HKT2, Kind2, Kind3, URIS2, URIS3, URIS4, Kind4 } from './HKT'
-import { Profunctor, Profunctor2, Profunctor3, Profunctor4 } from './Profunctor'
-import { Category, Category2, Category3, Category4 } from './Category'
+import { type Category, type Category2, type Category3, type Category4 } from './Category'
+import { type Either } from './Either'
 import { identity } from './function'
+import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, type URIS4 } from './HKT'
+import { type Profunctor, type Profunctor2, type Profunctor3, type Profunctor4 } from './Profunctor'
 
 // -------------------------------------------------------------------------------------
 // model

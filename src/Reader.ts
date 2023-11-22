@@ -38,23 +38,23 @@
  *
  * @since 2.0.0
  */
-import { Applicative2, getApplicativeMonoid } from './Applicative'
-import { apFirst as apFirst_, Apply2, apS as apS_, apSecond as apSecond_, getApplySemigroup } from './Apply'
-import { Category2 } from './Category'
-import { bind as bind_, Chain2, chainFirst as chainFirst_ } from './Chain'
-import { Choice2 } from './Choice'
+import { type Applicative2, getApplicativeMonoid } from './Applicative'
+import { apFirst as apFirst_, type Apply2, apS as apS_, apSecond as apSecond_, getApplySemigroup } from './Apply'
+import { type Category2 } from './Category'
+import { bind as bind_, type Chain2, chainFirst as chainFirst_ } from './Chain'
+import { type Choice2 } from './Choice'
 import * as E from './Either'
 import { constant, flow, identity, pipe } from './function'
-import { let as let__, bindTo as bindTo_, flap as flap_, Functor2 } from './Functor'
+import { bindTo as bindTo_, flap as flap_, type Functor2, let as let__ } from './Functor'
 import * as _ from './internal'
-import { Monad2 } from './Monad'
-import { Monoid } from './Monoid'
-import { NonEmptyArray } from './NonEmptyArray'
-import { Pointed2 } from './Pointed'
-import { Profunctor2 } from './Profunctor'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
-import { Semigroup } from './Semigroup'
-import { Strong2 } from './Strong'
+import { type Monad2 } from './Monad'
+import { type Monoid } from './Monoid'
+import { type NonEmptyArray } from './NonEmptyArray'
+import { type Pointed2 } from './Pointed'
+import { type Profunctor2 } from './Profunctor'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { type Semigroup } from './Semigroup'
+import { type Strong2 } from './Strong'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -246,16 +246,14 @@ export const id: Category2<URI>['id'] = () => identity
  */
 export const first: Strong2<URI>['first'] =
   (pab) =>
-  ([a, c]) =>
-    [pab(a), c]
+  ([a, c]) => [pab(a), c]
 
 /**
  * @since 2.10.0
  */
 export const second: Strong2<URI>['second'] =
   (pbc) =>
-  ([a, b]) =>
-    [a, pbc(b)]
+  ([a, b]) => [a, pbc(b)]
 
 /**
  * @since 2.10.0

@@ -1,10 +1,10 @@
 /**
  * @since 2.10.0
  */
-import { Either, Left, Right } from './Either'
-import { NonEmptyArray } from './NonEmptyArray'
-import { None, Option, Some } from './Option'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { type Either, type Left, type Right } from './Either'
+import { type NonEmptyArray } from './NonEmptyArray'
+import { type None, type Option, type Some } from './Option'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 
 // -------------------------------------------------------------------------------------
 // Option

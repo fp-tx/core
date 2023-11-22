@@ -1,8 +1,8 @@
 /**
  * @since 2.0.0
  */
-import { Functor2, Functor2C, Functor3, Functor4, Functor3C } from './Functor'
-import { HKT, HKT2, Kind2, Kind3, Kind4, URIS2, URIS3, URIS4 } from './HKT'
+import { type Functor2, type Functor2C, type Functor3, type Functor3C, type Functor4 } from './Functor'
+import { type HKT, type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, type URIS4 } from './HKT'
 
 // -------------------------------------------------------------------------------------
 // model

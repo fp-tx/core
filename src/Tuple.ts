@@ -1,24 +1,24 @@
 /**
  * @since 2.0.0
  */
-import { Applicative, Applicative2C } from './Applicative'
-import { Apply2C } from './Apply'
-import { Bifunctor2 } from './Bifunctor'
-import { Chain2C } from './Chain'
-import { ChainRec2C } from './ChainRec'
-import { Comonad2 } from './Comonad'
-import { Foldable2 } from './Foldable'
-import { Monad2C } from './Monad'
-import { Monoid } from './Monoid'
-import * as RT from './ReadonlyTuple'
-import { Semigroup } from './Semigroup'
-import { Semigroupoid2 } from './Semigroupoid'
-import { Traversable2, PipeableTraverse2 } from './Traversable'
-import { flap as flap_, Functor2 } from './Functor'
-import { Extend2 } from './Extend'
-import { Either } from './Either'
+import { type Applicative, type Applicative2C } from './Applicative'
+import { type Apply2C } from './Apply'
+import { type Bifunctor2 } from './Bifunctor'
+import { type Chain2C } from './Chain'
+import { type ChainRec2C } from './ChainRec'
+import { type Comonad2 } from './Comonad'
+import { type Either } from './Either'
+import { type Extend2 } from './Extend'
+import { type Foldable2 } from './Foldable'
 import { identity, pipe } from './function'
-import { HKT } from './HKT'
+import { flap as flap_, type Functor2 } from './Functor'
+import { type HKT } from './HKT'
+import { type Monad2C } from './Monad'
+import { type Monoid } from './Monoid'
+import * as RT from './ReadonlyTuple'
+import { type Semigroup } from './Semigroup'
+import { type Semigroupoid2 } from './Semigroupoid'
+import { type PipeableTraverse2, type Traversable2 } from './Traversable'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -166,8 +166,8 @@ function _traverse<F>(F: Applicative<F>): <A, S, B>(ta: [A, S], f: (a: A) => HKT
  * @category mapping
  * @since 2.0.0
  */
-export const bimap: <E, G, A, B>(mapSnd: (e: E) => G, mapFst: (a: A) => B) => (fa: [A, E]) => [B, G] = (f, g) => (fa) =>
-  [g(fst(fa)), f(snd(fa))]
+export const bimap: <E, G, A, B>(mapSnd: (e: E) => G, mapFst: (a: A) => B) => (fa: [A, E]) => [B, G] =
+  (f, g) => (fa) => [g(fst(fa)), f(snd(fa))]
 
 /**
  * Map a function over the first component of a `Tuple`.

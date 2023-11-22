@@ -1,19 +1,19 @@
 /**
  * @since 2.0.0
  */
-import { Either } from './Either'
-import { Eq } from './Eq'
+import { type Either } from './Either'
+import { type Eq } from './Eq'
 import { identity } from './function'
-import { Magma } from './Magma'
-import { Monoid } from './Monoid'
-import { Option } from './Option'
-import { Ord } from './Ord'
-import { Predicate } from './Predicate'
+import { type Magma } from './Magma'
+import { type Monoid } from './Monoid'
+import { type Option } from './Option'
+import { type Ord } from './Ord'
+import { type Predicate } from './Predicate'
 import * as RS from './ReadonlySet'
-import { Refinement } from './Refinement'
-import { Semigroup } from './Semigroup'
-import { separated, Separated } from './Separated'
-import { Show } from './Show'
+import { type Refinement } from './Refinement'
+import { type Semigroup } from './Semigroup'
+import { type Separated, separated } from './Separated'
+import { type Show } from './Show'
 
 /**
  * @category instances

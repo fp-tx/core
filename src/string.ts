@@ -1,13 +1,13 @@
 /**
  * @since 2.10.0
  */
-import * as E from './Eq'
-import * as M from './Monoid'
-import * as S from './Semigroup'
-import * as O from './Ord'
-import * as Sh from './Show'
-import { Refinement } from './Refinement'
-import { ReadonlyNonEmptyArray, isNonEmpty } from './ReadonlyNonEmptyArray'
+import type * as E from './Eq'
+import type * as M from './Monoid'
+import type * as O from './Ord'
+import { isNonEmpty, type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { type Refinement } from './Refinement'
+import type * as S from './Semigroup'
+import type * as Sh from './Show'
 
 // -------------------------------------------------------------------------------------
 // instances

@@ -19,36 +19,36 @@
  *
  * @since 2.0.0
  */
-import { Applicative, Applicative2C } from './Applicative'
-import { Apply2C } from './Apply'
-import { Bifunctor2 } from './Bifunctor'
-import { Chain2C } from './Chain'
-import { Either, Left, Right } from './Either'
-import { Eq, fromEquals } from './Eq'
-import { Foldable2 } from './Foldable'
+import { type Applicative, type Applicative2C } from './Applicative'
+import { type Apply2C } from './Apply'
+import { type Bifunctor2 } from './Bifunctor'
+import { type Chain2C } from './Chain'
+import { type Either, type Left, type Right } from './Either'
+import { type Eq, fromEquals } from './Eq'
+import { type Foldable2 } from './Foldable'
 import {
-  FromEither2,
+  type FromEither2,
   fromOption as fromOption_,
   fromOptionK as fromOptionK_,
   fromPredicate as fromPredicate_
 } from './FromEither'
-import { FromThese2 } from './FromThese'
-import { identity, Lazy, pipe } from './function'
-import { flap as flap_, Functor2 } from './Functor'
-import { HKT } from './HKT'
+import { type FromThese2 } from './FromThese'
+import { identity, type Lazy, pipe } from './function'
+import { flap as flap_, type Functor2 } from './Functor'
+import { type HKT } from './HKT'
 import * as _ from './internal'
-import { Monad2C } from './Monad'
-import { MonadThrow2C } from './MonadThrow'
-import { Monoid } from './Monoid'
-import { NonEmptyArray } from './NonEmptyArray'
-import { Option } from './Option'
-import { Pointed2 } from './Pointed'
-import { Predicate } from './Predicate'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
-import { Refinement } from './Refinement'
-import { Semigroup } from './Semigroup'
-import { Show } from './Show'
-import { PipeableTraverse2, Traversable2 } from './Traversable'
+import { type Monad2C } from './Monad'
+import { type MonadThrow2C } from './MonadThrow'
+import { type Monoid } from './Monoid'
+import { type NonEmptyArray } from './NonEmptyArray'
+import { type Option } from './Option'
+import { type Pointed2 } from './Pointed'
+import { type Predicate } from './Predicate'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { type Refinement } from './Refinement'
+import { type Semigroup } from './Semigroup'
+import { type Show } from './Show'
+import { type PipeableTraverse2, type Traversable2 } from './Traversable'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -203,8 +203,8 @@ export function getEq<E, A>(EE: Eq<E>, EA: Eq<A>): Eq<These<E, A>> {
     isLeft(x)
       ? isLeft(y) && EE.equals(x.left, y.left)
       : isRight(x)
-      ? isRight(y) && EA.equals(x.right, y.right)
-      : isBoth(y) && EE.equals(x.left, y.left) && EA.equals(x.right, y.right)
+        ? isRight(y) && EA.equals(x.right, y.right)
+        : isBoth(y) && EE.equals(x.left, y.left) && EA.equals(x.right, y.right)
   )
 }
 
@@ -219,19 +219,19 @@ export function getSemigroup<E, A>(SE: Semigroup<E>, SA: Semigroup<A>): Semigrou
         ? isLeft(y)
           ? left(SE.concat(x.left, y.left))
           : isRight(y)
-          ? both(x.left, y.right)
-          : both(SE.concat(x.left, y.left), y.right)
+            ? both(x.left, y.right)
+            : both(SE.concat(x.left, y.left), y.right)
         : isRight(x)
-        ? isLeft(y)
-          ? both(y.left, x.right)
-          : isRight(y)
-          ? right(SA.concat(x.right, y.right))
-          : both(y.left, SA.concat(x.right, y.right))
-        : isLeft(y)
-        ? both(SE.concat(x.left, y.left), x.right)
-        : isRight(y)
-        ? both(x.left, SA.concat(x.right, y.right))
-        : both(SE.concat(x.left, y.left), SA.concat(x.right, y.right))
+          ? isLeft(y)
+            ? both(y.left, x.right)
+            : isRight(y)
+              ? right(SA.concat(x.right, y.right))
+              : both(y.left, SA.concat(x.right, y.right))
+          : isLeft(y)
+            ? both(SE.concat(x.left, y.left), x.right)
+            : isRight(y)
+              ? both(x.left, SA.concat(x.right, y.right))
+              : both(SE.concat(x.left, y.left), SA.concat(x.right, y.right))
   }
 }
 
@@ -248,19 +248,19 @@ export const getApply = <E>(S: Semigroup<E>): Apply2C<URI, E> => ({
       ? isLeft(fa)
         ? left(S.concat(fab.left, fa.left))
         : isRight(fa)
-        ? left(fab.left)
-        : left(S.concat(fab.left, fa.left))
+          ? left(fab.left)
+          : left(S.concat(fab.left, fa.left))
       : isRight(fab)
-      ? isLeft(fa)
-        ? left(fa.left)
-        : isRight(fa)
-        ? right(fab.right(fa.right))
-        : both(fa.left, fab.right(fa.right))
-      : isLeft(fa)
-      ? left(S.concat(fab.left, fa.left))
-      : isRight(fa)
-      ? both(fab.left, fab.right(fa.right))
-      : both(S.concat(fab.left, fa.left), fab.right(fa.right))
+        ? isLeft(fa)
+          ? left(fa.left)
+          : isRight(fa)
+            ? right(fab.right(fa.right))
+            : both(fa.left, fab.right(fa.right))
+        : isLeft(fa)
+          ? left(S.concat(fab.left, fa.left))
+          : isRight(fa)
+            ? both(fab.left, fab.right(fa.right))
+            : both(S.concat(fab.left, fa.left), fab.right(fa.right))
 })
 
 /**
@@ -296,8 +296,8 @@ export function getChain<E>(S: Semigroup<E>): Chain2C<URI, E> {
     return isLeft(fb)
       ? left(S.concat(ma.left, fb.left))
       : isRight(fb)
-      ? both(ma.left, fb.right)
-      : both(S.concat(ma.left, fb.left), fb.right)
+        ? both(ma.left, fb.right)
+        : both(S.concat(ma.left, fb.left), fb.right)
   }
 
   return {
@@ -451,8 +451,8 @@ export const fromOptions = <E, A>(fe: Option<E>, fa: Option<A>): Option<These<E,
       ? _.none
       : _.some(right(fa.value))
     : _.isNone(fa)
-    ? _.some(left(fe.value))
-    : _.some(both(fe.value, fa.value))
+      ? _.some(left(fe.value))
+      : _.some(both(fe.value, fa.value))
 
 const _map: Functor2<URI>['map'] = (fa, f) => pipe(fa, map(f))
 /* istanbul ignore next */
@@ -482,8 +482,8 @@ const _traverse = <F>(
  * @category mapping
  * @since 2.0.0
  */
-export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: These<E, A>) => These<G, B> = (f, g) => (fa) =>
-  isLeft(fa) ? left(f(fa.left)) : isRight(fa) ? right(g(fa.right)) : both(f(fa.left), g(fa.right))
+export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: These<E, A>) => These<G, B> =
+  (f, g) => (fa) => (isLeft(fa) ? left(f(fa.left)) : isRight(fa) ? right(g(fa.right)) : both(f(fa.left), g(fa.right)))
 
 /**
  * Map a function over the first type argument of a bifunctor.

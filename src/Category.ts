@@ -1,8 +1,8 @@
 /**
  * @since 2.0.0
  */
-import { HKT2, Kind2, Kind3, URIS2, URIS3, URIS4, Kind4 } from './HKT'
-import { Semigroupoid, Semigroupoid2, Semigroupoid3, Semigroupoid4 } from './Semigroupoid'
+import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, type URIS4 } from './HKT'
+import { type Semigroupoid, type Semigroupoid2, type Semigroupoid3, type Semigroupoid4 } from './Semigroupoid'
 
 // -------------------------------------------------------------------------------------
 // model

@@ -1,7 +1,8 @@
 {
   "extends": "./tsconfig.json",
+  "include": ["./src"],
   "compilerOptions": {
-    "noEmit": false
+    "noUnusedParameters": false
   },
-  "include": ["./src"]
+  "exclude": ["./test", "./perf", "./tsup.config.ts"]
 }

@@ -8,8 +8,18 @@
  *
  * @since 2.0.0
  */
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
-import { Monad, Monad1, Monad2, Monad2C, Monad3, Monad4, Monad3C } from './Monad'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
+import { type Monad, type Monad1, type Monad2, type Monad2C, type Monad3, type Monad3C, type Monad4 } from './Monad'
 
 // -------------------------------------------------------------------------------------
 // model

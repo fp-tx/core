@@ -27,36 +27,46 @@
  * @since 2.0.0
  */
 import {
-  Applicative,
-  Applicative1,
-  Applicative2,
-  Applicative2C,
-  Applicative3,
-  Applicative3C,
-  Applicative4
+  type Applicative,
+  type Applicative1,
+  type Applicative2,
+  type Applicative2C,
+  type Applicative3,
+  type Applicative3C,
+  type Applicative4
 } from './Applicative'
 import {
-  Foldable,
-  Foldable1,
-  Foldable2,
-  Foldable2C,
-  Foldable3,
-  FoldableComposition,
-  FoldableComposition11,
+  type Foldable,
+  type Foldable1,
+  type Foldable2,
+  type Foldable2C,
+  type Foldable3,
+  type FoldableComposition,
+  type FoldableComposition11,
   getFoldableComposition
 } from './Foldable'
 import { pipe } from './function'
 import {
-  Functor,
-  Functor1,
-  Functor2,
-  Functor2C,
-  Functor3,
-  FunctorComposition,
-  FunctorComposition11,
+  type Functor,
+  type Functor1,
+  type Functor2,
+  type Functor2C,
+  type Functor3,
+  type FunctorComposition,
+  type FunctorComposition11,
   getFunctorComposition
 } from './Functor'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -114,23 +124,19 @@ export interface Traversable3<T extends URIS3> extends Functor3<T>, Foldable3<T>
  * @since 2.0.0
  */
 export interface Traverse<T> {
-  <F extends URIS4>(F: Applicative4<F>): <A, S, R, E, B>(
-    ta: HKT<T, A>,
-    f: (a: A) => Kind4<F, S, R, E, B>
-  ) => Kind4<F, S, R, E, HKT<T, B>>
-  <F extends URIS3>(F: Applicative3<F>): <A, R, E, B>(
-    ta: HKT<T, A>,
-    f: (a: A) => Kind3<F, R, E, B>
-  ) => Kind3<F, R, E, HKT<T, B>>
-  <F extends URIS3, E>(F: Applicative3C<F, E>): <A, R, B>(
-    ta: HKT<T, A>,
-    f: (a: A) => Kind3<F, R, E, B>
-  ) => Kind3<F, R, E, HKT<T, B>>
+  <F extends URIS4>(
+    F: Applicative4<F>
+  ): <A, S, R, E, B>(ta: HKT<T, A>, f: (a: A) => Kind4<F, S, R, E, B>) => Kind4<F, S, R, E, HKT<T, B>>
+  <F extends URIS3>(
+    F: Applicative3<F>
+  ): <A, R, E, B>(ta: HKT<T, A>, f: (a: A) => Kind3<F, R, E, B>) => Kind3<F, R, E, HKT<T, B>>
+  <F extends URIS3, E>(
+    F: Applicative3C<F, E>
+  ): <A, R, B>(ta: HKT<T, A>, f: (a: A) => Kind3<F, R, E, B>) => Kind3<F, R, E, HKT<T, B>>
   <F extends URIS2>(F: Applicative2<F>): <A, E, B>(ta: HKT<T, A>, f: (a: A) => Kind2<F, E, B>) => Kind2<F, E, HKT<T, B>>
-  <F extends URIS2, E>(F: Applicative2C<F, E>): <A, B>(
-    ta: HKT<T, A>,
-    f: (a: A) => Kind2<F, E, B>
-  ) => Kind2<F, E, HKT<T, B>>
+  <F extends URIS2, E>(
+    F: Applicative2C<F, E>
+  ): <A, B>(ta: HKT<T, A>, f: (a: A) => Kind2<F, E, B>) => Kind2<F, E, HKT<T, B>>
   <F extends URIS>(F: Applicative1<F>): <A, B>(ta: HKT<T, A>, f: (a: A) => Kind<F, B>) => Kind<F, HKT<T, B>>
   <F>(F: Applicative<F>): <A, B>(ta: HKT<T, A>, f: (a: A) => HKT<F, B>) => HKT<F, HKT<T, B>>
 }
@@ -139,26 +145,21 @@ export interface Traverse<T> {
  * @since 2.0.0
  */
 export interface Traverse1<T extends URIS> {
-  <F extends URIS4>(F: Applicative4<F>): <A, S, R, E, B>(
-    ta: Kind<T, A>,
-    f: (a: A) => Kind4<F, S, R, E, B>
-  ) => Kind4<F, S, R, E, Kind<T, B>>
-  <F extends URIS3>(F: Applicative3<F>): <A, R, E, B>(
-    ta: Kind<T, A>,
-    f: (a: A) => Kind3<F, R, E, B>
-  ) => Kind3<F, R, E, Kind<T, B>>
-  <F extends URIS3, E>(F: Applicative3C<F, E>): <A, R, B>(
-    ta: Kind<T, A>,
-    f: (a: A) => Kind3<F, R, E, B>
-  ) => Kind3<F, R, E, Kind<T, B>>
-  <F extends URIS2>(F: Applicative2<F>): <A, E, B>(
-    ta: Kind<T, A>,
-    f: (a: A) => Kind2<F, E, B>
-  ) => Kind2<F, E, Kind<T, B>>
-  <F extends URIS2, E>(F: Applicative2C<F, E>): <A, B>(
-    ta: Kind<T, A>,
-    f: (a: A) => Kind2<F, E, B>
-  ) => Kind2<F, E, Kind<T, B>>
+  <F extends URIS4>(
+    F: Applicative4<F>
+  ): <A, S, R, E, B>(ta: Kind<T, A>, f: (a: A) => Kind4<F, S, R, E, B>) => Kind4<F, S, R, E, Kind<T, B>>
+  <F extends URIS3>(
+    F: Applicative3<F>
+  ): <A, R, E, B>(ta: Kind<T, A>, f: (a: A) => Kind3<F, R, E, B>) => Kind3<F, R, E, Kind<T, B>>
+  <F extends URIS3, E>(
+    F: Applicative3C<F, E>
+  ): <A, R, B>(ta: Kind<T, A>, f: (a: A) => Kind3<F, R, E, B>) => Kind3<F, R, E, Kind<T, B>>
+  <F extends URIS2>(
+    F: Applicative2<F>
+  ): <A, E, B>(ta: Kind<T, A>, f: (a: A) => Kind2<F, E, B>) => Kind2<F, E, Kind<T, B>>
+  <F extends URIS2, E>(
+    F: Applicative2C<F, E>
+  ): <A, B>(ta: Kind<T, A>, f: (a: A) => Kind2<F, E, B>) => Kind2<F, E, Kind<T, B>>
   <F extends URIS>(F: Applicative1<F>): <A, B>(ta: Kind<T, A>, f: (a: A) => Kind<F, B>) => Kind<F, Kind<T, B>>
   <F>(F: Applicative<F>): <A, B>(ta: Kind<T, A>, f: (a: A) => HKT<F, B>) => HKT<F, Kind<T, B>>
 }
@@ -167,30 +168,27 @@ export interface Traverse1<T extends URIS> {
  * @since 2.0.0
  */
 export interface Traverse2<T extends URIS2> {
-  <F extends URIS4>(F: Applicative4<F>): <TE, A, S, R, FE, B>(
+  <F extends URIS4>(
+    F: Applicative4<F>
+  ): <TE, A, S, R, FE, B>(
     ta: Kind2<T, TE, A>,
     f: (a: A) => Kind4<F, S, R, FE, B>
   ) => Kind4<F, S, R, FE, Kind2<T, TE, B>>
-  <F extends URIS3>(F: Applicative3<F>): <TE, A, R, FE, B>(
-    ta: Kind2<T, TE, A>,
-    f: (a: A) => Kind3<F, R, FE, B>
-  ) => Kind3<F, R, FE, Kind2<T, TE, B>>
-  <F extends URIS3, FE>(F: Applicative3C<F, FE>): <TE, A, R, B>(
-    ta: Kind2<T, TE, A>,
-    f: (a: A) => Kind3<F, R, FE, B>
-  ) => Kind3<F, R, FE, Kind2<T, TE, B>>
-  <F extends URIS2>(F: Applicative2<F>): <TE, A, FE, B>(
-    ta: Kind2<T, TE, A>,
-    f: (a: A) => Kind2<F, FE, B>
-  ) => Kind2<F, FE, Kind2<T, TE, B>>
-  <F extends URIS2, FE>(F: Applicative2C<F, FE>): <TE, A, B>(
-    ta: Kind2<T, TE, A>,
-    f: (a: A) => Kind2<F, FE, B>
-  ) => Kind2<F, FE, Kind2<T, TE, B>>
-  <F extends URIS>(F: Applicative1<F>): <E, A, B>(
-    ta: Kind2<T, E, A>,
-    f: (a: A) => Kind<F, B>
-  ) => Kind<F, Kind2<T, E, B>>
+  <F extends URIS3>(
+    F: Applicative3<F>
+  ): <TE, A, R, FE, B>(ta: Kind2<T, TE, A>, f: (a: A) => Kind3<F, R, FE, B>) => Kind3<F, R, FE, Kind2<T, TE, B>>
+  <F extends URIS3, FE>(
+    F: Applicative3C<F, FE>
+  ): <TE, A, R, B>(ta: Kind2<T, TE, A>, f: (a: A) => Kind3<F, R, FE, B>) => Kind3<F, R, FE, Kind2<T, TE, B>>
+  <F extends URIS2>(
+    F: Applicative2<F>
+  ): <TE, A, FE, B>(ta: Kind2<T, TE, A>, f: (a: A) => Kind2<F, FE, B>) => Kind2<F, FE, Kind2<T, TE, B>>
+  <F extends URIS2, FE>(
+    F: Applicative2C<F, FE>
+  ): <TE, A, B>(ta: Kind2<T, TE, A>, f: (a: A) => Kind2<F, FE, B>) => Kind2<F, FE, Kind2<T, TE, B>>
+  <F extends URIS>(
+    F: Applicative1<F>
+  ): <E, A, B>(ta: Kind2<T, E, A>, f: (a: A) => Kind<F, B>) => Kind<F, Kind2<T, E, B>>
   <F>(F: Applicative<F>): <E, A, B>(ta: Kind2<T, E, A>, f: (a: A) => HKT<F, B>) => HKT<F, Kind2<T, E, B>>
 }
 
@@ -198,26 +196,21 @@ export interface Traverse2<T extends URIS2> {
  * @since 2.0.0
  */
 export interface Traverse2C<T extends URIS2, E> {
-  <F extends URIS4>(F: Applicative4<F>): <A, S, R, FE, B>(
-    ta: Kind2<T, E, A>,
-    f: (a: A) => Kind4<F, S, R, FE, B>
-  ) => Kind4<F, S, R, FE, Kind2<T, E, B>>
-  <F extends URIS3>(F: Applicative3<F>): <A, R, FE, B>(
-    ta: Kind2<T, E, A>,
-    f: (a: A) => Kind3<F, R, FE, B>
-  ) => Kind3<F, R, FE, Kind2<T, E, B>>
-  <F extends URIS3, FE>(F: Applicative3C<F, FE>): <A, R, B>(
-    ta: Kind2<T, E, A>,
-    f: (a: A) => Kind3<F, R, FE, B>
-  ) => Kind3<F, R, FE, Kind2<T, E, B>>
-  <F extends URIS2>(F: Applicative2<F>): <A, FE, B>(
-    ta: Kind2<T, E, A>,
-    f: (a: A) => Kind2<F, FE, B>
-  ) => Kind2<F, FE, Kind2<T, E, B>>
-  <F extends URIS2, FE>(F: Applicative2C<F, FE>): <A, B>(
-    ta: Kind2<T, E, A>,
-    f: (a: A) => Kind2<F, FE, B>
-  ) => Kind2<F, FE, Kind2<T, E, B>>
+  <F extends URIS4>(
+    F: Applicative4<F>
+  ): <A, S, R, FE, B>(ta: Kind2<T, E, A>, f: (a: A) => Kind4<F, S, R, FE, B>) => Kind4<F, S, R, FE, Kind2<T, E, B>>
+  <F extends URIS3>(
+    F: Applicative3<F>
+  ): <A, R, FE, B>(ta: Kind2<T, E, A>, f: (a: A) => Kind3<F, R, FE, B>) => Kind3<F, R, FE, Kind2<T, E, B>>
+  <F extends URIS3, FE>(
+    F: Applicative3C<F, FE>
+  ): <A, R, B>(ta: Kind2<T, E, A>, f: (a: A) => Kind3<F, R, FE, B>) => Kind3<F, R, FE, Kind2<T, E, B>>
+  <F extends URIS2>(
+    F: Applicative2<F>
+  ): <A, FE, B>(ta: Kind2<T, E, A>, f: (a: A) => Kind2<F, FE, B>) => Kind2<F, FE, Kind2<T, E, B>>
+  <F extends URIS2, FE>(
+    F: Applicative2C<F, FE>
+  ): <A, B>(ta: Kind2<T, E, A>, f: (a: A) => Kind2<F, FE, B>) => Kind2<F, FE, Kind2<T, E, B>>
   <F extends URIS>(F: Applicative1<F>): <A, B>(ta: Kind2<T, E, A>, f: (a: A) => Kind<F, B>) => Kind<F, Kind2<T, E, B>>
   <F>(F: Applicative<F>): <A, B>(ta: Kind2<T, E, A>, f: (a: A) => HKT<F, B>) => HKT<F, Kind2<T, E, B>>
 }
@@ -226,30 +219,33 @@ export interface Traverse2C<T extends URIS2, E> {
  * @since 2.0.0
  */
 export interface Traverse3<T extends URIS3> {
-  <F extends URIS4>(F: Applicative4<F>): <TR, TE, A, S, FR, FE, B>(
+  <F extends URIS4>(
+    F: Applicative4<F>
+  ): <TR, TE, A, S, FR, FE, B>(
     ta: Kind3<T, TR, TE, A>,
     f: (a: A) => Kind4<F, S, FR, FE, B>
   ) => Kind4<F, S, FR, FE, Kind3<T, TR, TE, B>>
-  <F extends URIS3>(F: Applicative3<F>): <TR, TE, A, FR, FE, B>(
+  <F extends URIS3>(
+    F: Applicative3<F>
+  ): <TR, TE, A, FR, FE, B>(
     ta: Kind3<T, TR, TE, A>,
     f: (a: A) => Kind3<F, FR, FE, B>
   ) => Kind3<F, FR, FE, Kind3<T, TR, TE, B>>
-  <F extends URIS3, FE>(F: Applicative3C<F, FE>): <TR, TE, A, FR, B>(
+  <F extends URIS3, FE>(
+    F: Applicative3C<F, FE>
+  ): <TR, TE, A, FR, B>(
     ta: Kind3<T, TR, TE, A>,
     f: (a: A) => Kind3<F, FR, FE, B>
   ) => Kind3<F, FR, FE, Kind3<T, TR, TE, B>>
-  <F extends URIS2>(F: Applicative2<F>): <TR, A, TE, FE, B>(
-    ta: Kind3<T, TR, TE, A>,
-    f: (a: A) => Kind2<F, FE, B>
-  ) => Kind2<F, FE, Kind3<T, TR, TE, B>>
-  <F extends URIS2, FE>(F: Applicative2C<F, FE>): <R, TE, A, B>(
-    ta: Kind3<T, R, TE, A>,
-    f: (a: A) => Kind2<F, FE, B>
-  ) => Kind2<F, FE, Kind3<T, R, TE, B>>
-  <F extends URIS>(F: Applicative1<F>): <R, E, A, B>(
-    ta: Kind3<T, R, E, A>,
-    f: (a: A) => Kind<F, B>
-  ) => Kind<F, Kind3<T, R, E, B>>
+  <F extends URIS2>(
+    F: Applicative2<F>
+  ): <TR, A, TE, FE, B>(ta: Kind3<T, TR, TE, A>, f: (a: A) => Kind2<F, FE, B>) => Kind2<F, FE, Kind3<T, TR, TE, B>>
+  <F extends URIS2, FE>(
+    F: Applicative2C<F, FE>
+  ): <R, TE, A, B>(ta: Kind3<T, R, TE, A>, f: (a: A) => Kind2<F, FE, B>) => Kind2<F, FE, Kind3<T, R, TE, B>>
+  <F extends URIS>(
+    F: Applicative1<F>
+  ): <R, E, A, B>(ta: Kind3<T, R, E, A>, f: (a: A) => Kind<F, B>) => Kind<F, Kind3<T, R, E, B>>
   <F>(F: Applicative<F>): <R, E, A, B>(ta: Kind3<T, R, E, A>, f: (a: A) => HKT<F, B>) => HKT<F, Kind3<T, R, E, B>>
 }
 
@@ -270,9 +266,9 @@ export interface Sequence<T> {
  * @since 2.0.0
  */
 export interface Sequence1<T extends URIS> {
-  <F extends URIS4>(F: Applicative4<F>): <S, R, E, A>(
-    ta: Kind<T, Kind4<F, S, R, E, A>>
-  ) => Kind4<F, S, R, E, Kind<T, A>>
+  <F extends URIS4>(
+    F: Applicative4<F>
+  ): <S, R, E, A>(ta: Kind<T, Kind4<F, S, R, E, A>>) => Kind4<F, S, R, E, Kind<T, A>>
   <F extends URIS3>(F: Applicative3<F>): <R, E, A>(ta: Kind<T, Kind3<F, R, E, A>>) => Kind3<F, R, E, Kind<T, A>>
   <F extends URIS3, E>(F: Applicative3C<F, E>): <R, A>(ta: Kind<T, Kind3<F, R, E, A>>) => Kind3<F, R, E, Kind<T, A>>
   <F extends URIS2>(F: Applicative2<F>): <E, A>(ta: Kind<T, Kind2<F, E, A>>) => Kind2<F, E, Kind<T, A>>
@@ -285,19 +281,19 @@ export interface Sequence1<T extends URIS> {
  * @since 2.0.0
  */
 export interface Sequence2<T extends URIS2> {
-  <F extends URIS4>(F: Applicative4<F>): <TE, S, R, FE, A>(
-    ta: Kind2<T, TE, Kind4<F, S, R, FE, A>>
-  ) => Kind4<F, S, R, FE, Kind2<T, TE, A>>
-  <F extends URIS3>(F: Applicative3<F>): <TE, R, FE, A>(
-    ta: Kind2<T, TE, Kind3<F, R, FE, A>>
-  ) => Kind3<F, R, FE, Kind2<T, TE, A>>
-  <F extends URIS3, FE>(F: Applicative3C<F, FE>): <TE, R, A>(
-    ta: Kind2<T, TE, Kind3<F, R, FE, A>>
-  ) => Kind3<F, R, FE, Kind2<T, TE, A>>
+  <F extends URIS4>(
+    F: Applicative4<F>
+  ): <TE, S, R, FE, A>(ta: Kind2<T, TE, Kind4<F, S, R, FE, A>>) => Kind4<F, S, R, FE, Kind2<T, TE, A>>
+  <F extends URIS3>(
+    F: Applicative3<F>
+  ): <TE, R, FE, A>(ta: Kind2<T, TE, Kind3<F, R, FE, A>>) => Kind3<F, R, FE, Kind2<T, TE, A>>
+  <F extends URIS3, FE>(
+    F: Applicative3C<F, FE>
+  ): <TE, R, A>(ta: Kind2<T, TE, Kind3<F, R, FE, A>>) => Kind3<F, R, FE, Kind2<T, TE, A>>
   <F extends URIS2>(F: Applicative2<F>): <TE, FE, A>(ta: Kind2<T, TE, Kind2<F, FE, A>>) => Kind2<F, FE, Kind2<T, TE, A>>
-  <F extends URIS2, FE>(F: Applicative2C<F, FE>): <TE, A>(
-    ta: Kind2<T, TE, Kind2<F, FE, A>>
-  ) => Kind2<F, FE, Kind2<T, TE, A>>
+  <F extends URIS2, FE>(
+    F: Applicative2C<F, FE>
+  ): <TE, A>(ta: Kind2<T, TE, Kind2<F, FE, A>>) => Kind2<F, FE, Kind2<T, TE, A>>
   <F extends URIS>(F: Applicative1<F>): <E, A>(ta: Kind2<T, E, Kind<F, A>>) => Kind<F, Kind2<T, E, A>>
   <F>(F: Applicative<F>): <E, A>(ta: Kind2<T, E, HKT<F, A>>) => HKT<F, Kind2<T, E, A>>
 }
@@ -306,15 +302,15 @@ export interface Sequence2<T extends URIS2> {
  * @since 2.0.0
  */
 export interface Sequence2C<T extends URIS2, E> {
-  <F extends URIS4>(F: Applicative4<F>): <S, R, FE, A>(
-    ta: Kind2<T, E, Kind4<F, S, R, FE, A>>
-  ) => Kind4<F, S, R, FE, Kind2<T, E, A>>
-  <F extends URIS3>(F: Applicative3<F>): <R, FE, A>(
-    ta: Kind2<T, E, Kind3<F, R, FE, A>>
-  ) => Kind3<F, R, FE, Kind2<T, E, A>>
-  <F extends URIS3, FE>(F: Applicative3C<F, FE>): <R, A>(
-    ta: Kind2<T, E, Kind3<F, R, FE, A>>
-  ) => Kind3<F, R, FE, Kind2<T, E, A>>
+  <F extends URIS4>(
+    F: Applicative4<F>
+  ): <S, R, FE, A>(ta: Kind2<T, E, Kind4<F, S, R, FE, A>>) => Kind4<F, S, R, FE, Kind2<T, E, A>>
+  <F extends URIS3>(
+    F: Applicative3<F>
+  ): <R, FE, A>(ta: Kind2<T, E, Kind3<F, R, FE, A>>) => Kind3<F, R, FE, Kind2<T, E, A>>
+  <F extends URIS3, FE>(
+    F: Applicative3C<F, FE>
+  ): <R, A>(ta: Kind2<T, E, Kind3<F, R, FE, A>>) => Kind3<F, R, FE, Kind2<T, E, A>>
   <F extends URIS2>(F: Applicative2<F>): <FE, A>(ta: Kind2<T, E, Kind2<F, FE, A>>) => Kind2<F, FE, Kind2<T, E, A>>
   <F extends URIS2, FE>(F: Applicative2C<F, FE>): <A>(ta: Kind2<T, E, Kind2<F, FE, A>>) => Kind2<F, FE, Kind2<T, E, A>>
   <F extends URIS>(F: Applicative1<F>): <A>(ta: Kind2<T, E, Kind<F, A>>) => Kind<F, Kind2<T, E, A>>
@@ -325,21 +321,21 @@ export interface Sequence2C<T extends URIS2, E> {
  * @since 2.0.0
  */
 export interface Sequence3<T extends URIS3> {
-  <F extends URIS4>(F: Applicative4<F>): <TR, TE, S, FR, FE, A>(
-    ta: Kind3<T, TR, TE, Kind4<F, S, FR, FE, A>>
-  ) => Kind4<F, S, FR, FE, Kind3<T, TR, TE, A>>
-  <F extends URIS3>(F: Applicative3<F>): <TR, TE, FR, FE, A>(
-    ta: Kind3<T, TR, TE, Kind3<F, FR, FE, A>>
-  ) => Kind3<F, FR, FE, Kind3<T, TR, TE, A>>
-  <F extends URIS3, FE>(F: Applicative3C<F, FE>): <TR, TE, FR, A>(
-    ta: Kind3<T, TR, TE, Kind3<F, FR, FE, A>>
-  ) => Kind3<F, FR, FE, Kind3<T, TR, TE, A>>
-  <F extends URIS2>(F: Applicative2<F>): <R, TE, FE, A>(
-    ta: Kind3<T, R, TE, Kind2<F, FE, A>>
-  ) => Kind2<F, FE, Kind3<T, R, TE, A>>
-  <F extends URIS2, FE>(F: Applicative2C<F, FE>): <R, TE, A>(
-    ta: Kind3<T, R, TE, Kind2<F, FE, A>>
-  ) => Kind2<F, FE, Kind3<T, R, TE, A>>
+  <F extends URIS4>(
+    F: Applicative4<F>
+  ): <TR, TE, S, FR, FE, A>(ta: Kind3<T, TR, TE, Kind4<F, S, FR, FE, A>>) => Kind4<F, S, FR, FE, Kind3<T, TR, TE, A>>
+  <F extends URIS3>(
+    F: Applicative3<F>
+  ): <TR, TE, FR, FE, A>(ta: Kind3<T, TR, TE, Kind3<F, FR, FE, A>>) => Kind3<F, FR, FE, Kind3<T, TR, TE, A>>
+  <F extends URIS3, FE>(
+    F: Applicative3C<F, FE>
+  ): <TR, TE, FR, A>(ta: Kind3<T, TR, TE, Kind3<F, FR, FE, A>>) => Kind3<F, FR, FE, Kind3<T, TR, TE, A>>
+  <F extends URIS2>(
+    F: Applicative2<F>
+  ): <R, TE, FE, A>(ta: Kind3<T, R, TE, Kind2<F, FE, A>>) => Kind2<F, FE, Kind3<T, R, TE, A>>
+  <F extends URIS2, FE>(
+    F: Applicative2C<F, FE>
+  ): <R, TE, A>(ta: Kind3<T, R, TE, Kind2<F, FE, A>>) => Kind2<F, FE, Kind3<T, R, TE, A>>
   <F extends URIS>(F: Applicative1<F>): <R, E, A>(ta: Kind3<T, R, E, Kind<F, A>>) => Kind<F, Kind3<T, R, E, A>>
   <F>(F: Applicative<F>): <R, E, A>(ta: Kind3<T, R, E, HKT<F, A>>) => HKT<F, Kind3<T, R, E, A>>
 }
@@ -357,50 +353,62 @@ export function traverse<T extends URIS, G extends URIS2>(
   T: Traversable1<T>,
   G: Traversable2<G>
 ): {
-  <F extends URIS4>(F: Applicative4<F>): <A, S, R, FE, B>(
+  <F extends URIS4>(
+    F: Applicative4<F>
+  ): <A, S, R, FE, B>(
     f: (a: A) => Kind4<F, S, R, FE, B>
   ) => <GE>(tga: Kind<T, Kind2<G, GE, A>>) => Kind4<F, S, R, FE, Kind<T, Kind2<G, GE, B>>>
-  <F extends URIS3>(F: Applicative3<F>): <A, R, FE, B>(
+  <F extends URIS3>(
+    F: Applicative3<F>
+  ): <A, R, FE, B>(
     f: (a: A) => Kind3<F, R, FE, B>
   ) => <GE>(tga: Kind<T, Kind2<G, GE, A>>) => Kind3<F, R, FE, Kind<T, Kind2<G, GE, B>>>
-  <F extends URIS3, FE>(F: Applicative3C<F, FE>): <A, R, B>(
+  <F extends URIS3, FE>(
+    F: Applicative3C<F, FE>
+  ): <A, R, B>(
     f: (a: A) => Kind3<F, R, FE, B>
   ) => <GE>(tga: Kind<T, Kind2<G, GE, A>>) => Kind3<F, R, FE, Kind<T, Kind2<G, GE, B>>>
-  <F extends URIS2>(F: Applicative2<F>): <A, FE, B>(
+  <F extends URIS2>(
+    F: Applicative2<F>
+  ): <A, FE, B>(
     f: (a: A) => Kind2<F, FE, B>
   ) => <GE>(tga: Kind<T, Kind2<G, GE, A>>) => Kind2<F, FE, Kind<T, Kind2<G, GE, B>>>
-  <F extends URIS2, FE>(F: Applicative2C<F, FE>): <A, B>(
+  <F extends URIS2, FE>(
+    F: Applicative2C<F, FE>
+  ): <A, B>(
     f: (a: A) => Kind2<F, FE, B>
   ) => <GE>(tga: Kind<T, Kind2<G, GE, A>>) => Kind2<F, FE, Kind<T, Kind2<G, GE, B>>>
-  <F extends URIS>(F: Applicative1<F>): <A, B>(
-    f: (a: A) => Kind<F, B>
-  ) => <GE>(tga: Kind<T, Kind2<G, GE, A>>) => Kind<F, Kind<T, Kind2<G, GE, B>>>
-  <F>(F: Applicative<F>): <A, B>(
-    f: (a: A) => HKT<F, B>
-  ) => <GE>(tga: Kind<T, Kind2<G, GE, A>>) => HKT<F, Kind<T, Kind2<G, GE, B>>>
+  <F extends URIS>(
+    F: Applicative1<F>
+  ): <A, B>(f: (a: A) => Kind<F, B>) => <GE>(tga: Kind<T, Kind2<G, GE, A>>) => Kind<F, Kind<T, Kind2<G, GE, B>>>
+  <F>(
+    F: Applicative<F>
+  ): <A, B>(f: (a: A) => HKT<F, B>) => <GE>(tga: Kind<T, Kind2<G, GE, A>>) => HKT<F, Kind<T, Kind2<G, GE, B>>>
 }
 export function traverse<T extends URIS, G extends URIS>(
   T: Traversable1<T>,
   G: Traversable1<G>
 ): {
-  <F extends URIS4>(F: Applicative4<F>): <A, S, R, E, B>(
+  <F extends URIS4>(
+    F: Applicative4<F>
+  ): <A, S, R, E, B>(
     f: (a: A) => Kind4<F, S, R, E, B>
   ) => (tga: Kind<T, Kind<G, A>>) => Kind4<F, S, R, E, Kind<T, Kind<G, B>>>
-  <F extends URIS3>(F: Applicative3<F>): <A, R, E, B>(
-    f: (a: A) => Kind3<F, R, E, B>
-  ) => (tga: Kind<T, Kind<G, A>>) => Kind3<F, R, E, Kind<T, Kind<G, B>>>
-  <F extends URIS3, E>(F: Applicative3C<F, E>): <A, R, B>(
-    f: (a: A) => Kind3<F, R, E, B>
-  ) => (tga: Kind<T, Kind<G, A>>) => Kind3<F, R, E, Kind<T, Kind<G, B>>>
-  <F extends URIS2>(F: Applicative2<F>): <A, E, B>(
-    f: (a: A) => Kind2<F, E, B>
-  ) => (tga: Kind<T, Kind<G, A>>) => Kind2<F, E, Kind<T, Kind<G, B>>>
-  <F extends URIS2, E>(F: Applicative2C<F, E>): <A, B>(
-    f: (a: A) => Kind2<F, E, B>
-  ) => (tga: Kind<T, Kind<G, A>>) => Kind2<F, E, Kind<T, Kind<G, B>>>
-  <F extends URIS>(F: Applicative1<F>): <A, B>(
-    f: (a: A) => Kind<F, B>
-  ) => (tga: Kind<T, Kind<G, A>>) => Kind<F, Kind<T, Kind<G, B>>>
+  <F extends URIS3>(
+    F: Applicative3<F>
+  ): <A, R, E, B>(f: (a: A) => Kind3<F, R, E, B>) => (tga: Kind<T, Kind<G, A>>) => Kind3<F, R, E, Kind<T, Kind<G, B>>>
+  <F extends URIS3, E>(
+    F: Applicative3C<F, E>
+  ): <A, R, B>(f: (a: A) => Kind3<F, R, E, B>) => (tga: Kind<T, Kind<G, A>>) => Kind3<F, R, E, Kind<T, Kind<G, B>>>
+  <F extends URIS2>(
+    F: Applicative2<F>
+  ): <A, E, B>(f: (a: A) => Kind2<F, E, B>) => (tga: Kind<T, Kind<G, A>>) => Kind2<F, E, Kind<T, Kind<G, B>>>
+  <F extends URIS2, E>(
+    F: Applicative2C<F, E>
+  ): <A, B>(f: (a: A) => Kind2<F, E, B>) => (tga: Kind<T, Kind<G, A>>) => Kind2<F, E, Kind<T, Kind<G, B>>>
+  <F extends URIS>(
+    F: Applicative1<F>
+  ): <A, B>(f: (a: A) => Kind<F, B>) => (tga: Kind<T, Kind<G, A>>) => Kind<F, Kind<T, Kind<G, B>>>
   <F>(F: Applicative<F>): <A, B>(f: (a: A) => HKT<F, B>) => (tga: Kind<T, Kind<G, A>>) => HKT<F, Kind<T, Kind<G, B>>>
 }
 export function traverse<T, G>(
@@ -427,45 +435,47 @@ export function sequence<T extends URIS, G extends URIS2>(
   T: Traversable1<T>,
   G: Traversable2<G>
 ): {
-  <F extends URIS4>(F: Applicative4<F>): <GE, S, R, FE, A>(
+  <F extends URIS4>(
+    F: Applicative4<F>
+  ): <GE, S, R, FE, A>(
     tgfa: Kind<T, Kind2<G, GE, Kind4<F, S, R, FE, A>>>
   ) => Kind4<F, S, R, FE, Kind<T, Kind2<G, GE, A>>>
-  <F extends URIS3>(F: Applicative3<F>): <GE, R, FE, A>(
-    tgfa: Kind<T, Kind2<G, GE, Kind3<F, R, FE, A>>>
-  ) => Kind3<F, R, FE, Kind<T, Kind2<G, GE, A>>>
-  <F extends URIS3, FE>(F: Applicative3C<F, FE>): <GE, R, A>(
-    tgfa: Kind<T, Kind2<G, GE, Kind3<F, R, FE, A>>>
-  ) => Kind3<F, R, FE, Kind<T, Kind2<G, GE, A>>>
-  <F extends URIS2>(F: Applicative2<F>): <GE, FE, A>(
-    tgfa: Kind<T, Kind2<G, GE, Kind2<F, FE, A>>>
-  ) => Kind2<F, FE, Kind<T, Kind2<G, GE, A>>>
-  <F extends URIS2, FE>(F: Applicative2C<F, FE>): <GE, A>(
-    tgfa: Kind<T, Kind2<G, GE, Kind2<F, FE, A>>>
-  ) => Kind2<F, FE, Kind<T, Kind2<G, GE, A>>>
-  <F extends URIS>(F: Applicative1<F>): <GE, A>(
-    tgfa: Kind<T, Kind2<G, GE, Kind<F, A>>>
-  ) => Kind<F, Kind<T, Kind2<G, GE, A>>>
+  <F extends URIS3>(
+    F: Applicative3<F>
+  ): <GE, R, FE, A>(tgfa: Kind<T, Kind2<G, GE, Kind3<F, R, FE, A>>>) => Kind3<F, R, FE, Kind<T, Kind2<G, GE, A>>>
+  <F extends URIS3, FE>(
+    F: Applicative3C<F, FE>
+  ): <GE, R, A>(tgfa: Kind<T, Kind2<G, GE, Kind3<F, R, FE, A>>>) => Kind3<F, R, FE, Kind<T, Kind2<G, GE, A>>>
+  <F extends URIS2>(
+    F: Applicative2<F>
+  ): <GE, FE, A>(tgfa: Kind<T, Kind2<G, GE, Kind2<F, FE, A>>>) => Kind2<F, FE, Kind<T, Kind2<G, GE, A>>>
+  <F extends URIS2, FE>(
+    F: Applicative2C<F, FE>
+  ): <GE, A>(tgfa: Kind<T, Kind2<G, GE, Kind2<F, FE, A>>>) => Kind2<F, FE, Kind<T, Kind2<G, GE, A>>>
+  <F extends URIS>(
+    F: Applicative1<F>
+  ): <GE, A>(tgfa: Kind<T, Kind2<G, GE, Kind<F, A>>>) => Kind<F, Kind<T, Kind2<G, GE, A>>>
   <F>(F: Applicative<F>): <A>(tgfa: HKT<T, HKT<G, HKT<F, A>>>) => HKT<F, HKT<T, HKT<G, A>>>
 }
 export function sequence<T extends URIS, G extends URIS>(
   T: Traversable1<T>,
   G: Traversable1<G>
 ): {
-  <F extends URIS4>(F: Applicative4<F>): <S, R, E, A>(
-    tgfa: Kind<T, Kind<G, Kind4<F, S, R, E, A>>>
-  ) => Kind4<F, S, R, E, Kind<T, Kind<G, A>>>
-  <F extends URIS3>(F: Applicative3<F>): <R, E, A>(
-    tgfa: Kind<T, Kind<G, Kind3<F, R, E, A>>>
-  ) => Kind3<F, R, E, Kind<T, Kind<G, A>>>
-  <F extends URIS3, E>(F: Applicative3C<F, E>): <R, A>(
-    tgfa: Kind<T, Kind<G, Kind3<F, R, E, A>>>
-  ) => Kind3<F, R, E, Kind<T, Kind<G, A>>>
-  <F extends URIS2>(F: Applicative2<F>): <E, A>(
-    tgfa: Kind<T, Kind<G, Kind2<F, E, A>>>
-  ) => Kind2<F, E, Kind<T, Kind<G, A>>>
-  <F extends URIS2, E>(F: Applicative2C<F, E>): <A>(
-    tgfa: Kind<T, Kind<G, Kind2<F, E, A>>>
-  ) => Kind2<F, E, Kind<T, Kind<G, A>>>
+  <F extends URIS4>(
+    F: Applicative4<F>
+  ): <S, R, E, A>(tgfa: Kind<T, Kind<G, Kind4<F, S, R, E, A>>>) => Kind4<F, S, R, E, Kind<T, Kind<G, A>>>
+  <F extends URIS3>(
+    F: Applicative3<F>
+  ): <R, E, A>(tgfa: Kind<T, Kind<G, Kind3<F, R, E, A>>>) => Kind3<F, R, E, Kind<T, Kind<G, A>>>
+  <F extends URIS3, E>(
+    F: Applicative3C<F, E>
+  ): <R, A>(tgfa: Kind<T, Kind<G, Kind3<F, R, E, A>>>) => Kind3<F, R, E, Kind<T, Kind<G, A>>>
+  <F extends URIS2>(
+    F: Applicative2<F>
+  ): <E, A>(tgfa: Kind<T, Kind<G, Kind2<F, E, A>>>) => Kind2<F, E, Kind<T, Kind<G, A>>>
+  <F extends URIS2, E>(
+    F: Applicative2C<F, E>
+  ): <A>(tgfa: Kind<T, Kind<G, Kind2<F, E, A>>>) => Kind2<F, E, Kind<T, Kind<G, A>>>
   <F extends URIS>(F: Applicative1<F>): <A>(tgfa: Kind<T, Kind<G, Kind<F, A>>>) => Kind<F, Kind<T, Kind<G, A>>>
   <F>(F: Applicative<F>): <A>(tgfa: HKT<T, HKT<G, HKT<F, A>>>) => HKT<F, HKT<T, HKT<G, A>>>
 }
@@ -492,18 +502,18 @@ export function sequence<T, G>(
  * @since 2.6.3
  */
 export interface PipeableTraverse1<T extends URIS> {
-  <F extends URIS3>(F: Applicative3<F>): <A, FR, FE, B>(
-    f: (a: A) => Kind3<F, FR, FE, B>
-  ) => (ta: Kind<T, A>) => Kind3<F, FR, FE, Kind<T, B>>
-  <F extends URIS3, FE>(F: Applicative3C<F, FE>): <A, FR, B>(
-    f: (a: A) => Kind3<F, FR, FE, B>
-  ) => (ta: Kind<T, A>) => Kind3<F, FR, FE, Kind<T, B>>
-  <F extends URIS2>(F: Applicative2<F>): <A, FE, B>(
-    f: (a: A) => Kind2<F, FE, B>
-  ) => (ta: Kind<T, A>) => Kind2<F, FE, Kind<T, B>>
-  <F extends URIS2, FE>(F: Applicative2C<F, FE>): <A, B>(
-    f: (a: A) => Kind2<F, FE, B>
-  ) => (ta: Kind<T, A>) => Kind2<F, FE, Kind<T, B>>
+  <F extends URIS3>(
+    F: Applicative3<F>
+  ): <A, FR, FE, B>(f: (a: A) => Kind3<F, FR, FE, B>) => (ta: Kind<T, A>) => Kind3<F, FR, FE, Kind<T, B>>
+  <F extends URIS3, FE>(
+    F: Applicative3C<F, FE>
+  ): <A, FR, B>(f: (a: A) => Kind3<F, FR, FE, B>) => (ta: Kind<T, A>) => Kind3<F, FR, FE, Kind<T, B>>
+  <F extends URIS2>(
+    F: Applicative2<F>
+  ): <A, FE, B>(f: (a: A) => Kind2<F, FE, B>) => (ta: Kind<T, A>) => Kind2<F, FE, Kind<T, B>>
+  <F extends URIS2, FE>(
+    F: Applicative2C<F, FE>
+  ): <A, B>(f: (a: A) => Kind2<F, FE, B>) => (ta: Kind<T, A>) => Kind2<F, FE, Kind<T, B>>
   <F extends URIS>(F: Applicative1<F>): <A, B>(f: (a: A) => Kind<F, B>) => (ta: Kind<T, A>) => Kind<F, Kind<T, B>>
   <F>(F: Applicative<F>): <A, B>(f: (a: A) => HKT<F, B>) => (ta: Kind<T, A>) => HKT<F, Kind<T, B>>
 }
@@ -512,18 +522,18 @@ export interface PipeableTraverse1<T extends URIS> {
  * @since 2.6.3
  */
 export interface PipeableTraverse2<T extends URIS2> {
-  <F extends URIS3>(F: Applicative3<F>): <A, FR, FE, B>(
-    f: (a: A) => Kind3<F, FR, FE, B>
-  ) => <TE>(ta: Kind2<T, TE, A>) => Kind3<F, FR, FE, Kind2<T, TE, B>>
-  <F extends URIS2>(F: Applicative2<F>): <A, FE, B>(
-    f: (a: A) => Kind2<F, FE, B>
-  ) => <TE>(ta: Kind2<T, TE, A>) => Kind2<F, FE, Kind2<T, TE, B>>
-  <F extends URIS2, FE>(F: Applicative2C<F, FE>): <A, B>(
-    f: (a: A) => Kind2<F, FE, B>
-  ) => <TE>(ta: Kind2<T, TE, A>) => Kind2<F, FE, Kind2<T, TE, B>>
-  <F extends URIS>(F: Applicative1<F>): <A, B>(
-    f: (a: A) => Kind<F, B>
-  ) => <TE>(ta: Kind2<T, TE, A>) => Kind<F, Kind2<T, TE, B>>
+  <F extends URIS3>(
+    F: Applicative3<F>
+  ): <A, FR, FE, B>(f: (a: A) => Kind3<F, FR, FE, B>) => <TE>(ta: Kind2<T, TE, A>) => Kind3<F, FR, FE, Kind2<T, TE, B>>
+  <F extends URIS2>(
+    F: Applicative2<F>
+  ): <A, FE, B>(f: (a: A) => Kind2<F, FE, B>) => <TE>(ta: Kind2<T, TE, A>) => Kind2<F, FE, Kind2<T, TE, B>>
+  <F extends URIS2, FE>(
+    F: Applicative2C<F, FE>
+  ): <A, B>(f: (a: A) => Kind2<F, FE, B>) => <TE>(ta: Kind2<T, TE, A>) => Kind2<F, FE, Kind2<T, TE, B>>
+  <F extends URIS>(
+    F: Applicative1<F>
+  ): <A, B>(f: (a: A) => Kind<F, B>) => <TE>(ta: Kind2<T, TE, A>) => Kind<F, Kind2<T, TE, B>>
   <F>(F: Applicative<F>): <A, B>(f: (a: A) => HKT<F, B>) => <TE>(ta: Kind2<T, TE, A>) => HKT<F, Kind2<T, TE, B>>
 }
 
@@ -549,22 +559,18 @@ export interface TraversableComposition<F, G> extends FoldableComposition<F, G>,
  * @deprecated
  */
 export interface TraverseComposition11<F extends URIS, G extends URIS> {
-  <H extends URIS3>(H: Applicative3<H>): <R, E, A, B>(
-    fga: Kind<F, Kind<G, A>>,
-    f: (a: A) => Kind3<H, R, E, B>
-  ) => Kind3<H, R, E, Kind<F, Kind<G, B>>>
-  <H extends URIS2>(H: Applicative2<H>): <E, A, B>(
-    fga: Kind<F, Kind<G, A>>,
-    f: (a: A) => Kind2<H, E, B>
-  ) => Kind2<H, E, Kind<F, Kind<G, B>>>
-  <H extends URIS2, E>(H: Applicative2C<H, E>): <A, B>(
-    fga: Kind<F, Kind<G, A>>,
-    f: (a: A) => Kind2<H, E, B>
-  ) => Kind2<H, E, Kind<F, Kind<G, B>>>
-  <H extends URIS>(H: Applicative1<H>): <A, B>(
-    fga: Kind<F, Kind<G, A>>,
-    f: (a: A) => Kind<H, B>
-  ) => Kind<H, Kind<F, Kind<G, B>>>
+  <H extends URIS3>(
+    H: Applicative3<H>
+  ): <R, E, A, B>(fga: Kind<F, Kind<G, A>>, f: (a: A) => Kind3<H, R, E, B>) => Kind3<H, R, E, Kind<F, Kind<G, B>>>
+  <H extends URIS2>(
+    H: Applicative2<H>
+  ): <E, A, B>(fga: Kind<F, Kind<G, A>>, f: (a: A) => Kind2<H, E, B>) => Kind2<H, E, Kind<F, Kind<G, B>>>
+  <H extends URIS2, E>(
+    H: Applicative2C<H, E>
+  ): <A, B>(fga: Kind<F, Kind<G, A>>, f: (a: A) => Kind2<H, E, B>) => Kind2<H, E, Kind<F, Kind<G, B>>>
+  <H extends URIS>(
+    H: Applicative1<H>
+  ): <A, B>(fga: Kind<F, Kind<G, A>>, f: (a: A) => Kind<H, B>) => Kind<H, Kind<F, Kind<G, B>>>
   <H>(H: Applicative<H>): <A, B>(fga: Kind<F, Kind<G, A>>, f: (a: A) => HKT<H, B>) => HKT<H, Kind<F, Kind<G, B>>>
 }
 
@@ -574,15 +580,15 @@ export interface TraverseComposition11<F extends URIS, G extends URIS> {
  * @deprecated
  */
 export interface SequenceComposition11<F extends URIS, G extends URIS> {
-  <H extends URIS3>(H: Applicative3<H>): <R, E, A>(
-    fga: Kind<F, Kind<G, Kind3<H, R, E, A>>>
-  ) => Kind3<H, R, E, Kind<F, Kind<G, A>>>
-  <H extends URIS2>(H: Applicative2<H>): <E, A>(
-    fga: Kind<F, Kind<G, Kind2<H, E, A>>>
-  ) => Kind2<H, E, Kind<F, Kind<G, A>>>
-  <H extends URIS2, E>(H: Applicative2C<H, E>): <A>(
-    fga: Kind<F, Kind<G, Kind2<H, E, A>>>
-  ) => Kind2<H, E, Kind<F, Kind<G, A>>>
+  <H extends URIS3>(
+    H: Applicative3<H>
+  ): <R, E, A>(fga: Kind<F, Kind<G, Kind3<H, R, E, A>>>) => Kind3<H, R, E, Kind<F, Kind<G, A>>>
+  <H extends URIS2>(
+    H: Applicative2<H>
+  ): <E, A>(fga: Kind<F, Kind<G, Kind2<H, E, A>>>) => Kind2<H, E, Kind<F, Kind<G, A>>>
+  <H extends URIS2, E>(
+    H: Applicative2C<H, E>
+  ): <A>(fga: Kind<F, Kind<G, Kind2<H, E, A>>>) => Kind2<H, E, Kind<F, Kind<G, A>>>
   <H extends URIS>(H: Applicative1<H>): <A>(fga: Kind<F, Kind<G, Kind<H, A>>>) => Kind<H, Kind<F, Kind<G, A>>>
   <H>(H: Applicative<H>): <A>(fga: Kind<F, Kind<G, HKT<H, A>>>) => HKT<H, Kind<F, Kind<G, A>>>
 }

@@ -1,25 +1,26 @@
 /**
  * @since 2.0.0
  */
-import { Alt3, Alt3C } from './Alt'
-import { Applicative3, Applicative3C, getApplicativeMonoid } from './Applicative'
+import { type Alt3, type Alt3C } from './Alt'
+import { type Applicative3, type Applicative3C, getApplicativeMonoid } from './Applicative'
 import {
   ap as ap_,
   apFirst as apFirst_,
-  Apply1,
-  Apply3,
+  type Apply1,
+  type Apply3,
   apS as apS_,
   apSecond as apSecond_,
   getApplySemigroup as getApplySemigroup_
 } from './Apply'
-import { Bifunctor3 } from './Bifunctor'
-import { bind as bind_, Chain3, chainFirst as chainFirst_ } from './Chain'
-import { compact as compact_, Compactable3C, separate as separate_ } from './Compactable'
+import { type Bifunctor3 } from './Bifunctor'
+import { bind as bind_, type Chain3, chainFirst as chainFirst_ } from './Chain'
+import { compact as compact_, type Compactable3C, separate as separate_ } from './Compactable'
 import * as E from './Either'
+import { type Either } from './Either'
 import * as ET from './EitherT'
 import {
   filter as filter_,
-  Filterable3C,
+  type Filterable3C,
   filterMap as filterMap_,
   partition as partition_,
   partitionMap as partitionMap_
@@ -29,56 +30,53 @@ import {
   chainFirstEitherK as chainFirstEitherK_,
   chainOptionK as chainOptionK_,
   filterOrElse as filterOrElse_,
-  FromEither3,
+  type FromEither3,
   fromEitherK as fromEitherK_,
   fromOption as fromOption_,
   fromOptionK as fromOptionK_,
   fromPredicate as fromPredicate_
 } from './FromEither'
-import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, FromIO3, fromIOK as fromIOK_ } from './FromIO'
+import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, type FromIO3, fromIOK as fromIOK_ } from './FromIO'
 import {
   ask as ask_,
   asks as asks_,
   chainFirstReaderK as chainFirstReaderK_,
   chainReaderK as chainReaderK_,
-  FromReader3,
+  type FromReader3,
   fromReaderK as fromReaderK_
 } from './FromReader'
 import {
   chainFirstTaskK as chainFirstTaskK_,
   chainTaskK as chainTaskK_,
-  FromTask3,
+  type FromTask3,
   fromTaskK as fromTaskK_
 } from './FromTask'
-import { flow, identity, Lazy, pipe, SK } from './function'
-import { bindTo as bindTo_, flap as flap_, Functor3, let as let__ } from './Functor'
+import { flow, identity, type Lazy, pipe, SK } from './function'
+import { bindTo as bindTo_, flap as flap_, type Functor3, let as let__ } from './Functor'
 import * as _ from './internal'
-import { IO } from './IO'
-import { IOEither } from './IOEither'
-import { Monad3, Monad3C } from './Monad'
-import { MonadIO3 } from './MonadIO'
-import { MonadTask3, MonadTask3C } from './MonadTask'
-import { MonadThrow3, MonadThrow3C } from './MonadThrow'
-import { Monoid } from './Monoid'
-import { Option } from './Option'
-import { Pointed3 } from './Pointed'
-import { Predicate } from './Predicate'
+import { type IO } from './IO'
+import { type IOEither } from './IOEither'
+import { type Monad3, type Monad3C } from './Monad'
+import { type MonadIO3 } from './MonadIO'
+import { type MonadTask3, type MonadTask3C } from './MonadTask'
+import { type MonadThrow3, type MonadThrow3C } from './MonadThrow'
+import { type Monoid } from './Monoid'
+import { type Option } from './Option'
+import { type Pointed3 } from './Pointed'
+import { type Predicate } from './Predicate'
 import * as R from './Reader'
-import { ReaderEither } from './ReaderEither'
-import * as RIO from './ReaderIO'
+import { type Reader } from './Reader'
+import { type ReaderEither } from './ReaderEither'
+import { type ReaderIO } from './ReaderIO'
 import * as RT from './ReaderTask'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
-import { Refinement } from './Refinement'
-import { Semigroup } from './Semigroup'
+import { type ReaderTask } from './ReaderTask'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { type Refinement } from './Refinement'
+import { type Semigroup } from './Semigroup'
 import * as T from './Task'
+import { type Task } from './Task'
 import * as TE from './TaskEither'
-
-import Either = E.Either
-import Task = T.Task
-import TaskEither = TE.TaskEither
-import Reader = R.Reader
-import ReaderIO = RIO.ReaderIO
-import ReaderTask = RT.ReaderTask
+import { type TaskEither } from './TaskEither'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -1279,12 +1277,14 @@ export const chainFirstEitherKW: <A, E2, B>(
  * @since 2.0.0
  */
 export const fromPredicate: {
-  <E, A, B extends A>(refinement: Refinement<A, B>, onFalse: (a: A) => E): <R = unknown>(
-    a: A
-  ) => ReaderTaskEither<R, E, B>
-  <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <R = unknown, B extends A = A>(
-    b: B
-  ) => ReaderTaskEither<R, E, B>
+  <E, A, B extends A>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E
+  ): <R = unknown>(a: A) => ReaderTaskEither<R, E, B>
+  <E, A>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E
+  ): <R = unknown, B extends A = A>(b: B) => ReaderTaskEither<R, E, B>
   <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <R = unknown>(a: A) => ReaderTaskEither<R, E, A>
 } = /*#__PURE__*/ fromPredicate_(FromEither)
 
@@ -1293,12 +1293,14 @@ export const fromPredicate: {
  * @since 2.0.0
  */
 export const filterOrElse: {
-  <E, A, B extends A>(refinement: Refinement<A, B>, onFalse: (a: A) => E): <R>(
-    ma: ReaderTaskEither<R, E, A>
-  ) => ReaderTaskEither<R, E, B>
-  <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <R, B extends A>(
-    mb: ReaderTaskEither<R, E, B>
-  ) => ReaderTaskEither<R, E, B>
+  <E, A, B extends A>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E
+  ): <R>(ma: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, B>
+  <E, A>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E
+  ): <R, B extends A>(mb: ReaderTaskEither<R, E, B>) => ReaderTaskEither<R, E, B>
   <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <R>(ma: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, A>
 } = /*#__PURE__*/ filterOrElse_(FromEither, Chain)
 
@@ -1311,15 +1313,18 @@ export const filterOrElse: {
  * @since 2.9.0
  */
 export const filterOrElseW: {
-  <A, B extends A, E2>(refinement: Refinement<A, B>, onFalse: (a: A) => E2): <R, E1>(
-    ma: ReaderTaskEither<R, E1, A>
-  ) => ReaderTaskEither<R, E1 | E2, B>
-  <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <R, E1, B extends A>(
-    mb: ReaderTaskEither<R, E1, B>
-  ) => ReaderTaskEither<R, E1 | E2, B>
-  <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <R, E1>(
-    ma: ReaderTaskEither<R, E1, A>
-  ) => ReaderTaskEither<R, E1 | E2, A>
+  <A, B extends A, E2>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E2
+  ): <R, E1>(ma: ReaderTaskEither<R, E1, A>) => ReaderTaskEither<R, E1 | E2, B>
+  <A, E2>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E2
+  ): <R, E1, B extends A>(mb: ReaderTaskEither<R, E1, B>) => ReaderTaskEither<R, E1 | E2, B>
+  <A, E2>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E2
+  ): <R, E1>(ma: ReaderTaskEither<R, E1, A>) => ReaderTaskEither<R, E1 | E2, A>
 } = filterOrElse
 
 /**

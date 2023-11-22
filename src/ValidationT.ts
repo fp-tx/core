@@ -2,19 +2,18 @@
  * @since 2.0.0
  */
 import {
-  ApplicativeComposition12C,
-  ApplicativeComposition22C,
-  ApplicativeCompositionHKT2C,
+  type ApplicativeComposition12C,
+  type ApplicativeComposition22C,
+  type ApplicativeCompositionHKT2C,
   getApplicativeComposition
 } from './Applicative'
 import * as E from './Either'
-import { Lazy } from './function'
-import { HKT, Kind, Kind2, URIS, URIS2 } from './HKT'
+import { type Either } from './Either'
+import { type Lazy } from './function'
+import { type HKT, type Kind, type Kind2, type URIS, type URIS2 } from './HKT'
 import * as _ from './internal'
-import { Monad, Monad1, Monad2 } from './Monad'
-import { Semigroup } from './Semigroup'
-
-import Either = E.Either
+import { type Monad, type Monad1, type Monad2 } from './Monad'
+import { type Semigroup } from './Semigroup'
 
 // -------------------------------------------------------------------------------------
 // deprecated

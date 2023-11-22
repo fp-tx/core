@@ -1,11 +1,11 @@
 /**
  * @since 2.0.0
  */
-import * as E from './Eq'
+import type * as E from './Eq'
 import { pipe } from './function'
-import { IO } from './IO'
-import * as O from './Ord'
+import { type IO } from './IO'
 import * as N from './number'
+import * as O from './Ord'
 
 // -------------------------------------------------------------------------------------
 // instances

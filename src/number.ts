@@ -1,15 +1,15 @@
 /**
  * @since 2.10.0
  */
-import * as B from './Bounded'
-import * as E from './Eq'
-import * as F from './Field'
-import { Magma } from './Magma'
-import { Monoid } from './Monoid'
-import * as O from './Ord'
-import { Refinement } from './Refinement'
-import { Semigroup } from './Semigroup'
-import * as S from './Show'
+import type * as B from './Bounded'
+import type * as E from './Eq'
+import type * as F from './Field'
+import { type Magma } from './Magma'
+import { type Monoid } from './Monoid'
+import type * as O from './Ord'
+import { type Refinement } from './Refinement'
+import { type Semigroup } from './Semigroup'
+import type * as S from './Show'
 
 // -------------------------------------------------------------------------------------
 // refinements

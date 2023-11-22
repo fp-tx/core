@@ -1,20 +1,17 @@
 {
   "compilerOptions": {
     "noEmit": true,
-    "outDir": "./dist/lib",
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "esModuleInterop": true,
-    "sourceMap": false,
-    "declaration": true,
     "strict": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
-    "stripInternal": true
+    "stripInternal": true,
+    "types": ["node", "jest"]
   },
-  "include": ["./src", "./test", "./perf", "./dtslint"]
+  "include": ["./src", "./test", "./perf", "./tsup.config.ts"]
 }

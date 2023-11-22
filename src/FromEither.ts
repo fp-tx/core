@@ -4,14 +4,33 @@
  * @since 2.10.0
  */
 
-import { Chain, Chain1, Chain2, Chain2C, Chain3, Chain3C, Chain4, chainFirst } from './Chain'
-import { Either } from './Either'
-import { flow, Lazy } from './function'
-import { HKT2, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
+import {
+  type Chain,
+  type Chain1,
+  type Chain2,
+  type Chain2C,
+  type Chain3,
+  type Chain3C,
+  type Chain4,
+  chainFirst
+} from './Chain'
+import { type Either } from './Either'
+import { flow, type Lazy } from './function'
+import {
+  type HKT2,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
 import * as _ from './internal'
-import { Option } from './Option'
-import { Predicate } from './Predicate'
-import { Refinement } from './Refinement'
+import { type Option } from './Option'
+import { type Predicate } from './Predicate'
+import { type Refinement } from './Refinement'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -363,21 +382,24 @@ export function filterOrElse<M extends URIS4>(
   F: FromEither4<M>,
   M: Chain4<M>
 ): {
-  <A, B extends A, E>(refinement: Refinement<A, B>, onFalse: (a: A) => E): <S, R>(
-    ma: Kind4<M, S, R, E, A>
-  ) => Kind4<M, S, R, E, B>
-  <A, E>(predicate: Predicate<A>, onFalse: (a: A) => E): <S, R, B extends A>(
-    mb: Kind4<M, S, R, E, B>
-  ) => Kind4<M, S, R, E, B>
+  <A, B extends A, E>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E
+  ): <S, R>(ma: Kind4<M, S, R, E, A>) => Kind4<M, S, R, E, B>
+  <A, E>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E
+  ): <S, R, B extends A>(mb: Kind4<M, S, R, E, B>) => Kind4<M, S, R, E, B>
   <A, E>(predicate: Predicate<A>, onFalse: (a: A) => E): <S, R>(ma: Kind4<M, S, R, E, A>) => Kind4<M, S, R, E, A>
 }
 export function filterOrElse<M extends URIS3>(
   F: FromEither3<M>,
   M: Chain3<M>
 ): {
-  <A, B extends A, E>(refinement: Refinement<A, B>, onFalse: (a: A) => E): <R>(
-    ma: Kind3<M, R, E, A>
-  ) => Kind3<M, R, E, B>
+  <A, B extends A, E>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E
+  ): <R>(ma: Kind3<M, R, E, A>) => Kind3<M, R, E, B>
   <A, E>(predicate: Predicate<A>, onFalse: (a: A) => E): <R, B extends A>(mb: Kind3<M, R, E, B>) => Kind3<M, R, E, B>
   <A, E>(predicate: Predicate<A>, onFalse: (a: A) => E): <R>(ma: Kind3<M, R, E, A>) => Kind3<M, R, E, A>
 }

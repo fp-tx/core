@@ -32,11 +32,11 @@
  *
  * @since 2.0.0
  */
-import { Bounded } from './Bounded'
+import { type Bounded } from './Bounded'
+import { type Endomorphism, getMonoid as getEM } from './Endomorphism'
 import { getMonoid as getFM } from './function'
-import { Endomorphism, getMonoid as getEM } from './Endomorphism'
 import * as _ from './internal'
-import { ReadonlyRecord } from './ReadonlyRecord'
+import { type ReadonlyRecord } from './ReadonlyRecord'
 import * as Se from './Semigroup'
 
 // -------------------------------------------------------------------------------------
@@ -173,7 +173,7 @@ export const tuple = <A extends ReadonlyArray<unknown>>(
   ({
     concat: Se.tuple(...(monoids as any)).concat,
     empty: monoids.map((m) => m.empty)
-  } as any)
+  }) as any
 
 // -------------------------------------------------------------------------------------
 // utils

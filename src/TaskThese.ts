@@ -1,40 +1,39 @@
 /**
  * @since 2.4.0
  */
-import { Applicative2C } from './Applicative'
-import { Apply1, Apply2C, getApplySemigroup } from './Apply'
-import { Bifunctor2 } from './Bifunctor'
-import { Chain2C } from './Chain'
-import { Either } from './Either'
+import { type Applicative2C } from './Applicative'
+import { type Apply1, type Apply2C, getApplySemigroup } from './Apply'
+import { type Bifunctor2 } from './Bifunctor'
+import { type Chain2C } from './Chain'
+import { type Either } from './Either'
 import {
-  FromEither2,
+  type FromEither2,
   fromOption as fromOption_,
   fromOptionK as fromOptionK_,
   fromPredicate as fromPredicate_
 } from './FromEither'
-import { FromIO2, fromIOK as fromIOK_ } from './FromIO'
-import { FromTask2, fromTaskK as fromTaskK_ } from './FromTask'
-import { FromThese2, fromTheseK as fromTheseK_ } from './FromThese'
-import { flow, Lazy, pipe, SK } from './function'
-import { flap as flap_, Functor2 } from './Functor'
+import { type FromIO2, fromIOK as fromIOK_ } from './FromIO'
+import { type FromTask2, fromTaskK as fromTaskK_ } from './FromTask'
+import { type FromThese2, fromTheseK as fromTheseK_ } from './FromThese'
+import { flow, type Lazy, pipe, SK } from './function'
+import { flap as flap_, type Functor2 } from './Functor'
 import * as _ from './internal'
-import { IO } from './IO'
-import { IOEither } from './IOEither'
-import { Monad2C } from './Monad'
-import { MonadTask2C } from './MonadTask'
-import { NonEmptyArray } from './NonEmptyArray'
-import { Option } from './Option'
-import { Pointed2 } from './Pointed'
-import { Predicate } from './Predicate'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
-import { Refinement } from './Refinement'
-import { Semigroup } from './Semigroup'
+import { type IO } from './IO'
+import { type IOEither } from './IOEither'
+import { type Monad2C } from './Monad'
+import { type MonadTask2C } from './MonadTask'
+import { type NonEmptyArray } from './NonEmptyArray'
+import { type Option } from './Option'
+import { type Pointed2 } from './Pointed'
+import { type Predicate } from './Predicate'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { type Refinement } from './Refinement'
+import { type Semigroup } from './Semigroup'
 import * as T from './Task'
+import { type Task } from './Task'
 import * as TH from './These'
+import { type These } from './These'
 import * as TT from './TheseT'
-
-import These = TH.These
-import Task = T.Task
 
 // -------------------------------------------------------------------------------------
 // model

@@ -3,8 +3,8 @@
  *
  * @since 2.0.0
  */
-import { Ring } from './Ring'
-import { Eq } from './Eq'
+import { type Eq } from './Eq'
+import { type Ring } from './Ring'
 
 // -------------------------------------------------------------------------------------
 // model

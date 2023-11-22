@@ -12,35 +12,34 @@
  *
  * @since 2.5.0
  */
-import { Alt1 } from './Alt'
-import { Applicative as ApplicativeHKT, Applicative1 } from './Applicative'
-import { apFirst as apFirst_, Apply1, apS as apS_, apSecond as apSecond_ } from './Apply'
-import { bind as bind_, Chain1, chainFirst as chainFirst_ } from './Chain'
-import { Comonad1 } from './Comonad'
-import { Endomorphism } from './Endomorphism'
-import { Eq, fromEquals } from './Eq'
-import { Extend1 } from './Extend'
-import { Foldable1 } from './Foldable'
-import { FoldableWithIndex1 } from './FoldableWithIndex'
-import { flow, identity, Lazy, pipe, SK } from './function'
-import { let as let__, bindTo as bindTo_, flap as flap_, Functor1 } from './Functor'
-import { FunctorWithIndex1 } from './FunctorWithIndex'
-import { HKT } from './HKT'
+import { type Alt1 } from './Alt'
+import { type Applicative as ApplicativeHKT, type Applicative1 } from './Applicative'
+import { apFirst as apFirst_, type Apply1, apS as apS_, apSecond as apSecond_ } from './Apply'
+import { bind as bind_, type Chain1, chainFirst as chainFirst_ } from './Chain'
+import { type Comonad1 } from './Comonad'
+import { type Endomorphism } from './Endomorphism'
+import { type Eq, fromEquals } from './Eq'
+import { type Extend1 } from './Extend'
+import { type Foldable1 } from './Foldable'
+import { type FoldableWithIndex1 } from './FoldableWithIndex'
+import { flow, identity, type Lazy, pipe, SK } from './function'
+import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
+import { type FunctorWithIndex1 } from './FunctorWithIndex'
+import { type HKT } from './HKT'
 import * as _ from './internal'
-import { Monad1 } from './Monad'
-import { NonEmptyArray } from './NonEmptyArray'
-import { Option } from './Option'
-import { getMonoid, Ord } from './Ord'
-import { Pointed1 } from './Pointed'
-import { Predicate } from './Predicate'
-import { ReadonlyRecord } from './ReadonlyRecord'
-import { Refinement } from './Refinement'
+import { type Monad1 } from './Monad'
+import { type NonEmptyArray } from './NonEmptyArray'
+import { type Option } from './Option'
+import { getMonoid, type Ord } from './Ord'
+import { type Pointed1 } from './Pointed'
+import { type Predicate } from './Predicate'
+import { type ReadonlyRecord } from './ReadonlyRecord'
+import { type Refinement } from './Refinement'
 import * as Se from './Semigroup'
-import { Show } from './Show'
-import { PipeableTraverse1, Traversable1 } from './Traversable'
-import { PipeableTraverseWithIndex1, TraversableWithIndex1 } from './TraversableWithIndex'
-
-import Semigroup = Se.Semigroup
+import { type Semigroup } from './Semigroup'
+import { type Show } from './Show'
+import { type PipeableTraverse1, type Traversable1 } from './Traversable'
+import { type PipeableTraverseWithIndex1, type TraversableWithIndex1 } from './TraversableWithIndex'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -78,8 +77,7 @@ export const isOutOfBound = <A>(i: number, as: ReadonlyArray<A>): boolean => i <
  */
 export const prependW =
   <B>(head: B) =>
-  <A>(tail: ReadonlyArray<A>): ReadonlyNonEmptyArray<A | B> =>
-    [head, ...tail]
+  <A>(tail: ReadonlyArray<A>): ReadonlyNonEmptyArray<A | B> => [head, ...tail]
 
 /**
  * @internal
@@ -1271,8 +1269,7 @@ export const matchRight =
  */
 export const modifyHead =
   <A>(f: Endomorphism<A>) =>
-  (as: ReadonlyNonEmptyArray<A>): ReadonlyNonEmptyArray<A> =>
-    [f(head(as)), ...tail(as)]
+  (as: ReadonlyNonEmptyArray<A>): ReadonlyNonEmptyArray<A> => [f(head(as)), ...tail(as)]
 
 /**
  * Change the head, creating a new `ReadonlyNonEmptyArray`.

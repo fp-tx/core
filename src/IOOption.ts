@@ -6,45 +6,44 @@
  *
  * @since 2.12.0
  */
-import { Alt1 } from './Alt'
-import { Alternative1 } from './Alternative'
-import { Applicative1 } from './Applicative'
-import { apFirst as apFirst_, Apply1, apS as apS_, apSecond as apSecond_ } from './Apply'
-import { bind as bind_, Chain1, chainFirst as chainFirst_ } from './Chain'
-import { compact as compact_, Compactable1, separate as separate_ } from './Compactable'
-import { Either } from './Either'
+import { type Alt1 } from './Alt'
+import { type Alternative1 } from './Alternative'
+import { type Applicative1 } from './Applicative'
+import { apFirst as apFirst_, type Apply1, apS as apS_, apSecond as apSecond_ } from './Apply'
+import { bind as bind_, type Chain1, chainFirst as chainFirst_ } from './Chain'
+import { compact as compact_, type Compactable1, separate as separate_ } from './Compactable'
+import { type Either } from './Either'
 import {
   filter as filter_,
-  Filterable1,
+  type Filterable1,
   filterMap as filterMap_,
   partition as partition_,
   partitionMap as partitionMap_
 } from './Filterable'
 import {
-  FromEither1,
   chainEitherK as chainEitherK_,
   chainFirstEitherK as chainFirstEitherK_,
+  type FromEither1,
   fromEitherK as fromEitherK_
 } from './FromEither'
-import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, FromIO1, fromIOK as fromIOK_ } from './FromIO'
-import { flow, identity, Lazy, pipe, SK } from './function'
-import { let as let__, bindTo as bindTo_, flap as flap_, Functor1 } from './Functor'
+import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, type FromIO1, fromIOK as fromIOK_ } from './FromIO'
+import { flow, identity, type Lazy, pipe, SK } from './function'
+import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
 import * as _ from './internal'
-import { Monad1 } from './Monad'
-import { MonadIO1 } from './MonadIO'
-import * as O from './Option'
-import * as OT from './OptionT'
-import { Pointed1 } from './Pointed'
-import { Predicate } from './Predicate'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
-import { Refinement } from './Refinement'
-import { Separated } from './Separated'
 import * as I from './IO'
-import { IOEither } from './IOEither'
-import { Zero1, guard as guard_ } from './Zero'
-
-import IO = I.IO
-import Option = O.Option
+import { type IO } from './IO'
+import { type IOEither } from './IOEither'
+import { type Monad1 } from './Monad'
+import { type MonadIO1 } from './MonadIO'
+import * as O from './Option'
+import { type Option } from './Option'
+import * as OT from './OptionT'
+import { type Pointed1 } from './Pointed'
+import { type Predicate } from './Predicate'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { type Refinement } from './Refinement'
+import { type Separated } from './Separated'
+import { guard as guard_, type Zero1 } from './Zero'
 
 // -------------------------------------------------------------------------------------
 // model

@@ -5,22 +5,48 @@
  *
  * @since 2.0.0
  */
-import { Apply, Apply1, Apply2, Apply2C, Apply3, Apply3C, Apply4 } from './Apply'
-import { Chain, Chain1, Chain2, Chain2C, Chain3, Chain3C, Chain4 } from './Chain'
+import { type Apply, type Apply1, type Apply2, type Apply2C, type Apply3, type Apply3C, type Apply4 } from './Apply'
+import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C, type Chain4 } from './Chain'
 import { flow, pipe } from './function'
-import { Functor, Functor1, Functor2, Functor2C, Functor3, Functor3C, Functor4 } from './Functor'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
-import { Monad, Monad1, Monad2, Monad2C, Monad3 } from './Monad'
 import {
-  NaturalTransformation22,
-  NaturalTransformation12,
-  NaturalTransformation11,
-  NaturalTransformation,
-  NaturalTransformation23R,
-  NaturalTransformation24S
+  type Functor,
+  type Functor1,
+  type Functor2,
+  type Functor2C,
+  type Functor3,
+  type Functor3C,
+  type Functor4
+} from './Functor'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
+import { type Monad, type Monad1, type Monad2, type Monad2C, type Monad3 } from './Monad'
+import {
+  type NaturalTransformation,
+  type NaturalTransformation11,
+  type NaturalTransformation12,
+  type NaturalTransformation22,
+  type NaturalTransformation23R,
+  type NaturalTransformation24S
 } from './NaturalTransformation'
-import { Pointed, Pointed1, Pointed2, Pointed2C, Pointed3, Pointed3C, Pointed4 } from './Pointed'
-import { Reader } from './Reader'
+import {
+  type Pointed,
+  type Pointed1,
+  type Pointed2,
+  type Pointed2C,
+  type Pointed3,
+  type Pointed3C,
+  type Pointed4
+} from './Pointed'
+import { type Reader } from './Reader'
 
 /**
  * @since 2.10.0

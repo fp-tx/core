@@ -7,42 +7,50 @@
  * @since 2.5.0
  */
 import {
-  Applicative,
-  Applicative1,
-  Applicative2,
-  Applicative2C,
-  Applicative3,
-  Applicative3C,
-  Applicative4
+  type Applicative,
+  type Applicative1,
+  type Applicative2,
+  type Applicative2C,
+  type Applicative3,
+  type Applicative3C,
+  type Applicative4
 } from './Applicative'
-import { Compactable1 } from './Compactable'
-import { Either } from './Either'
-import { Eq, fromEquals } from './Eq'
-import { Filterable1 } from './Filterable'
-import { FilterableWithIndex1, PredicateWithIndex, RefinementWithIndex } from './FilterableWithIndex'
-import { Foldable as FoldableHKT, Foldable1, Foldable2, Foldable3 } from './Foldable'
-import { FoldableWithIndex1 } from './FoldableWithIndex'
+import { type Compactable1 } from './Compactable'
+import { type Either } from './Either'
+import { type Eq, fromEquals } from './Eq'
+import { type Filterable1 } from './Filterable'
+import { type FilterableWithIndex1, type PredicateWithIndex, type RefinementWithIndex } from './FilterableWithIndex'
+import { type Foldable as FoldableHKT, type Foldable1, type Foldable2, type Foldable3 } from './Foldable'
+import { type FoldableWithIndex1 } from './FoldableWithIndex'
 import { flow, identity, pipe, SK } from './function'
-import { flap as flap_, Functor1 } from './Functor'
-import { FunctorWithIndex1 } from './FunctorWithIndex'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
+import { flap as flap_, type Functor1 } from './Functor'
+import { type FunctorWithIndex1 } from './FunctorWithIndex'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
 import * as _ from './internal'
-import { Magma } from './Magma'
-import { Monoid } from './Monoid'
-import { Option } from './Option'
-import { Ord } from './Ord'
-import { Predicate } from './Predicate'
-import { Refinement } from './Refinement'
-import * as Se from './Semigroup'
-import { Separated, separated } from './Separated'
-import { Show } from './Show'
+import { type Magma } from './Magma'
+import { type Monoid } from './Monoid'
+import { type Option } from './Option'
+import { type Ord } from './Ord'
+import { type Predicate } from './Predicate'
+import { type Refinement } from './Refinement'
+import { type Semigroup } from './Semigroup'
+import { type Separated, separated } from './Separated'
+import { type Show } from './Show'
 import * as S from './string'
-import { Traversable1 } from './Traversable'
-import { TraversableWithIndex1 } from './TraversableWithIndex'
-import { Unfoldable, Unfoldable1 } from './Unfoldable'
-import { PipeableWilt1, PipeableWither1, wiltDefault, Witherable1, witherDefault } from './Witherable'
-
-import Semigroup = Se.Semigroup
+import { type Traversable1 } from './Traversable'
+import { type TraversableWithIndex1 } from './TraversableWithIndex'
+import { type Unfoldable, type Unfoldable1 } from './Unfoldable'
+import { type PipeableWilt1, type PipeableWither1, wiltDefault, type Witherable1, witherDefault } from './Witherable'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -1522,15 +1530,15 @@ export const filterMap: <A, B>(
  * @since 2.5.0
  */
 export const partition: {
-  <A, B extends A>(refinement: Refinement<A, B>): (
-    fa: ReadonlyRecord<string, A>
-  ) => Separated<ReadonlyRecord<string, A>, ReadonlyRecord<string, B>>
-  <A>(predicate: Predicate<A>): <B extends A>(
-    fb: ReadonlyRecord<string, B>
-  ) => Separated<ReadonlyRecord<string, B>, ReadonlyRecord<string, B>>
-  <A>(predicate: Predicate<A>): (
-    fa: ReadonlyRecord<string, A>
-  ) => Separated<ReadonlyRecord<string, A>, ReadonlyRecord<string, A>>
+  <A, B extends A>(
+    refinement: Refinement<A, B>
+  ): (fa: ReadonlyRecord<string, A>) => Separated<ReadonlyRecord<string, A>, ReadonlyRecord<string, B>>
+  <A>(
+    predicate: Predicate<A>
+  ): <B extends A>(fb: ReadonlyRecord<string, B>) => Separated<ReadonlyRecord<string, B>, ReadonlyRecord<string, B>>
+  <A>(
+    predicate: Predicate<A>
+  ): (fa: ReadonlyRecord<string, A>) => Separated<ReadonlyRecord<string, A>, ReadonlyRecord<string, A>>
 } = <A>(
   predicate: Predicate<A>
 ): ((fa: ReadonlyRecord<string, A>) => Separated<ReadonlyRecord<string, A>, ReadonlyRecord<string, A>>) =>

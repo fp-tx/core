@@ -13,24 +13,34 @@
  */
 import { pipe } from './function'
 import {
-  Functor,
-  Functor1,
-  Functor2,
-  Functor2C,
-  Functor3,
-  Functor3C,
-  Functor4,
-  FunctorComposition,
-  FunctorComposition11,
-  FunctorComposition12,
-  FunctorComposition12C,
-  FunctorComposition21,
-  FunctorComposition22,
-  FunctorComposition22C,
-  FunctorComposition2C1,
+  type Functor,
+  type Functor1,
+  type Functor2,
+  type Functor2C,
+  type Functor3,
+  type Functor3C,
+  type Functor4,
+  type FunctorComposition,
+  type FunctorComposition2C1,
+  type FunctorComposition11,
+  type FunctorComposition12,
+  type FunctorComposition12C,
+  type FunctorComposition21,
+  type FunctorComposition22,
+  type FunctorComposition22C,
   getFunctorComposition
 } from './Functor'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
 
 // -------------------------------------------------------------------------------------
 // model

@@ -7,24 +7,25 @@
  *
  * @since 2.0.0
  */
-import { Alt2, Alt2C } from './Alt'
-import { Applicative2, Applicative2C, getApplicativeMonoid } from './Applicative'
+import { type Alt2, type Alt2C } from './Alt'
+import { type Applicative2, type Applicative2C, getApplicativeMonoid } from './Applicative'
 import {
   ap as ap_,
   apFirst as apFirst_,
-  Apply2,
+  type Apply2,
   apS as apS_,
   apSecond as apSecond_,
   getApplySemigroup as getApplySemigroup_
 } from './Apply'
-import { Bifunctor2 } from './Bifunctor'
-import { bind as bind_, Chain2, chainFirst as chainFirst_ } from './Chain'
-import { compact as compact_, Compactable2C, separate as separate_ } from './Compactable'
+import { type Bifunctor2 } from './Bifunctor'
+import { bind as bind_, type Chain2, chainFirst as chainFirst_ } from './Chain'
+import { compact as compact_, type Compactable2C, separate as separate_ } from './Compactable'
 import * as E from './Either'
+import { type Either } from './Either'
 import * as ET from './EitherT'
 import {
   filter as filter_,
-  Filterable2C,
+  type Filterable2C,
   filterMap as filterMap_,
   partition as partition_,
   partitionMap as partitionMap_
@@ -34,35 +35,33 @@ import {
   chainFirstEitherK as chainFirstEitherK_,
   chainOptionK as chainOptionK_,
   filterOrElse as filterOrElse_,
-  FromEither2,
+  type FromEither2,
   fromEitherK as fromEitherK_,
   fromOption as fromOption_,
   fromOptionK as fromOptionK_,
   fromPredicate as fromPredicate_
 } from './FromEither'
-import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, FromIO2, fromIOK as fromIOK_ } from './FromIO'
-import { flow, identity, Lazy, pipe, SK } from './function'
-import { bindTo as bindTo_, flap as flap_, Functor2, let as let__ } from './Functor'
+import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, type FromIO2, fromIOK as fromIOK_ } from './FromIO'
+import { flow, identity, type Lazy, pipe, SK } from './function'
+import { bindTo as bindTo_, flap as flap_, type Functor2, let as let__ } from './Functor'
 import * as _ from './internal'
 import * as I from './IO'
-import { Monad2, Monad2C } from './Monad'
-import { MonadIO2, MonadIO2C } from './MonadIO'
-import { MonadThrow2, MonadThrow2C } from './MonadThrow'
-import { Monoid } from './Monoid'
-import { NonEmptyArray } from './NonEmptyArray'
-import { Option } from './Option'
-import { Pointed2 } from './Pointed'
-import { Predicate } from './Predicate'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
-import { Refinement } from './Refinement'
-import { Semigroup } from './Semigroup'
+import { type IO } from './IO'
+import { type Monad2, type Monad2C } from './Monad'
+import { type MonadIO2, type MonadIO2C } from './MonadIO'
+import { type MonadThrow2, type MonadThrow2C } from './MonadThrow'
+import { type Monoid } from './Monoid'
+import { type NonEmptyArray } from './NonEmptyArray'
+import { type Option } from './Option'
+import { type Pointed2 } from './Pointed'
+import { type Predicate } from './Predicate'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { type Refinement } from './Refinement'
+import { type Semigroup } from './Semigroup'
 
 // -------------------------------------------------------------------------------------
 // model
 // -------------------------------------------------------------------------------------
-
-import Either = E.Either
-import IO = I.IO
 
 /**
  * @category model
@@ -827,12 +826,14 @@ export const filterOrElse: {
  * @since 2.9.0
  */
 export const filterOrElseW: {
-  <A, B extends A, E2>(refinement: Refinement<A, B>, onFalse: (a: A) => E2): <E1>(
-    ma: IOEither<E1, A>
-  ) => IOEither<E1 | E2, B>
-  <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <E1, B extends A>(
-    mb: IOEither<E1, B>
-  ) => IOEither<E1 | E2, B>
+  <A, B extends A, E2>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E2
+  ): <E1>(ma: IOEither<E1, A>) => IOEither<E1 | E2, B>
+  <A, E2>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E2
+  ): <E1, B extends A>(mb: IOEither<E1, B>) => IOEither<E1 | E2, B>
   <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <E1>(ma: IOEither<E1, A>) => IOEither<E1 | E2, A>
 } = filterOrElse
 

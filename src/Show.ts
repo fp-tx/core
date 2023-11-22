@@ -9,7 +9,7 @@
  * @since 2.0.0
  */
 import * as _ from './internal'
-import { ReadonlyRecord } from './ReadonlyRecord'
+import { type ReadonlyRecord } from './ReadonlyRecord'
 
 // -------------------------------------------------------------------------------------
 // model

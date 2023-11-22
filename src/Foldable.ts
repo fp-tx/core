@@ -1,11 +1,27 @@
 /**
  * @since 2.0.0
  */
-import { Applicative, Applicative1, Applicative2, Applicative2C, Applicative3 } from './Applicative'
+import {
+  type Applicative,
+  type Applicative1,
+  type Applicative2,
+  type Applicative2C,
+  type Applicative3
+} from './Applicative'
 import { constant, pipe } from './function'
-import { HKT, Kind, Kind2, Kind3, URIS, URIS2, URIS3, URIS4, Kind4 } from './HKT'
-import { Monad, Monad1, Monad2, Monad2C, Monad3, Monad3C } from './Monad'
-import { Monoid } from './Monoid'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
+import { type Monad, type Monad1, type Monad2, type Monad2C, type Monad3, type Monad3C } from './Monad'
+import { type Monoid } from './Monoid'
 
 // -------------------------------------------------------------------------------------
 // model

@@ -3,12 +3,11 @@
  *
  * @since 2.11.0
  */
-import { Chain, Chain2, Chain3, Chain3C, Chain4, chainFirst } from './Chain'
+import { type Chain, type Chain2, type Chain3, type Chain3C, type Chain4, chainFirst } from './Chain'
 import { flow } from './function'
-import { HKT2, Kind2, Kind3, Kind4, URIS2, URIS3, URIS4 } from './HKT'
+import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, type URIS4 } from './HKT'
 import * as R from './Reader'
-
-import Reader = R.Reader
+import { type Reader } from './Reader'
 
 // -------------------------------------------------------------------------------------
 // model

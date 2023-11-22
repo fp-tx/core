@@ -5,44 +5,53 @@
  * @since 2.0.0
  */
 import {
-  Applicative,
-  Applicative1,
-  Applicative2,
-  Applicative2C,
-  Applicative3,
-  Applicative3C,
-  Applicative4
+  type Applicative,
+  type Applicative1,
+  type Applicative2,
+  type Applicative2C,
+  type Applicative3,
+  type Applicative3C,
+  type Applicative4
 } from './Applicative'
 import * as A from './Array'
-import { Compactable1 } from './Compactable'
-import { Either } from './Either'
-import { Eq } from './Eq'
-import { Filterable1 } from './Filterable'
-import { FilterableWithIndex1, PredicateWithIndex, RefinementWithIndex } from './FilterableWithIndex'
-import { Foldable as FoldableHKT, Foldable1, Foldable2, Foldable3 } from './Foldable'
-import { FoldableWithIndex1 } from './FoldableWithIndex'
+import { type Compactable1 } from './Compactable'
+import { type Either } from './Either'
+import { type Eq } from './Eq'
+import { type Filterable1 } from './Filterable'
+import { type FilterableWithIndex1, type PredicateWithIndex, type RefinementWithIndex } from './FilterableWithIndex'
+import { type Foldable as FoldableHKT, type Foldable1, type Foldable2, type Foldable3 } from './Foldable'
+import { type FoldableWithIndex1 } from './FoldableWithIndex'
 import { pipe } from './function'
-import { flap as flap_, Functor1 } from './Functor'
-import { FunctorWithIndex1 } from './FunctorWithIndex'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
+import { flap as flap_, type Functor1 } from './Functor'
+import { type FunctorWithIndex1 } from './FunctorWithIndex'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
 import * as _ from './internal'
-import { Magma } from './Magma'
-import { Monoid } from './Monoid'
-import { Option } from './Option'
-import { Ord } from './Ord'
-import { Predicate } from './Predicate'
+import { type Magma } from './Magma'
+import { type Monoid } from './Monoid'
+import { type Option } from './Option'
+import { type Ord } from './Ord'
+import { type Predicate } from './Predicate'
 import * as RR from './ReadonlyRecord'
-import { Refinement } from './Refinement'
+import { type Refinement } from './Refinement'
 import * as Se from './Semigroup'
-import { Separated } from './Separated'
-import { Show } from './Show'
+import { type Semigroup } from './Semigroup'
+import { type Separated } from './Separated'
+import { type Show } from './Show'
 import * as S from './string'
-import { Traversable1 } from './Traversable'
-import { TraversableWithIndex1 } from './TraversableWithIndex'
-import { Unfoldable, Unfoldable1 } from './Unfoldable'
-import { PipeableWilt1, PipeableWither1, wiltDefault, Witherable1, witherDefault } from './Witherable'
-
-import Semigroup = Se.Semigroup
+import { type Traversable1 } from './Traversable'
+import { type TraversableWithIndex1 } from './TraversableWithIndex'
+import { type Unfoldable, type Unfoldable1 } from './Unfoldable'
+import { type PipeableWilt1, type PipeableWither1, wiltDefault, type Witherable1, witherDefault } from './Witherable'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -1107,9 +1116,9 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Record<string, A>
  * @since 2.0.0
  */
 export const partition: {
-  <A, B extends A>(refinement: Refinement<A, B>): (
-    fa: Record<string, A>
-  ) => Separated<Record<string, A>, Record<string, B>>
+  <A, B extends A>(
+    refinement: Refinement<A, B>
+  ): (fa: Record<string, A>) => Separated<Record<string, A>, Record<string, B>>
   <A>(predicate: Predicate<A>): <B extends A>(fb: Record<string, B>) => Separated<Record<string, B>, Record<string, B>>
   <A>(predicate: Predicate<A>): (fa: Record<string, A>) => Separated<Record<string, A>, Record<string, A>>
 } = RR.partition

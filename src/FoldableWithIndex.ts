@@ -11,26 +11,36 @@
  * @since 2.0.0
  */
 import {
-  Foldable,
-  Foldable1,
-  Foldable2,
-  Foldable2C,
-  Foldable3,
-  Foldable3C,
-  Foldable4,
-  FoldableComposition,
-  FoldableComposition11,
-  FoldableComposition12,
-  FoldableComposition12C,
-  FoldableComposition21,
-  FoldableComposition22,
-  FoldableComposition22C,
-  FoldableComposition2C1,
+  type Foldable,
+  type Foldable1,
+  type Foldable2,
+  type Foldable2C,
+  type Foldable3,
+  type Foldable3C,
+  type Foldable4,
+  type FoldableComposition,
+  type FoldableComposition2C1,
+  type FoldableComposition11,
+  type FoldableComposition12,
+  type FoldableComposition12C,
+  type FoldableComposition21,
+  type FoldableComposition22,
+  type FoldableComposition22C,
   getFoldableComposition
 } from './Foldable'
 import { pipe } from './function'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
-import { Monoid } from './Monoid'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
+import { type Monoid } from './Monoid'
 
 // -------------------------------------------------------------------------------------
 // model

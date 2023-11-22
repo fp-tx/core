@@ -1,36 +1,37 @@
 /**
  * @since 2.0.0
  */
-import { Alt4 } from './Alt'
-import { Applicative4 } from './Applicative'
-import { apFirst as apFirst_, Apply4, apS as apS_, apSecond as apSecond_ } from './Apply'
-import { Bifunctor4 } from './Bifunctor'
-import { bind as bind_, Chain4, chainFirst as chainFirst_ } from './Chain'
+import { type Alt4 } from './Alt'
+import { type Applicative4 } from './Applicative'
+import { apFirst as apFirst_, type Apply4, apS as apS_, apSecond as apSecond_ } from './Apply'
+import { type Bifunctor4 } from './Bifunctor'
+import { bind as bind_, type Chain4, chainFirst as chainFirst_ } from './Chain'
 import * as E from './Either'
-import { Endomorphism } from './Endomorphism'
+import { type Either } from './Either'
+import { type Endomorphism } from './Endomorphism'
 import {
   chainEitherK as chainEitherK_,
   chainFirstEitherK as chainFirstEitherK_,
   chainOptionK as chainOptionK_,
   filterOrElse as filterOrElse_,
-  FromEither4,
+  type FromEither4,
   fromEitherK as fromEitherK_,
   fromOption as fromOption_,
   fromOptionK as fromOptionK_,
   fromPredicate as fromPredicate_
 } from './FromEither'
-import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, FromIO4, fromIOK as fromIOK_ } from './FromIO'
+import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, type FromIO4, fromIOK as fromIOK_ } from './FromIO'
 import {
   ask as ask_,
   asks as asks_,
   chainFirstReaderK as chainFirstReaderK_,
   chainReaderK as chainReaderK_,
-  FromReader4,
+  type FromReader4,
   fromReaderK as fromReaderK_
 } from './FromReader'
 import {
   chainStateK as chainStateK_,
-  FromState4,
+  type FromState4,
   fromStateK as fromStateK_,
   get as get_,
   gets as gets_,
@@ -40,39 +41,37 @@ import {
 import {
   chainFirstTaskK as chainFirstTaskK_,
   chainTaskK as chainTaskK_,
-  FromTask4,
+  type FromTask4,
   fromTaskK as fromTaskK_
 } from './FromTask'
-import { flow, identity, Lazy, pipe } from './function'
-import { bindTo as bindTo_, flap as flap_, Functor4, let as let__ } from './Functor'
+import { flow, identity, type Lazy, pipe } from './function'
+import { bindTo as bindTo_, flap as flap_, type Functor4, let as let__ } from './Functor'
 import * as _ from './internal'
-import { IO } from './IO'
-import { IOEither } from './IOEither'
-import { Monad4 } from './Monad'
-import { MonadIO4 } from './MonadIO'
-import { MonadTask4 } from './MonadTask'
-import { MonadThrow4 } from './MonadThrow'
-import { NonEmptyArray } from './NonEmptyArray'
-import { Option } from './Option'
-import { Pointed4 } from './Pointed'
-import { Predicate } from './Predicate'
+import { type IO } from './IO'
+import { type IOEither } from './IOEither'
+import { type Monad4 } from './Monad'
+import { type MonadIO4 } from './MonadIO'
+import { type MonadTask4 } from './MonadTask'
+import { type MonadThrow4 } from './MonadThrow'
+import { type NonEmptyArray } from './NonEmptyArray'
+import { type Option } from './Option'
+import { type Pointed4 } from './Pointed'
+import { type Predicate } from './Predicate'
 import * as R from './Reader'
-import { ReaderEither } from './ReaderEither'
+import { type Reader } from './Reader'
+import { type ReaderEither } from './ReaderEither'
 import * as RTE from './ReaderTaskEither'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
-import { Refinement } from './Refinement'
-import { State } from './State'
+import { type ReaderTaskEither } from './ReaderTaskEither'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { type Refinement } from './Refinement'
+import { type State } from './State'
 import * as ST from './StateT'
-import { Task } from './Task'
-import { TaskEither } from './TaskEither'
+import { type Task } from './Task'
+import { type TaskEither } from './TaskEither'
 
 // -------------------------------------------------------------------------------------
 // model
 // -------------------------------------------------------------------------------------
-
-import ReaderTaskEither = RTE.ReaderTaskEither
-import Either = E.Either
-import Reader = R.Reader
 
 /**
  * @category model
@@ -961,12 +960,14 @@ export const chainFirstEitherKW: <A, E2, B>(
  * @since 2.4.4
  */
 export const fromPredicate: {
-  <E, A, B extends A>(refinement: Refinement<A, B>, onFalse: (a: A) => E): <S, R = unknown>(
-    a: A
-  ) => StateReaderTaskEither<S, R, E, B>
-  <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <S, R = unknown, B extends A = A>(
-    b: B
-  ) => StateReaderTaskEither<S, R, E, B>
+  <E, A, B extends A>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E
+  ): <S, R = unknown>(a: A) => StateReaderTaskEither<S, R, E, B>
+  <E, A>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E
+  ): <S, R = unknown, B extends A = A>(b: B) => StateReaderTaskEither<S, R, E, B>
   <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <S, R = unknown>(a: A) => StateReaderTaskEither<S, R, E, A>
 } = /*#__PURE__*/ fromPredicate_(FromEither)
 
@@ -975,15 +976,18 @@ export const fromPredicate: {
  * @since 2.4.4
  */
 export const filterOrElse: {
-  <E, A, B extends A>(refinement: Refinement<A, B>, onFalse: (a: A) => E): <S, R>(
-    ma: StateReaderTaskEither<S, R, E, A>
-  ) => StateReaderTaskEither<S, R, E, B>
-  <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <S, R, B extends A>(
-    mb: StateReaderTaskEither<S, R, E, B>
-  ) => StateReaderTaskEither<S, R, E, B>
-  <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <S, R>(
-    ma: StateReaderTaskEither<S, R, E, A>
-  ) => StateReaderTaskEither<S, R, E, A>
+  <E, A, B extends A>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E
+  ): <S, R>(ma: StateReaderTaskEither<S, R, E, A>) => StateReaderTaskEither<S, R, E, B>
+  <E, A>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E
+  ): <S, R, B extends A>(mb: StateReaderTaskEither<S, R, E, B>) => StateReaderTaskEither<S, R, E, B>
+  <E, A>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E
+  ): <S, R>(ma: StateReaderTaskEither<S, R, E, A>) => StateReaderTaskEither<S, R, E, A>
 } = /*#__PURE__*/ filterOrElse_(FromEither, Chain)
 
 /**
@@ -995,15 +999,18 @@ export const filterOrElse: {
  * @since 2.9.0
  */
 export const filterOrElseW: {
-  <A, B extends A, E2>(refinement: Refinement<A, B>, onFalse: (a: A) => E2): <S, R, E1>(
-    ma: StateReaderTaskEither<S, R, E1, A>
-  ) => StateReaderTaskEither<S, R, E1 | E2, B>
-  <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <S, R, E1, B extends A>(
-    mb: StateReaderTaskEither<S, R, E1, B>
-  ) => StateReaderTaskEither<S, R, E1 | E2, B>
-  <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <S, R, E1>(
-    ma: StateReaderTaskEither<S, R, E1, A>
-  ) => StateReaderTaskEither<S, R, E1 | E2, A>
+  <A, B extends A, E2>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E2
+  ): <S, R, E1>(ma: StateReaderTaskEither<S, R, E1, A>) => StateReaderTaskEither<S, R, E1 | E2, B>
+  <A, E2>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E2
+  ): <S, R, E1, B extends A>(mb: StateReaderTaskEither<S, R, E1, B>) => StateReaderTaskEither<S, R, E1 | E2, B>
+  <A, E2>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E2
+  ): <S, R, E1>(ma: StateReaderTaskEither<S, R, E1, A>) => StateReaderTaskEither<S, R, E1 | E2, A>
 } = filterOrElse
 
 /**

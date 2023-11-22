@@ -6,8 +6,8 @@
  *
  * @since 2.0.0
  */
-import { Lattice } from './Lattice'
-import { Ord, max, min } from './Ord'
+import { type Lattice } from './Lattice'
+import { max, min, type Ord } from './Ord'
 
 // -------------------------------------------------------------------------------------
 // model

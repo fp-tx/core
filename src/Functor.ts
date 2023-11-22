@@ -12,7 +12,17 @@
  * @since 2.0.0
  */
 import { pipe } from './function'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -185,7 +195,7 @@ export function bindTo<F>(
 export function bindTo<F>(
   F: Functor<F>
 ): <N extends string>(name: N) => <A>(fa: HKT<F, A>) => HKT<F, { readonly [K in N]: A }> {
-  return (name) => (fa) => F.map(fa, (a) => ({ [name]: a } as any))
+  return (name) => (fa) => F.map(fa, (a) => ({ [name]: a }) as any)
 }
 
 /**

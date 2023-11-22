@@ -1,17 +1,24 @@
 /**
  * @since 2.4.0
  */
-import { ap as ap_, Apply, Apply1, Apply2, Apply2C, Apply3, Apply3C } from './Apply'
-import { Chain, Chain1, Chain2, Chain2C, Chain3, Chain3C } from './Chain'
-import { flow, Lazy, pipe } from './function'
-import { Functor, Functor1, Functor2, Functor2C, Functor3, Functor3C, map as map_ } from './Functor'
-import { HKT, Kind, Kind2, Kind3, URIS, URIS2, URIS3 } from './HKT'
-import { Monad, Monad1, Monad2, Monad2C, Monad3, Monad3C } from './Monad'
-import { Pointed, Pointed1, Pointed2, Pointed2C, Pointed3, Pointed3C } from './Pointed'
-import { Semigroup } from './Semigroup'
+import { ap as ap_, type Apply, type Apply1, type Apply2, type Apply2C, type Apply3, type Apply3C } from './Apply'
+import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C } from './Chain'
+import { flow, type Lazy, pipe } from './function'
+import {
+  type Functor,
+  type Functor1,
+  type Functor2,
+  type Functor2C,
+  type Functor3,
+  type Functor3C,
+  map as map_
+} from './Functor'
+import { type HKT, type Kind, type Kind2, type Kind3, type URIS, type URIS2, type URIS3 } from './HKT'
+import { type Monad, type Monad1, type Monad2, type Monad2C, type Monad3, type Monad3C } from './Monad'
+import { type Pointed, type Pointed1, type Pointed2, type Pointed2C, type Pointed3, type Pointed3C } from './Pointed'
+import { type Semigroup } from './Semigroup'
 import * as T from './These'
-
-import These = T.These
+import { type These } from './These'
 
 /**
  * @since 2.10.0

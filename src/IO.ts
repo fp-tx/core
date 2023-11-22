@@ -13,21 +13,21 @@
  *
  * @since 2.0.0
  */
-import { Applicative1, getApplicativeMonoid } from './Applicative'
-import { apFirst as apFirst_, Apply1, apS as apS_, apSecond as apSecond_, getApplySemigroup } from './Apply'
-import { bind as bind_, Chain1, chainFirst as chainFirst_ } from './Chain'
-import { ChainRec1 } from './ChainRec'
-import { FromIO1 } from './FromIO'
+import { type Applicative1, getApplicativeMonoid } from './Applicative'
+import { apFirst as apFirst_, type Apply1, apS as apS_, apSecond as apSecond_, getApplySemigroup } from './Apply'
+import { bind as bind_, type Chain1, chainFirst as chainFirst_ } from './Chain'
+import { type ChainRec1 } from './ChainRec'
+import { type FromIO1 } from './FromIO'
 import { constant, identity } from './function'
-import { let as let__, bindTo as bindTo_, flap as flap_, Functor1 } from './Functor'
+import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
 import * as _ from './internal'
-import { Monad1 } from './Monad'
-import { MonadIO1 } from './MonadIO'
-import { Monoid } from './Monoid'
-import { NonEmptyArray } from './NonEmptyArray'
-import { Pointed1 } from './Pointed'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
-import { Semigroup } from './Semigroup'
+import { type Monad1 } from './Monad'
+import { type MonadIO1 } from './MonadIO'
+import { type Monoid } from './Monoid'
+import { type NonEmptyArray } from './NonEmptyArray'
+import { type Pointed1 } from './Pointed'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { type Semigroup } from './Semigroup'
 
 // -------------------------------------------------------------------------------------
 // model

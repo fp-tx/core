@@ -9,11 +9,11 @@
  *
  * @since 2.0.0
  */
-import { Contravariant1 } from './Contravariant'
+import { type Contravariant1 } from './Contravariant'
 import { pipe } from './function'
-import { Monoid } from './Monoid'
-import { ReadonlyRecord } from './ReadonlyRecord'
-import { Semigroup } from './Semigroup'
+import { type Monoid } from './Monoid'
+import { type ReadonlyRecord } from './ReadonlyRecord'
+import { type Semigroup } from './Semigroup'
 
 // -------------------------------------------------------------------------------------
 // model

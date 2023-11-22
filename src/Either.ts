@@ -61,49 +61,54 @@
  *
  * @since 2.0.0
  */
-import { Alt2, Alt2C } from './Alt'
-import { Applicative as ApplicativeHKT, Applicative2, Applicative2C, getApplicativeMonoid } from './Applicative'
+import { type Alt2, type Alt2C } from './Alt'
+import {
+  type Applicative as ApplicativeHKT,
+  type Applicative2,
+  type Applicative2C,
+  getApplicativeMonoid
+} from './Applicative'
 import {
   apFirst as apFirst_,
-  Apply2,
+  type Apply2,
   apS as apS_,
   apSecond as apSecond_,
   getApplySemigroup as getApplySemigroup_
 } from './Apply'
-import { Bifunctor2 } from './Bifunctor'
-import { bind as bind_, Chain2, chainFirst as chainFirst_ } from './Chain'
-import { ChainRec2, ChainRec2C, tailRec } from './ChainRec'
-import { Compactable2C } from './Compactable'
-import { Eq } from './Eq'
-import { Extend2 } from './Extend'
-import { Filterable2C } from './Filterable'
-import { Foldable2 } from './Foldable'
+import { type Bifunctor2 } from './Bifunctor'
+import { bind as bind_, type Chain2, chainFirst as chainFirst_ } from './Chain'
+import { type ChainRec2, type ChainRec2C, tailRec } from './ChainRec'
+import { type Compactable2C } from './Compactable'
+import { type Eq } from './Eq'
+import { type Extend2 } from './Extend'
+import { type Filterable2C } from './Filterable'
+import { type Foldable2 } from './Foldable'
 import {
   chainOptionK as chainOptionK_,
   filterOrElse as filterOrElse_,
-  FromEither2,
+  type FromEither2,
   fromOption as fromOption_,
   fromOptionK as fromOptionK_,
   fromPredicate as fromPredicate_
 } from './FromEither'
-import { flow, identity, Lazy, pipe } from './function'
-import { bindTo as bindTo_, flap as flap_, Functor2, let as let__ } from './Functor'
-import { HKT } from './HKT'
+import { flow, identity, type Lazy, pipe } from './function'
+import { bindTo as bindTo_, flap as flap_, type Functor2, let as let__ } from './Functor'
+import { type HKT } from './HKT'
 import * as _ from './internal'
-import { Monad2, Monad2C } from './Monad'
-import { MonadThrow2, MonadThrow2C } from './MonadThrow'
-import { Monoid } from './Monoid'
-import { NonEmptyArray } from './NonEmptyArray'
-import { Option } from './Option'
-import { Pointed2 } from './Pointed'
-import { Predicate } from './Predicate'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
-import { Refinement } from './Refinement'
-import { Semigroup } from './Semigroup'
-import { Separated, separated } from './Separated'
-import { Show } from './Show'
-import { PipeableTraverse2, Traversable2 } from './Traversable'
-import { wiltDefault, Witherable2C, witherDefault } from './Witherable'
+import { type Monad2, type Monad2C } from './Monad'
+import { type MonadThrow2, type MonadThrow2C } from './MonadThrow'
+import { type Monoid } from './Monoid'
+import { type NonEmptyArray } from './NonEmptyArray'
+import { type Option } from './Option'
+import { type Pointed2 } from './Pointed'
+import { type Predicate } from './Predicate'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { type Refinement } from './Refinement'
+import { type Semigroup } from './Semigroup'
+import { type Separated, separated } from './Separated'
+import { type Show } from './Show'
+import { type PipeableTraverse2, type Traversable2 } from './Traversable'
+import { wiltDefault, type Witherable2C, witherDefault } from './Witherable'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -257,8 +262,8 @@ export const getCompactable = <E>(M: Monoid<E>): Compactable2C<URI, E> => {
       isLeft(ma)
         ? separated(ma, ma)
         : isLeft(ma.right)
-        ? separated(right(ma.right.left), empty)
-        : separated(empty, right(ma.right.right))
+          ? separated(right(ma.right.left), empty)
+          : separated(empty, right(ma.right.right))
   }
 }
 
@@ -280,8 +285,8 @@ export const getFilterable = <E>(M: Monoid<E>): Filterable2C<URI, E> => {
     return isLeft(ma)
       ? separated(ma, ma)
       : p(ma.right)
-      ? separated(empty, right(ma.right))
-      : separated(right(ma.right), empty)
+        ? separated(empty, right(ma.right))
+        : separated(right(ma.right), empty)
   }
 
   return {
@@ -401,8 +406,8 @@ export const getApplicativeValidation = <E>(SE: Semigroup<E>): Applicative2C<URI
         ? left(SE.concat(fab.left, fa.left))
         : fab
       : isLeft(fa)
-      ? fa
-      : right(fab.right(fa.right)),
+        ? fa
+        : right(fab.right(fa.right)),
   of
 })
 
@@ -492,8 +497,7 @@ export const Pointed: Pointed2<URI> = {
  * @since 2.8.0
  */
 export const apW: <E2, A>(fa: Either<E2, A>) => <E1, B>(fab: Either<E1, (a: A) => B>) => Either<E1 | E2, B> =
-  (fa) => (fab) =>
-    isLeft(fab) ? fab : isLeft(fa) ? fa : right(fab.right(fa.right))
+  (fa) => (fab) => (isLeft(fab) ? fab : isLeft(fa) ? fa : right(fab.right(fa.right)))
 
 /**
  * @since 2.0.0
@@ -750,8 +754,7 @@ export const Traversable: Traversable2<URI> = {
  * @since 2.0.0
  */
 export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: Either<E, A>) => Either<G, B> =
-  (f, g) => (fa) =>
-    isLeft(fa) ? left(f(fa.left)) : right(g(fa.right))
+  (f, g) => (fa) => (isLeft(fa) ? left(f(fa.left)) : right(g(fa.right)))
 
 /**
  * Map a function over the first type argument of a bifunctor.
@@ -781,8 +784,7 @@ export const Bifunctor: Bifunctor2<URI> = {
  * @since 2.9.0
  */
 export const altW: <E2, B>(that: Lazy<Either<E2, B>>) => <E1, A>(fa: Either<E1, A>) => Either<E2, A | B> =
-  (that) => (fa) =>
-    isLeft(fa) ? that() : fa
+  (that) => (fa) => (isLeft(fa) ? that() : fa)
 
 /**
  * Identifies an associative operation on a type constructor. It is similar to `Semigroup`, except that it applies to
@@ -1257,9 +1259,10 @@ export const filterOrElse = /*#__PURE__*/ filterOrElse_(FromEither, Chain)
  * @since 2.9.0
  */
 export const filterOrElseW: {
-  <A, B extends A, E2>(refinement: Refinement<A, B>, onFalse: (a: A) => E2): <E1>(
-    ma: Either<E1, A>
-  ) => Either<E1 | E2, B>
+  <A, B extends A, E2>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E2
+  ): <E1>(ma: Either<E1, A>) => Either<E1 | E2, B>
   <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <E1, B extends A>(mb: Either<E1, B>) => Either<E1 | E2, B>
   <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <E1>(ma: Either<E1, A>) => Either<E1 | E2, A>
 } = filterOrElse

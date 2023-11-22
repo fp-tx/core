@@ -60,48 +60,48 @@
  *
  * @since 2.0.0
  */
-import { Alt1 } from './Alt'
-import { Alternative1 } from './Alternative'
-import { Applicative as ApplicativeHKT, Applicative1, getApplicativeMonoid } from './Applicative'
+import { type Alt1 } from './Alt'
+import { type Alternative1 } from './Alternative'
+import { type Applicative as ApplicativeHKT, type Applicative1, getApplicativeMonoid } from './Applicative'
 import {
   apFirst as apFirst_,
-  Apply1,
+  type Apply1,
   apS as apS_,
   apSecond as apSecond_,
   getApplySemigroup as getApplySemigroup_
 } from './Apply'
-import { bind as bind_, Chain1, chainFirst as chainFirst_ } from './Chain'
-import { Compactable1 } from './Compactable'
-import { Either } from './Either'
-import { Eq } from './Eq'
-import { Extend1 } from './Extend'
-import { Filterable1 } from './Filterable'
-import { Foldable1 } from './Foldable'
+import { bind as bind_, type Chain1, chainFirst as chainFirst_ } from './Chain'
+import { type Compactable1 } from './Compactable'
+import { type Either } from './Either'
+import { type Eq } from './Eq'
+import { type Extend1 } from './Extend'
+import { type Filterable1 } from './Filterable'
+import { type Foldable1 } from './Foldable'
 import {
   chainEitherK as chainEitherK_,
-  FromEither1,
-  fromEitherK as fromEitherK_,
-  chainFirstEitherK as chainFirstEitherK_
+  chainFirstEitherK as chainFirstEitherK_,
+  type FromEither1,
+  fromEitherK as fromEitherK_
 } from './FromEither'
-import { constNull, constUndefined, flow, identity, Lazy, pipe } from './function'
-import { let as let__, bindTo as bindTo_, flap as flap_, Functor1 } from './Functor'
-import { HKT } from './HKT'
+import { constNull, constUndefined, flow, identity, type Lazy, pipe } from './function'
+import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
+import { type HKT } from './HKT'
 import * as _ from './internal'
-import { Monad1 } from './Monad'
-import { MonadThrow1 } from './MonadThrow'
-import { Monoid } from './Monoid'
-import { NonEmptyArray } from './NonEmptyArray'
-import { Ord } from './Ord'
-import { Pointed1 } from './Pointed'
-import { not, Predicate } from './Predicate'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
-import { Refinement } from './Refinement'
-import { first, last, Semigroup } from './Semigroup'
-import { Separated, separated } from './Separated'
-import { Show } from './Show'
-import { PipeableTraverse1, Traversable1 } from './Traversable'
-import { PipeableWilt1, PipeableWither1, wiltDefault, Witherable1, witherDefault } from './Witherable'
-import { Zero1, guard as guard_ } from './Zero'
+import { type Monad1 } from './Monad'
+import { type MonadThrow1 } from './MonadThrow'
+import { type Monoid } from './Monoid'
+import { type NonEmptyArray } from './NonEmptyArray'
+import { type Ord } from './Ord'
+import { type Pointed1 } from './Pointed'
+import { not, type Predicate } from './Predicate'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { type Refinement } from './Refinement'
+import { first, last, type Semigroup } from './Semigroup'
+import { type Separated, separated } from './Separated'
+import { type Show } from './Show'
+import { type PipeableTraverse1, type Traversable1 } from './Traversable'
+import { type PipeableWilt1, type PipeableWither1, wiltDefault, type Witherable1, witherDefault } from './Witherable'
+import { guard as guard_, type Zero1 } from './Zero'
 
 // -------------------------------------------------------------------------------------
 // model

@@ -451,8 +451,7 @@ describe('StateReaderTaskEither', () => {
   it('fromStateK', async () => {
     const ma = _.fromStateK(
       (n: number): State<number, number> =>
-        (s) =>
-          [n * 2, s + 1]
+        (s) => [n * 2, s + 1]
     )
     U.deepStrictEqual(await ma(3)(2)({})(), E.right([6, 3]))
   })
@@ -460,8 +459,7 @@ describe('StateReaderTaskEither', () => {
   it('chainStateK', async () => {
     const f = _.chainStateK(
       (n: number): State<number, number> =>
-        (s) =>
-          [n * 2, s + 1]
+        (s) => [n * 2, s + 1]
     )
     const right: _.StateReaderTaskEither<number, unknown, never, number> = _.right(3)
     U.deepStrictEqual(await pipe(right, f)(2)({})(), E.right([6, 3]))

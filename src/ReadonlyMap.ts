@@ -1,34 +1,33 @@
 /**
  * @since 2.5.0
  */
-import { Applicative } from './Applicative'
-import { Compactable2 } from './Compactable'
-import { Either } from './Either'
-import { Eq, fromEquals } from './Eq'
-import { Filterable2 } from './Filterable'
-import { FilterableWithIndex2C } from './FilterableWithIndex'
-import { Foldable, Foldable1, Foldable2, Foldable2C, Foldable3 } from './Foldable'
-import { FoldableWithIndex2C } from './FoldableWithIndex'
+import { type Applicative } from './Applicative'
+import { type Compactable2 } from './Compactable'
+import { type Either } from './Either'
+import { type Eq, fromEquals } from './Eq'
+import { type Filterable2 } from './Filterable'
+import { type FilterableWithIndex2C } from './FilterableWithIndex'
+import { type Foldable, type Foldable1, type Foldable2, type Foldable2C, type Foldable3 } from './Foldable'
+import { type FoldableWithIndex2C } from './FoldableWithIndex'
 import { pipe, SK } from './function'
-import { flap as flap_, Functor2 } from './Functor'
-import { FunctorWithIndex2C } from './FunctorWithIndex'
-import { HKT, Kind, Kind2, Kind3, URIS, URIS2, URIS3 } from './HKT'
+import { flap as flap_, type Functor2 } from './Functor'
+import { type FunctorWithIndex2C } from './FunctorWithIndex'
+import { type HKT, type Kind, type Kind2, type Kind3, type URIS, type URIS2, type URIS3 } from './HKT'
 import * as _ from './internal'
-import { Magma } from './Magma'
-import { Monoid } from './Monoid'
+import { type Magma } from './Magma'
+import { type Monoid } from './Monoid'
 import * as O from './Option'
-import { Ord } from './Ord'
-import { Predicate } from './Predicate'
-import { Refinement } from './Refinement'
-import { Semigroup } from './Semigroup'
-import { Separated, separated } from './Separated'
-import { Show } from './Show'
-import { Traversable2C } from './Traversable'
-import { TraversableWithIndex2C } from './TraversableWithIndex'
-import { Unfoldable, Unfoldable1 } from './Unfoldable'
-import { wiltDefault, Witherable2C, witherDefault } from './Witherable'
-
-import Option = O.Option
+import { type Option } from './Option'
+import { type Ord } from './Ord'
+import { type Predicate } from './Predicate'
+import { type Refinement } from './Refinement'
+import { type Semigroup } from './Semigroup'
+import { type Separated, separated } from './Separated'
+import { type Show } from './Show'
+import { type Traversable2C } from './Traversable'
+import { type TraversableWithIndex2C } from './TraversableWithIndex'
+import { type Unfoldable, type Unfoldable1 } from './Unfoldable'
+import { wiltDefault, type Witherable2C, witherDefault } from './Witherable'
 
 /**
  * @category conversions
@@ -672,12 +671,12 @@ export const mapWithIndex: <K, A, B>(f: (k: K, a: A) => B) => (fa: ReadonlyMap<K
  * @since 2.5.0
  */
 export const partition: {
-  <A, B extends A>(refinement: Refinement<A, B>): <K>(
-    fa: ReadonlyMap<K, A>
-  ) => Separated<ReadonlyMap<K, A>, ReadonlyMap<K, B>>
-  <A>(predicate: Predicate<A>): <K, B extends A>(
-    fb: ReadonlyMap<K, B>
-  ) => Separated<ReadonlyMap<K, B>, ReadonlyMap<K, B>>
+  <A, B extends A>(
+    refinement: Refinement<A, B>
+  ): <K>(fa: ReadonlyMap<K, A>) => Separated<ReadonlyMap<K, A>, ReadonlyMap<K, B>>
+  <A>(
+    predicate: Predicate<A>
+  ): <K, B extends A>(fb: ReadonlyMap<K, B>) => Separated<ReadonlyMap<K, B>, ReadonlyMap<K, B>>
   <A>(predicate: Predicate<A>): <K>(fa: ReadonlyMap<K, A>) => Separated<ReadonlyMap<K, A>, ReadonlyMap<K, A>>
 } =
   <A>(predicate: Predicate<A>) =>

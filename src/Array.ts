@@ -5,53 +5,52 @@
  *
  * @since 2.0.0
  */
-import { Alt1 } from './Alt'
-import { Alternative1 } from './Alternative'
-import { Applicative as ApplicativeHKT, Applicative1 } from './Applicative'
-import { apFirst as apFirst_, Apply1, apS as apS_, apSecond as apSecond_ } from './Apply'
-import { bind as bind_, Chain1, chainFirst as chainFirst_ } from './Chain'
-import { ChainRec1 } from './ChainRec'
-import { Compactable1 } from './Compactable'
-import { Either } from './Either'
-import { Eq } from './Eq'
-import { Extend1 } from './Extend'
-import { Filterable1 } from './Filterable'
-import { FilterableWithIndex1, PredicateWithIndex, RefinementWithIndex } from './FilterableWithIndex'
-import { Foldable1 } from './Foldable'
-import { FoldableWithIndex1 } from './FoldableWithIndex'
-import { FromEither1, fromEitherK as fromEitherK_ } from './FromEither'
-import { identity, Lazy, pipe } from './function'
-import { let as let__, bindTo as bindTo_, flap as flap_, Functor1 } from './Functor'
-import { FunctorWithIndex1 } from './FunctorWithIndex'
-import { HKT } from './HKT'
+import { type Alt1 } from './Alt'
+import { type Alternative1 } from './Alternative'
+import { type Applicative as ApplicativeHKT, type Applicative1 } from './Applicative'
+import { apFirst as apFirst_, type Apply1, apS as apS_, apSecond as apSecond_ } from './Apply'
+import { bind as bind_, type Chain1, chainFirst as chainFirst_ } from './Chain'
+import { type ChainRec1 } from './ChainRec'
+import { type Compactable1 } from './Compactable'
+import { type Either } from './Either'
+import { type Eq } from './Eq'
+import { type Extend1 } from './Extend'
+import { type Filterable1 } from './Filterable'
+import { type FilterableWithIndex1, type PredicateWithIndex, type RefinementWithIndex } from './FilterableWithIndex'
+import { type Foldable1 } from './Foldable'
+import { type FoldableWithIndex1 } from './FoldableWithIndex'
+import { type FromEither1, fromEitherK as fromEitherK_ } from './FromEither'
+import { identity, type Lazy, pipe } from './function'
+import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
+import { type FunctorWithIndex1 } from './FunctorWithIndex'
+import { type HKT } from './HKT'
 import * as _ from './internal'
-import { Magma } from './Magma'
-import { Monad1 } from './Monad'
-import { Monoid } from './Monoid'
+import { type Magma } from './Magma'
+import { type Monad1 } from './Monad'
+import { type Monoid } from './Monoid'
 import * as NEA from './NonEmptyArray'
-import { Option } from './Option'
-import { Ord } from './Ord'
-import { Pointed1 } from './Pointed'
-import { Predicate } from './Predicate'
+import { type NonEmptyArray } from './NonEmptyArray'
+import { type Option } from './Option'
+import { type Ord } from './Ord'
+import { type Pointed1 } from './Pointed'
+import { type Predicate } from './Predicate'
 import * as RA from './ReadonlyArray'
-import { Refinement } from './Refinement'
-import { Semigroup } from './Semigroup'
-import { separated, Separated } from './Separated'
-import { Show } from './Show'
-import { PipeableTraverse1, Traversable1 } from './Traversable'
-import { PipeableTraverseWithIndex1, TraversableWithIndex1 } from './TraversableWithIndex'
-import { Unfoldable1 } from './Unfoldable'
+import { type Refinement } from './Refinement'
+import { type Semigroup } from './Semigroup'
+import { type Separated, separated } from './Separated'
+import { type Show } from './Show'
+import { type PipeableTraverse1, type Traversable1 } from './Traversable'
+import { type PipeableTraverseWithIndex1, type TraversableWithIndex1 } from './TraversableWithIndex'
+import { type Unfoldable1 } from './Unfoldable'
 import {
   filterE as filterE_,
-  PipeableWilt1,
-  PipeableWither1,
+  type PipeableWilt1,
+  type PipeableWither1,
   wiltDefault,
-  Witherable1,
+  type Witherable1,
   witherDefault
 } from './Witherable'
-import { Zero1, guard as guard_ } from './Zero'
-
-import NonEmptyArray = NEA.NonEmptyArray
+import { guard as guard_, type Zero1 } from './Zero'
 
 // -------------------------------------------------------------------------------------
 // refinements
@@ -1316,8 +1315,8 @@ export function comprehension<A, R>(
           chain((x) => go(pipe(scope, append(x)), NEA.tail(input)))
         )
       : g(...scope)
-      ? [f(...scope)]
-      : []
+        ? [f(...scope)]
+        : []
   return go([], input)
 }
 
@@ -1361,8 +1360,8 @@ export function union<A>(E: Eq<A>): (xs: Array<A>, ys?: Array<A>) => Array<A> | 
     return isNonEmpty(first) && isNonEmpty(second)
       ? unionE(second)(first)
       : isNonEmpty(first)
-      ? copy(first)
-      : copy(second)
+        ? copy(first)
+        : copy(second)
   }
 }
 
@@ -1780,9 +1779,9 @@ export const partition: {
  * @since 2.0.0
  */
 export const partitionWithIndex: {
-  <A, B extends A>(refinementWithIndex: RefinementWithIndex<number, A, B>): (
-    as: Array<A>
-  ) => Separated<Array<A>, Array<B>>
+  <A, B extends A>(
+    refinementWithIndex: RefinementWithIndex<number, A, B>
+  ): (as: Array<A>) => Separated<Array<A>, Array<B>>
   <A>(predicateWithIndex: PredicateWithIndex<number, A>): <B extends A>(bs: Array<B>) => Separated<Array<B>, Array<B>>
   <A>(predicateWithIndex: PredicateWithIndex<number, A>): (as: Array<A>) => Separated<Array<A>, Array<A>>
 } =

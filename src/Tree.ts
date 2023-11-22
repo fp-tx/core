@@ -7,24 +7,42 @@
  *
  * @since 2.0.0
  */
-import { Applicative as ApplicativeHKT, Applicative1 } from './Applicative'
-import { apFirst as apFirst_, Apply1, apS as apS_, apSecond as apSecond_ } from './Apply'
+import { type Applicative as ApplicativeHKT, type Applicative1 } from './Applicative'
+import { apFirst as apFirst_, type Apply1, apS as apS_, apSecond as apSecond_ } from './Apply'
 import * as A from './Array'
-import { bind as bind_, Chain1, chainFirst as chainFirst_ } from './Chain'
-import { Comonad1 } from './Comonad'
-import { Eq, fromEquals } from './Eq'
-import { Extend1 } from './Extend'
-import { Foldable1 } from './Foldable'
+import { bind as bind_, type Chain1, chainFirst as chainFirst_ } from './Chain'
+import { type Comonad1 } from './Comonad'
+import { type Eq, fromEquals } from './Eq'
+import { type Extend1 } from './Extend'
+import { type Foldable1 } from './Foldable'
 import { identity, pipe } from './function'
-import { let as let__, bindTo as bindTo_, flap as flap_, Functor1 } from './Functor'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
+import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
 import * as _ from './internal'
-import { Monad as MonadHKT, Monad1, Monad2, Monad2C, Monad3, Monad3C, Monad4 } from './Monad'
-import { Monoid } from './Monoid'
-import { Pointed1 } from './Pointed'
-import { Predicate } from './Predicate'
-import { Show } from './Show'
-import { PipeableTraverse1, Traversable1 } from './Traversable'
+import {
+  type Monad as MonadHKT,
+  type Monad1,
+  type Monad2,
+  type Monad2C,
+  type Monad3,
+  type Monad3C,
+  type Monad4
+} from './Monad'
+import { type Monoid } from './Monoid'
+import { type Pointed1 } from './Pointed'
+import { type Predicate } from './Predicate'
+import { type Show } from './Show'
+import { type PipeableTraverse1, type Traversable1 } from './Traversable'
 
 // -------------------------------------------------------------------------------------
 // model

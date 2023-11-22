@@ -40,11 +40,10 @@
 import { getSemigroup, identity } from './function'
 import * as _ from './internal'
 import * as M from './Magma'
+import { type Magma } from './Magma'
 import * as Or from './Ord'
-import { ReadonlyRecord } from './ReadonlyRecord'
-
-import Ord = Or.Ord
-import Magma = M.Magma
+import { type Ord } from './Ord'
+import { type ReadonlyRecord } from './ReadonlyRecord'
 
 // -------------------------------------------------------------------------------------
 // model

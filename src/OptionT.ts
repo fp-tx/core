@@ -2,24 +2,59 @@
  * @since 2.0.0
  */
 import {
-  ApplicativeComposition11,
-  ApplicativeComposition21,
-  ApplicativeComposition2C1,
-  ApplicativeCompositionHKT1
+  type ApplicativeComposition2C1,
+  type ApplicativeComposition11,
+  type ApplicativeComposition21,
+  type ApplicativeCompositionHKT1
 } from './Applicative'
-import { ap as ap_, Apply, Apply1, Apply2, Apply2C, Apply3, Apply3C, Apply4 } from './Apply'
-import { Chain, Chain1, Chain2, Chain2C, Chain3, Chain3C, Chain4 } from './Chain'
-import { Either } from './Either'
-import { constant, flow, Lazy, pipe } from './function'
-import { Functor, Functor1, Functor2, Functor2C, Functor3, Functor3C, Functor4, map as map_ } from './Functor'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
-import { Monad, Monad1, Monad2, Monad2C, Monad3, Monad3C, Monad4 } from './Monad'
+import {
+  ap as ap_,
+  type Apply,
+  type Apply1,
+  type Apply2,
+  type Apply2C,
+  type Apply3,
+  type Apply3C,
+  type Apply4
+} from './Apply'
+import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C, type Chain4 } from './Chain'
+import { type Either } from './Either'
+import { constant, flow, type Lazy, pipe } from './function'
+import {
+  type Functor,
+  type Functor1,
+  type Functor2,
+  type Functor2C,
+  type Functor3,
+  type Functor3C,
+  type Functor4,
+  map as map_
+} from './Functor'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
+import { type Monad, type Monad1, type Monad2, type Monad2C, type Monad3, type Monad3C, type Monad4 } from './Monad'
 import * as O from './Option'
-import { Pointed, Pointed1, Pointed2, Pointed2C, Pointed3, Pointed3C, Pointed4 } from './Pointed'
-import { Predicate } from './Predicate'
-import { Refinement } from './Refinement'
-
-import Option = O.Option
+import { type Option } from './Option'
+import {
+  type Pointed,
+  type Pointed1,
+  type Pointed2,
+  type Pointed2C,
+  type Pointed3,
+  type Pointed3C,
+  type Pointed4
+} from './Pointed'
+import { type Predicate } from './Predicate'
+import { type Refinement } from './Refinement'
 
 // -------------------------------------------------------------------------------------
 // constructors

@@ -17,25 +17,53 @@
  *
  * @since 2.0.0
  */
-import { Apply, Apply1, Apply2, Apply2C, Apply3, Apply3C, Apply4, ap, getApplySemigroup } from './Apply'
+import {
+  ap,
+  type Apply,
+  type Apply1,
+  type Apply2,
+  type Apply2C,
+  type Apply3,
+  type Apply3C,
+  type Apply4,
+  getApplySemigroup
+} from './Apply'
 import { pipe } from './function'
 import {
-  FunctorComposition,
-  FunctorComposition11,
-  FunctorComposition12,
-  FunctorComposition12C,
-  FunctorComposition21,
-  FunctorComposition22,
-  FunctorComposition22C,
-  FunctorComposition2C1,
-  FunctorCompositionHKT1,
-  FunctorCompositionHKT2,
-  FunctorCompositionHKT2C,
+  type FunctorComposition,
+  type FunctorComposition2C1,
+  type FunctorComposition11,
+  type FunctorComposition12,
+  type FunctorComposition12C,
+  type FunctorComposition21,
+  type FunctorComposition22,
+  type FunctorComposition22C,
+  type FunctorCompositionHKT1,
+  type FunctorCompositionHKT2,
+  type FunctorCompositionHKT2C,
   getFunctorComposition
 } from './Functor'
-import { HKT, Kind, Kind2, Kind3, Kind4, URIS, URIS2, URIS3, URIS4 } from './HKT'
-import { Monoid } from './Monoid'
-import { Pointed, Pointed1, Pointed2, Pointed2C, Pointed3, Pointed3C, Pointed4 } from './Pointed'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4
+} from './HKT'
+import { type Monoid } from './Monoid'
+import {
+  type Pointed,
+  type Pointed1,
+  type Pointed2,
+  type Pointed2C,
+  type Pointed3,
+  type Pointed3C,
+  type Pointed4
+} from './Pointed'
 
 // -------------------------------------------------------------------------------------
 // model

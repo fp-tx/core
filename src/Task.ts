@@ -10,29 +10,29 @@
  *
  * @since 2.0.0
  */
-import { Applicative1, getApplicativeMonoid } from './Applicative'
+import { type Applicative1, getApplicativeMonoid } from './Applicative'
 import {
   apFirst as apFirst_,
-  Apply1,
+  type Apply1,
   apS as apS_,
   apSecond as apSecond_,
   getApplySemigroup as getApplySemigroup_
 } from './Apply'
-import { bind as bind_, Chain1, chainFirst as chainFirst_ } from './Chain'
-import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, FromIO1, fromIOK as fromIOK_ } from './FromIO'
-import { FromTask1 } from './FromTask'
+import { bind as bind_, type Chain1, chainFirst as chainFirst_ } from './Chain'
+import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, type FromIO1, fromIOK as fromIOK_ } from './FromIO'
+import { type FromTask1 } from './FromTask'
 import { identity, pipe } from './function'
-import { let as let__, bindTo as bindTo_, flap as flap_, Functor1 } from './Functor'
+import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
 import * as _ from './internal'
-import { Monad1 } from './Monad'
-import { MonadIO1 } from './MonadIO'
-import { MonadTask1 } from './MonadTask'
-import { Monoid } from './Monoid'
-import { NonEmptyArray } from './NonEmptyArray'
-import { Pointed1 } from './Pointed'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
-import { Semigroup } from './Semigroup'
-import { IO } from './IO'
+import { type IO } from './IO'
+import { type Monad1 } from './Monad'
+import { type MonadIO1 } from './MonadIO'
+import { type MonadTask1 } from './MonadTask'
+import { type Monoid } from './Monoid'
+import { type NonEmptyArray } from './NonEmptyArray'
+import { type Pointed1 } from './Pointed'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { type Semigroup } from './Semigroup'
 
 // -------------------------------------------------------------------------------------
 // model

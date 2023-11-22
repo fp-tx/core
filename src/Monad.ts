@@ -14,16 +14,16 @@
  * @since 2.0.0
  */
 import {
-  Applicative,
-  Applicative1,
-  Applicative2,
-  Applicative2C,
-  Applicative3,
-  Applicative3C,
-  Applicative4
+  type Applicative,
+  type Applicative1,
+  type Applicative2,
+  type Applicative2C,
+  type Applicative3,
+  type Applicative3C,
+  type Applicative4
 } from './Applicative'
-import { Chain, Chain1, Chain2, Chain2C, Chain3, Chain3C, Chain4 } from './Chain'
-import { URIS, URIS2, URIS3, URIS4 } from './HKT'
+import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C, type Chain4 } from './Chain'
+import { type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
 
 // -------------------------------------------------------------------------------------
 // model

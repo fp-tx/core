@@ -1,63 +1,62 @@
 /**
  * @since 2.0.0
  */
-import { Alt3, Alt3C } from './Alt'
-import { Applicative3, Applicative3C, getApplicativeMonoid } from './Applicative'
+import { type Alt3, type Alt3C } from './Alt'
+import { type Applicative3, type Applicative3C, getApplicativeMonoid } from './Applicative'
 import {
   ap as ap_,
   apFirst as apFirst_,
-  Apply3,
+  type Apply3,
   apS as apS_,
   apSecond as apSecond_,
   getApplySemigroup as getApplySemigroup_
 } from './Apply'
-import { Bifunctor3 } from './Bifunctor'
-import { bind as bind_, Chain3, chainFirst as chainFirst_ } from './Chain'
-import { compact as compact_, Compactable3C, separate as separate_ } from './Compactable'
+import { type Bifunctor3 } from './Bifunctor'
+import { bind as bind_, type Chain3, chainFirst as chainFirst_ } from './Chain'
+import { compact as compact_, type Compactable3C, separate as separate_ } from './Compactable'
 import * as E from './Either'
+import { type Either } from './Either'
 import * as ET from './EitherT'
 import {
   filter as filter_,
-  Filterable3C,
+  type Filterable3C,
   filterMap as filterMap_,
   partition as partition_,
   partitionMap as partitionMap_
 } from './Filterable'
 import {
   chainEitherK as chainEitherK_,
+  chainFirstEitherK as chainFirstEitherK_,
   chainOptionK as chainOptionK_,
   filterOrElse as filterOrElse_,
-  FromEither3,
+  type FromEither3,
   fromEitherK as fromEitherK_,
   fromOption as fromOption_,
   fromOptionK as fromOptionK_,
-  fromPredicate as fromPredicate_,
-  chainFirstEitherK as chainFirstEitherK_
+  fromPredicate as fromPredicate_
 } from './FromEither'
 import {
   ask as ask_,
   asks as asks_,
   chainFirstReaderK as chainFirstReaderK_,
   chainReaderK as chainReaderK_,
-  FromReader3,
+  type FromReader3,
   fromReaderK as fromReaderK_
 } from './FromReader'
-import { flow, identity, Lazy, pipe, SK } from './function'
-import { let as let__, bindTo as bindTo_, flap as flap_, Functor3 } from './Functor'
+import { flow, identity, type Lazy, pipe, SK } from './function'
+import { bindTo as bindTo_, flap as flap_, type Functor3, let as let__ } from './Functor'
 import * as _ from './internal'
-import { Monad3, Monad3C } from './Monad'
-import { MonadThrow3, MonadThrow3C } from './MonadThrow'
-import { Monoid } from './Monoid'
-import { Option } from './Option'
-import { Pointed3 } from './Pointed'
-import { Predicate } from './Predicate'
+import { type Monad3, type Monad3C } from './Monad'
+import { type MonadThrow3, type MonadThrow3C } from './MonadThrow'
+import { type Monoid } from './Monoid'
+import { type Option } from './Option'
+import { type Pointed3 } from './Pointed'
+import { type Predicate } from './Predicate'
 import * as R from './Reader'
-import { ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
-import { Refinement } from './Refinement'
-import { Semigroup } from './Semigroup'
-
-import Reader = R.Reader
-import Either = E.Either
+import { type Reader } from './Reader'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
+import { type Refinement } from './Refinement'
+import { type Semigroup } from './Semigroup'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -840,12 +839,14 @@ export const fromPredicate: {
  * @since 2.0.0
  */
 export const filterOrElse: {
-  <E, A, B extends A>(refinement: Refinement<A, B>, onFalse: (a: A) => E): <R>(
-    ma: ReaderEither<R, E, A>
-  ) => ReaderEither<R, E, B>
-  <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <R, B extends A>(
-    mb: ReaderEither<R, E, B>
-  ) => ReaderEither<R, E, B>
+  <E, A, B extends A>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E
+  ): <R>(ma: ReaderEither<R, E, A>) => ReaderEither<R, E, B>
+  <E, A>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E
+  ): <R, B extends A>(mb: ReaderEither<R, E, B>) => ReaderEither<R, E, B>
   <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <R>(ma: ReaderEither<R, E, A>) => ReaderEither<R, E, A>
 } = /*#__PURE__*/ filterOrElse_(FromEither, Chain)
 
@@ -858,15 +859,18 @@ export const filterOrElse: {
  * @since 2.9.0
  */
 export const filterOrElseW: {
-  <A, B extends A, E2>(refinement: Refinement<A, B>, onFalse: (a: A) => E2): <R, E1>(
-    ma: ReaderEither<R, E1, A>
-  ) => ReaderEither<R, E1 | E2, B>
-  <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <R, E1, B extends A>(
-    mb: ReaderEither<R, E1, B>
-  ) => ReaderEither<R, E1 | E2, B>
-  <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <R, E1>(
-    ma: ReaderEither<R, E1, A>
-  ) => ReaderEither<R, E1 | E2, A>
+  <A, B extends A, E2>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E2
+  ): <R, E1>(ma: ReaderEither<R, E1, A>) => ReaderEither<R, E1 | E2, B>
+  <A, E2>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E2
+  ): <R, E1, B extends A>(mb: ReaderEither<R, E1, B>) => ReaderEither<R, E1 | E2, B>
+  <A, E2>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E2
+  ): <R, E1>(ma: ReaderEither<R, E1, A>) => ReaderEither<R, E1 | E2, A>
 } = filterOrElse
 
 /**
