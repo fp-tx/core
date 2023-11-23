@@ -64,30 +64,30 @@ describe('Option', () => {
       U.deepStrictEqual(
         pipe(
           _.some(1),
-          _.alt(() => _.some(2))
+          _.alt(() => _.some(2)),
         ),
-        _.some(1)
+        _.some(1),
       )
       U.deepStrictEqual(
         pipe(
           _.some(2),
-          _.alt(() => _.none as _.Option<number>)
+          _.alt(() => _.none as _.Option<number>),
         ),
-        _.some(2)
+        _.some(2),
       )
       U.deepStrictEqual(
         pipe(
           _.none,
-          _.alt(() => _.some(1))
+          _.alt(() => _.some(1)),
         ),
-        _.some(1)
+        _.some(1),
       )
       U.deepStrictEqual(
         pipe(
           _.none,
-          _.alt(() => _.none)
+          _.alt(() => _.none),
         ),
-        _.none
+        _.none,
       )
     })
 
@@ -101,16 +101,16 @@ describe('Option', () => {
       U.deepStrictEqual(
         pipe(
           _.none,
-          _.reduce(2, (b, a) => b + a)
+          _.reduce(2, (b, a) => b + a),
         ),
-        2
+        2,
       )
       U.deepStrictEqual(
         pipe(
           _.some(3),
-          _.reduce(2, (b, a) => b + a)
+          _.reduce(2, (b, a) => b + a),
         ),
-        5
+        5,
       )
     })
 
@@ -168,23 +168,23 @@ describe('Option', () => {
       U.deepStrictEqual(
         pipe(
           _.some('hello'),
-          _.traverse(RA.Applicative)(() => [])
+          _.traverse(RA.Applicative)(() => []),
         ),
-        []
+        [],
       )
       U.deepStrictEqual(
         pipe(
           _.some('hello'),
-          _.traverse(RA.Applicative)((s) => [s.length])
+          _.traverse(RA.Applicative)(s => [s.length]),
         ),
-        [_.some(5)]
+        [_.some(5)],
       )
       U.deepStrictEqual(
         pipe(
           _.none,
-          _.traverse(RA.Applicative)((s) => [s])
+          _.traverse(RA.Applicative)(s => [s]),
         ),
-        [_.none]
+        [_.none],
       )
     })
 
@@ -242,16 +242,16 @@ describe('Option', () => {
     U.deepStrictEqual(
       pipe(
         _.some(1),
-        _.getOrElse(() => 0)
+        _.getOrElse(() => 0),
       ),
-      1
+      1,
     )
     U.deepStrictEqual(
       pipe(
         _.none,
-        _.getOrElse(() => 0)
+        _.getOrElse(() => 0),
       ),
-      0
+      0,
     )
   })
 
@@ -300,29 +300,29 @@ describe('Option', () => {
     U.deepStrictEqual(
       pipe(
         _.fromNullable(x1.a),
-        _.chainNullableK((x) => x.b),
-        _.chainNullableK((x) => x.c),
-        _.chainNullableK((x) => x.d)
+        _.chainNullableK(x => x.b),
+        _.chainNullableK(x => x.c),
+        _.chainNullableK(x => x.d),
       ),
-      _.none
+      _.none,
     )
     U.deepStrictEqual(
       pipe(
         _.fromNullable(x2.a),
-        _.chainNullableK((x) => x.b),
-        _.chainNullableK((x) => x.c),
-        _.chainNullableK((x) => x.d)
+        _.chainNullableK(x => x.b),
+        _.chainNullableK(x => x.c),
+        _.chainNullableK(x => x.d),
       ),
-      _.none
+      _.none,
     )
     U.deepStrictEqual(
       pipe(
         _.fromNullable(x3.a),
-        _.chainNullableK((x) => x.b),
-        _.chainNullableK((x) => x.c),
-        _.chainNullableK((x) => x.d)
+        _.chainNullableK(x => x.b),
+        _.chainNullableK(x => x.c),
+        _.chainNullableK(x => x.d),
       ),
-      _.some(1)
+      _.some(1),
     )
   })
 
@@ -413,11 +413,11 @@ describe('Option', () => {
   it('tryCatch', () => {
     U.deepStrictEqual(
       _.tryCatch(() => JSON.parse('2')),
-      _.some(2)
+      _.some(2),
     )
     U.deepStrictEqual(
       _.tryCatch(() => JSON.parse('(')),
-      _.none
+      _.none,
     )
   })
 
@@ -429,7 +429,7 @@ describe('Option', () => {
     type A = { readonly type: 'A' }
     type B = { readonly type: 'B' }
     type C = A | B
-    const isA = _.getRefinement<C, A>((c) => (c.type === 'A' ? _.some(c) : _.none))
+    const isA = _.getRefinement<C, A>(c => (c.type === 'A' ? _.some(c) : _.none))
     U.deepStrictEqual(isA({ type: 'A' }), true)
     U.deepStrictEqual(isA({ type: 'B' }), false)
   })
@@ -460,9 +460,9 @@ describe('Option', () => {
         _.some(1),
         _.bindTo('a'),
         _.bind('b', () => _.some('b')),
-        _.let('c', ({ a, b }) => [a, b])
+        _.let('c', ({ a, b }) => [a, b]),
       ),
-      _.some({ a: 1, b: 'b', c: [1, 'b'] })
+      _.some({ a: 1, b: 'b', c: [1, 'b'] }),
     )
   })
 
@@ -510,18 +510,18 @@ describe('Option', () => {
         _.Do,
         _.bind('x', () => _.some('a')),
         _.bind('y', () => _.some('a')),
-        _.chainFirst(({ x, y }) => _.guard(x === y))
+        _.chainFirst(({ x, y }) => _.guard(x === y)),
       ),
-      _.some({ x: 'a', y: 'a' })
+      _.some({ x: 'a', y: 'a' }),
     )
     U.deepStrictEqual(
       pipe(
         _.Do,
         _.bind('x', () => _.some('a')),
         _.bind('y', () => _.some('b')),
-        _.chainFirst(({ x, y }) => _.guard(x === y))
+        _.chainFirst(({ x, y }) => _.guard(x === y)),
       ),
-      _.none
+      _.none,
     )
   })
 

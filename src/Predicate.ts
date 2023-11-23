@@ -1,6 +1,4 @@
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 import { type Contravariant1 } from './Contravariant'
 import { constFalse, constTrue, flow, pipe } from './function'
 import { type Monoid } from './Monoid'
@@ -10,32 +8,28 @@ import { type Semigroup } from './Semigroup'
 // model
 // -------------------------------------------------------------------------------------
 
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 export interface Predicate<A> {
   (a: A): boolean
 }
 
 const contramap_: Contravariant1<URI>['contramap'] = (predicate, f) => pipe(predicate, contramap(f))
 
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 export const contramap =
   <B, A>(f: (b: B) => A) =>
   (predicate: Predicate<A>): Predicate<B> =>
     flow(f, predicate)
 
 /**
- * @category type lambdas
  * @since 2.11.0
+ * @category Type lambdas
  */
 export const URI = 'Predicate'
 
 /**
- * @category type lambdas
  * @since 2.11.0
+ * @category Type lambdas
  */
 export type URI = typeof URI
 
@@ -46,74 +40,68 @@ declare module './HKT' {
 }
 
 /**
- * @category instances
  * @since 2.11.0
+ * @category Instances
  */
 export const getSemigroupAny = <A = never>(): Semigroup<Predicate<A>> => ({
-  concat: (first, second) => pipe(first, or(second))
+  concat: (first, second) => pipe(first, or(second)),
 })
 
 /**
- * @category instances
  * @since 2.11.0
+ * @category Instances
  */
 export const getMonoidAny = <A = never>(): Monoid<Predicate<A>> => ({
   concat: getSemigroupAny<A>().concat,
-  empty: constFalse
+  empty: constFalse,
 })
 
 /**
- * @category instances
  * @since 2.11.0
+ * @category Instances
  */
 export const getSemigroupAll = <A = never>(): Semigroup<Predicate<A>> => ({
-  concat: (first, second) => pipe(first, and(second))
+  concat: (first, second) => pipe(first, and(second)),
 })
 
 /**
- * @category instances
  * @since 2.11.0
+ * @category Instances
  */
 export const getMonoidAll = <A = never>(): Monoid<Predicate<A>> => ({
   concat: getSemigroupAll<A>().concat,
-  empty: constTrue
+  empty: constTrue,
 })
 
 /**
- * @category instances
  * @since 2.11.0
+ * @category Instances
  */
 export const Contravariant: Contravariant1<URI> = {
   URI,
-  contramap: contramap_
+  contramap: contramap_,
 }
 
 // -------------------------------------------------------------------------------------
 // utils
 // -------------------------------------------------------------------------------------
 
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 export const not =
   <A>(predicate: Predicate<A>): Predicate<A> =>
-  (a) =>
+  a =>
     !predicate(a)
 
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 export const or =
   <A>(second: Predicate<A>) =>
   (first: Predicate<A>): Predicate<A> =>
-  (a) =>
+  a =>
     first(a) || second(a)
 
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 export const and =
   <A>(second: Predicate<A>) =>
   (first: Predicate<A>): Predicate<A> =>
-  (a) =>
+  a =>
     first(a) && second(a)

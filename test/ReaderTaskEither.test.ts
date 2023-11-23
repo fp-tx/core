@@ -77,9 +77,9 @@ describe('ReaderTaskEither', () => {
       U.deepStrictEqual(
         await pipe(
           _.right<R1, E1, _.ReaderTaskEither<R2, E2, 'a'>>(_.right('a')),
-          _.flattenW
+          _.flattenW,
         )({ env1: '', env2: '' })(),
-        E.right('a')
+        E.right('a'),
       )
     })
 
@@ -99,32 +99,32 @@ describe('ReaderTaskEither', () => {
       U.deepStrictEqual(
         await pipe(
           _.right(1),
-          _.alt(() => _.right(2))
+          _.alt(() => _.right(2)),
         )({})(),
-        E.right(1)
+        E.right(1),
       )
       U.deepStrictEqual(
         await pipe(
           _.left('a'),
-          _.alt(() => _.right(2))
+          _.alt(() => _.right(2)),
         )({})(),
-        E.right(2)
+        E.right(2),
       )
       U.deepStrictEqual(
         await pipe(
           _.left('a'),
-          _.alt(() => _.left('b'))
+          _.alt(() => _.left('b')),
         )({})(),
-        E.left('b')
+        E.left('b'),
       )
     })
 
     it('fromPredicate', async () => {
       const predicate = (n: number) => n >= 2
-      const gt2 = _.fromPredicate(predicate, (n) => `Invalid number ${n}`)
+      const gt2 = _.fromPredicate(predicate, n => `Invalid number ${n}`)
 
       const refinement = (u: string | number): u is number => typeof u === 'number'
-      const isNumber = _.fromPredicate(refinement, (u) => `Invalid number ${String(u)}`)
+      const isNumber = _.fromPredicate(refinement, u => `Invalid number ${String(u)}`)
 
       U.deepStrictEqual(await gt2(3)({})(), E.right(3))
       U.deepStrictEqual(await gt2(1)({})(), E.left('Invalid number 1'))
@@ -146,21 +146,21 @@ describe('ReaderTaskEither', () => {
         await pipe(
           _.right(12),
           _.filterOrElse(
-            (n) => n > 10,
-            () => 'a'
-          )
+            n => n > 10,
+            () => 'a',
+          ),
         )({})(),
-        E.right(12)
+        E.right(12),
       )
       U.deepStrictEqual(
         await pipe(
           _.right(8),
           _.filterOrElse(
-            (n) => n > 10,
-            () => 'a'
-          )
+            n => n > 10,
+            () => 'a',
+          ),
         )({})(),
-        E.left('a')
+        E.left('a'),
       )
     })
   })
@@ -170,11 +170,11 @@ describe('ReaderTaskEither', () => {
   // -------------------------------------------------------------------------------------
 
   it('applicativeReaderTaskEitherSeq', async () => {
-    await U.assertSeq(_.ApplicativeSeq, _.FromTask, (fa) => fa(null)())
+    await U.assertSeq(_.ApplicativeSeq, _.FromTask, fa => fa(null)())
   })
 
   it('applicativeReaderTaskEitherPar', async () => {
-    await U.assertPar(_.ApplicativePar, _.FromTask, (fa) => fa(null)())
+    await U.assertPar(_.ApplicativePar, _.FromTask, fa => fa(null)())
   })
 
   // -------------------------------------------------------------------------------------
@@ -193,9 +193,9 @@ describe('ReaderTaskEither', () => {
     U.deepStrictEqual(
       await pipe(
         _.asks((n: number) => n + 1),
-        _.local(S.size)
+        _.local(S.size),
       )('aaa')(),
-      E.right(4)
+      E.right(4),
     )
   })
 
@@ -247,7 +247,7 @@ describe('ReaderTaskEither', () => {
   it('fold', async () => {
     const fold = _.fold(
       (l: string) => R.of(T.of(l.length)),
-      (a: number) => R.of(T.of(a * 2))
+      (a: number) => R.of(T.of(a * 2)),
     )
     U.deepStrictEqual(await fold(_.right(1))({})(), 2)
     U.deepStrictEqual(await fold(_.left('err'))({})(), 3)
@@ -257,16 +257,16 @@ describe('ReaderTaskEither', () => {
     U.deepStrictEqual(
       await pipe(
         _.right(1),
-        _.getOrElse((l: string) => R.of(T.of(l.length)))
+        _.getOrElse((l: string) => R.of(T.of(l.length))),
       )({})(),
-      1
+      1,
     )
     U.deepStrictEqual(
       await pipe(
         _.left('err'),
-        _.getOrElse((l: string) => R.of(T.of(l.length)))
+        _.getOrElse((l: string) => R.of(T.of(l.length))),
       )({})(),
-      3
+      3,
     )
   })
 
@@ -274,16 +274,16 @@ describe('ReaderTaskEither', () => {
     U.deepStrictEqual(
       await pipe(
         _.right(1),
-        _.orElse((s: string) => _.right(s.length))
+        _.orElse((s: string) => _.right(s.length)),
       )({})(),
-      E.right(1)
+      E.right(1),
     )
     U.deepStrictEqual(
       await pipe(
         _.left('error'),
-        _.orElse((s) => _.right(s.length))
+        _.orElse(s => _.right(s.length)),
       )({})(),
-      E.right(5)
+      E.right(5),
     )
   })
 
@@ -291,16 +291,16 @@ describe('ReaderTaskEither', () => {
     U.deepStrictEqual(
       await pipe(
         _.right(1),
-        _.orElseW((s: string) => _.right(s.length))
+        _.orElseW((s: string) => _.right(s.length)),
       )({})(),
-      E.right(1)
+      E.right(1),
     )
     U.deepStrictEqual(
       await pipe(
         _.left('error'),
-        _.orElseW((s) => _.right(s.length))
+        _.orElseW(s => _.right(s.length)),
       )({})(),
-      E.right(5)
+      E.right(5),
     )
   })
 
@@ -393,7 +393,7 @@ describe('ReaderTaskEither', () => {
     it('should return the acquire error if acquire fails', async () => {
       U.deepStrictEqual(
         await _.bracket(acquireFailure, useSuccess, releaseSuccess)(undefined)(),
-        E.left('acquire failure')
+        E.left('acquire failure'),
       )
     })
 
@@ -409,7 +409,7 @@ describe('ReaderTaskEither', () => {
     it('should return the release error if both use and release fail', async () => {
       U.deepStrictEqual(
         await _.bracket(acquireSuccess, useFailure, releaseFailure)(undefined)(),
-        E.left('release failure')
+        E.left('release failure'),
       )
     })
 
@@ -426,7 +426,7 @@ describe('ReaderTaskEither', () => {
     it('should return the release error if release fails', async () => {
       U.deepStrictEqual(
         await _.bracket(acquireSuccess, useSuccess, releaseFailure)(undefined)(),
-        E.left('release failure')
+        E.left('release failure'),
       )
     })
   })
@@ -439,11 +439,11 @@ describe('ReaderTaskEither', () => {
     const res = await _.bracketW(
       acquire,
       use,
-      release
+      release,
     )({
       a: 'string',
       b: 5,
-      c: true
+      c: true,
     })()
     U.deepStrictEqual(res, E.right('test'))
   })
@@ -533,16 +533,16 @@ describe('ReaderTaskEither', () => {
         _.right<void, string, number>(1),
         _.bindTo('a'),
         _.bind('b', () => _.right('b')),
-        _.let('c', ({ a, b }) => [a, b])
+        _.let('c', ({ a, b }) => [a, b]),
       )(undefined)(),
-      E.right({ a: 1, b: 'b', c: [1, 'b'] })
+      E.right({ a: 1, b: 'b', c: [1, 'b'] }),
     )
   })
 
   it('apS', async () => {
     U.deepStrictEqual(
       await pipe(_.right<void, string, number>(1), _.bindTo('a'), _.apS('b', _.right('b')))(undefined)(),
-      E.right({ a: 1, b: 'b' })
+      E.right({ a: 1, b: 'b' }),
     )
   })
 
@@ -577,15 +577,15 @@ describe('ReaderTaskEither', () => {
         })
       U.deepStrictEqual(
         await pipe([right(1), right(2)], _.traverseReadonlyArrayWithIndex(SK))(undefined)(),
-        E.right([1, 2])
+        E.right([1, 2]),
       )
       U.deepStrictEqual(
         await pipe([right(3), left('a')], _.traverseReadonlyArrayWithIndex(SK))(undefined)(),
-        E.left('a')
+        E.left('a'),
       )
       U.deepStrictEqual(
         await pipe([left('b'), right(4)], _.traverseReadonlyArrayWithIndex(SK))(undefined)(),
-        E.left('b')
+        E.left('b'),
       )
       U.deepStrictEqual(log, [1, 2, 3, 'a', 'b', 4])
     })
@@ -604,15 +604,15 @@ describe('ReaderTaskEither', () => {
         })
       U.deepStrictEqual(
         await pipe([right(1), right(2)], _.traverseReadonlyArrayWithIndexSeq(SK))(undefined)(),
-        E.right([1, 2])
+        E.right([1, 2]),
       )
       U.deepStrictEqual(
         await pipe([right(3), left('a')], _.traverseReadonlyArrayWithIndexSeq(SK))(undefined)(),
-        E.left('a')
+        E.left('a'),
       )
       U.deepStrictEqual(
         await pipe([left('b'), right(4)], _.traverseReadonlyArrayWithIndexSeq(SK))(undefined)(),
-        E.left('b')
+        E.left('b'),
       )
       U.deepStrictEqual(log, [1, 2, 3, 'a', 'b'])
     })
@@ -662,12 +662,12 @@ describe('ReaderTaskEither', () => {
 
   it('getFilterable', async () => {
     const F = _.getFilterable(S.Monoid)
-    U.deepStrictEqual(await F.filter(_.of('a'), (s) => s.length > 0)({})(), E.right('a'))
-    U.deepStrictEqual(await F.filterMap(_.of('a'), (s) => (s.length > 0 ? O.some(s.length) : O.none))({})(), E.right(1))
-    const s1 = F.partition(_.of('a'), (s) => s.length > 0)
+    U.deepStrictEqual(await F.filter(_.of('a'), s => s.length > 0)({})(), E.right('a'))
+    U.deepStrictEqual(await F.filterMap(_.of('a'), s => (s.length > 0 ? O.some(s.length) : O.none))({})(), E.right(1))
+    const s1 = F.partition(_.of('a'), s => s.length > 0)
     U.deepStrictEqual(await left(s1)({})(), E.left(''))
     U.deepStrictEqual(await right(s1)({})(), E.right('a'))
-    const s2 = F.partitionMap(_.of('a'), (s) => (s.length > 0 ? E.right(s.length) : E.left(s)))
+    const s2 = F.partitionMap(_.of('a'), s => (s.length > 0 ? E.right(s.length) : E.left(s)))
     U.deepStrictEqual(await left(s2)({})(), E.left(''))
     U.deepStrictEqual(await right(s2)({})(), E.right(1))
   })
@@ -675,7 +675,7 @@ describe('ReaderTaskEither', () => {
   it('match', async () => {
     const f = _.match(
       () => 'left',
-      () => 'right'
+      () => 'right',
     )
     U.deepStrictEqual(await f(_.right(1))({})(), 'right')
     U.deepStrictEqual(await f(_.left(''))({})(), 'left')
@@ -684,7 +684,7 @@ describe('ReaderTaskEither', () => {
   it('matchE', async () => {
     const f = _.matchE(
       () => RT.of('left'),
-      () => RT.of('right')
+      () => RT.of('right'),
     )
     U.deepStrictEqual(await f(_.right(1))({})(), 'right')
     U.deepStrictEqual(await f(_.left(''))({})(), 'left')
@@ -698,14 +698,22 @@ describe('ReaderTaskEither', () => {
   })
 
   it('fromNullableK', async () => {
-    const f = _.fromNullableK('foo')((n: number) => (n > 0 ? n : n === 0 ? null : undefined))
+    const f = _.fromNullableK('foo')((n: number) =>
+      n > 0 ? n
+      : n === 0 ? null
+      : undefined,
+    )
     U.deepStrictEqual(await f(1)(undefined)(), E.right(1))
     U.deepStrictEqual(await f(0)(undefined)(), E.left('foo'))
     U.deepStrictEqual(await f(-1)(undefined)(), E.left('foo'))
   })
 
   it('chainNullableK', async () => {
-    const f = _.chainNullableK('foo')((n: number) => (n > 0 ? n : n === 0 ? null : undefined))
+    const f = _.chainNullableK('foo')((n: number) =>
+      n > 0 ? n
+      : n === 0 ? null
+      : undefined,
+    )
     U.deepStrictEqual(await f(_.of(1))(undefined)(), E.right(1))
     U.deepStrictEqual(await f(_.of(0))(undefined)(), E.left('foo'))
     U.deepStrictEqual(await f(_.of(-1))(undefined)(), E.left('foo'))

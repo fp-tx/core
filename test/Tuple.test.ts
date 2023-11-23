@@ -42,9 +42,9 @@ describe('Tuple', () => {
       U.deepStrictEqual(
         pipe(
           ['b', 1] as [string, number],
-          _.reduce('a', (acc, a) => acc + a)
+          _.reduce('a', (acc, a) => acc + a),
         ),
-        'ab'
+        'ab',
       )
     })
 
@@ -56,9 +56,9 @@ describe('Tuple', () => {
       U.deepStrictEqual(
         pipe(
           ['b', 1] as [string, number],
-          _.reduceRight('a', (acc, a) => acc + a)
+          _.reduceRight('a', (acc, a) => acc + a),
         ),
-        'ba'
+        'ba',
       )
     })
 
@@ -92,15 +92,15 @@ describe('Tuple', () => {
   it('getMonad', () => {
     const monad = _.getMonad(S.Monoid)
     U.deepStrictEqual(
-      monad.chain([1, 'a'], (a) => [a * 2, 'b']),
-      [2, 'ab']
+      monad.chain([1, 'a'], a => [a * 2, 'b']),
+      [2, 'ab'],
     )
   })
 
   it('chainRec', () => {
     const { chainRec } = _.getChainRec(getMonoid<number>())
     function seqReq(upper: number): [number, ReadonlyArray<number>] {
-      return chainRec(1, (init) => [init >= upper ? right(init) : left(init + 1), [init]])
+      return chainRec(1, init => [init >= upper ? right(init) : left(init + 1), [init]])
     }
     const xs = _.snd(seqReq(10000))
     U.deepStrictEqual(xs.length, 10000)

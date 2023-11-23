@@ -22,21 +22,21 @@ const getExportName = (name: string): string => {
 function getModuleNames(): ReadonlyArray<string> {
   return glob
     .sync('./src/**/*.ts')
-    .map((file) => path.parse(file).name)
-    .filter((name) => name !== 'internal')
+    .map(file => path.parse(file).name)
+    .filter(name => name !== 'internal')
 }
 
 describe('index', () => {
   it('check exported modules', () => {
     const moduleNames = getModuleNames()
-    moduleNames.forEach((name) => {
+    moduleNames.forEach(name => {
       if (name !== 'index') {
         const exportName = getExportName(name)
         assert.deepStrictEqual(
           // tslint:disable-next-line: strict-type-predicates
           (_ as Record<string, unknown>)[exportName] !== undefined,
           true,
-          `The "${name}" module is not exported in src/index.ts as ${exportName}`
+          `The "${name}" module is not exported in src/index.ts as ${exportName}`,
         )
       }
     })

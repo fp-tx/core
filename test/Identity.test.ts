@@ -39,9 +39,9 @@ describe('Identity', () => {
       U.deepStrictEqual(
         pipe(
           'b',
-          _.reduce('a', (b, a) => b + a)
+          _.reduce('a', (b, a) => b + a),
         ),
-        'ab'
+        'ab',
       )
     })
 
@@ -58,9 +58,9 @@ describe('Identity', () => {
       U.deepStrictEqual(
         pipe(
           1,
-          _.alt(() => 2)
+          _.alt(() => 2),
         ),
-        1
+        1,
       )
     })
 
@@ -87,9 +87,9 @@ describe('Identity', () => {
       U.deepStrictEqual(
         pipe(
           1,
-          traverse(() => O.none)
+          traverse(() => O.none),
         ),
-        O.none
+        O.none,
       )
     })
 
@@ -108,7 +108,7 @@ describe('Identity', () => {
   })
 
   it('ChainRec', () => {
-    const x = _.ChainRec.chainRec<number, number>(0, (a) => (a < 10 ? left(a + 1) : right(a)))
+    const x = _.ChainRec.chainRec<number, number>(0, a => (a < 10 ? left(a + 1) : right(a)))
     const expected = 10
     U.deepStrictEqual(x, expected)
   })
@@ -124,13 +124,16 @@ describe('Identity', () => {
         _.of(1),
         _.bindTo('a'),
         _.bind('b', () => _.of('b')),
-        _.let('c', ({ a, b }) => [a, b])
+        _.let('c', ({ a, b }) => [a, b]),
       ),
-      { a: 1, b: 'b', c: [1, 'b'] }
+      { a: 1, b: 'b', c: [1, 'b'] },
     )
   })
 
   it('apS', () => {
-    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b'))), { a: 1, b: 'b' })
+    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b'))), {
+      a: 1,
+      b: 'b',
+    })
   })
 })

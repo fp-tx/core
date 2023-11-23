@@ -1,6 +1,4 @@
-/**
- * @since 2.10.0
- */
+/** @since 2.10.0 */
 import { type Either, type Left, type Right } from './Either'
 import { type NonEmptyArray } from './NonEmptyArray'
 import { type None, type Option, type Some } from './Option'

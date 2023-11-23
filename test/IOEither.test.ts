@@ -23,30 +23,30 @@ describe('IOEither', () => {
       U.deepStrictEqual(
         pipe(
           l1,
-          _.alt(() => l2)
+          _.alt(() => l2),
         )(),
-        E.left('bar')
+        E.left('bar'),
       )
       U.deepStrictEqual(
         pipe(
           l1,
-          _.alt(() => r1)
+          _.alt(() => r1),
         )(),
-        E.right(1)
+        E.right(1),
       )
       U.deepStrictEqual(
         pipe(
           r1,
-          _.alt(() => l1)
+          _.alt(() => l1),
         )(),
-        E.right(1)
+        E.right(1),
       )
       U.deepStrictEqual(
         pipe(
           r1,
-          _.alt(() => r2)
+          _.alt(() => r2),
         )(),
-        E.right(1)
+        E.right(1),
       )
     })
 
@@ -66,7 +66,7 @@ describe('IOEither', () => {
           log.push('b')
           return 'error'
         }),
-        _.rightIO(() => log.push('c'))
+        _.rightIO(() => log.push('c')),
       )()
       U.deepStrictEqual(x, E.left('error'))
       U.deepStrictEqual(log, ['a', 'b', 'c'])
@@ -80,7 +80,7 @@ describe('IOEither', () => {
           log.push('b')
           return 'error'
         }),
-        _.rightIO(() => log.push('c'))
+        _.rightIO(() => log.push('c')),
       )()
       U.deepStrictEqual(x, E.left('error'))
       U.deepStrictEqual(log, ['a', 'b'])
@@ -150,48 +150,48 @@ describe('IOEither', () => {
         pipe(
           _.right(12),
           _.filterOrElse(
-            (n) => n > 10,
-            () => 'bar'
-          )
+            n => n > 10,
+            () => 'bar',
+          ),
         )(),
-        E.right(12)
+        E.right(12),
       )
       U.deepStrictEqual(
         pipe(
           _.right(7),
           _.filterOrElse(
-            (n) => n > 10,
-            () => 'bar'
-          )
+            n => n > 10,
+            () => 'bar',
+          ),
         )(),
-        E.left('bar')
+        E.left('bar'),
       )
       U.deepStrictEqual(
         pipe(
           _.left('foo'),
           _.filterOrElse(
-            (n) => n > 10,
-            () => 'bar'
-          )
+            n => n > 10,
+            () => 'bar',
+          ),
         )(),
-        E.left('foo')
+        E.left('foo'),
       )
       U.deepStrictEqual(
         pipe(
           _.right(7),
           _.filterOrElse(
-            (n) => n > 10,
-            (n) => `invalid ${n}`
-          )
+            n => n > 10,
+            n => `invalid ${n}`,
+          ),
         )(),
-        E.left('invalid 7')
+        E.left('invalid 7'),
       )
       U.deepStrictEqual(
         pipe(
           _.right(12),
-          _.filterOrElse(isNumber, () => 'not a number')
+          _.filterOrElse(isNumber, () => 'not a number'),
         )(),
-        E.right(12)
+        E.right(12),
       )
     })
 
@@ -228,7 +228,7 @@ describe('IOEither', () => {
     it('fromPredicate', () => {
       const gt2 = _.fromPredicate(
         (n: number) => n >= 2,
-        (n) => `Invalid number ${n}`
+        n => `Invalid number ${n}`,
       )
       U.deepStrictEqual(gt2(3)(), E.right(3))
       U.deepStrictEqual(gt2(1)(), E.left('Invalid number 1'))
@@ -244,16 +244,16 @@ describe('IOEither', () => {
     U.deepStrictEqual(
       _.fold(
         () => I.of('left'),
-        () => I.of('right')
+        () => I.of('right'),
       )(_.right(1))(),
-      'right'
+      'right',
     )
     U.deepStrictEqual(
       _.fold(
         () => I.of('left'),
-        () => I.of('right')
+        () => I.of('right'),
       )(_.left('a'))(),
-      'left'
+      'left',
     )
   })
 
@@ -302,7 +302,7 @@ describe('IOEither', () => {
       _.tryCatch(() => {
         throw new Error('error')
       }, E.toError)(),
-      E.left(new Error('error'))
+      E.left(new Error('error')),
     )
   })
 
@@ -383,7 +383,7 @@ describe('IOEither', () => {
     const res = _.bracketW(
       _.right<string, string>('string'),
       (_a: string) => _.right<number, string>('test'),
-      (_a: string, _e: E.Either<number, string>) => _.right<Error, void>(constVoid())
+      (_a: string, _e: E.Either<number, string>) => _.right<Error, void>(constVoid()),
     )()
     U.deepStrictEqual(res, E.right('test'))
   })
@@ -430,17 +430,17 @@ describe('IOEither', () => {
     it('filter', async () => {
       const r1 = pipe(
         _.right(1),
-        filter((n) => n > 0)
+        filter(n => n > 0),
       )
       U.deepStrictEqual(r1(), _.right(1)())
       const r2 = pipe(
         _.right(-1),
-        filter((n) => n > 0)
+        filter(n => n > 0),
       )
       U.deepStrictEqual(r2(), _.left([])())
       const r3 = pipe(
         _.left(['a']),
-        filter((n) => n > 0)
+        filter(n => n > 0),
       )
       U.deepStrictEqual(r3(), _.left(['a'])())
     })
@@ -449,30 +449,30 @@ describe('IOEither', () => {
       U.deepStrictEqual(
         pipe(
           _.right('aaa'),
-          filterMap((s) => (s.length > 1 ? O.some(s.length) : O.none))
+          filterMap(s => (s.length > 1 ? O.some(s.length) : O.none)),
         )(),
-        E.right(3)
+        E.right(3),
       )
       U.deepStrictEqual(
         pipe(
           _.right('a'),
-          filterMap((s) => (s.length > 1 ? O.some(s.length) : O.none))
+          filterMap(s => (s.length > 1 ? O.some(s.length) : O.none)),
         )(),
-        E.left([])
+        E.left([]),
       )
       U.deepStrictEqual(
         pipe(
           _.left<ReadonlyArray<string>, string>(['e']),
-          filterMap((s) => (s.length > 1 ? O.some(s.length) : O.none))
+          filterMap(s => (s.length > 1 ? O.some(s.length) : O.none)),
         )(),
-        E.left(['e'])
+        E.left(['e']),
       )
     })
 
     it('partition', () => {
       const s = pipe(
         _.right('a'),
-        partition((s) => s.length > 2)
+        partition(s => s.length > 2),
       )
       U.deepStrictEqual(left(s)(), E.right('a'))
       U.deepStrictEqual(right(s)(), E.left([]))
@@ -481,7 +481,7 @@ describe('IOEither', () => {
     it('partitionMap', () => {
       const s = pipe(
         _.right('a'),
-        partitionMap((s) => (s.length > 2 ? E.right(s.length) : E.left(false)))
+        partitionMap(s => (s.length > 2 ? E.right(s.length) : E.left(false))),
       )
       U.deepStrictEqual(left(s)(), E.right(false))
       U.deepStrictEqual(right(s)(), E.left([]))
@@ -494,16 +494,16 @@ describe('IOEither', () => {
         _.right<string, number>(1),
         _.bindTo('a'),
         _.bind('b', () => _.right('b')),
-        _.let('c', ({ a, b }) => [a, b])
+        _.let('c', ({ a, b }) => [a, b]),
       )(),
-      E.right({ a: 1, b: 'b', c: [1, 'b'] })
+      E.right({ a: 1, b: 'b', c: [1, 'b'] }),
     )
   })
 
   it('apS', () => {
     U.deepStrictEqual(
       pipe(_.right<string, number>(1), _.bindTo('a'), _.apS('b', _.right('b')))(),
-      E.right({ a: 1, b: 'b' })
+      E.right({ a: 1, b: 'b' }),
     )
   })
 
@@ -619,7 +619,7 @@ describe('IOEither', () => {
   it('match', () => {
     const f = _.match(
       () => 'left',
-      () => 'right'
+      () => 'right',
     )
     U.deepStrictEqual(f(_.right(1))(), 'right')
     U.deepStrictEqual(f(_.left(1))(), 'left')
@@ -628,7 +628,7 @@ describe('IOEither', () => {
   it('matchE', () => {
     const f = _.matchE(
       () => I.of('left'),
-      () => I.of('right')
+      () => I.of('right'),
     )
     U.deepStrictEqual(f(_.right(1))(), 'right')
     U.deepStrictEqual(f(_.left(1))(), 'left')

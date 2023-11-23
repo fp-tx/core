@@ -8,7 +8,7 @@ const MT = getOptionM(T.Monad)
 describe('OptionT', () => {
   it('map', async () => {
     const greetingT = MT.of('welcome')
-    const excitedGreetingT = MT.map(greetingT, (s) => s + '!')
+    const excitedGreetingT = MT.map(greetingT, s => s + '!')
     U.deepStrictEqual(await excitedGreetingT(), O.some('welcome!'))
   })
 
@@ -17,15 +17,15 @@ describe('OptionT', () => {
     const b = MT.of('b')
     U.deepStrictEqual(
       await MT.ap(
-        MT.map(a, (a) => (b) => [a, b]),
-        b
+        MT.map(a, a => b => [a, b]),
+        b,
       )(),
-      O.some(['a', 'b'])
+      O.some(['a', 'b']),
     )
   })
 
   it('chain', async () => {
-    const to1 = MT.chain(MT.of('foo'), (a) => MT.of(a.length))
+    const to1 = MT.chain(MT.of('foo'), a => MT.of(a.length))
     const to2 = MT.chain(T.of(O.none), (a: string) => MT.of(a.length))
     const [o1, o2] = await Promise.all([to1(), to2()])
     U.deepStrictEqual(o1, O.some(3))

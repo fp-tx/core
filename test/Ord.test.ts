@@ -22,16 +22,16 @@ describe('Ord', () => {
       [2, 'c'],
       [1, 'b'],
       [2, 'a'],
-      [1, 'c']
+      [1, 'c'],
     ]
     const M = _.getMonoid<T>()
     const sortByFst = pipe(
       N.Ord,
-      _.contramap((x: T) => x[0])
+      _.contramap((x: T) => x[0]),
     )
     const sortBySnd = pipe(
       S.Ord,
-      _.contramap((x: T) => x[1])
+      _.contramap((x: T) => x[1]),
     )
     //                  v-- left unit
     const O1 = concatAll(M)([M.empty, sortByFst, sortBySnd])
@@ -39,7 +39,7 @@ describe('Ord', () => {
       [1, 'b'],
       [1, 'c'],
       [2, 'a'],
-      [2, 'c']
+      [2, 'c'],
     ])
     //                           right unit --v
     const O2 = concatAll(M)([sortBySnd, sortByFst, M.empty])
@@ -47,7 +47,7 @@ describe('Ord', () => {
       [2, 'a'],
       [1, 'b'],
       [1, 'c'],
-      [2, 'c']
+      [2, 'c'],
     ])
   })
 
@@ -117,8 +117,8 @@ describe('Ord', () => {
     const min = _.min(
       pipe(
         N.Ord,
-        _.contramap((a: A) => a.a)
-      )
+        _.contramap((a: A) => a.a),
+      ),
     )
     U.deepStrictEqual(min({ a: 1 }, { a: 2 }), { a: 1 })
     U.deepStrictEqual(min({ a: 2 }, { a: 1 }), { a: 1 })
@@ -132,8 +132,8 @@ describe('Ord', () => {
     const max = _.max(
       pipe(
         N.Ord,
-        _.contramap((a: A) => a.a)
-      )
+        _.contramap((a: A) => a.a),
+      ),
     )
     U.deepStrictEqual(max({ a: 1 }, { a: 2 }), { a: 2 })
     U.deepStrictEqual(max({ a: 2 }, { a: 1 }), { a: 2 })
@@ -152,11 +152,11 @@ describe('Ord', () => {
     const toReadonlyArray = RR.collect(_.trivial)((k, a) => [k, a])
     U.deepStrictEqual(toReadonlyArray({ a: 1, b: 2 }), [
       ['a', 1],
-      ['b', 2]
+      ['b', 2],
     ])
     U.deepStrictEqual(toReadonlyArray({ b: 2, a: 1 }), [
       ['b', 2],
-      ['a', 1]
+      ['a', 1],
     ])
   })
 

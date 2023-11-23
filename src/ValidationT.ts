@@ -1,11 +1,9 @@
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 import {
   type ApplicativeComposition12C,
   type ApplicativeComposition22C,
   type ApplicativeCompositionHKT2C,
-  getApplicativeComposition
+  getApplicativeComposition,
 } from './Applicative'
 import * as E from './Either'
 import { type Either } from './Either'
@@ -20,16 +18,16 @@ import { type Semigroup } from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export interface ValidationT<M, E, A> extends HKT<M, Either<E, A>> {}
 
 /**
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 
 export interface ValidationM<M, E> extends ApplicativeCompositionHKT2C<M, E.URI, E> {
@@ -39,16 +37,16 @@ export interface ValidationM<M, E> extends ApplicativeCompositionHKT2C<M, E.URI,
 }
 
 /**
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export type ValidationT1<M extends URIS, E, A> = Kind<M, Either<E, A>>
 
 /**
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 
 export interface ValidationM1<M extends URIS, E> extends ApplicativeComposition12C<M, E.URI, E> {
@@ -58,23 +56,23 @@ export interface ValidationM1<M extends URIS, E> extends ApplicativeComposition1
 }
 
 /**
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export type ValidationT2<M extends URIS2, R, E, A> = Kind2<M, R, Either<E, A>>
 
 /**
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 
 export interface ValidationM2<M extends URIS2, E> extends ApplicativeComposition22C<M, E.URI, E> {
   readonly chain: <R, A, B>(
     ma: ValidationT2<M, R, E, A>,
 
-    f: (a: A) => ValidationT2<M, R, E, B>
+    f: (a: A) => ValidationT2<M, R, E, B>,
   ) => ValidationT2<M, R, E, B>
 
   readonly alt: <R, A>(fa: ValidationT2<M, R, E, A>, that: Lazy<ValidationT2<M, R, E, A>>) => ValidationT2<M, R, E, A>
@@ -83,9 +81,9 @@ export interface ValidationM2<M extends URIS2, E> extends ApplicativeComposition
 /**
  * Use `EitherT` instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 
 export function getValidationM<E, M extends URIS2>(S: Semigroup<E>, M: Monad2<M>): ValidationM2<M, E>
@@ -104,10 +102,10 @@ export function getValidationM<E, M>(S: Semigroup<E>, M: Monad<M>): ValidationM<
     map: A.map,
     ap: A.ap,
     of: A.of,
-    chain: (ma, f) => M.chain(ma, (e) => (_.isLeft(e) ? M.of(_.left(e.left)) : f(e.right))),
+    chain: (ma, f) => M.chain(ma, e => (_.isLeft(e) ? M.of(_.left(e.left)) : f(e.right))),
     alt: (me, that) =>
-      M.chain(me, (e1) =>
-        _.isRight(e1) ? M.of(e1) : M.map(that(), (e2) => (_.isLeft(e2) ? _.left(S.concat(e1.left, e2.left)) : e2))
-      )
+      M.chain(me, e1 =>
+        _.isRight(e1) ? M.of(e1) : M.map(that(), e2 => (_.isLeft(e2) ? _.left(S.concat(e1.left, e2.left)) : e2)),
+      ),
   }
 }

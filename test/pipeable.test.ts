@@ -34,7 +34,7 @@ describe('pipeable', () => {
 
   it('Apply', () => {
     const { ap, apFirst, apSecond } = pipeable(RA.Applicative)
-    U.deepStrictEqual(ap([1, 2, 3])([(n) => n * 2]), [2, 4, 6])
+    U.deepStrictEqual(ap([1, 2, 3])([n => n * 2]), [2, 4, 6])
     U.deepStrictEqual(apFirst([2])([1]), [1])
     U.deepStrictEqual(apSecond([2])([1]), [2])
   })
@@ -51,16 +51,16 @@ describe('pipeable', () => {
     U.deepStrictEqual(
       bimap(
         (s: string) => s.length,
-        (n: number) => n * 2
+        (n: number) => n * 2,
       )(E.right(1)),
-      E.right(2)
+      E.right(2),
     )
     U.deepStrictEqual(
       bimap(
         (s: string) => s.length,
-        (n: number) => n * 2
+        (n: number) => n * 2,
       )(E.left('aa')),
-      E.left(2)
+      E.left(2),
     )
     U.deepStrictEqual(mapLeft((s: string) => s.length)(E.right(1)), E.right(1))
     U.deepStrictEqual(mapLeft((s: string) => s.length)(E.left('aa')), E.left(2))
@@ -99,38 +99,38 @@ describe('pipeable', () => {
     U.deepStrictEqual(filterMap(<A>(a: O.Option<A>) => a)([O.some(1), O.none, O.some(2)]), [1, 2])
     assert.deepStrictEqual(
       pipe([O.some(1), O.none, O.some(2)], partition(O.isSome)),
-      separated([O.none], [O.some(1), O.some(2)])
+      separated([O.none], [O.some(1), O.some(2)]),
     )
     U.deepStrictEqual(
       partitionMap((n: number) => (n > 2 ? E.right(n) : E.left(String(n))))([1, 2, 3]),
-      separated(['1', '2'], [3])
+      separated(['1', '2'], [3]),
     )
   })
 
   it('FilterableWithIndex', () => {
     const { filterWithIndex, filterMapWithIndex, partitionWithIndex, partitionMapWithIndex } = pipeable(
-      RA.FilterableWithIndex
+      RA.FilterableWithIndex,
     )
     U.deepStrictEqual(
       filterWithIndex((i, a: O.Option<number>) => i > 1 && O.isSome(a))([O.some(1), O.none, O.some(2)]),
-      [O.some(2)]
+      [O.some(2)],
     )
     U.deepStrictEqual(
       filterMapWithIndex((i, a: O.Option<number>) =>
         pipe(
           a,
-          O.map((n) => n + i)
-        )
+          O.map(n => n + i),
+        ),
       )([O.some(1), O.none, O.some(2)]),
-      [1, 4]
+      [1, 4],
     )
     U.deepStrictEqual(
       partitionWithIndex((i, a: O.Option<number>) => i > 1 && O.isSome(a))([O.some(1), O.none, O.some(2)]),
-      separated([O.some(1), O.none], [O.some(2)])
+      separated([O.some(1), O.none], [O.some(2)]),
     )
     U.deepStrictEqual(
       partitionMapWithIndex((i, n: number) => (i < 2 && n > 1 ? E.right(n) : E.left(String(n))))([1, 2, 3]),
-      separated(['1', '3'], [2])
+      separated(['1', '3'], [2]),
     )
   })
 
@@ -138,7 +138,7 @@ describe('pipeable', () => {
     const { promap } = pipeable(R.Profunctor)
     const f = promap(
       (s: string) => s + 'a',
-      (n: number) => n > 2
+      (n: number) => n > 2,
     )((s: string) => s.length)
     U.deepStrictEqual(f('a'), false)
     U.deepStrictEqual(f('aa'), true)
@@ -146,7 +146,7 @@ describe('pipeable', () => {
 
   it('Semigroupoid', () => {
     const { compose } = pipeable(R.Category)
-    U.deepStrictEqual(compose((s: string) => s.length)((n) => n * 2)('aa'), 4)
+    U.deepStrictEqual(compose((s: string) => s.length)(n => n * 2)('aa'), 4)
   })
 
   it('MonadThrow', () => {
@@ -157,7 +157,7 @@ describe('pipeable', () => {
     U.deepStrictEqual(fromOption(() => 'none')(O.some(1)), E.right(1))
     const gt2 = fromPredicate(
       (n: number) => n >= 2,
-      (n) => `Invalid number ${n}`
+      n => `Invalid number ${n}`,
     )
     U.deepStrictEqual(gt2(3), E.right(3))
     U.deepStrictEqual(gt2(1), E.left('Invalid number 1'))
@@ -165,30 +165,30 @@ describe('pipeable', () => {
     U.deepStrictEqual(
       pipe(
         E.right(12),
-        filterOrElse(gt10, () => -1)
+        filterOrElse(gt10, () => -1),
       ),
-      E.right(12)
+      E.right(12),
     )
     U.deepStrictEqual(
       pipe(
         E.right(7),
-        filterOrElse(gt10, () => -1)
+        filterOrElse(gt10, () => -1),
       ),
-      E.left(-1)
+      E.left(-1),
     )
     U.deepStrictEqual(
       pipe(
         E.left(12),
-        filterOrElse(gt10, () => -1)
+        filterOrElse(gt10, () => -1),
       ),
-      E.left(12)
+      E.left(12),
     )
     U.deepStrictEqual(
       pipe(
         E.right(7),
-        filterOrElse(gt10, (n) => `invalid ${n}`)
+        filterOrElse(gt10, n => `invalid ${n}`),
       ),
-      E.left('invalid 7')
+      E.left('invalid 7'),
     )
   })
 })

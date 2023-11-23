@@ -12,8 +12,8 @@ import { type Monoid } from './Monoid'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Group<A> extends Monoid<A> {
   readonly inverse: (a: A) => A

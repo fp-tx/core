@@ -7,8 +7,8 @@
  * }
  * ```
  *
- * Note that you don't need any conversion, a `NonEmptyArray` is an `Array`,
- * so all `Array`'s APIs can be used with a `NonEmptyArray` without further ado.
+ * Note that you don't need any conversion, a `NonEmptyArray` is an `Array`, so all `Array`'s APIs can be used with a
+ * `NonEmptyArray` without further ado.
  *
  * @since 2.0.0
  */
@@ -45,8 +45,8 @@ import { type PipeableTraverseWithIndex1, type TraversableWithIndex1 } from './T
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface NonEmptyArray<A> extends Array<A> {
   0: A
@@ -56,44 +56,30 @@ export interface NonEmptyArray<A> extends Array<A> {
 // internal
 // -------------------------------------------------------------------------------------
 
-/**
- * @internal
- */
+/** @internal */
 export const isNonEmpty = <A>(as: Array<A>): as is NonEmptyArray<A> => as.length > 0
 
-/**
- * @internal
- */
+/** @internal */
 export const isOutOfBound = <A>(i: number, as: Array<A>): boolean => i < 0 || i >= as.length
 
-/**
- * @internal
- */
+/** @internal */
 export const prependW =
   <B>(head: B) =>
   <A>(tail: Array<A>): NonEmptyArray<A | B> => [head, ...tail]
 
-/**
- * @internal
- */
+/** @internal */
 export const prepend: <A>(head: A) => (tail: Array<A>) => NonEmptyArray<A> = prependW
 
-/**
- * @internal
- */
+/** @internal */
 export const appendW =
   <B>(end: B) =>
   <A>(init: Array<A>): NonEmptyArray<A | B> =>
     [...init, end] as any
 
-/**
- * @internal
- */
+/** @internal */
 export const append: <A>(end: A) => (init: Array<A>) => NonEmptyArray<A> = appendW
 
-/**
- * @internal
- */
+/** @internal */
 export const unsafeInsertAt = <A>(i: number, a: A, as: Array<A>): NonEmptyArray<A> => {
   if (isNonEmpty(as)) {
     const xs = fromReadonlyNonEmptyArray(as)
@@ -103,9 +89,7 @@ export const unsafeInsertAt = <A>(i: number, a: A, as: Array<A>): NonEmptyArray<
   return [a]
 }
 
-/**
- * @internal
- */
+/** @internal */
 export const unsafeUpdateAt = <A>(i: number, a: A, as: NonEmptyArray<A>): NonEmptyArray<A> => {
   const xs = fromReadonlyNonEmptyArray(as)
   xs[i] = a
@@ -115,13 +99,12 @@ export const unsafeUpdateAt = <A>(i: number, a: A, as: NonEmptyArray<A>): NonEmp
 /**
  * Remove duplicates from a `NonEmptyArray`, keeping the first occurrence of an element.
  *
- * @example
- * import { uniq } from 'fp-ts/NonEmptyArray'
- * import * as N from 'fp-ts/number'
- *
- * assert.deepStrictEqual(uniq(N.Eq)([1, 2, 1]), [1, 2])
- *
  * @since 2.11.0
+ * @example
+ *   import { uniq } from 'fp-ts/NonEmptyArray'
+ *   import * as N from 'fp-ts/number'
+ *
+ *   assert.deepStrictEqual(uniq(N.Eq)([1, 2, 1]), [1, 2])
  */
 export const uniq =
   <A>(E: Eq<A>) =>
@@ -132,7 +115,7 @@ export const uniq =
     const out: NonEmptyArray<A> = [head(as)]
     const rest = tail(as)
     for (const a of rest) {
-      if (out.every((o) => !E.equals(o, a))) {
+      if (out.every(o => !E.equals(o, a))) {
         out.push(a)
       }
     }
@@ -140,42 +123,47 @@ export const uniq =
   }
 
 /**
- * Sort the elements of a `NonEmptyArray` in increasing order, where elements are compared using first `ords[0]`, then `ords[1]`,
- * etc...
- *
- * @example
- * import * as NEA from 'fp-ts/NonEmptyArray'
- * import { contramap } from 'fp-ts/Ord'
- * import * as S from 'fp-ts/string'
- * import * as N from 'fp-ts/number'
- * import { pipe } from 'fp-ts/function'
- *
- * interface Person {
- *   name: string
- *   age: number
- * }
- *
- * const byName = pipe(S.Ord, contramap((p: Person) => p.name))
- *
- * const byAge = pipe(N.Ord, contramap((p: Person) => p.age))
- *
- * const sortByNameByAge = NEA.sortBy([byName, byAge])
- *
- * const persons: NEA.NonEmptyArray<Person> = [
- *   { name: 'a', age: 1 },
- *   { name: 'b', age: 3 },
- *   { name: 'c', age: 2 },
- *   { name: 'b', age: 2 }
- * ]
- *
- * assert.deepStrictEqual(sortByNameByAge(persons), [
- *   { name: 'a', age: 1 },
- *   { name: 'b', age: 2 },
- *   { name: 'b', age: 3 },
- *   { name: 'c', age: 2 }
- * ])
+ * Sort the elements of a `NonEmptyArray` in increasing order, where elements are compared using first `ords[0]`, then
+ * `ords[1]`, etc...
  *
  * @since 2.11.0
+ * @example
+ *   import * as NEA from 'fp-ts/NonEmptyArray'
+ *   import { contramap } from 'fp-ts/Ord'
+ *   import * as S from 'fp-ts/string'
+ *   import * as N from 'fp-ts/number'
+ *   import { pipe } from 'fp-ts/function'
+ *
+ *   interface Person {
+ *     name: string
+ *     age: number
+ *   }
+ *
+ *   const byName = pipe(
+ *     S.Ord,
+ *     contramap((p: Person) => p.name),
+ *   )
+ *
+ *   const byAge = pipe(
+ *     N.Ord,
+ *     contramap((p: Person) => p.age),
+ *   )
+ *
+ *   const sortByNameByAge = NEA.sortBy([byName, byAge])
+ *
+ *   const persons: NEA.NonEmptyArray<Person> = [
+ *     { name: 'a', age: 1 },
+ *     { name: 'b', age: 3 },
+ *     { name: 'c', age: 2 },
+ *     { name: 'b', age: 2 },
+ *   ]
+ *
+ *   assert.deepStrictEqual(sortByNameByAge(persons), [
+ *     { name: 'a', age: 1 },
+ *     { name: 'b', age: 2 },
+ *     { name: 'b', age: 3 },
+ *     { name: 'c', age: 2 },
+ *   ])
  */
 export const sortBy = <B>(ords: Array<Ord<B>>): (<A extends B>(as: NonEmptyArray<A>) => NonEmptyArray<A>) => {
   if (isNonEmpty(ords)) {
@@ -185,24 +173,21 @@ export const sortBy = <B>(ords: Array<Ord<B>>): (<A extends B>(as: NonEmptyArray
   return copy
 }
 
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 export const union = <A>(E: Eq<A>): ((second: NonEmptyArray<A>) => (first: NonEmptyArray<A>) => NonEmptyArray<A>) => {
   const uniqE = uniq(E)
-  return (second) => (first) => uniqE(pipe(first, concat(second)))
+  return second => first => uniqE(pipe(first, concat(second)))
 }
 
 /**
  * Rotate a `NonEmptyArray` by `n` steps.
  *
- * @example
- * import { rotate } from 'fp-ts/NonEmptyArray'
- *
- * assert.deepStrictEqual(rotate(2)([1, 2, 3, 4, 5]), [4, 5, 1, 2, 3])
- * assert.deepStrictEqual(rotate(-2)([1, 2, 3, 4, 5]), [3, 4, 5, 1, 2])
- *
  * @since 2.11.0
+ * @example
+ *   import { rotate } from 'fp-ts/NonEmptyArray'
+ *
+ *   assert.deepStrictEqual(rotate(2)([1, 2, 3, 4, 5]), [4, 5, 1, 2, 3])
+ *   assert.deepStrictEqual(rotate(-2)([1, 2, 3, 4, 5]), [3, 4, 5, 1, 2])
  */
 export const rotate =
   (n: number) =>
@@ -225,8 +210,8 @@ export const rotate =
 // -------------------------------------------------------------------------------------
 
 /**
- * @category conversions
  * @since 2.10.0
+ * @category Conversions
  */
 export const fromReadonlyNonEmptyArray: <A>(as: ReadonlyNonEmptyArray<A>) => NonEmptyArray<A> =
   _.fromReadonlyNonEmptyArray
@@ -234,8 +219,8 @@ export const fromReadonlyNonEmptyArray: <A>(as: ReadonlyNonEmptyArray<A>) => Non
 /**
  * Builds a `NonEmptyArray` from an `Array` returning `none` if `as` is an empty array
  *
- * @category conversions
  * @since 2.0.0
+ * @category Conversions
  */
 export const fromArray = <A>(as: Array<A>): Option<NonEmptyArray<A>> => (isNonEmpty(as) ? _.some(as) : _.none)
 
@@ -244,15 +229,14 @@ export const fromArray = <A>(as: Array<A>): Option<NonEmptyArray<A>> => (isNonEm
  *
  * **Note**. `n` is normalized to a natural number.
  *
- * @example
- * import { makeBy } from 'fp-ts/NonEmptyArray'
- * import { pipe } from 'fp-ts/function'
- *
- * const double = (n: number): number => n * 2
- * assert.deepStrictEqual(pipe(5, makeBy(double)), [0, 2, 4, 6, 8])
- *
- * @category constructors
  * @since 2.11.0
+ * @category Constructors
+ * @example
+ *   import { makeBy } from 'fp-ts/NonEmptyArray'
+ *   import { pipe } from 'fp-ts/function'
+ *
+ *   const double = (n: number): number => n * 2
+ *   assert.deepStrictEqual(pipe(5, makeBy(double)), [0, 2, 4, 6, 8])
  */
 export const makeBy =
   <A>(f: (i: number) => A) =>
@@ -270,52 +254,48 @@ export const makeBy =
  *
  * **Note**. `n` is normalized to a natural number.
  *
- * @example
- * import { replicate } from 'fp-ts/NonEmptyArray'
- * import { pipe } from 'fp-ts/function'
- *
- * assert.deepStrictEqual(pipe(3, replicate('a')), ['a', 'a', 'a'])
- *
- * @category constructors
  * @since 2.11.0
+ * @category Constructors
+ * @example
+ *   import { replicate } from 'fp-ts/NonEmptyArray'
+ *   import { pipe } from 'fp-ts/function'
+ *
+ *   assert.deepStrictEqual(pipe(3, replicate('a')), ['a', 'a', 'a'])
  */
 export const replicate = <A>(a: A): ((n: number) => ReadonlyNonEmptyArray<A>) => makeBy(() => a)
 
 /**
  * Create a `NonEmptyArray` containing a range of integers, including both endpoints.
  *
- * @example
- * import { range } from 'fp-ts/NonEmptyArray'
- *
- * assert.deepStrictEqual(range(1, 5), [1, 2, 3, 4, 5])
- *
- * @category constructors
  * @since 2.11.0
+ * @category Constructors
+ * @example
+ *   import { range } from 'fp-ts/NonEmptyArray'
+ *
+ *   assert.deepStrictEqual(range(1, 5), [1, 2, 3, 4, 5])
  */
 export const range = (start: number, end: number): NonEmptyArray<number> =>
-  start <= end ? makeBy((i) => start + i)(end - start + 1) : [start]
+  start <= end ? makeBy(i => start + i)(end - start + 1) : [start]
 
 /**
  * Return the tuple of the `head` and the `tail`.
  *
- * @example
- * import { unprepend } from 'fp-ts/NonEmptyArray'
- *
- * assert.deepStrictEqual(unprepend([1, 2, 3]), [1, [2, 3]])
- *
  * @since 2.9.0
+ * @example
+ *   import { unprepend } from 'fp-ts/NonEmptyArray'
+ *
+ *   assert.deepStrictEqual(unprepend([1, 2, 3]), [1, [2, 3]])
  */
 export const unprepend = <A>(as: NonEmptyArray<A>): [A, Array<A>] => [head(as), tail(as)]
 
 /**
  * Return the tuple of the `init` and the `last`.
  *
- * @example
- * import { unappend } from 'fp-ts/NonEmptyArray'
- *
- * assert.deepStrictEqual(unappend([1, 2, 3, 4]), [[1, 2, 3], 4])
- *
  * @since 2.9.0
+ * @example
+ *   import { unappend } from 'fp-ts/NonEmptyArray'
+ *
+ *   assert.deepStrictEqual(unappend([1, 2, 3, 4]), [[1, 2, 3], 4])
  */
 export const unappend = <A>(as: NonEmptyArray<A>): [Array<A>, A] => [init(as), last(as)]
 
@@ -323,18 +303,14 @@ export const unappend = <A>(as: NonEmptyArray<A>): [Array<A>, A] => [init(as), l
 // combinators
 // -------------------------------------------------------------------------------------
 
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 export function concatW<B>(second: NonEmptyArray<B>): <A>(first: Array<A>) => NonEmptyArray<A | B>
 export function concatW<B>(second: Array<B>): <A>(first: NonEmptyArray<A>) => NonEmptyArray<A | B>
 export function concatW<B>(second: Array<B>): <A>(first: NonEmptyArray<A>) => Array<A | B> {
   return <A>(first: NonEmptyArray<A | B>) => first.concat(second)
 }
 
-/**
- * @since 2.2.0
- */
+/** @since 2.2.0 */
 export function concat<A>(second: NonEmptyArray<A>): (first: Array<A>) => NonEmptyArray<A>
 export function concat<A>(second: Array<A>): (first: NonEmptyArray<A>) => NonEmptyArray<A>
 /** @deprecated */
@@ -342,35 +318,28 @@ export function concat<A>(first: Array<A>, second: NonEmptyArray<A>): NonEmptyAr
 /** @deprecated */
 export function concat<A>(first: NonEmptyArray<A>, second: Array<A>): NonEmptyArray<A>
 export function concat<A>(x: Array<A>, y?: Array<A>): Array<A> | ((y: NonEmptyArray<A>) => Array<A>) {
-  return y ? x.concat(y) : (y) => y.concat(x)
+  return y ? x.concat(y) : y => y.concat(x)
 }
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export const reverse = <A>(as: NonEmptyArray<A>): NonEmptyArray<A> => [last(as), ...as.slice(0, -1).reverse()]
 
 /**
  * Group equal, consecutive elements of an array into non empty arrays.
  *
- * @example
- * import { group } from 'fp-ts/NonEmptyArray'
- * import * as N from 'fp-ts/number'
- *
- * assert.deepStrictEqual(group(N.Ord)([1, 2, 1, 1]), [
- *   [1],
- *   [2],
- *   [1, 1]
- * ])
- *
  * @since 2.0.0
+ * @example
+ *   import { group } from 'fp-ts/NonEmptyArray'
+ *   import * as N from 'fp-ts/number'
+ *
+ *   assert.deepStrictEqual(group(N.Ord)([1, 2, 1, 1]), [[1], [2], [1, 1]])
  */
 export function group<B>(E: Eq<B>): {
   <A extends B>(as: NonEmptyArray<A>): NonEmptyArray<NonEmptyArray<A>>
   <A extends B>(as: Array<A>): Array<NonEmptyArray<A>>
 }
 export function group<A>(E: Eq<A>): (as: Array<A>) => Array<NonEmptyArray<A>> {
-  return (as) => {
+  return as => {
     const len = as.length
     if (len === 0) {
       return []
@@ -397,15 +366,14 @@ export function group<A>(E: Eq<A>): (as: Array<A>) => Array<NonEmptyArray<A>> {
  * Splits an array into sub-non-empty-arrays stored in an object, based on the result of calling a `string`-returning
  * function on each element, and grouping the results according to values returned
  *
- * @example
- * import { groupBy } from 'fp-ts/NonEmptyArray'
- *
- * assert.deepStrictEqual(groupBy((s: string) => String(s.length))(['a', 'b', 'ab']), {
- *   '1': ['a', 'b'],
- *   '2': ['ab']
- * })
- *
  * @since 2.0.0
+ * @example
+ *   import { groupBy } from 'fp-ts/NonEmptyArray'
+ *
+ *   assert.deepStrictEqual(groupBy((s: string) => String(s.length))(['a', 'b', 'ab']), {
+ *     '1': ['a', 'b'],
+ *     '2': ['ab'],
+ *   })
  */
 export const groupBy =
   <A>(f: (a: A) => string) =>
@@ -422,54 +390,42 @@ export const groupBy =
     return out
   }
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export const sort =
   <B>(O: Ord<B>) =>
   <A extends B>(as: NonEmptyArray<A>): NonEmptyArray<A> =>
     as.slice().sort(O.compare) as any
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export const insertAt =
   <A>(i: number, a: A) =>
   (as: Array<A>): Option<NonEmptyArray<A>> =>
     i < 0 || i > as.length ? _.none : _.some(unsafeInsertAt(i, a, as))
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export const updateAt = <A>(i: number, a: A): ((as: NonEmptyArray<A>) => Option<NonEmptyArray<A>>) =>
   modifyAt(i, () => a)
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export const modifyAt =
   <A>(i: number, f: (a: A) => A) =>
   (as: NonEmptyArray<A>): Option<NonEmptyArray<A>> =>
     isOutOfBound(i, as) ? _.none : _.some(unsafeUpdateAt(i, f(as[i]), as))
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export const copy: <A>(as: NonEmptyArray<A>) => NonEmptyArray<A> = fromReadonlyNonEmptyArray
 
 /**
- * @category constructors
  * @since 2.0.0
+ * @category Constructors
  */
-export const of: <A>(a: A) => NonEmptyArray<A> = (a) => [a]
+export const of: <A>(a: A) => NonEmptyArray<A> = a => [a]
 
-/**
- * @since 2.5.1
- */
+/** @since 2.5.1 */
 export const zipWith = <A, B, C>(
   as: NonEmptyArray<A>,
   bs: NonEmptyArray<B>,
-  f: (a: A, b: B) => C
+  f: (a: A, b: B) => C,
 ): NonEmptyArray<C> => {
   const cs: NonEmptyArray<C> = [f(as[0], bs[0])]
   const len = Math.min(as.length, bs.length)
@@ -479,24 +435,20 @@ export const zipWith = <A, B, C>(
   return cs
 }
 
-/**
- * @since 2.5.1
- */
+/** @since 2.5.1 */
 export function zip<B>(bs: NonEmptyArray<B>): <A>(as: NonEmptyArray<A>) => NonEmptyArray<[A, B]>
 export function zip<A, B>(as: NonEmptyArray<A>, bs: NonEmptyArray<B>): NonEmptyArray<[A, B]>
 export function zip<A, B>(
   as: NonEmptyArray<A>,
-  bs?: NonEmptyArray<B>
+  bs?: NonEmptyArray<B>,
 ): NonEmptyArray<[A, B]> | ((bs: NonEmptyArray<B>) => NonEmptyArray<[B, A]>) {
   if (bs === undefined) {
-    return (bs) => zip(bs, as)
+    return bs => zip(bs, as)
   }
   return zipWith(as, bs, (a, b) => [a, b])
 }
 
-/**
- * @since 2.5.1
- */
+/** @since 2.5.1 */
 export const unzip = <A, B>(abs: NonEmptyArray<[A, B]>): [NonEmptyArray<A>, NonEmptyArray<B>] => {
   const fa: NonEmptyArray<A> = [abs[0][0]]
   const fb: NonEmptyArray<B> = [abs[0][1]]
@@ -510,12 +462,11 @@ export const unzip = <A, B>(abs: NonEmptyArray<[A, B]>): [NonEmptyArray<A>, NonE
 /**
  * Prepend an element to every member of an array
  *
- * @example
- * import { prependAll } from 'fp-ts/NonEmptyArray'
- *
- * assert.deepStrictEqual(prependAll(9)([1, 2, 3, 4]), [9, 1, 9, 2, 9, 3, 9, 4])
- *
  * @since 2.10.0
+ * @example
+ *   import { prependAll } from 'fp-ts/NonEmptyArray'
+ *
+ *   assert.deepStrictEqual(prependAll(9)([1, 2, 3, 4]), [9, 1, 9, 2, 9, 3, 9, 4])
  */
 export const prependAll =
   <A>(middle: A) =>
@@ -530,12 +481,11 @@ export const prependAll =
 /**
  * Places an element in between members of an array
  *
- * @example
- * import { intersperse } from 'fp-ts/NonEmptyArray'
- *
- * assert.deepStrictEqual(intersperse(9)([1, 2, 3, 4]), [1, 9, 2, 9, 3, 9, 4])
- *
  * @since 2.9.0
+ * @example
+ *   import { intersperse } from 'fp-ts/NonEmptyArray'
+ *
+ *   assert.deepStrictEqual(intersperse(9)([1, 2, 3, 4]), [1, 9, 2, 9, 3, 9, 4])
  */
 export const intersperse =
   <A>(middle: A) =>
@@ -545,21 +495,21 @@ export const intersperse =
   }
 
 /**
- * @category folding
  * @since 2.0.0
+ * @category Folding
  */
 export const foldMapWithIndex: <S>(S: Semigroup<S>) => <A>(f: (i: number, a: A) => S) => (fa: NonEmptyArray<A>) => S =
   RNEA.foldMapWithIndex
 
 /**
- * @category folding
  * @since 2.0.0
+ * @category Folding
  */
 export const foldMap: <S>(S: Semigroup<S>) => <A>(f: (a: A) => S) => (fa: NonEmptyArray<A>) => S = RNEA.foldMap
 
 /**
- * @category sequencing
  * @since 2.10.0
+ * @category Sequencing
  */
 export const chainWithIndex =
   <A, B>(f: (i: number, a: A) => NonEmptyArray<B>) =>
@@ -571,9 +521,7 @@ export const chainWithIndex =
     return out
   }
 
-/**
- * @since 2.10.0
- */
+/** @since 2.10.0 */
 export const chop =
   <A, B>(f: (as: NonEmptyArray<A>) => [B, Array<A>]) =>
   (as: NonEmptyArray<A>): NonEmptyArray<B> => {
@@ -600,9 +548,7 @@ export const splitAt =
     return m >= as.length ? [copy(as), []] : [pipe(as.slice(1, m), prepend(head(as))), as.slice(m)]
   }
 
-/**
- * @since 2.10.0
- */
+/** @since 2.10.0 */
 export const chunksOf = (n: number): (<A>(as: NonEmptyArray<A>) => NonEmptyArray<NonEmptyArray<A>>) => chop(splitAt(n))
 
 /* istanbul ignore next */
@@ -618,7 +564,7 @@ const _extend: Extend1<URI>['extend'] = (wa, f) => pipe(wa, extend(f))
 /* istanbul ignore next */
 const _reduce: Foldable1<URI>['reduce'] = (fa, b, f) => pipe(fa, reduce(b, f))
 /* istanbul ignore next */
-const _foldMap: Foldable1<URI>['foldMap'] = (M) => {
+const _foldMap: Foldable1<URI>['foldMap'] = M => {
   const foldMapM = foldMap(M)
   return (fa, f) => pipe(fa, foldMapM(f))
 }
@@ -626,7 +572,7 @@ const _foldMap: Foldable1<URI>['foldMap'] = (M) => {
 const _reduceRight: Foldable1<URI>['reduceRight'] = (fa, b, f) => pipe(fa, reduceRight(b, f))
 /* istanbul ignore next */
 const _traverse: Traversable1<URI>['traverse'] = <F>(
-  F: ApplicativeHKT<F>
+  F: ApplicativeHKT<F>,
 ): (<A, B>(ta: NonEmptyArray<A>, f: (a: A) => HKT<F, B>) => HKT<F, NonEmptyArray<B>>) => {
   const traverseF = traverse(F)
   return (ta, f) => pipe(ta, traverseF(f))
@@ -637,7 +583,7 @@ const _alt: Alt1<URI>['alt'] = (fa, that) => pipe(fa, alt(that))
 const _reduceWithIndex: FoldableWithIndex1<URI, number>['reduceWithIndex'] = (fa, b, f) =>
   pipe(fa, reduceWithIndex(b, f))
 /* istanbul ignore next */
-const _foldMapWithIndex: FoldableWithIndex1<URI, number>['foldMapWithIndex'] = (M) => {
+const _foldMapWithIndex: FoldableWithIndex1<URI, number>['foldMapWithIndex'] = M => {
   const foldMapWithIndexM = foldMapWithIndex(M)
   return (fa, f) => pipe(fa, foldMapWithIndexM(f))
 }
@@ -646,7 +592,7 @@ const _reduceRightWithIndex: FoldableWithIndex1<URI, number>['reduceRightWithInd
   pipe(fa, reduceRightWithIndex(b, f))
 /* istanbul ignore next */
 const _traverseWithIndex: TraversableWithIndex1<URI, number>['traverseWithIndex'] = <F>(
-  F: ApplicativeHKT<F>
+  F: ApplicativeHKT<F>,
 ): (<A, B>(ta: NonEmptyArray<A>, f: (i: number, a: A) => HKT<F, B>) => HKT<F, NonEmptyArray<B>>) => {
   const traverseWithIndexF = traverseWithIndex(F)
   return (ta, f) => pipe(ta, traverseWithIndexF(f))
@@ -657,20 +603,19 @@ const _traverseWithIndex: TraversableWithIndex1<URI, number>['traverseWithIndex'
  *
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
- * @example
- * import * as NEA from 'fp-ts/NonEmptyArray'
- * import { pipe } from 'fp-ts/function'
- *
- * assert.deepStrictEqual(
- *   pipe(
- *     [1, 2, 3] as NEA.NonEmptyArray<number>,
- *     NEA.altW(() => ['a', 'b'])
- *   ),
- *   [1, 2, 3, 'a', 'b']
- * )
- *
- * @category error handling
  * @since 2.9.0
+ * @category Error handling
+ * @example
+ *   import * as NEA from 'fp-ts/NonEmptyArray'
+ *   import { pipe } from 'fp-ts/function'
+ *
+ *   assert.deepStrictEqual(
+ *     pipe(
+ *       [1, 2, 3] as NEA.NonEmptyArray<number>,
+ *       NEA.altW(() => ['a', 'b']),
+ *     ),
+ *     [1, 2, 3, 'a', 'b'],
+ *   )
  */
 export const altW =
   <B>(that: Lazy<NonEmptyArray<B>>) =>
@@ -683,20 +628,19 @@ export const altW =
  *
  * In case of `NonEmptyArray` concatenates the inputs into a single array.
  *
- * @example
- * import * as NEA from 'fp-ts/NonEmptyArray'
- * import { pipe } from 'fp-ts/function'
- *
- * assert.deepStrictEqual(
- *   pipe(
- *     [1, 2, 3],
- *     NEA.alt(() => [4, 5])
- *   ),
- *   [1, 2, 3, 4, 5]
- * )
- *
- * @category error handling
  * @since 2.6.2
+ * @category Error handling
+ * @example
+ *   import * as NEA from 'fp-ts/NonEmptyArray'
+ *   import { pipe } from 'fp-ts/function'
+ *
+ *   assert.deepStrictEqual(
+ *     pipe(
+ *       [1, 2, 3],
+ *       NEA.alt(() => [4, 5]),
+ *     ),
+ *     [1, 2, 3, 4, 5],
+ *   )
  */
 export const alt: <A>(that: Lazy<NonEmptyArray<A>>) => (fa: NonEmptyArray<A>) => NonEmptyArray<A> = altW
 
@@ -706,32 +650,29 @@ export const alt: <A>(that: Lazy<NonEmptyArray<A>>) => (fa: NonEmptyArray<A>) =>
  * @since 2.0.0
  */
 export const ap = <A>(as: NonEmptyArray<A>): (<B>(fab: NonEmptyArray<(a: A) => B>) => NonEmptyArray<B>) =>
-  chain((f) => pipe(as, map(f)))
+  chain(f => pipe(as, map(f)))
 
 /**
  * Composes computations in sequence, using the return value of one computation to determine the next computation.
  *
- * @example
- * import * as NEA from 'fp-ts/NonEmptyArray'
- * import { pipe } from 'fp-ts/function'
- *
- * assert.deepStrictEqual(
- *   pipe(
- *     [1, 2, 3],
- *     NEA.chain((n) => [`a${n}`, `b${n}`])
- *   ),
- *   ['a1', 'b1', 'a2', 'b2', 'a3', 'b3']
- * )
- *
- * @category sequencing
  * @since 2.0.0
+ * @category Sequencing
+ * @example
+ *   import * as NEA from 'fp-ts/NonEmptyArray'
+ *   import { pipe } from 'fp-ts/function'
+ *
+ *   assert.deepStrictEqual(
+ *     pipe(
+ *       [1, 2, 3],
+ *       NEA.chain(n => [`a${n}`, `b${n}`]),
+ *     ),
+ *     ['a1', 'b1', 'a2', 'b2', 'a3', 'b3'],
+ *   )
  */
 export const chain = <A, B>(f: (a: A) => NonEmptyArray<B>): ((ma: NonEmptyArray<A>) => NonEmptyArray<B>) =>
   chainWithIndex((_, a) => f(a))
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export const extend =
   <A, B>(f: (as: NonEmptyArray<A>) => B) =>
   (as: NonEmptyArray<A>): NonEmptyArray<B> => {
@@ -744,14 +685,12 @@ export const extend =
     return out
   }
 
-/**
- * @since 2.5.0
- */
+/** @since 2.5.0 */
 export const duplicate: <A>(ma: NonEmptyArray<A>) => NonEmptyArray<NonEmptyArray<A>> = /*#__PURE__*/ extend(identity)
 
 /**
- * @category sequencing
  * @since 2.5.0
+ * @category Sequencing
  */
 export const flatten: <A>(mma: NonEmptyArray<NonEmptyArray<A>>) => NonEmptyArray<A> = /*#__PURE__*/ chain(identity)
 
@@ -759,14 +698,14 @@ export const flatten: <A>(mma: NonEmptyArray<NonEmptyArray<A>>) => NonEmptyArray
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @category mapping
  * @since 2.0.0
+ * @category Mapping
  */
 export const map = <A, B>(f: (a: A) => B): ((as: NonEmptyArray<A>) => NonEmptyArray<B>) => mapWithIndex((_, a) => f(a))
 
 /**
- * @category mapping
  * @since 2.0.0
+ * @category Mapping
  */
 export const mapWithIndex =
   <A, B>(f: (i: number, a: A) => B) =>
@@ -779,53 +718,53 @@ export const mapWithIndex =
   }
 
 /**
- * @category folding
  * @since 2.0.0
+ * @category Folding
  */
 export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => (fa: NonEmptyArray<A>) => B = RNEA.reduce
 
 /**
- * @category folding
  * @since 2.0.0
+ * @category Folding
  */
 export const reduceWithIndex: <A, B>(b: B, f: (i: number, b: B, a: A) => B) => (fa: NonEmptyArray<A>) => B =
   RNEA.reduceWithIndex
 
 /**
- * @category folding
  * @since 2.0.0
+ * @category Folding
  */
 export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => (fa: NonEmptyArray<A>) => B = RNEA.reduceRight
 
 /**
- * @category folding
  * @since 2.0.0
+ * @category Folding
  */
 export const reduceRightWithIndex: <A, B>(b: B, f: (i: number, a: A, b: B) => B) => (fa: NonEmptyArray<A>) => B =
   RNEA.reduceRightWithIndex
 
 /**
- * @category traversing
  * @since 2.6.3
+ * @category Traversing
  */
 export const traverse: PipeableTraverse1<URI> = <F>(
-  F: ApplicativeHKT<F>
+  F: ApplicativeHKT<F>,
 ): (<A, B>(f: (a: A) => HKT<F, B>) => (as: NonEmptyArray<A>) => HKT<F, NonEmptyArray<B>>) => {
   const traverseWithIndexF = traverseWithIndex(F)
-  return (f) => traverseWithIndexF((_, a) => f(a))
+  return f => traverseWithIndexF((_, a) => f(a))
 }
 
 /**
- * @category traversing
  * @since 2.6.3
+ * @category Traversing
  */
 export const sequence: Traversable1<URI>['sequence'] = <F>(
-  F: ApplicativeHKT<F>
+  F: ApplicativeHKT<F>,
 ): (<A>(as: NonEmptyArray<HKT<F, A>>) => HKT<F, NonEmptyArray<A>>) => traverseWithIndex(F)((_, a) => a)
 
 /**
- * @category sequencing
  * @since 2.6.3
+ * @category Sequencing
  */
 export const traverseWithIndex: PipeableTraverseWithIndex1<URI, number> =
   <F>(F: ApplicativeHKT<F>) =>
@@ -834,27 +773,25 @@ export const traverseWithIndex: PipeableTraverseWithIndex1<URI, number> =
     let out: HKT<F, NonEmptyArray<B>> = F.map(f(0, head(as)), of)
     for (let i = 1; i < as.length; i++) {
       out = F.ap(
-        F.map(out, (bs) => (b: B) => pipe(bs, append(b))),
-        f(i, as[i])
+        F.map(out, bs => (b: B) => pipe(bs, append(b))),
+        f(i, as[i]),
       )
     }
     return out
   }
 
-/**
- * @since 2.7.0
- */
+/** @since 2.7.0 */
 export const extract: Comonad1<URI>['extract'] = RNEA.head
 
 /**
- * @category type lambdas
  * @since 2.0.0
+ * @category Type lambdas
  */
 export const URI = 'NonEmptyArray'
 
 /**
- * @category type lambdas
  * @since 2.0.0
+ * @category Type lambdas
  */
 export type URI = typeof URI
 
@@ -865,87 +802,84 @@ declare module './HKT' {
 }
 
 /**
- * @category instances
  * @since 2.0.0
+ * @category Instances
  */
 export const getShow: <A>(S: Show<A>) => Show<NonEmptyArray<A>> = RNEA.getShow
 
 /**
  * Builds a `Semigroup` instance for `NonEmptyArray`
  *
- * @category instances
  * @since 2.0.0
+ * @category Instances
  */
 export const getSemigroup = <A = never>(): Semigroup<NonEmptyArray<A>> => ({
-  concat
+  concat,
 })
 
 /**
- * @example
- * import { getEq } from 'fp-ts/NonEmptyArray'
- * import * as N from 'fp-ts/number'
- *
- * const E = getEq(N.Eq)
- * assert.strictEqual(E.equals([1, 2], [1, 2]), true)
- * assert.strictEqual(E.equals([1, 2], [1, 3]), false)
- *
- * @category instances
  * @since 2.0.0
+ * @category Instances
+ * @example
+ *   import { getEq } from 'fp-ts/NonEmptyArray'
+ *   import * as N from 'fp-ts/number'
+ *
+ *   const E = getEq(N.Eq)
+ *   assert.strictEqual(E.equals([1, 2], [1, 2]), true)
+ *   assert.strictEqual(E.equals([1, 2], [1, 3]), false)
  */
 export const getEq: <A>(E: Eq<A>) => Eq<NonEmptyArray<A>> = RNEA.getEq
 
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<NonEmptyArray<A>> => {
   const unionE = union(E)
   return {
-    concat: (first, second) => unionE(second)(first)
+    concat: (first, second) => unionE(second)(first),
   }
 }
 
 /**
- * @category instances
  * @since 2.7.0
+ * @category Instances
  */
 export const Functor: Functor1<URI> = {
   URI,
-  map: _map
+  map: _map,
 }
 
 /**
- * @category mapping
  * @since 2.10.0
+ * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Pointed: Pointed1<URI> = {
   URI,
-  of
+  of,
 }
 
 /**
- * @category instances
  * @since 2.7.0
+ * @category Instances
  */
 export const FunctorWithIndex: FunctorWithIndex1<URI, number> = {
   URI,
   map: _map,
-  mapWithIndex: _mapWithIndex
+  mapWithIndex: _mapWithIndex,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Apply: Apply1<URI> = {
   URI,
   map: _map,
-  ap: _ap
+  ap: _ap,
 }
 
 /**
@@ -963,63 +897,63 @@ export const apFirst = /*#__PURE__*/ apFirst_(Apply)
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
 /**
- * @category instances
  * @since 2.7.0
+ * @category Instances
  */
 export const Applicative: Applicative1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  of
+  of,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Chain: Chain1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain
+  chain: _chain,
 }
 
 /**
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @category sequencing
  * @since 2.5.0
+ * @category Sequencing
  */
 export const chainFirst: <A, B>(f: (a: A) => NonEmptyArray<B>) => (first: NonEmptyArray<A>) => NonEmptyArray<A> =
   /*#__PURE__*/ chainFirst_(Chain)
 
 /**
- * @category instances
  * @since 2.7.0
+ * @category Instances
  */
 export const Monad: Monad1<URI> = {
   URI,
   map: _map,
   ap: _ap,
   of,
-  chain: _chain
+  chain: _chain,
 }
 
 /**
- * @category instances
  * @since 2.7.0
+ * @category Instances
  */
 export const Foldable: Foldable1<URI> = {
   URI,
   reduce: _reduce,
   foldMap: _foldMap,
-  reduceRight: _reduceRight
+  reduceRight: _reduceRight,
 }
 
 /**
- * @category instances
  * @since 2.7.0
+ * @category Instances
  */
 export const FoldableWithIndex: FoldableWithIndex1<URI, number> = {
   URI,
@@ -1028,12 +962,12 @@ export const FoldableWithIndex: FoldableWithIndex1<URI, number> = {
   reduceRight: _reduceRight,
   reduceWithIndex: _reduceWithIndex,
   foldMapWithIndex: _foldMapWithIndex,
-  reduceRightWithIndex: _reduceRightWithIndex
+  reduceRightWithIndex: _reduceRightWithIndex,
 }
 
 /**
- * @category instances
  * @since 2.7.0
+ * @category Instances
  */
 export const Traversable: Traversable1<URI> = {
   URI,
@@ -1042,12 +976,12 @@ export const Traversable: Traversable1<URI> = {
   foldMap: _foldMap,
   reduceRight: _reduceRight,
   traverse: _traverse,
-  sequence
+  sequence,
 }
 
 /**
- * @category instances
  * @since 2.7.0
+ * @category Instances
  */
 export const TraversableWithIndex: TraversableWithIndex1<URI, number> = {
   URI,
@@ -1061,28 +995,28 @@ export const TraversableWithIndex: TraversableWithIndex1<URI, number> = {
   reduceWithIndex: _reduceWithIndex,
   foldMapWithIndex: _foldMapWithIndex,
   reduceRightWithIndex: _reduceRightWithIndex,
-  traverseWithIndex: _traverseWithIndex
+  traverseWithIndex: _traverseWithIndex,
 }
 
 /**
- * @category instances
  * @since 2.7.0
+ * @category Instances
  */
 export const Alt: Alt1<URI> = {
   URI,
   map: _map,
-  alt: _alt
+  alt: _alt,
 }
 
 /**
- * @category instances
  * @since 2.7.0
+ * @category Instances
  */
 export const Comonad: Comonad1<URI> = {
   URI,
   map: _map,
   extend: _extend,
-  extract
+  extract,
 }
 
 // -------------------------------------------------------------------------------------
@@ -1090,14 +1024,14 @@ export const Comonad: Comonad1<URI> = {
 // -------------------------------------------------------------------------------------
 
 /**
- * @category do notation
  * @since 2.9.0
+ * @category Do notation
  */
 export const Do: NonEmptyArray<{}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @category do notation
  * @since 2.8.0
+ * @category Do notation
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
 
@@ -1105,21 +1039,21 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @category do notation
    * @since 2.13.0
+   * @category Do notation
    */
-  let_ as let
+  let_ as let,
 }
 
 /**
- * @category do notation
  * @since 2.8.0
+ * @category Do notation
  */
 export const bind = /*#__PURE__*/ bind_(Chain)
 
 /**
- * @category do notation
  * @since 2.8.0
+ * @category Do notation
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
 
@@ -1127,47 +1061,34 @@ export const apS = /*#__PURE__*/ apS_(Apply)
 // utils
 // -------------------------------------------------------------------------------------
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export const head: <A>(nea: NonEmptyArray<A>) => A = RNEA.head
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export const tail = <A>(as: NonEmptyArray<A>): Array<A> => as.slice(1)
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export const last: <A>(nea: NonEmptyArray<A>) => A = RNEA.last
 
 /**
  * Get all but the last element of a non empty array, creating a new array.
  *
- * @example
- * import { init } from 'fp-ts/NonEmptyArray'
- *
- * assert.deepStrictEqual(init([1, 2, 3]), [1, 2])
- * assert.deepStrictEqual(init([1]), [])
- *
  * @since 2.2.0
+ * @example
+ *   import { init } from 'fp-ts/NonEmptyArray'
+ *
+ *   assert.deepStrictEqual(init([1, 2, 3]), [1, 2])
+ *   assert.deepStrictEqual(init([1]), [])
  */
 export const init = <A>(as: NonEmptyArray<A>): Array<A> => as.slice(0, -1)
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export const min: <A>(ord: Ord<A>) => (nea: NonEmptyArray<A>) => A = RNEA.min
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export const max: <A>(ord: Ord<A>) => (nea: NonEmptyArray<A>) => A = RNEA.max
 
-/**
- * @since 2.10.0
- */
+/** @since 2.10.0 */
 export const concatAll =
   <A>(S: Semigroup<A>) =>
   (as: NonEmptyArray<A>): A =>
@@ -1176,8 +1097,8 @@ export const concatAll =
 /**
  * Break an `Array` into its first element and remaining elements.
  *
- * @category pattern matching
  * @since 2.11.0
+ * @category Pattern matching
  */
 export const matchLeft =
   <A, B>(f: (head: A, tail: Array<A>) => B) =>
@@ -1187,8 +1108,8 @@ export const matchLeft =
 /**
  * Break an `Array` into its initial elements and the last element.
  *
- * @category pattern matching
  * @since 2.11.0
+ * @category Pattern matching
  */
 export const matchRight =
   <A, B>(f: (init: Array<A>, last: A) => B) =>
@@ -1231,13 +1152,12 @@ export const updateLast = <A>(a: A): ((as: NonEmptyArray<A>) => NonEmptyArray<A>
 /**
  * Places an element in between members of a `NonEmptyArray`, then folds the results using the provided `Semigroup`.
  *
- * @example
- * import * as S from 'fp-ts/string'
- * import { intercalate } from 'fp-ts/NonEmptyArray'
- *
- * assert.deepStrictEqual(intercalate(S.Semigroup)('-')(['a', 'b', 'c']), 'a-b-c')
- *
  * @since 2.12.0
+ * @example
+ *   import * as S from 'fp-ts/string'
+ *   import { intercalate } from 'fp-ts/NonEmptyArray'
+ *
+ *   assert.deepStrictEqual(intercalate(S.Semigroup)('-')(['a', 'b', 'c']), 'a-b-c')
  */
 export const intercalate: <A>(S: Semigroup<A>) => (middle: A) => (as: NonEmptyArray<A>) => A = RNEA.intercalate
 
@@ -1248,9 +1168,9 @@ export const intercalate: <A>(S: Semigroup<A>) => (middle: A) => (as: NonEmptyAr
 /**
  * This is just `sort` followed by `group`.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export function groupSort<B>(O: Ord<B>): {
   <A extends B>(as: NonEmptyArray<A>): NonEmptyArray<NonEmptyArray<A>>
@@ -1259,15 +1179,15 @@ export function groupSort<B>(O: Ord<B>): {
 export function groupSort<A>(O: Ord<A>): (as: Array<A>) => Array<NonEmptyArray<A>> {
   const sortO = sort(O)
   const groupO = group(O)
-  return (as) => (isNonEmpty(as) ? groupO(sortO(as)) : [])
+  return as => (isNonEmpty(as) ? groupO(sortO(as)) : [])
 }
 
 /**
  * Use [`filter`](./Array.ts.html#filter) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export function filter<A, B extends A>(refinement: Refinement<A, B>): (as: NonEmptyArray<A>) => Option<NonEmptyArray<B>>
 export function filter<A>(predicate: Predicate<A>): <B extends A>(bs: NonEmptyArray<B>) => Option<NonEmptyArray<B>>
@@ -1279,9 +1199,9 @@ export function filter<A>(predicate: Predicate<A>): (as: NonEmptyArray<A>) => Op
 /**
  * Use [`filterWithIndex`](./Array.ts.html#filterwithindex) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const filterWithIndex =
   <A>(predicate: (i: number, a: A) => boolean) =>
@@ -1291,27 +1211,27 @@ export const filterWithIndex =
 /**
  * Use [`unprepend`](#unprepend) instead.
  *
- * @category zone of death
- * @since 2.9.0
  * @deprecated
+ * @since 2.9.0
+ * @category Zone of death
  */
 export const uncons: <A>(as: NonEmptyArray<A>) => [A, Array<A>] = unprepend
 
 /**
  * Use [`unappend`](#unappend) instead.
  *
- * @category zone of death
- * @since 2.9.0
  * @deprecated
+ * @since 2.9.0
+ * @category Zone of death
  */
 export const unsnoc: <A>(as: NonEmptyArray<A>) => [Array<A>, A] = unappend
 
 /**
  * Use [`prepend`](./Array.ts.html#prepend) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export function cons<A>(head: A): (tail: Array<A>) => NonEmptyArray<A>
 /** @deprecated */
@@ -1323,38 +1243,38 @@ export function cons<A>(head: A, tail?: Array<A>): NonEmptyArray<A> | ((tail: Ar
 /**
  * Use [`append`](./Array.ts.html#append) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const snoc = <A>(init: Array<A>, end: A): NonEmptyArray<A> => pipe(init, append(end))
 
 /**
  * Use [`prependAll`](#prependall) instead.
  *
- * @category zone of death
- * @since 2.9.0
  * @deprecated
+ * @since 2.9.0
+ * @category Zone of death
  */
 export const prependToAll = prependAll
 
 /**
  * Use [`concatAll`](#concatall) instead.
  *
- * @category zone of death
- * @since 2.5.0
  * @deprecated
+ * @since 2.5.0
+ * @category Zone of death
  */
 export const fold: <A>(S: Semigroup<A>) => (fa: NonEmptyArray<A>) => A = RNEA.concatAll
 
 /**
- * This instance is deprecated, use small, specific instances instead.
- * For example if a function needs a `Functor` instance, pass `NEA.Functor` instead of `NEA.nonEmptyArray`
- * (where `NEA` is from `import NEA from 'fp-ts/NonEmptyArray'`)
+ * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
+ * instance, pass `NEA.Functor` instead of `NEA.nonEmptyArray` (where `NEA` is from `import NEA from
+ * 'fp-ts/NonEmptyArray'`)
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const nonEmptyArray: Monad1<URI> &
   Comonad1<URI> &
@@ -1379,5 +1299,5 @@ export const nonEmptyArray: Monad1<URI> &
   foldMapWithIndex: _foldMapWithIndex,
   reduceRightWithIndex: _reduceRightWithIndex,
   traverseWithIndex: _traverseWithIndex,
-  alt: _alt
+  alt: _alt,
 }

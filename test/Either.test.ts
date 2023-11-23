@@ -21,30 +21,30 @@ describe('Either', () => {
       U.deepStrictEqual(
         pipe(
           _.right(1),
-          _.alt(() => _.right(2))
+          _.alt(() => _.right(2)),
         ),
-        _.right(1)
+        _.right(1),
       )
       U.deepStrictEqual(
         pipe(
           _.right(1),
-          _.alt(() => _.left('a'))
+          _.alt(() => _.left('a')),
         ),
-        _.right(1)
+        _.right(1),
       )
       U.deepStrictEqual(
         pipe(
           _.left('a'),
-          _.alt(() => _.right(2))
+          _.alt(() => _.right(2)),
         ),
-        _.right(2)
+        _.right(2),
       )
       U.deepStrictEqual(
         pipe(
           _.left('a'),
-          _.alt(() => _.left('b'))
+          _.alt(() => _.left('b')),
         ),
-        _.left('b')
+        _.left('b'),
       )
     })
 
@@ -60,7 +60,7 @@ describe('Either', () => {
       U.deepStrictEqual(pipe(_.right(f), _.ap(_.left('maError'))), _.left('maError'))
       U.deepStrictEqual(
         pipe(_.left<string, (s: string) => number>('mabError'), _.ap(_.right('abc'))),
-        _.left('mabError')
+        _.left('mabError'),
       )
       U.deepStrictEqual(pipe(_.left('mabError'), _.ap(_.left('maError'))), _.left('mabError'))
     })
@@ -111,16 +111,16 @@ describe('Either', () => {
       U.deepStrictEqual(
         pipe(
           _.right(1),
-          _.extend(() => 2)
+          _.extend(() => 2),
         ),
-        _.right(2)
+        _.right(2),
       )
       U.deepStrictEqual(
         pipe(
           _.left('err'),
-          _.extend(() => 2)
+          _.extend(() => 2),
         ),
-        _.left('err')
+        _.left('err'),
       )
     })
 
@@ -147,16 +147,16 @@ describe('Either', () => {
       U.deepStrictEqual(
         pipe(
           _.right('bar'),
-          _.reduce('foo', (b, a) => b + a)
+          _.reduce('foo', (b, a) => b + a),
         ),
-        'foobar'
+        'foobar',
       )
       U.deepStrictEqual(
         pipe(
           _.left('bar'),
-          _.reduce('foo', (b, a) => b + a)
+          _.reduce('foo', (b, a) => b + a),
         ),
-        'foo'
+        'foo',
       )
     })
 
@@ -193,23 +193,23 @@ describe('Either', () => {
     U.deepStrictEqual(
       pipe(
         _.right(12),
-        _.getOrElse(() => 17)
+        _.getOrElse(() => 17),
       ),
-      12
+      12,
     )
     U.deepStrictEqual(
       pipe(
         _.left('a'),
-        _.getOrElse(() => 17)
+        _.getOrElse(() => 17),
       ),
-      17
+      17,
     )
     U.deepStrictEqual(
       pipe(
         _.left('a'),
-        _.getOrElse((l: string) => l.length + 1)
+        _.getOrElse((l: string) => l.length + 1),
       ),
-      2
+      2,
     )
   })
 
@@ -227,30 +227,30 @@ describe('Either', () => {
     U.deepStrictEqual(
       pipe(
         _.right(12),
-        _.filterOrElse(gt10, () => -1)
+        _.filterOrElse(gt10, () => -1),
       ),
-      _.right(12)
+      _.right(12),
     )
     U.deepStrictEqual(
       pipe(
         _.right(7),
-        _.filterOrElse(gt10, () => -1)
+        _.filterOrElse(gt10, () => -1),
       ),
-      _.left(-1)
+      _.left(-1),
     )
     U.deepStrictEqual(
       pipe(
         _.left(12),
-        _.filterOrElse(gt10, () => -1)
+        _.filterOrElse(gt10, () => -1),
       ),
-      _.left(12)
+      _.left(12),
     )
     U.deepStrictEqual(
       pipe(
         _.right(7),
-        _.filterOrElse(gt10, (n) => `invalid ${n}`)
+        _.filterOrElse(gt10, n => `invalid ${n}`),
       ),
-      _.left('invalid 7')
+      _.left('invalid 7'),
     )
 
     type Color = 'red' | 'blue'
@@ -276,30 +276,30 @@ describe('Either', () => {
     U.deepStrictEqual(
       pipe(
         _.right(1),
-        _.orElse(() => _.right(2))
+        _.orElse(() => _.right(2)),
       ),
-      _.right(1)
+      _.right(1),
     )
     U.deepStrictEqual(
       pipe(
         _.right(1),
-        _.orElse(() => _.left('foo'))
+        _.orElse(() => _.left('foo')),
       ),
-      _.right(1)
+      _.right(1),
     )
     U.deepStrictEqual(
       pipe(
         _.left('a'),
-        _.orElse(() => _.right(1))
+        _.orElse(() => _.right(1)),
       ),
-      _.right(1)
+      _.right(1),
     )
     U.deepStrictEqual(
       pipe(
         _.left('a'),
-        _.orElse(() => _.left('b'))
+        _.orElse(() => _.left('b')),
       ),
-      _.left('b')
+      _.left('b'),
     )
   })
 
@@ -312,7 +312,7 @@ describe('Either', () => {
     U.deepStrictEqual(_.parseJSON('{"a":1}', _.toError), _.right({ a: 1 }))
     U.deepStrictEqual(
       _.parseJSON('{"a":}', _.toError),
-      _.left(new SyntaxError('Unexpected token } in JSON at position 5'))
+      _.left(new SyntaxError('Unexpected token } in JSON at position 5')),
     )
   })
 
@@ -323,9 +323,9 @@ describe('Either', () => {
     U.deepStrictEqual(
       pipe(
         _.stringifyJSON(circular, _.toError),
-        _.mapLeft((e) => e.message.includes('Converting circular structure to JSON'))
+        _.mapLeft(e => e.message.includes('Converting circular structure to JSON')),
       ),
-      _.left(true)
+      _.left(true),
     )
     interface Person {
       readonly name: string
@@ -337,14 +337,14 @@ describe('Either', () => {
     // #1397
     U.deepStrictEqual(
       _.stringifyJSON(undefined, _.toError),
-      _.left(new Error('Converting unsupported structure to JSON'))
+      _.left(new Error('Converting unsupported structure to JSON')),
     )
   })
 
   it('fromPredicate', () => {
     const gt2 = _.fromPredicate(
       (n: number) => n >= 2,
-      (n) => `Invalid number ${n}`
+      n => `Invalid number ${n}`,
     )
     U.deepStrictEqual(gt2(3), _.right(3))
     U.deepStrictEqual(gt2(1), _.left('Invalid number 1'))
@@ -352,7 +352,7 @@ describe('Either', () => {
     // refinements
     type Color = 'red' | 'blue'
     const isColor = (s: string): s is Color => s === 'red' || s === 'blue'
-    const from = _.fromPredicate(isColor, (s) => `invalid color ${s}`)
+    const from = _.fromPredicate(isColor, s => `invalid color ${s}`)
     U.deepStrictEqual(from('red'), _.right('red'))
     U.deepStrictEqual(from('foo'), _.left('invalid color foo'))
   })
@@ -368,14 +368,14 @@ describe('Either', () => {
       _.tryCatch(() => {
         return 1
       }, _.toError),
-      _.right(1)
+      _.right(1),
     )
 
     U.deepStrictEqual(
       _.tryCatch(() => {
         throw 'string error'
       }, _.toError),
-      _.left(new Error('string error'))
+      _.left(new Error('string error')),
     )
   })
 
@@ -396,21 +396,21 @@ describe('Either', () => {
       const chainRec = _.ChainRec.chainRec
       U.deepStrictEqual(
         chainRec(1, () => _.left('foo')),
-        _.left('foo')
+        _.left('foo'),
       )
       U.deepStrictEqual(
         chainRec(1, () => _.right(_.right(1))),
-        _.right(1)
+        _.right(1),
       )
       U.deepStrictEqual(
-        chainRec(1, (a) => {
+        chainRec(1, a => {
           if (a < 5) {
             return _.right(_.left(a + 1))
           } else {
             return _.right(_.right(a))
           }
         }),
-        _.right(5)
+        _.right(5),
       )
     })
   })
@@ -523,20 +523,20 @@ describe('Either', () => {
     const A = _.getAltValidation(S.Monoid)
     U.deepStrictEqual(
       A.alt(_.left('a'), () => _.left('b')),
-      _.left('ab')
+      _.left('ab'),
     )
     U.deepStrictEqual(
       A.alt(_.right(1), () => _.left('b')),
-      _.right(1)
+      _.right(1),
     )
     U.deepStrictEqual(
       A.alt(_.left('a'), () => _.right(2)),
-      _.right(2)
+      _.right(2),
     )
     const AV = _.getValidation(S.Monoid)
     U.deepStrictEqual(
       AV.alt(_.left('a'), () => _.left('b')),
-      _.left('ab')
+      _.left('ab'),
     )
   })
 
@@ -585,16 +585,16 @@ describe('Either', () => {
         _.right<string, number>(1),
         _.bindTo('a'),
         _.bind('b', () => _.right('b')),
-        _.let('c', ({ a, b }) => [a, b])
+        _.let('c', ({ a, b }) => [a, b]),
       ),
-      _.right({ a: 1, b: 'b', c: [1, 'b'] })
+      _.right({ a: 1, b: 'b', c: [1, 'b'] }),
     )
   })
 
   it('apS', () => {
     U.deepStrictEqual(
       pipe(_.right<string, number>(1), _.bindTo('a'), _.apS('b', _.right('b'))),
-      _.right({ a: 1, b: 'b' })
+      _.right({ a: 1, b: 'b' }),
     )
   })
 

@@ -17,9 +17,9 @@ describe('Json', () => {
       pipe(
         circular,
         _.stringify,
-        E.mapLeft((e) => (e as Error).message.includes('Converting circular structure to JSON'))
+        E.mapLeft(e => (e as Error).message.includes('Converting circular structure to JSON')),
       ),
-      E.left(true)
+      E.left(true),
     )
     type Person = {
       readonly name: string

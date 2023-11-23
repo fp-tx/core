@@ -34,23 +34,23 @@ describe('These', () => {
       U.deepStrictEqual(
         pipe(
           _.left('b'),
-          _.reduce('a', (b, a) => b + a)
+          _.reduce('a', (b, a) => b + a),
         ),
-        'a'
+        'a',
       )
       U.deepStrictEqual(
         pipe(
           _.right('b'),
-          _.reduce('a', (b, a) => b + a)
+          _.reduce('a', (b, a) => b + a),
         ),
-        'ab'
+        'ab',
       )
       U.deepStrictEqual(
         pipe(
           _.both(1, 'b'),
-          _.reduce('a', (b, a) => b + a)
+          _.reduce('a', (b, a) => b + a),
         ),
-        'ab'
+        'ab',
       )
     })
 
@@ -76,9 +76,9 @@ describe('These', () => {
       U.deepStrictEqual(
         pipe(
           _.both('a', 1),
-          _.traverse(O.Applicative)((n) => (n >= 2 ? O.some(n) : O.none))
+          _.traverse(O.Applicative)(n => (n >= 2 ? O.some(n) : O.none)),
         ),
-        O.none
+        O.none,
       )
     })
 
@@ -108,7 +108,12 @@ describe('These', () => {
 
   it('chain', () => {
     const M = _.getChain(S.Semigroup)
-    const f = (n: number) => (n >= 2 ? (n <= 5 ? _.right(n * 2) : _.both('bar', n)) : _.left('bar'))
+    const f = (n: number) =>
+      n >= 2 ?
+        n <= 5 ?
+          _.right(n * 2)
+        : _.both('bar', n)
+      : _.left('bar')
     U.deepStrictEqual(M.chain(_.left('foo'), f), _.left('foo'))
     U.deepStrictEqual(M.chain(_.right(2), f), _.right(4))
     U.deepStrictEqual(M.chain(_.right(1), f), _.left('bar'))
@@ -247,7 +252,10 @@ describe('These', () => {
   // -------------------------------------------------------------------------------------
 
   it('traverseReadonlyArrayWithIndex', () => {
-    const f = (i: number, n: number) => (n > 0 ? _.right(n + i) : n === 0 ? _.both('a', 0) : _.left(String(n)))
+    const f = (i: number, n: number) =>
+      n > 0 ? _.right(n + i)
+      : n === 0 ? _.both('a', 0)
+      : _.left(String(n))
     const standard = RA.traverseWithIndex(_.getApplicative(S.Semigroup))(f)
     const optimized = _.traverseReadonlyArrayWithIndex(S.Semigroup)(f)
     const assert = (input: ReadonlyArray<number>) => {

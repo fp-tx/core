@@ -1,6 +1,4 @@
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 import { pipe } from './function'
 import { type IO, map } from './IO'
 import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
@@ -23,7 +21,7 @@ export const random: IO<number> = () => Math.random()
 export function randomInt(low: number, high: number): IO<number> {
   return pipe(
     random,
-    map((n) => Math.floor((high - low + 1) * n + low))
+    map(n => Math.floor((high - low + 1) * n + low)),
   )
 }
 
@@ -36,7 +34,7 @@ export function randomInt(low: number, high: number): IO<number> {
 export function randomRange(min: number, max: number): IO<number> {
   return pipe(
     random,
-    map((n) => (max - min) * n + min)
+    map(n => (max - min) * n + min),
   )
 }
 
@@ -47,7 +45,7 @@ export function randomRange(min: number, max: number): IO<number> {
  */
 export const randomBool: IO<boolean> = /*#__PURE__*/ pipe(
   random,
-  map((n) => n < 0.5)
+  map(n => n < 0.5),
 )
 
 /**
@@ -58,5 +56,5 @@ export const randomBool: IO<boolean> = /*#__PURE__*/ pipe(
 export const randomElem = <A>(as: ReadonlyNonEmptyArray<A>): IO<A> =>
   pipe(
     randomInt(0, as.length - 1),
-    map((i) => as[i])
+    map(i => as[i]),
   )

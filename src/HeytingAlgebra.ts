@@ -12,11 +12,13 @@
  * A `HeytingAlgebra` must satisfy the following laws in addition to `BoundedDistributiveLattice` laws:
  *
  * - Implication:
+ *
  *   - `a → a <-> 1`
  *   - `a ∧ (a → b) <-> a ∧ b`
  *   - `b ∧ (a → b) <-> b`
  *   - `a → (b ∧ c) <-> (a → b) ∧ (a → c)`
  * - Complemented
+ *
  *   - `¬a <-> a → 0`
  *
  * @since 2.0.0
@@ -28,8 +30,8 @@ import { type BoundedDistributiveLattice } from './BoundedDistributiveLattice'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface HeytingAlgebra<A> extends BoundedDistributiveLattice<A> {
   readonly implies: (x: A, y: A) => A

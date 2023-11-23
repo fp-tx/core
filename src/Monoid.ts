@@ -11,7 +11,8 @@
  * }
  * ```
  *
- * This `empty` value should be an identity for the `concat` operation, which means the following equalities hold for any choice of `x`.
+ * This `empty` value should be an identity for the `concat` operation, which means the following equalities hold for
+ * any choice of `x`.
  *
  * ```ts
  * concat(x, empty) = concat(empty, x) = x
@@ -24,11 +25,11 @@
  *
  * const monoidString: Monoid<string> = {
  *   concat: (x, y) => x + y,
- *   empty: ''
+ *   empty: '',
  * }
  * ```
  *
- * *Adapted from https://typelevel.org/cats*
+ * _Adapted from https://typelevel.org/cats_
  *
  * @since 2.0.0
  */
@@ -44,8 +45,8 @@ import * as Se from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Monoid<A> extends Se.Semigroup<A> {
   readonly empty: A
@@ -60,40 +61,38 @@ export interface Monoid<A> extends Se.Semigroup<A> {
  *
  * The `empty` value is the `top` value.
  *
- * @example
- * import * as N from 'fp-ts/number'
- * import * as M from 'fp-ts/Monoid'
- *
- * const M1 = M.min(N.Bounded)
- *
- * assert.deepStrictEqual(M1.concat(1, 2), 1)
- *
- * @category constructors
  * @since 2.10.0
+ * @category Constructors
+ * @example
+ *   import * as N from 'fp-ts/number'
+ *   import * as M from 'fp-ts/Monoid'
+ *
+ *   const M1 = M.min(N.Bounded)
+ *
+ *   assert.deepStrictEqual(M1.concat(1, 2), 1)
  */
 export const min = <A>(B: Bounded<A>): Monoid<A> => ({
   concat: Se.min(B).concat,
-  empty: B.top
+  empty: B.top,
 })
 /**
  * Get a monoid where `concat` will return the maximum, based on the provided bounded order.
  *
  * The `empty` value is the `bottom` value.
  *
- * @example
- * import * as N from 'fp-ts/number'
- * import * as M from 'fp-ts/Monoid'
- *
- * const M1 = M.max(N.Bounded)
- *
- * assert.deepStrictEqual(M1.concat(1, 2), 2)
- *
- * @category constructors
  * @since 2.10.0
+ * @category Constructors
+ * @example
+ *   import * as N from 'fp-ts/number'
+ *   import * as M from 'fp-ts/Monoid'
+ *
+ *   const M1 = M.max(N.Bounded)
+ *
+ *   assert.deepStrictEqual(M1.concat(1, 2), 2)
  */
 export const max = <A>(B: Bounded<A>): Monoid<A> => ({
   concat: Se.max(B).concat,
-  empty: B.bottom
+  empty: B.bottom,
 })
 
 // -------------------------------------------------------------------------------------
@@ -103,41 +102,41 @@ export const max = <A>(B: Bounded<A>): Monoid<A> => ({
 /**
  * The dual of a `Monoid`, obtained by swapping the arguments of `concat`.
  *
- * @example
- * import { reverse } from 'fp-ts/Monoid'
- * import * as S from 'fp-ts/string'
- *
- * assert.deepStrictEqual(reverse(S.Monoid).concat('a', 'b'), 'ba')
- *
  * @since 2.10.0
+ * @example
+ *   import { reverse } from 'fp-ts/Monoid'
+ *   import * as S from 'fp-ts/string'
+ *
+ *   assert.deepStrictEqual(reverse(S.Monoid).concat('a', 'b'), 'ba')
  */
 export const reverse = <A>(M: Monoid<A>): Monoid<A> => ({
   concat: Se.reverse(M).concat,
-  empty: M.empty
+  empty: M.empty,
 })
 
 /**
  * Given a struct of monoids returns a monoid for the struct.
  *
- * @example
- * import { struct } from 'fp-ts/Monoid'
- * import * as N from 'fp-ts/number'
- *
- * interface Point {
- *   readonly x: number
- *   readonly y: number
- * }
- *
- * const M = struct<Point>({
- *   x: N.MonoidSum,
- *   y: N.MonoidSum
- * })
- *
- * assert.deepStrictEqual(M.concat({ x: 1, y: 2 }, { x: 3, y: 4 }), { x: 4, y: 6 })
- *
  * @since 2.10.0
+ * @example
+ *   import { struct } from 'fp-ts/Monoid'
+ *   import * as N from 'fp-ts/number'
+ *
+ *   interface Point {
+ *     readonly x: number
+ *     readonly y: number
+ *   }
+ *
+ *   const M = struct<Point>({
+ *     x: N.MonoidSum,
+ *     y: N.MonoidSum,
+ *   })
+ *
+ *   assert.deepStrictEqual(M.concat({ x: 1, y: 2 }, { x: 3, y: 4 }), { x: 4, y: 6 })
  */
-export const struct = <A>(monoids: { [K in keyof A]: Monoid<A[K]> }): Monoid<{ readonly [K in keyof A]: A[K] }> => {
+export const struct = <A>(monoids: { [K in keyof A]: Monoid<A[K]> }): Monoid<{
+  readonly [K in keyof A]: A[K]
+}> => {
   const empty: A = {} as any
   for (const k in monoids) {
     if (_.has.call(monoids, k)) {
@@ -146,33 +145,32 @@ export const struct = <A>(monoids: { [K in keyof A]: Monoid<A[K]> }): Monoid<{ r
   }
   return {
     concat: Se.struct(monoids).concat,
-    empty
+    empty,
   }
 }
 
 /**
  * Given a tuple of monoids returns a monoid for the tuple.
  *
- * @example
- * import { tuple } from 'fp-ts/Monoid'
- * import * as B from 'fp-ts/boolean'
- * import * as N from 'fp-ts/number'
- * import * as S from 'fp-ts/string'
- *
- * const M1 = tuple(S.Monoid, N.MonoidSum)
- * assert.deepStrictEqual(M1.concat(['a', 1], ['b', 2]), ['ab', 3])
- *
- * const M2 = tuple(S.Monoid, N.MonoidSum, B.MonoidAll)
- * assert.deepStrictEqual(M2.concat(['a', 1, true], ['b', 2, false]), ['ab', 3, false])
- *
  * @since 2.10.0
+ * @example
+ *   import { tuple } from 'fp-ts/Monoid'
+ *   import * as B from 'fp-ts/boolean'
+ *   import * as N from 'fp-ts/number'
+ *   import * as S from 'fp-ts/string'
+ *
+ *   const M1 = tuple(S.Monoid, N.MonoidSum)
+ *   assert.deepStrictEqual(M1.concat(['a', 1], ['b', 2]), ['ab', 3])
+ *
+ *   const M2 = tuple(S.Monoid, N.MonoidSum, B.MonoidAll)
+ *   assert.deepStrictEqual(M2.concat(['a', 1, true], ['b', 2, false]), ['ab', 3, false])
  */
 export const tuple = <A extends ReadonlyArray<unknown>>(
   ...monoids: { [K in keyof A]: Monoid<A[K]> }
 ): Monoid<Readonly<A>> =>
   ({
     concat: Se.tuple(...(monoids as any)).concat,
-    empty: monoids.map((m) => m.empty)
+    empty: monoids.map(m => m.empty),
   }) as any
 
 // -------------------------------------------------------------------------------------
@@ -184,14 +182,13 @@ export const tuple = <A extends ReadonlyArray<unknown>>(
  *
  * If `as` is empty, return the monoid `empty` value.
  *
- * @example
- * import { concatAll } from 'fp-ts/Monoid'
- * import * as N from 'fp-ts/number'
- *
- * assert.deepStrictEqual(concatAll(N.MonoidSum)([1, 2, 3]), 6)
- * assert.deepStrictEqual(concatAll(N.MonoidSum)([]), 0)
- *
  * @since 2.10.0
+ * @example
+ *   import { concatAll } from 'fp-ts/Monoid'
+ *   import * as N from 'fp-ts/number'
+ *
+ *   assert.deepStrictEqual(concatAll(N.MonoidSum)([1, 2, 3]), 6)
+ *   assert.deepStrictEqual(concatAll(N.MonoidSum)([]), 0)
  */
 export const concatAll = <A>(M: Monoid<A>): ((as: ReadonlyArray<A>) => A) => Se.concatAll(M)(M.empty)
 
@@ -202,21 +199,21 @@ export const concatAll = <A>(M: Monoid<A>): ((as: ReadonlyArray<A>) => A) => Se.
 /**
  * Use [`Monoid`](./void.ts.html#monoid) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const monoidVoid: Monoid<void> = {
   concat: Se.semigroupVoid.concat,
-  empty: undefined
+  empty: undefined,
 }
 
 /**
  * Use [`tuple`](#tuple) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const getTupleMonoid: <T extends ReadonlyArray<Monoid<any>>>(
   ...monoids: T
@@ -225,9 +222,9 @@ export const getTupleMonoid: <T extends ReadonlyArray<Monoid<any>>>(
 /**
  * Use [`struct`](#struct) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const getStructMonoid: <O extends ReadonlyRecord<string, any>>(monoids: {
   [K in keyof O]: Monoid<O[K]>
@@ -236,69 +233,69 @@ export const getStructMonoid: <O extends ReadonlyRecord<string, any>>(monoids: {
 /**
  * Use [`reverse`](#reverse) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const getDualMonoid = reverse
 
 /**
  * Use [`max`](#max) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const getJoinMonoid = max
 
 /**
  * Use [`min`](#min) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const getMeetMonoid = min
 
 /**
  * Use [`concatAll`](#concatall) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const fold = concatAll
 
 /**
  * Use [`MonoidAll`](./boolean.ts.html#monoidall) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const monoidAll: Monoid<boolean> = {
   concat: Se.semigroupAll.concat,
-  empty: true
+  empty: true,
 }
 
 /**
  * Use [`MonoidAny`](./boolean.ts.html#monoidany) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const monoidAny: Monoid<boolean> = {
   concat: Se.semigroupAny.concat,
-  empty: false
+  empty: false,
 }
 
 /**
  * Use [`getMonoid`](./function.ts.html#getmonoid) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const getFunctionMonoid: <M>(M: Monoid<M>) => <A = never>() => Monoid<(a: A) => M> = getFM
 
@@ -307,44 +304,44 @@ export const getFunctionMonoid: <M>(M: Monoid<M>) => <A = never>() => Monoid<(a:
  *
  * **Note**. The execution order in [`getEndomorphismMonoid`](./function.ts.html#getendomorphismmonoid) is reversed.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => reverse(getEM())
 
 /**
  * Use [`Monoid`](./string.ts.html#monoid) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const monoidString: Monoid<string> = {
   concat: Se.semigroupString.concat,
-  empty: ''
+  empty: '',
 }
 
 /**
  * Use [`MonoidSum`](./number.ts.html#monoidsum) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const monoidSum: Monoid<number> = {
   concat: Se.semigroupSum.concat,
-  empty: 0
+  empty: 0,
 }
 
 /**
  * Use [`MonoidProduct`](./number.ts.html#monoidproduct) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const monoidProduct: Monoid<number> = {
   concat: Se.semigroupProduct.concat,
-  empty: 1
+  empty: 1,
 }

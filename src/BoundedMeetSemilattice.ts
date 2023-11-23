@@ -12,8 +12,8 @@ import { type MeetSemilattice } from './MeetSemilattice'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface BoundedMeetSemilattice<A> extends MeetSemilattice<A> {
   readonly one: A

@@ -15,7 +15,9 @@ describe('Witherable', () => {
     it('Applicative1', async () => {
       const f = (n: number) => T.of(n % 2 === 0)
       U.deepStrictEqual(await pipe([1, 2], filterERA(T.ApplicativePar)(f))(), [2])
-      U.deepStrictEqual(await pipe({ a: 1, b: 2 }, filterERR(T.ApplicativePar)(f))(), { b: 2 })
+      U.deepStrictEqual(await pipe({ a: 1, b: 2 }, filterERR(T.ApplicativePar)(f))(), {
+        b: 2,
+      })
     })
 
     it('Applicative2', async () => {

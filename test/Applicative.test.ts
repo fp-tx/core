@@ -13,7 +13,7 @@ describe('Applicative', () => {
       O.some(2),
       O.some(4),
       O.some(2),
-      O.some(3)
+      O.some(3),
     ])
     U.deepStrictEqual(AC.ap([O.some(U.double), O.none], [O.some(1), O.some(2)]), [O.some(2), O.some(4), O.none, O.none])
   })

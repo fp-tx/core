@@ -22,7 +22,7 @@ interface User {
 
 const ordUser = pipe(
   S.Ord,
-  Ord.contramap((u: User) => u.id)
+  Ord.contramap((u: User) => u.id),
 )
 
 const eqUser: Eq<User> = { equals: ordUser.equals }
@@ -49,7 +49,7 @@ const key1 = { id: 1 }
 const value1 = { value: 1 }
 const repo = new Map<Key, Value>([
   [key1, value1],
-  [{ id: 2 }, { value: 2 }]
+  [{ id: 2 }, { value: 2 }],
 ])
 
 describe('ReadonlyMap', () => {
@@ -59,14 +59,14 @@ describe('ReadonlyMap', () => {
         pipe(
           new Map<string, number>([
             ['k1', 1],
-            ['k2', 2]
+            ['k2', 2],
           ]),
-          _.map(U.double)
+          _.map(U.double),
         ),
         new Map<string, number>([
           ['k1', 2],
-          ['k2', 4]
-        ])
+          ['k2', 4],
+        ]),
       )
     })
 
@@ -75,11 +75,11 @@ describe('ReadonlyMap', () => {
         pipe(
           new Map<string, number>([
             ['a', 1],
-            ['b', 3]
+            ['b', 3],
           ]),
-          _.filter(p)
+          _.filter(p),
         ),
-        new Map<string, number>([['b', 3]])
+        new Map<string, number>([['b', 3]]),
       )
 
       // refinements
@@ -88,11 +88,11 @@ describe('ReadonlyMap', () => {
         pipe(
           new Map<string, string | number>([
             ['a', 1],
-            ['b', 'foo']
+            ['b', 'foo'],
           ]),
-          _.filter(isNumber)
+          _.filter(isNumber),
         ),
-        new Map<string, number>([['a', 1]])
+        new Map<string, number>([['a', 1]]),
       )
     })
 
@@ -104,11 +104,11 @@ describe('ReadonlyMap', () => {
         pipe(
           new Map<string, number>([
             ['a', 1],
-            ['b', 3]
+            ['b', 3],
           ]),
-          _.filterMap(f)
+          _.filterMap(f),
         ),
-        new Map<string, number>([['b', 4]])
+        new Map<string, number>([['b', 4]]),
       )
     })
 
@@ -120,11 +120,11 @@ describe('ReadonlyMap', () => {
         pipe(
           new Map<string, number>([
             ['a', 1],
-            ['b', 3]
+            ['b', 3],
           ]),
-          _.partitionMap(f)
+          _.partitionMap(f),
         ),
-        separated(new Map<string, number>([['a', 0]]), new Map<string, number>([['b', 4]]))
+        separated(new Map<string, number>([['a', 0]]), new Map<string, number>([['b', 4]])),
       )
     })
 
@@ -135,11 +135,11 @@ describe('ReadonlyMap', () => {
         pipe(
           new Map<string, number>([
             ['a', 1],
-            ['b', 3]
+            ['b', 3],
           ]),
-          _.partition(p)
+          _.partition(p),
         ),
-        separated(new Map<string, number>([['a', 1]]), new Map<string, number>([['b', 3]]))
+        separated(new Map<string, number>([['a', 1]]), new Map<string, number>([['b', 3]])),
       )
     })
   })
@@ -169,7 +169,7 @@ describe('ReadonlyMap', () => {
   it('member', () => {
     const x = new Map<User, number>([
       [{ id: 'a' }, 1],
-      [{ id: 'b' }, 2]
+      [{ id: 'b' }, 2],
     ])
     const memberS = _.member(eqUser)
     U.deepStrictEqual(memberS({ id: 'a' }, x), true)
@@ -191,7 +191,7 @@ describe('ReadonlyMap', () => {
   it('elem', () => {
     const x = new Map<string, number>([
       ['a', 1],
-      ['b', 2]
+      ['b', 2],
     ])
     const elemS = _.elem(N.Eq)
     U.deepStrictEqual(elemS(2, x), true)
@@ -213,7 +213,7 @@ describe('ReadonlyMap', () => {
   it('keys', () => {
     const m = new Map<User, number>([
       [{ id: 'b' }, 2],
-      [{ id: 'a' }, 1]
+      [{ id: 'a' }, 1],
     ])
     const ks = _.keys(ordUser)(m)
     U.deepStrictEqual(ks, Array.from(m.keys()).sort(ordUser.compare))
@@ -223,26 +223,26 @@ describe('ReadonlyMap', () => {
       _.keys(S.Ord)(
         new Map([
           ['a', 1],
-          ['b', 2]
-        ])
+          ['b', 2],
+        ]),
       ),
-      ['a', 'b']
+      ['a', 'b'],
     )
     U.deepStrictEqual(
       _.keys(S.Ord)(
         new Map([
           ['b', 2],
-          ['a', 1]
-        ])
+          ['a', 1],
+        ]),
       ),
-      ['a', 'b']
+      ['a', 'b'],
     )
   })
 
   it('values', () => {
     const m = new Map<number, User>([
       [2, { id: 'b' }],
-      [1, { id: 'a' }]
+      [1, { id: 'a' }],
     ])
     const vals = _.values(ordUser)(m)
     U.deepStrictEqual(vals, Array.from(m.values()).sort(ordUser.compare))
@@ -252,11 +252,11 @@ describe('ReadonlyMap', () => {
   it('collect', () => {
     const m1 = new Map<User, number>([
       [{ id: 'a' }, 1],
-      [{ id: 'b' }, 2]
+      [{ id: 'b' }, 2],
     ])
     const m2 = new Map<User, number>([
       [{ id: 'b' }, 2],
-      [{ id: 'a' }, 1]
+      [{ id: 'a' }, 1],
     ])
     const collectO = _.collect(ordUser)
     const f = (_k: User, a: number): number => a + 1
@@ -269,69 +269,69 @@ describe('ReadonlyMap', () => {
       collect(g)(
         new Map([
           [{ id: 1 }, { value: 1 }],
-          [{ id: 2 }, { value: 2 }]
-        ])
+          [{ id: 2 }, { value: 2 }],
+        ]),
       ),
       [
         [1, 1],
-        [2, 2]
-      ]
+        [2, 2],
+      ],
     )
     U.deepStrictEqual(
       collect(g)(
         new Map([
           [{ id: 2 }, { value: 2 }],
-          [{ id: 1 }, { value: 1 }]
-        ])
+          [{ id: 1 }, { value: 1 }],
+        ]),
       ),
       [
         [1, 1],
-        [2, 2]
-      ]
+        [2, 2],
+      ],
     )
     U.deepStrictEqual(
       collect(g)(
         new Map([
           [{ id: 4 }, { value: 1 }],
-          [{ id: 2 }, { value: 2 }]
-        ])
+          [{ id: 2 }, { value: 2 }],
+        ]),
       ),
       [
         [4, 1],
-        [2, 2]
-      ]
+        [2, 2],
+      ],
     )
     U.deepStrictEqual(
       collect(g)(
         new Map([
           [{ id: 2 }, { value: 2 }],
-          [{ id: 4 }, { value: 1 }]
-        ])
+          [{ id: 4 }, { value: 1 }],
+        ]),
       ),
       [
         [4, 1],
-        [2, 2]
-      ]
+        [2, 2],
+      ],
     )
   })
 
   it('toReadonlyArray', () => {
     const m1 = new Map<User, number>([
       [{ id: 'a' }, 1],
-      [{ id: 'b' }, 2]
+      [{ id: 'b' }, 2],
     ])
     const m2 = new Map<User, number>([
       [{ id: 'b' }, 2],
-      [{ id: 'a' }, 1]
+      [{ id: 'a' }, 1],
     ])
     const toArrayO = _.toReadonlyArray(ordUser)
     U.deepStrictEqual(toArrayO(m1), [
       [{ id: 'a' }, 1],
-      [{ id: 'b' }, 2]
+      [{ id: 'b' }, 2],
     ])
     U.deepStrictEqual(toArrayO(m2), [
       [{ id: 'a' }, 1],
-      [{ id: 'b' }, 2]
+      [{ id: 'b' }, 2],
     ])
 
     const toArray = _.toReadonlyArray(ordKey)
@@ -339,49 +339,49 @@ describe('ReadonlyMap', () => {
       toArray(
         new Map([
           [{ id: 1 }, 1],
-          [{ id: 2 }, 2]
-        ])
+          [{ id: 2 }, 2],
+        ]),
       ),
       [
         [{ id: 1 }, 1],
-        [{ id: 2 }, 2]
-      ]
+        [{ id: 2 }, 2],
+      ],
     )
     U.deepStrictEqual(
       toArray(
         new Map([
           [{ id: 2 }, 2],
-          [{ id: 1 }, 1]
-        ])
+          [{ id: 1 }, 1],
+        ]),
       ),
       [
         [{ id: 1 }, 1],
-        [{ id: 2 }, 2]
-      ]
+        [{ id: 2 }, 2],
+      ],
     )
     U.deepStrictEqual(
       toArray(
         new Map([
           [{ id: 4 }, 1],
-          [{ id: 2 }, 2]
-        ])
+          [{ id: 2 }, 2],
+        ]),
       ),
       [
         [{ id: 4 }, 1],
-        [{ id: 2 }, 2]
-      ]
+        [{ id: 2 }, 2],
+      ],
     )
     U.deepStrictEqual(
       toArray(
         new Map([
           [{ id: 2 }, 2],
-          [{ id: 4 }, 1]
-        ])
+          [{ id: 4 }, 1],
+        ]),
       ),
       [
         [{ id: 4 }, 1],
-        [{ id: 2 }, 2]
-      ]
+        [{ id: 2 }, 2],
+      ],
     )
   })
 
@@ -395,49 +395,49 @@ describe('ReadonlyMap', () => {
       toUnfoldable(
         new Map([
           [{ id: 1 }, 1],
-          [{ id: 2 }, 2]
-        ])
+          [{ id: 2 }, 2],
+        ]),
       ),
       [
         [{ id: 1 }, 1],
-        [{ id: 2 }, 2]
-      ]
+        [{ id: 2 }, 2],
+      ],
     )
     U.deepStrictEqual(
       toUnfoldable(
         new Map([
           [{ id: 2 }, 2],
-          [{ id: 1 }, 1]
-        ])
+          [{ id: 1 }, 1],
+        ]),
       ),
       [
         [{ id: 1 }, 1],
-        [{ id: 2 }, 2]
-      ]
+        [{ id: 2 }, 2],
+      ],
     )
     U.deepStrictEqual(
       toUnfoldable(
         new Map([
           [{ id: 4 }, 1],
-          [{ id: 2 }, 2]
-        ])
+          [{ id: 2 }, 2],
+        ]),
       ),
       [
         [{ id: 4 }, 1],
-        [{ id: 2 }, 2]
-      ]
+        [{ id: 2 }, 2],
+      ],
     )
     U.deepStrictEqual(
       toUnfoldable(
         new Map([
           [{ id: 2 }, 2],
-          [{ id: 4 }, 1]
-        ])
+          [{ id: 4 }, 1],
+        ]),
       ),
       [
         [{ id: 4 }, 1],
-        [{ id: 2 }, 2]
-      ]
+        [{ id: 2 }, 2],
+      ],
     )
   })
 
@@ -446,16 +446,16 @@ describe('ReadonlyMap', () => {
     const a1 = new Map<User, number>([[{ id: 'a' }, 1]])
     const a1b2 = new Map<User, number>([
       [{ id: 'a' }, 1],
-      [{ id: 'b' }, 2]
+      [{ id: 'b' }, 2],
     ])
     const a2b2 = new Map<User, number>([
       [{ id: 'a' }, 2],
-      [{ id: 'b' }, 2]
+      [{ id: 'b' }, 2],
     ])
     const a1b2c3 = new Map<User, number>([
       [{ id: 'a' }, 1],
       [{ id: 'b' }, 2],
-      [{ id: 'c' }, 3]
+      [{ id: 'c' }, 3],
     ])
     const insertS = _.insertAt(eqUser)
     U.deepStrictEqual(insertS({ id: 'a' }, 1)(emptyMap), a1)
@@ -470,50 +470,50 @@ describe('ReadonlyMap', () => {
       x,
       new Map<Key, Value>([
         [{ id: 1 }, { value: 1 }],
-        [{ id: 2 }, { value: 2 }]
-      ])
+        [{ id: 2 }, { value: 2 }],
+      ]),
     )
     U.deepStrictEqual(x.get(key1), value1)
     U.deepStrictEqual(
       insert({ id: 1 }, { value: 2 })(repo),
       new Map<Key, Value>([
         [{ id: 1 }, { value: 2 }],
-        [{ id: 2 }, { value: 2 }]
-      ])
+        [{ id: 2 }, { value: 2 }],
+      ]),
     )
     U.deepStrictEqual(
       insert({ id: 4 }, { value: 2 })(repo),
       new Map<Key, Value>([
         [{ id: 1 }, { value: 2 }],
-        [{ id: 2 }, { value: 2 }]
-      ])
+        [{ id: 2 }, { value: 2 }],
+      ]),
     )
     U.deepStrictEqual(
       insert({ id: 3 }, { value: 3 })(repo),
       new Map<Key, Value>([
         [{ id: 1 }, { value: 1 }],
         [{ id: 2 }, { value: 2 }],
-        [{ id: 3 }, { value: 3 }]
-      ])
+        [{ id: 3 }, { value: 3 }],
+      ]),
     )
     // should not modify the source
     U.deepStrictEqual(
       repo,
       new Map([
         [{ id: 1 }, { value: 1 }],
-        [{ id: 2 }, { value: 2 }]
-      ])
+        [{ id: 2 }, { value: 2 }],
+      ]),
     )
   })
 
   it('deleteAt', () => {
     const a1b2 = new Map<User, number>([
       [{ id: 'a' }, 1],
-      [{ id: 'b' }, 2]
+      [{ id: 'b' }, 2],
     ])
     const a1b2_ = new Map<User, number>([
       [{ id: 'a' }, 1],
-      [{ id: 'b' }, 2]
+      [{ id: 'b' }, 2],
     ])
     const b2 = new Map<User, number>([[{ id: 'b' }, 2]])
     const removeS = _.deleteAt(eqUser)
@@ -530,15 +530,15 @@ describe('ReadonlyMap', () => {
       repo,
       new Map([
         [{ id: 1 }, { value: 1 }],
-        [{ id: 2 }, { value: 2 }]
-      ])
+        [{ id: 2 }, { value: 2 }],
+      ]),
     )
   })
 
   it('pop', () => {
     const a1b2 = new Map<User, number>([
       [{ id: 'a' }, 1],
-      [{ id: 'b' }, 2]
+      [{ id: 'b' }, 2],
     ])
     const b2 = new Map<User, number>([[{ id: 'b' }, 2]])
     const popS = _.pop(eqUser)
@@ -554,8 +554,8 @@ describe('ReadonlyMap', () => {
       repo,
       new Map([
         [{ id: 1 }, { value: 1 }],
-        [{ id: 2 }, { value: 2 }]
-      ])
+        [{ id: 2 }, { value: 2 }],
+      ]),
     )
   })
 
@@ -597,7 +597,7 @@ describe('ReadonlyMap', () => {
     const me = new Map<User, number>([[{ id: 'a' }, 1]])
     const that = new Map<User, number>([
       [{ id: 'a' }, 1],
-      [{ id: 'b' }, 2]
+      [{ id: 'b' }, 2],
     ])
     const isSubmapS = _.isSubmap(eqUser, N.Eq)
     U.deepStrictEqual(isSubmapS(me, that), true)
@@ -646,67 +646,67 @@ describe('ReadonlyMap', () => {
       equals(
         new Map([
           [{ id: 1 }, { value: 1 }],
-          [{ id: 2 }, { value: 2 }]
+          [{ id: 2 }, { value: 2 }],
         ]),
-        repo
+        repo,
       ),
-      true
+      true,
     )
     U.deepStrictEqual(
       equals(
         new Map([
           [{ id: 1 }, { value: 2 }],
-          [{ id: 2 }, { value: 2 }]
+          [{ id: 2 }, { value: 2 }],
         ]),
-        repo
+        repo,
       ),
-      false
+      false,
     )
     U.deepStrictEqual(
       equals(
         new Map([
           [{ id: 1 }, { value: 4 }],
-          [{ id: 2 }, { value: 2 }]
+          [{ id: 2 }, { value: 2 }],
         ]),
-        repo
+        repo,
       ),
-      true
+      true,
     )
     U.deepStrictEqual(
       equals(
         new Map([
           [{ id: 4 }, { value: 1 }],
-          [{ id: 2 }, { value: 2 }]
+          [{ id: 2 }, { value: 2 }],
         ]),
-        repo
+        repo,
       ),
-      true
+      true,
     )
     U.deepStrictEqual(
       equals(
         new Map([
           [{ id: 3 }, { value: 3 }],
-          [{ id: 2 }, { value: 2 }]
+          [{ id: 2 }, { value: 2 }],
         ]),
-        repo
+        repo,
       ),
-      false
+      false,
     )
   })
 
   it('getMonoid', () => {
     const d1 = new Map<User, number>([
       [{ id: 'k1' }, 1],
-      [{ id: 'k2' }, 3]
+      [{ id: 'k2' }, 3],
     ])
     const d2 = new Map<User, number>([
       [{ id: 'k2' }, 2],
-      [{ id: 'k3' }, 4]
+      [{ id: 'k3' }, 4],
     ])
     const expected = new Map<User, number>([
       [{ id: 'k1' }, 1],
       [{ id: 'k2' }, 5],
-      [{ id: 'k3' }, 4]
+      [{ id: 'k3' }, 4],
     ])
     const M1 = _.getMonoid(eqUser, N.SemigroupSum)
     U.deepStrictEqual(M1.concat(d1, d2), expected)
@@ -719,22 +719,22 @@ describe('ReadonlyMap', () => {
       new Map([
         [{ id: 1 }, { value: 1 }],
         [{ id: 2 }, { value: 2 }],
-        [{ id: 3 }, { value: 3 }]
-      ])
+        [{ id: 3 }, { value: 3 }],
+      ]),
     )
     U.deepStrictEqual(
       M2.concat(repo, new Map([[{ id: 1 }, { value: 2 }]])),
       new Map([
         [{ id: 1 }, { value: 3 }],
-        [{ id: 2 }, { value: 2 }]
-      ])
+        [{ id: 2 }, { value: 2 }],
+      ]),
     )
     U.deepStrictEqual(
       M2.concat(repo, new Map([[{ id: 4 }, { value: 2 }]])),
       new Map([
         [{ id: 1 }, { value: 3 }],
-        [{ id: 2 }, { value: 2 }]
-      ])
+        [{ id: 2 }, { value: 2 }],
+      ]),
     )
   })
 
@@ -743,7 +743,7 @@ describe('ReadonlyMap', () => {
       it('compact', () => {
         const fooBar = new Map<string, O.Option<number>>([
           ['foo', O.none],
-          ['bar', O.some(123)]
+          ['bar', O.some(123)],
         ])
         const bar = new Map<string, number>([['bar', 123]])
         U.deepStrictEqual(_.compact(fooBar), bar)
@@ -752,7 +752,7 @@ describe('ReadonlyMap', () => {
       it('separate', () => {
         const fooBar = new Map<string, Either<number, number>>([
           ['foo', left(123)],
-          ['bar', right(123)]
+          ['bar', right(123)],
         ])
         const foo = new Map<string, number>([['foo', 123]])
         const bar = new Map<string, number>([['bar', 123]])
@@ -768,15 +768,15 @@ describe('ReadonlyMap', () => {
       const traverse = T.traverse(O.Applicative)
       const x = new Map([
         [{ id: 'k1' }, 1],
-        [{ id: 'k2' }, 2]
+        [{ id: 'k2' }, 2],
       ])
       U.deepStrictEqual(
-        traverse(x, (n) => (n <= 2 ? O.some(n) : O.none)),
-        O.some(x)
+        traverse(x, n => (n <= 2 ? O.some(n) : O.none)),
+        O.some(x),
       )
       U.deepStrictEqual(
-        traverse(x, (n) => (n >= 2 ? O.some(n) : O.none)),
-        O.none
+        traverse(x, n => (n >= 2 ? O.some(n) : O.none)),
+        O.none,
       )
     })
 
@@ -786,24 +786,24 @@ describe('ReadonlyMap', () => {
         sequence(
           new Map([
             [{ id: 'k1' }, O.some(1)],
-            [{ id: 'k2' }, O.some(2)]
-          ])
+            [{ id: 'k2' }, O.some(2)],
+          ]),
         ),
         O.some(
           new Map<User, number>([
             [{ id: 'k1' }, 1],
-            [{ id: 'k2' }, 2]
-          ])
-        )
+            [{ id: 'k2' }, 2],
+          ]),
+        ),
       )
       U.deepStrictEqual(
         sequence(
           new Map([
             [{ id: 'k1' }, O.none],
-            [{ id: 'k2' }, O.some(2)]
-          ])
+            [{ id: 'k2' }, O.some(2)],
+          ]),
         ),
-        O.none
+        O.none,
       )
     })
   })
@@ -823,9 +823,9 @@ describe('ReadonlyMap', () => {
       W.traverseWithIndex(IO.Applicative)(
         new Map([
           ['b', append('b')],
-          ['a', append('a')]
+          ['a', append('a')],
         ]),
-        (_, io) => io
+        (_, io) => io,
       )()
       U.deepStrictEqual(log, ['a', 'b'])
     })
@@ -833,20 +833,20 @@ describe('ReadonlyMap', () => {
     it('reduce', () => {
       const d1 = new Map<User, string>([
         [{ id: 'k1' }, 'a'],
-        [{ id: 'k2' }, 'b']
+        [{ id: 'k2' }, 'b'],
       ])
       const reduceO = W.reduce
       U.deepStrictEqual(
         reduceO(d1, '', (b, a) => b + a),
-        'ab'
+        'ab',
       )
       const d2 = new Map<User, string>([
         [{ id: 'k2' }, 'b'],
-        [{ id: 'k1' }, 'a']
+        [{ id: 'k1' }, 'a'],
       ])
       U.deepStrictEqual(
         reduceO(d2, '', (b, a) => b + a),
-        'ab'
+        'ab',
       )
     })
 
@@ -854,7 +854,7 @@ describe('ReadonlyMap', () => {
       const foldMapOM = W.foldMap(S.Monoid)
       const m = new Map<User, string>([
         [{ id: 'a' }, 'a'],
-        [{ id: 'a' }, 'b']
+        [{ id: 'a' }, 'b'],
       ])
       U.deepStrictEqual(foldMapOM(m, identity), 'ab')
     })
@@ -863,7 +863,7 @@ describe('ReadonlyMap', () => {
       const reduceRightO = W.reduceRight
       const m = new Map<User, string>([
         [{ id: 'a' }, 'a'],
-        [{ id: 'b' }, 'b']
+        [{ id: 'b' }, 'b'],
       ])
       const init = ''
       const f = (a: string, acc: string) => acc + a
@@ -873,20 +873,20 @@ describe('ReadonlyMap', () => {
     it('reduceWithIndex', () => {
       const d1 = new Map<User, string>([
         [{ id: 'k1' }, 'a'],
-        [{ id: 'k2' }, 'b']
+        [{ id: 'k2' }, 'b'],
       ])
       const reduceWithIndexO = W.reduceWithIndex
       U.deepStrictEqual(
         reduceWithIndexO(d1, '', (k, b, a) => b + k.id + a),
-        'k1ak2b'
+        'k1ak2b',
       )
       const d2 = new Map<User, string>([
         [{ id: 'k2' }, 'b'],
-        [{ id: 'k1' }, 'a']
+        [{ id: 'k1' }, 'a'],
       ])
       U.deepStrictEqual(
         reduceWithIndexO(d2, '', (k, b, a) => b + k.id + a),
-        'k1ak2b'
+        'k1ak2b',
       )
     })
 
@@ -894,11 +894,11 @@ describe('ReadonlyMap', () => {
       const foldMapWithIndexOM = W.foldMapWithIndex(S.Monoid)
       const m = new Map<User, string>([
         [{ id: 'k1' }, 'a'],
-        [{ id: 'k2' }, 'b']
+        [{ id: 'k2' }, 'b'],
       ])
       U.deepStrictEqual(
         foldMapWithIndexOM(m, (k, a) => k.id + a),
-        'k1ak2b'
+        'k1ak2b',
       )
     })
 
@@ -906,11 +906,11 @@ describe('ReadonlyMap', () => {
       const reduceRightWithIndexO = W.reduceRightWithIndex
       const m = new Map<User, string>([
         [{ id: 'k1' }, 'a'],
-        [{ id: 'k2' }, 'b']
+        [{ id: 'k2' }, 'b'],
       ])
       U.deepStrictEqual(
         reduceRightWithIndexO(m, '', (k, a, b) => b + k.id + a),
-        'k2bk1a'
+        'k2bk1a',
       )
     })
 
@@ -920,26 +920,26 @@ describe('ReadonlyMap', () => {
         traverseWithIndex(
           new Map([
             [{ id: 'k1' }, 1],
-            [{ id: 'k2' }, 2]
+            [{ id: 'k2' }, 2],
           ]),
-          (k, n): O.Option<number> => (!ordUser.equals(k, { id: 'k1' }) ? O.some(n) : O.none)
+          (k, n): O.Option<number> => (!ordUser.equals(k, { id: 'k1' }) ? O.some(n) : O.none),
         ),
-        O.none
+        O.none,
       )
       U.deepStrictEqual(
         traverseWithIndex(
           new Map([
             [{ id: 'k1' }, 2],
-            [{ id: 'k2' }, 3]
+            [{ id: 'k2' }, 3],
           ]),
-          (k, n): O.Option<number> => (!ordUser.equals(k, { id: 'k3' }) ? O.some(n) : O.none)
+          (k, n): O.Option<number> => (!ordUser.equals(k, { id: 'k3' }) ? O.some(n) : O.none),
         ),
         O.some(
           new Map([
             [{ id: 'k1' }, 2],
-            [{ id: 'k2' }, 3]
-          ])
-        )
+            [{ id: 'k2' }, 3],
+          ]),
+        ),
       )
       U.deepStrictEqual(_.empty, new Map<never, never>())
     })
@@ -952,11 +952,11 @@ describe('ReadonlyMap', () => {
         await wither(
           new Map([
             [{ id: 'a' }, 1],
-            [{ id: 'b' }, 3]
+            [{ id: 'b' }, 3],
           ]),
-          f
+          f,
         )(),
-        new Map([[{ id: 'b' }, 4]])
+        new Map([[{ id: 'b' }, 4]]),
       )
     })
 
@@ -968,11 +968,11 @@ describe('ReadonlyMap', () => {
         await wilt(
           new Map([
             [{ id: 'a' }, 1],
-            [{ id: 'b' }, 3]
+            [{ id: 'b' }, 3],
           ]),
-          f
+          f,
         )(),
-        separated(new Map([[{ id: 'a' }, 0]]), new Map([[{ id: 'b' }, 4]]))
+        separated(new Map([[{ id: 'a' }, 0]]), new Map([[{ id: 'b' }, 4]])),
       )
     })
   })
@@ -983,7 +983,7 @@ describe('ReadonlyMap', () => {
       const emptyMap = new Map<string, number>()
       const a1b3 = new Map<string, number>([
         ['a', 1],
-        ['b', 3]
+        ['b', 3],
       ])
       const a0 = new Map<string, number>([['a', 0]])
       const b4 = new Map<string, number>([['b', 4]])
@@ -997,7 +997,7 @@ describe('ReadonlyMap', () => {
       const emptyMap = new Map<string, number>()
       const a1b3 = new Map<string, number>([
         ['a', 1],
-        ['b', 3]
+        ['b', 3],
       ])
       const a1 = new Map<string, number>([['a', 1]])
       const b3 = new Map<string, number>([['b', 3]])
@@ -1011,7 +1011,7 @@ describe('ReadonlyMap', () => {
       const emptyMap = new Map<string, number>()
       const a1b3 = new Map<string, number>([
         ['a', 1],
-        ['b', 3]
+        ['b', 3],
       ])
       const b4 = new Map<string, number>([['b', 4]])
       const f = (_: string, n: number) => (p(n) ? O.some(n + 1) : O.none)
@@ -1023,7 +1023,7 @@ describe('ReadonlyMap', () => {
       const filterWithIndex = _.getFilterableWithIndex<string>().filterWithIndex
       const a1b3 = new Map<string, number>([
         ['a', 1],
-        ['b', 3]
+        ['b', 3],
       ])
       const b3 = new Map<string, number>([['b', 3]])
       const f = (_: string, n: number) => p(n)
@@ -1034,7 +1034,7 @@ describe('ReadonlyMap', () => {
       const isNumber = (_: string, u: string | number): u is number => typeof u === 'number'
       const y = new Map<string, string | number>([
         ['a', 1],
-        ['b', 'foo']
+        ['b', 'foo'],
       ])
       const a1 = new Map<string, number>([['a', 1]])
       const actual = filterWithIndexStr(y, isNumber)
@@ -1050,17 +1050,17 @@ describe('ReadonlyMap', () => {
     U.deepStrictEqual(
       fromFoldableS1([
         [{ id: 'a' }, 1],
-        [{ id: 'a' }, 2]
+        [{ id: 'a' }, 2],
       ]),
-      a1
+      a1,
     )
     const fromFoldableS2 = _.fromFoldable(eqUser, Se.last<number>(), RA.Foldable)
     U.deepStrictEqual(
       fromFoldableS2([
         [{ id: 'a' }, 1],
-        [{ id: 'a' }, 2]
+        [{ id: 'a' }, 2],
       ]),
-      a2
+      a2,
     )
   })
 
@@ -1073,7 +1073,7 @@ describe('ReadonlyMap', () => {
     U.deepStrictEqual(Sh.show(m2), `new Map([[{ id: "a" }, "b"]])`)
     const m3 = new Map<User, string>([
       [{ id: 'c' }, 'd'],
-      [{ id: 'a' }, 'b']
+      [{ id: 'a' }, 'b'],
     ])
     U.deepStrictEqual(Sh.show(m3), `new Map([[{ id: "a" }, "b"], [{ id: "c" }, "d"]])`)
   })
@@ -1091,7 +1091,7 @@ describe('ReadonlyMap', () => {
     const m2 = new Map<User, number>([[{ id: 'a' }, 1]])
     U.deepStrictEqual(
       _.modifyAt(eqUser)({ id: 'a' }, (n: number) => n * 2)(m2),
-      O.some(new Map<User, number>([[{ id: 'a' }, 2]]))
+      O.some(new Map<User, number>([[{ id: 'a' }, 2]])),
     )
     // should return the same reference if nothing changed
     const input: ReadonlyMap<string, number> = new Map([['a', 1]])
@@ -1099,9 +1099,9 @@ describe('ReadonlyMap', () => {
       pipe(
         input,
         _.modifyAt(S.Eq)('a', identity),
-        O.map((out) => out === input)
+        O.map(out => out === input),
       ),
-      O.some(true)
+      O.some(true),
     )
   })
 
@@ -1125,9 +1125,9 @@ describe('ReadonlyMap', () => {
     U.deepStrictEqual(
       pipe(
         aa1,
-        _.mapWithIndex((k, a) => a + k.id.length)
+        _.mapWithIndex((k, a) => a + k.id.length),
       ),
-      aa3
+      aa3,
     )
   })
 
@@ -1137,7 +1137,7 @@ describe('ReadonlyMap', () => {
     const aa3 = new Map<User, number>([[{ id: 'aa' }, 3]])
     U.deepStrictEqual(
       FWI.mapWithIndex(aa1, (k, a) => a + k.id.length),
-      aa3
+      aa3,
     )
   })
 
@@ -1146,12 +1146,12 @@ describe('ReadonlyMap', () => {
     const x = new Map<User, string>([
       [{ id: 'a' }, 'a1'],
       [{ id: 'b' }, 'b1'],
-      [{ id: 'c' }, 'c1']
+      [{ id: 'c' }, 'c1'],
     ])
     const y = new Map<User, string>([
       [{ id: 'b' }, 'b2'],
       [{ id: 'c' }, 'c2'],
-      [{ id: 'd' }, 'd2']
+      [{ id: 'd' }, 'd2'],
     ])
     U.strictEqual(M.concat(x, M.empty), x)
     U.strictEqual(M.concat(M.empty, x), x)
@@ -1163,8 +1163,8 @@ describe('ReadonlyMap', () => {
         [{ id: 'a' }, 'a1'],
         [{ id: 'b' }, 'b1b2'],
         [{ id: 'c' }, 'c1c2'],
-        [{ id: 'd' }, 'd2']
-      ])
+        [{ id: 'd' }, 'd2'],
+      ]),
     )
   })
 
@@ -1173,12 +1173,12 @@ describe('ReadonlyMap', () => {
     const x = new Map<User, string>([
       [{ id: 'a' }, 'a1'],
       [{ id: 'b' }, 'b1'],
-      [{ id: 'c' }, 'c1']
+      [{ id: 'c' }, 'c1'],
     ])
     const y = new Map<User, string>([
       [{ id: 'b' }, 'b2'],
       [{ id: 'c' }, 'c2'],
-      [{ id: 'd' }, 'd2']
+      [{ id: 'd' }, 'd2'],
     ])
     U.strictEqual(M.concat(x, _.empty), _.empty)
     U.strictEqual(M.concat(_.empty, x), _.empty)
@@ -1188,8 +1188,8 @@ describe('ReadonlyMap', () => {
       M.concat(x, y),
       new Map([
         [{ id: 'b' }, 'b1b2'],
-        [{ id: 'c' }, 'c1c2']
-      ])
+        [{ id: 'c' }, 'c1c2'],
+      ]),
     )
   })
 
@@ -1198,12 +1198,12 @@ describe('ReadonlyMap', () => {
     const x = new Map<User, string>([
       [{ id: 'a' }, 'a1'],
       [{ id: 'b' }, 'b1'],
-      [{ id: 'c' }, 'c1']
+      [{ id: 'c' }, 'c1'],
     ])
     const y = new Map<User, string>([
       [{ id: 'b' }, 'b2'],
       [{ id: 'c' }, 'c2'],
-      [{ id: 'd' }, 'd2']
+      [{ id: 'd' }, 'd2'],
     ])
     U.strictEqual(M.concat(x, _.empty), x)
     U.strictEqual(M.concat(_.empty, x), x)
@@ -1213,8 +1213,8 @@ describe('ReadonlyMap', () => {
       M.concat(x, y),
       new Map([
         [{ id: 'a' }, 'a1'],
-        [{ id: 'd' }, 'd2']
-      ])
+        [{ id: 'd' }, 'd2'],
+      ]),
     )
   })
 })

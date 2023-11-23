@@ -14,14 +14,14 @@ describe('Writer', () => {
   it('evalWriter', () => {
     U.deepStrictEqual(
       _.evalWriter(() => [1, 'a']),
-      1
+      1,
     )
   })
 
   it('execWriter', () => {
     U.deepStrictEqual(
       _.execWriter(() => [1, 'a']),
-      'a'
+      'a',
     )
   })
 
@@ -50,9 +50,9 @@ describe('Writer', () => {
     U.deepStrictEqual(
       pipe(
         fa,
-        _.listens((w) => w.length)
+        _.listens(w => w.length),
       )(),
-      [[1, 1], 'a']
+      [[1, 1], 'a'],
     )
   })
 
@@ -61,9 +61,9 @@ describe('Writer', () => {
     U.deepStrictEqual(
       pipe(
         fa,
-        _.censor((w) => w.filter((a) => a !== 'a'))
+        _.censor(w => w.filter(a => a !== 'a')),
       )(),
-      [1, ['b']]
+      [1, ['b']],
     )
   })
 

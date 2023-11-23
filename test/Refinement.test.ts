@@ -52,7 +52,7 @@ describe('Refinement', () => {
     type A = { readonly type: 'A' }
     type B = { readonly type: 'B' }
     type C = A | B
-    const isA = _.fromOptionK<C, A>((c) => (c.type === 'A' ? O.some(c) : O.none))
+    const isA = _.fromOptionK<C, A>(c => (c.type === 'A' ? O.some(c) : O.none))
     U.deepStrictEqual(isA({ type: 'A' }), true)
     U.deepStrictEqual(isA({ type: 'B' }), false)
   })
@@ -83,7 +83,7 @@ describe('Refinement', () => {
     type A = { readonly type: 'A' }
     type B = { readonly type: 'B' }
     type C = A | B
-    const isA = _.fromEitherK<C, A>((c) => (c.type === 'A' ? E.right(c) : E.left('not as A')))
+    const isA = _.fromEitherK<C, A>(c => (c.type === 'A' ? E.right(c) : E.left('not as A')))
     U.deepStrictEqual(isA({ type: 'A' }), true)
     U.deepStrictEqual(isA({ type: 'B' }), false)
   })

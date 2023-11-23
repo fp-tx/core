@@ -1,6 +1,4 @@
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C, type Chain4 } from './Chain'
 import { type Either } from './Either'
 import {
@@ -12,7 +10,7 @@ import {
   type URIS,
   type URIS2,
   type URIS3,
-  type URIS4
+  type URIS4,
 } from './HKT'
 
 // -------------------------------------------------------------------------------------
@@ -20,64 +18,62 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface ChainRec<F> extends Chain<F> {
   readonly chainRec: <A, B>(a: A, f: (a: A) => HKT<F, Either<A, B>>) => HKT<F, B>
 }
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface ChainRec1<F extends URIS> extends Chain1<F> {
   readonly chainRec: <A, B>(a: A, f: (a: A) => Kind<F, Either<A, B>>) => Kind<F, B>
 }
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface ChainRec2<F extends URIS2> extends Chain2<F> {
   readonly chainRec: <E, A, B>(a: A, f: (a: A) => Kind2<F, E, Either<A, B>>) => Kind2<F, E, B>
 }
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface ChainRec2C<F extends URIS2, E> extends Chain2C<F, E> {
   readonly chainRec: <A, B>(a: A, f: (a: A) => Kind2<F, E, Either<A, B>>) => Kind2<F, E, B>
 }
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface ChainRec3<F extends URIS3> extends Chain3<F> {
   readonly chainRec: <R, E, A, B>(a: A, f: (a: A) => Kind3<F, R, E, Either<A, B>>) => Kind3<F, R, E, B>
 }
 
 /**
- * @category model
  * @since 2.10.0
+ * @category Model
  */
 export interface ChainRec3C<F extends URIS3, E> extends Chain3C<F, E> {
   readonly chainRec: <R, A, B>(a: A, f: (a: A) => Kind3<F, R, E, Either<A, B>>) => Kind3<F, R, E, B>
 }
 
 /**
- * @category model
  * @since 2.10.0
+ * @category Model
  */
 export interface ChainRec4<F extends URIS4> extends Chain4<F> {
   readonly chainRec: <S, R, E, A, B>(a: A, f: (a: A) => Kind4<F, S, R, E, Either<A, B>>) => Kind4<F, S, R, E, B>
 }
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export const tailRec = <A, B>(startWith: A, f: (a: A) => Either<A, B>): B => {
   let ab = f(startWith)
   while (ab._tag === 'Left') {

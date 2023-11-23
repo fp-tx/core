@@ -21,16 +21,16 @@ describe('ReaderEither', () => {
       U.deepStrictEqual(
         pipe(
           _.right('a'),
-          _.alt(() => _.right('b'))
+          _.alt(() => _.right('b')),
         )({}),
-        E.right('a')
+        E.right('a'),
       )
       U.deepStrictEqual(
         pipe(
           _.left(1),
-          _.alt(() => _.right('b'))
+          _.alt(() => _.right('b')),
         )({}),
-        E.right('b')
+        E.right('b'),
       )
     })
 
@@ -80,7 +80,7 @@ describe('ReaderEither', () => {
     it('flattenW', () => {
       U.deepStrictEqual(
         pipe(_.right<R1, E1, _.ReaderEither<R2, E2, 'a'>>(_.right('a')), _.flattenW)({ env1: '', env2: '' }),
-        E.right('a')
+        E.right('a'),
       )
     })
 
@@ -98,23 +98,23 @@ describe('ReaderEither', () => {
       U.deepStrictEqual(
         pipe(
           O.none,
-          _.fromOption(() => 'none')
+          _.fromOption(() => 'none'),
         )({}),
-        E.left('none')
+        E.left('none'),
       )
       U.deepStrictEqual(
         pipe(
           O.some(1),
-          _.fromOption(() => 'none')
+          _.fromOption(() => 'none'),
         )({}),
-        E.right(1)
+        E.right(1),
       )
     })
 
     it('fromPredicate', () => {
       const gt2 = _.fromPredicate(
         (n: number) => n >= 2,
-        (n) => `Invalid number ${n}`
+        n => `Invalid number ${n}`,
       )
       U.deepStrictEqual(gt2(3)({}), E.right(3))
       U.deepStrictEqual(gt2(1)({}), E.left('Invalid number 1'))
@@ -124,17 +124,17 @@ describe('ReaderEither', () => {
       const e1 = pipe(
         _.right(12),
         _.filterOrElse(
-          (n) => n > 10,
-          () => 'a'
-        )
+          n => n > 10,
+          () => 'a',
+        ),
       )({})
       U.deepStrictEqual(e1, E.right(12))
       const e2 = pipe(
         _.right(7),
         _.filterOrElse(
-          (n) => n > 10,
-          () => 'a'
-        )
+          n => n > 10,
+          () => 'a',
+        ),
       )({})
       U.deepStrictEqual(e2, E.left('a'))
     })
@@ -143,7 +143,7 @@ describe('ReaderEither', () => {
   it('fold', () => {
     const fold = _.fold(
       (s: string) => R.of(s.length),
-      (n: number) => R.of(n * 2)
+      (n: number) => R.of(n * 2),
     )
     U.deepStrictEqual(fold(_.right(1))({}), 2)
     U.deepStrictEqual(fold(_.left('aaa'))({}), 3)
@@ -264,16 +264,16 @@ describe('ReaderEither', () => {
         _.right<void, string, number>(1),
         _.bindTo('a'),
         _.bind('b', () => _.right('b')),
-        _.let('c', ({ a, b }) => [a, b])
+        _.let('c', ({ a, b }) => [a, b]),
       )(undefined),
-      E.right({ a: 1, b: 'b', c: [1, 'b'] })
+      E.right({ a: 1, b: 'b', c: [1, 'b'] }),
     )
   })
 
   it('apS', () => {
     U.deepStrictEqual(
       pipe(_.right<void, string, number>(1), _.bindTo('a'), _.apS('b', _.right('b')))(undefined),
-      E.right({ a: 1, b: 'b' })
+      E.right({ a: 1, b: 'b' }),
     )
   })
 
@@ -301,12 +301,12 @@ describe('ReaderEither', () => {
 
   it('getFilterable', () => {
     const F = _.getFilterable(S.Monoid)
-    U.deepStrictEqual(F.filter(_.of('a'), (s) => s.length > 0)({}), E.right('a'))
-    U.deepStrictEqual(F.filterMap(_.of('a'), (s) => (s.length > 0 ? O.some(s.length) : O.none))({}), E.right(1))
-    const s1 = F.partition(_.of('a'), (s) => s.length > 0)
+    U.deepStrictEqual(F.filter(_.of('a'), s => s.length > 0)({}), E.right('a'))
+    U.deepStrictEqual(F.filterMap(_.of('a'), s => (s.length > 0 ? O.some(s.length) : O.none))({}), E.right(1))
+    const s1 = F.partition(_.of('a'), s => s.length > 0)
     U.deepStrictEqual(left(s1)({}), E.left(''))
     U.deepStrictEqual(right(s1)({}), E.right('a'))
-    const s2 = F.partitionMap(_.of('a'), (s) => (s.length > 0 ? E.right(s.length) : E.left(s)))
+    const s2 = F.partitionMap(_.of('a'), s => (s.length > 0 ? E.right(s.length) : E.left(s)))
     U.deepStrictEqual(left(s2)({}), E.left(''))
     U.deepStrictEqual(right(s2)({}), E.right(1))
   })
@@ -314,7 +314,7 @@ describe('ReaderEither', () => {
   it('match', () => {
     const f = _.match(
       () => 'left',
-      () => 'right'
+      () => 'right',
     )
     U.deepStrictEqual(f(_.right(1))({}), 'right')
     U.deepStrictEqual(f(_.left('a'))({}), 'left')
@@ -323,7 +323,7 @@ describe('ReaderEither', () => {
   it('matchE', () => {
     const f = _.matchE(
       () => R.of('left'),
-      () => R.of('right')
+      () => R.of('right'),
     )
     U.deepStrictEqual(f(_.right(1))({}), 'right')
     U.deepStrictEqual(f(_.left('a'))({}), 'left')
@@ -332,8 +332,8 @@ describe('ReaderEither', () => {
   it('fromReaderK', () => {
     const ma = _.fromReaderK(
       (n: number): R.Reader<number, number> =>
-        (c) =>
-          n * c
+        c =>
+          n * c,
     )
     U.deepStrictEqual(ma(3)(2), E.right(6))
   })
@@ -341,8 +341,8 @@ describe('ReaderEither', () => {
   it('chainReaderK', () => {
     const f = _.chainReaderK(
       (n: number): R.Reader<number, number> =>
-        (c) =>
-          n * c
+        c =>
+          n * c,
     )
     U.deepStrictEqual(pipe(_.right(3), f)(2), E.right(6))
     U.deepStrictEqual(pipe(_.left('a'), f)(2), E.left('a'))
@@ -356,8 +356,8 @@ describe('ReaderEither', () => {
   it('chainFirstReaderK', () => {
     const f = _.chainFirstReaderK(
       (n: number): R.Reader<number, number> =>
-        (c) =>
-          n * c
+        c =>
+          n * c,
     )
     U.deepStrictEqual(pipe(_.right(3), f)(2), E.right(3))
     U.deepStrictEqual(pipe(_.left('a'), f)(2), E.left('a'))

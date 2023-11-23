@@ -37,30 +37,30 @@ describe('TaskOption', () => {
     U.deepStrictEqual(
       await pipe(
         _.some(1),
-        _.alt(() => _.some(2))
+        _.alt(() => _.some(2)),
       )(),
-      O.some(1)
+      O.some(1),
     )
     U.deepStrictEqual(
       await pipe(
         _.some(2),
-        _.alt(() => _.none as _.TaskOption<number>)
+        _.alt(() => _.none as _.TaskOption<number>),
       )(),
-      O.some(2)
+      O.some(2),
     )
     U.deepStrictEqual(
       await pipe(
         _.none,
-        _.alt(() => _.some(1))
+        _.alt(() => _.some(1)),
       )(),
-      O.some(1)
+      O.some(1),
     )
     U.deepStrictEqual(
       await pipe(
         _.none,
-        _.alt(() => _.none)
+        _.alt(() => _.none),
       )(),
-      O.none
+      O.none,
     )
   })
 
@@ -77,13 +77,13 @@ describe('TaskOption', () => {
   // -------------------------------------------------------------------------------------
 
   it('ApplicativeSeq', async () => {
-    await U.assertSeq(_.ApplySeq, _.FromTask, (fa) => fa())
-    await U.assertSeq(_.ApplicativeSeq, _.FromTask, (fa) => fa())
+    await U.assertSeq(_.ApplySeq, _.FromTask, fa => fa())
+    await U.assertSeq(_.ApplicativeSeq, _.FromTask, fa => fa())
   })
 
   it('ApplicativePar', async () => {
-    await U.assertPar(_.ApplyPar, _.FromTask, (fa) => fa())
-    await U.assertPar(_.ApplicativePar, _.FromTask, (fa) => fa())
+    await U.assertPar(_.ApplyPar, _.FromTask, fa => fa())
+    await U.assertPar(_.ApplicativePar, _.FromTask, fa => fa())
   })
 
   // -------------------------------------------------------------------------------------
@@ -104,7 +104,7 @@ describe('TaskOption', () => {
         await _.tryCatch(() => {
           throw new Error('Some error')
         })(),
-        O.none
+        O.none,
       )
     })
   })
@@ -116,14 +116,22 @@ describe('TaskOption', () => {
   })
 
   it('fromNullableK', async () => {
-    const f = _.fromNullableK((n: number) => (n > 0 ? n : n === 0 ? null : undefined))
+    const f = _.fromNullableK((n: number) =>
+      n > 0 ? n
+      : n === 0 ? null
+      : undefined,
+    )
     U.deepStrictEqual(await f(1)(), O.some(1))
     U.deepStrictEqual(await f(0)(), O.none)
     U.deepStrictEqual(await f(-1)(), O.none)
   })
 
   it('chainNullableK', async () => {
-    const f = _.chainNullableK((n: number) => (n > 0 ? n : n === 0 ? null : undefined))
+    const f = _.chainNullableK((n: number) =>
+      n > 0 ? n
+      : n === 0 ? null
+      : undefined,
+    )
     U.deepStrictEqual(await f(_.of(1))(), O.some(1))
     U.deepStrictEqual(await f(_.of(0))(), O.none)
     U.deepStrictEqual(await f(_.of(-1))(), O.none)
@@ -152,7 +160,7 @@ describe('TaskOption', () => {
   it('fold', async () => {
     const f = _.fold(
       () => T.of('none'),
-      (a) => T.of(`some(${a})`)
+      a => T.of(`some(${a})`),
     )
     U.deepStrictEqual(await pipe(_.some(1), f)(), 'some(1)')
     U.deepStrictEqual(await pipe(_.none, f)(), 'none')
@@ -162,16 +170,16 @@ describe('TaskOption', () => {
     U.deepStrictEqual(
       await pipe(
         _.some(1),
-        _.getOrElse(() => T.of(2))
+        _.getOrElse(() => T.of(2)),
       )(),
-      1
+      1,
     )
     U.deepStrictEqual(
       await pipe(
         _.none,
-        _.getOrElse(() => T.of(2))
+        _.getOrElse(() => T.of(2)),
       )(),
-      2
+      2,
     )
   })
 
@@ -222,7 +230,7 @@ describe('TaskOption', () => {
             log.push(s)
             return s
           }),
-          T.map(() => O.none)
+          T.map(() => O.none),
         )
       U.deepStrictEqual(await pipe([some(1), some(2)], _.traverseReadonlyArrayWithIndex(SK))(), O.some([1, 2]))
       U.deepStrictEqual(await pipe([some(3), none('a')], _.traverseReadonlyArrayWithIndex(SK))(), O.none)
@@ -243,7 +251,7 @@ describe('TaskOption', () => {
             log.push(s)
             return s
           }),
-          T.map(() => O.none)
+          T.map(() => O.none),
         )
       U.deepStrictEqual(await pipe([some(1), some(2)], _.traverseReadonlyArrayWithIndexSeq(SK))(), O.some([1, 2]))
       U.deepStrictEqual(await pipe([some(3), none('a')], _.traverseReadonlyArrayWithIndexSeq(SK))(), O.none)
@@ -265,7 +273,7 @@ describe('TaskOption', () => {
             log.push(s)
             return s
           }),
-          T.map(() => O.none)
+          T.map(() => O.none),
         )
       U.deepStrictEqual(await pipe([some(1), some(2)], _.sequenceArray)(), O.some([1, 2]))
       U.deepStrictEqual(await pipe([some(3), none('a')], _.sequenceArray)(), O.none)
@@ -286,7 +294,7 @@ describe('TaskOption', () => {
             log.push(s)
             return s
           }),
-          T.map(() => O.none)
+          T.map(() => O.none),
         )
       U.deepStrictEqual(await pipe([some(1), some(2)], _.sequenceSeqArray)(), O.some([1, 2]))
       U.deepStrictEqual(await pipe([some(3), none('a')], _.sequenceSeqArray)(), O.none)
@@ -317,7 +325,7 @@ describe('TaskOption', () => {
   it('match', async () => {
     const f = _.match(
       () => 'none',
-      (a) => `some(${a})`
+      a => `some(${a})`,
     )
     U.deepStrictEqual(await pipe(_.some(1), f)(), 'some(1)')
     U.deepStrictEqual(await pipe(_.none, f)(), 'none')
@@ -326,7 +334,7 @@ describe('TaskOption', () => {
   it('matchE', async () => {
     const f = _.matchE(
       () => T.of('none'),
-      (a) => T.of(`some(${a})`)
+      a => T.of(`some(${a})`),
     )
     U.deepStrictEqual(await pipe(_.some(1), f)(), 'some(1)')
     U.deepStrictEqual(await pipe(_.none, f)(), 'none')

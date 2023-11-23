@@ -25,9 +25,9 @@ describe('TaskEither', () => {
     U.deepStrictEqual(
       await pipe(
         _.left('a'),
-        _.alt(() => _.right(1))
+        _.alt(() => _.right(1)),
       )(),
-      E.right(1)
+      E.right(1),
     )
   })
 
@@ -46,7 +46,7 @@ describe('TaskEither', () => {
   it('apFirstW', async () => {
     U.deepStrictEqual(
       await pipe(_.right<number, string>('foo'), _.apFirstW(_.right<string, boolean>(true)))(),
-      E.right('foo')
+      E.right('foo'),
     )
   })
 
@@ -57,7 +57,7 @@ describe('TaskEither', () => {
   it('apSecondW', async () => {
     U.deepStrictEqual(
       await pipe(_.right<number, string>('foo'), _.apSecondW(_.right<string, boolean>(true)))(),
-      E.right(true)
+      E.right(true),
     )
   })
 
@@ -65,16 +65,16 @@ describe('TaskEither', () => {
     U.deepStrictEqual(
       await pipe(
         _.right('foo'),
-        _.chain((a) => (a.length > 2 ? _.right(a.length) : _.left('foo')))
+        _.chain(a => (a.length > 2 ? _.right(a.length) : _.left('foo'))),
       )(),
-      E.right(3)
+      E.right(3),
     )
     U.deepStrictEqual(
       await pipe(
         _.right('a'),
-        _.chain((a) => (a.length > 2 ? _.right(a.length) : _.left('foo')))
+        _.chain(a => (a.length > 2 ? _.right(a.length) : _.left('foo'))),
       )(),
-      E.left('foo')
+      E.left('foo'),
     )
   })
 
@@ -82,9 +82,9 @@ describe('TaskEither', () => {
     U.deepStrictEqual(
       await pipe(
         _.right('foo'),
-        _.chainFirst((a) => (a.length > 2 ? _.right(a.length) : _.left('foo')))
+        _.chainFirst(a => (a.length > 2 ? _.right(a.length) : _.left('foo'))),
       )(),
-      E.right('foo')
+      E.right('foo'),
     )
   })
 
@@ -92,9 +92,9 @@ describe('TaskEither', () => {
     U.deepStrictEqual(
       await pipe(
         _.right<number, string>('foo'),
-        _.chainFirstW((a) => (a.length > 2 ? _.right(a.length) : _.left('foo')))
+        _.chainFirstW(a => (a.length > 2 ? _.right(a.length) : _.left('foo'))),
       )(),
-      E.right('foo')
+      E.right('foo'),
     )
   })
 
@@ -105,7 +105,7 @@ describe('TaskEither', () => {
   it('flattenW', async () => {
     U.deepStrictEqual(
       await pipe(_.right<'left1', _.TaskEither<'left2', 'a'>>(_.right('a')), _.flattenW)(),
-      E.right('a')
+      E.right('a'),
     )
   })
 
@@ -184,23 +184,23 @@ describe('TaskEither', () => {
       U.deepStrictEqual(
         await pipe(
           _.right(1),
-          filter((n) => n > 0)
+          filter(n => n > 0),
         )(),
-        await _.right(1)()
+        await _.right(1)(),
       )
       U.deepStrictEqual(
         await pipe(
           _.right(-1),
-          filter((n) => n > 0)
+          filter(n => n > 0),
         )(),
-        await _.left([])()
+        await _.left([])(),
       )
       U.deepStrictEqual(
         await pipe(
           _.left(['a']),
-          filter((n) => n > 0)
+          filter(n => n > 0),
         )(),
-        await _.left(['a'])()
+        await _.left(['a'])(),
       )
     })
 
@@ -208,30 +208,30 @@ describe('TaskEither', () => {
       U.deepStrictEqual(
         await pipe(
           _.right('aaa'),
-          filterMap((s) => (s.length > 1 ? some(s.length) : none))
+          filterMap(s => (s.length > 1 ? some(s.length) : none)),
         )(),
-        E.right(3)
+        E.right(3),
       )
       U.deepStrictEqual(
         await pipe(
           _.right('a'),
-          filterMap((s) => (s.length > 1 ? some(s.length) : none))
+          filterMap(s => (s.length > 1 ? some(s.length) : none)),
         )(),
-        E.left([])
+        E.left([]),
       )
       U.deepStrictEqual(
         await pipe(
           _.left<ReadonlyArray<string>, string>(['e']),
-          filterMap((s) => (s.length > 1 ? some(s.length) : none))
+          filterMap(s => (s.length > 1 ? some(s.length) : none)),
         )(),
-        E.left(['e'])
+        E.left(['e']),
       )
     })
 
     it('partition', async () => {
       const s = pipe(
         _.right('a'),
-        partition((s) => s.length > 2)
+        partition(s => s.length > 2),
       )
       U.deepStrictEqual(await left(s)(), E.right('a'))
       U.deepStrictEqual(await right(s)(), E.left([]))
@@ -240,7 +240,7 @@ describe('TaskEither', () => {
     it('partitionMap', async () => {
       const s = pipe(
         _.right('a'),
-        partitionMap((s) => (s.length > 2 ? E.right(s.length) : E.left(false)))
+        partitionMap(s => (s.length > 2 ? E.right(s.length) : E.left(false))),
       )
       U.deepStrictEqual(await left(s)(), E.right(false))
       U.deepStrictEqual(await right(s)(), E.left([]))
@@ -278,11 +278,11 @@ describe('TaskEither', () => {
   })
 
   it('applicativeTaskEitherSeq', async () => {
-    await U.assertSeq(_.ApplicativeSeq, _.FromTask, (fa) => fa())
+    await U.assertSeq(_.ApplicativeSeq, _.FromTask, fa => fa())
   })
 
   it('applicativeTaskEitherPar', async () => {
-    await U.assertPar(_.ApplicativePar, _.FromTask, (fa) => fa())
+    await U.assertPar(_.ApplicativePar, _.FromTask, fa => fa())
   })
 
   // -------------------------------------------------------------------------------------
@@ -367,7 +367,7 @@ describe('TaskEither', () => {
     const res = await _.bracketW(
       _.right<string, string>('string'),
       (_a: string) => _.right<number, string>('test'),
-      (_a: string, _e: E.Either<number, string>) => _.right<Error, void>(constVoid())
+      (_a: string, _e: E.Either<number, string>) => _.right<Error, void>(constVoid()),
     )()
     U.deepStrictEqual(res, E.right('test'))
   })
@@ -381,21 +381,21 @@ describe('TaskEither', () => {
       await pipe(
         _.right(12),
         _.filterOrElse(
-          (n) => n > 10,
-          () => 'a'
-        )
+          n => n > 10,
+          () => 'a',
+        ),
       )(),
-      E.right(12)
+      E.right(12),
     )
     U.deepStrictEqual(
       await pipe(
         _.right(7),
         _.filterOrElse(
-          (n) => n > 10,
-          () => 'a'
-        )
+          n => n > 10,
+          () => 'a',
+        ),
       )(),
-      E.left('a')
+      E.left('a'),
     )
   })
 
@@ -403,16 +403,16 @@ describe('TaskEither', () => {
     U.deepStrictEqual(
       await pipe(
         _.left('foo'),
-        _.orElse((l) => _.right(l.length))
+        _.orElse(l => _.right(l.length)),
       )(),
-      E.right(3)
+      E.right(3),
     )
     U.deepStrictEqual(
       await pipe(
         _.right(1),
-        _.orElse(() => _.right(2))
+        _.orElse(() => _.right(2)),
       )(),
-      E.right(1)
+      E.right(1),
     )
   })
 
@@ -420,16 +420,16 @@ describe('TaskEither', () => {
     U.deepStrictEqual(
       await pipe(
         _.left('foo'),
-        _.orElseW((l) => _.right(l.length))
+        _.orElseW(l => _.right(l.length)),
       )(),
-      E.right(3)
+      E.right(3),
     )
     U.deepStrictEqual(
       await pipe(
         _.right(1),
-        _.orElseW(() => _.right(2))
+        _.orElseW(() => _.right(2)),
       )(),
-      E.right(1)
+      E.right(1),
     )
   })
 
@@ -534,7 +534,7 @@ describe('TaskEither', () => {
         await _.tryCatch(() => {
           throw new Error('Some error')
         }, identity)(),
-        E.left(new Error('Some error'))
+        E.left(new Error('Some error')),
       )
     })
   })
@@ -547,14 +547,22 @@ describe('TaskEither', () => {
   })
 
   it('fromNullableK', async () => {
-    const f = _.fromNullableK('foo')((n: number) => (n > 0 ? n : n === 0 ? null : undefined))
+    const f = _.fromNullableK('foo')((n: number) =>
+      n > 0 ? n
+      : n === 0 ? null
+      : undefined,
+    )
     U.deepStrictEqual(await f(1)(), E.right(1))
     U.deepStrictEqual(await f(0)(), E.left('foo'))
     U.deepStrictEqual(await f(-1)(), E.left('foo'))
   })
 
   it('chainNullableK', async () => {
-    const f = _.chainNullableK('foo')((n: number) => (n > 0 ? n : n === 0 ? null : undefined))
+    const f = _.chainNullableK('foo')((n: number) =>
+      n > 0 ? n
+      : n === 0 ? null
+      : undefined,
+    )
     U.deepStrictEqual(await f(_.of(1))(), E.right(1))
     U.deepStrictEqual(await f(_.of(0))(), E.left('foo'))
     U.deepStrictEqual(await f(_.of(-1))(), E.left('foo'))
@@ -569,16 +577,16 @@ describe('TaskEither', () => {
     U.deepStrictEqual(
       await pipe(
         none,
-        _.fromOption(() => 'none')
+        _.fromOption(() => 'none'),
       )(),
-      E.left('none')
+      E.left('none'),
     )
     U.deepStrictEqual(
       await pipe(
         some(1),
-        _.fromOption(() => 'none')
+        _.fromOption(() => 'none'),
       )(),
-      E.right(1)
+      E.right(1),
     )
   })
 
@@ -586,23 +594,23 @@ describe('TaskEither', () => {
     U.deepStrictEqual(
       await pipe(
         TO.none,
-        _.fromTaskOption(() => 'none')
+        _.fromTaskOption(() => 'none'),
       )(),
-      E.left('none')
+      E.left('none'),
     )
     U.deepStrictEqual(
       await pipe(
         TO.some(1),
-        _.fromTaskOption(() => 'none')
+        _.fromTaskOption(() => 'none'),
       )(),
-      E.right(1)
+      E.right(1),
     )
   })
 
   it('fromPredicate', async () => {
     const gt2 = _.fromPredicate(
       (n: number) => n >= 2,
-      (n) => `Invalid number ${n}`
+      n => `Invalid number ${n}`,
     )
     U.deepStrictEqual(await gt2(3)(), E.right(3))
     U.deepStrictEqual(await gt2(1)(), E.left('Invalid number 1'))
@@ -617,9 +625,9 @@ describe('TaskEither', () => {
         _.right<string, number>(1),
         _.bindTo('a'),
         _.bind('b', () => _.right('b')),
-        _.let('c', ({ a, b }) => [a, b])
+        _.let('c', ({ a, b }) => [a, b]),
       )(),
-      E.right({ a: 1, b: 'b', c: [1, 'b'] })
+      E.right({ a: 1, b: 'b', c: [1, 'b'] }),
     )
   })
 
@@ -673,7 +681,7 @@ describe('TaskEither', () => {
   it('apS', async () => {
     U.deepStrictEqual(
       await pipe(_.right<string, number>(1), _.bindTo('a'), _.apS('b', _.right('b')))(),
-      E.right({ a: 1, b: 'b' })
+      E.right({ a: 1, b: 'b' }),
     )
   })
 
@@ -771,7 +779,7 @@ describe('TaskEither', () => {
   it('match', async () => {
     const f = _.match(
       () => 'left',
-      () => 'right'
+      () => 'right',
     )
     U.deepStrictEqual(await f(_.right(1))(), 'right')
     U.deepStrictEqual(await f(_.left(''))(), 'left')
@@ -780,7 +788,7 @@ describe('TaskEither', () => {
   it('matchE', async () => {
     const f = _.matchE(
       () => T.of('left'),
-      () => T.of('right')
+      () => T.of('right'),
     )
     U.deepStrictEqual(await f(_.right(1))(), 'right')
     U.deepStrictEqual(await f(_.left(''))(), 'left')

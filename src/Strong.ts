@@ -4,24 +4,24 @@
  * `first` and `second` lift values in a `Profunctor` to act on the first and second components of a tuple,
  * respectively.
  *
- * Another way to think about Strong is to piggyback on the intuition of
- * inputs and outputs.  Rewriting the type signature in this light then yields:
+ * Another way to think about Strong is to piggyback on the intuition of inputs and outputs. Rewriting the type
+ * signature in this light then yields:
  *
  * ```purescript
  * first ::  forall input output a. p input output -> p (Tuple input a) (Tuple output a)
  * second :: forall input output a. p input output -> p (Tuple a input) (Tuple a output)
  * ```
  *
- * If we specialize the profunctor p to the function arrow, we get the following type
- * signatures, which may look a bit more familiar:
+ * If we specialize the profunctor p to the function arrow, we get the following type signatures, which may look a bit
+ * more familiar:
  *
  * ```purescript
  * first ::  forall input output a. (input -> output) -> (Tuple input a) -> (Tuple output a)
  * second :: forall input output a. (input -> output) -> (Tuple a input) -> (Tuple a output)
  * ```
  *
- * So, when the `profunctor` is `Function` application, `first` essentially applies your function
- * to the first element of a tuple, and `second` applies it to the second element (same as `map` would do).
+ * So, when the `profunctor` is `Function` application, `first` essentially applies your function to the first element
+ * of a tuple, and `second` applies it to the second element (same as `map` would do).
  *
  * Adapted from https://github.com/purescript/purescript-profunctor/blob/master/src/Data/Profunctor/Strong.purs
  *
@@ -37,8 +37,8 @@ import { type Profunctor, type Profunctor2, type Profunctor3, type Profunctor4 }
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Strong<F> extends Profunctor<F> {
   readonly first: <A, B, C>(pab: HKT2<F, A, B>) => HKT2<F, [A, C], [B, C]>
@@ -46,8 +46,8 @@ export interface Strong<F> extends Profunctor<F> {
 }
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Strong2<F extends URIS2> extends Profunctor2<F> {
   readonly first: <A, B, C>(pab: Kind2<F, A, B>) => Kind2<F, [A, C], [B, C]>
@@ -55,8 +55,8 @@ export interface Strong2<F extends URIS2> extends Profunctor2<F> {
 }
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Strong3<F extends URIS3> extends Profunctor3<F> {
   readonly first: <R, A, B, C>(pab: Kind3<F, R, A, B>) => Kind3<F, R, [A, C], [B, C]>
@@ -64,8 +64,8 @@ export interface Strong3<F extends URIS3> extends Profunctor3<F> {
 }
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Strong4<F extends URIS4> extends Profunctor4<F> {
   readonly first: <S, R, A, B, C>(pab: Kind4<F, S, R, A, B>) => Kind4<F, S, R, [A, C], [B, C]>
@@ -82,29 +82,29 @@ export interface Strong4<F extends URIS4> extends Profunctor4<F> {
  * ```
  *
  * We take two functions, `f` and `g`, and we transform them into a single function which takes a tuple and maps `f`
- * over the first element and `g` over the second.  Just like `bi-map` would do for the `bi-functor` instance of tuple.
+ * over the first element and `g` over the second. Just like `bi-map` would do for the `bi-functor` instance of tuple.
  *
  * @since 2.10.0
  */
 export function split<F extends URIS4>(
   S: Strong4<F>,
-  C: Category4<F>
+  C: Category4<F>,
 ): <S, R, A, B, C, D>(pab: Kind4<F, S, R, A, B>, pcd: Kind4<F, S, R, C, D>) => Kind4<F, S, R, [A, C], [B, D]>
 export function split<F extends URIS3>(
   S: Strong3<F>,
-  C: Category3<F>
+  C: Category3<F>,
 ): <R, A, B, C, D>(pab: Kind3<F, R, A, B>, pcd: Kind3<F, R, C, D>) => Kind3<F, R, [A, C], [B, D]>
 export function split<F extends URIS2>(
   S: Strong2<F>,
-  C: Category2<F>
+  C: Category2<F>,
 ): <A, B, C, D>(pab: Kind2<F, A, B>, pcd: Kind2<F, C, D>) => Kind2<F, [A, C], [B, D]>
 export function split<F>(
   S: Strong<F>,
-  C: Category<F>
+  C: Category<F>,
 ): <A, B, C, D>(pab: HKT2<F, A, B>, pcd: HKT2<F, C, D>) => HKT2<F, [A, C], [B, D]>
 export function split<F>(
   S: Strong<F>,
-  C: Category<F>
+  C: Category<F>,
 ): <A, B, C, D>(pab: HKT2<F, A, B>, pcd: HKT2<F, C, D>) => HKT2<F, [A, C], [B, D]> {
   return <A, B, C, D>(pab: HKT2<F, A, B>, pcd: HKT2<F, C, D>) =>
     C.compose(S.second<B, C, D>(pcd), S.first<A, B, C>(pab))
@@ -123,36 +123,36 @@ export function split<F>(
  * ```
  *
  * We take two functions, `f` and `g`, with the same parameter type and we transform them into a single function which
- * takes one parameter and returns a tuple of the results of running `f` and `g` on the parameter, respectively.  This
+ * takes one parameter and returns a tuple of the results of running `f` and `g` on the parameter, respectively. This
  * allows us to run two parallel computations on the same input and return both results in a tuple.
  *
  * @since 2.10.0
  */
 export function fanOut<F extends URIS4>(
   S: Strong4<F>,
-  C: Category4<F>
+  C: Category4<F>,
 ): <S, R, A, B, C>(pab: Kind4<F, S, R, A, B>, pac: Kind4<F, S, R, A, C>) => Kind4<F, S, R, A, [B, C]>
 export function fanOut<F extends URIS3>(
   S: Strong3<F>,
-  C: Category3<F>
+  C: Category3<F>,
 ): <R, A, B, C>(pab: Kind3<F, R, A, B>, pac: Kind3<F, R, A, C>) => Kind3<F, R, A, [B, C]>
 export function fanOut<F extends URIS2>(
   S: Strong2<F>,
-  C: Category2<F>
+  C: Category2<F>,
 ): <A, B, C>(pab: Kind2<F, A, B>, pac: Kind2<F, A, C>) => Kind2<F, A, [B, C]>
 export function fanOut<F>(
   S: Strong<F>,
-  C: Category<F>
+  C: Category<F>,
 ): <A, B, C>(pab: HKT2<F, A, B>, pac: HKT2<F, A, C>) => HKT2<F, A, [B, C]>
 export function fanOut<F>(
   S: Strong<F>,
-  C: Category<F>
+  C: Category<F>,
 ): <A, B, C>(pab: HKT2<F, A, B>, pac: HKT2<F, A, C>) => HKT2<F, A, [B, C]> {
   const splitSC = split(S, C)
   return <A, B, C>(pab: HKT2<F, A, B>, pac: HKT2<F, A, C>): HKT2<F, A, [B, C]> =>
     C.compose(
       splitSC(pab, pac),
-      S.promap<A, A, A, [A, A]>(C.id<A>(), identity, (a) => [a, a])
+      S.promap<A, A, A, [A, A]>(C.id<A>(), identity, a => [a, a]),
     )
 }
 
@@ -163,27 +163,27 @@ export function fanOut<F>(
 /**
  * Use [`split`](#split) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export function splitStrong<F extends URIS4>(
-  F: Category4<F> & Strong4<F>
+  F: Category4<F> & Strong4<F>,
 ): <S, R, A, B, C, D>(pab: Kind4<F, S, R, A, B>, pcd: Kind4<F, S, R, C, D>) => Kind4<F, S, R, [A, C], [B, D]>
 /** @deprecated */
 export function splitStrong<F extends URIS3>(
-  F: Category3<F> & Strong3<F>
+  F: Category3<F> & Strong3<F>,
 ): <R, A, B, C, D>(pab: Kind3<F, R, A, B>, pcd: Kind3<F, R, C, D>) => Kind3<F, R, [A, C], [B, D]>
 /** @deprecated */
 export function splitStrong<F extends URIS2>(
-  F: Category2<F> & Strong2<F>
+  F: Category2<F> & Strong2<F>,
 ): <A, B, C, D>(pab: Kind2<F, A, B>, pcd: Kind2<F, C, D>) => Kind2<F, [A, C], [B, D]>
 /** @deprecated */
 export function splitStrong<F>(
-  F: Category<F> & Strong<F>
+  F: Category<F> & Strong<F>,
 ): <A, B, C, D>(pab: HKT2<F, A, B>, pcd: HKT2<F, C, D>) => HKT2<F, [A, C], [B, D]>
 export function splitStrong<F>(
-  F: Category<F> & Strong<F>
+  F: Category<F> & Strong<F>,
 ): <A, B, C, D>(pab: HKT2<F, A, B>, pcd: HKT2<F, C, D>) => HKT2<F, [A, C], [B, D]> {
   return split(F, F)
 }
@@ -191,27 +191,27 @@ export function splitStrong<F>(
 /**
  * Use [`fanOut`](#fanout) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export function fanout<F extends URIS4>(
-  F: Category4<F> & Strong4<F>
+  F: Category4<F> & Strong4<F>,
 ): <S, R, A, B, C>(pab: Kind4<F, S, R, A, B>, pac: Kind4<F, S, R, A, C>) => Kind4<F, S, R, A, [B, C]>
 /** @deprecated */
 export function fanout<F extends URIS3>(
-  F: Category3<F> & Strong3<F>
+  F: Category3<F> & Strong3<F>,
 ): <R, A, B, C>(pab: Kind3<F, R, A, B>, pac: Kind3<F, R, A, C>) => Kind3<F, R, A, [B, C]>
 /** @deprecated */
 export function fanout<F extends URIS2>(
-  F: Category2<F> & Strong2<F>
+  F: Category2<F> & Strong2<F>,
 ): <A, B, C>(pab: Kind2<F, A, B>, pac: Kind2<F, A, C>) => Kind2<F, A, [B, C]>
 /** @deprecated */
 export function fanout<F>(
-  F: Category<F> & Strong<F>
+  F: Category<F> & Strong<F>,
 ): <A, B, C>(pab: HKT2<F, A, B>, pac: HKT2<F, A, C>) => HKT2<F, A, [B, C]>
 export function fanout<F>(
-  F: Category<F> & Strong<F>
+  F: Category<F> & Strong<F>,
 ): <A, B, C>(pab: HKT2<F, A, B>, pac: HKT2<F, A, C>) => HKT2<F, A, [B, C]> {
   return fanOut(F, F)
 }

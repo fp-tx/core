@@ -74,8 +74,8 @@ describe('Reader', () => {
         x,
         _.promap(
           (a: { readonly name: string }) => a.name,
-          (n) => n >= 2
-        )
+          n => n >= 2,
+        ),
       )
       U.deepStrictEqual(reader({ name: 'foo' }), true)
       U.deepStrictEqual(reader({ name: 'a' }), false)
@@ -92,7 +92,7 @@ describe('Reader', () => {
     }
     const x = pipe(
       (s: string) => s.length,
-      _.local((e: E) => e.name)
+      _.local((e: E) => e.name),
     )
     U.deepStrictEqual(x({ name: 'foo' }), 3)
   })
@@ -138,14 +138,17 @@ describe('Reader', () => {
         _.of(1),
         _.bindTo('a'),
         _.bind('b', () => _.of('b')),
-        _.let('c', ({ a, b }) => [a, b])
+        _.let('c', ({ a, b }) => [a, b]),
       )(undefined),
-      { a: 1, b: 'b', c: [1, 'b'] }
+      { a: 1, b: 'b', c: [1, 'b'] },
     )
   })
 
   it('apS', () => {
-    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(undefined), { a: 1, b: 'b' })
+    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(undefined), {
+      a: 1,
+      b: 'b',
+    })
   })
 
   describe('array utils', () => {

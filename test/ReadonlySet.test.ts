@@ -18,7 +18,7 @@ interface Foo {
 }
 const foo = (x: string): Foo => ({ x })
 const fooEq: Eq.Eq<Foo> = {
-  equals: (a: Foo, b: Foo) => a.x === b.x
+  equals: (a: Foo, b: Foo) => a.x === b.x,
 }
 
 describe('ReadonlySet', () => {
@@ -57,7 +57,7 @@ describe('ReadonlySet', () => {
     U.deepStrictEqual(_.chain(S.Eq)(() => new Set([]))(new Set([1, 2])), new Set([]))
     U.deepStrictEqual(
       _.chain(S.Eq)((n: number) => new Set([`${n}`, `${n + 1}`]))(new Set([1, 2])),
-      new Set(['1', '2', '3'])
+      new Set(['1', '2', '3']),
     )
   })
 
@@ -84,7 +84,7 @@ describe('ReadonlySet', () => {
     U.deepStrictEqual(_.partition(() => false)(new Set([1])), separated(new Set([1]), new Set([])))
     U.deepStrictEqual(
       _.partition((n: number) => n % 2 === 0)(new Set([1, 2, 3, 4])),
-      separated(new Set([1, 3]) as ReadonlySet<number>, new Set([2, 4]) as ReadonlySet<number>)
+      separated(new Set([1, 3]) as ReadonlySet<number>, new Set([2, 4]) as ReadonlySet<number>),
     )
 
     // refinements
@@ -108,22 +108,22 @@ describe('ReadonlySet', () => {
   it('partitionMap', () => {
     U.deepStrictEqual(
       _.partitionMap(N.Eq, S.Eq)((n: number) => left(n))(new Set([])),
-      separated(new Set([]), new Set([]))
+      separated(new Set([]), new Set([])),
     )
     U.deepStrictEqual(
       _.partitionMap(N.Eq, S.Eq)((n: number) => (n % 2 === 0 ? left(n) : right(`${n}`)))(new Set([1, 2, 3])),
-      separated(new Set([2]), new Set(['1', '3']))
+      separated(new Set([2]), new Set(['1', '3'])),
     )
     const SL = Eq.struct({ value: N.Eq })
     const SR = Eq.struct({ value: S.Eq })
     U.deepStrictEqual(
       _.partitionMap(
         SL,
-        SR
+        SR,
       )((x: { readonly value: number }) => (x.value % 2 === 0 ? left({ value: 2 }) : right({ value: 'odd' })))(
-        new Set([{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }])
+        new Set([{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }]),
       ),
-      separated(new Set([{ value: 2 }]), new Set([{ value: 'odd' }]))
+      separated(new Set([{ value: 2 }]), new Set([{ value: 'odd' }])),
     )
   })
 
@@ -158,8 +158,8 @@ describe('ReadonlySet', () => {
   })
 
   it('foldMap', () => {
-    U.deepStrictEqual(_.foldMap(N.Ord, getMonoid<number>())((a) => [a])(new Set([1, 2, 3])), [1, 2, 3])
-    U.deepStrictEqual(_.foldMap(N.Ord, getMonoid<number>())((a) => [a])(new Set([3, 2, 1])), [1, 2, 3])
+    U.deepStrictEqual(_.foldMap(N.Ord, getMonoid<number>())(a => [a])(new Set([1, 2, 3])), [1, 2, 3])
+    U.deepStrictEqual(_.foldMap(N.Ord, getMonoid<number>())(a => [a])(new Set([3, 2, 1])), [1, 2, 3])
   })
 
   it('reduceRight', () => {
@@ -197,51 +197,51 @@ describe('ReadonlySet', () => {
     type R = { readonly id: string }
     const E: Eq.Eq<R> = pipe(
       S.Eq,
-      Eq.contramap((x) => x.id)
+      Eq.contramap(x => x.id),
     )
     U.deepStrictEqual(
       _.compact(E)(new Set([optionSome({ id: 'a' }), none, optionSome({ id: 'a' })])),
-      new Set([{ id: 'a' }])
+      new Set([{ id: 'a' }]),
     )
   })
 
   it('separate', () => {
     U.deepStrictEqual(
       _.separate(S.Eq, N.Eq)(new Set([right(1), left('a'), right(2)])),
-      separated(new Set(['a']), new Set([1, 2]))
+      separated(new Set(['a']), new Set([1, 2])),
     )
     type L = { readonly error: string }
     type R = { readonly id: string }
     const SL: Eq.Eq<L> = pipe(
       S.Eq,
-      Eq.contramap((x) => x.error)
+      Eq.contramap(x => x.error),
     )
     const SR: Eq.Eq<R> = pipe(
       S.Eq,
-      Eq.contramap((x) => x.id)
+      Eq.contramap(x => x.id),
     )
     U.deepStrictEqual(
       _.separate(
         SL,
-        SR
+        SR,
       )(new Set([right({ id: 'a' }), left({ error: 'error' }), right({ id: 'a' }), left({ error: 'error' })])),
-      separated(new Set([{ error: 'error' }]), new Set([{ id: 'a' }]))
+      separated(new Set([{ error: 'error' }]), new Set([{ id: 'a' }])),
     )
   })
 
   it('filterMap', () => {
     U.deepStrictEqual(
       _.filterMap(N.Eq)((s: string) => (s.length > 1 ? optionSome(s.length) : none))(new Set(['a', 'bb', 'ccc'])),
-      new Set([2, 3])
+      new Set([2, 3]),
     )
     type R = { readonly id: string }
     const E: Eq.Eq<R> = pipe(
       S.Eq,
-      Eq.contramap((x) => x.id)
+      Eq.contramap(x => x.id),
     )
     U.deepStrictEqual(
       _.filterMap(E)((x: { readonly id: string }) => optionSome(x))(new Set([{ id: 'a' }, { id: 'a' }])),
-      new Set([{ id: 'a' }])
+      new Set([{ id: 'a' }]),
     )
   })
 

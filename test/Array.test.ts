@@ -36,16 +36,16 @@ describe('Array', () => {
       U.deepStrictEqual(
         pipe(
           ['a', 'bb'],
-          _.traverseWithIndex(O.Applicative)((i, s) => (s.length >= 1 ? O.some(s + i) : O.none))
+          _.traverseWithIndex(O.Applicative)((i, s) => (s.length >= 1 ? O.some(s + i) : O.none)),
         ),
-        O.some(['a0', 'bb1'])
+        O.some(['a0', 'bb1']),
       )
       U.deepStrictEqual(
         pipe(
           ['a', 'bb'],
-          _.traverseWithIndex(O.Applicative)((i, s) => (s.length > 1 ? O.some(s + i) : O.none))
+          _.traverseWithIndex(O.Applicative)((i, s) => (s.length > 1 ? O.some(s + i) : O.none)),
         ),
-        O.none
+        O.none,
       )
     })
 
@@ -64,7 +64,7 @@ describe('Array', () => {
     })
 
     it('unfold', () => {
-      const as = _.unfold(5, (n) => (n > 0 ? O.some([n, n - 1]) : O.none))
+      const as = _.unfold(5, n => (n > 0 ? O.some([n, n - 1]) : O.none))
       U.deepStrictEqual(as, [5, 4, 3, 2, 1])
     })
 
@@ -86,9 +86,9 @@ describe('Array', () => {
       U.deepStrictEqual(
         pipe(
           [1, 2, 3],
-          _.map((n) => n * 2)
+          _.map(n => n * 2),
         ),
-        [2, 4, 6]
+        [2, 4, 6],
       )
     })
 
@@ -96,9 +96,9 @@ describe('Array', () => {
       U.deepStrictEqual(
         pipe(
           [1, 2, 3],
-          _.mapWithIndex((i, n) => n + i)
+          _.mapWithIndex((i, n) => n + i),
         ),
-        [1, 3, 5]
+        [1, 3, 5],
       )
     })
 
@@ -106,9 +106,9 @@ describe('Array', () => {
       U.deepStrictEqual(
         pipe(
           [1, 2],
-          _.alt(() => [3, 4])
+          _.alt(() => [3, 4]),
         ),
-        [1, 2, 3, 4]
+        [1, 2, 3, 4],
       )
     })
 
@@ -128,9 +128,9 @@ describe('Array', () => {
       U.deepStrictEqual(
         pipe(
           [1, 2, 3],
-          _.chain((n) => [n, n + 1])
+          _.chain(n => [n, n + 1]),
         ),
-        [1, 2, 2, 3, 3, 4]
+        [1, 2, 2, 3, 3, 4],
       )
     })
 
@@ -144,9 +144,9 @@ describe('Array', () => {
       U.deepStrictEqual(
         pipe(
           [1, 2, 3],
-          _.chainFirst((n) => [n, n + 1])
+          _.chainFirst(n => [n, n + 1]),
         ),
-        [1, 1, 2, 2, 3, 3]
+        [1, 1, 2, 2, 3, 3],
       )
     })
 
@@ -196,9 +196,9 @@ describe('Array', () => {
       U.deepStrictEqual(
         pipe(
           ['a', 'b'],
-          _.foldMapWithIndex(S.Monoid)((i, a) => i + a)
+          _.foldMapWithIndex(S.Monoid)((i, a) => i + a),
         ),
-        '0a1b'
+        '0a1b',
       )
     })
 
@@ -212,7 +212,7 @@ describe('Array', () => {
       U.deepStrictEqual(pipe([], _.partitionMap(identity)), separated([], []))
       U.deepStrictEqual(
         pipe([E.right(1), E.left('foo'), E.right(2)], _.partitionMap(identity)),
-        separated(['foo'], [1, 2])
+        separated(['foo'], [1, 2]),
       )
     })
 
@@ -220,16 +220,16 @@ describe('Array', () => {
       U.deepStrictEqual(
         pipe(
           [],
-          _.partition((n) => n > 2)
+          _.partition(n => n > 2),
         ),
-        separated([], [])
+        separated([], []),
       )
       U.deepStrictEqual(
         pipe(
           [1, 3],
-          _.partition((n) => n > 2)
+          _.partition(n => n > 2),
         ),
-        separated([1], [3])
+        separated([1], [3]),
       )
     })
 
@@ -237,9 +237,9 @@ describe('Array', () => {
       U.deepStrictEqual(
         pipe(
           [],
-          _.partitionMapWithIndex((_, a) => a)
+          _.partitionMapWithIndex((_, a) => a),
         ),
-        separated([], [])
+        separated([], []),
       )
       U.deepStrictEqual(
         pipe(
@@ -248,13 +248,13 @@ describe('Array', () => {
             pipe(
               a,
               E.filterOrElse(
-                (n) => n > i,
-                () => 'err'
-              )
-            )
-          )
+                n => n > i,
+                () => 'err',
+              ),
+            ),
+          ),
         ),
-        separated(['foo', 'err'], [1])
+        separated(['foo', 'err'], [1]),
       )
     })
 
@@ -262,16 +262,16 @@ describe('Array', () => {
       U.deepStrictEqual(
         pipe(
           [],
-          _.partitionWithIndex((i, n) => i + n > 2)
+          _.partitionWithIndex((i, n) => i + n > 2),
         ),
-        separated([], [])
+        separated([], []),
       )
       U.deepStrictEqual(
         pipe(
           [1, 2],
-          _.partitionWithIndex((i, n) => i + n > 2)
+          _.partitionWithIndex((i, n) => i + n > 2),
         ),
-        separated([1], [2])
+        separated([1], [2]),
       )
     })
 
@@ -279,9 +279,9 @@ describe('Array', () => {
       U.deepStrictEqual(
         pipe(
           ['a', 'b', 'c'],
-          _.reduce('', (acc, a) => acc + a)
+          _.reduce('', (acc, a) => acc + a),
         ),
-        'abc'
+        'abc',
       )
     })
 
@@ -289,9 +289,9 @@ describe('Array', () => {
       U.deepStrictEqual(
         pipe(
           ['a', 'b'],
-          _.reduceWithIndex('', (i, b, a) => b + i + a)
+          _.reduceWithIndex('', (i, b, a) => b + i + a),
         ),
-        '0a1b'
+        '0a1b',
       )
     })
 
@@ -308,9 +308,9 @@ describe('Array', () => {
       U.deepStrictEqual(
         pipe(
           ['a', 'b'],
-          _.reduceRightWithIndex('', (i, a, b) => b + i + a)
+          _.reduceRightWithIndex('', (i, a, b) => b + i + a),
         ),
-        '1b0a'
+        '1b0a',
       )
     })
 
@@ -516,31 +516,31 @@ describe('Array', () => {
   })
 
   it('findIndex', () => {
-    U.deepStrictEqual(_.findIndex((x) => x === 2)([1, 2, 3]), O.some(1))
-    U.deepStrictEqual(_.findIndex((x) => x === 2)([]), O.none)
+    U.deepStrictEqual(_.findIndex(x => x === 2)([1, 2, 3]), O.some(1))
+    U.deepStrictEqual(_.findIndex(x => x === 2)([]), O.none)
   })
 
   it('findFirst', () => {
     U.deepStrictEqual(
       pipe(
         [],
-        _.findFirst((x: { readonly a: number }) => x.a > 1)
+        _.findFirst((x: { readonly a: number }) => x.a > 1),
       ),
-      O.none
+      O.none,
     )
     U.deepStrictEqual(
       pipe(
         [{ a: 1 }, { a: 2 }, { a: 3 }],
-        _.findFirst((x) => x.a > 1)
+        _.findFirst(x => x.a > 1),
       ),
-      O.some({ a: 2 })
+      O.some({ a: 2 }),
     )
     U.deepStrictEqual(
       pipe(
         [{ a: 1 }, { a: 2 }, { a: 3 }],
-        _.findFirst((x) => x.a > 3)
+        _.findFirst(x => x.a > 3),
       ),
-      O.none
+      O.none,
     )
   })
 
@@ -548,16 +548,16 @@ describe('Array', () => {
     U.deepStrictEqual(
       pipe(
         [1, 2, 3],
-        _.findFirstMap((n) => (n > 1 ? O.some(n * 2) : O.none))
+        _.findFirstMap(n => (n > 1 ? O.some(n * 2) : O.none)),
       ),
-      O.some(4)
+      O.some(4),
     )
     U.deepStrictEqual(
       pipe(
         [1],
-        _.findFirstMap((n) => (n < 1 ? O.some(n * 2) : O.none))
+        _.findFirstMap(n => (n < 1 ? O.some(n * 2) : O.none)),
       ),
-      O.none
+      O.none,
     )
   })
 
@@ -565,23 +565,23 @@ describe('Array', () => {
     U.deepStrictEqual(
       pipe(
         [],
-        _.findLast((x: { readonly a: number }) => x.a > 1)
+        _.findLast((x: { readonly a: number }) => x.a > 1),
       ),
-      O.none
+      O.none,
     )
     U.deepStrictEqual(
       pipe(
         [{ a: 1 }, { a: 2 }, { a: 3 }],
-        _.findLast((x) => x.a > 1)
+        _.findLast(x => x.a > 1),
       ),
-      O.some({ a: 3 })
+      O.some({ a: 3 }),
     )
     U.deepStrictEqual(
       pipe(
         [{ a: 1 }, { a: 2 }, { a: 3 }],
-        _.findLast((x) => x.a > 3)
+        _.findLast(x => x.a > 3),
       ),
-      O.none
+      O.none,
     )
   })
 
@@ -589,16 +589,16 @@ describe('Array', () => {
     U.deepStrictEqual(
       pipe(
         [1, 2, 3],
-        _.findLastMap((n) => (n > 1 ? O.some(n * 2) : O.none))
+        _.findLastMap(n => (n > 1 ? O.some(n * 2) : O.none)),
       ),
-      O.some(6)
+      O.some(6),
     )
     U.deepStrictEqual(
       pipe(
         [1],
-        _.findLastMap((n) => (n > 1 ? O.some(n * 2) : O.none))
+        _.findLastMap(n => (n > 1 ? O.some(n * 2) : O.none)),
       ),
-      O.none
+      O.none,
     )
   })
 
@@ -609,7 +609,7 @@ describe('Array', () => {
     }
     const xs: Array<X> = [
       { a: 1, b: 0 },
-      { a: 1, b: 1 }
+      { a: 1, b: 1 },
     ]
     U.deepStrictEqual(_.findLastIndex((x: X) => x.a === 1)(xs), O.some(1))
     U.deepStrictEqual(_.findLastIndex((x: X) => x.a === 4)(xs), O.none)
@@ -627,8 +627,8 @@ describe('Array', () => {
     // should not return the same reference if nothing changed
     const input: Array<number> = [1, 2, 3]
     U.deepStrictEqual(
-      pipe(_.unsafeUpdateAt(1, 2, input), (out) => out === input),
-      false
+      pipe(_.unsafeUpdateAt(1, 2, input), out => out === input),
+      false,
     )
   })
 
@@ -654,9 +654,9 @@ describe('Array', () => {
       pipe(
         input,
         _.modifyAt(1, identity),
-        O.map((out) => out === input)
+        O.map(out => out === input),
       ),
-      O.some(false)
+      O.some(false),
     )
   })
 
@@ -665,19 +665,19 @@ describe('Array', () => {
     U.deepStrictEqual(_.sort(N.Ord)([]), [])
     const byName = pipe(
       S.Ord,
-      Ord.contramap((x: { readonly name: string }) => x.name)
+      Ord.contramap((x: { readonly name: string }) => x.name),
     )
     U.deepStrictEqual(
       _.sort(byName)([
         { name: 'b', age: 0 },
         { name: 'a', age: 1 },
-        { name: 'c', age: 2 }
+        { name: 'c', age: 2 },
       ]),
       [
         { name: 'a', age: 1 },
         { name: 'b', age: 0 },
-        { name: 'c', age: 2 }
-      ]
+        { name: 'c', age: 2 },
+      ],
     )
   })
 
@@ -708,7 +708,7 @@ describe('Array', () => {
   it('zipWith', () => {
     U.deepStrictEqual(
       _.zipWith([1, 2, 3], ['a', 'b', 'c', 'd'], (n, s) => s + n),
-      ['a1', 'b2', 'c3']
+      ['a1', 'b2', 'c3'],
     )
   })
 
@@ -716,12 +716,12 @@ describe('Array', () => {
     U.deepStrictEqual(_.zip([1, 2, 3], ['a', 'b', 'c', 'd']), [
       [1, 'a'],
       [2, 'b'],
-      [3, 'c']
+      [3, 'c'],
     ])
     U.deepStrictEqual(pipe([1, 2, 3], _.zip(['a', 'b', 'c', 'd'])), [
       [1, 'a'],
       [2, 'b'],
-      [3, 'c']
+      [3, 'c'],
     ])
   })
 
@@ -730,12 +730,12 @@ describe('Array', () => {
       _.unzip([
         [1, 'a'],
         [2, 'b'],
-        [3, 'c']
+        [3, 'c'],
       ]),
       [
         [1, 2, 3],
-        ['a', 'b', 'c']
-      ]
+        ['a', 'b', 'c'],
+      ],
     )
   })
 
@@ -781,7 +781,7 @@ describe('Array', () => {
   it('foldLeft', () => {
     const len: <A>(as: Array<A>) => number = _.foldLeft(
       () => 0,
-      (_, tail) => 1 + len(tail)
+      (_, tail) => 1 + len(tail),
     )
     U.deepStrictEqual(len([1, 2, 3]), 3)
   })
@@ -789,7 +789,7 @@ describe('Array', () => {
   it('foldRight', () => {
     const len: <A>(as: Array<A>) => number = _.foldRight(
       () => 0,
-      (init, _) => 1 + len(init)
+      (init, _) => 1 + len(init),
     )
     U.deepStrictEqual(len([1, 2, 3]), 3)
   })
@@ -816,7 +816,7 @@ describe('Array', () => {
 
     const eqA = pipe(
       N.Ord,
-      Eq.contramap((f: A) => f.b)
+      Eq.contramap((f: A) => f.b),
     )
     const arrA: A = { a: 'a', b: 1 }
     const arrB: A = { a: 'b', b: 1 }
@@ -851,31 +851,31 @@ describe('Array', () => {
     }
     const byName = pipe(
       S.Ord,
-      Ord.contramap((p: Person) => p.name)
+      Ord.contramap((p: Person) => p.name),
     )
     const byAge = pipe(
       N.Ord,
-      Ord.contramap((p: Person) => p.age)
+      Ord.contramap((p: Person) => p.age),
     )
     const f = _.sortBy([byName, byAge])
     const persons: Array<Person> = [
       { name: 'a', age: 1 },
       { name: 'b', age: 3 },
       { name: 'c', age: 2 },
-      { name: 'b', age: 2 }
+      { name: 'b', age: 2 },
     ]
     U.deepStrictEqual(f(persons), [
       { name: 'a', age: 1 },
       { name: 'b', age: 2 },
       { name: 'b', age: 3 },
-      { name: 'c', age: 2 }
+      { name: 'c', age: 2 },
     ])
     const sortByAgeByName = _.sortBy([byAge, byName])
     U.deepStrictEqual(sortByAgeByName(persons), [
       { name: 'a', age: 1 },
       { name: 'b', age: 2 },
       { name: 'c', age: 2 },
-      { name: 'b', age: 3 }
+      { name: 'b', age: 3 },
     ])
 
     U.deepStrictEqual(f([]), [])
@@ -884,7 +884,7 @@ describe('Array', () => {
 
   it('chop', () => {
     const group = <A>(E: Eq.Eq<A>): ((as: Array<A>) => Array<Array<A>>) => {
-      return _.chop((as) => {
+      return _.chop(as => {
         const { init, rest } = _.spanLeft((a: A) => E.equals(a, as[0]))(as)
         return [init, rest]
       })
@@ -899,7 +899,7 @@ describe('Array', () => {
       input: Array<number>,
       index: number,
       expectedInit: Array<number>,
-      expectedRest: Array<number>
+      expectedRest: Array<number>,
     ) => {
       const [init, rest] = _.splitAt(index)(input)
       U.deepStrictEqual(init, expectedInit)
@@ -910,7 +910,7 @@ describe('Array', () => {
     assertSplitAt(two, 2, two, [])
     U.deepStrictEqual(_.splitAt(2)([1, 2, 3, 4, 5]), [
       [1, 2],
-      [3, 4, 5]
+      [3, 4, 5],
     ])
     // zero
     const empty: Array<number> = []
@@ -932,7 +932,7 @@ describe('Array', () => {
       U.deepStrictEqual(_.chunksOf(2)([1, 2, 3, 4, 5, 6]), [
         [1, 2],
         [3, 4],
-        [5, 6]
+        [5, 6],
       ])
       U.deepStrictEqual(_.chunksOf(1)([1, 2, 3, 4, 5]), [[1], [2], [3], [4], [5]])
       U.deepStrictEqual(_.chunksOf(5)([1, 2, 3, 4, 5]), [[1, 2, 3, 4, 5]])
@@ -965,15 +965,15 @@ describe('Array', () => {
       U.deepStrictEqual(_.chunksOf(2)(xs).concat(_.chunksOf(2)(ys)), _.chunksOf(2)(xs.concat(ys)))
       fc.assert(
         fc.property(
-          fc.array(fc.integer()).filter((xs) => xs.length % 2 === 0), // Ensures `xs.length` is even
+          fc.array(fc.integer()).filter(xs => xs.length % 2 === 0), // Ensures `xs.length` is even
           fc.array(fc.integer()),
-          fc.integer({ min: 1, max: 1 }).map((x) => x * 2), // Generates `n` to be even so that it evenly divides `xs`
+          fc.integer({ min: 1, max: 1 }).map(x => x * 2), // Generates `n` to be even so that it evenly divides `xs`
           (xs, ys, n) => {
             const as = _.chunksOf(n)(xs).concat(_.chunksOf(n)(ys))
             const bs = _.chunksOf(n)(xs.concat(ys))
             isDeepStrictEqual(as, bs)
-          }
-        )
+          },
+        ),
       )
     })
   })
@@ -1013,16 +1013,16 @@ describe('Array', () => {
 
   it('comprehension', () => {
     U.deepStrictEqual(
-      _.comprehension([[1, 2, 3]], (a) => a * 2),
-      [2, 4, 6]
+      _.comprehension([[1, 2, 3]], a => a * 2),
+      [2, 4, 6],
     )
     U.deepStrictEqual(
       _.comprehension(
         [
           [1, 2, 3],
-          ['a', 'b']
+          ['a', 'b'],
         ],
-        tuple
+        tuple,
       ),
       [
         [1, 'a'],
@@ -1030,24 +1030,24 @@ describe('Array', () => {
         [2, 'a'],
         [2, 'b'],
         [3, 'a'],
-        [3, 'b']
-      ]
+        [3, 'b'],
+      ],
     )
     U.deepStrictEqual(
       _.comprehension(
         [
           [1, 2, 3],
-          ['a', 'b']
+          ['a', 'b'],
         ],
         tuple,
-        (a, b) => (a + b.length) % 2 === 0
+        (a, b) => (a + b.length) % 2 === 0,
       ),
       [
         [1, 'a'],
         [1, 'b'],
         [3, 'a'],
-        [3, 'b']
-      ]
+        [3, 'b'],
+      ],
     )
   })
 
@@ -1132,13 +1132,13 @@ describe('Array', () => {
   })
 
   it('every', () => {
-    const isPositive: Predicate<number> = (n) => n > 0
+    const isPositive: Predicate<number> = n => n > 0
     U.deepStrictEqual(pipe([1, 2, 3], _.every(isPositive)), true)
     U.deepStrictEqual(pipe([1, 2, -3], _.every(isPositive)), false)
   })
 
   it('some', () => {
-    const isPositive: Predicate<number> = (n) => n > 0
+    const isPositive: Predicate<number> = n => n > 0
     U.deepStrictEqual(pipe([-1, -2, 3], _.some(isPositive)), true)
     U.deepStrictEqual(pipe([-1, -2, -3], _.some(isPositive)), false)
   })
@@ -1174,7 +1174,7 @@ describe('Array', () => {
   it('match', () => {
     const f = _.match(
       () => 'empty',
-      (as) => `nonEmpty ${as.length}`
+      as => `nonEmpty ${as.length}`,
     )
     U.deepStrictEqual(pipe([], f), 'empty')
     U.deepStrictEqual(pipe([1, 2, 3], f), 'nonEmpty 3')

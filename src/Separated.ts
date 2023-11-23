@@ -1,8 +1,8 @@
 /**
  * ```ts
  * interface Separated<E, A> {
- *    readonly left: E
- *    readonly right: A
+ *   readonly left: E
+ *   readonly right: A
  * }
  * ```
  *
@@ -22,8 +22,8 @@ import { flap as flap_, type Functor2 } from './Functor'
 /**
  * A `Separated` type which holds `left` and `right` parts.
  *
- * @category model
  * @since 2.10.0
+ * @category Model
  */
 export interface Separated<E, A> {
   readonly left: E
@@ -35,8 +35,8 @@ export interface Separated<E, A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @category constructors
  * @since 2.10.0
+ * @category Constructors
  */
 export const separated = <E, A>(left: E, right: A): Separated<E, A> => ({ left, right })
 
@@ -48,8 +48,8 @@ const _bimap: Bifunctor2<URI>['bimap'] = (fa, g, f) => pipe(fa, bimap(g, f))
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @category mapping
  * @since 2.10.0
+ * @category Mapping
  */
 export const map =
   <A, B>(f: (a: A) => B) =>
@@ -59,8 +59,8 @@ export const map =
 /**
  * Map a function over the first type argument of a bifunctor.
  *
- * @category error handling
  * @since 2.10.0
+ * @category Error handling
  */
 export const mapLeft =
   <E, G>(f: (e: E) => G) =>
@@ -70,8 +70,8 @@ export const mapLeft =
 /**
  * Map a pair of functions over the two type arguments of the bifunctor.
  *
- * @category mapping
  * @since 2.10.0
+ * @category Mapping
  */
 export const bimap =
   <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) =>
@@ -79,14 +79,14 @@ export const bimap =
     separated(f(left(fa)), g(right(fa)))
 
 /**
- * @category type lambdas
  * @since 2.10.0
+ * @category Type lambdas
  */
 export const URI = 'Separated'
 
 /**
- * @category type lambdas
  * @since 2.10.0
+ * @category Type lambdas
  */
 export type URI = typeof URI
 
@@ -97,27 +97,27 @@ declare module './HKT' {
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Bifunctor: Bifunctor2<URI> = {
   URI,
   mapLeft: _mapLeft,
-  bimap: _bimap
+  bimap: _bimap,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Functor: Functor2<URI> = {
   URI,
-  map: _map
+  map: _map,
 }
 
 /**
- * @category mapping
  * @since 2.10.0
+ * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
@@ -125,12 +125,8 @@ export const flap = /*#__PURE__*/ flap_(Functor)
 // utils
 // -------------------------------------------------------------------------------------
 
-/**
- * @since 2.10.0
- */
+/** @since 2.10.0 */
 export const left = <E, A>(s: Separated<E, A>): E => s.left
 
-/**
- * @since 2.10.0
- */
+/** @since 2.10.0 */
 export const right = <E, A>(s: Separated<E, A>): A => s.right

@@ -14,9 +14,9 @@ describe('IORef', () => {
     U.deepStrictEqual(
       pipe(
         ref.write(2),
-        I.chain(() => ref.read)
+        I.chain(() => ref.read),
       )(),
-      2
+      2,
     )
   })
 
@@ -25,9 +25,9 @@ describe('IORef', () => {
     U.deepStrictEqual(
       pipe(
         ref.modify(U.double),
-        I.chain(() => ref.read)
+        I.chain(() => ref.read),
       )(),
-      2
+      2,
     )
   })
 
@@ -35,9 +35,9 @@ describe('IORef', () => {
     U.deepStrictEqual(
       pipe(
         newIORef(1),
-        I.chain((ref) => ref.read)
+        I.chain(ref => ref.read),
       )(),
-      1
+      1,
     )
   })
 

@@ -15,7 +15,7 @@ interface Settings {
 const M: Monoid<Settings> = struct({
   settingsHasLibrary: B.MonoidAny,
   settingsGitHub: B.MonoidAny,
-  settingsTravis: B.MonoidAny
+  settingsTravis: B.MonoidAny,
 })
 
 const C = _.getComonad(M)
@@ -31,11 +31,11 @@ interface ProjectBuilder extends _.Traced<Settings, Project> {}
 
 const buildProject =
   (projectName: string): ProjectBuilder =>
-  (settings) => ({
+  settings => ({
     projectName,
     projectHasLibrary: settings.settingsHasLibrary,
     projectGitHub: settings.settingsGitHub,
-    projectTravis: settings.settingsTravis
+    projectTravis: settings.settingsTravis,
   })
 
 const hasLibraryB = (wa: ProjectBuilder): Project => {
@@ -64,29 +64,35 @@ describe('Traced', () => {
       projectName: 'myproject',
       projectHasLibrary: false,
       projectGitHub: false,
-      projectTravis: false
+      projectTravis: false,
     })
     U.deepStrictEqual(C.extract(C.extend(wa, hasLibraryB)), {
       projectName: 'myproject',
       projectHasLibrary: true,
       projectGitHub: false,
-      projectTravis: false
+      projectTravis: false,
     })
   })
 
   it('tracks', () => {
-    const travisB = _.tracks(M, (project: Project): Settings => ({ ...M.empty, settingsTravis: project.projectGitHub }))
+    const travisB = _.tracks(
+      M,
+      (project: Project): Settings => ({
+        ...M.empty,
+        settingsTravis: project.projectGitHub,
+      }),
+    )
     U.deepStrictEqual(C.extract(C.extend(buildProject('travis'), travisB)), {
       projectName: 'travis',
       projectHasLibrary: false,
       projectGitHub: false,
-      projectTravis: false
+      projectTravis: false,
     })
     U.deepStrictEqual(C.extract(C.extend(C.extend(buildProject('github-travis'), gitHubB), travisB)), {
       projectName: 'github-travis',
       projectHasLibrary: false,
       projectGitHub: true,
-      projectTravis: true
+      projectTravis: true,
     })
   })
 
@@ -96,13 +102,13 @@ describe('Traced', () => {
         projectName: 'myproject',
         projectHasLibrary: false,
         projectGitHub: false,
-        projectTravis: false
+        projectTravis: false,
       },
       {
         settingsHasLibrary: false,
         settingsGitHub: false,
-        settingsTravis: false
-      }
+        settingsTravis: false,
+      },
     ])
   })
 
@@ -111,18 +117,18 @@ describe('Traced', () => {
       C.extract(
         pipe(
           buildProject('myproject'),
-          _.listens((settings) => settings.settingsTravis)
-        )
+          _.listens(settings => settings.settingsTravis),
+        ),
       ),
       [
         {
           projectName: 'myproject',
           projectHasLibrary: false,
           projectGitHub: false,
-          projectTravis: false
+          projectTravis: false,
         },
-        false
-      ]
+        false,
+      ],
     )
   })
 
@@ -131,18 +137,18 @@ describe('Traced', () => {
       C.extract(
         pipe(
           buildProject('myproject'),
-          _.censor((settings) => ({
+          _.censor(settings => ({
             ...settings,
-            settingsHasLibrary: !settings.settingsHasLibrary
-          }))
-        )
+            settingsHasLibrary: !settings.settingsHasLibrary,
+          })),
+        ),
       ),
       {
         projectName: 'myproject',
         projectHasLibrary: true,
         projectGitHub: false,
-        projectTravis: false
-      }
+        projectTravis: false,
+      },
     )
   })
 })

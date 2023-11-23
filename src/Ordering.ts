@@ -1,6 +1,4 @@
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 import type * as E from './Eq'
 import type * as M from './Monoid'
 import type * as S from './Semigroup'
@@ -10,8 +8,8 @@ import type * as S from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export type Ordering = -1 | 0 | 1
 
@@ -20,17 +18,19 @@ export type Ordering = -1 | 0 | 1
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @category pattern matching
  * @since 2.12.0
+ * @category Pattern matching
  */
 export const matchW =
   <A, B, C>(onLessThan: () => A, onEqual: () => B, onGreaterThan: () => C) =>
   (o: Ordering): A | B | C =>
-    o === -1 ? onLessThan() : o === 0 ? onEqual() : onGreaterThan()
+    o === -1 ? onLessThan()
+    : o === 0 ? onEqual()
+    : onGreaterThan()
 
 /**
- * @category pattern matching
  * @since 2.10.0
+ * @category Pattern matching
  */
 export const match: <A>(onLessThan: () => A, onEqual: () => A, onGreaterThan: () => A) => (o: Ordering) => A = matchW
 
@@ -38,48 +38,50 @@ export const match: <A>(onLessThan: () => A, onEqual: () => A, onGreaterThan: ()
 // combinators
 // -------------------------------------------------------------------------------------
 
-/**
- * @since 2.10.0
- */
-export const reverse = (o: Ordering): Ordering => (o === -1 ? 1 : o === 1 ? -1 : 0)
+/** @since 2.10.0 */
+export const reverse = (o: Ordering): Ordering =>
+  o === -1 ? 1
+  : o === 1 ? -1
+  : 0
 
 // -------------------------------------------------------------------------------------
 // instances
 // -------------------------------------------------------------------------------------
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Eq: E.Eq<Ordering> = {
-  equals: (x, y) => x === y
+  equals: (x, y) => x === y,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Semigroup: S.Semigroup<Ordering> = {
-  concat: (x, y) => (x !== 0 ? x : y)
+  concat: (x, y) => (x !== 0 ? x : y),
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Monoid: M.Monoid<Ordering> = {
   concat: Semigroup.concat,
-  empty: 0
+  empty: 0,
 }
 
 // -------------------------------------------------------------------------------------
 // utils
 // -------------------------------------------------------------------------------------
 
-/**
- * @since 2.0.0
- */
-export const sign = (n: number): Ordering => (n <= -1 ? -1 : n >= 1 ? 1 : 0)
+/** @since 2.0.0 */
+export const sign = (n: number): Ordering =>
+  n <= -1 ? -1
+  : n >= 1 ? 1
+  : 0
 
 // -------------------------------------------------------------------------------------
 // deprecated
@@ -88,35 +90,35 @@ export const sign = (n: number): Ordering => (n <= -1 ? -1 : n >= 1 ? 1 : 0)
 /**
  * Use [`reverse`](#reverse) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const invert = reverse
 
 /**
  * Use [`Semigroup`](#semigroup) instead
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const semigroupOrdering: S.Semigroup<Ordering> = Semigroup
 
 /**
  * Use [`Eq`](#eq) instead
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const eqOrdering: E.Eq<Ordering> = Eq
 
 /**
  * Use [`Monoid`](#monoid) instead
  *
- * @category zone of death
- * @since 2.4.0
  * @deprecated
+ * @since 2.4.0
+ * @category Zone of death
  */
 export const monoidOrdering: M.Monoid<Ordering> = Monoid

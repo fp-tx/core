@@ -1,6 +1,4 @@
-/**
- * @since 2.10.0
- */
+/** @since 2.10.0 */
 import { type Alt1 } from './Alt'
 import { type Alternative1 } from './Alternative'
 import { type Applicative1 } from './Applicative'
@@ -13,20 +11,20 @@ import {
   type Filterable1,
   filterMap as filterMap_,
   partition as partition_,
-  partitionMap as partitionMap_
+  partitionMap as partitionMap_,
 } from './Filterable'
 import {
   chainEitherK as chainEitherK_,
   chainFirstEitherK as chainFirstEitherK_,
   type FromEither1,
-  fromEitherK as fromEitherK_
+  fromEitherK as fromEitherK_,
 } from './FromEither'
 import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, type FromIO1, fromIOK as fromIOK_ } from './FromIO'
 import {
   chainFirstTaskK as chainFirstTaskK_,
   chainTaskK as chainTaskK_,
   type FromTask1,
-  fromTaskK as fromTaskK_
+  fromTaskK as fromTaskK_,
 } from './FromTask'
 import { flow, identity, type Lazy, pipe, SK } from './function'
 import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
@@ -54,8 +52,8 @@ import { guard as guard_, type Zero1 } from './Zero'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.10.0
+ * @category Model
  */
 export interface TaskOption<A> extends Task<Option<A>> {}
 
@@ -64,14 +62,14 @@ export interface TaskOption<A> extends Task<Option<A>> {}
 // -------------------------------------------------------------------------------------
 
 /**
- * @category constructors
  * @since 2.10.0
+ * @category Constructors
  */
 export const some: <A>(a: A) => TaskOption<A> = /*#__PURE__*/ OT.some(T.Pointed)
 
 /**
- * @category lifting
  * @since 2.10.0
+ * @category Lifting
  */
 export const fromPredicate: {
   <A, B extends A>(refinement: Refinement<A, B>): (a: A) => TaskOption<B>
@@ -84,38 +82,38 @@ export const fromPredicate: {
 // -------------------------------------------------------------------------------------
 
 /**
- * @category conversions
  * @since 2.10.0
+ * @category Conversions
  */
 export const fromOption: <A>(fa: Option<A>) => TaskOption<A> = T.of
 
 /**
- * @category conversions
  * @since 2.10.0
+ * @category Conversions
  */
 export const fromEither: <A>(fa: Either<unknown, A>) => TaskOption<A> = /*#__PURE__*/ OT.fromEither(T.Pointed)
 
 /**
- * @category conversions
  * @since 2.10.0
+ * @category Conversions
  */
-export const fromIO: <A>(fa: IO<A>) => TaskOption<A> = (ma) => fromTask(T.fromIO(ma))
+export const fromIO: <A>(fa: IO<A>) => TaskOption<A> = ma => fromTask(T.fromIO(ma))
 
 /**
- * @category conversions
  * @since 2.10.0
+ * @category Conversions
  */
 export const fromTask: <A>(fa: Task<A>) => TaskOption<A> = /*#__PURE__*/ OT.fromF(T.Functor)
 
 /**
- * @category conversions
  * @since 2.11.0
+ * @category Conversions
  */
 export const fromTaskEither: <A>(fa: TaskEither<unknown, A>) => TaskOption<A> = /*#__PURE__*/ T.map(O.fromEither)
 
 /**
- * @category pattern matching
  * @since 2.10.0
+ * @category Pattern matching
  */
 export const match: <B, A>(onNone: () => B, onSome: (a: A) => B) => (ma: TaskOption<A>) => Task<B> =
   /*#__PURE__*/ OT.match(T.Functor)
@@ -125,8 +123,8 @@ export const match: <B, A>(onNone: () => B, onSome: (a: A) => B) => (ma: TaskOpt
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @category pattern matching
  * @since 2.10.0
+ * @category Pattern matching
  */
 export const matchW: <B, A, C>(onNone: () => B, onSome: (a: A) => C) => (ma: TaskOption<A>) => Task<B | C> =
   match as any
@@ -134,8 +132,8 @@ export const matchW: <B, A, C>(onNone: () => B, onSome: (a: A) => C) => (ma: Tas
 /**
  * The `E` suffix (short for **E**ffect) means that the handlers return an effect (`Task`).
  *
- * @category pattern matching
  * @since 2.10.0
+ * @category Pattern matching
  */
 export const matchE: <B, A>(onNone: () => Task<B>, onSome: (a: A) => Task<B>) => (ma: TaskOption<A>) => Task<B> =
   /*#__PURE__*/ OT.matchE(T.Chain)
@@ -143,8 +141,8 @@ export const matchE: <B, A>(onNone: () => Task<B>, onSome: (a: A) => Task<B>) =>
 /**
  * Alias of [`matchE`](#matche).
  *
- * @category pattern matching
  * @since 2.10.0
+ * @category Pattern matching
  */
 export const fold = matchE
 
@@ -153,28 +151,28 @@ export const fold = matchE
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @category pattern matching
  * @since 2.10.0
+ * @category Pattern matching
  */
 export const matchEW: <B, C, A>(
   onNone: () => Task<B>,
-  onSome: (a: A) => Task<C>
+  onSome: (a: A) => Task<C>,
 ) => (ma: TaskOption<A>) => Task<B | C> = matchE as any
 
 /**
  * Alias of [`matchEW`](#matchew).
  *
- * @category pattern matching
  * @since 2.10.0
+ * @category Pattern matching
  */
 export const foldW = matchEW
 
 /**
- * @category error handling
  * @since 2.10.0
+ * @category Error handling
  */
 export const getOrElse: <A>(onNone: Lazy<Task<A>>) => (fa: TaskOption<A>) => Task<A> = /*#__PURE__*/ OT.getOrElse(
-  T.Monad
+  T.Monad,
 )
 
 /**
@@ -182,14 +180,14 @@ export const getOrElse: <A>(onNone: Lazy<Task<A>>) => (fa: TaskOption<A>) => Tas
  *
  * The `W` suffix (short for **W**idening) means that the handler return type will be merged.
  *
- * @category error handling
  * @since 2.10.0
+ * @category Error handling
  */
 export const getOrElseW: <B>(onNone: Lazy<Task<B>>) => <A>(ma: TaskOption<A>) => Task<A | B> = getOrElse as any
 
 /**
- * @category conversions
  * @since 2.10.0
+ * @category Conversions
  */
 export const fromNullable: <A>(a: A) => TaskOption<NonNullable<A>> = /*#__PURE__*/ OT.fromNullable(T.Pointed)
 
@@ -198,8 +196,8 @@ export const fromNullable: <A>(a: A) => TaskOption<NonNullable<A>> = /*#__PURE__
  *
  * See also [`tryCatchK`](#trycatchk).
  *
- * @category interop
  * @since 2.10.0
+ * @category Interop
  */
 export const tryCatch =
   <A>(f: Lazy<Promise<A>>): TaskOption<A> =>
@@ -214,8 +212,8 @@ export const tryCatch =
 /**
  * Converts a function returning a `Promise` to one returning a `TaskOption`.
  *
- * @category interop
  * @since 2.10.0
+ * @category Interop
  */
 export const tryCatchK =
   <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => Promise<B>): ((...a: A) => TaskOption<B>) =>
@@ -223,19 +221,19 @@ export const tryCatchK =
     tryCatch(() => f(...a))
 
 /**
- * @category lifting
  * @since 2.10.0
+ * @category Lifting
  */
 export const fromNullableK: <A extends ReadonlyArray<unknown>, B>(
-  f: (...a: A) => B | null | undefined
+  f: (...a: A) => B | null | undefined,
 ) => (...a: A) => TaskOption<NonNullable<B>> = /*#__PURE__*/ OT.fromNullableK(T.Pointed)
 
 /**
- * @category sequencing
  * @since 2.10.0
+ * @category Sequencing
  */
 export const chainNullableK: <A, B>(
-  f: (a: A) => B | null | undefined
+  f: (a: A) => B | null | undefined,
 ) => (ma: TaskOption<A>) => TaskOption<NonNullable<B>> = /*#__PURE__*/ OT.chainNullableK(T.Monad)
 
 // -------------------------------------------------------------------------------------
@@ -243,16 +241,16 @@ export const chainNullableK: <A, B>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @category lifting
  * @since 2.10.0
+ * @category Lifting
  */
 export const fromOptionK: <A extends ReadonlyArray<unknown>, B>(
-  f: (...a: A) => Option<B>
+  f: (...a: A) => Option<B>,
 ) => (...a: A) => TaskOption<B> = /*#__PURE__*/ OT.fromOptionK(T.Pointed)
 
 /**
- * @category sequencing
  * @since 2.10.0
+ * @category Sequencing
  */
 export const chainOptionK: <A, B>(f: (a: A) => Option<B>) => (ma: TaskOption<A>) => TaskOption<B> =
   /*#__PURE__*/ OT.chainOptionK(T.Monad)
@@ -261,44 +259,42 @@ export const chainOptionK: <A, B>(f: (a: A) => Option<B>) => (ma: TaskOption<A>)
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @category mapping
  * @since 2.10.0
+ * @category Mapping
  */
 export const map: <A, B>(f: (a: A) => B) => (fa: TaskOption<A>) => TaskOption<B> = /*#__PURE__*/ OT.map(T.Functor)
 
-/**
- * @since 2.10.0
- */
+/** @since 2.10.0 */
 export const ap: <A>(fa: TaskOption<A>) => <B>(fab: TaskOption<(a: A) => B>) => TaskOption<B> = /*#__PURE__*/ OT.ap(
-  T.ApplyPar
+  T.ApplyPar,
 )
 
 /**
- * @category constructors
  * @since 2.10.0
+ * @category Constructors
  */
 export const of: <A>(a: A) => TaskOption<A> = some
 
 /**
- * @category sequencing
  * @since 2.10.0
+ * @category Sequencing
  */
 export const chain: <A, B>(f: (a: A) => TaskOption<B>) => (ma: TaskOption<A>) => TaskOption<B> = /*#__PURE__*/ OT.chain(
-  T.Monad
+  T.Monad,
 )
 
 /**
- * @category sequencing
  * @since 2.10.0
+ * @category Sequencing
  */
 export const flatten: <A>(mma: TaskOption<TaskOption<A>>) => TaskOption<A> = /*#__PURE__*/ chain(identity)
 
 /**
- * @category error handling
  * @since 2.10.0
+ * @category Error handling
  */
 export const alt: <A>(second: Lazy<TaskOption<A>>) => (first: TaskOption<A>) => TaskOption<A> = /*#__PURE__*/ OT.alt(
-  T.Monad
+  T.Monad,
 )
 
 /**
@@ -306,37 +302,35 @@ export const alt: <A>(second: Lazy<TaskOption<A>>) => (first: TaskOption<A>) => 
  *
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
- * @category error handling
  * @since 2.10.0
+ * @category Error handling
  */
 export const altW: <B>(second: Lazy<TaskOption<B>>) => <A>(first: TaskOption<A>) => TaskOption<A | B> = alt as any
 
-/**
- * @since 2.10.0
- */
+/** @since 2.10.0 */
 export const zero: <A>() => TaskOption<A> = /*#__PURE__*/ OT.zero(T.Pointed)
 
 /**
- * @category constructors
  * @since 2.10.0
+ * @category Constructors
  */
 export const none: TaskOption<never> = /*#__PURE__*/ zero()
 
 /**
- * @category filtering
  * @since 2.10.0
+ * @category Filtering
  */
 export const compact: Compactable1<URI>['compact'] = /*#__PURE__*/ compact_(T.Functor, O.Compactable)
 
 /**
- * @category filtering
  * @since 2.10.0
+ * @category Filtering
  */
 export const separate: Compactable1<URI>['separate'] = /*#__PURE__*/ separate_(T.Functor, O.Compactable, O.Functor)
 
 /**
- * @category filtering
  * @since 2.10.0
+ * @category Filtering
  */
 export const filter: {
   <A, B extends A>(refinement: Refinement<A, B>): (fb: TaskOption<A>) => TaskOption<B>
@@ -345,15 +339,15 @@ export const filter: {
 } = /*#__PURE__*/ filter_(T.Functor, O.Filterable)
 
 /**
- * @category filtering
  * @since 2.10.0
+ * @category Filtering
  */
 export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fga: TaskOption<A>) => TaskOption<B> =
   /*#__PURE__*/ filterMap_(T.Functor, O.Filterable)
 
 /**
- * @category filtering
  * @since 2.10.0
+ * @category Filtering
  */
 export const partition: {
   <A, B extends A>(refinement: Refinement<A, B>): (fb: TaskOption<A>) => Separated<TaskOption<A>, TaskOption<B>>
@@ -362,14 +356,14 @@ export const partition: {
 } = /*#__PURE__*/ partition_(T.Functor, O.Filterable)
 
 /**
- * @category filtering
  * @since 2.10.0
+ * @category Filtering
  */
 export const partitionMap: <A, B, C>(
-  f: (a: A) => Either<B, C>
+  f: (a: A) => Either<B, C>,
 ) => (fa: TaskOption<A>) => Separated<TaskOption<B>, TaskOption<C>> = /*#__PURE__*/ partitionMap_(
   T.Functor,
-  O.Filterable
+  O.Filterable,
 )
 
 // -------------------------------------------------------------------------------------
@@ -394,14 +388,14 @@ const _partition: Filterable1<URI>['partition'] = <A>(fa: TaskOption<A>, predica
 const _partitionMap: Filterable1<URI>['partitionMap'] = (fa, f) => pipe(fa, partitionMap(f))
 
 /**
- * @category type lambdas
  * @since 2.10.0
+ * @category Type lambdas
  */
 export const URI = 'TaskOption'
 
 /**
- * @category type lambdas
  * @since 2.10.0
+ * @category Type lambdas
  */
 export type URI = typeof URI
 
@@ -412,39 +406,39 @@ declare module './HKT' {
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Functor: Functor1<URI> = {
   URI,
-  map: _map
+  map: _map,
 }
 
 /**
- * @category mapping
  * @since 2.10.0
+ * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Pointed: Pointed1<URI> = {
   URI,
-  of
+  of,
 }
 
 /**
  * Runs computations in parallel.
  *
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const ApplyPar: Apply1<URI> = {
   URI,
   map: _map,
-  ap: _ap
+  ap: _ap,
 }
 
 /**
@@ -464,96 +458,96 @@ export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
 /**
  * Runs computations in parallel.
  *
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const ApplicativePar: Applicative1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  of
+  of,
 }
 
 const _apSeq: Apply1<URI>['ap'] = (fab, fa) =>
   pipe(
     fab,
-    chain((f) => pipe(fa, map(f)))
+    chain(f => pipe(fa, map(f))),
   )
 
 /**
  * Runs computations sequentially.
  *
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const ApplySeq: Apply1<URI> = {
   URI,
   map: _map,
-  ap: _apSeq
+  ap: _apSeq,
 }
 
 /**
  * Runs computations sequentially.
  *
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const ApplicativeSeq: Applicative1<URI> = {
   URI,
   map: _map,
   ap: _apSeq,
-  of
+  of,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Chain: Chain1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain
+  chain: _chain,
 }
 
 /**
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @category sequencing
  * @since 2.10.0
+ * @category Sequencing
  */
 export const chainFirst: <A, B>(f: (a: A) => TaskOption<B>) => (first: TaskOption<A>) => TaskOption<A> =
   /*#__PURE__*/ chainFirst_(Chain)
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Alt: Alt1<URI> = {
   URI,
   map: _map,
-  alt: _alt
+  alt: _alt,
 }
 
 /**
- * @category instances
  * @since 2.11.0
+ * @category Instances
  */
 export const Zero: Zero1<URI> = {
   URI,
-  zero
+  zero,
 }
 
 /**
- * @category do notation
  * @since 2.11.0
+ * @category Do notation
  */
 export const guard = /*#__PURE__*/ guard_(Zero, Pointed)
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Alternative: Alternative1<URI> = {
   URI,
@@ -561,24 +555,24 @@ export const Alternative: Alternative1<URI> = {
   ap: _ap,
   of,
   alt: _alt,
-  zero
+  zero,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Monad: Monad1<URI> = {
   URI,
   map: _map,
   ap: _ap,
   of,
-  chain: _chain
+  chain: _chain,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const MonadIO: MonadIO1<URI> = {
   URI,
@@ -586,12 +580,12 @@ export const MonadIO: MonadIO1<URI> = {
   ap: _ap,
   of,
   chain: _chain,
-  fromIO
+  fromIO,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const MonadTask: MonadTask1<URI> = {
   URI,
@@ -600,22 +594,22 @@ export const MonadTask: MonadTask1<URI> = {
   of,
   chain: _chain,
   fromIO,
-  fromTask
+  fromTask,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Compactable: Compactable1<URI> = {
   URI,
   compact,
-  separate
+  separate,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Filterable: Filterable1<URI> = {
   URI,
@@ -625,99 +619,99 @@ export const Filterable: Filterable1<URI> = {
   filter: _filter,
   filterMap: _filterMap,
   partition: _partition,
-  partitionMap: _partitionMap
+  partitionMap: _partitionMap,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const FromIO: FromIO1<URI> = {
   URI,
-  fromIO
+  fromIO,
 }
 
 /**
- * @category lifting
  * @since 2.10.0
+ * @category Lifting
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => IO<B>) => (...a: A) => TaskOption<B> =
   /*#__PURE__*/ fromIOK_(FromIO)
 
 /**
- * @category sequencing
  * @since 2.10.0
+ * @category Sequencing
  */
 export const chainIOK: <A, B>(f: (a: A) => IO<B>) => (first: TaskOption<A>) => TaskOption<B> = /*#__PURE__*/ chainIOK_(
   FromIO,
-  Chain
+  Chain,
 )
 
 /**
- * @category sequencing
  * @since 2.10.0
+ * @category Sequencing
  */
 export const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => (first: TaskOption<A>) => TaskOption<A> =
   /*#__PURE__*/ chainFirstIOK_(FromIO, Chain)
 
 /**
- * @category instances
  * @since 2.11.0
+ * @category Instances
  */
 export const FromEither: FromEither1<URI> = {
   URI,
-  fromEither
+  fromEither,
 }
 
 /**
- * @category lifting
  * @since 2.12.0
+ * @category Lifting
  */
 export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
-  f: (...a: A) => Either<E, B>
+  f: (...a: A) => Either<E, B>,
 ) => (...a: A) => TaskOption<B> = /*#__PURE__*/ fromEitherK_(FromEither)
 
 /**
- * @category sequencing
  * @since 2.12.0
+ * @category Sequencing
  */
 export const chainEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: TaskOption<A>) => TaskOption<B> =
   /*#__PURE__*/ chainEitherK_(FromEither, Chain)
 
 /**
- * @category sequencing
  * @since 2.12.0
+ * @category Sequencing
  */
 export const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: TaskOption<A>) => TaskOption<A> =
   /*#__PURE__*/ chainFirstEitherK_(FromEither, Chain)
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const FromTask: FromTask1<URI> = {
   URI,
   fromIO,
-  fromTask
+  fromTask,
 }
 
 /**
- * @category lifting
  * @since 2.10.0
+ * @category Lifting
  */
 export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => T.Task<B>) => (...a: A) => TaskOption<B> =
   /*#__PURE__*/ fromTaskK_(FromTask)
 
 /**
- * @category sequencing
  * @since 2.10.0
+ * @category Sequencing
  */
 export const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => (first: TaskOption<A>) => TaskOption<B> =
   /*#__PURE__*/ chainTaskK_(FromTask, Chain)
 
 /**
- * @category sequencing
  * @since 2.10.0
+ * @category Sequencing
  */
 export const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => (first: TaskOption<A>) => TaskOption<A> =
   /*#__PURE__*/ chainFirstTaskK_(FromTask, Chain)
@@ -727,14 +721,14 @@ export const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => (first: TaskOpti
 // -------------------------------------------------------------------------------------
 
 /**
- * @category do notation
  * @since 2.10.0
+ * @category Do notation
  */
 export const Do: TaskOption<{}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @category do notation
  * @since 2.10.0
+ * @category Do notation
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
 
@@ -742,27 +736,25 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @category do notation
    * @since 2.13.0
+   * @category Do notation
    */
-  let_ as let
+  let_ as let,
 }
 
 /**
- * @category do notation
  * @since 2.10.0
+ * @category Do notation
  */
 export const bind = /*#__PURE__*/ bind_(Chain)
 
 /**
- * @category do notation
  * @since 2.10.0
+ * @category Do notation
  */
 export const apS = /*#__PURE__*/ apS_(ApplyPar)
 
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 export const ApT: TaskOption<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 
 // -------------------------------------------------------------------------------------
@@ -772,32 +764,32 @@ export const ApT: TaskOption<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArra
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(ApplicativePar)`.
  *
- * @category traversing
  * @since 2.11.0
+ * @category Traversing
  */
 export const traverseReadonlyNonEmptyArrayWithIndex = <A, B>(
-  f: (index: number, a: A) => TaskOption<B>
+  f: (index: number, a: A) => TaskOption<B>,
 ): ((as: ReadonlyNonEmptyArray<A>) => TaskOption<ReadonlyNonEmptyArray<B>>) =>
   flow(T.traverseReadonlyNonEmptyArrayWithIndex(f), T.map(O.traverseReadonlyNonEmptyArrayWithIndex(SK)))
 
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativePar)`.
  *
- * @category traversing
  * @since 2.11.0
+ * @category Traversing
  */
 export const traverseReadonlyArrayWithIndex = <A, B>(
-  f: (index: number, a: A) => TaskOption<B>
+  f: (index: number, a: A) => TaskOption<B>,
 ): ((as: ReadonlyArray<A>) => TaskOption<ReadonlyArray<B>>) => {
   const g = traverseReadonlyNonEmptyArrayWithIndex(f)
-  return (as) => (_.isNonEmpty(as) ? g(as) : ApT)
+  return as => (_.isNonEmpty(as) ? g(as) : ApT)
 }
 
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @category traversing
  * @since 2.11.0
+ * @category Traversing
  */
 export const traverseReadonlyNonEmptyArrayWithIndexSeq =
   <A, B>(f: (index: number, a: A) => TaskOption<B>) =>
@@ -805,58 +797,58 @@ export const traverseReadonlyNonEmptyArrayWithIndexSeq =
   () =>
     _.tail(as).reduce<Promise<Option<NonEmptyArray<B>>>>(
       (acc, a, i) =>
-        acc.then((obs) =>
-          _.isNone(obs)
-            ? acc
-            : f(i + 1, a)().then((ob) => {
-                if (_.isNone(ob)) {
-                  return ob
-                }
-                obs.value.push(ob.value)
-                return obs
-              })
+        acc.then(obs =>
+          _.isNone(obs) ? acc : (
+            f(i + 1, a)().then(ob => {
+              if (_.isNone(ob)) {
+                return ob
+              }
+              obs.value.push(ob.value)
+              return obs
+            })
+          ),
         ),
-      f(0, _.head(as))().then(O.map(_.singleton))
+      f(0, _.head(as))().then(O.map(_.singleton)),
     )
 
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @category traversing
  * @since 2.11.0
+ * @category Traversing
  */
 export const traverseReadonlyArrayWithIndexSeq = <A, B>(
-  f: (index: number, a: A) => TaskOption<B>
+  f: (index: number, a: A) => TaskOption<B>,
 ): ((as: ReadonlyArray<A>) => TaskOption<ReadonlyArray<B>>) => {
   const g = traverseReadonlyNonEmptyArrayWithIndexSeq(f)
-  return (as) => (_.isNonEmpty(as) ? g(as) : ApT)
+  return as => (_.isNonEmpty(as) ? g(as) : ApT)
 }
 
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @category traversing
  * @since 2.10.0
+ * @category Traversing
  */
 export const traverseArrayWithIndex: <A, B>(
-  f: (index: number, a: A) => TaskOption<B>
+  f: (index: number, a: A) => TaskOption<B>,
 ) => (as: ReadonlyArray<A>) => TaskOption<ReadonlyArray<B>> = traverseReadonlyArrayWithIndex
 
 /**
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
- * @category traversing
  * @since 2.10.0
+ * @category Traversing
  */
 export const traverseArray: <A, B>(
-  f: (a: A) => TaskOption<B>
-) => (as: ReadonlyArray<A>) => TaskOption<ReadonlyArray<B>> = (f) => traverseReadonlyArrayWithIndex((_, a) => f(a))
+  f: (a: A) => TaskOption<B>,
+) => (as: ReadonlyArray<A>) => TaskOption<ReadonlyArray<B>> = f => traverseReadonlyArrayWithIndex((_, a) => f(a))
 
 /**
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
- * @category traversing
  * @since 2.10.0
+ * @category Traversing
  */
 export const sequenceArray: <A>(as: ReadonlyArray<TaskOption<A>>) => TaskOption<ReadonlyArray<A>> =
   /*#__PURE__*/ traverseArray(identity)
@@ -864,28 +856,28 @@ export const sequenceArray: <A>(as: ReadonlyArray<TaskOption<A>>) => TaskOption<
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @category traversing
  * @since 2.10.0
+ * @category Traversing
  */
 export const traverseSeqArrayWithIndex: <A, B>(
-  f: (index: number, a: A) => TaskOption<B>
+  f: (index: number, a: A) => TaskOption<B>,
 ) => (as: ReadonlyArray<A>) => TaskOption<ReadonlyArray<B>> = traverseReadonlyArrayWithIndexSeq
 
 /**
  * Equivalent to `ReadonlyArray#traverse(ApplicativeSeq)`.
  *
- * @category traversing
  * @since 2.10.0
+ * @category Traversing
  */
 export const traverseSeqArray: <A, B>(
-  f: (a: A) => TaskOption<B>
-) => (as: ReadonlyArray<A>) => TaskOption<ReadonlyArray<B>> = (f) => traverseReadonlyArrayWithIndexSeq((_, a) => f(a))
+  f: (a: A) => TaskOption<B>,
+) => (as: ReadonlyArray<A>) => TaskOption<ReadonlyArray<B>> = f => traverseReadonlyArrayWithIndexSeq((_, a) => f(a))
 
 /**
  * Equivalent to `ReadonlyArray#sequence(ApplicativeSeq)`.
  *
- * @category traversing
  * @since 2.10.0
+ * @category Traversing
  */
 export const sequenceSeqArray: <A>(as: ReadonlyArray<TaskOption<A>>) => TaskOption<ReadonlyArray<A>> =
   /*#__PURE__*/ traverseSeqArray(identity)

@@ -85,10 +85,10 @@ describe('Semigroup', () => {
     }
     const foo: T = {
       foo: 123,
-      bar: '456'
+      bar: '456',
     }
     const bar: T = {
-      bar: '123'
+      bar: '123',
     }
     const S = _.getObjectSemigroup<T>()
     U.deepStrictEqual(S.concat(foo, bar), Object.assign({}, foo, bar))

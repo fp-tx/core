@@ -37,30 +37,30 @@ describe('IOOption', () => {
     U.deepStrictEqual(
       pipe(
         _.some(1),
-        _.alt(() => _.some(2))
+        _.alt(() => _.some(2)),
       )(),
-      O.some(1)
+      O.some(1),
     )
     U.deepStrictEqual(
       pipe(
         _.some(2),
-        _.alt(() => _.none as _.IOOption<number>)
+        _.alt(() => _.none as _.IOOption<number>),
       )(),
-      O.some(2)
+      O.some(2),
     )
     U.deepStrictEqual(
       pipe(
         _.none,
-        _.alt(() => _.some(1))
+        _.alt(() => _.some(1)),
       )(),
-      O.some(1)
+      O.some(1),
     )
     U.deepStrictEqual(
       pipe(
         _.none,
-        _.alt(() => _.none)
+        _.alt(() => _.none),
       )(),
-      O.none
+      O.none,
     )
   })
 
@@ -83,14 +83,22 @@ describe('IOOption', () => {
   })
 
   it('fromNullableK', () => {
-    const f = _.fromNullableK((n: number) => (n > 0 ? n : n === 0 ? null : undefined))
+    const f = _.fromNullableK((n: number) =>
+      n > 0 ? n
+      : n === 0 ? null
+      : undefined,
+    )
     U.deepStrictEqual(f(1)(), O.some(1))
     U.deepStrictEqual(f(0)(), O.none)
     U.deepStrictEqual(f(-1)(), O.none)
   })
 
   it('chainNullableK', () => {
-    const f = _.chainNullableK((n: number) => (n > 0 ? n : n === 0 ? null : undefined))
+    const f = _.chainNullableK((n: number) =>
+      n > 0 ? n
+      : n === 0 ? null
+      : undefined,
+    )
     U.deepStrictEqual(f(_.of(1))(), O.some(1))
     U.deepStrictEqual(f(_.of(0))(), O.none)
     U.deepStrictEqual(f(_.of(-1))(), O.none)
@@ -120,16 +128,16 @@ describe('IOOption', () => {
     U.deepStrictEqual(
       pipe(
         _.some(1),
-        _.getOrElse(() => I.of(2))
+        _.getOrElse(() => I.of(2)),
       )(),
-      1
+      1,
     )
     U.deepStrictEqual(
       pipe(
         _.none,
-        _.getOrElse(() => I.of(2))
+        _.getOrElse(() => I.of(2)),
       )(),
-      2
+      2,
     )
   })
 
@@ -180,7 +188,7 @@ describe('IOOption', () => {
             log.push(s)
             return s
           },
-          I.map(() => O.none)
+          I.map(() => O.none),
         )
       U.deepStrictEqual(pipe([some(1), some(2)], _.traverseReadonlyArrayWithIndex(SK))(), O.some([1, 2]))
       U.deepStrictEqual(pipe([some(3), none('a')], _.traverseReadonlyArrayWithIndex(SK))(), O.none)
@@ -192,7 +200,7 @@ describe('IOOption', () => {
   it('match', () => {
     const f = _.match(
       () => 'none',
-      (a) => `some(${a})`
+      a => `some(${a})`,
     )
     U.deepStrictEqual(pipe(_.some(1), f)(), 'some(1)')
     U.deepStrictEqual(pipe(_.none, f)(), 'none')
@@ -201,7 +209,7 @@ describe('IOOption', () => {
   it('matchE', () => {
     const f = _.matchE(
       () => I.of('none'),
-      (a) => I.of(`some(${a})`)
+      a => I.of(`some(${a})`),
     )
     U.deepStrictEqual(pipe(_.some(1), f)(), 'some(1)')
     U.deepStrictEqual(pipe(_.none, f)(), 'none')

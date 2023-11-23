@@ -99,9 +99,9 @@ describe('ReaderTask', () => {
     U.deepStrictEqual(
       await pipe(
         _.asks((n: number) => n + 1),
-        _.local(S.size)
+        _.local(S.size),
       )('aaa')(),
-      4
+      4,
     )
   })
 
@@ -172,11 +172,11 @@ describe('ReaderTask', () => {
   })
 
   it('applicativeTaskEitherSeq', async () => {
-    await U.assertSeq(_.ApplicativeSeq, _.FromTask, (fa) => fa(null)())
+    await U.assertSeq(_.ApplicativeSeq, _.FromTask, fa => fa(null)())
   })
 
   it('applicativeTaskEitherPar', async () => {
-    await U.assertPar(_.ApplicativePar, _.FromTask, (fa) => fa(null)())
+    await U.assertPar(_.ApplicativePar, _.FromTask, fa => fa(null)())
   })
 
   // -------------------------------------------------------------------------------------
@@ -189,9 +189,9 @@ describe('ReaderTask', () => {
         _.of(1),
         _.bindTo('a'),
         _.bind('b', () => _.of('b')),
-        _.let('c', ({ a, b }) => [a, b])
+        _.let('c', ({ a, b }) => [a, b]),
       )(undefined)(),
-      { a: 1, b: 'b', c: [1, 'b'] }
+      { a: 1, b: 'b', c: [1, 'b'] },
     )
   })
 
@@ -217,8 +217,8 @@ describe('ReaderTask', () => {
             T.fromIO(() => {
               log.push(n)
               return n
-            })
-          )
+            }),
+          ),
         )
       const as = RA.makeBy(4, append)
       U.deepStrictEqual(await pipe(as, _.traverseReadonlyArrayWithIndex(SK))(undefined)(), [0, 1, 2, 3])
@@ -234,8 +234,8 @@ describe('ReaderTask', () => {
             T.fromIO(() => {
               log.push(n)
               return n
-            })
-          )
+            }),
+          ),
         )
       const as = RA.makeBy(4, append)
       U.deepStrictEqual(await pipe(as, _.traverseReadonlyArrayWithIndexSeq(SK))(undefined)(), [0, 1, 2, 3])
@@ -251,8 +251,8 @@ describe('ReaderTask', () => {
             T.fromIO(() => {
               log.push(n)
               return n
-            })
-          )
+            }),
+          ),
         )
       const as = RA.makeBy(4, append)
       U.deepStrictEqual(await pipe(as, _.sequenceArray)(undefined)(), [0, 1, 2, 3])
@@ -267,8 +267,8 @@ describe('ReaderTask', () => {
             T.fromIO(() => {
               log.push(n)
               return n
-            })
-          )
+            }),
+          ),
         )
       const as = RA.makeBy(4, append)
       U.deepStrictEqual(await pipe(as, _.sequenceSeqArray)(undefined)(), [0, 1, 2, 3])

@@ -6,7 +6,7 @@
  *
  * - Associativity: `a ∧ (b ∧ c) <-> (a ∧ b) ∧ c`
  * - Commutativity: `a ∧ b <-> b ∧ a`
- * - Idempotency:   `a ∧ a <-> a`
+ * - Idempotency: `a ∧ a <-> a`
  *
  * @since 2.0.0
  */
@@ -16,8 +16,8 @@
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface MeetSemilattice<A> {
   readonly meet: (x: A, y: A) => A

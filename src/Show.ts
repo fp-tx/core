@@ -1,10 +1,8 @@
 /**
- * The `Show` type class represents those types which can be converted into
- * a human-readable `string` representation.
+ * The `Show` type class represents those types which can be converted into a human-readable `string` representation.
  *
- * While not required, it is recommended that for any expression `x`, the
- * string `show(x)` be executable TypeScript code which evaluates to the same
- * value as the expression `x`.
+ * While not required, it is recommended that for any expression `x`, the string `show(x)` be executable TypeScript code
+ * which evaluates to the same value as the expression `x`.
  *
  * @since 2.0.0
  */
@@ -16,8 +14,8 @@ import { type ReadonlyRecord } from './ReadonlyRecord'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Show<A> {
   readonly show: (a: A) => string
@@ -27,11 +25,11 @@ export interface Show<A> {
 // combinators
 // -------------------------------------------------------------------------------------
 
-/**
- * @since 2.10.0
- */
-export const struct = <A>(shows: { [K in keyof A]: Show<A[K]> }): Show<{ readonly [K in keyof A]: A[K] }> => ({
-  show: (a) => {
+/** @since 2.10.0 */
+export const struct = <A>(shows: { [K in keyof A]: Show<A[K]> }): Show<{
+  readonly [K in keyof A]: A[K]
+}> => ({
+  show: a => {
     let s = '{'
     for (const k in shows) {
       if (_.has.call(shows, k)) {
@@ -43,16 +41,14 @@ export const struct = <A>(shows: { [K in keyof A]: Show<A[K]> }): Show<{ readonl
     }
     s += '}'
     return s
-  }
+  },
 })
 
-/**
- * @since 2.10.0
- */
+/** @since 2.10.0 */
 export const tuple = <A extends ReadonlyArray<unknown>>(
   ...shows: { [K in keyof A]: Show<A[K]> }
 ): Show<Readonly<A>> => ({
-  show: (t) => `[${t.map((a, i) => shows[i].show(a)).join(', ')}]`
+  show: t => `[${t.map((a, i) => shows[i].show(a)).join(', ')}]`,
 })
 
 // -------------------------------------------------------------------------------------
@@ -62,9 +58,9 @@ export const tuple = <A extends ReadonlyArray<unknown>>(
 /**
  * Use [`tuple`](#tuple) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const getTupleShow: <T extends ReadonlyArray<Show<any>>>(
   ...shows: T
@@ -73,42 +69,43 @@ export const getTupleShow: <T extends ReadonlyArray<Show<any>>>(
 /**
  * Use [`struct`](#struct) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
-export const getStructShow: <O extends ReadonlyRecord<string, any>>(shows: { [K in keyof O]: Show<O[K]> }) => Show<O> =
-  struct
+export const getStructShow: <O extends ReadonlyRecord<string, any>>(shows: {
+  [K in keyof O]: Show<O[K]>
+}) => Show<O> = struct
 
 /**
  * Use [`Show`](./boolean.ts.html#show) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const showBoolean: Show<boolean> = {
-  show: (a) => JSON.stringify(a)
+  show: a => JSON.stringify(a),
 }
 
 /**
  * Use [`Show`](./string.ts.html#show) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const showString: Show<string> = {
-  show: (a) => JSON.stringify(a)
+  show: a => JSON.stringify(a),
 }
 
 /**
  * Use [`Show`](./number.ts.html#show) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const showNumber: Show<number> = {
-  show: (a) => JSON.stringify(a)
+  show: a => JSON.stringify(a),
 }

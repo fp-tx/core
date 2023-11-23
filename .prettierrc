@@ -1,6 +1,9 @@
 {
-  "semi": false,
   "singleQuote": true,
   "printWidth": 120,
-  "trailingComma": "none"
+  "semi": false,
+  "arrowParens": "avoid",
+  "plugins": ["prettier-plugin-jsdoc"],
+  "trailingComma": "all",
+  "experimentalTernaries": true
 }

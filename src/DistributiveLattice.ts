@@ -14,8 +14,8 @@ import { max, min, type Ord } from './Ord'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface DistributiveLattice<A> extends Lattice<A> {}
 
@@ -24,12 +24,12 @@ export interface DistributiveLattice<A> extends Lattice<A> {}
 // -------------------------------------------------------------------------------------
 
 /**
- * @category constructors
  * @since 2.0.0
+ * @category Constructors
  */
 export function getMinMaxDistributiveLattice<A>(O: Ord<A>): DistributiveLattice<A> {
   return {
     meet: min(O),
-    join: max(O)
+    join: max(O),
   }
 }

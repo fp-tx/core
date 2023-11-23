@@ -5,11 +5,11 @@
  * }
  * ```
  *
- * `IO<A>` represents a non-deterministic synchronous computation that can cause side effects, yields a value of
- * type `A` and **never fails**.
+ * `IO<A>` represents a non-deterministic synchronous computation that can cause side effects, yields a value of type
+ * `A` and **never fails**.
  *
- * If you want to represent a synchronous computation that may fail, please see `IOEither`.
- * If you want to represent a synchronous computation that may yield nothing, please see `IOOption`.
+ * If you want to represent a synchronous computation that may fail, please see `IOEither`. If you want to represent a
+ * synchronous computation that may yield nothing, please see `IOOption`.
  *
  * @since 2.0.0
  */
@@ -34,8 +34,8 @@ import { type Semigroup } from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface IO<A> {
   (): A
@@ -56,45 +56,43 @@ const _chainRec: ChainRec1<URI>['chainRec'] = (a, f) => () => {
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @category mapping
  * @since 2.0.0
+ * @category Mapping
  */
-export const map: <A, B>(f: (a: A) => B) => (fa: IO<A>) => IO<B> = (f) => (fa) => _map(fa, f)
+export const map: <A, B>(f: (a: A) => B) => (fa: IO<A>) => IO<B> = f => fa => _map(fa, f)
+
+/** @since 2.0.0 */
+export const ap: <A>(fa: IO<A>) => <B>(fab: IO<(a: A) => B>) => IO<B> = fa => fab => _ap(fab, fa)
 
 /**
  * @since 2.0.0
- */
-export const ap: <A>(fa: IO<A>) => <B>(fab: IO<(a: A) => B>) => IO<B> = (fa) => (fab) => _ap(fab, fa)
-
-/**
- * @category constructors
- * @since 2.0.0
+ * @category Constructors
  */
 export const of: <A>(a: A) => IO<A> = constant
 
 /**
  * Composes computations in sequence, using the return value of one computation to determine the next computation.
  *
- * @category sequencing
  * @since 2.0.0
+ * @category Sequencing
  */
-export const chain: <A, B>(f: (a: A) => IO<B>) => (ma: IO<A>) => IO<B> = (f) => (ma) => _chain(ma, f)
+export const chain: <A, B>(f: (a: A) => IO<B>) => (ma: IO<A>) => IO<B> = f => ma => _chain(ma, f)
 
 /**
- * @category sequencing
  * @since 2.0.0
+ * @category Sequencing
  */
 export const flatten: <A>(mma: IO<IO<A>>) => IO<A> = /*#__PURE__*/ chain(identity)
 
 /**
- * @category type lambdas
  * @since 2.0.0
+ * @category Type lambdas
  */
 export const URI = 'IO'
 
 /**
- * @category type lambdas
  * @since 2.0.0
+ * @category Type lambdas
  */
 export type URI = typeof URI
 
@@ -105,37 +103,37 @@ declare module './HKT' {
 }
 
 /**
- * @category instances
  * @since 2.7.0
+ * @category Instances
  */
 export const Functor: Functor1<URI> = {
   URI,
-  map: _map
+  map: _map,
 }
 
 /**
- * @category mapping
  * @since 2.10.0
+ * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Pointed: Pointed1<URI> = {
   URI,
-  of
+  of,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Apply: Apply1<URI> = {
   URI,
   map: _map,
-  ap: _ap
+  ap: _ap,
 }
 
 /**
@@ -153,58 +151,58 @@ export const apFirst = /*#__PURE__*/ apFirst_(Apply)
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
 /**
- * @category instances
  * @since 2.7.0
+ * @category Instances
  */
 export const Applicative: Applicative1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  of
+  of,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Chain: Chain1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain
+  chain: _chain,
 }
 
 /**
- * @category instances
  * @since 2.7.0
+ * @category Instances
  */
 export const Monad: Monad1<URI> = {
   URI,
   map: _map,
   ap: _ap,
   of,
-  chain: _chain
+  chain: _chain,
 }
 
 /**
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @category sequencing
  * @since 2.0.0
+ * @category Sequencing
  */
 export const chainFirst: <A, B>(f: (a: A) => IO<B>) => (first: IO<A>) => IO<A> = /*#__PURE__*/ chainFirst_(Chain)
 
 /**
- * @category zone of death
- * @since 2.7.0
  * @deprecated
+ * @since 2.7.0
+ * @category Zone of death
  */
 export const fromIO: <A>(fa: IO<A>) => IO<A> = identity
 
 /**
- * @category instances
  * @since 2.7.0
+ * @category Instances
  */
 export const MonadIO: MonadIO1<URI> = {
   URI,
@@ -212,28 +210,28 @@ export const MonadIO: MonadIO1<URI> = {
   ap: _ap,
   of,
   chain: _chain,
-  fromIO
+  fromIO,
 }
 
 /**
- * @category instances
  * @since 2.7.0
+ * @category Instances
  */
 export const ChainRec: ChainRec1<URI> = {
   URI,
   map: _map,
   ap: _ap,
   chain: _chain,
-  chainRec: _chainRec
+  chainRec: _chainRec,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const FromIO: FromIO1<URI> = {
   URI,
-  fromIO: identity
+  fromIO: identity,
 }
 
 // -------------------------------------------------------------------------------------
@@ -241,14 +239,14 @@ export const FromIO: FromIO1<URI> = {
 // -------------------------------------------------------------------------------------
 
 /**
- * @category do notation
  * @since 2.9.0
+ * @category Do notation
  */
 export const Do: IO<{}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @category do notation
  * @since 2.8.0
+ * @category Do notation
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
 
@@ -256,27 +254,25 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @category do notation
    * @since 2.13.0
+   * @category Do notation
    */
-  let_ as let
+  let_ as let,
 }
 
 /**
- * @category do notation
  * @since 2.8.0
+ * @category Do notation
  */
 export const bind = /*#__PURE__*/ bind_(Chain)
 
 /**
- * @category do notation
  * @since 2.8.0
+ * @category Do notation
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
 
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 export const ApT: IO<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 
 // -------------------------------------------------------------------------------------
@@ -286,8 +282,8 @@ export const ApT: IO<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(Applicative)`.
  *
- * @category traversing
  * @since 2.11.0
+ * @category Traversing
  */
 export const traverseReadonlyNonEmptyArrayWithIndex =
   <A, B>(f: (index: number, a: A) => IO<B>) =>
@@ -303,31 +299,31 @@ export const traverseReadonlyNonEmptyArrayWithIndex =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @category traversing
  * @since 2.11.0
+ * @category Traversing
  */
 export const traverseReadonlyArrayWithIndex = <A, B>(
-  f: (index: number, a: A) => IO<B>
+  f: (index: number, a: A) => IO<B>,
 ): ((as: ReadonlyArray<A>) => IO<ReadonlyArray<B>>) => {
   const g = traverseReadonlyNonEmptyArrayWithIndex(f)
-  return (as) => (_.isNonEmpty(as) ? g(as) : ApT)
+  return as => (_.isNonEmpty(as) ? g(as) : ApT)
 }
 
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @category traversing
  * @since 2.9.0
+ * @category Traversing
  */
 export const traverseArrayWithIndex: <A, B>(
-  f: (index: number, a: A) => IO<B>
+  f: (index: number, a: A) => IO<B>,
 ) => (as: ReadonlyArray<A>) => IO<ReadonlyArray<B>> = traverseReadonlyArrayWithIndex
 
 /**
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
- * @category traversing
  * @since 2.9.0
+ * @category Traversing
  */
 export const traverseArray = <A, B>(f: (a: A) => IO<B>): ((as: ReadonlyArray<A>) => IO<ReadonlyArray<B>>) =>
   traverseReadonlyArrayWithIndex((_, a) => f(a))
@@ -335,8 +331,8 @@ export const traverseArray = <A, B>(f: (a: A) => IO<B>): ((as: ReadonlyArray<A>)
 /**
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
- * @category traversing
  * @since 2.9.0
+ * @category Traversing
  */
 export const sequenceArray: <A>(arr: ReadonlyArray<IO<A>>) => IO<ReadonlyArray<A>> =
   /*#__PURE__*/ traverseArray(identity)
@@ -346,13 +342,12 @@ export const sequenceArray: <A>(arr: ReadonlyArray<IO<A>>) => IO<ReadonlyArray<A
 // -------------------------------------------------------------------------------------
 
 /**
- * This instance is deprecated, use small, specific instances instead.
- * For example if a function needs a `Functor` instance, pass `IO.Functor` instead of `IO.io`
- * (where `IO` is from `import IO from 'fp-ts/IO'`)
+ * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
+ * instance, pass `IO.Functor` instead of `IO.io` (where `IO` is from `import IO from 'fp-ts/IO'`)
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const io: Monad1<URI> & MonadIO1<URI> & ChainRec1<URI> = {
   URI,
@@ -361,23 +356,23 @@ export const io: Monad1<URI> & MonadIO1<URI> & ChainRec1<URI> = {
   ap: _ap,
   chain: _chain,
   fromIO,
-  chainRec: _chainRec
+  chainRec: _chainRec,
 }
 
 /**
  * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const getSemigroup: <A>(S: Semigroup<A>) => Semigroup<IO<A>> = /*#__PURE__*/ getApplySemigroup(Apply)
 
 /**
  * Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const getMonoid: <A>(M: Monoid<A>) => Monoid<IO<A>> = /*#__PURE__*/ getApplicativeMonoid(Applicative)

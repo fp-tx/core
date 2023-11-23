@@ -7,7 +7,7 @@ describe('Bounded', () => {
     const B: _.Bounded<number> = {
       ...N.Ord,
       top: 10,
-      bottom: 0
+      bottom: 0,
     }
     const clamp = _.clamp(B)
     U.deepStrictEqual(clamp(5), 5)
@@ -19,7 +19,7 @@ describe('Bounded', () => {
     const B: _.Bounded<number> = _.reverse({
       ...N.Ord,
       top: 10,
-      bottom: 0
+      bottom: 0,
     })
     U.deepStrictEqual(B.top, 0)
     U.deepStrictEqual(B.bottom, 10)

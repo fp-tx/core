@@ -12,8 +12,8 @@ import { type These } from './These'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.11.0
+ * @category Model
  */
 export interface FromThese<F> {
   readonly URI: F
@@ -21,8 +21,8 @@ export interface FromThese<F> {
 }
 
 /**
- * @category model
  * @since 2.11.0
+ * @category Model
  */
 export interface FromThese2<F extends URIS2> {
   readonly URI: F
@@ -30,8 +30,8 @@ export interface FromThese2<F extends URIS2> {
 }
 
 /**
- * @category model
  * @since 2.11.0
+ * @category Model
  */
 export interface FromThese2C<F extends URIS2, E> {
   readonly URI: F
@@ -40,8 +40,8 @@ export interface FromThese2C<F extends URIS2, E> {
 }
 
 /**
- * @category model
  * @since 2.11.0
+ * @category Model
  */
 export interface FromThese3<F extends URIS3> {
   readonly URI: F
@@ -49,8 +49,8 @@ export interface FromThese3<F extends URIS3> {
 }
 
 /**
- * @category model
  * @since 2.11.0
+ * @category Model
  */
 export interface FromThese3C<F extends URIS3, E> {
   readonly URI: F
@@ -59,8 +59,8 @@ export interface FromThese3C<F extends URIS3, E> {
 }
 
 /**
- * @category model
  * @since 2.11.0
+ * @category Model
  */
 export interface FromThese4<F extends URIS4> {
   readonly URI: F
@@ -71,29 +71,27 @@ export interface FromThese4<F extends URIS4> {
 // combinators
 // -------------------------------------------------------------------------------------
 
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 export function fromTheseK<F extends URIS4>(
-  F: FromThese4<F>
+  F: FromThese4<F>,
 ): <A extends ReadonlyArray<unknown>, E, B>(f: (...a: A) => These<E, B>) => <S, R>(...a: A) => Kind4<F, S, R, E, B>
 export function fromTheseK<F extends URIS3>(
-  F: FromThese3<F>
+  F: FromThese3<F>,
 ): <A extends ReadonlyArray<unknown>, E, B>(f: (...a: A) => These<E, B>) => <R>(...a: A) => Kind3<F, R, E, B>
 export function fromTheseK<F extends URIS3, E>(
-  F: FromThese3C<F, E>
+  F: FromThese3C<F, E>,
 ): <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => These<E, B>) => <R>(...a: A) => Kind3<F, R, E, B>
 export function fromTheseK<F extends URIS2>(
-  F: FromThese2<F>
+  F: FromThese2<F>,
 ): <A extends ReadonlyArray<unknown>, E, B>(f: (...a: A) => These<E, B>) => (...a: A) => Kind2<F, E, B>
 export function fromTheseK<F extends URIS2, E>(
-  F: FromThese2C<F, E>
+  F: FromThese2C<F, E>,
 ): <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => These<E, B>) => (...a: A) => Kind2<F, E, B>
 export function fromTheseK<F>(
-  F: FromThese<F>
+  F: FromThese<F>,
 ): <A extends ReadonlyArray<unknown>, E, B>(f: (...a: A) => These<E, B>) => (...a: A) => HKT2<F, E, B>
 export function fromTheseK<F>(
-  F: FromThese<F>
+  F: FromThese<F>,
 ): <A extends ReadonlyArray<unknown>, E, B>(f: (...a: A) => These<E, B>) => (...a: A) => HKT2<F, E, B> {
-  return (f) => flow(f, F.fromThese)
+  return f => flow(f, F.fromThese)
 }

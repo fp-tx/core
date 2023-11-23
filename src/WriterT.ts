@@ -1,6 +1,4 @@
-/**
- * @since 2.4.0
- */
+/** @since 2.4.0 */
 import { type HKT, type Kind, type Kind2, type Kind3, type URIS, type URIS2, type URIS3 } from './HKT'
 import { type Monad, type Monad1, type Monad2, type Monad2C, type Monad3 } from './Monad'
 import { type Monoid } from './Monoid'
@@ -8,16 +6,14 @@ import { type Monoid } from './Monoid'
 // TODO: remove module in v3
 
 /**
- * @category model
  * @since 2.4.0
+ * @category Model
  */
 export interface WriterT<M, W, A> {
   (): HKT<M, [A, W]>
 }
 
-/**
- * @since 2.4.0
- */
+/** @since 2.4.0 */
 export interface WriterM<M> {
   readonly map: <W, A, B>(fa: WriterT<M, W, A>, f: (a: A) => B) => WriterT<M, W, B>
   readonly evalWriter: <W, A>(fa: WriterT<M, W, A>) => HKT<M, A>
@@ -37,16 +33,14 @@ export interface WriterM<M> {
 }
 
 /**
- * @category model
  * @since 2.4.0
+ * @category Model
  */
 export interface WriterT1<M extends URIS, W, A> {
   (): Kind<M, [A, W]>
 }
 
-/**
- * @since 2.4.0
- */
+/** @since 2.4.0 */
 export interface WriterM1<M extends URIS> {
   readonly map: <W, A, B>(fa: WriterT1<M, W, A>, f: (a: A) => B) => WriterT1<M, W, B>
   readonly evalWriter: <W, A>(fa: WriterT1<M, W, A>) => Kind<M, A>
@@ -66,16 +60,14 @@ export interface WriterM1<M extends URIS> {
 }
 
 /**
- * @category model
  * @since 2.4.0
+ * @category Model
  */
 export interface WriterT2<M extends URIS2, E, W, A> {
   (): Kind2<M, E, [A, W]>
 }
 
-/**
- * @since 2.4.0
- */
+/** @since 2.4.0 */
 export interface WriterM2<M extends URIS2> {
   readonly map: <E, W, A, B>(fa: WriterT2<M, E, W, A>, f: (a: A) => B) => WriterT2<M, E, W, B>
   readonly evalWriter: <E, W, A>(fa: WriterT2<M, E, W, A>) => Kind2<M, E, A>
@@ -94,9 +86,7 @@ export interface WriterM2<M extends URIS2> {
   }
 }
 
-/**
- * @since 2.4.0
- */
+/** @since 2.4.0 */
 export interface WriterM2C<M extends URIS2, E> {
   readonly map: <W, A, B>(fa: WriterT2<M, E, W, A>, f: (a: A) => B) => WriterT2<M, E, W, B>
   readonly evalWriter: <W, A>(fa: WriterT2<M, E, W, A>) => Kind2<M, E, A>
@@ -115,16 +105,12 @@ export interface WriterM2C<M extends URIS2, E> {
   }
 }
 
-/**
- * @since 2.4.0
- */
+/** @since 2.4.0 */
 export interface WriterT3<M extends URIS3, R, E, W, A> {
   (): Kind3<M, R, E, [A, W]>
 }
 
-/**
- * @since 2.4.0
- */
+/** @since 2.4.0 */
 export interface WriterM3<M extends URIS3> {
   readonly map: <R, E, W, A, B>(fa: WriterT3<M, R, E, W, A>, f: (a: A) => B) => WriterT3<M, R, E, W, B>
   readonly evalWriter: <R, E, W, A>(fa: WriterT3<M, R, E, W, A>) => Kind3<M, R, E, A>
@@ -140,18 +126,16 @@ export interface WriterM3<M extends URIS3> {
     readonly of: <R, E, A>(a: A) => WriterT3<M, R, E, W, A>
     readonly ap: <R, E, A, B>(
       mab: WriterT3<M, R, E, W, (a: A) => B>,
-      ma: WriterT3<M, R, E, W, A>
+      ma: WriterT3<M, R, E, W, A>,
     ) => WriterT3<M, R, E, W, B>
     readonly chain: <R, E, A, B>(
       ma: WriterT3<M, R, E, W, A>,
-      f: (a: A) => WriterT3<M, R, E, W, B>
+      f: (a: A) => WriterT3<M, R, E, W, B>,
     ) => WriterT3<M, R, E, W, B>
   }
 }
 
-/**
- * @since 2.4.0
- */
+/** @since 2.4.0 */
 export function getWriterM<M extends URIS3>(M: Monad3<M>): WriterM3<M>
 export function getWriterM<M extends URIS2>(M: Monad2<M>): WriterM2<M>
 export function getWriterM<M extends URIS2, E>(M: Monad2C<M, E>): WriterM2C<M, E>
@@ -164,21 +148,21 @@ export function getWriterM<M>(M: Monad<M>): WriterM<M> {
       M.map(fa(), ([a, w]) => [f(a), w])
   return {
     map,
-    evalWriter: (fa) => M.map(fa(), ([a]) => a),
-    execWriter: (fa) => M.map(fa(), ([_, w]) => w),
-    tell: (w) => () => M.of([undefined, w]),
-    listen: (fa) => () => M.map(fa(), ([a, w]) => [[a, w], w]),
-    pass: (fa) => () => M.map(fa(), ([[a, f], w]) => [a, f(w)]),
+    evalWriter: fa => M.map(fa(), ([a]) => a),
+    execWriter: fa => M.map(fa(), ([_, w]) => w),
+    tell: w => () => M.of([undefined, w]),
+    listen: fa => () => M.map(fa(), ([a, w]) => [[a, w], w]),
+    pass: fa => () => M.map(fa(), ([[a, f], w]) => [a, f(w)]),
     listens: (fa, f) => () => M.map(fa(), ([a, w]) => [[a, f(w)], w]),
     censor: (fa, f) => () => M.map(fa(), ([a, w]) => [a, f(w)]),
-    getMonad: (W) => {
+    getMonad: W => {
       return {
         _E: undefined as any,
         map,
-        of: (a) => () => M.of([a, W.empty]),
+        of: a => () => M.of([a, W.empty]),
         ap: (mab, ma) => () => M.chain(mab(), ([f, w1]) => M.map(ma(), ([a, w2]) => [f(a), W.concat(w1, w2)])),
-        chain: (ma, f) => () => M.chain(ma(), ([a, w1]) => M.map(f(a)(), ([b, w2]) => [b, W.concat(w1, w2)]))
+        chain: (ma, f) => () => M.chain(ma(), ([a, w1]) => M.map(f(a)(), ([b, w2]) => [b, W.concat(w1, w2)])),
       }
-    }
+    },
   }
 }

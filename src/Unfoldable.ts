@@ -12,7 +12,7 @@ import {
   type URIS,
   type URIS2,
   type URIS3,
-  type URIS4
+  type URIS4,
 } from './HKT'
 import { type Option } from './Option'
 
@@ -21,8 +21,8 @@ import { type Option } from './Option'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Unfoldable<F> {
   readonly URI: F
@@ -30,8 +30,8 @@ export interface Unfoldable<F> {
 }
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Unfoldable1<F extends URIS> {
   readonly URI: F
@@ -39,8 +39,8 @@ export interface Unfoldable1<F extends URIS> {
 }
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Unfoldable2<F extends URIS2> {
   readonly URI: F
@@ -48,8 +48,8 @@ export interface Unfoldable2<F extends URIS2> {
 }
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Unfoldable2C<F extends URIS2, E> {
   readonly URI: F
@@ -58,8 +58,8 @@ export interface Unfoldable2C<F extends URIS2, E> {
 }
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Unfoldable3<F extends URIS3> {
   readonly URI: F
@@ -67,8 +67,8 @@ export interface Unfoldable3<F extends URIS3> {
 }
 
 /**
- * @category model
  * @since 2.10.0
+ * @category Model
  */
 export interface Unfoldable3C<F extends URIS3, E> {
   readonly URI: F
@@ -77,8 +77,8 @@ export interface Unfoldable3C<F extends URIS3, E> {
 }
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Unfoldable4<F extends URIS4> {
   readonly URI: F

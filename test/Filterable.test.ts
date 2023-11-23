@@ -16,44 +16,44 @@ describe('Filterable', () => {
       F.filter(
         [
           [1, 2],
-          [3, 4]
+          [3, 4],
         ],
-        (a) => a > 1
+        a => a > 1,
       ),
-      [[2], [3, 4]]
+      [[2], [3, 4]],
     )
 
     U.deepStrictEqual(
       F.filterMap(
         [
           ['a', 'bb'],
-          ['ccc', 'dddd']
+          ['ccc', 'dddd'],
         ],
-        (a) => (a.length > 1 ? some(a.length) : none)
+        a => (a.length > 1 ? some(a.length) : none),
       ),
-      [[2], [3, 4]]
+      [[2], [3, 4]],
     )
 
     U.deepStrictEqual(
       F.partition(
         [
           ['a', 'bb'],
-          ['ccc', 'dddd']
+          ['ccc', 'dddd'],
         ],
-        (a) => a.length % 2 === 0
+        a => a.length % 2 === 0,
       ),
-      separated([['a'], ['ccc']], [['bb'], ['dddd']])
+      separated([['a'], ['ccc']], [['bb'], ['dddd']]),
     )
 
     U.deepStrictEqual(
       F.partitionMap(
         [
           ['a', 'bb'],
-          ['ccc', 'dddd']
+          ['ccc', 'dddd'],
         ],
-        (a) => (a.length % 2 === 0 ? right(a.length) : left(a))
+        a => (a.length % 2 === 0 ? right(a.length) : left(a)),
       ),
-      separated([['a'], ['ccc']], [[2], [4]])
+      separated([['a'], ['ccc']], [[2], [4]]),
     )
   })
 })

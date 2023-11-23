@@ -11,7 +11,7 @@ describe('Eq', () => {
     it('contramap', () => {
       const E = pipe(
         S.Eq,
-        _.contramap((p: Person) => p.name)
+        _.contramap((p: Person) => p.name),
       )
       U.deepStrictEqual(E.equals({ name: 'a', age: 1 }, { name: 'a', age: 2 }), true)
       U.deepStrictEqual(E.equals({ name: 'a', age: 1 }, { name: 'a', age: 1 }), true)
@@ -53,7 +53,7 @@ describe('Eq', () => {
   it('struct', () => {
     const E = _.struct<Person>({
       name: S.Eq,
-      age: N.Eq
+      age: N.Eq,
     })
     U.deepStrictEqual(E.equals({ name: 'a', age: 1 }, { name: 'a', age: 1 }), true)
     U.deepStrictEqual(E.equals({ name: 'a', age: 1 }, { name: 'a', age: 2 }), false)

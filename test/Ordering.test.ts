@@ -47,7 +47,7 @@ describe('Ordering', () => {
     const f = _.match(
       () => 'lt',
       () => 'eq',
-      () => 'gt'
+      () => 'gt',
     )
     U.deepStrictEqual(f(-1), 'lt')
     U.deepStrictEqual(f(0), 'eq')

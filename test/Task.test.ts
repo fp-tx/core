@@ -20,10 +20,10 @@ const assertOp =
   <A, B, C>(f: (a: _.Task<A>, b: _.Task<B>) => _.Task<C>) =>
   async (a: _.Task<A>, b: _.Task<B>, expected: C, expectedLog: ReadonlyArray<A | B>) => {
     const log: Array<unknown> = []
-    const append: <A>(ma: _.Task<A>) => _.Task<A> = _.chainFirst((x) =>
+    const append: <A>(ma: _.Task<A>) => _.Task<A> = _.chainFirst(x =>
       _.fromIO(() => {
         log.push(x)
-      })
+      }),
     )
     const c = await pipe(f(pipe(a, append), pipe(b, append)))()
     U.deepStrictEqual(c, expected)
@@ -56,8 +56,8 @@ describe('Task', () => {
       pipe(
         _.of((a: string) => (b: string) => a + b),
         _.ap(a),
-        _.ap(b)
-      )
+        _.ap(b),
+      ),
     )
     const a = pipe(_.of('a'), _.delay(100))
     const b = _.of('b')
@@ -109,11 +109,11 @@ describe('Task', () => {
   // -------------------------------------------------------------------------------------
 
   it('applicativeTaskSeq', async () => {
-    await U.assertSeq(_.ApplicativeSeq, _.FromTask, (fa) => fa())
+    await U.assertSeq(_.ApplicativeSeq, _.FromTask, fa => fa())
   })
 
   it('applicativeTaskPar', async () => {
-    await U.assertPar(_.ApplicativePar, _.FromTask, (fa) => fa())
+    await U.assertPar(_.ApplicativePar, _.FromTask, fa => fa())
   })
 
   describe('getRaceMonoid', () => {
@@ -170,14 +170,17 @@ describe('Task', () => {
         _.of(1),
         _.bindTo('a'),
         _.bind('b', () => _.of('b')),
-        _.let('c', ({ a, b }) => [a, b])
+        _.let('c', ({ a, b }) => [a, b]),
       )(),
-      { a: 1, b: 'b', c: [1, 'b'] }
+      { a: 1, b: 'b', c: [1, 'b'] },
     )
   })
 
   it('apS', async () => {
-    U.deepStrictEqual(await pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(), { a: 1, b: 'b' })
+    U.deepStrictEqual(await pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(), {
+      a: 1,
+      b: 'b',
+    })
   })
 
   describe('array utils', () => {
@@ -202,7 +205,7 @@ describe('Task', () => {
           _.fromIO(() => {
             log.push(n)
             return n
-          })
+          }),
         )
       const as = RA.makeBy(4, append)
       U.deepStrictEqual(await pipe(as, _.traverseReadonlyArrayWithIndex(SK))(), [0, 1, 2, 3])
@@ -216,7 +219,7 @@ describe('Task', () => {
           _.fromIO(() => {
             log.push(n)
             return n
-          })
+          }),
         )
       const as = RA.makeBy(4, append)
       U.deepStrictEqual(await pipe(as, _.traverseReadonlyArrayWithIndexSeq(SK))(), [0, 1, 2, 3])
@@ -231,7 +234,7 @@ describe('Task', () => {
           _.fromIO(() => {
             log.push(n)
             return n
-          })
+          }),
         )
       const as = RA.makeBy(4, append)
       U.deepStrictEqual(await pipe(as, _.sequenceArray)(), [0, 1, 2, 3])
@@ -245,7 +248,7 @@ describe('Task', () => {
           _.fromIO(() => {
             log.push(n)
             return n
-          })
+          }),
         )
       const as = RA.makeBy(4, append)
       U.deepStrictEqual(await pipe(as, _.sequenceSeqArray)(), [0, 1, 2, 3])

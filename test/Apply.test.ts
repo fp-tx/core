@@ -14,11 +14,11 @@ describe('Apply', () => {
     U.deepStrictEqual(sequenceTOption(O.some(1), O.some('a'), O.some(true), O.some(2)), O.some([1, 'a', true, 2]))
     U.deepStrictEqual(
       sequenceTOption(O.some(1), O.some('a'), O.some(true), O.some(2), O.some('b')),
-      O.some([1, 'a', true, 2, 'b'])
+      O.some([1, 'a', true, 2, 'b']),
     )
     U.deepStrictEqual(
       sequenceTOption(O.some(1), O.some('a'), O.some(true), O.some(2), O.some('b'), O.some(false)),
-      O.some([1, 'a', true, 2, 'b', false])
+      O.some([1, 'a', true, 2, 'b', false]),
     )
     U.deepStrictEqual(sequenceTOption(O.some(1), O.some('a'), O.none), O.none)
 
@@ -27,7 +27,7 @@ describe('Apply', () => {
     const a2: ReadonlyArray<string> = ['a', 'b', 'c']
     const a3: ReadonlyArray<boolean> = [true, false]
     U.deepStrictEqual(
-      pipe(sequenceT(RA.Applicative)(a1, a2, a3), (arr) => arr.map(([x, y, z]) => `(${x}, ${y}, ${z})`)),
+      pipe(sequenceT(RA.Applicative)(a1, a2, a3), arr => arr.map(([x, y, z]) => `(${x}, ${y}, ${z})`)),
       [
         '(1, a, true)',
         '(1, a, false)',
@@ -46,8 +46,8 @@ describe('Apply', () => {
         '(3, b, true)',
         '(3, b, false)',
         '(3, c, true)',
-        '(3, c, false)'
-      ]
+        '(3, c, false)',
+      ],
     )
   })
 
@@ -58,15 +58,28 @@ describe('Apply', () => {
     U.deepStrictEqual(adoOption({ a: O.some(1), b: O.some('a'), c: O.some(true) }), O.some({ a: 1, b: 'a', c: true }))
     U.deepStrictEqual(
       adoOption({ a: O.some(1), b: O.some('a'), c: O.some(true), d: O.some(2) }),
-      O.some({ a: 1, b: 'a', c: true, d: 2 })
+      O.some({ a: 1, b: 'a', c: true, d: 2 }),
     )
     U.deepStrictEqual(
-      adoOption({ a: O.some(1), b: O.some('a'), c: O.some(true), d: O.some(2), e: O.some('b') }),
-      O.some({ a: 1, b: 'a', c: true, d: 2, e: 'b' })
+      adoOption({
+        a: O.some(1),
+        b: O.some('a'),
+        c: O.some(true),
+        d: O.some(2),
+        e: O.some('b'),
+      }),
+      O.some({ a: 1, b: 'a', c: true, d: 2, e: 'b' }),
     )
     U.deepStrictEqual(
-      adoOption({ a: O.some(1), b: O.some('a'), c: O.some(true), d: O.some(2), e: O.some('b'), f: O.some(false) }),
-      O.some({ a: 1, b: 'a', c: true, d: 2, e: 'b', f: false })
+      adoOption({
+        a: O.some(1),
+        b: O.some('a'),
+        c: O.some(true),
+        d: O.some(2),
+        e: O.some('b'),
+        f: O.some(false),
+      }),
+      O.some({ a: 1, b: 'a', c: true, d: 2, e: 'b', f: false }),
     )
     U.deepStrictEqual(adoOption({ a: O.some(1), b: O.none }), O.none)
 
@@ -86,7 +99,7 @@ describe('Apply', () => {
     const a2: ReadonlyArray<string> = ['a', 'b', 'c']
     const a3: ReadonlyArray<boolean> = [true, false]
     U.deepStrictEqual(
-      pipe(sequenceS(RA.Applicative)({ a1, a2, a3 }), (arr) => arr.map(({ a1, a2, a3 }) => `(${a1}, ${a2}, ${a3})`)),
+      pipe(sequenceS(RA.Applicative)({ a1, a2, a3 }), arr => arr.map(({ a1, a2, a3 }) => `(${a1}, ${a2}, ${a3})`)),
       [
         '(1, a, true)',
         '(1, a, false)',
@@ -105,8 +118,8 @@ describe('Apply', () => {
         '(3, b, true)',
         '(3, b, false)',
         '(3, c, true)',
-        '(3, c, false)'
-      ]
+        '(3, c, false)',
+      ],
     )
   })
 })

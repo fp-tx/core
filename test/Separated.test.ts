@@ -11,15 +11,15 @@ describe('Separated', () => {
           isDeepStrictEqual(
             pipe(
               _.separated(left, right),
-              _.mapLeft((n) => n.toString())
+              _.mapLeft(n => n.toString()),
             ),
-            _.separated(`${left}`, right)
+            _.separated(`${left}`, right),
           )
           isDeepStrictEqual(
-            _.Bifunctor.mapLeft(_.separated(left, right), (n) => n.toString()),
-            _.separated(`${left}`, right)
+            _.Bifunctor.mapLeft(_.separated(left, right), n => n.toString()),
+            _.separated(`${left}`, right),
           )
-        })
+        }),
       ))
 
     it('map', () =>
@@ -28,15 +28,15 @@ describe('Separated', () => {
           isDeepStrictEqual(
             pipe(
               _.separated(left, right),
-              _.map((n) => n.toString())
+              _.map(n => n.toString()),
             ),
-            _.separated(left, `${right}`)
+            _.separated(left, `${right}`),
           )
           isDeepStrictEqual(
-            _.Functor.map(_.separated(left, right), (n) => n.toString()),
-            _.separated(left, `${right}`)
+            _.Functor.map(_.separated(left, right), n => n.toString()),
+            _.separated(left, `${right}`),
           )
-        })
+        }),
       ))
 
     it('bimap', () =>
@@ -46,21 +46,21 @@ describe('Separated', () => {
             pipe(
               _.separated(left, right),
               _.bimap(
-                (n) => n.toString(),
-                (n) => n.toString()
-              )
+                n => n.toString(),
+                n => n.toString(),
+              ),
             ),
-            _.separated(`${left}`, `${right}`)
+            _.separated(`${left}`, `${right}`),
           )
           isDeepStrictEqual(
             _.Bifunctor.bimap(
               _.separated(left, right),
-              (n) => n.toString(),
-              (n) => n.toString()
+              n => n.toString(),
+              n => n.toString(),
             ),
-            _.separated(`${left}`, `${right}`)
+            _.separated(`${left}`, `${right}`),
           )
-        })
+        }),
       ))
   })
 })

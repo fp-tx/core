@@ -53,16 +53,16 @@ describe('boolean', () => {
     U.deepStrictEqual(
       _.fold(
         () => 'false',
-        () => 'true'
+        () => 'true',
       )(true),
-      'true'
+      'true',
     )
     U.deepStrictEqual(
       _.fold(
         () => 'false',
-        () => 'true'
+        () => 'true',
       )(false),
-      'false'
+      'false',
     )
   })
 })

@@ -151,11 +151,11 @@ describe('function', () => {
 
     U.deepStrictEqual(
       _.pipe([1, 2, 3, 40], RA.filter(concatAll(getPredicateMonoidAll<number>())([isLessThan10, isEven]))),
-      [2]
+      [2],
     )
     U.deepStrictEqual(
       _.pipe([1, 2, 3, 40, 41], RA.filter(concatAll(getPredicateMonoidAny<number>())([isLessThan10, isEven]))),
-      [1, 2, 3, 40]
+      [1, 2, 3, 40],
     )
   })
 

@@ -87,9 +87,9 @@ describe('ReaderIO', () => {
     U.deepStrictEqual(
       pipe(
         _.asks((n: number) => n + 1),
-        _.local(S.size)
+        _.local(S.size),
       )('aaa')(),
-      4
+      4,
     )
   })
 
@@ -112,14 +112,17 @@ describe('ReaderIO', () => {
       pipe(
         _.of(1),
         _.bindTo('a'),
-        _.bind('b', () => _.of('b'))
+        _.bind('b', () => _.of('b')),
       )(undefined)(),
-      { a: 1, b: 'b' }
+      { a: 1, b: 'b' },
     )
   })
 
   it('apS', () => {
-    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(undefined)(), { a: 1, b: 'b' })
+    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(undefined)(), {
+      a: 1,
+      b: 'b',
+    })
   })
 
   describe('array utils', () => {

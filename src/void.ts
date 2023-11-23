@@ -1,6 +1,4 @@
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 import type * as M from './Monoid'
 import * as Se from './Semigroup'
 
@@ -9,16 +7,16 @@ import * as Se from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category instances
  * @since 2.11.0
+ * @category Instances
  */
 export const Semigroup: Se.Semigroup<void> = Se.constant<void>(undefined)
 
 /**
- * @category instances
  * @since 2.11.0
+ * @category Instances
  */
 export const Monoid: M.Monoid<void> = {
   concat: Semigroup.concat,
-  empty: undefined
+  empty: undefined,
 }

@@ -2,9 +2,9 @@ import { pipe } from '../src/function'
 import * as _ from '../src/Predicate'
 import * as U from './util'
 
-const isPositive: _.Predicate<number> = (n) => n > 0
-const isNegative: _.Predicate<number> = (n) => n < 0
-const lt2: _.Predicate<number> = (n) => n < 2
+const isPositive: _.Predicate<number> = n => n > 0
+const isNegative: _.Predicate<number> = n => n < 0
+const lt2: _.Predicate<number> = n => n < 2
 
 describe('Predicate', () => {
   it('contramap', () => {
@@ -13,7 +13,7 @@ describe('Predicate', () => {
     }
     const predicate = pipe(
       isPositive,
-      _.contramap((a: A) => a.a)
+      _.contramap((a: A) => a.a),
     )
     U.deepStrictEqual(predicate({ a: -1 }), false)
     U.deepStrictEqual(predicate({ a: 0 }), false)

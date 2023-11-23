@@ -39,11 +39,11 @@ describe('TaskThese', () => {
 
   describe('getApplicative', () => {
     it('Par', async () => {
-      await U.assertSeq(_.getApplicative(T.ApplicativeSeq, S.Semigroup), _.FromTask, (fa) => fa())
+      await U.assertSeq(_.getApplicative(T.ApplicativeSeq, S.Semigroup), _.FromTask, fa => fa())
     })
 
     it('Seq', async () => {
-      await U.assertPar(_.getApplicative(T.ApplicativePar, S.Semigroup), _.FromTask, (fa) => fa())
+      await U.assertPar(_.getApplicative(T.ApplicativePar, S.Semigroup), _.FromTask, fa => fa())
     })
   })
 
@@ -72,7 +72,10 @@ describe('TaskThese', () => {
     })
 
     it('chain', async () => {
-      const f = (n: number) => (n > 2 ? _.both(`c`, n * 3) : n > 1 ? _.right(n * 2) : _.left(`b`))
+      const f = (n: number) =>
+        n > 2 ? _.both(`c`, n * 3)
+        : n > 1 ? _.right(n * 2)
+        : _.left(`b`)
       U.deepStrictEqual(await M.chain(_.right(1), f)(), TH.left('b'))
       U.deepStrictEqual(await M.chain(_.right(2), f)(), TH.right(4))
 
@@ -129,9 +132,9 @@ describe('TaskThese', () => {
 
   it('fold', async () => {
     const f = _.fold(
-      (e) => T.of(`left ${e}`),
-      (a) => T.of(`right ${a}`),
-      (e, a) => T.of(`both ${e} ${a}`)
+      e => T.of(`left ${e}`),
+      a => T.of(`right ${a}`),
+      (e, a) => T.of(`both ${e} ${a}`),
     )
     U.deepStrictEqual(await pipe(_.right(1), f)(), 'right 1')
     U.deepStrictEqual(await pipe(_.left('a'), f)(), 'left a')
@@ -153,9 +156,9 @@ describe('TaskThese', () => {
 
   it('match', async () => {
     const match = _.match(
-      (e) => `left ${e}`,
-      (a) => `right ${a}`,
-      (e, a) => `both ${e} ${a}`
+      e => `left ${e}`,
+      a => `right ${a}`,
+      (e, a) => `both ${e} ${a}`,
     )
     U.deepStrictEqual(await pipe(_.right(1), match)(), 'right 1')
     U.deepStrictEqual(await pipe(_.left('a'), match)(), 'left a')
@@ -164,9 +167,9 @@ describe('TaskThese', () => {
 
   it('matchE', async () => {
     const matchE = _.matchE(
-      (e) => T.of(`left ${e}`),
-      (a) => T.of(`right ${a}`),
-      (e, a) => T.of(`both ${e} ${a}`)
+      e => T.of(`left ${e}`),
+      a => T.of(`right ${a}`),
+      (e, a) => T.of(`both ${e} ${a}`),
     )
     U.deepStrictEqual(await pipe(_.right(1), matchE)(), 'right 1')
     U.deepStrictEqual(await pipe(_.left('a'), matchE)(), 'left a')
@@ -174,7 +177,11 @@ describe('TaskThese', () => {
   })
 
   it('fromTheseK', async () => {
-    const g = _.fromTheseK((n: number) => (n > 0 ? TH.right(n) : n === 0 ? TH.both('zero', n) : TH.left('negative')))
+    const g = _.fromTheseK((n: number) =>
+      n > 0 ? TH.right(n)
+      : n === 0 ? TH.both('zero', n)
+      : TH.left('negative'),
+    )
     U.deepStrictEqual(await g(-1)(), TH.left('negative'))
     U.deepStrictEqual(await g(0)(), TH.both('zero', 0))
     U.deepStrictEqual(await g(1)(), TH.right(1))
@@ -185,7 +192,10 @@ describe('TaskThese', () => {
   // -------------------------------------------------------------------------------------
 
   it('traverseReadonlyArrayWithIndex', async () => {
-    const f = (i: number, n: number) => (n > 0 ? _.right(n + i) : n === 0 ? _.both('a', 0) : _.left(String(n)))
+    const f = (i: number, n: number) =>
+      n > 0 ? _.right(n + i)
+      : n === 0 ? _.both('a', 0)
+      : _.left(String(n))
     const standard = RA.traverseWithIndex(_.getApplicative(T.ApplicativePar, S.Semigroup))(f)
     const optimized = _.traverseReadonlyArrayWithIndex(S.Semigroup)(f)
     const assert = async (input: ReadonlyArray<number>) => {
@@ -201,7 +211,10 @@ describe('TaskThese', () => {
   })
 
   it('traverseReadonlyArrayWithIndexSeq', async () => {
-    const f = (i: number, n: number) => (n > 0 ? _.right(n + i) : n === 0 ? _.both('a', 0) : _.left(String(n)))
+    const f = (i: number, n: number) =>
+      n > 0 ? _.right(n + i)
+      : n === 0 ? _.both('a', 0)
+      : _.left(String(n))
     const standard = RA.traverseWithIndex(_.getApplicative(T.ApplicativeSeq, S.Semigroup))(f)
     const optimized = _.traverseReadonlyArrayWithIndexSeq(S.Semigroup)(f)
     const assert = async (input: ReadonlyArray<number>) => {

@@ -11,8 +11,8 @@ import { type Ring } from './Ring'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Field<A> extends Ring<A> {
   readonly degree: (a: A) => number
@@ -25,7 +25,7 @@ export interface Field<A> extends Ring<A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * The *greatest common divisor* of two values
+ * The _greatest common divisor_ of two values
  *
  * @since 2.0.0
  */
@@ -36,7 +36,7 @@ export function gcd<A>(E: Eq<A>, field: Field<A>): (x: A, y: A) => A {
 }
 
 /**
- * The *least common multiple* of two values
+ * The _least common multiple_ of two values
  *
  * @since 2.0.0
  */
@@ -53,9 +53,9 @@ export function lcm<A>(E: Eq<A>, F: Field<A>): (x: A, y: A) => A {
 /**
  * Use [`Field`](./number.ts.html#field) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const fieldNumber: Field<number> = {
   add: (x, y) => x + y,
@@ -63,7 +63,7 @@ export const fieldNumber: Field<number> = {
   mul: (x, y) => x * y,
   one: 1,
   sub: (x, y) => x - y,
-  degree: (_) => 1,
+  degree: _ => 1,
   div: (x, y) => x / y,
-  mod: (x, y) => x % y
+  mod: (x, y) => x % y,
 }

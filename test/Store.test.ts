@@ -12,10 +12,10 @@ describe('Store', () => {
         _.extract(
           pipe(
             wa,
-            _.map((n) => n + 1)
-          )
+            _.map(n => n + 1),
+          ),
         ),
-        2
+        2,
       )
     })
 
@@ -25,17 +25,17 @@ describe('Store', () => {
         _.extract(
           pipe(
             wa,
-            _.extend((wa) =>
+            _.extend(wa =>
               _.extract(
                 pipe(
                   wa,
-                  _.map((n) => n + 1)
-                )
-              )
-            )
-          )
+                  _.map(n => n + 1),
+                ),
+              ),
+            ),
+          ),
         ),
-        2
+        2,
       )
     })
 
@@ -56,10 +56,10 @@ describe('Store', () => {
       _.extract(
         pipe(
           wa,
-          _.seeks((s) => s + 'a')
-        )
+          _.seeks(s => s + 'a'),
+        ),
       ),
-      2
+      2,
     )
   })
 
@@ -68,9 +68,9 @@ describe('Store', () => {
     U.deepStrictEqual(
       pipe(
         wa,
-        _.peeks((s) => s + 'a')
+        _.peeks(s => s + 'a'),
       ),
-      2
+      2,
     )
   })
 
@@ -79,9 +79,9 @@ describe('Store', () => {
     U.deepStrictEqual(
       pipe(
         wa,
-        _.experiment(RA.Functor)((s) => [s, s + 'a'])
+        _.experiment(RA.Functor)(s => [s, s + 'a']),
       ),
-      [1, 2]
+      [1, 2],
     )
   })
 })

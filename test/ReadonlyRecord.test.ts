@@ -23,11 +23,11 @@ describe('ReadonlyRecord', () => {
       const x: { readonly a: string; readonly b: boolean } = { a: 'c', b: false }
       U.deepStrictEqual(_.collect(S.Ord)((key, val) => ({ key: key, value: val }))(x), [
         { key: 'a', value: 'c' },
-        { key: 'b', value: false }
+        { key: 'b', value: false },
       ])
       U.deepStrictEqual(_.collect((key, val) => ({ key: key, value: val }))(x), [
         { key: 'a', value: 'c' },
-        { key: 'b', value: false }
+        { key: 'b', value: false },
       ])
     })
 
@@ -41,30 +41,30 @@ describe('ReadonlyRecord', () => {
       U.deepStrictEqual(
         pipe(
           { k1: 'a', k2: 'b' },
-          _.reduce(S.Ord)('', (b, a) => b + a)
+          _.reduce(S.Ord)('', (b, a) => b + a),
         ),
-        'ab'
+        'ab',
       )
       U.deepStrictEqual(
         pipe(
           { k2: 'b', k1: 'a' },
-          _.reduce(S.Ord)('', (b, a) => b + a)
+          _.reduce(S.Ord)('', (b, a) => b + a),
         ),
-        'ab'
+        'ab',
       )
       U.deepStrictEqual(
         pipe(
           { k1: 'a', k2: 'b' },
-          _.reduce('', (b, a) => b + a)
+          _.reduce('', (b, a) => b + a),
         ),
-        'ab'
+        'ab',
       )
       U.deepStrictEqual(
         pipe(
           { k2: 'b', k1: 'a' },
-          _.reduce('', (b, a) => b + a)
+          _.reduce('', (b, a) => b + a),
         ),
-        'ab'
+        'ab',
       )
     })
 
@@ -92,7 +92,9 @@ describe('ReadonlyRecord', () => {
     it('separate', () => {
       U.deepStrictEqual(_.separate({ foo: E.left(123), bar: E.right(123) }), separated({ foo: 123 }, { bar: 123 }))
       // should ignore non own properties
-      const o: _.ReadonlyRecord<string, E.Either<string, number>> = Object.create({ a: 1 })
+      const o: _.ReadonlyRecord<string, E.Either<string, number>> = Object.create({
+        a: 1,
+      })
       U.deepStrictEqual(pipe(o, _.separate), separated({}, {}))
     })
 
@@ -108,9 +110,9 @@ describe('ReadonlyRecord', () => {
       U.deepStrictEqual(
         pipe(
           y,
-          _.filter((_) => true)
+          _.filter(_ => true),
         ),
-        y
+        y,
       )
 
       const x = Object.assign(Object.create({ c: true }), { a: 1, b: 'foo' })
@@ -139,31 +141,31 @@ describe('ReadonlyRecord', () => {
       U.deepStrictEqual(
         pipe(
           { k1: 'a', k2: 'b' },
-          _.reduceWithIndex(S.Ord)('', (k, b, a) => b + k + a)
+          _.reduceWithIndex(S.Ord)('', (k, b, a) => b + k + a),
         ),
-        'k1ak2b'
+        'k1ak2b',
       )
       U.deepStrictEqual(
         pipe(
           { k2: 'b', k1: 'a' },
-          _.reduceWithIndex(S.Ord)('', (k, b, a) => b + k + a)
+          _.reduceWithIndex(S.Ord)('', (k, b, a) => b + k + a),
         ),
-        'k1ak2b'
+        'k1ak2b',
       )
 
       U.deepStrictEqual(
         pipe(
           { k1: 'a', k2: 'b' },
-          _.reduceWithIndex('', (k, b, a) => b + k + a)
+          _.reduceWithIndex('', (k, b, a) => b + k + a),
         ),
-        'k1ak2b'
+        'k1ak2b',
       )
       U.deepStrictEqual(
         pipe(
           { k2: 'b', k1: 'a' },
-          _.reduceWithIndex('', (k, b, a) => b + k + a)
+          _.reduceWithIndex('', (k, b, a) => b + k + a),
         ),
-        'k1ak2b'
+        'k1ak2b',
       )
     })
 
@@ -171,25 +173,25 @@ describe('ReadonlyRecord', () => {
       U.deepStrictEqual(
         pipe(
           { k1: 'a', k2: 'b' },
-          _.foldMapWithIndex(S.Ord)(S.Monoid)((k, a) => k + a)
+          _.foldMapWithIndex(S.Ord)(S.Monoid)((k, a) => k + a),
         ),
-        'k1ak2b'
+        'k1ak2b',
       )
       U.deepStrictEqual(
         _.getFoldableWithIndex(S.Ord).foldMapWithIndex(S.Monoid)({ k1: 'a', k2: 'b' }, (k, a) => k + a),
-        'k1ak2b'
+        'k1ak2b',
       )
 
       U.deepStrictEqual(
         pipe(
           { k1: 'a', k2: 'b' },
-          _.foldMapWithIndex(S.Monoid)((k, a) => k + a)
+          _.foldMapWithIndex(S.Monoid)((k, a) => k + a),
         ),
-        'k1ak2b'
+        'k1ak2b',
       )
       U.deepStrictEqual(
         _.FoldableWithIndex.foldMapWithIndex(S.Monoid)({ k1: 'a', k2: 'b' }, (k, a) => k + a),
-        'k1ak2b'
+        'k1ak2b',
       )
     })
 
@@ -197,16 +199,16 @@ describe('ReadonlyRecord', () => {
       U.deepStrictEqual(
         pipe(
           { k1: 'a', k2: 'b' },
-          _.reduceRightWithIndex(S.Ord)('', (k, a, b) => b + k + a)
+          _.reduceRightWithIndex(S.Ord)('', (k, a, b) => b + k + a),
         ),
-        'k2bk1a'
+        'k2bk1a',
       )
       U.deepStrictEqual(
         pipe(
           { k1: 'a', k2: 'b' },
-          _.reduceRightWithIndex('', (k, a, b) => b + k + a)
+          _.reduceRightWithIndex('', (k, a, b) => b + k + a),
         ),
-        'k2bk1a'
+        'k2bk1a',
       )
     })
 
@@ -238,18 +240,27 @@ describe('ReadonlyRecord', () => {
       U.deepStrictEqual(
         pipe(
           { a: 1, b: 2 },
-          _.filterWithIndex((_, a: number) => a > 1)
+          _.filterWithIndex((_, a: number) => a > 1),
         ),
-        { b: 2 }
+        { b: 2 },
       )
     })
 
     it('traverse', () => {
       U.deepStrictEqual(
-        _.traverse(O.Applicative)((n: number) => (n <= 2 ? O.some(n) : O.none))({ a: 1, b: 2 }),
-        O.some({ a: 1, b: 2 })
+        _.traverse(O.Applicative)((n: number) => (n <= 2 ? O.some(n) : O.none))({
+          a: 1,
+          b: 2,
+        }),
+        O.some({ a: 1, b: 2 }),
       )
-      U.deepStrictEqual(_.traverse(O.Applicative)((n: number) => (n >= 2 ? O.some(n) : O.none))({ a: 1, b: 2 }), O.none)
+      U.deepStrictEqual(
+        _.traverse(O.Applicative)((n: number) => (n >= 2 ? O.some(n) : O.none))({
+          a: 1,
+          b: 2,
+        }),
+        O.none,
+      )
     })
 
     it('getTraversable', () => {
@@ -261,7 +272,7 @@ describe('ReadonlyRecord', () => {
       U.deepStrictEqual(pipe(T.traverse(O.Applicative)({ b: 2, a: 1 }, f), O.map(Object.keys)), O.some(['b', 'a']))
       U.deepStrictEqual(
         pipe(T.sequence(O.Applicative)({ b: O.some(2), a: O.some(1) }), O.map(Object.keys)),
-        O.some(['b', 'a'])
+        O.some(['b', 'a']),
       )
     })
 
@@ -272,7 +283,7 @@ describe('ReadonlyRecord', () => {
 
       U.deepStrictEqual(
         _.readonlyRecord.sequence(O.Applicative)({ a: O.some(1), b: O.some(2) }),
-        O.some({ a: 1, b: 2 })
+        O.some({ a: 1, b: 2 }),
       )
     })
 
@@ -288,7 +299,7 @@ describe('ReadonlyRecord', () => {
         const result = pipe(
           { a: 2, b: 3 },
           _.fromRecord,
-          _.traverseWithIndex(RA.Applicative)((_, n) => RA.makeBy(n, (i) => i * 4))
+          _.traverseWithIndex(RA.Applicative)((_, n) => RA.makeBy(n, i => i * 4)),
         )
 
         U.deepStrictEqual(result, [
@@ -297,7 +308,7 @@ describe('ReadonlyRecord', () => {
           { a: 0, b: 8 },
           { a: 4, b: 0 },
           { a: 4, b: 4 },
-          { a: 4, b: 8 }
+          { a: 4, b: 8 },
         ])
       })
     })
@@ -310,7 +321,7 @@ describe('ReadonlyRecord', () => {
       // should respect the order
       U.deepStrictEqual(
         pipe(TWI.traverseWithIndex(O.Applicative)({ b: 2, c: 1 }, f), O.map(Object.keys)),
-        O.some(['c', 'b'])
+        O.some(['c', 'b']),
       )
     })
 
@@ -368,38 +379,38 @@ describe('ReadonlyRecord', () => {
     U.deepStrictEqual(
       _.fromFoldable(
         First,
-        RA.Foldable
+        RA.Foldable,
       )([
         ['a', 1],
-        ['a', 2]
+        ['a', 2],
       ]),
       {
-        a: 1
-      }
+        a: 1,
+      },
     )
     const Last = Se.last<number>()
     U.deepStrictEqual(
       _.fromFoldable(
         Last,
-        RA.Foldable
+        RA.Foldable,
       )([
         ['a', 1],
-        ['a', 2]
+        ['a', 2],
       ]),
       {
-        a: 2
-      }
+        a: 2,
+      },
     )
   })
 
   it('toReadonlyArray', () => {
     U.deepStrictEqual(_.toReadonlyArray({ a: 1, b: 2 }), [
       ['a', 1],
-      ['b', 2]
+      ['b', 2],
     ])
     U.deepStrictEqual(_.toReadonlyArray({ b: 2, a: 1 }), [
       ['a', 1],
-      ['b', 2]
+      ['b', 2],
     ])
   })
 
@@ -410,7 +421,7 @@ describe('ReadonlyRecord', () => {
   it('toEntries', () => {
     U.deepStrictEqual(_.toEntries({ a: 1, b: 2 }), [
       ['a', 1],
-      ['b', 2]
+      ['b', 2],
     ])
   })
 
@@ -419,9 +430,9 @@ describe('ReadonlyRecord', () => {
       _.fromEntries([
         ['a', 1],
         ['b', 2],
-        ['a', 3]
+        ['a', 3],
       ]),
-      { b: 2, a: 3 }
+      { b: 2, a: 3 },
     )
   })
 
@@ -435,7 +446,7 @@ describe('ReadonlyRecord', () => {
 
     pipe(
       { b: append('b'), a: append('a') },
-      _.traverseWithIndex(IO.Applicative)((_, io) => io)
+      _.traverseWithIndex(IO.Applicative)((_, io) => io),
     )()
     U.deepStrictEqual(log, ['a', 'b'])
   })
@@ -510,15 +521,15 @@ describe('ReadonlyRecord', () => {
     const users: ReadonlyArray<User> = [
       { id: 'id1', name: 'name1' },
       { id: 'id2', name: 'name2' },
-      { id: 'id1', name: 'name3' }
+      { id: 'id1', name: 'name3' },
     ]
 
     U.deepStrictEqual(
-      _.fromFoldableMap(Se.last<User>(), RA.Foldable)(users, (user) => [user.id, user]),
+      _.fromFoldableMap(Se.last<User>(), RA.Foldable)(users, user => [user.id, user]),
       {
         id1: { id: 'id1', name: 'name3' },
-        id2: { id: 'id2', name: 'name2' }
-      }
+        id2: { id: 'id2', name: 'name2' },
+      },
     )
   })
 
@@ -576,9 +587,9 @@ describe('ReadonlyRecord', () => {
       pipe(
         input,
         _.modifyAt('a', identity),
-        O.map((out) => out === input)
+        O.map(out => out === input),
       ),
-      O.some(true)
+      O.some(true),
     )
   })
 
@@ -601,12 +612,12 @@ describe('ReadonlyRecord', () => {
     const x: _.ReadonlyRecord<string, string> = {
       a: 'a1',
       b: 'b1',
-      c: 'c1'
+      c: 'c1',
     }
     const y: _.ReadonlyRecord<string, string> = {
       b: 'b2',
       c: 'c2',
-      d: 'd2'
+      d: 'd2',
     }
     U.strictEqual(M.concat(x, M.empty), x)
     U.strictEqual(M.concat(M.empty, x), x)
@@ -616,7 +627,7 @@ describe('ReadonlyRecord', () => {
       a: 'a1',
       b: 'b1b2',
       c: 'c1c2',
-      d: 'd2'
+      d: 'd2',
     })
   })
 
@@ -625,12 +636,12 @@ describe('ReadonlyRecord', () => {
     const x: _.ReadonlyRecord<string, string> = {
       a: 'a1',
       b: 'b1',
-      c: 'c1'
+      c: 'c1',
     }
     const y: _.ReadonlyRecord<string, string> = {
       b: 'b2',
       c: 'c2',
-      d: 'd2'
+      d: 'd2',
     }
     U.strictEqual(M.concat(x, _.empty), _.empty)
     U.strictEqual(M.concat(x, _.empty), _.empty)
@@ -638,7 +649,7 @@ describe('ReadonlyRecord', () => {
     U.strictEqual(M.concat(x, {}), _.empty)
     U.deepStrictEqual(M.concat(x, y), {
       b: 'b1b2',
-      c: 'c1c2'
+      c: 'c1c2',
     })
   })
 
@@ -647,12 +658,12 @@ describe('ReadonlyRecord', () => {
     const x: _.ReadonlyRecord<string, string> = {
       a: 'a1',
       b: 'b1',
-      c: 'c1'
+      c: 'c1',
     }
     const y: _.ReadonlyRecord<string, string> = {
       b: 'b2',
       c: 'c2',
-      d: 'd2'
+      d: 'd2',
     }
     U.strictEqual(M.concat(_.empty, x), x)
     U.strictEqual(M.concat(x, _.empty), x)
@@ -660,7 +671,7 @@ describe('ReadonlyRecord', () => {
     U.strictEqual(M.concat(x, {}), x)
     U.deepStrictEqual(M.concat(x, y), {
       a: 'a1',
-      d: 'd2'
+      d: 'd2',
     })
   })
 
@@ -670,9 +681,9 @@ describe('ReadonlyRecord', () => {
     U.deepStrictEqual(
       pipe(
         o,
-        _.mapWithIndex((_, a) => U.double(a))
+        _.mapWithIndex((_, a) => U.double(a)),
       ),
-      {}
+      {},
     )
   })
 })

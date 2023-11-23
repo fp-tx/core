@@ -1,8 +1,7 @@
 /**
- * The `Monad` type class combines the operations of the `Chain` and
- * `Applicative` type classes. Therefore, `Monad` instances represent type
- * constructors which support sequential composition, and also lifting of
- * functions of arbitrary arity.
+ * The `Monad` type class combines the operations of the `Chain` and `Applicative` type classes. Therefore, `Monad`
+ * instances represent type constructors which support sequential composition, and also lifting of functions of
+ * arbitrary arity.
  *
  * Instances must satisfy the following laws in addition to the `Applicative` and `Chain` laws:
  *
@@ -20,7 +19,7 @@ import {
   type Applicative2C,
   type Applicative3,
   type Applicative3C,
-  type Applicative4
+  type Applicative4,
 } from './Applicative'
 import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C, type Chain4 } from './Chain'
 import { type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
@@ -30,43 +29,43 @@ import { type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Monad<F> extends Applicative<F>, Chain<F> {}
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Monad1<F extends URIS> extends Applicative1<F>, Chain1<F> {}
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Monad2<M extends URIS2> extends Applicative2<M>, Chain2<M> {}
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Monad2C<M extends URIS2, L> extends Applicative2C<M, L>, Chain2C<M, L> {}
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Monad3<M extends URIS3> extends Applicative3<M>, Chain3<M> {}
 
 /**
- * @category model
  * @since 2.2.0
+ * @category Model
  */
 export interface Monad3C<M extends URIS3, E> extends Applicative3C<M, E>, Chain3C<M, E> {}
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface Monad4<M extends URIS4> extends Applicative4<M>, Chain4<M> {}

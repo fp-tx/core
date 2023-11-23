@@ -17,22 +17,22 @@ export interface AssertParSeq {
   <F extends URIS4>(
     F: Apply4<F>,
     MT: FromTask4<F>,
-    run: (fa: Kind4<F, unknown, unknown, unknown, unknown>) => Promise<unknown>
+    run: (fa: Kind4<F, unknown, unknown, unknown, unknown>) => Promise<unknown>,
   ): Promise<void>
   <F extends URIS3>(
     F: Apply3<F>,
     MT: FromTask3<F>,
-    run: (fa: Kind3<F, unknown, unknown, unknown>) => Promise<unknown>
+    run: (fa: Kind3<F, unknown, unknown, unknown>) => Promise<unknown>,
   ): Promise<void>
   <F extends URIS2>(
     F: Apply2<F>,
     MT: FromTask2<F>,
-    run: (fa: Kind2<F, unknown, unknown>) => Promise<unknown>
+    run: (fa: Kind2<F, unknown, unknown>) => Promise<unknown>,
   ): Promise<void>
   <F extends URIS2, E>(
     F: Apply2C<F, E>,
     MT: FromTask2<F>,
-    run: (fa: Kind2<F, E, unknown>) => Promise<unknown>
+    run: (fa: Kind2<F, E, unknown>) => Promise<unknown>,
   ): Promise<void>
   <F extends URIS>(F: Apply1<F>, MT: FromTask1<F>, run: (fa: Kind<F, unknown>) => Promise<unknown>): Promise<void>
   <F>(F: Apply<F>, MT: FromTask<F>, run: (fa: HKT<F, unknown>) => Promise<unknown>): Promise<void>

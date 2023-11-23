@@ -1,6 +1,4 @@
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 import {
   type HKT,
   type Kind,
@@ -10,7 +8,7 @@ import {
   type URIS,
   type URIS2,
   type URIS3,
-  type URIS4
+  type URIS4,
 } from './HKT'
 import {
   type Pointed,
@@ -19,7 +17,7 @@ import {
   type Pointed2C,
   type Pointed3,
   type Pointed3C,
-  type Pointed4
+  type Pointed4,
 } from './Pointed'
 
 // -------------------------------------------------------------------------------------
@@ -27,8 +25,8 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.11.0
+ * @category Model
  */
 export interface Zero<F> {
   readonly URI: F
@@ -36,8 +34,8 @@ export interface Zero<F> {
 }
 
 /**
- * @category model
  * @since 2.11.0
+ * @category Model
  */
 export interface Zero1<F extends URIS> {
   readonly URI: F
@@ -45,8 +43,8 @@ export interface Zero1<F extends URIS> {
 }
 
 /**
- * @category model
  * @since 2.11.0
+ * @category Model
  */
 export interface Zero2<F extends URIS2> {
   readonly URI: F
@@ -54,8 +52,8 @@ export interface Zero2<F extends URIS2> {
 }
 
 /**
- * @category model
  * @since 2.11.0
+ * @category Model
  */
 export interface Zero2C<F extends URIS2, E> {
   readonly URI: F
@@ -64,8 +62,8 @@ export interface Zero2C<F extends URIS2, E> {
 }
 
 /**
- * @category model
  * @since 2.11.0
+ * @category Model
  */
 export interface Zero3<F extends URIS3> {
   readonly URI: F
@@ -73,8 +71,8 @@ export interface Zero3<F extends URIS3> {
 }
 
 /**
- * @category model
  * @since 2.11.0
+ * @category Model
  */
 export interface Zero3C<F extends URIS3, E> {
   readonly URI: F
@@ -83,8 +81,8 @@ export interface Zero3C<F extends URIS3, E> {
 }
 
 /**
- * @category model
  * @since 2.11.0
+ * @category Model
  */
 export interface Zero4<F extends URIS4> {
   readonly URI: F
@@ -92,8 +90,8 @@ export interface Zero4<F extends URIS4> {
 }
 
 /**
- * @category do notation
  * @since 2.11.0
+ * @category Do notation
  */
 export function guard<F extends URIS4>(F: Zero4<F>, P: Pointed4<F>): <S, R, E>(b: boolean) => Kind4<F, S, R, E, void>
 export function guard<F extends URIS3>(F: Zero3<F>, P: Pointed3<F>): <R, E>(b: boolean) => Kind3<F, R, E, void>
@@ -103,5 +101,5 @@ export function guard<F extends URIS2, E>(F: Zero2C<F, E>, P: Pointed2C<F, E>): 
 export function guard<F extends URIS>(F: Zero1<F>, P: Pointed1<F>): (b: boolean) => Kind<F, void>
 export function guard<F>(F: Zero<F>, P: Pointed<F>): (b: boolean) => HKT<F, void>
 export function guard<F>(F: Zero<F>, P: Pointed<F>): (b: boolean) => HKT<F, void> {
-  return (b) => (b ? P.of(undefined) : F.zero())
+  return b => (b ? P.of(undefined) : F.zero())
 }

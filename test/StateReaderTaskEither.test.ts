@@ -25,23 +25,23 @@ describe('StateReaderTaskEither', () => {
       const e1 = await pipe(
         _.right('a'),
         _.alt(() => _.left(1)),
-        _.evaluate(state)
+        _.evaluate(state),
       )({})()
       U.deepStrictEqual(e1, E.right('a'))
       const e2 = await pipe(
         pipe(
           _.left(1),
           _.alt(() => _.right('b')),
-          _.evaluate(state)
-        )
+          _.evaluate(state),
+        ),
       )({})()
       U.deepStrictEqual(e2, E.right('b'))
       const e3 = await pipe(
         pipe(
           _.left(1),
           _.alt(() => _.left(2)),
-          _.evaluate(state)
-        )
+          _.evaluate(state),
+        ),
       )({})()
       U.deepStrictEqual(e3, E.left(2))
     })
@@ -107,7 +107,7 @@ describe('StateReaderTaskEither', () => {
       const e = await pipe(
         _.right<S, R1, E1, _.StateReaderTaskEither<S, R2, E2, 'a'>>(_.right('a')),
         _.flattenW,
-        _.evaluate(state)
+        _.evaluate(state),
       )({ env1: '', env2: '' })()
       U.deepStrictEqual(e, E.right('a'))
     })
@@ -128,10 +128,10 @@ describe('StateReaderTaskEither', () => {
 
     it('fromPredicate', async () => {
       const predicate = (n: number) => n >= 2
-      const gt2 = _.fromPredicate(predicate, (n) => `Invalid number ${n}`)
+      const gt2 = _.fromPredicate(predicate, n => `Invalid number ${n}`)
 
       const refinement = (u: string | number): u is number => typeof u === 'number'
-      const isNumber = _.fromPredicate(refinement, (u) => `Invalid number ${String(u)}`)
+      const isNumber = _.fromPredicate(refinement, u => `Invalid number ${String(u)}`)
 
       const e1 = await pipe(gt2(3), _.evaluate(state))({})()
       const e2 = await pipe(gt2(1), _.evaluate(state))({})()
@@ -145,20 +145,20 @@ describe('StateReaderTaskEither', () => {
       const e1 = await pipe(
         _.right(12),
         _.filterOrElse(
-          (n) => n > 10,
-          () => 'a'
+          n => n > 10,
+          () => 'a',
         ),
-        _.evaluate(state)
+        _.evaluate(state),
       )({})()
       U.deepStrictEqual(e1, E.right(12))
 
       const e2 = await pipe(
         _.right(8),
         _.filterOrElse(
-          (n) => n > 10,
-          () => 'a'
+          n => n > 10,
+          () => 'a',
         ),
-        _.evaluate(state)
+        _.evaluate(state),
       )({})()
       U.deepStrictEqual(e2, E.left('a'))
     })
@@ -169,7 +169,7 @@ describe('StateReaderTaskEither', () => {
   // -------------------------------------------------------------------------------------
 
   it('applicativeStateReaderTaskEither', async () => {
-    await U.assertSeq(_.Applicative, _.FromTask, (fa) => fa(null)(null)())
+    await U.assertSeq(_.Applicative, _.FromTask, fa => fa(null)(null)())
   })
 
   // -------------------------------------------------------------------------------------
@@ -188,11 +188,11 @@ describe('StateReaderTaskEither', () => {
       _.rightTask(() => Promise.resolve(log.push(message)))
     const t1 = pipe(
       append('start 1'),
-      _.chain(() => append('end 1'))
+      _.chain(() => append('end 1')),
     )
     const t2 = pipe(
       append('start 2'),
-      _.chain(() => append('end 2'))
+      _.chain(() => append('end 2')),
     )
     const sequence = A.sequence(_.Applicative)
     U.deepStrictEqual(await sequence([t1, t2])({})({})(), E.right([[2, 4], {}]))
@@ -206,13 +206,13 @@ describe('StateReaderTaskEither', () => {
   })
 
   it('rightState', async () => {
-    const s: State<unknown, number> = (s) => [1, s]
+    const s: State<unknown, number> = s => [1, s]
     const e = await pipe(_.rightState(s), _.evaluate(state))({})()
     U.deepStrictEqual(e, E.right(1))
   })
 
   it('leftState', async () => {
-    const s: State<unknown, number> = (s) => [1, s]
+    const s: State<unknown, number> = s => [1, s]
     const e = await pipe(_.leftState(s), _.evaluate(state))({})()
     U.deepStrictEqual(e, E.left(1))
   })
@@ -344,18 +344,18 @@ describe('StateReaderTaskEither', () => {
         _.right<void, void, string, number>(1),
         _.bindTo('a'),
         _.bind('b', () => _.right('b')),
-        _.let('c', ({ a, b }) => [a, b])
+        _.let('c', ({ a, b }) => [a, b]),
       )(undefined)(undefined)(),
-      E.right([{ a: 1, b: 'b', c: [1, 'b'] }, undefined])
+      E.right([{ a: 1, b: 'b', c: [1, 'b'] }, undefined]),
     )
   })
 
   it('apS', async () => {
     assert.deepStrictEqual(
       await pipe(_.right<void, void, string, number>(1), _.bindTo('a'), _.apS('b', _.right('b')))(undefined)(
-        undefined
+        undefined,
       )(),
-      E.right([{ a: 1, b: 'b' }, undefined])
+      E.right([{ a: 1, b: 'b' }, undefined]),
     )
   })
 
@@ -368,14 +368,14 @@ describe('StateReaderTaskEither', () => {
       U.deepStrictEqual(await pipe(input, f)(undefined)(undefined)(), E.right(tuple(['a0', 'b1'], undefined)))
       U.deepStrictEqual(await pipe(['a', ''], f)(undefined)(undefined)(), E.left('e'))
       const append = (_i: number, n: number): _.StateReaderTaskEither<ReadonlyArray<number>, {}, Error, void> =>
-        _.modify((a) => [...a, n])
+        _.modify(a => [...a, n])
       U.deepStrictEqual(
         await pipe(
           [1, 2, 3],
           _.traverseReadonlyArrayWithIndex(append),
-          _.map(() => undefined)
+          _.map(() => undefined),
         )([])({})(),
-        E.right(tuple(undefined, [1, 2, 3]))
+        E.right(tuple(undefined, [1, 2, 3])),
       )
     })
 
@@ -393,15 +393,15 @@ describe('StateReaderTaskEither', () => {
         })
       U.deepStrictEqual(
         await pipe([right(1), right(2)], _.traverseReadonlyArrayWithIndex(SK))(undefined)(undefined)(),
-        E.right(tuple([1, 2], undefined))
+        E.right(tuple([1, 2], undefined)),
       )
       U.deepStrictEqual(
         await pipe([right(3), left('a')], _.traverseReadonlyArrayWithIndex(SK))(undefined)(undefined)(),
-        E.left('a')
+        E.left('a'),
       )
       U.deepStrictEqual(
         await pipe([left('b'), right(4)], _.traverseReadonlyArrayWithIndex(SK))(undefined)(undefined)(),
-        E.left('b')
+        E.left('b'),
       )
       U.deepStrictEqual(log, [1, 2, 3, 'a', 'b'])
     })
@@ -421,7 +421,7 @@ describe('StateReaderTaskEither', () => {
         })
       assert.deepStrictEqual(
         await pipe([right(1), right(2)], _.sequenceArray)(undefined)(undefined)(),
-        E.right([[1, 2], undefined])
+        E.right([[1, 2], undefined]),
       )
       U.deepStrictEqual(await pipe([right(3), left('a')], _.sequenceArray)(undefined)(undefined)(), E.left('a'))
       U.deepStrictEqual(await pipe([left('b'), right(4)], _.sequenceArray)(undefined)(undefined)(), E.left('b'))
@@ -430,20 +430,20 @@ describe('StateReaderTaskEither', () => {
 
     it('#1486', async () => {
       const append = (n: number): _.StateReaderTaskEither<ReadonlyArray<number>, {}, Error, void> =>
-        _.modify((a) => [...a, n])
+        _.modify(a => [...a, n])
       U.deepStrictEqual(
         await pipe(
           [1, 2, 3],
           _.traverseArray(append),
-          _.map(() => undefined)
+          _.map(() => undefined),
         )([])({})(),
-        E.right(tuple(undefined, [1, 2, 3]))
+        E.right(tuple(undefined, [1, 2, 3])),
       )
     })
   })
 
   it('fromState', async () => {
-    const s: State<unknown, number> = (s) => [1, s]
+    const s: State<unknown, number> = s => [1, s]
     const e = await pipe(_.fromState(s), _.evaluate(state))({})()
     U.deepStrictEqual(e, E.right(1))
   })
@@ -451,7 +451,7 @@ describe('StateReaderTaskEither', () => {
   it('fromStateK', async () => {
     const ma = _.fromStateK(
       (n: number): State<number, number> =>
-        (s) => [n * 2, s + 1]
+        s => [n * 2, s + 1],
     )
     U.deepStrictEqual(await ma(3)(2)({})(), E.right([6, 3]))
   })
@@ -459,7 +459,7 @@ describe('StateReaderTaskEither', () => {
   it('chainStateK', async () => {
     const f = _.chainStateK(
       (n: number): State<number, number> =>
-        (s) => [n * 2, s + 1]
+        s => [n * 2, s + 1],
     )
     const right: _.StateReaderTaskEither<number, unknown, never, number> = _.right(3)
     U.deepStrictEqual(await pipe(right, f)(2)({})(), E.right([6, 3]))
@@ -471,9 +471,9 @@ describe('StateReaderTaskEither', () => {
     U.deepStrictEqual(
       await pipe(
         _.asks((n: number) => n + 1),
-        _.local(S.size)
+        _.local(S.size),
       )({})('aaa')(),
-      E.right(tuple(4, {}))
+      E.right(tuple(4, {})),
     )
   })
 

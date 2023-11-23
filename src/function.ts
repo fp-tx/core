@@ -1,6 +1,4 @@
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 import { type BooleanAlgebra } from './BooleanAlgebra'
 import { type Monoid } from './Monoid'
 import { type Ring } from './Ring'
@@ -12,95 +10,93 @@ import { type Semiring } from './Semiring'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const getBooleanAlgebra =
   <B>(B: BooleanAlgebra<B>) =>
   <A = never>(): BooleanAlgebra<(a: A) => B> => ({
-    meet: (x, y) => (a) => B.meet(x(a), y(a)),
-    join: (x, y) => (a) => B.join(x(a), y(a)),
+    meet: (x, y) => a => B.meet(x(a), y(a)),
+    join: (x, y) => a => B.join(x(a), y(a)),
     zero: () => B.zero,
     one: () => B.one,
-    implies: (x, y) => (a) => B.implies(x(a), y(a)),
-    not: (x) => (a) => B.not(x(a))
+    implies: (x, y) => a => B.implies(x(a), y(a)),
+    not: x => a => B.not(x(a)),
   })
 
 /**
  * Unary functions form a semigroup as long as you can provide a semigroup for the codomain.
  *
- * @example
- * import { Predicate, getSemigroup } from 'fp-ts/function'
- * import * as B from 'fp-ts/boolean'
- *
- * const f: Predicate<number> = (n) => n <= 2
- * const g: Predicate<number> = (n) => n >= 0
- *
- * const S1 = getSemigroup(B.SemigroupAll)<number>()
- *
- * assert.deepStrictEqual(S1.concat(f, g)(1), true)
- * assert.deepStrictEqual(S1.concat(f, g)(3), false)
- *
- * const S2 = getSemigroup(B.SemigroupAny)<number>()
- *
- * assert.deepStrictEqual(S2.concat(f, g)(1), true)
- * assert.deepStrictEqual(S2.concat(f, g)(3), true)
- *
- * @category instances
  * @since 2.10.0
+ * @category Instances
+ * @example
+ *   import { Predicate, getSemigroup } from 'fp-ts/function'
+ *   import * as B from 'fp-ts/boolean'
+ *
+ *   const f: Predicate<number> = n => n <= 2
+ *   const g: Predicate<number> = n => n >= 0
+ *
+ *   const S1 = getSemigroup(B.SemigroupAll)<number>()
+ *
+ *   assert.deepStrictEqual(S1.concat(f, g)(1), true)
+ *   assert.deepStrictEqual(S1.concat(f, g)(3), false)
+ *
+ *   const S2 = getSemigroup(B.SemigroupAny)<number>()
+ *
+ *   assert.deepStrictEqual(S2.concat(f, g)(1), true)
+ *   assert.deepStrictEqual(S2.concat(f, g)(3), true)
  */
 export const getSemigroup =
   <S>(S: Semigroup<S>) =>
   <A = never>(): Semigroup<(a: A) => S> => ({
-    concat: (f, g) => (a) => S.concat(f(a), g(a))
+    concat: (f, g) => a => S.concat(f(a), g(a)),
   })
 
 /**
  * Unary functions form a monoid as long as you can provide a monoid for the codomain.
  *
- * @example
- * import { Predicate } from 'fp-ts/Predicate'
- * import { getMonoid } from 'fp-ts/function'
- * import * as B from 'fp-ts/boolean'
- *
- * const f: Predicate<number> = (n) => n <= 2
- * const g: Predicate<number> = (n) => n >= 0
- *
- * const M1 = getMonoid(B.MonoidAll)<number>()
- *
- * assert.deepStrictEqual(M1.concat(f, g)(1), true)
- * assert.deepStrictEqual(M1.concat(f, g)(3), false)
- *
- * const M2 = getMonoid(B.MonoidAny)<number>()
- *
- * assert.deepStrictEqual(M2.concat(f, g)(1), true)
- * assert.deepStrictEqual(M2.concat(f, g)(3), true)
- *
- * @category instances
  * @since 2.10.0
+ * @category Instances
+ * @example
+ *   import { Predicate } from 'fp-ts/Predicate'
+ *   import { getMonoid } from 'fp-ts/function'
+ *   import * as B from 'fp-ts/boolean'
+ *
+ *   const f: Predicate<number> = n => n <= 2
+ *   const g: Predicate<number> = n => n >= 0
+ *
+ *   const M1 = getMonoid(B.MonoidAll)<number>()
+ *
+ *   assert.deepStrictEqual(M1.concat(f, g)(1), true)
+ *   assert.deepStrictEqual(M1.concat(f, g)(3), false)
+ *
+ *   const M2 = getMonoid(B.MonoidAny)<number>()
+ *
+ *   assert.deepStrictEqual(M2.concat(f, g)(1), true)
+ *   assert.deepStrictEqual(M2.concat(f, g)(3), true)
  */
 export const getMonoid = <M>(M: Monoid<M>): (<A = never>() => Monoid<(a: A) => M>) => {
   const getSemigroupM = getSemigroup(M)
   return <A>() => ({
     concat: getSemigroupM<A>().concat,
-    empty: () => M.empty
+    empty: () => M.empty,
   })
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const getSemiring = <A, B>(S: Semiring<B>): Semiring<(a: A) => B> => ({
-  add: (f, g) => (x) => S.add(f(x), g(x)),
+  add: (f, g) => x => S.add(f(x), g(x)),
   zero: () => S.zero,
-  mul: (f, g) => (x) => S.mul(f(x), g(x)),
-  one: () => S.one
+  mul: (f, g) => x => S.mul(f(x), g(x)),
+  one: () => S.one,
 })
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const getRing = <A, B>(R: Ring<B>): Ring<(a: A) => B> => {
   const S = getSemiring<A, B>(R)
@@ -109,7 +105,7 @@ export const getRing = <A, B>(R: Ring<B>): Ring<(a: A) => B> => {
     mul: S.mul,
     one: S.one,
     zero: S.zero,
-    sub: (f, g) => (x) => R.sub(f(x), g(x))
+    sub: (f, g) => x => R.sub(f(x), g(x)),
   }
 }
 
@@ -117,16 +113,14 @@ export const getRing = <A, B>(R: Ring<B>): Ring<(a: A) => B> => {
 // utils
 // -------------------------------------------------------------------------------------
 
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 export const apply =
   <A>(a: A) =>
   <B>(f: (a: A) => B): B =>
     f(a)
 
 /**
- * A *thunk*
+ * A _thunk_
  *
  * @since 2.0.0
  */
@@ -135,32 +129,25 @@ export interface Lazy<A> {
 }
 
 /**
- * @example
- * import { FunctionN } from 'fp-ts/function'
- *
- * export const sum: FunctionN<[number, number], number> = (a, b) => a + b
- *
  * @since 2.0.0
+ * @example
+ *   import { FunctionN } from 'fp-ts/function'
+ *
+ *   export const sum: FunctionN<[number, number], number> = (a, b) => a + b
  */
 export interface FunctionN<A extends ReadonlyArray<unknown>, B> {
   (...args: A): B
 }
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export function identity<A>(a: A): A {
   return a
 }
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export const unsafeCoerce: <A, B>(a: A) => B = identity as any
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export function constant<A>(a: A): Lazy<A> {
   return () => a
 }
@@ -203,14 +190,13 @@ export const constVoid: Lazy<void> = constUndefined
 /**
  * Flips the arguments of a curried function.
  *
- * @example
- * import { flip } from 'fp-ts/function'
- *
- * const f = (a: number) => (b: string) => a - b.length
- *
- * assert.strictEqual(flip(f)('aaa')(2), -1)
- *
  * @since 2.0.0
+ * @example
+ *   import { flip } from 'fp-ts/function'
+ *
+ *   const f = (a: number) => (b: string) => a - b.length
+ *
+ *   assert.strictEqual(flip(f)('aaa')(2), -1)
  */
 export function flip<A, B, C>(f: (a: A) => (b: B) => C): (b: B) => (a: A) => C
 /** @deprecated */
@@ -226,41 +212,41 @@ export function flip(f: Function): Function {
 }
 
 /**
- * Performs left-to-right function composition. The first argument may have any arity, the remaining arguments must be unary.
+ * Performs left-to-right function composition. The first argument may have any arity, the remaining arguments must be
+ * unary.
  *
  * See also [`pipe`](#pipe).
  *
- * @example
- * import { flow } from 'fp-ts/function'
- *
- * const len = (s: string): number => s.length
- * const double = (n: number): number => n * 2
- *
- * const f = flow(len, double)
- *
- * assert.strictEqual(f('aaa'), 6)
- *
  * @since 2.0.0
+ * @example
+ *   import { flow } from 'fp-ts/function'
+ *
+ *   const len = (s: string): number => s.length
+ *   const double = (n: number): number => n * 2
+ *
+ *   const f = flow(len, double)
+ *
+ *   assert.strictEqual(f('aaa'), 6)
  */
 export function flow<A extends ReadonlyArray<unknown>, B>(ab: (...a: A) => B): (...a: A) => B
 export function flow<A extends ReadonlyArray<unknown>, B, C>(ab: (...a: A) => B, bc: (b: B) => C): (...a: A) => C
 export function flow<A extends ReadonlyArray<unknown>, B, C, D>(
   ab: (...a: A) => B,
   bc: (b: B) => C,
-  cd: (c: C) => D
+  cd: (c: C) => D,
 ): (...a: A) => D
 export function flow<A extends ReadonlyArray<unknown>, B, C, D, E>(
   ab: (...a: A) => B,
   bc: (b: B) => C,
   cd: (c: C) => D,
-  de: (d: D) => E
+  de: (d: D) => E,
 ): (...a: A) => E
 export function flow<A extends ReadonlyArray<unknown>, B, C, D, E, F>(
   ab: (...a: A) => B,
   bc: (b: B) => C,
   cd: (c: C) => D,
   de: (d: D) => E,
-  ef: (e: E) => F
+  ef: (e: E) => F,
 ): (...a: A) => F
 export function flow<A extends ReadonlyArray<unknown>, B, C, D, E, F, G>(
   ab: (...a: A) => B,
@@ -268,7 +254,7 @@ export function flow<A extends ReadonlyArray<unknown>, B, C, D, E, F, G>(
   cd: (c: C) => D,
   de: (d: D) => E,
   ef: (e: E) => F,
-  fg: (f: F) => G
+  fg: (f: F) => G,
 ): (...a: A) => G
 export function flow<A extends ReadonlyArray<unknown>, B, C, D, E, F, G, H>(
   ab: (...a: A) => B,
@@ -277,7 +263,7 @@ export function flow<A extends ReadonlyArray<unknown>, B, C, D, E, F, G, H>(
   de: (d: D) => E,
   ef: (e: E) => F,
   fg: (f: F) => G,
-  gh: (g: G) => H
+  gh: (g: G) => H,
 ): (...a: A) => H
 export function flow<A extends ReadonlyArray<unknown>, B, C, D, E, F, G, H, I>(
   ab: (...a: A) => B,
@@ -287,7 +273,7 @@ export function flow<A extends ReadonlyArray<unknown>, B, C, D, E, F, G, H, I>(
   ef: (e: E) => F,
   fg: (f: F) => G,
   gh: (g: G) => H,
-  hi: (h: H) => I
+  hi: (h: H) => I,
 ): (...a: A) => I
 export function flow<A extends ReadonlyArray<unknown>, B, C, D, E, F, G, H, I, J>(
   ab: (...a: A) => B,
@@ -298,7 +284,7 @@ export function flow<A extends ReadonlyArray<unknown>, B, C, D, E, F, G, H, I, J
   fg: (f: F) => G,
   gh: (g: G) => H,
   hi: (h: H) => I,
-  ij: (i: I) => J
+  ij: (i: I) => J,
 ): (...a: A) => J
 export function flow(
   ab: Function,
@@ -309,7 +295,7 @@ export function flow(
   fg?: Function,
   gh?: Function,
   hi?: Function,
-  ij?: Function
+  ij?: Function,
 ): unknown {
   switch (arguments.length) {
     case 1:
@@ -350,30 +336,22 @@ export function flow(
   return
 }
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export function tuple<T extends ReadonlyArray<any>>(...t: T): T {
   return t
 }
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export function increment(n: number): number {
   return n + 1
 }
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export function decrement(n: number): number {
   return n - 1
 }
 
-/**
- * @since 2.0.0
- */
+/** @since 2.0.0 */
 export function absurd<A>(_: never): A {
   throw new Error('Called `absurd` function which should be uncallable')
 }
@@ -381,17 +359,16 @@ export function absurd<A>(_: never): A {
 /**
  * Creates a tupled version of this function: instead of `n` arguments, it accepts a single tuple argument.
  *
- * @example
- * import { tupled } from 'fp-ts/function'
- *
- * const add = tupled((x: number, y: number): number => x + y)
- *
- * assert.strictEqual(add([1, 2]), 3)
- *
  * @since 2.4.0
+ * @example
+ *   import { tupled } from 'fp-ts/function'
+ *
+ *   const add = tupled((x: number, y: number): number => x + y)
+ *
+ *   assert.strictEqual(add([1, 2]), 3)
  */
 export function tupled<A extends ReadonlyArray<unknown>, B>(f: (...a: A) => B): (a: A) => B {
-  return (a) => f(...a)
+  return a => f(...a)
 }
 
 /**
@@ -408,19 +385,18 @@ export function untupled<A extends ReadonlyArray<unknown>, B>(f: (a: A) => B): (
  *
  * See also [`flow`](#flow).
  *
- * @example
- * import { pipe } from 'fp-ts/function'
- *
- * const len = (s: string): number => s.length
- * const double = (n: number): number => n * 2
- *
- * // without pipe
- * assert.strictEqual(double(len('aaa')), 6)
- *
- * // with pipe
- * assert.strictEqual(pipe('aaa', len, double), 6)
- *
  * @since 2.6.3
+ * @example
+ *   import { pipe } from 'fp-ts/function'
+ *
+ *   const len = (s: string): number => s.length
+ *   const double = (n: number): number => n * 2
+ *
+ *   // without pipe
+ *   assert.strictEqual(double(len('aaa')), 6)
+ *
+ *   // with pipe
+ *   assert.strictEqual(pipe('aaa', len, double), 6)
  */
 export function pipe<A>(a: A): A
 export function pipe<A, B>(a: A, ab: (a: A) => B): B
@@ -433,7 +409,7 @@ export function pipe<A, B, C, D, E, F>(
   bc: (b: B) => C,
   cd: (c: C) => D,
   de: (d: D) => E,
-  ef: (e: E) => F
+  ef: (e: E) => F,
 ): F
 export function pipe<A, B, C, D, E, F, G>(
   a: A,
@@ -442,7 +418,7 @@ export function pipe<A, B, C, D, E, F, G>(
   cd: (c: C) => D,
   de: (d: D) => E,
   ef: (e: E) => F,
-  fg: (f: F) => G
+  fg: (f: F) => G,
 ): G
 export function pipe<A, B, C, D, E, F, G, H>(
   a: A,
@@ -452,7 +428,7 @@ export function pipe<A, B, C, D, E, F, G, H>(
   de: (d: D) => E,
   ef: (e: E) => F,
   fg: (f: F) => G,
-  gh: (g: G) => H
+  gh: (g: G) => H,
 ): H
 export function pipe<A, B, C, D, E, F, G, H, I>(
   a: A,
@@ -463,7 +439,7 @@ export function pipe<A, B, C, D, E, F, G, H, I>(
   ef: (e: E) => F,
   fg: (f: F) => G,
   gh: (g: G) => H,
-  hi: (h: H) => I
+  hi: (h: H) => I,
 ): I
 export function pipe<A, B, C, D, E, F, G, H, I, J>(
   a: A,
@@ -475,7 +451,7 @@ export function pipe<A, B, C, D, E, F, G, H, I, J>(
   fg: (f: F) => G,
   gh: (g: G) => H,
   hi: (h: H) => I,
-  ij: (i: I) => J
+  ij: (i: I) => J,
 ): J
 export function pipe<A, B, C, D, E, F, G, H, I, J, K>(
   a: A,
@@ -488,7 +464,7 @@ export function pipe<A, B, C, D, E, F, G, H, I, J, K>(
   gh: (g: G) => H,
   hi: (h: H) => I,
   ij: (i: I) => J,
-  jk: (j: J) => K
+  jk: (j: J) => K,
 ): K
 export function pipe<A, B, C, D, E, F, G, H, I, J, K, L>(
   a: A,
@@ -502,7 +478,7 @@ export function pipe<A, B, C, D, E, F, G, H, I, J, K, L>(
   hi: (h: H) => I,
   ij: (i: I) => J,
   jk: (j: J) => K,
-  kl: (k: K) => L
+  kl: (k: K) => L,
 ): L
 export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M>(
   a: A,
@@ -517,7 +493,7 @@ export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M>(
   ij: (i: I) => J,
   jk: (j: J) => K,
   kl: (k: K) => L,
-  lm: (l: L) => M
+  lm: (l: L) => M,
 ): M
 export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M, N>(
   a: A,
@@ -533,7 +509,7 @@ export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M, N>(
   jk: (j: J) => K,
   kl: (k: K) => L,
   lm: (l: L) => M,
-  mn: (m: M) => N
+  mn: (m: M) => N,
 ): N
 export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O>(
   a: A,
@@ -550,7 +526,7 @@ export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O>(
   kl: (k: K) => L,
   lm: (l: L) => M,
   mn: (m: M) => N,
-  no: (n: N) => O
+  no: (n: N) => O,
 ): O
 
 export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P>(
@@ -569,7 +545,7 @@ export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P>(
   lm: (l: L) => M,
   mn: (m: M) => N,
   no: (n: N) => O,
-  op: (o: O) => P
+  op: (o: O) => P,
 ): P
 
 export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q>(
@@ -589,7 +565,7 @@ export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q>(
   mn: (m: M) => N,
   no: (n: N) => O,
   op: (o: O) => P,
-  pq: (p: P) => Q
+  pq: (p: P) => Q,
 ): Q
 
 export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R>(
@@ -610,7 +586,7 @@ export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R>(
   no: (n: N) => O,
   op: (o: O) => P,
   pq: (p: P) => Q,
-  qr: (q: Q) => R
+  qr: (q: Q) => R,
 ): R
 
 export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S>(
@@ -632,7 +608,7 @@ export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S>(
   op: (o: O) => P,
   pq: (p: P) => Q,
   qr: (q: Q) => R,
-  rs: (r: R) => S
+  rs: (r: R) => S,
 ): S
 
 export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T>(
@@ -655,7 +631,7 @@ export function pipe<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T>
   pq: (p: P) => Q,
   qr: (q: Q) => R,
   rs: (r: R) => S,
-  st: (s: S) => T
+  st: (s: S) => T,
 ): T
 export function pipe(
   a: unknown,
@@ -666,7 +642,7 @@ export function pipe(
   ef?: Function,
   fg?: Function,
   gh?: Function,
-  hi?: Function
+  hi?: Function,
 ): unknown {
   switch (arguments.length) {
     case 1:
@@ -704,9 +680,7 @@ export function pipe(
  */
 export const hole: <T>() => T = absurd as any
 
-/**
- * @since 2.11.0
- */
+/** @since 2.11.0 */
 export const SK = <A, B>(_: A, b: B): B => b
 
 // -------------------------------------------------------------------------------------
@@ -716,9 +690,9 @@ export const SK = <A, B>(_: A, b: B): B => b
 /**
  * Use `Refinement` module instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export interface Refinement<A, B extends A> {
   (a: A): a is B
@@ -727,9 +701,9 @@ export interface Refinement<A, B extends A> {
 /**
  * Use `Predicate` module instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export interface Predicate<A> {
   (a: A): boolean
@@ -738,20 +712,20 @@ export interface Predicate<A> {
 /**
  * Use `Predicate` module instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export function not<A>(predicate: Predicate<A>): Predicate<A> {
-  return (a) => !predicate(a)
+  return a => !predicate(a)
 }
 
 /**
  * Use `Endomorphism` module instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export interface Endomorphism<A> {
   (a: A): A
@@ -760,11 +734,11 @@ export interface Endomorphism<A> {
 /**
  * Use `Endomorphism` module instead.
  *
- * @category zone of death
- * @since 2.10.0
  * @deprecated
+ * @since 2.10.0
+ * @category Zone of death
  */
 export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => ({
   concat: (first, second) => flow(first, second),
-  empty: identity
+  empty: identity,
 })

@@ -21,20 +21,20 @@ describe('Foldable', () => {
     U.deepStrictEqual(F.reduce([], '', S.Semigroup.concat), '')
     // foldMap
     U.deepStrictEqual(
-      F.foldMap(S.Monoid)([O.some('a'), O.some('b'), O.some('c')], (a) => a),
-      'abc'
+      F.foldMap(S.Monoid)([O.some('a'), O.some('b'), O.some('c')], a => a),
+      'abc',
     )
     U.deepStrictEqual(
-      F.foldMap(S.Monoid)([O.none, O.some('b'), O.none], (a) => a),
-      'b'
+      F.foldMap(S.Monoid)([O.none, O.some('b'), O.none], a => a),
+      'b',
     )
     U.deepStrictEqual(
-      F.foldMap(S.Monoid)([O.none, O.none, O.none], (a) => a),
-      ''
+      F.foldMap(S.Monoid)([O.none, O.none, O.none], a => a),
+      '',
     )
     U.deepStrictEqual(
       F.foldMap(S.Monoid)([], (a: string) => a),
-      ''
+      '',
     )
     // reduceRight
     U.deepStrictEqual(F.reduceRight([O.some('a'), O.some('b'), O.some('c')], '', S.Semigroup.concat), 'abc')
@@ -68,15 +68,15 @@ describe('Foldable', () => {
   it('foldM', () => {
     U.deepStrictEqual(
       _.foldM(O.Monad, RA.Foldable)([], 1, () => O.none),
-      O.some(1)
+      O.some(1),
     )
     U.deepStrictEqual(
       _.foldM(O.Monad, RA.Foldable)([2], 1, () => O.none),
-      O.none
+      O.none,
     )
     U.deepStrictEqual(
       _.foldM(O.Monad, RA.Foldable)([2], 1, (b, a) => O.some(b + a)),
-      O.some(3)
+      O.some(3),
     )
   })
 
@@ -84,23 +84,23 @@ describe('Foldable', () => {
     U.deepStrictEqual(
       pipe(
         [],
-        _.reduceM(O.Monad, RA.Foldable)(1, () => O.none)
+        _.reduceM(O.Monad, RA.Foldable)(1, () => O.none),
       ),
-      O.some(1)
+      O.some(1),
     )
     U.deepStrictEqual(
       pipe(
         [2],
-        _.reduceM(O.Monad, RA.Foldable)(1, () => O.none)
+        _.reduceM(O.Monad, RA.Foldable)(1, () => O.none),
       ),
-      O.none
+      O.none,
     )
     U.deepStrictEqual(
       pipe(
         [2],
-        _.reduceM(O.Monad, RA.Foldable)(1, (b, a) => O.some(b + a))
+        _.reduceM(O.Monad, RA.Foldable)(1, (b, a) => O.some(b + a)),
       ),
-      O.some(3)
+      O.some(3),
     )
   })
 })

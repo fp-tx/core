@@ -12,7 +12,7 @@ describe('Magma', () => {
   it('filterFirst', () => {
     const M = pipe(
       N.SemigroupSum,
-      _.filterFirst((n) => n >= 0)
+      _.filterFirst(n => n >= 0),
     )
     // sum ignoring negative partials
     const sum = _.concatAll(M)(0)
@@ -22,7 +22,7 @@ describe('Magma', () => {
   it('filterSecond', () => {
     const M = pipe(
       N.SemigroupSum,
-      _.filterSecond((n) => n >= 0)
+      _.filterSecond(n => n >= 0),
     )
     // sum ignoring negative elements
     const sum = _.concatAll(M)(0)

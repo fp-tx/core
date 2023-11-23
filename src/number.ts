@@ -1,6 +1,4 @@
-/**
- * @since 2.10.0
- */
+/** @since 2.10.0 */
 import type * as B from './Bounded'
 import type * as E from './Eq'
 import type * as F from './Field'
@@ -16,8 +14,8 @@ import type * as S from './Show'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category refinements
  * @since 2.11.0
+ * @category Refinements
  */
 export const isNumber: Refinement<unknown, number> = (u: unknown): u is number => typeof u === 'number'
 
@@ -26,77 +24,78 @@ export const isNumber: Refinement<unknown, number> = (u: unknown): u is number =
 // -------------------------------------------------------------------------------------
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Eq: E.Eq<number> = {
-  equals: (first, second) => first === second
+  equals: (first, second) => first === second,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Ord: O.Ord<number> = {
   equals: Eq.equals,
-  compare: (first, second) => (first < second ? -1 : first > second ? 1 : 0)
+  compare: (first, second) =>
+    first < second ? -1
+    : first > second ? 1
+    : 0,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Bounded: B.Bounded<number> = {
   equals: Eq.equals,
   compare: Ord.compare,
   top: Infinity,
-  bottom: -Infinity
+  bottom: -Infinity,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Show: S.Show<number> = {
-  show: (n) => JSON.stringify(n)
+  show: n => JSON.stringify(n),
 }
 
 /**
- * @category instances
  * @since 2.11.0
+ * @category Instances
  */
 export const MagmaSub: Magma<number> = {
-  concat: (first, second) => first - second
+  concat: (first, second) => first - second,
 }
 
 /**
  * `number` semigroup under addition.
  *
- * @example
- * import { SemigroupSum } from 'fp-ts/number'
- *
- * assert.deepStrictEqual(SemigroupSum.concat(2, 3), 5)
- *
- * @category instances
  * @since 2.10.0
+ * @category Instances
+ * @example
+ *   import { SemigroupSum } from 'fp-ts/number'
+ *
+ *   assert.deepStrictEqual(SemigroupSum.concat(2, 3), 5)
  */
 export const SemigroupSum: Semigroup<number> = {
-  concat: (first, second) => first + second
+  concat: (first, second) => first + second,
 }
 
 /**
  * `number` semigroup under multiplication.
  *
- * @example
- * import { SemigroupProduct } from 'fp-ts/number'
- *
- * assert.deepStrictEqual(SemigroupProduct.concat(2, 3), 6)
- *
- * @category instances
  * @since 2.10.0
+ * @category Instances
+ * @example
+ *   import { SemigroupProduct } from 'fp-ts/number'
+ *
+ *   assert.deepStrictEqual(SemigroupProduct.concat(2, 3), 6)
  */
 export const SemigroupProduct: Semigroup<number> = {
-  concat: (first, second) => first * second
+  concat: (first, second) => first * second,
 }
 
 /**
@@ -104,17 +103,16 @@ export const SemigroupProduct: Semigroup<number> = {
  *
  * The `empty` value is `0`.
  *
- * @example
- * import { MonoidSum } from 'fp-ts/number'
- *
- * assert.deepStrictEqual(MonoidSum.concat(2, MonoidSum.empty), 2)
- *
- * @category instances
  * @since 2.10.0
+ * @category Instances
+ * @example
+ *   import { MonoidSum } from 'fp-ts/number'
+ *
+ *   assert.deepStrictEqual(MonoidSum.concat(2, MonoidSum.empty), 2)
  */
 export const MonoidSum: Monoid<number> = {
   concat: SemigroupSum.concat,
-  empty: 0
+  empty: 0,
 }
 
 /**
@@ -122,22 +120,21 @@ export const MonoidSum: Monoid<number> = {
  *
  * The `empty` value is `1`.
  *
- * @example
- * import { MonoidProduct } from 'fp-ts/number'
- *
- * assert.deepStrictEqual(MonoidProduct.concat(2, MonoidProduct.empty), 2)
- *
- * @category instances
  * @since 2.10.0
+ * @category Instances
+ * @example
+ *   import { MonoidProduct } from 'fp-ts/number'
+ *
+ *   assert.deepStrictEqual(MonoidProduct.concat(2, MonoidProduct.empty), 2)
  */
 export const MonoidProduct: Monoid<number> = {
   concat: SemigroupProduct.concat,
-  empty: 1
+  empty: 1,
 }
 
 /**
- * @category instances
  * @since 2.10.0
+ * @category Instances
  */
 export const Field: F.Field<number> = {
   add: SemigroupSum.concat,
@@ -145,7 +142,7 @@ export const Field: F.Field<number> = {
   mul: SemigroupProduct.concat,
   one: 1,
   sub: MagmaSub.concat,
-  degree: (_) => 1,
+  degree: _ => 1,
   div: (first, second) => first / second,
-  mod: (first, second) => first % second
+  mod: (first, second) => first % second,
 }

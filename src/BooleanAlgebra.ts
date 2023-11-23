@@ -18,8 +18,8 @@ import { type HeytingAlgebra } from './HeytingAlgebra'
 // -------------------------------------------------------------------------------------
 
 /**
- * @category model
  * @since 2.0.0
+ * @category Model
  */
 export interface BooleanAlgebra<A> extends HeytingAlgebra<A> {}
 
@@ -38,7 +38,7 @@ export const reverse = <A>(B: BooleanAlgebra<A>): BooleanAlgebra<A> => ({
   zero: B.one,
   one: B.zero,
   implies: (x, y) => B.join(B.not(x), y),
-  not: B.not
+  not: B.not,
 })
 
 // -------------------------------------------------------------------------------------
@@ -46,8 +46,8 @@ export const reverse = <A>(B: BooleanAlgebra<A>): BooleanAlgebra<A> => ({
 // -------------------------------------------------------------------------------------
 
 /**
- * @category instances
  * @since 2.0.0
+ * @category Instances
  */
 export const booleanAlgebraVoid: BooleanAlgebra<void> = {
   meet: () => undefined,
@@ -55,7 +55,7 @@ export const booleanAlgebraVoid: BooleanAlgebra<void> = {
   zero: undefined,
   one: undefined,
   implies: () => undefined,
-  not: () => undefined
+  not: () => undefined,
 }
 
 // -------------------------------------------------------------------------------------
@@ -65,18 +65,18 @@ export const booleanAlgebraVoid: BooleanAlgebra<void> = {
 /**
  * Use [`reverse`](#reverse) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const getDualBooleanAlgebra = reverse
 
 /**
  * Use [`BooleanAlgebra`](./boolean.ts.html#booleanalgebra) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const booleanAlgebraBoolean: BooleanAlgebra<boolean> = {
   meet: (x, y) => x && y,
@@ -84,15 +84,15 @@ export const booleanAlgebraBoolean: BooleanAlgebra<boolean> = {
   zero: false,
   one: true,
   implies: (x, y) => !x || y,
-  not: (x) => !x
+  not: x => !x,
 }
 
 /**
  * Use [`getBooleanAlgebra`](./function.ts.html#getbooleanalgebra) instead.
  *
- * @category zone of death
- * @since 2.0.0
  * @deprecated
+ * @since 2.0.0
+ * @category Zone of death
  */
 export const getFunctionBooleanAlgebra: <B>(B: BooleanAlgebra<B>) => <A = never>() => BooleanAlgebra<(a: A) => B> =
   getBooleanAlgebra
