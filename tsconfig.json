@@ -13,5 +13,5 @@
     "stripInternal": true,
     "types": ["node", "jest"]
   },
-  "include": ["./src", "./test", "./perf", "./tsup.config.ts"]
+  "include": ["./src/**/*.ts", "./test/**/*.ts", "./perf/**/*.ts", "./tsup.config.ts"]
 }
