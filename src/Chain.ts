@@ -11,17 +11,7 @@
  * @since 2.0.0
  */
 import { type Apply, type Apply1, type Apply2, type Apply2C, type Apply3, type Apply3C, type Apply4 } from './Apply'
-import {
-  type HKT,
-  type Kind,
-  type Kind2,
-  type Kind3,
-  type Kind4,
-  type URIS,
-  type URIS2,
-  type URIS3,
-  type URIS4,
-} from './HKT'
+import { type HKT, type Kind, type Kind2, type Kind3, type Kind4, type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -90,25 +80,50 @@ export interface Chain4<F extends URIS4> extends Apply4<F> {
 /** @since 2.10.0 */
 export function chainFirst<M extends URIS4>(
   M: Chain4<M>,
-): <A, S, R, E, B>(f: (a: A) => Kind4<M, S, R, E, B>) => (first: Kind4<M, S, R, E, A>) => Kind4<M, S, R, E, A>
+): <A, S, R, E, _>(f: (a: A) => Kind4<M, S, R, E, _>) => (first: Kind4<M, S, R, E, A>) => Kind4<M, S, R, E, A>
 export function chainFirst<M extends URIS3>(
   M: Chain3<M>,
-): <A, R, E, B>(f: (a: A) => Kind3<M, R, E, B>) => (first: Kind3<M, R, E, A>) => Kind3<M, R, E, A>
+): <A, R, E, _>(f: (a: A) => Kind3<M, R, E, _>) => (first: Kind3<M, R, E, A>) => Kind3<M, R, E, A>
 export function chainFirst<M extends URIS3, E>(
   M: Chain3C<M, E>,
-): <A, R, B>(f: (a: A) => Kind3<M, R, E, B>) => (first: Kind3<M, R, E, A>) => Kind3<M, R, E, A>
+): <A, R, _>(f: (a: A) => Kind3<M, R, E, _>) => (first: Kind3<M, R, E, A>) => Kind3<M, R, E, A>
 export function chainFirst<M extends URIS2>(
   M: Chain2<M>,
-): <A, E, B>(f: (a: A) => Kind2<M, E, B>) => (first: Kind2<M, E, A>) => Kind2<M, E, A>
+): <A, E, _>(f: (a: A) => Kind2<M, E, _>) => (first: Kind2<M, E, A>) => Kind2<M, E, A>
 export function chainFirst<M extends URIS2, E>(
   M: Chain2C<M, E>,
-): <A, B>(f: (a: A) => Kind2<M, E, B>) => (first: Kind2<M, E, A>) => Kind2<M, E, A>
+): <A, _>(f: (a: A) => Kind2<M, E, _>) => (first: Kind2<M, E, A>) => Kind2<M, E, A>
 export function chainFirst<M extends URIS>(
   M: Chain1<M>,
-): <A, B>(f: (a: A) => Kind<M, B>) => (first: Kind<M, A>) => Kind<M, A>
-export function chainFirst<M>(M: Chain<M>): <A, B>(f: (a: A) => HKT<M, B>) => (first: HKT<M, A>) => HKT<M, A>
-export function chainFirst<M>(M: Chain<M>): <A, B>(f: (a: A) => HKT<M, B>) => (first: HKT<M, A>) => HKT<M, A> {
-  return f => first => M.chain(first, a => M.map(f(a), () => a))
+): <A, _>(f: (a: A) => Kind<M, _>) => (first: Kind<M, A>) => Kind<M, A>
+export function chainFirst<M>(M: Chain<M>): <A, _>(f: (a: A) => HKT<M, _>) => (first: HKT<M, A>) => HKT<M, A>
+export function chainFirst<M>(M: Chain<M>): <A, _>(f: (a: A) => HKT<M, _>) => (first: HKT<M, A>) => HKT<M, A> {
+  const tapM = tap(M)
+  return f => first => tapM(first, f)
+}
+
+/** @internal */
+export function tap<M extends URIS4>(
+  M: Chain4<M>,
+): <S, R1, E1, A, R2, E2, _>(
+  first: Kind4<M, S, R1, E1, A>,
+  f: (a: A) => Kind4<M, S, R2, E2, _>,
+) => Kind4<M, S, R1 & R2, E1 | E2, A>
+/** @internal */
+export function tap<M extends URIS3>(
+  M: Chain3<M>,
+): <R1, E1, A, R2, E2, _>(first: Kind3<M, R1, E1, A>, f: (a: A) => Kind3<M, R2, E2, _>) => Kind3<M, R1 & R2, E1 | E2, A>
+/** @internal */
+export function tap<M extends URIS2>(
+  M: Chain2<M>,
+): <E1, A, E2, _>(first: Kind2<M, E1, A>, f: (a: A) => Kind2<M, E2, _>) => Kind2<M, E1 | E2, A>
+/** @internal */
+export function tap<M extends URIS>(M: Chain1<M>): <A, _>(first: Kind<M, A>, f: (a: A) => Kind<M, _>) => Kind<M, A>
+/** @internal */
+export function tap<M>(M: Chain<M>): <A, _>(first: HKT<M, A>, f: (a: A) => HKT<M, _>) => HKT<M, A>
+/** @internal */
+export function tap<M>(M: Chain<M>): <A, _>(first: HKT<M, A>, f: (a: A) => HKT<M, _>) => HKT<M, A> {
+  return (first, f) => M.chain(first, a => M.map(f(a), () => a))
 }
 
 // -------------------------------------------------------------------------------------

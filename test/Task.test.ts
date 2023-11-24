@@ -1,11 +1,12 @@
-import * as U from './util'
+import * as assert from 'assert'
+
 import { pipe, SK } from '../src/function'
 import * as I from '../src/IO'
 import * as RA from '../src/ReadonlyArray'
-import * as _ from '../src/Task'
-import * as assert from 'assert'
+import type * as RNEA from '../src/ReadonlyNonEmptyArray'
 import * as S from '../src/string'
-import * as RNEA from '../src/ReadonlyNonEmptyArray'
+import * as _ from '../src/Task'
+import * as U from './util'
 
 const delayReject =
   <A>(n: number, a: A): _.Task<A> =>
@@ -30,7 +31,7 @@ const assertOp =
     assert.deepStrictEqual(log, expectedLog)
   }
 
-describe('Task', () => {
+describe.concurrent('Task', () => {
   // -------------------------------------------------------------------------------------
   // safety
   // -------------------------------------------------------------------------------------
@@ -78,12 +79,30 @@ describe('Task', () => {
     await deepStrictEqual(a, b, 'b', ['b', 'a'])
   })
 
+  it('flatMap', async () => {
+    const f =
+      (n: number): _.Task<number> =>
+      () =>
+        Promise.resolve(n * 2)
+    U.deepStrictEqual(await pipe(delay(1, 2), _.flatMap(f))(), 4)
+    U.deepStrictEqual(await _.flatMap(delay(1, 2), f)(), 4)
+  })
+
   it('chain', async () => {
     const f =
       (n: number): _.Task<number> =>
       () =>
         Promise.resolve(n * 2)
-    return U.deepStrictEqual(await pipe(delay(1, 2), _.chain(f))(), 4)
+    U.deepStrictEqual(await pipe(delay(1, 2), _.chain(f))(), 4)
+  })
+
+  it('tap', async () => {
+    const f =
+      (n: number): _.Task<number> =>
+      () =>
+        Promise.resolve(n * 2)
+    U.deepStrictEqual(await pipe(delay(1, 2), _.tap(f))(), 2)
+    U.deepStrictEqual(await _.tap(delay(1, 2), f)(), 2)
   })
 
   it('chainFirst', async () => {
@@ -91,11 +110,11 @@ describe('Task', () => {
       (n: number): _.Task<number> =>
       () =>
         Promise.resolve(n * 2)
-    return U.deepStrictEqual(await pipe(delay(1, 2), _.chainFirst(f))(), 2)
+    U.deepStrictEqual(await pipe(delay(1, 2), _.chainFirst(f))(), 2)
   })
 
   it('flatten', async () => {
-    return U.deepStrictEqual(await pipe(_.of(_.of('a')), _.flatten)(), 'a')
+    U.deepStrictEqual(await pipe(_.of(_.of('a')), _.flatten)(), 'a')
   })
 
   it('fromIO', async () => {
@@ -116,7 +135,7 @@ describe('Task', () => {
     await U.assertPar(_.ApplicativePar, _.FromTask, fa => fa())
   })
 
-  describe('getRaceMonoid', () => {
+  describe.concurrent('getRaceMonoid', () => {
     const M = _.getRaceMonoid<number>()
 
     it('concat', async () => {
@@ -164,6 +183,14 @@ describe('Task', () => {
     U.deepStrictEqual(await pipe(_.of('a'), _.chainFirstIOK(f))(), 'a')
   })
 
+  it('tapIO', async () => {
+    const ref: Array<number> = []
+    const add = (value: number) => () => ref.push(value)
+
+    U.deepStrictEqual(await pipe(_.of(1), _.tapIO(add))(), 1)
+    U.deepStrictEqual(ref, [1])
+  })
+
   it('do notation', async () => {
     U.deepStrictEqual(
       await pipe(
@@ -177,13 +204,10 @@ describe('Task', () => {
   })
 
   it('apS', async () => {
-    U.deepStrictEqual(await pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(), {
-      a: 1,
-      b: 'b',
-    })
+    U.deepStrictEqual(await pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(), { a: 1, b: 'b' })
   })
 
-  describe('array utils', () => {
+  describe.concurrent('array utils', () => {
     const input: RNEA.ReadonlyNonEmptyArray<string> = ['a', 'b']
 
     it('traverseReadonlyArrayWithIndex', async () => {
@@ -254,5 +278,23 @@ describe('Task', () => {
       U.deepStrictEqual(await pipe(as, _.sequenceSeqArray)(), [0, 1, 2, 3])
       U.deepStrictEqual(log, [0, 1, 2, 3])
     })
+  })
+
+  it('as', async () => {
+    U.deepStrictEqual(await pipe(_.of('a'), _.as('b'))(), 'b')
+  })
+
+  it('asUnit', async () => {
+    U.deepStrictEqual(await pipe(_.of('a'), _.asUnit)(), undefined)
+  })
+
+  it('flatMapIO', async () => {
+    U.deepStrictEqual(
+      await pipe(
+        _.of(1),
+        _.flatMapIO(() => I.of(2)),
+      )(),
+      2,
+    )
   })
 })

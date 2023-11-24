@@ -26,9 +26,7 @@ export interface Show<A> {
 // -------------------------------------------------------------------------------------
 
 /** @since 2.10.0 */
-export const struct = <A>(shows: { [K in keyof A]: Show<A[K]> }): Show<{
-  readonly [K in keyof A]: A[K]
-}> => ({
+export const struct = <A>(shows: { [K in keyof A]: Show<A[K]> }): Show<{ readonly [K in keyof A]: A[K] }> => ({
   show: a => {
     let s = '{'
     for (const k in shows) {
@@ -73,9 +71,8 @@ export const getTupleShow: <T extends ReadonlyArray<Show<any>>>(
  * @since 2.0.0
  * @category Zone of death
  */
-export const getStructShow: <O extends ReadonlyRecord<string, any>>(shows: {
-  [K in keyof O]: Show<O[K]>
-}) => Show<O> = struct
+export const getStructShow: <O extends ReadonlyRecord<string, any>>(shows: { [K in keyof O]: Show<O[K]> }) => Show<O> =
+  struct
 
 /**
  * Use [`Show`](./boolean.ts.html#show) instead.

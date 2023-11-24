@@ -1,11 +1,11 @@
 import { pipe, tuple } from '../src/function'
 import * as RA from '../src/ReadonlyArray'
-import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
+import { type ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import * as _ from '../src/State'
 import * as U from './util'
 
-describe('State', () => {
-  describe('pipeables', () => {
+describe.concurrent('State', () => {
+  describe.concurrent('pipeables', () => {
     it('map', () => {
       const x = (s: number) => tuple(s - 1, s + 1)
       U.deepStrictEqual(pipe(x, _.map(U.double))(0), [-2, 1])
@@ -23,10 +23,24 @@ describe('State', () => {
       U.deepStrictEqual(pipe(_.of('a'), _.apSecond(_.of('b')))(0), ['b', 0])
     })
 
+    it('flatMap', () => {
+      const f = (_n: number) => (s: number) => tuple(s - 1, s + 1)
+      const x = (s: number) => tuple(s - 1, s + 1)
+      U.deepStrictEqual(pipe(x, _.flatMap(f))(0), [0, 2])
+      U.deepStrictEqual(_.flatMap(x, f)(0), [0, 2])
+    })
+
     it('chain', () => {
       const f = (_n: number) => (s: number) => tuple(s - 1, s + 1)
       const x = (s: number) => tuple(s - 1, s + 1)
       U.deepStrictEqual(pipe(x, _.chain(f))(0), [0, 2])
+    })
+
+    it('tap', () => {
+      const f = (_n: number) => (s: number) => tuple(s - 1, s + 1)
+      const x = (s: number) => tuple(s - 1, s + 1)
+      U.deepStrictEqual(pipe(x, _.tap(f))(0), [-1, 2])
+      U.deepStrictEqual(_.tap(x, f)(0), [-1, 2])
     })
 
     it('chainFirst', () => {
@@ -88,7 +102,7 @@ describe('State', () => {
     U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(undefined), [{ a: 1, b: 'b' }, undefined])
   })
 
-  describe('array utils', () => {
+  describe.concurrent('array utils', () => {
     const input: ReadonlyNonEmptyArray<string> = ['a', 'b']
 
     it('traverseReadonlyArrayWithIndex', () => {

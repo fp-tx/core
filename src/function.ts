@@ -120,15 +120,6 @@ export const apply =
     f(a)
 
 /**
- * A _thunk_
- *
- * @since 2.0.0
- */
-export interface Lazy<A> {
-  (): A
-}
-
-/**
  * @since 2.0.0
  * @example
  *   import { FunctionN } from 'fp-ts/function'
@@ -148,7 +139,7 @@ export function identity<A>(a: A): A {
 export const unsafeCoerce: <A, B>(a: A) => B = identity as any
 
 /** @since 2.0.0 */
-export function constant<A>(a: A): Lazy<A> {
+export function constant<A>(a: A): LazyArg<A> {
   return () => a
 }
 
@@ -157,35 +148,35 @@ export function constant<A>(a: A): Lazy<A> {
  *
  * @since 2.0.0
  */
-export const constTrue: Lazy<boolean> = /*#__PURE__*/ constant(true)
+export const constTrue: LazyArg<boolean> = /*#__PURE__*/ constant(true)
 
 /**
  * A thunk that returns always `false`.
  *
  * @since 2.0.0
  */
-export const constFalse: Lazy<boolean> = /*#__PURE__*/ constant(false)
+export const constFalse: LazyArg<boolean> = /*#__PURE__*/ constant(false)
 
 /**
  * A thunk that returns always `null`.
  *
  * @since 2.0.0
  */
-export const constNull: Lazy<null> = /*#__PURE__*/ constant(null)
+export const constNull: LazyArg<null> = /*#__PURE__*/ constant(null)
 
 /**
  * A thunk that returns always `undefined`.
  *
  * @since 2.0.0
  */
-export const constUndefined: Lazy<undefined> = /*#__PURE__*/ constant(undefined)
+export const constUndefined: LazyArg<undefined> = /*#__PURE__*/ constant(undefined)
 
 /**
  * A thunk that returns always `void`.
  *
  * @since 2.0.0
  */
-export const constVoid: Lazy<void> = constUndefined
+export const constVoid: LazyArg<void> = constUndefined
 
 /**
  * Flips the arguments of a curried function.
@@ -742,3 +733,47 @@ export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => (
   concat: (first, second) => flow(first, second),
   empty: identity,
 })
+
+/**
+ * A lazy argument.
+ *
+ * @since 2.15.0
+ */
+export interface LazyArg<A> {
+  (): A
+}
+
+/** @internal */
+export const dual: {
+  <DataLast extends (...args: Array<any>) => any, DataFirst extends (...args: Array<any>) => any>(
+    arity: Parameters<DataFirst>['length'],
+    body: DataFirst,
+  ): DataLast & DataFirst
+  <DataLast extends (...args: Array<any>) => any, DataFirst extends (...args: Array<any>) => any>(
+    isDataFirst: (args: IArguments) => boolean,
+    body: DataFirst,
+  ): DataLast & DataFirst
+} = (arity: any, body: any) => {
+  const isDataFirst: (args: IArguments) => boolean = typeof arity === 'number' ? args => args.length >= arity : arity
+  return function (this: any) {
+    const args = Array.from(arguments)
+    if (isDataFirst(arguments)) {
+      return body.apply(this, args)
+    }
+    return (self: any) => body(self, ...args)
+  }
+}
+
+// -------------------------------------------------------------------------------------
+// lagacy
+// -------------------------------------------------------------------------------------
+
+/**
+ * Use `LazyArg` instead.
+ *
+ * @since 2.0.0
+ * @category Lagacy
+ */
+export interface Lazy<A> {
+  (): A
+}

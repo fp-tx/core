@@ -1,18 +1,17 @@
 /** @since 2.13.0 */
 import { type Applicative2 } from './Applicative'
 import { apFirst as apFirst_, type Apply2, apS as apS_, apSecond as apSecond_ } from './Apply'
-import { bind as bind_, type Chain2, chainFirst as chainFirst_ } from './Chain'
-import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, type FromIO2, fromIOK as fromIOK_ } from './FromIO'
+import * as chainable from './Chain'
+import { type FromIO2, fromIOK as fromIOK_, tapIO as tapIO_ } from './FromIO'
 import {
   ask as ask_,
   asks as asks_,
-  chainFirstReaderK as chainFirstReaderK_,
-  chainReaderK as chainReaderK_,
   type FromReader2,
   fromReaderK as fromReaderK_,
+  tapReader as tapReader_,
 } from './FromReader'
-import { flow, identity, pipe, SK } from './function'
-import { bindTo as bindTo_, flap as flap_, type Functor2 } from './Functor'
+import { dual, flow, identity, pipe, SK } from './function'
+import { as as as_, asUnit as asUnit_, bindTo as bindTo_, flap as flap_, type Functor2 } from './Functor'
 import * as _ from './internal'
 import * as I from './IO'
 import { type IO } from './IO'
@@ -81,7 +80,6 @@ export const asksReaderIO: <R, A>(f: (r: R) => ReaderIO<R, A>) => ReaderIO<R, A>
 
 const _map: Functor2<URI>['map'] = (fa, f) => pipe(fa, map(f))
 const _ap: Apply2<URI>['ap'] = (fab, fa) => pipe(fab, ap(fa))
-const _chain: Chain2<URI>['chain'] = (ma, f) => pipe(ma, chain(f))
 
 /**
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
@@ -113,24 +111,13 @@ export const apW: <R2, A>(fa: ReaderIO<R2, A>) => <R1, B>(fab: ReaderIO<R1, (a: 
 export const of: <R = unknown, A = never>(a: A) => ReaderIO<R, A> = /*#__PURE__*/ RT.of(I.Pointed)
 
 /**
- * Composes computations in sequence, using the return value of one computation to determine the next computation.
- *
- * @since 2.13.0
+ * @since 2.14.0
  * @category Sequencing
  */
-export const chain: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (ma: ReaderIO<R, A>) => ReaderIO<R, B> =
-  /*#__PURE__*/ RT.chain(I.Monad)
-
-/**
- * Less strict version of [`chain`](#chain).
- *
- * The `W` suffix (short for **W**idening) means that the environment types will be merged.
- *
- * @since 2.13.0
- * @category Sequencing
- */
-export const chainW: <A, R2, B>(f: (a: A) => ReaderIO<R2, B>) => <R1>(ma: ReaderIO<R1, A>) => ReaderIO<R1 & R2, B> =
-  chain as any
+export const flatMap: {
+  <A, R2, B>(f: (a: A) => ReaderIO<R2, B>): <R1>(ma: ReaderIO<R1, A>) => ReaderIO<R1 & R2, B>
+  <R1, A, R2, B>(ma: ReaderIO<R1, A>, f: (a: A) => ReaderIO<R2, B>): ReaderIO<R1 & R2, B>
+} = /*#__PURE__*/ dual(2, RT.flatMap(I.Monad))
 
 /**
  * Less strict version of [`flatten`](#flatten).
@@ -141,7 +128,7 @@ export const chainW: <A, R2, B>(f: (a: A) => ReaderIO<R2, B>) => <R1>(ma: Reader
  * @category Sequencing
  */
 export const flattenW: <R1, R2, A>(mma: ReaderIO<R1, ReaderIO<R2, A>>) => ReaderIO<R1 & R2, A> =
-  /*#__PURE__*/ chainW(identity)
+  /*#__PURE__*/ flatMap(identity)
 
 /**
  * @since 2.13.0
@@ -175,6 +162,25 @@ export const Functor: Functor2<URI> = {
   URI,
   map: _map,
 }
+
+/**
+ * Maps the value to the specified constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const as: {
+  <A>(a: A): <R, _>(self: ReaderIO<R, _>) => ReaderIO<R, A>
+  <R, _, A>(self: ReaderIO<R, _>, a: A): ReaderIO<R, A>
+} = dual(2, as_(Functor))
+
+/**
+ * Maps the value to the void constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const asUnit: <R, _>(self: ReaderIO<R, _>) => ReaderIO<R, void> = asUnit_(Functor)
 
 /**
  * @since 2.13.0
@@ -230,11 +236,11 @@ export const Applicative: Applicative2<URI> = {
  * @since 2.13.0
  * @category Instances
  */
-export const Chain: Chain2<URI> = {
+export const Chain: chainable.Chain2<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -246,7 +252,7 @@ export const Monad: Monad2<URI> = {
   map: _map,
   of,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -258,31 +264,9 @@ export const MonadIO: MonadIO2<URI> = {
   map: _map,
   of,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
   fromIO,
 }
-
-/**
- * Composes computations in sequence, using the return value of one computation to determine the next computation and
- * keeping only the result of the first.
- *
- * @since 2.13.0
- * @category Sequencing
- */
-export const chainFirst: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (first: ReaderIO<R, A>) => ReaderIO<R, A> =
-  /*#__PURE__*/ chainFirst_(Chain)
-
-/**
- * Less strict version of [`chainFirst`](#chainfirst).
- *
- * The `W` suffix (short for **W**idening) means that the environment types will be merged.
- *
- * @since 2.13.0
- * @category Sequencing
- */
-export const chainFirstW: <A, R2, B>(
-  f: (a: A) => ReaderIO<R2, B>,
-) => <R1>(ma: ReaderIO<R1, A>) => ReaderIO<R1 & R2, A> = chainFirst as any
 
 /**
  * @since 2.13.0
@@ -295,6 +279,105 @@ export const FromIO: FromIO2<URI> = {
 
 /**
  * @since 2.13.0
+ * @category Instances
+ */
+export const FromReader: FromReader2<URI> = {
+  URI,
+  fromReader,
+}
+
+/** @internal */
+interface ReaderIOTypeLambda extends _.TypeLambda {
+  readonly type: ReaderIO<this['In'], this['Target']>
+}
+
+/** @internal */
+const _FlatMap: _.FlatMap<ReaderIOTypeLambda> = {
+  flatMap,
+}
+
+/** @internal */
+const _FromIO: _.FromIO<ReaderIOTypeLambda> = {
+  fromIO: FromIO.fromIO,
+}
+
+/** @internal */
+const _FromReader: _.FromReader<ReaderIOTypeLambda> = {
+  fromReader,
+}
+
+/**
+ * @since 2.16.0
+ * @category Sequencing
+ */
+export const flatMapIO: {
+  <A, B>(f: (a: A) => IO<B>): <R>(self: ReaderIO<R, A>) => ReaderIO<R, B>
+  <R, A, B>(self: ReaderIO<R, A>, f: (a: A) => IO<B>): ReaderIO<R, B>
+} = _.flatMapIO(_FromIO, _FlatMap)
+
+/**
+ * @since 2.16.0
+ * @category Sequencing
+ */
+export const flatMapReader: {
+  <A, R2, B>(f: (a: A) => Reader<R2, B>): <R1>(self: ReaderIO<R1, A>) => ReaderIO<R1 & R2, B>
+  <R1, A, R2, B>(self: ReaderIO<R1, A>, f: (a: A) => Reader<R2, B>): ReaderIO<R1 & R2, B>
+} = /*#__PURE__*/ _.flatMapReader(_FromReader, _FlatMap)
+
+/**
+ * Composes computations in sequence, using the return value of one computation to determine the next computation and
+ * keeping only the result of the first.
+ *
+ * @since 2.15.0
+ * @category Combinators
+ */
+export const tap: {
+  <R1, A, R2, _>(self: ReaderIO<R1, A>, f: (a: A) => ReaderIO<R2, _>): ReaderIO<R1 & R2, A>
+  <A, R2, _>(f: (a: A) => ReaderIO<R2, _>): <R1>(self: ReaderIO<R1, A>) => ReaderIO<R2 & R1, A>
+} = /*#__PURE__*/ dual(2, chainable.tap(Chain))
+
+/**
+ * Composes computations in sequence, using the return value of one computation to determine the next computation and
+ * keeping only the result of the first.
+ *
+ * @since 2.16.0
+ * @category Combinators
+ * @example
+ *   import { pipe } from 'fp-ts/function'
+ *   import * as RIO from 'fp-ts/ReaderIO'
+ *   import * as Console from 'fp-ts/Console'
+ *
+ *   // Will produce `Hello, fp-ts` to the stdout
+ *   const effect = pipe(
+ *     RIO.ask<string>(),
+ *     RIO.tapIO(value => Console.log(`Hello, ${value}`)),
+ *   )
+ *
+ *   async function test() {
+ *     assert.deepStrictEqual(effect('fp-ts')(), 'fp-ts')
+ *   }
+ *
+ *   test()
+ */
+export const tapIO: {
+  <A, _>(f: (a: A) => IO<_>): <R>(self: ReaderIO<R, A>) => ReaderIO<R, A>
+  <R, A, _>(self: ReaderIO<R, A>, f: (a: A) => IO<_>): ReaderIO<R, A>
+} = /*#__PURE__*/ dual(2, tapIO_(FromIO, Chain))
+
+/**
+ * Composes computations in sequence, using the return value of one computation to determine the next computation and
+ * keeping only the result of the first.
+ *
+ * @since 2.16.0
+ * @category Combinators
+ */
+export const tapReader: {
+  <R2, A, _>(f: (a: A) => Reader<R2, _>): <R1>(self: ReaderIO<R1, A>) => ReaderIO<R1 & R2, A>
+  <R1, A, R2, _>(self: ReaderIO<R1, A>, f: (a: A) => Reader<R2, _>): ReaderIO<R1 & R2, A>
+} = /*#__PURE__*/ dual(2, tapReader_(FromReader, Chain))
+
+/**
+ * @since 2.13.0
  * @category Lifting
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
@@ -302,27 +385,20 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
 ) => <R = unknown>(...a: A) => ReaderIO<R, B> = /*#__PURE__*/ fromIOK_(FromIO)
 
 /**
+ * Alias of `flatMapIO`.
+ *
  * @since 2.13.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainIOK: <A, B>(f: (a: A) => I.IO<B>) => <E>(first: ReaderIO<E, A>) => ReaderIO<E, B> =
-  /*#__PURE__*/ chainIOK_(FromIO, Chain)
+export const chainIOK: <A, B>(f: (a: A) => I.IO<B>) => <E>(first: ReaderIO<E, A>) => ReaderIO<E, B> = flatMapIO
 
 /**
+ * Alias of `tapIO`.
+ *
  * @since 2.13.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainFirstIOK: <A, B>(f: (a: A) => I.IO<B>) => <E>(first: ReaderIO<E, A>) => ReaderIO<E, A> =
-  /*#__PURE__*/ chainFirstIOK_(FromIO, Chain)
-
-/**
- * @since 2.13.0
- * @category Instances
- */
-export const FromReader: FromReader2<URI> = {
-  URI,
-  fromReader,
-}
+export const chainFirstIOK: <A, B>(f: (a: A) => I.IO<B>) => <E>(first: ReaderIO<E, A>) => ReaderIO<E, A> = tapIO
 
 /**
  * Reads the current context.
@@ -349,42 +425,50 @@ export const fromReaderK: <A extends ReadonlyArray<unknown>, R, B>(
 ) => (...a: A) => ReaderIO<R, B> = /*#__PURE__*/ fromReaderK_(FromReader)
 
 /**
+ * Alias of `flatMapReader`.
+ *
  * @since 2.13.0
- * @category Sequencing
+ * @category Legacy
  */
 export const chainReaderK: <A, R, B>(f: (a: A) => R.Reader<R, B>) => (ma: ReaderIO<R, A>) => ReaderIO<R, B> =
-  /*#__PURE__*/ chainReaderK_(FromReader, Chain)
+  flatMapReader
 
 /**
+ * Alias of `flatMapReader`.
+ *
  * Less strict version of [`chainReaderK`](#chainreaderk).
  *
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
  * @since 2.13.0
- * @category Sequencing
+ * @category Legacy
  */
 export const chainReaderKW: <A, R1, B>(
   f: (a: A) => R.Reader<R1, B>,
-) => <R2>(ma: ReaderIO<R2, A>) => ReaderIO<R1 & R2, B> = chainReaderK as any
+) => <R2>(ma: ReaderIO<R2, A>) => ReaderIO<R1 & R2, B> = flatMapReader
 
 /**
+ * Alias of `tapReader`.
+ *
  * @since 2.13.0
- * @category Sequencing
+ * @category Legacy
  */
 export const chainFirstReaderK: <A, R, B>(f: (a: A) => R.Reader<R, B>) => (ma: ReaderIO<R, A>) => ReaderIO<R, A> =
-  /*#__PURE__*/ chainFirstReaderK_(FromReader, Chain)
+  tapReader
 
 /**
+ * Alias of `tapReader`.
+ *
  * Less strict version of [`chainFirstReaderK`](#chainfirstreaderk).
  *
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
  * @since 2.13.0
- * @category Sequencing
+ * @category Legacy
  */
 export const chainFirstReaderKW: <A, R1, B>(
   f: (a: A) => R.Reader<R1, B>,
-) => <R2>(ma: ReaderIO<R2, A>) => ReaderIO<R1 & R2, A> = chainFirstReaderK as any
+) => <R2>(ma: ReaderIO<R2, A>) => ReaderIO<R1 & R2, A> = tapReader
 
 // -------------------------------------------------------------------------------------
 // do notation
@@ -406,7 +490,7 @@ export const bindTo = /*#__PURE__*/ bindTo_(Functor)
  * @since 2.13.0
  * @category Do notation
  */
-export const bind = /*#__PURE__*/ bind_(Chain)
+export const bind = /*#__PURE__*/ chainable.bind(Chain)
 
 /**
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
@@ -499,3 +583,42 @@ export const traverseArray = <A, R, B>(
  */
 export const sequenceArray: <R, A>(arr: ReadonlyArray<ReaderIO<R, A>>) => ReaderIO<R, ReadonlyArray<A>> =
   /*#__PURE__*/ traverseArray(identity)
+
+// -------------------------------------------------------------------------------------
+// legacy
+// -------------------------------------------------------------------------------------
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.13.0
+ * @category Legacy
+ */
+export const chain: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (ma: ReaderIO<R, A>) => ReaderIO<R, B> = flatMap
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.13.0
+ * @category Legacy
+ */
+export const chainW: <A, R2, B>(f: (a: A) => ReaderIO<R2, B>) => <R1>(ma: ReaderIO<R1, A>) => ReaderIO<R1 & R2, B> =
+  flatMap
+
+/**
+ * Alias of `tap`.
+ *
+ * @since 2.13.0
+ * @category Legacy
+ */
+export const chainFirst: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (first: ReaderIO<R, A>) => ReaderIO<R, A> = tap
+
+/**
+ * Alias of `tap`.
+ *
+ * @since 2.13.0
+ * @category Legacy
+ */
+export const chainFirstW: <A, R2, B>(
+  f: (a: A) => ReaderIO<R2, B>,
+) => <R1>(ma: ReaderIO<R1, A>) => ReaderIO<R1 & R2, A> = tap

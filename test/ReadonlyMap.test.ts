@@ -1,6 +1,7 @@
 import * as assert from 'assert'
-import { Either, left, right } from '../src/Either'
-import { Eq, fromEquals } from '../src/Eq'
+
+import { type Either, left, right } from '../src/Either'
+import { type Eq, fromEquals } from '../src/Eq'
 import { identity, pipe } from '../src/function'
 import * as IO from '../src/IO'
 import * as N from '../src/number'
@@ -8,10 +9,10 @@ import * as O from '../src/Option'
 import * as Ord from '../src/Ord'
 import * as RA from '../src/ReadonlyArray'
 import * as _ from '../src/ReadonlyMap'
-import { Refinement } from '../src/Refinement'
+import { type Refinement } from '../src/Refinement'
 import * as Se from '../src/Semigroup'
 import { separated } from '../src/Separated'
-import { Show, struct } from '../src/Show'
+import { type Show, struct } from '../src/Show'
 import * as S from '../src/string'
 import * as T from '../src/Task'
 import * as U from './util'
@@ -52,8 +53,8 @@ const repo = new Map<Key, Value>([
   [{ id: 2 }, { value: 2 }],
 ])
 
-describe('ReadonlyMap', () => {
-  describe('pipeables', () => {
+describe.concurrent('ReadonlyMap', () => {
+  describe.concurrent('pipeables', () => {
     it('map', () => {
       U.deepStrictEqual(
         pipe(
@@ -738,8 +739,8 @@ describe('ReadonlyMap', () => {
     )
   })
 
-  describe('readonlyMap', () => {
-    describe('compactable', () => {
+  describe.concurrent('readonlyMap', () => {
+    describe.concurrent('compactable', () => {
       it('compact', () => {
         const fooBar = new Map<string, O.Option<number>>([
           ['foo', O.none],
@@ -761,7 +762,7 @@ describe('ReadonlyMap', () => {
     })
   })
 
-  describe('getTraversable', () => {
+  describe.concurrent('getTraversable', () => {
     const T = _.getTraversable(ordUser)
 
     it('traverse', () => {
@@ -808,7 +809,7 @@ describe('ReadonlyMap', () => {
     })
   })
 
-  describe('getWitherable', () => {
+  describe.concurrent('getWitherable', () => {
     const W = _.getWitherable(ordUser)
 
     it('traverseWithIndex should sort the keys', () => {
@@ -977,7 +978,7 @@ describe('ReadonlyMap', () => {
     })
   })
 
-  describe('getFilterableWithIndex', () => {
+  describe.concurrent('getFilterableWithIndex', () => {
     it('partitionMapWithIndex', () => {
       const partitionMapWithIndex = _.getFilterableWithIndex<string>().partitionMapWithIndex
       const emptyMap = new Map<string, number>()

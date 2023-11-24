@@ -1,19 +1,19 @@
-import * as U from './util'
 import { sequenceT } from '../src/Apply'
 import * as E from '../src/Either'
 import { constVoid, identity, pipe, SK } from '../src/function'
 import * as I from '../src/IO'
 import * as _ from '../src/IOEither'
+import * as N from '../src/number'
 import * as O from '../src/Option'
 import { pipeable } from '../src/pipeable'
 import * as RA from '../src/ReadonlyArray'
-import * as N from '../src/number'
-import * as S from '../src/string'
+import { type ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import { left, right } from '../src/Separated'
-import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
+import * as S from '../src/string'
+import * as U from './util'
 
-describe('IOEither', () => {
-  describe('pipeables', () => {
+describe.concurrent('IOEither', () => {
+  describe.concurrent('pipeables', () => {
     it('alt', () => {
       const r1 = _.right<string, number>(1)
       const r2 = _.right<string, number>(2)
@@ -106,10 +106,26 @@ describe('IOEither', () => {
       U.deepStrictEqual(pipe(fa, _.apSecondW(fb))(), E.right(1))
     })
 
+    it('flatMap', () => {
+      const f = (a: string) => (a.length > 2 ? _.right(a.length) : _.left('foo'))
+      U.deepStrictEqual(pipe(_.right('foo'), _.flatMap(f))(), E.right(3))
+      U.deepStrictEqual(_.flatMap(_.right('foo'), f)(), E.right(3))
+      U.deepStrictEqual(pipe(_.right('a'), _.flatMap(f))(), E.left('foo'))
+      U.deepStrictEqual(_.flatMap(_.right('a'), f)(), E.left('foo'))
+    })
+
     it('chain', () => {
       const f = (a: string) => (a.length > 2 ? _.right(a.length) : _.left('foo'))
       U.deepStrictEqual(pipe(_.right('foo'), _.chain(f))(), E.right(3))
       U.deepStrictEqual(pipe(_.right('a'), _.chain(f))(), E.left('foo'))
+    })
+
+    it('tap', () => {
+      const f = (a: string) => (a.length > 2 ? _.right(a.length) : _.left('foo'))
+      U.deepStrictEqual(pipe(_.right('foo'), _.tap(f))(), E.right('foo'))
+      U.deepStrictEqual(pipe(_.right('a'), _.tap(f))(), E.left('foo'))
+      U.deepStrictEqual(_.tap(_.right('foo'), f)(), E.right('foo'))
+      U.deepStrictEqual(_.tap(_.right('a'), f)(), E.left('foo'))
     })
 
     it('chainFirst', () => {
@@ -206,8 +222,25 @@ describe('IOEither', () => {
       U.deepStrictEqual(f(-1)(), E.left('a'))
     })
 
+    it('flatMapOption', () => {
+      const f = _.flatMapOption(
+        (n: number) => (n > 0 ? O.some(n) : O.none),
+        () => 'a',
+      )
+      U.deepStrictEqual(f(_.right(1))(), E.right(1))
+      U.deepStrictEqual(f(_.right(-1))(), E.left('a'))
+      U.deepStrictEqual(f(_.left('b'))(), E.left('b'))
+    })
+
     it('chainOptionK', () => {
       const f = _.chainOptionK(() => 'a')((n: number) => (n > 0 ? O.some(n) : O.none))
+      U.deepStrictEqual(f(_.right(1))(), E.right(1))
+      U.deepStrictEqual(f(_.right(-1))(), E.left('a'))
+      U.deepStrictEqual(f(_.left('b'))(), E.left('b'))
+    })
+
+    it('flatMapEither', () => {
+      const f = _.flatMapEither((n: number) => (n > 0 ? E.right(n) : E.left('a')))
       U.deepStrictEqual(f(_.right(1))(), E.right(1))
       U.deepStrictEqual(f(_.right(-1))(), E.left('a'))
       U.deepStrictEqual(f(_.left('b'))(), E.left('b'))
@@ -270,6 +303,16 @@ describe('IOEither', () => {
     U.deepStrictEqual(_.orElseW(() => _.right(2))(_.right(1))(), E.right(1))
   })
 
+  it('tapError', () => {
+    const f = (e: string) => (e.length <= 1 ? _.right(true) : _.left(e + '!'))
+    U.deepStrictEqual(pipe(_.right(1), _.tapError(f))(), E.right(1))
+    U.deepStrictEqual(pipe(_.left('a'), _.tapError(f))(), E.left('a'))
+    U.deepStrictEqual(pipe(_.left('aa'), _.tapError(f))(), E.left('aa!'))
+    U.deepStrictEqual(_.tapError(_.right(1), f)(), E.right(1))
+    U.deepStrictEqual(_.tapError(_.left('a'), f)(), E.left('a'))
+    U.deepStrictEqual(_.tapError(_.left('aa'), f)(), E.left('aa!'))
+  })
+
   it('orElseFirst', () => {
     const f = _.orElseFirst((e: string) => (e.length <= 1 ? _.right(true) : _.left(e + '!')))
     U.deepStrictEqual(pipe(_.right(1), f)(), E.right(1))
@@ -306,7 +349,7 @@ describe('IOEither', () => {
     )
   })
 
-  describe('getSemigroup', () => {
+  describe.concurrent('getSemigroup', () => {
     it('concat', () => {
       const S = _.getSemigroup<string, number>(N.SemigroupSum)
       U.deepStrictEqual(S.concat(_.leftIO(I.of('a')), _.leftIO(I.of('b')))(), E.left('a'))
@@ -316,7 +359,7 @@ describe('IOEither', () => {
     })
   })
 
-  describe('getApplyMonoid', () => {
+  describe.concurrent('getApplyMonoid', () => {
     it('concat', () => {
       const M = _.getApplyMonoid(S.Monoid)
       U.deepStrictEqual(M.concat(_.rightIO(I.of('a')), _.rightIO(I.of('b')))(), E.right('ab'))
@@ -403,7 +446,7 @@ describe('IOEither', () => {
     U.deepStrictEqual(AV.alt(_.left('a'), () => _.left('b'))(), E.left('ab'))
   })
 
-  describe('getCompactable', () => {
+  describe.concurrent('getCompactable', () => {
     const C = _.getCompactable(S.Monoid)
 
     it('compact', () => {
@@ -423,7 +466,7 @@ describe('IOEither', () => {
     })
   })
 
-  describe('getFilterable', () => {
+  describe.concurrent('getFilterable', () => {
     const F_ = _.getFilterable(RA.getMonoid<string>())
     const { filter, filterMap, partition, partitionMap } = pipeable(F_)
 
@@ -507,7 +550,7 @@ describe('IOEither', () => {
     )
   })
 
-  describe('array utils', () => {
+  describe.concurrent('array utils', () => {
     const input: ReadonlyNonEmptyArray<string> = ['a', 'b']
 
     it('traverseReadonlyArrayWithIndex', () => {
@@ -634,10 +677,46 @@ describe('IOEither', () => {
     U.deepStrictEqual(f(_.left(1))(), 'left')
   })
 
+  it('tapEither', async () => {
+    const f = (s: string) => E.right(s.length)
+    U.deepStrictEqual(pipe(_.right('a'), _.tapEither(f))(), E.right('a'))
+    const g = (s: string) => E.left(s.length)
+    U.deepStrictEqual(pipe(_.right('a'), _.tapEither(g))(), E.left(1))
+  })
+
   it('chainFirstEitherK', async () => {
     const f = (s: string) => E.right(s.length)
     U.deepStrictEqual(pipe(_.right('a'), _.chainFirstEitherK(f))(), E.right('a'))
     const g = (s: string) => E.left(s.length)
     U.deepStrictEqual(pipe(_.right('a'), _.chainFirstEitherK(g))(), E.left(1))
+  })
+
+  it('tapIO', () => {
+    const ref: Array<number> = []
+    const add = (value: number) => () => ref.push(value)
+
+    U.deepStrictEqual(pipe(_.of(1), _.tapIO(add))(), E.of(1))
+    U.deepStrictEqual(pipe(_.left('error'), _.tapIO(add))(), E.left('error'))
+    U.deepStrictEqual(ref, [1])
+  })
+
+  it('as', () => {
+    U.deepStrictEqual(pipe(_.right('a'), _.as('b'))(), E.right('b'))
+    U.deepStrictEqual(_.as(_.of('a'), 'b')(), E.right('b'))
+    U.deepStrictEqual(_.as(_.left('error'), 'b')(), E.left('error'))
+  })
+
+  it('asUnit', () => {
+    U.deepStrictEqual(pipe(_.of('a'), _.asUnit)(), E.of(undefined))
+  })
+
+  it('flatMapIO', () => {
+    U.deepStrictEqual(
+      pipe(
+        _.of(1),
+        _.flatMapIO(() => I.of(2)),
+      )(),
+      E.of(2),
+    )
   })
 })

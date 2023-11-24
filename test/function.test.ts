@@ -1,21 +1,21 @@
 import * as assert from 'assert'
-import * as _ from '../src/function'
+
 import * as B from '../src/boolean'
-import * as RA from '../src/ReadonlyArray'
+import * as _ from '../src/function'
 import { concatAll } from '../src/Monoid'
 import * as N from '../src/number'
+import * as RA from '../src/ReadonlyArray'
 import * as U from './util'
 
 const f = (n: number) => n + 1
 const g = (n: number) => n * 2
 
-describe('function', () => {
+describe.concurrent('function', () => {
   test('flip', () => {
     const f1 = (a: number) => (b: string) => a - b.length
     const f2 = (a: number, b: string) => a - b.length
 
     U.deepStrictEqual(_.flip(f1)('aaa')(2), -1)
-    // eslint-disable-next-line deprecation/deprecation
     U.deepStrictEqual(_.flip(f2)('aaa', 2), -1)
   })
 

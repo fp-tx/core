@@ -1,8 +1,8 @@
-import * as U from './util'
 import * as R from '../src/Reader'
 import { fanout, splitStrong } from '../src/Strong'
+import * as U from './util'
 
-describe('Strong', () => {
+describe.concurrent('Strong', () => {
   it('splitStrong', () => {
     const ab = (s: string) => s.length
     const cd = (n: number) => n >= 2

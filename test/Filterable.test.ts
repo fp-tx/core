@@ -1,12 +1,12 @@
-import * as U from './util'
-import * as RA from '../src/ReadonlyArray'
+import { left, right } from '../src/Either'
 import { getFilterableComposition } from '../src/Filterable'
-import { some, none } from '../src/Option'
-import { right, left } from '../src/Either'
 import { increment } from '../src/function'
+import { none, some } from '../src/Option'
+import * as RA from '../src/ReadonlyArray'
 import { separated } from '../src/Separated'
+import * as U from './util'
 
-describe('Filterable', () => {
+describe.concurrent('Filterable', () => {
   it('getFilterableComposition', () => {
     const F = getFilterableComposition(RA.Functor, RA.Filterable)
 

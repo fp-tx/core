@@ -3,37 +3,10 @@
  *
  * @since 2.10.0
  */
-import {
-  type Chain,
-  type Chain1,
-  type Chain2,
-  type Chain2C,
-  type Chain3,
-  type Chain3C,
-  type Chain4,
-  chainFirst,
-} from './Chain'
-import {
-  type FromIO,
-  type FromIO1,
-  type FromIO2,
-  type FromIO2C,
-  type FromIO3,
-  type FromIO3C,
-  type FromIO4,
-} from './FromIO'
+import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C, type Chain4, tap } from './Chain'
+import { type FromIO, type FromIO1, type FromIO2, type FromIO2C, type FromIO3, type FromIO3C, type FromIO4 } from './FromIO'
 import { flow } from './function'
-import {
-  type HKT,
-  type Kind,
-  type Kind2,
-  type Kind3,
-  type Kind4,
-  type URIS,
-  type URIS2,
-  type URIS3,
-  type URIS4,
-} from './HKT'
+import { type HKT, type Kind, type Kind2, type Kind3, type Kind4, type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
 import { type Task } from './Task'
 
 // -------------------------------------------------------------------------------------
@@ -200,6 +173,44 @@ export function chainFirstTaskK<M>(
   F: FromTask<M>,
   M: Chain<M>,
 ): <A, B>(f: (a: A) => Task<B>) => (first: HKT<M, A>) => HKT<M, A> {
-  const chainFirstM = chainFirst(M)
-  return f => chainFirstM(flow(f, F.fromTask))
+  const tapTaskM = tapTask(F, M)
+  return f => first => tapTaskM(first, f)
+}
+
+/** @internal */
+export function tapTask<M extends URIS4>(
+  F: FromTask4<M>,
+  M: Chain4<M>,
+): <S, R, E, A, B>(self: Kind4<M, S, R, E, A>, f: (a: A) => Task<B>) => Kind4<M, S, R, E, A>
+/** @internal */
+export function tapTask<M extends URIS3>(
+  F: FromTask3<M>,
+  M: Chain3<M>,
+): <R, E, A, B>(self: Kind3<M, R, E, A>, f: (a: A) => Task<B>) => Kind3<M, R, E, A>
+/** @internal */
+export function tapTask<M extends URIS3, E>(
+  F: FromTask3C<M, E>,
+  M: Chain3C<M, E>,
+): <R, A, B>(self: Kind3<M, R, E, A>, f: (a: A) => Task<B>) => Kind3<M, R, E, A>
+/** @internal */
+export function tapTask<M extends URIS2>(
+  F: FromTask2<M>,
+  M: Chain2<M>,
+): <E, A, B>(self: Kind2<M, E, A>, f: (a: A) => Task<B>) => Kind2<M, E, A>
+/** @internal */
+export function tapTask<M extends URIS2, E>(
+  F: FromTask2C<M, E>,
+  M: Chain2C<M, E>,
+): <A, B>(self: Kind2<M, E, A>, f: (a: A) => Task<B>) => Kind2<M, E, A>
+/** @internal */
+export function tapTask<M extends URIS>(
+  F: FromTask1<M>,
+  M: Chain1<M>,
+): <A, B>(self: Kind<M, A>, f: (a: A) => Task<B>) => Kind<M, A>
+/** @internal */
+export function tapTask<M>(F: FromTask<M>, M: Chain<M>): <A, B>(self: HKT<M, A>, f: (a: A) => Task<B>) => HKT<M, A>
+/** @internal */
+export function tapTask<M>(F: FromTask<M>, M: Chain<M>): <A, B>(self: HKT<M, A>, f: (a: A) => Task<B>) => HKT<M, A> {
+  const tapM = tap(M)
+  return (self, f) => tapM(self, flow(f, F.fromTask))
 }

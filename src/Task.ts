@@ -18,11 +18,11 @@ import {
   apSecond as apSecond_,
   getApplySemigroup as getApplySemigroup_,
 } from './Apply'
-import { bind as bind_, type Chain1, chainFirst as chainFirst_ } from './Chain'
-import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, type FromIO1, fromIOK as fromIOK_ } from './FromIO'
+import * as chainable from './Chain'
+import { type FromIO1, fromIOK as fromIOK_, tapIO as tapIO_ } from './FromIO'
 import { type FromTask1 } from './FromTask'
-import { identity, pipe } from './function'
-import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
+import { dual, identity, pipe } from './function'
+import { as as as_, asUnit as asUnit_, bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
 import * as _ from './internal'
 import { type IO } from './IO'
 import { type Monad1 } from './Monad'
@@ -96,12 +96,7 @@ export function delay(millis: number): <A>(ma: Task<A>) => Task<A> {
 
 const _map: Functor1<URI>['map'] = (fa, f) => pipe(fa, map(f))
 const _apPar: Apply1<URI>['ap'] = (fab, fa) => pipe(fab, ap(fa))
-const _apSeq: Apply1<URI>['ap'] = (fab, fa) =>
-  pipe(
-    fab,
-    chain(f => pipe(fa, map(f))),
-  )
-const _chain: Chain1<URI>['chain'] = (ma, f) => pipe(ma, chain(f))
+const _apSeq: Apply1<URI>['ap'] = (fab, fa) => flatMap(fab, f => pipe(fa, map(f)))
 
 /**
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
@@ -124,21 +119,26 @@ export const ap: <A>(fa: Task<A>) => <B>(fab: Task<(a: A) => B>) => Task<B> = fa
 export const of: <A>(a: A) => Task<A> = a => () => Promise.resolve(a)
 
 /**
- * Composes computations in sequence, using the return value of one computation to determine the next computation.
- *
- * @since 2.0.0
+ * @since 2.14.0
  * @category Sequencing
  */
-export const chain: <A, B>(f: (a: A) => Task<B>) => (ma: Task<A>) => Task<B> = f => ma => () =>
-  Promise.resolve()
-    .then(ma)
-    .then(a => f(a)())
+export const flatMap: {
+  <A, B>(f: (a: A) => Task<B>): (ma: Task<A>) => Task<B>
+  <A, B>(ma: Task<A>, f: (a: A) => Task<B>): Task<B>
+} = /*#__PURE__*/ dual(
+  2,
+  <A, B>(ma: Task<A>, f: (a: A) => Task<B>): Task<B> =>
+    () =>
+      Promise.resolve()
+        .then(ma)
+        .then(a => f(a)()),
+)
 
 /**
  * @since 2.0.0
  * @category Sequencing
  */
-export const flatten: <A>(mma: Task<Task<A>>) => Task<A> = /*#__PURE__*/ chain(identity)
+export const flatten: <A>(mma: Task<Task<A>>) => Task<A> = /*#__PURE__*/ flatMap(identity)
 
 /**
  * @since 2.0.0
@@ -192,6 +192,25 @@ export const Functor: Functor1<URI> = {
   URI,
   map: _map,
 }
+
+/**
+ * Maps the value to the specified constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const as: {
+  <A>(a: A): <_>(self: Task<_>) => Task<A>
+  <_, A>(self: Task<_>, a: A): Task<A>
+} = dual(2, as_(Functor))
+
+/**
+ * Maps the value to the void constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const asUnit: <_>(self: Task<_>) => Task<void> = asUnit_(Functor)
 
 /**
  * @since 2.10.0
@@ -276,11 +295,11 @@ export const ApplicativeSeq: Applicative1<URI> = {
  * @since 2.10.0
  * @category Instances
  */
-export const Chain: Chain1<URI> = {
+export const Chain: chainable.Chain1<URI> = {
   URI,
   map: _map,
   ap: _apPar,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -292,7 +311,7 @@ export const Monad: Monad1<URI> = {
   map: _map,
   of,
   ap: _apPar,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -304,7 +323,7 @@ export const MonadIO: MonadIO1<URI> = {
   map: _map,
   of,
   ap: _apPar,
-  chain: _chain,
+  chain: flatMap,
   fromIO,
 }
 
@@ -324,19 +343,10 @@ export const MonadTask: MonadTask1<URI> = {
   map: _map,
   of,
   ap: _apPar,
-  chain: _chain,
+  chain: flatMap,
   fromIO,
   fromTask,
 }
-
-/**
- * Composes computations in sequence, using the return value of one computation to determine the next computation and
- * keeping only the result of the first.
- *
- * @since 2.0.0
- * @category Sequencing
- */
-export const chainFirst: <A, B>(f: (a: A) => Task<B>) => (first: Task<A>) => Task<A> = /*#__PURE__*/ chainFirst_(Chain)
 
 /**
  * @since 2.10.0
@@ -347,6 +357,70 @@ export const FromIO: FromIO1<URI> = {
   fromIO,
 }
 
+/** @internal */
+interface TaskTypeLambda extends _.TypeLambda {
+  readonly type: Task<this['Target']>
+}
+
+/** @internal */
+const _FlatMap: _.FlatMap<TaskTypeLambda> = {
+  flatMap,
+}
+
+/** @internal */
+const _FromIO: _.FromIO<TaskTypeLambda> = {
+  fromIO: FromIO.fromIO,
+}
+
+/**
+ * @since 2.16.0
+ * @category Sequencing
+ */
+export const flatMapIO: {
+  <A, B>(f: (a: A) => IO<B>): (self: Task<A>) => Task<B>
+  <A, B>(self: Task<A>, f: (a: A) => IO<B>): Task<B>
+} = _.flatMapIO(_FromIO, _FlatMap)
+
+/**
+ * Composes computations in sequence, using the return value of one computation to determine the next computation and
+ * keeping only the result of the first.
+ *
+ * @since 2.15.0
+ * @category Combinators
+ */
+export const tap: {
+  <A, _>(self: Task<A>, f: (a: A) => Task<_>): Task<A>
+  <A, _>(f: (a: A) => Task<_>): (self: Task<A>) => Task<A>
+} = /*#__PURE__*/ dual(2, chainable.tap(Chain))
+
+/**
+ * Composes computations in sequence, using the return value of one computation to determine the next computation and
+ * keeping only the result of the first.
+ *
+ * @since 2.16.0
+ * @category Combinators
+ * @example
+ *   import { pipe } from 'fp-ts/function'
+ *   import * as T from 'fp-ts/Task'
+ *   import * as Console from 'fp-ts/Console'
+ *
+ *   // Will produce `Hello, fp-ts` to the stdout
+ *   const effect = pipe(
+ *     T.of('fp-ts'),
+ *     T.tapIO(value => Console.log(`Hello, ${value}`)),
+ *   )
+ *
+ *   async function test() {
+ *     assert.deepStrictEqual(await effect(), 'fp-ts')
+ *   }
+ *
+ *   test()
+ */
+export const tapIO: {
+  <A, _>(f: (a: A) => IO<_>): (self: Task<A>) => Task<A>
+  <A, _>(self: Task<A>, f: (a: A) => IO<_>): Task<A>
+} = /*#__PURE__*/ dual(2, tapIO_(FromIO, Chain))
+
 /**
  * @since 2.4.0
  * @category Lifting
@@ -355,22 +429,20 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => IO<B
   /*#__PURE__*/ fromIOK_(FromIO)
 
 /**
+ * Alias of `flatMapIO`.
+ *
  * @since 2.4.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainIOK: <A, B>(f: (a: A) => IO<B>) => (first: Task<A>) => Task<B> = /*#__PURE__*/ chainIOK_(
-  FromIO,
-  Chain,
-)
+export const chainIOK: <A, B>(f: (a: A) => IO<B>) => (first: Task<A>) => Task<B> = flatMapIO
 
 /**
+ * Alias of `tapIO`.
+ *
  * @since 2.10.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => (first: Task<A>) => Task<A> = /*#__PURE__*/ chainFirstIOK_(
-  FromIO,
-  Chain,
-)
+export const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => (first: Task<A>) => Task<A> = tapIO
 
 /**
  * @since 2.10.0
@@ -423,7 +495,7 @@ export {
  * @since 2.8.0
  * @category Do notation
  */
-export const bind = /*#__PURE__*/ bind_(Chain)
+export const bind = /*#__PURE__*/ chainable.bind(Chain)
 
 /**
  * @since 2.8.0
@@ -558,6 +630,26 @@ export const sequenceSeqArray: <A>(arr: ReadonlyArray<Task<A>>) => Task<Readonly
   /*#__PURE__*/ traverseSeqArray(identity)
 
 // -------------------------------------------------------------------------------------
+// legacy
+// -------------------------------------------------------------------------------------
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.0.0
+ * @category Legacy
+ */
+export const chain: <A, B>(f: (a: A) => Task<B>) => (ma: Task<A>) => Task<B> = flatMap
+
+/**
+ * Alias of `tap`.
+ *
+ * @since 2.0.0
+ * @category Legacy
+ */
+export const chainFirst: <A, B>(f: (a: A) => Task<B>) => (first: Task<A>) => Task<A> = tap
+
+// -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
 
@@ -574,7 +666,7 @@ export const task: Monad1<URI> & MonadTask1<URI> = {
   map: _map,
   of,
   ap: _apPar,
-  chain: _chain,
+  chain: flatMap,
   fromIO,
   fromTask,
 }
@@ -592,7 +684,7 @@ export const taskSeq: Monad1<URI> & MonadTask1<URI> = {
   map: _map,
   of,
   ap: _apSeq,
-  chain: _chain,
+  chain: flatMap,
   fromIO,
   fromTask,
 }

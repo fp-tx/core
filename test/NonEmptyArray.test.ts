@@ -1,5 +1,6 @@
 import * as assert from 'assert'
-import { Endomorphism } from '../src/Endomorphism'
+
+import { type Endomorphism } from '../src/Endomorphism'
 import { identity, pipe } from '../src/function'
 import * as _ from '../src/NonEmptyArray'
 import * as N from '../src/number'
@@ -7,8 +8,8 @@ import * as O from '../src/Option'
 import * as S from '../src/string'
 import * as U from './util'
 
-describe('NonEmptyArray', () => {
-  describe('pipeables', () => {
+describe.concurrent('NonEmptyArray', () => {
+  describe.concurrent('pipeables', () => {
     it('traverse', () => {
       U.deepStrictEqual(
         pipe(
@@ -80,6 +81,12 @@ describe('NonEmptyArray', () => {
   it('ap', () => {
     const fab: _.NonEmptyArray<(n: number) => number> = [U.double, U.double]
     U.deepStrictEqual(pipe(fab, _.ap([1, 2])), [2, 4, 2, 4])
+  })
+
+  it('flatMap', () => {
+    const f = (a: number): _.NonEmptyArray<number> => [a, 4]
+    U.deepStrictEqual(pipe([1, 2], _.flatMap(f)), [1, 4, 2, 4])
+    U.deepStrictEqual(_.flatMap([1, 2], f), [1, 4, 2, 4])
   })
 
   it('chain', () => {

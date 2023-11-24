@@ -44,7 +44,7 @@
  *       as,
  *       head,
  *       O.map(double),
- *       O.chain(inverse),
+ *       O.flatMap(inverse),
  *       O.match(
  *         () => 'no result', // onNone handler
  *         head => `Result is ${head}`, // onSome handler
@@ -66,7 +66,7 @@ import {
   apSecond as apSecond_,
   getApplySemigroup as getApplySemigroup_,
 } from './Apply'
-import { bind as bind_, type Chain1, chainFirst as chainFirst_ } from './Chain'
+import * as chainable from './Chain'
 import { type Compactable1 } from './Compactable'
 import { type Either } from './Either'
 import { type Eq } from './Eq'
@@ -75,12 +75,12 @@ import { type Filterable1 } from './Filterable'
 import { type Foldable1 } from './Foldable'
 import {
   chainEitherK as chainEitherK_,
-  chainFirstEitherK as chainFirstEitherK_,
   type FromEither1,
   fromEitherK as fromEitherK_,
+  tapEither as tapEither_,
 } from './FromEither'
-import { constNull, constUndefined, flow, identity, type Lazy, pipe } from './function'
-import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
+import { constNull, constUndefined, dual, flow, identity, type LazyArg, pipe } from './function'
+import { as as as_, asUnit as asUnit_, bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
 import { type HKT } from './HKT'
 import * as _ from './internal'
 import { type Monad1 } from './Monad'
@@ -196,7 +196,6 @@ export const getRight = <E, A>(ma: Either<E, A>): Option<A> => (ma._tag === 'Lef
 
 const _map: Monad1<URI>['map'] = (fa, f) => pipe(fa, map(f))
 const _ap: Monad1<URI>['ap'] = (fab, fa) => pipe(fab, ap(fa))
-const _chain: Monad1<URI>['chain'] = (ma, f) => pipe(ma, chain(f))
 const _reduce: Foldable1<URI>['reduce'] = (fa, b, f) => pipe(fa, reduce(b, f))
 const _foldMap: Foldable1<URI>['foldMap'] = M => {
   const foldMapM = foldMap(M)
@@ -347,6 +346,25 @@ export const Functor: Functor1<URI> = {
 }
 
 /**
+ * Maps the `Some` value of this `Option` to the specified constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const as: {
+  <A>(a: A): <_>(self: Option<_>) => Option<A>
+  <_, A>(self: Option<_>, a: A): Option<A>
+} = dual(2, as_(Functor))
+
+/**
+ * Maps the `Some` value of this `Option` to the void constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const asUnit: <_>(self: Option<_>) => Option<void> = asUnit_(Functor)
+
+/**
  * @since 2.7.0
  * @category Constructors
  */
@@ -389,23 +407,23 @@ export const Applicative: Applicative1<URI> = {
 }
 
 /**
- * Composes computations in sequence, using the return value of one computation to determine the next computation.
- *
- * @since 2.0.0
+ * @since 2.14.0
  * @category Sequencing
  */
-export const chain: <A, B>(f: (a: A) => Option<B>) => (ma: Option<A>) => Option<B> = f => ma =>
-  isNone(ma) ? none : f(ma.value)
+export const flatMap: {
+  <A, B>(f: (a: A) => Option<B>): (ma: Option<A>) => Option<B>
+  <A, B>(ma: Option<A>, f: (a: A) => Option<B>): Option<B>
+} = /*#__PURE__*/ dual(2, <A, B>(ma: Option<A>, f: (a: A) => Option<B>): Option<B> => (isNone(ma) ? none : f(ma.value)))
 
 /**
  * @since 2.10.0
  * @category Instances
  */
-export const Chain: Chain1<URI> = {
+export const Chain: chainable.Chain1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -417,7 +435,7 @@ export const Monad: Monad1<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -453,65 +471,57 @@ export const Foldable: Foldable1<URI> = {
 }
 
 /**
+ * Returns the provided `Option` `that` if `self` is `None`, otherwise returns `self`.
+ *
+ * @since 2.16.0
+ * @category Error handling
+ * @example
+ *   import * as O from 'fp-ts/Option'
+ *
+ *   assert.deepStrictEqual(
+ *     O.orElse(O.none, () => O.none),
+ *     O.none,
+ *   )
+ *   assert.deepStrictEqual(
+ *     O.orElse(O.some(1), () => O.none),
+ *     O.some(1),
+ *   )
+ *   assert.deepStrictEqual(
+ *     O.orElse(O.none, () => O.some('b')),
+ *     O.some('b'),
+ *   )
+ *   assert.deepStrictEqual(
+ *     O.orElse(O.some(1), () => O.some('b')),
+ *     O.some(1),
+ *   )
+ *
+ * @param self - The first `Option` to be checked.
+ * @param that - The `Option` to return if `self` is `None`.
+ */
+export const orElse: {
+  <B>(that: LazyArg<Option<B>>): <A>(self: Option<A>) => Option<A | B>
+  <A, B>(self: Option<A>, that: LazyArg<Option<B>>): Option<A | B>
+} = dual(2, <A, B>(self: Option<A>, that: LazyArg<Option<B>>): Option<A | B> => (isNone(self) ? that() : self))
+
+/**
+ * Alias of `orElse`.
+ *
  * Less strict version of [`alt`](#alt).
  *
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
  * @since 2.9.0
- * @category Error handling
+ * @category Legacy
  */
-export const altW: <B>(that: Lazy<Option<B>>) => <A>(fa: Option<A>) => Option<A | B> = that => fa =>
-  isNone(fa) ? that() : fa
+export const altW: <B>(that: LazyArg<Option<B>>) => <A>(fa: Option<A>) => Option<A | B> = orElse
 
 /**
- * Identifies an associative operation on a type constructor. It is similar to `Semigroup`, except that it applies to
- * types of kind `* -> *`.
- *
- * In case of `Option` returns the left-most non-`None` value.
- *
- * | x       | y       | pipe(x, alt(() => y) |
- * | ------- | ------- | -------------------- |
- * | none    | none    | none                 |
- * | some(a) | none    | some(a)              |
- * | none    | some(b) | some(b)              |
- * | some(a) | some(b) | some(a)              |
+ * Alias of `orElse`.
  *
  * @since 2.0.0
- * @category Error handling
- * @example
- *   import * as O from 'fp-ts/Option'
- *   import { pipe } from 'fp-ts/function'
- *
- *   assert.deepStrictEqual(
- *     pipe(
- *       O.none,
- *       O.alt(() => O.none),
- *     ),
- *     O.none,
- *   )
- *   assert.deepStrictEqual(
- *     pipe(
- *       O.some('a'),
- *       O.alt<string>(() => O.none),
- *     ),
- *     O.some('a'),
- *   )
- *   assert.deepStrictEqual(
- *     pipe(
- *       O.none,
- *       O.alt(() => O.some('b')),
- *     ),
- *     O.some('b'),
- *   )
- *   assert.deepStrictEqual(
- *     pipe(
- *       O.some('a'),
- *       O.alt(() => O.some('b')),
- *     ),
- *     O.some('a'),
- *   )
+ * @category Legacy
  */
-export const alt: <A>(that: Lazy<Option<A>>) => (fa: Option<A>) => Option<A> = altW
+export const alt: <A>(that: LazyArg<Option<A>>) => (fa: Option<A>) => Option<A> = orElse
 
 /**
  * @since 2.7.0
@@ -572,7 +582,7 @@ export const Extend: Extend1<URI> = {
  * @since 2.0.0
  * @category Filtering
  */
-export const compact: <A>(fa: Option<Option<A>>) => Option<A> = /*#__PURE__*/ chain(identity)
+export const compact: <A>(fa: Option<Option<A>>) => Option<A> = /*#__PURE__*/ flatMap(identity)
 
 const defaultSeparated = /*#__PURE__*/ separated(none, none)
 
@@ -744,7 +754,7 @@ export const MonadThrow: MonadThrow1<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
   throwError,
 }
 
@@ -806,7 +816,7 @@ export const isNone = (fa: Option<unknown>): fa is None => fa._tag === 'None'
  * @category Pattern matching
  */
 export const matchW =
-  <B, A, C>(onNone: Lazy<B>, onSome: (a: A) => C) =>
+  <B, A, C>(onNone: LazyArg<B>, onSome: (a: A) => C) =>
   (ma: Option<A>): B | C =>
     isNone(ma) ? onNone() : onSome(ma.value)
 
@@ -850,7 +860,7 @@ export const foldW = matchW
  *     'a none',
  *   )
  */
-export const match: <A, B>(onNone: Lazy<B>, onSome: (a: A) => B) => (ma: Option<A>) => B = matchW
+export const match: <A, B>(onNone: LazyArg<B>, onSome: (a: A) => B) => (ma: Option<A>) => B = matchW
 
 /**
  * Alias of [`match`](#match).
@@ -869,7 +879,7 @@ export const fold = match
  * @category Error handling
  */
 export const getOrElseW =
-  <B>(onNone: Lazy<B>) =>
+  <B>(onNone: LazyArg<B>) =>
   <A>(ma: Option<A>): A | B =>
     isNone(ma) ? onNone() : ma.value
 
@@ -897,7 +907,7 @@ export const getOrElseW =
  *     0,
  *   )
  */
-export const getOrElse: <A>(onNone: Lazy<A>) => (ma: Option<A>) => A = getOrElseW
+export const getOrElse: <A>(onNone: LazyArg<A>) => (ma: Option<A>) => A = getOrElseW
 
 /**
  * @since 2.10.0
@@ -929,11 +939,38 @@ export const flatten: <A>(mma: Option<Option<A>>) => Option<A> = compact
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.0.0
- * @category Sequencing
+ * @since 2.15.0
+ * @category Combinators
  */
-export const chainFirst: <A, B>(f: (a: A) => Option<B>) => (first: Option<A>) => Option<A> =
-  /*#__PURE__*/ chainFirst_(Chain)
+export const tap: {
+  <A, _>(self: Option<A>, f: (a: A) => Option<_>): Option<A>
+  <A, _>(f: (a: A) => Option<_>): (self: Option<A>) => Option<A>
+} = /*#__PURE__*/ dual(2, chainable.tap(Chain))
+
+/**
+ * Composes computations in sequence, using the return value of one computation to determine the next computation and
+ * keeping only the result of the first.
+ *
+ * @since 2.16.0
+ * @category Combinators
+ * @example
+ *   import { pipe } from 'fp-ts/function'
+ *   import * as O from 'fp-ts/Option'
+ *   import * as E from 'fp-ts/Either'
+ *
+ *   const compute = (value: number) =>
+ *     pipe(
+ *       O.of(value),
+ *       O.tapEither(value => (value > 0 ? E.right('ok') : E.left('error'))),
+ *     )
+ *
+ *   assert.deepStrictEqual(compute(1), O.of(1))
+ *   assert.deepStrictEqual(compute(-42), O.none)
+ */
+export const tapEither: {
+  <A, E, _>(f: (a: A) => Either<E, _>): (self: Option<A>) => Option<A>
+  <A, E, _>(self: Option<A>, f: (a: A) => Either<E, _>): Option<A>
+} = /*#__PURE__*/ dual(2, tapEither_(FromEither, Chain))
 
 /** @since 2.0.0 */
 export const duplicate: <A>(ma: Option<A>) => Option<Option<A>> = /*#__PURE__*/ extend(identity)
@@ -954,11 +991,12 @@ export const chainEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Option<A
   /*#__PURE__*/ chainEitherK_(FromEither, Chain)
 
 /**
+ * Alias of `tapEither`.
+ *
  * @since 2.12.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Option<A>) => Option<A> =
-  /*#__PURE__*/ chainFirstEitherK_(FromEither, Chain)
+export const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Option<A>) => Option<A> = tapEither
 
 /**
  * Constructs a new `Option` from a nullable type. If the value is `null` or `undefined`, returns `None`, otherwise
@@ -997,7 +1035,7 @@ export const fromNullable = <A>(a: A): Option<NonNullable<A>> => (a == null ? no
  *     some(1),
  *   )
  */
-export const tryCatch = <A>(f: Lazy<A>): Option<A> => {
+export const tryCatch = <A>(f: LazyArg<A>): Option<A> => {
   try {
     return some(f())
   } catch (e) {
@@ -1057,9 +1095,7 @@ export const fromNullableK: <A extends ReadonlyArray<unknown>, B>(
  *     }
  *   }
  *
- *   const employee1: Employee = {
- *     company: { address: { street: { name: 'high street' } } },
- *   }
+ *   const employee1: Employee = { company: { address: { street: { name: 'high street' } } } }
  *
  *   assert.deepStrictEqual(
  *     pipe(
@@ -1212,7 +1248,7 @@ export {
  * @since 2.8.0
  * @category Do notation
  */
-export const bind = /*#__PURE__*/ bind_(Chain)
+export const bind = /*#__PURE__*/ chainable.bind(Chain)
 
 /**
  * @since 2.8.0
@@ -1293,6 +1329,26 @@ export const sequenceArray: <A>(arr: ReadonlyArray<Option<A>>) => Option<Readonl
   /*#__PURE__*/ traverseArray(identity)
 
 // -------------------------------------------------------------------------------------
+// legacy
+// -------------------------------------------------------------------------------------
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.0.0
+ * @category Legacy
+ */
+export const chain: <A, B>(f: (a: A) => Option<B>) => (ma: Option<A>) => Option<B> = flatMap
+
+/**
+ * Alias of `tap`.
+ *
+ * @since 2.0.0
+ * @category Legacy
+ */
+export const chainFirst: <A, B>(f: (a: A) => Option<B>) => (first: Option<A>) => Option<A> = tap
+
+// -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
 
@@ -1334,7 +1390,7 @@ export const option: Monad1<URI> &
   map: _map,
   of,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
   reduce: _reduce,
   foldMap: _foldMap,
   reduceRight: _reduceRight,

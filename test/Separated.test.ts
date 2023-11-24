@@ -1,10 +1,11 @@
 import * as fc from 'fast-check'
 import { isDeepStrictEqual } from 'util'
-import * as _ from '../src/Separated'
-import { pipe } from '../src/function'
 
-describe('Separated', () => {
-  describe('pipeables', () => {
+import { pipe } from '../src/function'
+import * as _ from '../src/Separated'
+
+describe.concurrent('Separated', () => {
+  describe.concurrent('pipeables', () => {
     it('mapLeft', () =>
       fc.assert(
         fc.property(fc.integer(), fc.integer(), (left, right) => {

@@ -1,6 +1,7 @@
 import * as assert from 'assert'
+
 import * as B from '../src/boolean'
-import { Endomorphism } from '../src/Endomorphism'
+import { type Endomorphism } from '../src/Endomorphism'
 import * as Eq from '../src/Eq'
 import { identity, pipe } from '../src/function'
 import * as N from '../src/number'
@@ -11,8 +12,8 @@ import * as Se from '../src/Semigroup'
 import * as S from '../src/string'
 import * as U from './util'
 
-describe('ReadonlyNonEmptyArray', () => {
-  describe('pipeables', () => {
+describe.concurrent('ReadonlyNonEmptyArray', () => {
+  describe.concurrent('pipeables', () => {
     it('traverse', () => {
       assert.deepStrictEqual(
         pipe(
@@ -84,6 +85,12 @@ describe('ReadonlyNonEmptyArray', () => {
   it('ap', () => {
     const fab: _.ReadonlyNonEmptyArray<(n: number) => number> = [U.double, U.double]
     U.deepStrictEqual(pipe(fab, _.ap([1, 2])), [2, 4, 2, 4])
+  })
+
+  it('flatMap', () => {
+    const f = (a: number): _.ReadonlyNonEmptyArray<number> => [a, 4]
+    U.deepStrictEqual(pipe([1, 2], _.flatMap(f)), [1, 4, 2, 4])
+    U.deepStrictEqual(_.flatMap([1, 2], f), [1, 4, 2, 4])
   })
 
   it('chain', () => {

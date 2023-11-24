@@ -3,7 +3,7 @@ import { type Alt1 } from './Alt'
 import { type Alternative1 } from './Alternative'
 import { type Applicative1 } from './Applicative'
 import { apFirst as apFirst_, type Apply1, apS as apS_, apSecond as apSecond_ } from './Apply'
-import { bind as bind_, type Chain1, chainFirst as chainFirst_ } from './Chain'
+import * as chainable from './Chain'
 import { compact as compact_, type Compactable1, separate as separate_ } from './Compactable'
 import { type Either } from './Either'
 import {
@@ -15,19 +15,14 @@ import {
 } from './Filterable'
 import {
   chainEitherK as chainEitherK_,
-  chainFirstEitherK as chainFirstEitherK_,
   type FromEither1,
   fromEitherK as fromEitherK_,
+  tapEither as tapEither_,
 } from './FromEither'
-import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, type FromIO1, fromIOK as fromIOK_ } from './FromIO'
-import {
-  chainFirstTaskK as chainFirstTaskK_,
-  chainTaskK as chainTaskK_,
-  type FromTask1,
-  fromTaskK as fromTaskK_,
-} from './FromTask'
-import { flow, identity, type Lazy, pipe, SK } from './function'
-import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
+import { type FromIO1, fromIOK as fromIOK_, tapIO as tapIO_ } from './FromIO'
+import { type FromTask1, fromTaskK as fromTaskK_, tapTask as tapTask_ } from './FromTask'
+import { dual, flow, identity, type LazyArg, pipe, SK } from './function'
+import { as as as_, asUnit as asUnit_, bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
 import * as _ from './internal'
 import { type IO } from './IO'
 import { type Monad1 } from './Monad'
@@ -35,7 +30,6 @@ import { type MonadIO1 } from './MonadIO'
 import { type MonadTask1 } from './MonadTask'
 import { type NonEmptyArray } from './NonEmptyArray'
 import * as O from './Option'
-import { type Option } from './Option'
 import * as OT from './OptionT'
 import { type Pointed1 } from './Pointed'
 import { type Predicate } from './Predicate'
@@ -43,9 +37,11 @@ import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
 import { type Separated } from './Separated'
 import * as T from './Task'
-import { type Task } from './Task'
 import { type TaskEither } from './TaskEither'
 import { guard as guard_, type Zero1 } from './Zero'
+
+import Task = T.Task
+import Option = O.Option
 
 // -------------------------------------------------------------------------------------
 // model
@@ -171,7 +167,7 @@ export const foldW = matchEW
  * @since 2.10.0
  * @category Error handling
  */
-export const getOrElse: <A>(onNone: Lazy<Task<A>>) => (fa: TaskOption<A>) => Task<A> = /*#__PURE__*/ OT.getOrElse(
+export const getOrElse: <A>(onNone: LazyArg<Task<A>>) => (fa: TaskOption<A>) => Task<A> = /*#__PURE__*/ OT.getOrElse(
   T.Monad,
 )
 
@@ -183,7 +179,7 @@ export const getOrElse: <A>(onNone: Lazy<Task<A>>) => (fa: TaskOption<A>) => Tas
  * @since 2.10.0
  * @category Error handling
  */
-export const getOrElseW: <B>(onNone: Lazy<Task<B>>) => <A>(ma: TaskOption<A>) => Task<A | B> = getOrElse as any
+export const getOrElseW: <B>(onNone: LazyArg<Task<B>>) => <A>(ma: TaskOption<A>) => Task<A | B> = getOrElse as any
 
 /**
  * @since 2.10.0
@@ -200,7 +196,7 @@ export const fromNullable: <A>(a: A) => TaskOption<NonNullable<A>> = /*#__PURE__
  * @category Interop
  */
 export const tryCatch =
-  <A>(f: Lazy<Promise<A>>): TaskOption<A> =>
+  <A>(f: LazyArg<Promise<A>>): TaskOption<A> =>
   async () => {
     try {
       return await f().then(_.some)
@@ -275,25 +271,64 @@ export const ap: <A>(fa: TaskOption<A>) => <B>(fab: TaskOption<(a: A) => B>) => 
  */
 export const of: <A>(a: A) => TaskOption<A> = some
 
+/** @internal */
+interface TaskOptionTypeLambda extends _.TypeLambda {
+  readonly type: TaskOption<this['Target']>
+}
+
+/** @internal */
+const _FromIO: _.FromIO<TaskOptionTypeLambda> = {
+  fromIO,
+}
+
+/** @internal */
+const _FromTask: _.FromTask<TaskOptionTypeLambda> = {
+  fromTask,
+}
+
 /**
- * @since 2.10.0
+ * @since 2.14.0
  * @category Sequencing
  */
-export const chain: <A, B>(f: (a: A) => TaskOption<B>) => (ma: TaskOption<A>) => TaskOption<B> = /*#__PURE__*/ OT.chain(
-  T.Monad,
-)
+export const flatMap: {
+  <A, B>(f: (a: A) => TaskOption<B>): (ma: TaskOption<A>) => TaskOption<B>
+  <A, B>(ma: TaskOption<A>, f: (a: A) => TaskOption<B>): TaskOption<B>
+} = /*#__PURE__*/ dual(2, OT.flatMap(T.Monad))
+
+/** @internal */
+const _FlatMap: _.FlatMap<TaskOptionTypeLambda> = {
+  flatMap,
+}
+
+/**
+ * @since 2.16.0
+ * @category Sequencing
+ */
+export const flatMapIO: {
+  <A, B>(f: (a: A) => IO<B>): (self: TaskOption<A>) => TaskOption<B>
+  <A, B>(self: TaskOption<A>, f: (a: A) => IO<B>): TaskOption<B>
+} = /*#__PURE__*/ _.flatMapIO(_FromIO, _FlatMap)
+
+/**
+ * @since 2.16.0
+ * @category Sequencing
+ */
+export const flatMapTask: {
+  <A, B>(f: (a: A) => Task<B>): (self: TaskOption<A>) => TaskOption<B>
+  <A, B>(self: TaskOption<A>, f: (a: A) => Task<B>): TaskOption<B>
+} = /*#__PURE__*/ _.flatMapTask(_FromTask, _FlatMap)
 
 /**
  * @since 2.10.0
  * @category Sequencing
  */
-export const flatten: <A>(mma: TaskOption<TaskOption<A>>) => TaskOption<A> = /*#__PURE__*/ chain(identity)
+export const flatten: <A>(mma: TaskOption<TaskOption<A>>) => TaskOption<A> = /*#__PURE__*/ flatMap(identity)
 
 /**
  * @since 2.10.0
  * @category Error handling
  */
-export const alt: <A>(second: Lazy<TaskOption<A>>) => (first: TaskOption<A>) => TaskOption<A> = /*#__PURE__*/ OT.alt(
+export const alt: <A>(second: LazyArg<TaskOption<A>>) => (first: TaskOption<A>) => TaskOption<A> = /*#__PURE__*/ OT.alt(
   T.Monad,
 )
 
@@ -305,7 +340,7 @@ export const alt: <A>(second: Lazy<TaskOption<A>>) => (first: TaskOption<A>) => 
  * @since 2.10.0
  * @category Error handling
  */
-export const altW: <B>(second: Lazy<TaskOption<B>>) => <A>(first: TaskOption<A>) => TaskOption<A | B> = alt as any
+export const altW: <B>(second: LazyArg<TaskOption<B>>) => <A>(first: TaskOption<A>) => TaskOption<A | B> = alt as any
 
 /** @since 2.10.0 */
 export const zero: <A>() => TaskOption<A> = /*#__PURE__*/ OT.zero(T.Pointed)
@@ -373,8 +408,6 @@ export const partitionMap: <A, B, C>(
 const _map: Functor1<URI>['map'] = (fa, f) => pipe(fa, map(f))
 const _ap: Apply1<URI>['ap'] = (fab, fa) => pipe(fab, ap(fa))
 /* istanbul ignore next */
-const _chain: Monad1<URI>['chain'] = (ma, f) => pipe(ma, chain(f))
-/* istanbul ignore next */
 const _alt: Alt1<URI>['alt'] = (fa, that) => pipe(fa, alt(that))
 /* istanbul ignore next */
 const _filter: Filterable1<URI>['filter'] = <A>(fa: TaskOption<A>, predicate: Predicate<A>) =>
@@ -413,6 +446,25 @@ export const Functor: Functor1<URI> = {
   URI,
   map: _map,
 }
+
+/**
+ * Maps the `Some` value of this `TaskOption` to the specified constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const as: {
+  <A>(a: A): <_>(self: TaskOption<_>) => TaskOption<A>
+  <_, A>(self: TaskOption<_>, a: A): TaskOption<A>
+} = dual(2, as_(Functor))
+
+/**
+ * Maps the `Some` value of this `TaskOption` to the void constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const asUnit: <_>(self: TaskOption<_>) => TaskOption<void> = asUnit_(Functor)
 
 /**
  * @since 2.10.0
@@ -468,11 +520,7 @@ export const ApplicativePar: Applicative1<URI> = {
   of,
 }
 
-const _apSeq: Apply1<URI>['ap'] = (fab, fa) =>
-  pipe(
-    fab,
-    chain(f => pipe(fa, map(f))),
-  )
+const _apSeq: Apply1<URI>['ap'] = (fab, fa) => flatMap(fab, f => pipe(fa, map(f)))
 
 /**
  * Runs computations sequentially.
@@ -503,22 +551,139 @@ export const ApplicativeSeq: Applicative1<URI> = {
  * @since 2.10.0
  * @category Instances
  */
-export const Chain: Chain1<URI> = {
+export const Chain: chainable.Chain1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
+}
+
+/**
+ * @since 2.11.0
+ * @category Instances
+ */
+export const FromEither: FromEither1<URI> = {
+  URI,
+  fromEither,
+}
+
+/**
+ * @since 2.10.0
+ * @category Instances
+ */
+export const FromIO: FromIO1<URI> = {
+  URI,
+  fromIO,
+}
+
+/**
+ * @since 2.10.0
+ * @category Instances
+ */
+export const FromTask: FromTask1<URI> = {
+  URI,
+  fromIO,
+  fromTask,
 }
 
 /**
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.10.0
- * @category Sequencing
+ * @since 2.15.0
+ * @category Combinators
  */
-export const chainFirst: <A, B>(f: (a: A) => TaskOption<B>) => (first: TaskOption<A>) => TaskOption<A> =
-  /*#__PURE__*/ chainFirst_(Chain)
+export const tap: {
+  <A, _>(self: TaskOption<A>, f: (a: A) => TaskOption<_>): TaskOption<A>
+  <A, _>(f: (a: A) => TaskOption<_>): (self: TaskOption<A>) => TaskOption<A>
+} = /*#__PURE__*/ dual(2, chainable.tap(Chain))
+
+/**
+ * Composes computations in sequence, using the return value of one computation to determine the next computation and
+ * keeping only the result of the first.
+ *
+ * @since 2.16.0
+ * @category Combinators
+ * @example
+ *   import { pipe } from 'fp-ts/function'
+ *   import * as TO from 'fp-ts/TaskOption'
+ *   import * as O from 'fp-ts/Option'
+ *   import * as E from 'fp-ts/Either'
+ *
+ *   const compute = (value: number) =>
+ *     pipe(
+ *       TO.of(value),
+ *       TO.tapEither(value => (value > 0 ? E.right('ok') : E.left('error'))),
+ *     )
+ *
+ *   async function test() {
+ *     assert.deepStrictEqual(await compute(1)(), O.of(1))
+ *     assert.deepStrictEqual(await compute(-1)(), O.none)
+ *   }
+ *
+ *   test()
+ */
+export const tapEither: {
+  <A, E, _>(f: (a: A) => Either<E, _>): (self: TaskOption<A>) => TaskOption<A>
+  <A, E, _>(self: TaskOption<A>, f: (a: A) => Either<E, _>): TaskOption<A>
+} = /*#__PURE__*/ dual(2, tapEither_(FromEither, Chain))
+
+/**
+ * Composes computations in sequence, using the return value of one computation to determine the next computation and
+ * keeping only the result of the first.
+ *
+ * @since 2.16.0
+ * @category Combinators
+ * @example
+ *   import { pipe } from 'fp-ts/function'
+ *   import * as TO from 'fp-ts/TaskOption'
+ *   import * as O from 'fp-ts/Option'
+ *   import * as Console from 'fp-ts/Console'
+ *
+ *   // Will produce `Hello, fp-ts` to the stdout
+ *   const effectA = TO.tapIO(TO.of(1), value => Console.log(`Hello, ${value}`))
+ *
+ *   // No output to the stdout
+ *   const effectB = pipe(
+ *     TO.none as TO.TaskOption<string>,
+ *     TO.tapIO(value => Console.log(`Hello, ${value}`)),
+ *   )
+ *
+ *   async function test() {
+ *     assert.deepStrictEqual(await effectA(), O.of(1))
+ *     assert.deepStrictEqual(await effectB(), O.none)
+ *   }
+ *
+ *   test()
+ */
+export const tapIO: {
+  <A, _>(f: (a: A) => IO<_>): (self: TaskOption<A>) => TaskOption<A>
+  <A, _>(self: TaskOption<A>, f: (a: A) => IO<_>): TaskOption<A>
+} = /*#__PURE__*/ dual(2, tapIO_(FromIO, Chain))
+
+/**
+ * Composes computations in sequence, using the return value of one computation to determine the next computation and
+ * keeping only the result of the first.
+ *
+ * @since 2.16.0
+ * @category Combinators
+ * @example
+ *   import * as TO from 'fp-ts/TaskOption'
+ *   import * as O from 'fp-ts/Option'
+ *   import * as T from 'fp-ts/Task'
+ *
+ *   const effect = TO.tapIO(TO.of(1), value => T.of(value + 1))
+ *
+ *   async function test() {
+ *     assert.deepStrictEqual(await effect(), O.of(1))
+ *   }
+ *
+ *   test()
+ */
+export const tapTask: {
+  <A, _>(f: (a: A) => Task<_>): (self: TaskOption<A>) => TaskOption<A>
+  <A, _>(self: TaskOption<A>, f: (a: A) => Task<_>): TaskOption<A>
+} = /*#__PURE__*/ dual(2, tapTask_(FromTask, Chain))
 
 /**
  * @since 2.10.0
@@ -567,7 +732,7 @@ export const Monad: Monad1<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -579,7 +744,7 @@ export const MonadIO: MonadIO1<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
   fromIO,
 }
 
@@ -592,7 +757,7 @@ export const MonadTask: MonadTask1<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
   fromIO,
   fromTask,
 }
@@ -624,44 +789,26 @@ export const Filterable: Filterable1<URI> = {
 
 /**
  * @since 2.10.0
- * @category Instances
- */
-export const FromIO: FromIO1<URI> = {
-  URI,
-  fromIO,
-}
-
-/**
- * @since 2.10.0
  * @category Lifting
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => IO<B>) => (...a: A) => TaskOption<B> =
   /*#__PURE__*/ fromIOK_(FromIO)
 
 /**
+ * Alias of `flatMapIO`.
+ *
  * @since 2.10.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainIOK: <A, B>(f: (a: A) => IO<B>) => (first: TaskOption<A>) => TaskOption<B> = /*#__PURE__*/ chainIOK_(
-  FromIO,
-  Chain,
-)
+export const chainIOK: <A, B>(f: (a: A) => IO<B>) => (first: TaskOption<A>) => TaskOption<B> = flatMapIO
 
 /**
+ * Alias of `tapIO`.
+ *
  * @since 2.10.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => (first: TaskOption<A>) => TaskOption<A> =
-  /*#__PURE__*/ chainFirstIOK_(FromIO, Chain)
-
-/**
- * @since 2.11.0
- * @category Instances
- */
-export const FromEither: FromEither1<URI> = {
-  URI,
-  fromEither,
-}
+export const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => (first: TaskOption<A>) => TaskOption<A> = tapIO
 
 /**
  * @since 2.12.0
@@ -679,21 +826,12 @@ export const chainEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: TaskOpti
   /*#__PURE__*/ chainEitherK_(FromEither, Chain)
 
 /**
+ * Alias of `tapEither`.
+ *
  * @since 2.12.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: TaskOption<A>) => TaskOption<A> =
-  /*#__PURE__*/ chainFirstEitherK_(FromEither, Chain)
-
-/**
- * @since 2.10.0
- * @category Instances
- */
-export const FromTask: FromTask1<URI> = {
-  URI,
-  fromIO,
-  fromTask,
-}
+export const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: TaskOption<A>) => TaskOption<A> = tapEither
 
 /**
  * @since 2.10.0
@@ -703,18 +841,20 @@ export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => T.
   /*#__PURE__*/ fromTaskK_(FromTask)
 
 /**
+ * Alias of `flatMapTask`.
+ *
  * @since 2.10.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => (first: TaskOption<A>) => TaskOption<B> =
-  /*#__PURE__*/ chainTaskK_(FromTask, Chain)
+export const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => (first: TaskOption<A>) => TaskOption<B> = flatMapTask
 
 /**
+ * Alias of `tapTask`.
+ *
  * @since 2.10.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => (first: TaskOption<A>) => TaskOption<A> =
-  /*#__PURE__*/ chainFirstTaskK_(FromTask, Chain)
+export const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => (first: TaskOption<A>) => TaskOption<A> = tapTask
 
 // -------------------------------------------------------------------------------------
 // do notation
@@ -746,7 +886,7 @@ export {
  * @since 2.10.0
  * @category Do notation
  */
-export const bind = /*#__PURE__*/ bind_(Chain)
+export const bind = /*#__PURE__*/ chainable.bind(Chain)
 
 /**
  * @since 2.10.0
@@ -881,3 +1021,23 @@ export const traverseSeqArray: <A, B>(
  */
 export const sequenceSeqArray: <A>(as: ReadonlyArray<TaskOption<A>>) => TaskOption<ReadonlyArray<A>> =
   /*#__PURE__*/ traverseSeqArray(identity)
+
+// -------------------------------------------------------------------------------------
+// legacy
+// -------------------------------------------------------------------------------------
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.10.0
+ * @category Legacy
+ */
+export const chain: <A, B>(f: (a: A) => TaskOption<B>) => (ma: TaskOption<A>) => TaskOption<B> = flatMap
+
+/**
+ * Alias of `tap`.
+ *
+ * @since 2.10.0
+ * @category Legacy
+ */
+export const chainFirst: <A, B>(f: (a: A) => TaskOption<B>) => (first: TaskOption<A>) => TaskOption<A> = tap

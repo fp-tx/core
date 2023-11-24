@@ -1,14 +1,15 @@
-import * as U from './util'
+import * as assert from 'assert'
+
 import { getMonoid } from '../src/Array'
 import { left, right } from '../src/Either'
 import { identity, pipe } from '../src/function'
-import * as S from '../src/string'
 import * as O from '../src/Option'
 import * as _ from '../src/ReadonlyTuple'
-import * as assert from 'assert'
+import * as S from '../src/string'
+import * as U from './util'
 
-describe('ReadonlyTuple', () => {
-  describe('pipeables', () => {
+describe.concurrent('ReadonlyTuple', () => {
+  describe.concurrent('pipeables', () => {
     it('compose', () => {
       U.deepStrictEqual(pipe([true, 2] as const, _.compose([1, 'a'])), [true, 'a'])
     })

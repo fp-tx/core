@@ -1,14 +1,14 @@
+import * as E from '../src/Either'
 import { pipe, SK } from '../src/function'
-import * as O from '../src/Option'
-import * as RA from '../src/ReadonlyArray'
-import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import * as I from '../src/IO'
 import * as IE from '../src/IOEither'
 import * as _ from '../src/IOOption'
+import * as O from '../src/Option'
+import * as RA from '../src/ReadonlyArray'
+import { type ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import * as U from './util'
-import * as E from '../src/Either'
 
-describe('IOOption', () => {
+describe.concurrent('IOOption', () => {
   // -------------------------------------------------------------------------------------
   // type class members
   // -------------------------------------------------------------------------------------
@@ -22,6 +22,20 @@ describe('IOOption', () => {
     U.deepStrictEqual(pipe(_.some(U.double), _.ap(_.none))(), O.none)
     U.deepStrictEqual(pipe(_.none, _.ap(_.some(2)))(), O.none)
     U.deepStrictEqual(pipe(_.none, _.ap(_.none))(), O.none)
+  })
+
+  it('flatMap', () => {
+    const f = (n: number) => _.some(n * 2)
+    const g = () => _.none
+    U.deepStrictEqual(pipe(_.some(1), _.flatMap(f))(), O.some(2))
+    U.deepStrictEqual(pipe(_.none, _.flatMap(f))(), O.none)
+    U.deepStrictEqual(pipe(_.some(1), _.flatMap(g))(), O.none)
+    U.deepStrictEqual(pipe(_.none, _.flatMap(g))(), O.none)
+
+    U.deepStrictEqual(_.flatMap(_.some(1), f)(), O.some(2))
+    U.deepStrictEqual(_.flatMap(_.none, f)(), O.none)
+    U.deepStrictEqual(_.flatMap(_.some(1), g)(), O.none)
+    U.deepStrictEqual(_.flatMap(_.none, g)(), O.none)
   })
 
   it('chain', () => {
@@ -158,7 +172,7 @@ describe('IOOption', () => {
     U.deepStrictEqual(f(_.none)(), O.none)
   })
 
-  describe('array utils', () => {
+  describe.concurrent('array utils', () => {
     const input: ReadonlyNonEmptyArray<string> = ['a', 'b']
 
     it('traverseReadonlyArrayWithIndex', () => {
@@ -233,12 +247,77 @@ describe('IOOption', () => {
     U.deepStrictEqual(g(_.of('aaa'))(), O.none)
   })
 
+  it('tapEither', () => {
+    const f = (s: string) => (s.length <= 2 ? E.right(s + '!') : E.left(s.length))
+    const g = _.tapEither(f)
+    U.deepStrictEqual(g(_.of(''))(), O.some(''))
+    U.deepStrictEqual(g(_.of('a'))(), O.some('a'))
+    U.deepStrictEqual(g(_.of('aa'))(), O.some('aa'))
+    U.deepStrictEqual(g(_.of('aaa'))(), O.none)
+  })
+
   it('chainFirstEitherK', () => {
     const f = (s: string) => (s.length <= 2 ? E.right(s + '!') : E.left(s.length))
     const g = _.chainFirstEitherK(f)
     U.deepStrictEqual(g(_.of(''))(), O.some(''))
     U.deepStrictEqual(g(_.of('a'))(), O.some('a'))
     U.deepStrictEqual(g(_.of('aa'))(), O.some('aa'))
+    U.deepStrictEqual(g(_.of('aaa'))(), O.none)
+  })
+
+  it('tapIO', () => {
+    const ref: Array<number> = []
+    const add = (value: number) => () => ref.push(value)
+
+    U.deepStrictEqual(pipe(_.of(1), _.tapIO(add))(), O.of(1))
+    U.deepStrictEqual(pipe(_.none, _.tapIO(add))(), O.none)
+    U.deepStrictEqual(ref, [1])
+  })
+
+  it('as', () => {
+    U.deepStrictEqual(pipe(_.some('a'), _.as('b'))(), O.some('b'))
+    U.deepStrictEqual(_.as(_.of('a'), 'b')(), O.some('b'))
+    U.deepStrictEqual(_.as(_.none, 'b')(), O.none)
+  })
+
+  it('asUnit', () => {
+    U.deepStrictEqual(pipe(_.some('a'), _.asUnit)(), O.some(undefined))
+  })
+
+  it('flatMapIO', () => {
+    U.deepStrictEqual(
+      pipe(
+        _.of(1),
+        _.flatMapIO(() => I.of(2)),
+      )(),
+      O.of(2),
+    )
+  })
+
+  it('flatMapOption', () => {
+    const f = _.flatMapOption((n: number) => (n > 0 ? O.some(n) : O.none))
+    U.deepStrictEqual(f(_.some(1))(), O.some(1))
+    U.deepStrictEqual(f(_.some(-1))(), O.none)
+    U.deepStrictEqual(f(_.none)(), O.none)
+  })
+
+  it('flatMapNullable', () => {
+    const f = _.flatMapNullable((n: number) =>
+      n > 0 ? n
+      : n === 0 ? null
+      : undefined,
+    )
+    U.deepStrictEqual(f(_.of(1))(), O.some(1))
+    U.deepStrictEqual(f(_.of(0))(), O.none)
+    U.deepStrictEqual(f(_.of(-1))(), O.none)
+  })
+
+  it('flatMapEither', () => {
+    const f = (s: string) => (s.length <= 2 ? E.right(s + '!') : E.left(s.length))
+    const g = _.flatMapEither(f)
+    U.deepStrictEqual(g(_.of(''))(), O.some('!'))
+    U.deepStrictEqual(g(_.of('a'))(), O.some('a!'))
+    U.deepStrictEqual(g(_.of('aa'))(), O.some('aa!'))
     U.deepStrictEqual(g(_.of('aaa'))(), O.none)
   })
 })

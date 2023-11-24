@@ -35,26 +35,8 @@
  *   )
  */
 import { tuple } from './function'
-import {
-  type Functor,
-  type Functor1,
-  type Functor2,
-  type Functor2C,
-  type Functor3,
-  type Functor3C,
-  type Functor4,
-} from './Functor'
-import {
-  type HKT,
-  type Kind,
-  type Kind2,
-  type Kind3,
-  type Kind4,
-  type URIS,
-  type URIS2,
-  type URIS3,
-  type URIS4,
-} from './HKT'
+import { type Functor, type Functor1, type Functor2, type Functor2C, type Functor3, type Functor3C, type Functor4 } from './Functor'
+import { type HKT, type Kind, type Kind2, type Kind3, type Kind4, type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
 import * as _ from './internal'
 import { type Semigroup } from './Semigroup'
 
@@ -618,11 +600,7 @@ function getRecordConstructor(keys: ReadonlyArray<string>) {
     case 2:
       return (a: any) => (b: any) => ({ [keys[0]]: a, [keys[1]]: b })
     case 3:
-      return (a: any) => (b: any) => (c: any) => ({
-        [keys[0]]: a,
-        [keys[1]]: b,
-        [keys[2]]: c,
-      })
+      return (a: any) => (b: any) => (c: any) => ({ [keys[0]]: a, [keys[1]]: b, [keys[2]]: c })
     case 4:
       return (a: any) => (b: any) => (c: any) => (d: any) => ({
         [keys[0]]: a,

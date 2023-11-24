@@ -22,7 +22,7 @@ import { type Eq } from './Eq'
 import { type Extend1 } from './Extend'
 import { type Foldable1 } from './Foldable'
 import { type FoldableWithIndex1 } from './FoldableWithIndex'
-import { identity, type Lazy, pipe } from './function'
+import { dual, identity, type LazyArg, pipe } from './function'
 import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
 import { type FunctorWithIndex1 } from './FunctorWithIndex'
 import { type HKT } from './HKT'
@@ -33,12 +33,14 @@ import { getMonoid, type Ord } from './Ord'
 import { type Pointed1 } from './Pointed'
 import { type Predicate } from './Predicate'
 import * as RNEA from './ReadonlyNonEmptyArray'
-import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
-import { type Semigroup } from './Semigroup'
+import * as Se from './Semigroup'
 import { type Show } from './Show'
 import { type PipeableTraverse1, type Traversable1 } from './Traversable'
 import { type PipeableTraverseWithIndex1, type TraversableWithIndex1 } from './TraversableWithIndex'
+
+import Semigroup = Se.Semigroup
+import ReadonlyNonEmptyArray = RNEA.ReadonlyNonEmptyArray
 
 // -------------------------------------------------------------------------------------
 // model
@@ -558,8 +560,6 @@ const _mapWithIndex: FunctorWithIndex1<URI, number>['mapWithIndex'] = (fa, f) =>
 /* istanbul ignore next */
 const _ap: Apply1<URI>['ap'] = (fab, fa) => pipe(fab, ap(fa))
 /* istanbul ignore next */
-const _chain: Monad1<URI>['chain'] = (ma, f) => pipe(ma, chain(f))
-/* istanbul ignore next */
 const _extend: Extend1<URI>['extend'] = (wa, f) => pipe(wa, extend(f))
 /* istanbul ignore next */
 const _reduce: Foldable1<URI>['reduce'] = (fa, b, f) => pipe(fa, reduce(b, f))
@@ -618,7 +618,7 @@ const _traverseWithIndex: TraversableWithIndex1<URI, number>['traverseWithIndex'
  *   )
  */
 export const altW =
-  <B>(that: Lazy<NonEmptyArray<B>>) =>
+  <B>(that: LazyArg<NonEmptyArray<B>>) =>
   <A>(as: NonEmptyArray<A>): NonEmptyArray<A | B> =>
     pipe(as, concatW(that()))
 
@@ -642,7 +642,7 @@ export const altW =
  *     [1, 2, 3, 4, 5],
  *   )
  */
-export const alt: <A>(that: Lazy<NonEmptyArray<A>>) => (fa: NonEmptyArray<A>) => NonEmptyArray<A> = altW
+export const alt: <A>(that: LazyArg<NonEmptyArray<A>>) => (fa: NonEmptyArray<A>) => NonEmptyArray<A> = altW
 
 /**
  * Apply a function to an argument under a type constructor.
@@ -650,12 +650,10 @@ export const alt: <A>(that: Lazy<NonEmptyArray<A>>) => (fa: NonEmptyArray<A>) =>
  * @since 2.0.0
  */
 export const ap = <A>(as: NonEmptyArray<A>): (<B>(fab: NonEmptyArray<(a: A) => B>) => NonEmptyArray<B>) =>
-  chain(f => pipe(as, map(f)))
+  flatMap(f => pipe(as, map(f)))
 
 /**
- * Composes computations in sequence, using the return value of one computation to determine the next computation.
- *
- * @since 2.0.0
+ * @since 2.14.0
  * @category Sequencing
  * @example
  *   import * as NEA from 'fp-ts/NonEmptyArray'
@@ -664,13 +662,22 @@ export const ap = <A>(as: NonEmptyArray<A>): (<B>(fab: NonEmptyArray<(a: A) => B
  *   assert.deepStrictEqual(
  *     pipe(
  *       [1, 2, 3],
- *       NEA.chain(n => [`a${n}`, `b${n}`]),
+ *       NEA.flatMap(n => [`a${n}`, `b${n}`]),
  *     ),
  *     ['a1', 'b1', 'a2', 'b2', 'a3', 'b3'],
  *   )
  */
-export const chain = <A, B>(f: (a: A) => NonEmptyArray<B>): ((ma: NonEmptyArray<A>) => NonEmptyArray<B>) =>
-  chainWithIndex((_, a) => f(a))
+export const flatMap: {
+  <A, B>(f: (a: A, i: number) => NonEmptyArray<B>): (ma: NonEmptyArray<A>) => NonEmptyArray<B>
+  <A, B>(ma: NonEmptyArray<A>, f: (a: A, i: number) => NonEmptyArray<B>): NonEmptyArray<B>
+} = /*#__PURE__*/ dual(
+  2,
+  <A, B>(ma: NonEmptyArray<A>, f: (a: A, i: number) => NonEmptyArray<B>): NonEmptyArray<B> =>
+    pipe(
+      ma,
+      chainWithIndex((i, a) => f(a, i)),
+    ),
+)
 
 /** @since 2.0.0 */
 export const extend =
@@ -692,7 +699,7 @@ export const duplicate: <A>(ma: NonEmptyArray<A>) => NonEmptyArray<NonEmptyArray
  * @since 2.5.0
  * @category Sequencing
  */
-export const flatten: <A>(mma: NonEmptyArray<NonEmptyArray<A>>) => NonEmptyArray<A> = /*#__PURE__*/ chain(identity)
+export const flatten: <A>(mma: NonEmptyArray<NonEmptyArray<A>>) => NonEmptyArray<A> = /*#__PURE__*/ flatMap(identity)
 
 /**
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
@@ -915,7 +922,7 @@ export const Chain: Chain1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -937,7 +944,7 @@ export const Monad: Monad1<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -1162,6 +1169,18 @@ export const updateLast = <A>(a: A): ((as: NonEmptyArray<A>) => NonEmptyArray<A>
 export const intercalate: <A>(S: Semigroup<A>) => (middle: A) => (as: NonEmptyArray<A>) => A = RNEA.intercalate
 
 // -------------------------------------------------------------------------------------
+// legacy
+// -------------------------------------------------------------------------------------
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.0.0
+ * @category Legacy
+ */
+export const chain: <A, B>(f: (a: A) => NonEmptyArray<B>) => (ma: NonEmptyArray<A>) => NonEmptyArray<B> = flatMap
+
+// -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
 
@@ -1287,7 +1306,7 @@ export const nonEmptyArray: Monad1<URI> &
   map: _map,
   mapWithIndex: _mapWithIndex,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
   extend: _extend,
   extract: extract,
   reduce: _reduce,

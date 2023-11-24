@@ -3,11 +3,11 @@ import * as I from '../src/IO'
 import * as R from '../src/Reader'
 import * as _ from '../src/ReaderIO'
 import * as RA from '../src/ReadonlyArray'
-import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
+import { type ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import * as S from '../src/string'
 import * as U from './util'
 
-describe('ReaderIO', () => {
+describe.concurrent('ReaderIO', () => {
   // -------------------------------------------------------------------------------------
   // pipeables
   // -------------------------------------------------------------------------------------
@@ -28,10 +28,22 @@ describe('ReaderIO', () => {
     U.deepStrictEqual(pipe(_.of('a'), _.apSecond(_.of('b')))({})(), 'b')
   })
 
+  it('flatMap', () => {
+    const f = (a: string) => _.of(a.length)
+    U.deepStrictEqual(pipe(_.of('foo'), _.flatMap(f))({})(), 3)
+    U.deepStrictEqual(_.flatMap(_.of('foo'), f)({})(), 3)
+  })
+
   it('chain', () => {
     const f = (a: string) => _.of(a.length)
     U.deepStrictEqual(pipe(_.of('foo'), _.chain(f))({})(), 3)
     U.deepStrictEqual(_.Monad.chain(_.of('foo'), f)({})(), 3)
+  })
+
+  it('tap', () => {
+    const f = (a: string) => _.of(a.length)
+    U.deepStrictEqual(pipe(_.of('foo'), _.tap(f))({})(), 'foo')
+    U.deepStrictEqual(_.tap(_.of('foo'), f)({})(), 'foo')
   })
 
   it('chainFirst', () => {
@@ -119,13 +131,10 @@ describe('ReaderIO', () => {
   })
 
   it('apS', () => {
-    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(undefined)(), {
-      a: 1,
-      b: 'b',
-    })
+    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(undefined)(), { a: 1, b: 'b' })
   })
 
-  describe('array utils', () => {
+  describe.concurrent('array utils', () => {
     const input: ReadonlyNonEmptyArray<string> = ['a', 'b']
 
     it('traverseReadonlyArrayWithIndex', () => {
@@ -149,5 +158,39 @@ describe('ReaderIO', () => {
       U.deepStrictEqual(pipe([append(1), append(2)], _.sequenceArray)(undefined)(), [1, 2])
       U.deepStrictEqual(log, [1, 2])
     })
+  })
+
+  it('tapIO', () => {
+    const ref: Array<number> = []
+    const add = (value: number) => () => ref.push(value)
+
+    U.deepStrictEqual(pipe(_.ask<number>(), _.tapIO(add))(1)(), 1)
+    U.deepStrictEqual(ref, [1])
+  })
+
+  it('as', () => {
+    U.deepStrictEqual(pipe(_.of('a'), _.as('b'))('c')(), 'b')
+  })
+
+  it('asUnit', () => {
+    U.deepStrictEqual(pipe(_.of('a'), _.asUnit)('b')(), undefined)
+  })
+
+  it('tapReader', () => {
+    U.deepStrictEqual(_.tapReader(_.of(1), () => R.of(2))({})(), 1)
+  })
+
+  it('flatMapIO', () => {
+    U.deepStrictEqual(
+      pipe(
+        _.of(1),
+        _.flatMapIO(() => I.of(2)),
+      )(undefined)(),
+      2,
+    )
+  })
+
+  it('flatMapReader', () => {
+    U.deepStrictEqual(_.flatMapReader(_.of(1), () => R.of(2))(undefined)(), 2)
   })
 })

@@ -3,7 +3,7 @@ import * as E from '../src/Either'
 import { pipe } from '../src/function'
 import * as N from '../src/number'
 import * as O from '../src/Option'
-import { ReadonlyRecord } from '../src/ReadonlyRecord'
+import { type ReadonlyRecord } from '../src/ReadonlyRecord'
 import * as _ from '../src/Refinement'
 import * as S from '../src/string'
 import * as U from './util'
@@ -16,7 +16,7 @@ type NonEmptyString = string & NonEmptyStringBrand
 
 const NonEmptyString: _.Refinement<string, NonEmptyString> = (s): s is NonEmptyString => s.length > 0
 
-describe('Refinement', () => {
+describe.concurrent('Refinement', () => {
   it('not', () => {
     const r1: _.Refinement<string | number, string> = S.isString
     const r2 = _.not(r1)

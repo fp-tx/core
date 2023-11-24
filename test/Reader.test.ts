@@ -2,7 +2,7 @@ import { pipe } from '../src/function'
 import * as N from '../src/number'
 import * as _ from '../src/Reader'
 import * as RA from '../src/ReadonlyArray'
-import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
+import { type ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import * as S from '../src/string'
 import * as U from './util'
 
@@ -10,8 +10,8 @@ interface Env {
   readonly count: number
 }
 
-describe('Reader', () => {
-  describe('pipeables', () => {
+describe.concurrent('Reader', () => {
+  describe.concurrent('pipeables', () => {
     it('map', () => {
       U.deepStrictEqual(pipe(_.of(1), _.map(U.double))({}), 2)
     })
@@ -38,9 +38,21 @@ describe('Reader', () => {
       U.deepStrictEqual(pipe(_.of<{ readonly x: number }, string>('foo'), _.apSecondW(fb))({ x: 1, k: 'v' }), true)
     })
 
-    it('chain', () => {
+    it('flatMap', () => {
       const f = (s: string): _.Reader<object, number> => _.of(s.length)
       U.deepStrictEqual(pipe(_.of('foo'), _.chain(f))({}), 3)
+    })
+
+    it('chain', () => {
+      const f = (s: string): _.Reader<object, number> => _.of(s.length)
+      U.deepStrictEqual(pipe(_.of('foo'), _.flatMap(f))({}), 3)
+      U.deepStrictEqual(_.flatMap(_.of('foo'), f)({}), 3)
+    })
+
+    it('tap', () => {
+      const f = (s: string): _.Reader<object, number> => _.of(s.length)
+      U.deepStrictEqual(pipe(_.of('foo'), _.tap(f))({}), 'foo')
+      U.deepStrictEqual(_.tap(_.of('foo'), f)({}), 'foo')
     })
 
     it('chainFirst', () => {
@@ -145,13 +157,10 @@ describe('Reader', () => {
   })
 
   it('apS', () => {
-    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(undefined), {
-      a: 1,
-      b: 'b',
-    })
+    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(undefined), { a: 1, b: 'b' })
   })
 
-  describe('array utils', () => {
+  describe.concurrent('array utils', () => {
     const input: ReadonlyNonEmptyArray<string> = ['a', 'b']
 
     it('traverseReadonlyArrayWithIndex', () => {

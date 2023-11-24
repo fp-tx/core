@@ -5,13 +5,13 @@ import * as R from '../src/Reader'
 import * as RIO from '../src/ReaderIO'
 import * as _ from '../src/ReaderTask'
 import * as RA from '../src/ReadonlyArray'
-import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
+import { type ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import { semigroupString } from '../src/Semigroup'
 import * as S from '../src/string'
 import * as T from '../src/Task'
 import * as U from './util'
 
-describe('ReaderTask', () => {
+describe.concurrent('ReaderTask', () => {
   // -------------------------------------------------------------------------------------
   // pipeables
   // -------------------------------------------------------------------------------------
@@ -32,10 +32,22 @@ describe('ReaderTask', () => {
     U.deepStrictEqual(await pipe(_.of('a'), _.apSecond(_.of('b')))({})(), 'b')
   })
 
+  it('flatMap', async () => {
+    const f = (a: string) => _.of(a.length)
+    U.deepStrictEqual(await pipe(_.of('foo'), _.flatMap(f))({})(), 3)
+    U.deepStrictEqual(await _.flatMap(_.of('foo'), f)({})(), 3)
+  })
+
   it('chain', async () => {
     const f = (a: string) => _.of(a.length)
     U.deepStrictEqual(await pipe(_.of('foo'), _.chain(f))({})(), 3)
     U.deepStrictEqual(await _.Monad.chain(_.of('foo'), f)({})(), 3)
+  })
+
+  it('tap', async () => {
+    const f = (a: string) => _.of(a.length)
+    U.deepStrictEqual(await pipe(_.of('foo'), _.tap(f))({})(), 'foo')
+    U.deepStrictEqual(await _.tap(_.of('foo'), f)({})(), 'foo')
   })
 
   it('chainFirst', async () => {
@@ -113,6 +125,11 @@ describe('ReaderTask', () => {
   it('chainTaskK', async () => {
     const f = (s: string) => T.of(s.length)
     U.deepStrictEqual(await pipe(_.of('a'), _.chainTaskK(f))(undefined)(), 1)
+  })
+
+  it('flatMapTask', async () => {
+    const f = (s: string) => T.of(s.length)
+    U.deepStrictEqual(await pipe(_.of('a'), _.flatMapTask(f))(undefined)(), 1)
   })
 
   it('chainFirstTaskK', async () => {
@@ -199,7 +216,7 @@ describe('ReaderTask', () => {
     U.deepStrictEqual(await pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(undefined)(), { a: 1, b: 'b' })
   })
 
-  describe('array utils', () => {
+  describe.concurrent('array utils', () => {
     const input: ReadonlyNonEmptyArray<string> = ['a', 'b']
 
     it('traverseReadonlyArrayWithIndex', async () => {
@@ -274,5 +291,55 @@ describe('ReaderTask', () => {
       U.deepStrictEqual(await pipe(as, _.sequenceSeqArray)(undefined)(), [0, 1, 2, 3])
       U.deepStrictEqual(log, [0, 1, 2, 3])
     })
+  })
+
+  it('tapIO', async () => {
+    const ref: Array<number> = []
+    const add = (value: number) => () => ref.push(value)
+
+    U.deepStrictEqual(await pipe(_.ask<number>(), _.tapIO(add))(1)(), 1)
+    U.deepStrictEqual(ref, [1])
+  })
+
+  it('tapTask', async () => {
+    const ref: Array<number> = []
+    const add = (value: number) => T.fromIO(() => ref.push(value))
+
+    U.deepStrictEqual(await pipe(_.ask<number>(), _.tapTask(add))(1)(), 1)
+    U.deepStrictEqual(ref, [1])
+  })
+
+  it('as', async () => {
+    U.deepStrictEqual(await pipe(_.of('a'), _.as('b'))('c')(), 'b')
+  })
+
+  it('asUnit', async () => {
+    U.deepStrictEqual(await pipe(_.of('a'), _.asUnit)('b')(), undefined)
+  })
+
+  it('tapReader', async () => {
+    U.deepStrictEqual(await _.tapReader(_.of(1), () => R.of(2))({})(), 1)
+  })
+
+  it('tapReaderIO', async () => {
+    U.deepStrictEqual(await _.tapReaderIO(_.of(1), () => RIO.of(2))({})(), 1)
+  })
+
+  it('flatMapIO', async () => {
+    U.deepStrictEqual(
+      await pipe(
+        _.of(1),
+        _.flatMapIO(() => I.of(2)),
+      )(undefined)(),
+      2,
+    )
+  })
+
+  it('flatMapReader', async () => {
+    U.deepStrictEqual(await _.flatMapReader(_.of(1), () => R.of(2))(undefined)(), 2)
+  })
+
+  it('flatMapReaderIO', async () => {
+    U.deepStrictEqual(await _.flatMapReaderIO(_.of(1), () => RIO.of(2))(undefined)(), 2)
   })
 })

@@ -1,8 +1,8 @@
-import * as U from './util'
-import * as _ from '../src/string'
 import { pipe } from '../src/function'
+import * as _ from '../src/string'
+import * as U from './util'
 
-describe('string', () => {
+describe.concurrent('string', () => {
   // -------------------------------------------------------------------------------------
   // instances
   // -------------------------------------------------------------------------------------

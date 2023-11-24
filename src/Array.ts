@@ -20,7 +20,7 @@ import { type FilterableWithIndex1, type PredicateWithIndex, type RefinementWith
 import { type Foldable1 } from './Foldable'
 import { type FoldableWithIndex1 } from './FoldableWithIndex'
 import { type FromEither1, fromEitherK as fromEitherK_ } from './FromEither'
-import { identity, type Lazy, pipe } from './function'
+import { dual, identity, type LazyArg, pipe } from './function'
 import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
 import { type FunctorWithIndex1 } from './FunctorWithIndex'
 import { type HKT } from './HKT'
@@ -29,7 +29,6 @@ import { type Magma } from './Magma'
 import { type Monad1 } from './Monad'
 import { type Monoid } from './Monoid'
 import * as NEA from './NonEmptyArray'
-import { type NonEmptyArray } from './NonEmptyArray'
 import { type Option } from './Option'
 import { type Ord } from './Ord'
 import { type Pointed1 } from './Pointed'
@@ -51,6 +50,8 @@ import {
   witherDefault,
 } from './Witherable'
 import { guard as guard_, type Zero1 } from './Zero'
+
+import NonEmptyArray = NEA.NonEmptyArray
 
 // -------------------------------------------------------------------------------------
 // refinements
@@ -175,7 +176,7 @@ export const replicate = <A>(n: number, a: A): Array<A> => makeBy(n, () => a)
  * @example
  *   import { fromPredicate } from 'fp-ts/Array'
  *   import { pipe } from 'fp-ts/function'
- *   import { isString } from 'fp-ts/lib/string'
+ *   import { isString } from 'fp-ts/string'
  *
  *   assert.deepStrictEqual(pipe('a', fromPredicate(isString)), ['a'])
  *   assert.deepStrictEqual(pipe(7, fromPredicate(isString)), [])
@@ -257,7 +258,7 @@ export const fromEither: <A>(fa: Either<unknown, A>) => Array<A> = e => (_.isLef
  *   assert.deepStrictEqual(pipe([], matcherW), 'No elements')
  */
 export const matchW =
-  <B, A, C>(onEmpty: Lazy<B>, onNonEmpty: (as: NonEmptyArray<A>) => C) =>
+  <B, A, C>(onEmpty: LazyArg<B>, onNonEmpty: (as: NonEmptyArray<A>) => C) =>
   (as: Array<A>): B | C =>
     isNonEmpty(as) ? onNonEmpty(as) : onEmpty()
 
@@ -278,7 +279,7 @@ export const matchW =
  *   assert.deepStrictEqual(pipe([1, 2, 3, 4], matcher), 'Found 4 element(s)')
  *   assert.deepStrictEqual(pipe([], matcher), 'No elements')
  */
-export const match: <B, A>(onEmpty: Lazy<B>, onNonEmpty: (as: NonEmptyArray<A>) => B) => (as: Array<A>) => B = matchW
+export const match: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (as: NonEmptyArray<A>) => B) => (as: Array<A>) => B = matchW
 
 /**
  * Less strict version of [`matchLeft`](#matchleft). It will work when `onEmpty` and `onNonEmpty` have different return
@@ -297,7 +298,7 @@ export const match: <B, A>(onEmpty: Lazy<B>, onNonEmpty: (as: NonEmptyArray<A>) 
  *   assert.strictEqual(f([]), 0)
  */
 export const matchLeftW =
-  <B, A, C>(onEmpty: Lazy<B>, onNonEmpty: (head: A, tail: Array<A>) => C) =>
+  <B, A, C>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: Array<A>) => C) =>
   (as: Array<A>): B | C =>
     isNonEmpty(as) ? onNonEmpty(NEA.head(as), NEA.tail(as)) : onEmpty()
 
@@ -316,7 +317,7 @@ export const matchLeftW =
  *   )
  *   assert.strictEqual(len([1, 2, 3]), 3)
  */
-export const matchLeft: <B, A>(onEmpty: Lazy<B>, onNonEmpty: (head: A, tail: Array<A>) => B) => (as: Array<A>) => B =
+export const matchLeft: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: Array<A>) => B) => (as: Array<A>) => B =
   matchLeftW
 
 /**
@@ -325,7 +326,7 @@ export const matchLeft: <B, A>(onEmpty: Lazy<B>, onNonEmpty: (head: A, tail: Arr
  * @since 2.0.0
  * @category Pattern matching
  */
-export const foldLeft: <A, B>(onEmpty: Lazy<B>, onNonEmpty: (head: A, tail: Array<A>) => B) => (as: Array<A>) => B =
+export const foldLeft: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: Array<A>) => B) => (as: Array<A>) => B =
   matchLeft
 
 /**
@@ -345,7 +346,7 @@ export const foldLeft: <A, B>(onEmpty: Lazy<B>, onNonEmpty: (head: A, tail: Arra
  *   assert.strictEqual(f([]), 0)
  */
 export const matchRightW =
-  <B, A, C>(onEmpty: Lazy<B>, onNonEmpty: (init: Array<A>, last: A) => C) =>
+  <B, A, C>(onEmpty: LazyArg<B>, onNonEmpty: (init: Array<A>, last: A) => C) =>
   (as: Array<A>): B | C =>
     isNonEmpty(as) ? onNonEmpty(NEA.init(as), NEA.last(as)) : onEmpty()
 
@@ -364,8 +365,10 @@ export const matchRightW =
  *   )
  *   assert.strictEqual(len([1, 2, 3]), 3)
  */
-export const matchRight: <B, A>(onEmpty: Lazy<B>, onNonEmpty: (init: Array<A>, last: A) => B) => (as: Array<A>) => B =
-  matchRightW
+export const matchRight: <B, A>(
+  onEmpty: LazyArg<B>,
+  onNonEmpty: (init: Array<A>, last: A) => B,
+) => (as: Array<A>) => B = matchRightW
 
 /**
  * Alias of [`matchRight`](#matchright).
@@ -373,7 +376,7 @@ export const matchRight: <B, A>(onEmpty: Lazy<B>, onNonEmpty: (init: Array<A>, l
  * @since 2.0.0
  * @category Pattern matching
  */
-export const foldRight: <A, B>(onEmpty: Lazy<B>, onNonEmpty: (init: Array<A>, last: A) => B) => (as: Array<A>) => B =
+export const foldRight: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (init: Array<A>, last: A) => B) => (as: Array<A>) => B =
   matchRight
 
 // -------------------------------------------------------------------------------------
@@ -636,14 +639,8 @@ export interface Spanned<I, R> {
  *   import { spanLeft } from 'fp-ts/Array'
  *
  *   const isOdd = (n: number) => n % 2 === 1
- *   assert.deepStrictEqual(spanLeft(isOdd)([1, 3, 2, 4, 5]), {
- *     init: [1, 3],
- *     rest: [2, 4, 5],
- *   })
- *   assert.deepStrictEqual(spanLeft(isOdd)([0, 2, 4, 5]), {
- *     init: [],
- *     rest: [0, 2, 4, 5],
- *   })
+ *   assert.deepStrictEqual(spanLeft(isOdd)([1, 3, 2, 4, 5]), { init: [1, 3], rest: [2, 4, 5] })
+ *   assert.deepStrictEqual(spanLeft(isOdd)([0, 2, 4, 5]), { init: [], rest: [0, 2, 4, 5] })
  *   assert.deepStrictEqual(spanLeft(isOdd)([1, 3, 5]), { init: [1, 3, 5], rest: [] })
  */
 export function spanLeft<A, B extends A>(refinement: Refinement<A, B>): (as: Array<A>) => Spanned<B, A>
@@ -1327,11 +1324,7 @@ export function comprehension<A, R>(
   g: (...xs: Array<A>) => boolean = () => true,
 ): Array<R> {
   const go = (scope: Array<A>, input: Array<Array<A>>): Array<R> =>
-    isNonEmpty(input) ?
-      pipe(
-        NEA.head(input),
-        chain(x => go(pipe(scope, append(x)), NEA.tail(input))),
-      )
+    isNonEmpty(input) ? flatMap(NEA.head(input), a => go(pipe(scope, append(a)), NEA.tail(input)))
     : g(...scope) ? [f(...scope)]
     : []
   return go([], input)
@@ -1439,7 +1432,6 @@ const _map: Monad1<URI>['map'] = (fa, f) => pipe(fa, map(f))
 /* istanbul ignore next */
 const _mapWithIndex: FunctorWithIndex1<URI, number>['mapWithIndex'] = (fa, f) => pipe(fa, mapWithIndex(f))
 const _ap: Apply1<URI>['ap'] = (fab, fa) => pipe(fab, ap(fa))
-const _chain: Chain1<URI>['chain'] = (ma, f) => pipe(ma, chain(f))
 /* istanbul ignore next */
 const _filter: Filterable1<URI>['filter'] = <A>(fa: Array<A>, predicate: Predicate<A>) => pipe(fa, filter(predicate))
 /* istanbul ignore next */
@@ -1577,7 +1569,7 @@ export const map: <A, B>(f: (a: A) => B) => (fa: Array<A>) => Array<B> = f => fa
  *     pipe(['a', 'b'], map(f), ap([1, 2]), ap(['😀', '😫', '😎'])),
  *   )
  */
-export const ap: <A>(fa: Array<A>) => <B>(fab: Array<(a: A) => B>) => Array<B> = fa => chain(f => pipe(fa, map(f)))
+export const ap: <A>(fa: Array<A>) => <B>(fab: Array<(a: A) => B>) => Array<B> = fa => flatMap(f => pipe(fa, map(f)))
 
 /**
  * Composes computations in sequence, using the return value of one computation to determine the next computation.
@@ -1586,23 +1578,27 @@ export const ap: <A>(fa: Array<A>) => <B>(fab: Array<(a: A) => B>) => Array<B> =
  * a new function which applies `f` to each element of the input array (like [`map`](#map)) and, instead of returning an
  * array of arrays, concatenates the results into a single array (like [`flatten`](#flatten)).
  *
- * This is the `chain` component of the array `Monad`.
- *
- * @since 2.0.0
+ * @since 2.14.0
  * @category Sequencing
  * @example
- *   import { chain, map, replicate } from 'fp-ts/Array'
+ *   import { flatMap, map, replicate } from 'fp-ts/Array'
  *   import { pipe } from 'fp-ts/function'
  *
  *   const f = (n: number) => replicate(n, `${n}`)
  *   assert.deepStrictEqual(pipe([1, 2, 3], map(f)), [['1'], ['2', '2'], ['3', '3', '3']])
- *   assert.deepStrictEqual(pipe([1, 2, 3], chain(f)), ['1', '2', '2', '3', '3', '3'])
+ *   assert.deepStrictEqual(pipe([1, 2, 3], flatMap(f)), ['1', '2', '2', '3', '3', '3'])
  */
-export const chain: <A, B>(f: (a: A) => Array<B>) => (ma: Array<A>) => Array<B> = f => ma =>
-  pipe(
-    ma,
-    chainWithIndex((_, a) => f(a)),
-  )
+export const flatMap: {
+  <A, B>(f: (a: A, i: number) => Array<B>): (ma: Array<A>) => Array<B>
+  <A, B>(ma: Array<A>, f: (a: A, i: number) => Array<B>): Array<B>
+} = /*#__PURE__*/ dual(
+  2,
+  <A, B>(ma: Array<A>, f: (a: A, i: number) => Array<B>): Array<B> =>
+    pipe(
+      ma,
+      chainWithIndex((i, a) => f(a, i)),
+    ),
+)
 
 /**
  * Takes an array of arrays of `A` and flattens them into an array of `A` by concatenating the elements of each array in
@@ -1615,7 +1611,7 @@ export const chain: <A, B>(f: (a: A) => Array<B>) => (ma: Array<A>) => Array<B> 
  *
  *   assert.deepStrictEqual(flatten([['a'], ['b', 'c'], ['d', 'e', 'f']]), ['a', 'b', 'c', 'd', 'e', 'f'])
  */
-export const flatten: <A>(mma: Array<Array<A>>) => Array<A> = /*#__PURE__*/ chain(identity)
+export const flatten: <A>(mma: Array<Array<A>>) => Array<A> = /*#__PURE__*/ flatMap(identity)
 
 /**
  * Same as [`map`](#map), but the iterating function takes both the index and the value of the element.
@@ -1728,7 +1724,7 @@ export const separate = <A, B>(fa: Array<Either<A, B>>): Separated<Array<A>, Arr
  * @category Filtering
  * @example
  *   import { filter } from 'fp-ts/Array'
- *   import { isString } from 'fp-ts/lib/string'
+ *   import { isString } from 'fp-ts/string'
  *
  *   assert.deepStrictEqual(filter(isString)(['a', 1, {}, 'b', 5]), ['a', 'b'])
  *   assert.deepStrictEqual(filter((x: number) => x > 0)([-3, 1, -2, 5]), [1, 5])
@@ -1751,16 +1747,10 @@ export const filter: {
  * @category Filtering
  * @example
  *   import { partition } from 'fp-ts/Array'
- *   import { isString } from 'fp-ts/lib/string'
+ *   import { isString } from 'fp-ts/string'
  *
- *   assert.deepStrictEqual(partition(isString)(['a', 1, {}, 'b', 5]), {
- *     left: [1, {}, 5],
- *     right: ['a', 'b'],
- *   })
- *   assert.deepStrictEqual(partition((x: number) => x > 0)([-3, 1, -2, 5]), {
- *     left: [-3, -2],
- *     right: [1, 5],
- *   })
+ *   assert.deepStrictEqual(partition(isString)(['a', 1, {}, 'b', 5]), { left: [1, {}, 5], right: ['a', 'b'] })
+ *   assert.deepStrictEqual(partition((x: number) => x > 0)([-3, 1, -2, 5]), { left: [-3, -2], right: [1, 5] })
  */
 export const partition: {
   <A, B extends A>(refinement: Refinement<A, B>): (as: Array<A>) => Separated<Array<A>, Array<B>>
@@ -1813,7 +1803,7 @@ export const partitionWithIndex: {
  * @category Filtering
  * @example
  *   import { partitionMap } from 'fp-ts/Array'
- *   import { Either, left, right } from 'fp-ts/lib/Either'
+ *   import { Either, left, right } from 'fp-ts/Either'
  *
  *   const upperIfString = <B>(x: B): Either<B, string> => (typeof x === 'string' ? right(x.toUpperCase()) : left(x))
  *   assert.deepStrictEqual(partitionMap(upperIfString)([-2, 'hello', 6, 7, 'world']), {
@@ -1832,7 +1822,7 @@ export const partitionMap: <A, B, C>(
  * @category Filtering
  * @example
  *   import { partitionMapWithIndex } from 'fp-ts/Array'
- *   import { Either, left, right } from 'fp-ts/lib/Either'
+ *   import { Either, left, right } from 'fp-ts/Either'
  *
  *   const upperIfStringBefore3 = <B>(index: number, x: B): Either<B, string> =>
  *     index < 3 && typeof x === 'string' ? right(x.toUpperCase()) : left(x)
@@ -1877,7 +1867,7 @@ export const partitionMapWithIndex =
  *   )
  */
 export const altW =
-  <B>(that: Lazy<Array<B>>) =>
+  <B>(that: LazyArg<Array<B>>) =>
   <A>(fa: Array<A>): Array<A | B> =>
     (fa as Array<A | B>).concat(that())
 
@@ -1901,7 +1891,7 @@ export const altW =
  *     [1, 2, 3, 4, 5],
  *   )
  */
-export const alt: <A>(that: Lazy<Array<A>>) => (fa: Array<A>) => Array<A> = altW
+export const alt: <A>(that: LazyArg<Array<A>>) => (fa: Array<A>) => Array<A> = altW
 
 /**
  * Same as [`filter`](#filter), but passing also the index to the iterating function.
@@ -2054,7 +2044,7 @@ export const reduceRightWithIndex: <A, B>(b: B, f: (i: number, a: A, b: B) => B)
  * @category Traversing
  * @example
  *   import { traverse } from 'fp-ts/Array'
- *   import { Applicative, left, right } from 'fp-ts/lib/Either'
+ *   import { Applicative, left, right } from 'fp-ts/Either'
  *
  *   const f = (x: unknown) => (typeof x === 'string' ? right(x.toUpperCase()) : left(new Error('not a string')))
  *   assert.deepStrictEqual(traverse(Applicative)(f)(['a', 'b']), right(['A', 'B']))
@@ -2080,7 +2070,7 @@ export const traverse: PipeableTraverse1<URI> = <F>(
  * @category Traversing
  * @example
  *   import { sequence } from 'fp-ts/Array'
- *   import { Applicative, left, right } from 'fp-ts/lib/Either'
+ *   import { Applicative, left, right } from 'fp-ts/Either'
  *
  *   assert.deepStrictEqual(sequence(Applicative)([right('a'), right('b')]), right(['a', 'b']))
  *   assert.deepStrictEqual(
@@ -2106,7 +2096,7 @@ export const sequence: Traversable1<URI>['sequence'] =
  * @category Sequencing
  * @example
  *   import { traverseWithIndex } from 'fp-ts/Array'
- *   import { Applicative, left, right } from 'fp-ts/lib/Either'
+ *   import { Applicative, left, right } from 'fp-ts/Either'
  *
  *   const f = (index: number, x: unknown) =>
  *     typeof x === 'string' ? right(x.toUpperCase() + index) : left(new Error('not a string'))
@@ -2447,7 +2437,7 @@ export const Chain: Chain1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -2487,7 +2477,7 @@ export const Monad: Monad1<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -2690,7 +2680,7 @@ export const ChainRecDepthFirst: ChainRec1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
   chainRec: _chainRecDepthFirst,
 }
 
@@ -2709,7 +2699,7 @@ export const ChainRecBreadthFirst: ChainRec1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
   chainRec: _chainRecBreadthFirst,
 }
 
@@ -2856,6 +2846,18 @@ export const bind = /*#__PURE__*/ bind_(Chain)
 export const apS = /*#__PURE__*/ apS_(Apply)
 
 // -------------------------------------------------------------------------------------
+// legacy
+// -------------------------------------------------------------------------------------
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.0.0
+ * @category Legacy
+ */
+export const chain: <A, B>(f: (a: A) => Array<B>) => (ma: Array<A>) => Array<B> = flatMap
+
+// -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
 
@@ -2927,7 +2929,7 @@ export const array: FunctorWithIndex1<URI, number> &
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
   filter: _filter,
   filterMap: _filterMap,
   partition: _partition,

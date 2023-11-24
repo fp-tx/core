@@ -19,7 +19,7 @@
     "build": "tsup",
     "build:check": "attw --pack ./dist",
     "lint": "eslint \"src/**/*.ts\"",
-    "lint:fix": "eslint --fix \"src/**/*.ts\"",
+    "lint:fix": "eslint --fix \"src/**/*.ts\" \"test/**/*.ts\"",
     "prettier": "prettier \"./{src,test,examples,scripts}/**/*.ts\"",
     "prettier:fix": "prettier --write \"./{src,test,examples,scripts}/**/*.ts\"",
     "test": "jest"

@@ -1,13 +1,13 @@
-import * as U from './util'
 import { getMonoid } from '../src/Array'
 import { left, right } from '../src/Either'
 import * as Eq from '../src/Eq'
 import { pipe } from '../src/function'
+import * as N from '../src/number'
 import { none, some as optionSome } from '../src/Option'
+import { separated } from '../src/Separated'
 import * as _ from '../src/Set'
 import * as S from '../src/string'
-import * as N from '../src/number'
-import { separated } from '../src/Separated'
+import * as U from './util'
 
 const gte2 = (n: number) => n >= 2
 
@@ -19,7 +19,7 @@ const fooEq: Eq.Eq<Foo> = {
   equals: (a: Foo, b: Foo) => a.x === b.x,
 }
 
-describe('Set', () => {
+describe.concurrent('Set', () => {
   it('toArray', () => {
     U.deepStrictEqual(_.toArray(N.Ord)(new Set()), [])
     U.deepStrictEqual(_.toArray(N.Ord)(new Set([1, 2, 3])), [1, 2, 3])

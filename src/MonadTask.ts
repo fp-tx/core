@@ -3,25 +3,9 @@
  *
  * @since 2.0.0
  */
-import {
-  type FromTask,
-  type FromTask1,
-  type FromTask2,
-  type FromTask2C,
-  type FromTask3,
-  type FromTask3C,
-  type FromTask4,
-} from './FromTask'
+import { type FromTask, type FromTask1, type FromTask2, type FromTask2C, type FromTask3, type FromTask3C, type FromTask4 } from './FromTask'
 import { type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
-import {
-  type MonadIO,
-  type MonadIO1,
-  type MonadIO2,
-  type MonadIO2C,
-  type MonadIO3,
-  type MonadIO3C,
-  type MonadIO4,
-} from './MonadIO'
+import { type MonadIO, type MonadIO1, type MonadIO2, type MonadIO2C, type MonadIO3, type MonadIO3C, type MonadIO4 } from './MonadIO'
 
 // -------------------------------------------------------------------------------------
 // model

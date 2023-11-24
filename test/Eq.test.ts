@@ -1,13 +1,13 @@
-import * as U from './util'
-import * as _ from '../src/Eq'
-import { concatAll } from '../src/Monoid'
-import { pipe } from '../src/function'
 import * as B from '../src/boolean'
-import * as S from '../src/string'
+import * as _ from '../src/Eq'
+import { pipe } from '../src/function'
+import { concatAll } from '../src/Monoid'
 import * as N from '../src/number'
+import * as S from '../src/string'
+import * as U from './util'
 
-describe('Eq', () => {
-  describe('pipeables', () => {
+describe.concurrent('Eq', () => {
+  describe.concurrent('pipeables', () => {
     it('contramap', () => {
       const E = pipe(
         S.Eq,

@@ -5,14 +5,7 @@
  *
  * @since 2.0.0
  */
-import {
-  type Applicative,
-  type Applicative1,
-  type Applicative2,
-  type Applicative2C,
-  type Applicative3,
-  type Applicative3C,
-} from './Applicative'
+import { type Applicative, type Applicative1, type Applicative2, type Applicative2C, type Applicative3, type Applicative3C } from './Applicative'
 import { type Compactable, type Compactable1, type Compactable2, type Compactable2C } from './Compactable'
 import { type Either } from './Either'
 import { type Filterable, type Filterable1, type Filterable2, type Filterable2C, type Filterable3 } from './Filterable'
@@ -20,13 +13,7 @@ import { type HKT, type Kind, type Kind2, type Kind3, type URIS, type URIS2, typ
 import * as _ from './internal'
 import { type Option } from './Option'
 import { type Separated } from './Separated'
-import {
-  type Traversable,
-  type Traversable1,
-  type Traversable2,
-  type Traversable2C,
-  type Traversable3,
-} from './Traversable'
+import { type Traversable, type Traversable1, type Traversable2, type Traversable2C, type Traversable3 } from './Traversable'
 
 // -------------------------------------------------------------------------------------
 // model

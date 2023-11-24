@@ -1,8 +1,8 @@
-import * as U from './util'
 import * as B from '../src/boolean'
 import { pipe } from '../src/function'
-import { struct, Monoid } from '../src/Monoid'
+import { type Monoid, struct } from '../src/Monoid'
 import * as _ from '../src/Traced'
+import * as U from './util'
 
 // Adapted from https://chshersh.github.io/posts/2019-03-25-comonadic-builders
 
@@ -50,8 +50,8 @@ const gitHubB = (wa: ProjectBuilder): Project => {
 
 const getProjectName = (project: Project): string => project.projectName
 
-describe('Traced', () => {
-  describe('pipeables', () => {
+describe.concurrent('Traced', () => {
+  describe.concurrent('pipeables', () => {
     it('map', () => {
       const wa = buildProject('myproject')
       U.deepStrictEqual(pipe(wa, _.map(getProjectName))(M.empty), 'myproject')
@@ -75,13 +75,7 @@ describe('Traced', () => {
   })
 
   it('tracks', () => {
-    const travisB = _.tracks(
-      M,
-      (project: Project): Settings => ({
-        ...M.empty,
-        settingsTravis: project.projectGitHub,
-      }),
-    )
+    const travisB = _.tracks(M, (project: Project): Settings => ({ ...M.empty, settingsTravis: project.projectGitHub }))
     U.deepStrictEqual(C.extract(C.extend(buildProject('travis'), travisB)), {
       projectName: 'travis',
       projectHasLibrary: false,

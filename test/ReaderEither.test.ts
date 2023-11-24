@@ -6,13 +6,13 @@ import * as O from '../src/Option'
 import * as R from '../src/Reader'
 import * as _ from '../src/ReaderEither'
 import * as RA from '../src/ReadonlyArray'
-import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
+import { type ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import { left, right } from '../src/Separated'
 import * as S from '../src/string'
 import * as U from './util'
 
-describe('ReaderEither', () => {
-  describe('pipeables', () => {
+describe.concurrent('ReaderEither', () => {
+  describe.concurrent('pipeables', () => {
     it('map', () => {
       U.deepStrictEqual(pipe(_.right(1), _.map(U.double))({}), E.right(2))
     })
@@ -56,6 +56,12 @@ describe('ReaderEither', () => {
       const fa = _.right<{ readonly k: string }, 'Foo', string>('a')
       const fb = _.right<{ readonly x: number }, 'Bar', number>(4)
       U.deepStrictEqual(pipe(fa, _.apSecondW(fb))({ k: 'v', x: 1 }), E.right(4))
+    })
+
+    it('tap', () => {
+      const f = (n: number) => _.right(n * 2)
+      U.deepStrictEqual(pipe(_.right(1), _.tap(f))({}), E.right(1))
+      U.deepStrictEqual(_.tap(_.right(1), f)({}), E.right(1))
     })
 
     it('chainFirst', () => {
@@ -165,6 +171,26 @@ describe('ReaderEither', () => {
     U.deepStrictEqual(orElse(_.right(1))({}), E.right(1))
   })
 
+  it('flatMapOption', () => {
+    const f = _.flatMapOption(
+      (n: number) => (n > 0 ? O.some(n) : O.none),
+      () => 'a',
+    )
+    U.deepStrictEqual(f(_.right(1))(undefined), E.right(1))
+    U.deepStrictEqual(f(_.right(-1))(undefined), E.left('a'))
+    U.deepStrictEqual(f(_.left('b'))(undefined), E.left('b'))
+  })
+
+  it('tapError', () => {
+    const f = (s: string) => (s.length <= 1 ? _.right(true) : _.left(s + '!'))
+    U.deepStrictEqual(pipe(_.right(1), _.tapError(f))({}), E.right(1))
+    U.deepStrictEqual(pipe(_.left('a'), _.tapError(f))({}), E.left('a'))
+    U.deepStrictEqual(pipe(_.left('aa'), _.tapError(f))({}), E.left('aa!'))
+    U.deepStrictEqual(_.tapError(_.right(1), f)({}), E.right(1))
+    U.deepStrictEqual(_.tapError(_.left('a'), f)({}), E.left('a'))
+    U.deepStrictEqual(_.tapError(_.left('aa'), f)({}), E.left('aa!'))
+  })
+
   it('orElseFirst', () => {
     const f = _.orElseFirst((s: string) => (s.length <= 1 ? _.right(true) : _.left(s + '!')))
     U.deepStrictEqual(pipe(_.right(1), f)({}), E.right(1))
@@ -185,7 +211,7 @@ describe('ReaderEither', () => {
     U.deepStrictEqual(pipe(_.left('a'), f)({}), E.left('a!'))
   })
 
-  describe('getSemigroup', () => {
+  describe.concurrent('getSemigroup', () => {
     it('concat', () => {
       const S = _.getSemigroup(N.SemigroupSum)
       const e1 = S.concat(_.left('a'), _.left('b'))({})
@@ -202,7 +228,7 @@ describe('ReaderEither', () => {
     })
   })
 
-  describe('getApplyMonoid', () => {
+  describe.concurrent('getApplyMonoid', () => {
     const M = _.getApplyMonoid(S.Monoid)
 
     it('concat (right)', () => {
@@ -252,6 +278,12 @@ describe('ReaderEither', () => {
     U.deepStrictEqual(AV.alt(_.left('a'), () => _.left('b'))(null), E.left('ab'))
   })
 
+  it('flatMapEither', () => {
+    const f = (s: string) => (s.length === 1 ? E.right(s.length) : E.left('b'))
+    U.deepStrictEqual(pipe(_.right('a'), _.flatMapEither(f))({}), E.right(1))
+    U.deepStrictEqual(pipe(_.right('aa'), _.flatMapEither(f))({}), E.left('b'))
+  })
+
   it('chainEitherK', () => {
     const f = (s: string) => (s.length === 1 ? E.right(s.length) : E.left('b'))
     U.deepStrictEqual(pipe(_.right('a'), _.chainEitherK(f))({}), E.right(1))
@@ -277,7 +309,7 @@ describe('ReaderEither', () => {
     )
   })
 
-  describe('array utils', () => {
+  describe.concurrent('array utils', () => {
     const input: ReadonlyNonEmptyArray<string> = ['a', 'b']
 
     it('traverseReadonlyArrayWithIndex', () => {
@@ -368,10 +400,35 @@ describe('ReaderEither', () => {
     U.deepStrictEqual(pipe(_.right<{}, never, number>(3), f)({}), E.right(3))
   })
 
+  it('tapEither', async () => {
+    const f = (s: string) => E.right(s.length)
+    U.deepStrictEqual(pipe(_.right('a'), _.tapEither(f))({}), E.right('a'))
+    const g = (s: string) => E.left(s.length)
+    U.deepStrictEqual(pipe(_.right('a'), _.tapEither(g))({}), E.left(1))
+  })
+
   it('chainFirstEitherK', async () => {
     const f = (s: string) => E.right(s.length)
     U.deepStrictEqual(pipe(_.right('a'), _.chainFirstEitherK(f))({}), E.right('a'))
     const g = (s: string) => E.left(s.length)
     U.deepStrictEqual(pipe(_.right('a'), _.chainFirstEitherK(g))({}), E.left(1))
+  })
+
+  it('as', () => {
+    U.deepStrictEqual(pipe(_.right('a'), _.as('b'))(undefined), E.right('b'))
+    U.deepStrictEqual(_.as(_.of('a'), 'b')(undefined), E.right('b'))
+    U.deepStrictEqual(_.as(_.left('error'), 'b')(undefined), E.left('error'))
+  })
+
+  it('asUnit', () => {
+    U.deepStrictEqual(pipe(_.of('a'), _.asUnit)(undefined), E.of(undefined))
+  })
+
+  it('tapReader', () => {
+    U.deepStrictEqual(_.tapReader(_.of(1), () => R.of(2))({}), E.of(1))
+  })
+
+  it('flatMapReader', () => {
+    U.deepStrictEqual(_.flatMapReader(_.of(1), () => R.of(2))({}), E.of(2))
   })
 })

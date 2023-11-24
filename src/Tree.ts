@@ -15,29 +15,11 @@ import { type Comonad1 } from './Comonad'
 import { type Eq, fromEquals } from './Eq'
 import { type Extend1 } from './Extend'
 import { type Foldable1 } from './Foldable'
-import { identity, pipe } from './function'
+import { dual, identity, pipe } from './function'
 import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
-import {
-  type HKT,
-  type Kind,
-  type Kind2,
-  type Kind3,
-  type Kind4,
-  type URIS,
-  type URIS2,
-  type URIS3,
-  type URIS4,
-} from './HKT'
+import { type HKT, type Kind, type Kind2, type Kind3, type Kind4, type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
 import * as _ from './internal'
-import {
-  type Monad as MonadHKT,
-  type Monad1,
-  type Monad2,
-  type Monad2C,
-  type Monad3,
-  type Monad3C,
-  type Monad4,
-} from './Monad'
+import { type Monad as MonadHKT, type Monad1, type Monad2, type Monad2C, type Monad3, type Monad3C, type Monad4 } from './Monad'
 import { type Monoid } from './Monoid'
 import { type Pointed1 } from './Pointed'
 import { type Predicate } from './Predicate'
@@ -269,13 +251,7 @@ export function fold<A, B>(f: (a: A, bs: Array<B>) => B): (tree: Tree<A>) => B {
 
 /* istanbul ignore next */
 const _map: Monad1<URI>['map'] = (fa, f) => pipe(fa, map(f))
-const _ap: Monad1<URI>['ap'] = (fab, fa) =>
-  pipe(
-    fab,
-    chain(f => pipe(fa, map(f))),
-  )
-/* istanbul ignore next */
-const _chain = <A, B>(ma: Tree<A>, f: (a: A) => Tree<B>): Tree<B> => pipe(ma, chain(f))
+const _ap: Monad1<URI>['ap'] = (fab, fa) => flatMap(fab, f => pipe(fa, map(f)))
 /* istanbul ignore next */
 const _reduce = <A, B>(fa: Tree<A>, b: B, f: (b: B, a: A) => B): B => pipe(fa, reduce(b, f))
 /* istanbul ignore next */
@@ -297,21 +273,20 @@ const _traverse = <F>(F: ApplicativeHKT<F>): (<A, B>(ta: Tree<A>, f: (a: A) => H
 export const ap: <A>(fa: Tree<A>) => <B>(fab: Tree<(a: A) => B>) => Tree<B> = fa => fab => _ap(fab, fa)
 
 /**
- * Composes computations in sequence, using the return value of one computation to determine the next computation.
- *
- * @since 2.0.0
- * @category Monad
+ * @since 2.14.0
+ * @category Sequencing
  */
-export const chain =
-  <A, B>(f: (a: A) => Tree<B>) =>
-  (ma: Tree<A>): Tree<B> => {
-    const { value, forest } = f(ma.value)
-    const concat = A.getMonoid<Tree<B>>().concat
-    return {
-      value,
-      forest: concat(forest, ma.forest.map(chain(f))),
-    }
+export const flatMap: {
+  <A, B>(f: (a: A) => Tree<B>): (ma: Tree<A>) => Tree<B>
+  <A, B>(ma: Tree<A>, f: (a: A) => Tree<B>): Tree<B>
+} = /*#__PURE__*/ dual(2, <A, B>(ma: Tree<A>, f: (a: A) => Tree<B>): Tree<B> => {
+  const { value, forest } = f(ma.value)
+  const concat = A.getMonoid<Tree<B>>().concat
+  return {
+    value,
+    forest: concat(forest, ma.forest.map(flatMap(f))),
   }
+})
 
 /** @since 2.0.0 */
 export const extend: <A, B>(f: (wa: Tree<A>) => B) => (wa: Tree<A>) => Tree<B> = f => wa => ({
@@ -326,7 +301,7 @@ export const duplicate: <A>(wa: Tree<A>) => Tree<Tree<A>> = /*#__PURE__*/ extend
  * @since 2.0.0
  * @category Sequencing
  */
-export const flatten: <A>(mma: Tree<Tree<A>>) => Tree<A> = /*#__PURE__*/ chain(identity)
+export const flatten: <A>(mma: Tree<Tree<A>>) => Tree<A> = /*#__PURE__*/ flatMap(identity)
 
 /**
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
@@ -503,7 +478,7 @@ export const Chain: Chain1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -515,7 +490,7 @@ export const Monad: Monad1<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -617,6 +592,18 @@ export const exists =
     predicate(ma.value) || ma.forest.some(exists(predicate))
 
 // -------------------------------------------------------------------------------------
+// legacy
+// -------------------------------------------------------------------------------------
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.0.0
+ * @category Legacy
+ */
+export const chain: <A, B>(f: (a: A) => Tree<B>) => (ma: Tree<A>) => Tree<B> = flatMap
+
+// -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
 
@@ -633,7 +620,7 @@ export const tree: Monad1<URI> & Foldable1<URI> & Traversable1<URI> & Comonad1<U
   map: _map,
   of,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
   reduce: _reduce,
   foldMap: _foldMap,
   reduceRight: _reduceRight,

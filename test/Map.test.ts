@@ -1,16 +1,17 @@
 import * as assert from 'assert'
-import { Either, left, right } from '../src/Either'
-import { Eq, fromEquals } from '../src/Eq'
+
+import { type Either, left, right } from '../src/Either'
+import { type Eq, fromEquals } from '../src/Eq'
 import { identity, pipe } from '../src/function'
 import * as _ from '../src/Map'
 import * as N from '../src/number'
 import * as O from '../src/Option'
 import * as Ord from '../src/Ord'
 import * as RA from '../src/ReadonlyArray'
-import { Refinement } from '../src/Refinement'
+import { type Refinement } from '../src/Refinement'
 import * as Se from '../src/Semigroup'
 import { separated } from '../src/Separated'
-import { Show, struct } from '../src/Show'
+import { type Show, struct } from '../src/Show'
 import * as S from '../src/string'
 import * as T from '../src/Task'
 import * as U from './util'
@@ -51,7 +52,7 @@ const repo = new Map<Key, Value>([
   [{ id: 2 }, { value: 2 }],
 ])
 
-describe('Map', () => {
+describe.concurrent('Map', () => {
   it('URI', () => {
     U.deepStrictEqual(_.URI, 'Map')
   })
@@ -643,8 +644,8 @@ describe('Map', () => {
     )
   })
 
-  describe('map_', () => {
-    describe('functor', () => {
+  describe.concurrent('map_', () => {
+    describe.concurrent('functor', () => {
       it('map', () => {
         const d1 = new Map<string, number>([
           ['k1', 1],
@@ -658,7 +659,7 @@ describe('Map', () => {
       })
     })
 
-    describe('filterable', () => {
+    describe.concurrent('filterable', () => {
       it('compact', () => {
         const fooBar = new Map<string, O.Option<number>>([
           ['foo', O.none],
@@ -736,7 +737,7 @@ describe('Map', () => {
     })
   })
 
-  describe('getFoldable', () => {
+  describe.concurrent('getFoldable', () => {
     const F = _.getFoldable(ordUser)
     it('reduce', () => {
       const d1 = new Map<User, string>([
@@ -779,7 +780,7 @@ describe('Map', () => {
     })
   })
 
-  describe('getWitherable', () => {
+  describe.concurrent('getWitherable', () => {
     const W = _.getWitherable(ordUser)
 
     it('mapWithIndex', () => {
@@ -941,7 +942,7 @@ describe('Map', () => {
     })
   })
 
-  describe('getFilterableWithIndex', () => {
+  describe.concurrent('getFilterableWithIndex', () => {
     it('partitionMapWithIndex', () => {
       const partitionMapWithIndex = _.getFilterableWithIndex<string>().partitionMapWithIndex
       const emptyMap = new Map<string, number>()

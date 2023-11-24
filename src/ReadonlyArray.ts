@@ -14,7 +14,7 @@ import { type FilterableWithIndex1, type PredicateWithIndex, type RefinementWith
 import { type Foldable1 } from './Foldable'
 import { type FoldableWithIndex1 } from './FoldableWithIndex'
 import { type FromEither1, fromEitherK as fromEitherK_ } from './FromEither'
-import { identity, type Lazy, pipe } from './function'
+import { dual, identity, type LazyArg, pipe } from './function'
 import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
 import { type FunctorWithIndex1 } from './FunctorWithIndex'
 import { type HKT } from './HKT'
@@ -29,7 +29,6 @@ import { fromCompare, type Ord } from './Ord'
 import { type Pointed1 } from './Pointed'
 import { type Predicate } from './Predicate'
 import * as RNEA from './ReadonlyNonEmptyArray'
-import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
 import { type Semigroup } from './Semigroup'
 import { type Separated, separated } from './Separated'
@@ -46,6 +45,8 @@ import {
   witherDefault,
 } from './Witherable'
 import { guard as guard_, type Zero1 } from './Zero'
+
+import ReadonlyNonEmptyArray = RNEA.ReadonlyNonEmptyArray
 
 // -------------------------------------------------------------------------------------
 // refinements
@@ -180,7 +181,7 @@ export const fromEither: <A>(fa: Either<unknown, A>) => ReadonlyArray<A> = e => 
  * @category Pattern matching
  */
 export const matchW =
-  <B, A, C>(onEmpty: Lazy<B>, onNonEmpty: (as: ReadonlyNonEmptyArray<A>) => C) =>
+  <B, A, C>(onEmpty: LazyArg<B>, onNonEmpty: (as: ReadonlyNonEmptyArray<A>) => C) =>
   (as: ReadonlyArray<A>): B | C =>
     isNonEmpty(as) ? onNonEmpty(as) : onEmpty()
 
@@ -189,7 +190,7 @@ export const matchW =
  * @category Pattern matching
  */
 export const match: <B, A>(
-  onEmpty: Lazy<B>,
+  onEmpty: LazyArg<B>,
   onNonEmpty: (as: ReadonlyNonEmptyArray<A>) => B,
 ) => (as: ReadonlyArray<A>) => B = matchW
 
@@ -200,7 +201,7 @@ export const match: <B, A>(
  * @category Pattern matching
  */
 export const matchLeftW =
-  <B, A, C>(onEmpty: Lazy<B>, onNonEmpty: (head: A, tail: ReadonlyArray<A>) => C) =>
+  <B, A, C>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: ReadonlyArray<A>) => C) =>
   (as: ReadonlyArray<A>): B | C =>
     isNonEmpty(as) ? onNonEmpty(RNEA.head(as), RNEA.tail(as)) : onEmpty()
 
@@ -219,7 +220,7 @@ export const matchLeftW =
  *   assert.strictEqual(len([1, 2, 3]), 3)
  */
 export const matchLeft: <B, A>(
-  onEmpty: Lazy<B>,
+  onEmpty: LazyArg<B>,
   onNonEmpty: (head: A, tail: ReadonlyArray<A>) => B,
 ) => (as: ReadonlyArray<A>) => B = matchLeftW
 
@@ -230,7 +231,7 @@ export const matchLeft: <B, A>(
  * @category Pattern matching
  */
 export const foldLeft: <A, B>(
-  onEmpty: Lazy<B>,
+  onEmpty: LazyArg<B>,
   onNonEmpty: (head: A, tail: ReadonlyArray<A>) => B,
 ) => (as: ReadonlyArray<A>) => B = matchLeft
 
@@ -241,7 +242,7 @@ export const foldLeft: <A, B>(
  * @category Pattern matching
  */
 export const matchRightW =
-  <B, A, C>(onEmpty: Lazy<B>, onNonEmpty: (init: ReadonlyArray<A>, last: A) => C) =>
+  <B, A, C>(onEmpty: LazyArg<B>, onNonEmpty: (init: ReadonlyArray<A>, last: A) => C) =>
   (as: ReadonlyArray<A>): B | C =>
     isNonEmpty(as) ? onNonEmpty(RNEA.init(as), RNEA.last(as)) : onEmpty()
 
@@ -252,7 +253,7 @@ export const matchRightW =
  * @category Pattern matching
  */
 export const matchRight: <B, A>(
-  onEmpty: Lazy<B>,
+  onEmpty: LazyArg<B>,
   onNonEmpty: (init: ReadonlyArray<A>, last: A) => B,
 ) => (as: ReadonlyArray<A>) => B = matchRightW
 
@@ -263,7 +264,7 @@ export const matchRight: <B, A>(
  * @category Pattern matching
  */
 export const foldRight: <A, B>(
-  onEmpty: Lazy<B>,
+  onEmpty: LazyArg<B>,
   onNonEmpty: (init: ReadonlyArray<A>, last: A) => B,
 ) => (as: ReadonlyArray<A>) => B = matchRight
 
@@ -526,10 +527,7 @@ const spanLeftIndex = <A>(as: ReadonlyArray<A>, predicate: Predicate<A>): number
  * @example
  *   import { spanLeft } from 'fp-ts/ReadonlyArray'
  *
- *   assert.deepStrictEqual(spanLeft((n: number) => n % 2 === 1)([1, 3, 2, 4, 5]), {
- *     init: [1, 3],
- *     rest: [2, 4, 5],
- *   })
+ *   assert.deepStrictEqual(spanLeft((n: number) => n % 2 === 1)([1, 3, 2, 4, 5]), { init: [1, 3], rest: [2, 4, 5] })
  */
 export function spanLeft<A, B extends A>(refinement: Refinement<A, B>): (as: ReadonlyArray<A>) => Spanned<B, A>
 export function spanLeft<A>(predicate: Predicate<A>): <B extends A>(bs: ReadonlyArray<B>) => Spanned<B, B>
@@ -1281,11 +1279,7 @@ export function comprehension<A, R>(
   g: (...xs: ReadonlyArray<A>) => boolean = () => true,
 ): ReadonlyArray<R> {
   const go = (scope: ReadonlyArray<A>, input: ReadonlyArray<ReadonlyArray<A>>): ReadonlyArray<R> =>
-    isNonEmpty(input) ?
-      pipe(
-        RNEA.head(input),
-        chain(x => go(pipe(scope, append(x)), RNEA.tail(input))),
-      )
+    isNonEmpty(input) ? flatMap(RNEA.head(input), a => go(pipe(scope, append(a)), RNEA.tail(input)))
     : g(...scope) ? [f(...scope)]
     : empty
   return go(empty, input)
@@ -1398,7 +1392,6 @@ export function difference<A>(
 const _map: Monad1<URI>['map'] = (fa, f) => pipe(fa, map(f))
 const _mapWithIndex: FunctorWithIndex1<URI, number>['mapWithIndex'] = (fa, f) => pipe(fa, mapWithIndex(f))
 const _ap: Apply1<URI>['ap'] = (fab, fa) => pipe(fab, ap(fa))
-const _chain: Chain1<URI>['chain'] = (ma, f) => pipe(ma, chain(f))
 const _filter: Filterable1<URI>['filter'] = <A>(fa: ReadonlyArray<A>, predicate: Predicate<A>) =>
   pipe(fa, filter(predicate))
 const _filterMap: Filterable1<URI>['filterMap'] = (fa, f) => pipe(fa, filterMap(f))
@@ -1484,7 +1477,7 @@ export const zero: <A>() => ReadonlyArray<A> = () => empty
  *   )
  */
 export const altW =
-  <B>(that: Lazy<ReadonlyArray<B>>) =>
+  <B>(that: LazyArg<ReadonlyArray<B>>) =>
   <A>(fa: ReadonlyArray<A>): ReadonlyArray<A | B> =>
     (fa as ReadonlyArray<A | B>).concat(that())
 
@@ -1508,16 +1501,16 @@ export const altW =
  *     [1, 2, 3, 4, 5],
  *   )
  */
-export const alt: <A>(that: Lazy<ReadonlyArray<A>>) => (fa: ReadonlyArray<A>) => ReadonlyArray<A> = altW
+export const alt: <A>(that: LazyArg<ReadonlyArray<A>>) => (fa: ReadonlyArray<A>) => ReadonlyArray<A> = altW
 
 /** @since 2.5.0 */
 export const ap: <A>(fa: ReadonlyArray<A>) => <B>(fab: ReadonlyArray<(a: A) => B>) => ReadonlyArray<B> = fa =>
-  chain(f => pipe(fa, map(f)))
+  flatMap(f => pipe(fa, map(f)))
 
 /**
  * Composes computations in sequence, using the return value of one computation to determine the next computation.
  *
- * @since 2.5.0
+ * @since 2.14.0
  * @category Sequencing
  * @example
  *   import * as RA from 'fp-ts/ReadonlyArray'
@@ -1526,29 +1519,35 @@ export const ap: <A>(fa: ReadonlyArray<A>) => <B>(fab: ReadonlyArray<(a: A) => B
  *   assert.deepStrictEqual(
  *     pipe(
  *       [1, 2, 3],
- *       RA.chain(n => [`a${n}`, `b${n}`]),
+ *       RA.flatMap(n => [`a${n}`, `b${n}`]),
  *     ),
  *     ['a1', 'b1', 'a2', 'b2', 'a3', 'b3'],
  *   )
  *   assert.deepStrictEqual(
  *     pipe(
  *       [1, 2, 3],
- *       RA.chain(() => []),
+ *       RA.flatMap(() => []),
  *     ),
  *     [],
  *   )
  */
-export const chain: <A, B>(f: (a: A) => ReadonlyArray<B>) => (ma: ReadonlyArray<A>) => ReadonlyArray<B> = f => ma =>
-  pipe(
-    ma,
-    chainWithIndex((_, a) => f(a)),
-  )
+export const flatMap: {
+  <A, B>(f: (a: A, i: number) => ReadonlyArray<B>): (ma: ReadonlyArray<A>) => ReadonlyArray<B>
+  <A, B>(ma: ReadonlyArray<A>, f: (a: A, i: number) => ReadonlyArray<B>): ReadonlyArray<B>
+} = /*#__PURE__*/ dual(
+  2,
+  <A, B>(ma: ReadonlyArray<A>, f: (a: A, i: number) => ReadonlyArray<B>): ReadonlyArray<B> =>
+    pipe(
+      ma,
+      chainWithIndex((i, a) => f(a, i)),
+    ),
+)
 
 /**
  * @since 2.5.0
  * @category Sequencing
  */
-export const flatten: <A>(mma: ReadonlyArray<ReadonlyArray<A>>) => ReadonlyArray<A> = /*#__PURE__*/ chain(identity)
+export const flatten: <A>(mma: ReadonlyArray<ReadonlyArray<A>>) => ReadonlyArray<A> = /*#__PURE__*/ flatMap(identity)
 
 /**
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
@@ -2076,7 +2075,7 @@ export const Chain: Chain1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -2088,7 +2087,7 @@ export const Monad: Monad1<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -2309,7 +2308,7 @@ export const ChainRecDepthFirst: ChainRec1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
   chainRec: _chainRecDepthFirst,
 }
 
@@ -2351,7 +2350,7 @@ export const ChainRecBreadthFirst: ChainRec1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
   chainRec: _chainRecBreadthFirst,
 }
 
@@ -2570,6 +2569,18 @@ export const bind = /*#__PURE__*/ bind_(Chain)
 export const apS = /*#__PURE__*/ apS_(Apply)
 
 // -------------------------------------------------------------------------------------
+// legacy
+// -------------------------------------------------------------------------------------
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.5.0
+ * @category Legacy
+ */
+export const chain: <A, B>(f: (a: A) => ReadonlyArray<B>) => (ma: ReadonlyArray<A>) => ReadonlyArray<B> = flatMap
+
+// -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
 
@@ -2633,7 +2644,7 @@ export const readonlyArray: FunctorWithIndex1<URI, number> &
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
   filter: _filter,
   filterMap: _filterMap,
   partition: _partition,

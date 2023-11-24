@@ -1,9 +1,9 @@
-import * as U from './util'
 import * as N from '../src/number'
 import * as _ from '../src/Show'
 import * as S from '../src/string'
+import * as U from './util'
 
-describe('Show', () => {
+describe.concurrent('Show', () => {
   it('struct', () => {
     U.deepStrictEqual(_.struct({ a: S.Show }).show({ a: 'a' }), '{ a: "a" }')
     U.deepStrictEqual(_.struct({ a: S.Show, b: N.Show }).show({ a: 'a', b: 1 }), '{ a: "a", b: 1 }')

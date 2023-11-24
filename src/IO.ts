@@ -15,11 +15,11 @@
  */
 import { type Applicative1, getApplicativeMonoid } from './Applicative'
 import { apFirst as apFirst_, type Apply1, apS as apS_, apSecond as apSecond_, getApplySemigroup } from './Apply'
-import { bind as bind_, type Chain1, chainFirst as chainFirst_ } from './Chain'
+import * as chainable from './Chain'
 import { type ChainRec1 } from './ChainRec'
 import { type FromIO1 } from './FromIO'
-import { constant, identity } from './function'
-import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
+import { constant, dual, identity } from './function'
+import { as as as_, asUnit as asUnit_, bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
 import * as _ from './internal'
 import { type Monad1 } from './Monad'
 import { type MonadIO1 } from './MonadIO'
@@ -43,7 +43,6 @@ export interface IO<A> {
 
 const _map: Monad1<URI>['map'] = (ma, f) => () => f(ma())
 const _ap: Monad1<URI>['ap'] = (mab, ma) => () => mab()(ma())
-const _chain: Monad1<URI>['chain'] = (ma, f) => () => f(ma())()
 const _chainRec: ChainRec1<URI>['chainRec'] = (a, f) => () => {
   let e = f(a)()
   while (e._tag === 'Left') {
@@ -71,18 +70,24 @@ export const ap: <A>(fa: IO<A>) => <B>(fab: IO<(a: A) => B>) => IO<B> = fa => fa
 export const of: <A>(a: A) => IO<A> = constant
 
 /**
- * Composes computations in sequence, using the return value of one computation to determine the next computation.
- *
- * @since 2.0.0
+ * @since 2.14.0
  * @category Sequencing
  */
-export const chain: <A, B>(f: (a: A) => IO<B>) => (ma: IO<A>) => IO<B> = f => ma => _chain(ma, f)
+export const flatMap: {
+  <A, B>(f: (a: A) => IO<B>): (ma: IO<A>) => IO<B>
+  <A, B>(ma: IO<A>, f: (a: A) => IO<B>): IO<B>
+} = /*#__PURE__*/ dual(
+  2,
+  <A, B>(ma: IO<A>, f: (a: A) => IO<B>): IO<B> =>
+    () =>
+      f(ma())(),
+)
 
 /**
  * @since 2.0.0
  * @category Sequencing
  */
-export const flatten: <A>(mma: IO<IO<A>>) => IO<A> = /*#__PURE__*/ chain(identity)
+export const flatten: <A>(mma: IO<IO<A>>) => IO<A> = /*#__PURE__*/ flatMap(identity)
 
 /**
  * @since 2.0.0
@@ -110,6 +115,25 @@ export const Functor: Functor1<URI> = {
   URI,
   map: _map,
 }
+
+/**
+ * Maps the value to the specified constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const as: {
+  <A>(a: A): <_>(self: IO<_>) => IO<A>
+  <_, A>(self: IO<_>, a: A): IO<A>
+} = dual(2, as_(Functor))
+
+/**
+ * Maps the value to the void constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const asUnit: <_>(self: IO<_>) => IO<void> = asUnit_(Functor)
 
 /**
  * @since 2.10.0
@@ -165,11 +189,11 @@ export const Applicative: Applicative1<URI> = {
  * @since 2.10.0
  * @category Instances
  */
-export const Chain: Chain1<URI> = {
+export const Chain: chainable.Chain1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -181,17 +205,20 @@ export const Monad: Monad1<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.0.0
- * @category Sequencing
+ * @since 2.15.0
+ * @category Combinators
  */
-export const chainFirst: <A, B>(f: (a: A) => IO<B>) => (first: IO<A>) => IO<A> = /*#__PURE__*/ chainFirst_(Chain)
+export const tap: {
+  <A, _>(self: IO<A>, f: (a: A) => IO<_>): IO<A>
+  <A, _>(f: (a: A) => IO<_>): (self: IO<A>) => IO<A>
+} = /*#__PURE__*/ dual(2, chainable.tap(Chain))
 
 /**
  * @deprecated
@@ -209,7 +236,7 @@ export const MonadIO: MonadIO1<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
   fromIO,
 }
 
@@ -221,7 +248,7 @@ export const ChainRec: ChainRec1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
   chainRec: _chainRec,
 }
 
@@ -264,7 +291,7 @@ export {
  * @since 2.8.0
  * @category Do notation
  */
-export const bind = /*#__PURE__*/ bind_(Chain)
+export const bind = /*#__PURE__*/ chainable.bind(Chain)
 
 /**
  * @since 2.8.0
@@ -338,6 +365,26 @@ export const sequenceArray: <A>(arr: ReadonlyArray<IO<A>>) => IO<ReadonlyArray<A
   /*#__PURE__*/ traverseArray(identity)
 
 // -------------------------------------------------------------------------------------
+// legacy
+// -------------------------------------------------------------------------------------
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.0.0
+ * @category Legacy
+ */
+export const chain: <A, B>(f: (a: A) => IO<B>) => (ma: IO<A>) => IO<B> = flatMap
+
+/**
+ * Alias of `tap`.
+ *
+ * @since 2.0.0
+ * @category Legacy
+ */
+export const chainFirst: <A, B>(f: (a: A) => IO<B>) => (first: IO<A>) => IO<A> = tap
+
+// -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
 
@@ -354,7 +401,7 @@ export const io: Monad1<URI> & MonadIO1<URI> & ChainRec1<URI> = {
   map: _map,
   of,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
   fromIO,
   chainRec: _chainRec,
 }

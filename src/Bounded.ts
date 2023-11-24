@@ -8,7 +8,8 @@
  * @since 2.0.0
  */
 import * as O from './Ord'
-import { type Ord } from './Ord'
+
+import Ord = O.Ord
 
 // -------------------------------------------------------------------------------------
 // model

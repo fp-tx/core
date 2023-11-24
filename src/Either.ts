@@ -47,7 +47,7 @@
  *       as,
  *       head,
  *       E.map(double),
- *       E.chain(inverse),
+ *       E.flatMap(inverse),
  *       E.match(
  *         err => `Error is ${err}`, // onLeft handler
  *         head => `Result is ${head}`, // onRight handler
@@ -60,12 +60,7 @@
  *   assert.deepStrictEqual(imperative([0]), functional([0]))
  */
 import { type Alt2, type Alt2C } from './Alt'
-import {
-  type Applicative as ApplicativeHKT,
-  type Applicative2,
-  type Applicative2C,
-  getApplicativeMonoid,
-} from './Applicative'
+import { type Applicative as ApplicativeHKT, type Applicative2, type Applicative2C, getApplicativeMonoid } from './Applicative'
 import {
   apFirst as apFirst_,
   type Apply2,
@@ -74,7 +69,7 @@ import {
   getApplySemigroup as getApplySemigroup_,
 } from './Apply'
 import { type Bifunctor2 } from './Bifunctor'
-import { bind as bind_, type Chain2, chainFirst as chainFirst_ } from './Chain'
+import * as chainable from './Chain'
 import { type ChainRec2, type ChainRec2C, tailRec } from './ChainRec'
 import { type Compactable2C } from './Compactable'
 import { type Eq } from './Eq'
@@ -89,8 +84,8 @@ import {
   fromOptionK as fromOptionK_,
   fromPredicate as fromPredicate_,
 } from './FromEither'
-import { flow, identity, type Lazy, pipe } from './function'
-import { bindTo as bindTo_, flap as flap_, type Functor2, let as let__ } from './Functor'
+import { dual, flow, identity, type LazyArg, pipe } from './function'
+import { as as as_, asUnit as asUnit_, bindTo as bindTo_, flap as flap_, type Functor2, let as let__ } from './Functor'
 import { type HKT } from './HKT'
 import * as _ from './internal'
 import { type Monad2, type Monad2C } from './Monad'
@@ -158,10 +153,20 @@ export const left: <E = never, A = never>(e: E) => Either<E, A> = _.left
  */
 export const right: <E = never, A = never>(a: A) => Either<E, A> = _.right
 
+/**
+ * @since 2.14.0
+ * @category Sequencing
+ */
+export const flatMap: {
+  <A, E2, B>(f: (a: A) => Either<E2, B>): <E1>(ma: Either<E1, A>) => Either<E1 | E2, B>
+  <E1, A, E2, B>(ma: Either<E1, A>, f: (a: A) => Either<E2, B>): Either<E1 | E2, B>
+} = /*#__PURE__*/ dual(
+  2,
+  <E1, A, E2, B>(ma: Either<E1, A>, f: (a: A) => Either<E2, B>): Either<E1 | E2, B> => (isLeft(ma) ? ma : f(ma.right)),
+)
+
 const _map: Monad2<URI>['map'] = (fa, f) => pipe(fa, map(f))
 const _ap: Monad2<URI>['ap'] = (fab, fa) => pipe(fab, ap(fa))
-/* istanbul ignore next */
-const _chain: Monad2<URI>['chain'] = (ma, f) => pipe(ma, chain(f))
 /* istanbul ignore next */
 const _reduce: Foldable2<URI>['reduce'] = (fa, b, f) => pipe(fa, reduce(b, f))
 /* istanbul ignore next */
@@ -462,6 +467,25 @@ export const Functor: Functor2<URI> = {
 }
 
 /**
+ * Maps the `Right` value of this `Either` to the specified constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const as: {
+  <A>(a: A): <E, _>(self: Either<E, _>) => Either<E, A>
+  <E, _, A>(self: Either<E, _>, a: A): Either<E, A>
+} = dual(2, as_(Functor))
+
+/**
+ * Maps the `Right` value of this `Either` to the void constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const asUnit: <E, _>(self: Either<E, _>) => Either<E, void> = asUnit_(Functor)
+
+/**
  * @since 2.7.0
  * @category Constructors
  */
@@ -514,54 +538,14 @@ export const Applicative: Applicative2<URI> = {
 }
 
 /**
- * Less strict version of [`chain`](#chain).
- *
- * The `W` suffix (short for **W**idening) means that the error types will be merged.
- *
- * @since 2.6.0
- * @category Sequencing
- * @example
- *   import * as E from 'fp-ts/Either'
- *   import { pipe } from 'fp-ts/function'
- *
- *   const e1: E.Either<string, number> = E.right(1)
- *   const e2: E.Either<number, number> = E.right(2)
- *
- *   export const result1 = pipe(
- *     // @ts-expect-error
- *     e1,
- *     E.chain(() => e2),
- *   )
- *
- *   // merged error types -----v-------------v
- *   // const result2: E.Either<string | number, number>
- *   export const result2 = pipe(
- *     e1, // no error
- *     E.chainW(() => e2),
- *   )
- */
-export const chainW =
-  <E2, A, B>(f: (a: A) => Either<E2, B>) =>
-  <E1>(ma: Either<E1, A>): Either<E1 | E2, B> =>
-    isLeft(ma) ? ma : f(ma.right)
-
-/**
- * Composes computations in sequence, using the return value of one computation to determine the next computation.
- *
- * @since 2.0.0
- * @category Sequencing
- */
-export const chain: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Either<E, A>) => Either<E, B> = chainW
-
-/**
  * @since 2.10.0
  * @category Instances
  */
-export const Chain: Chain2<URI> = {
+export const Chain: chainable.Chain2<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -573,7 +557,7 @@ export const Monad: Monad2<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -735,7 +719,7 @@ export const Bifunctor: Bifunctor2<URI> = {
  * @since 2.9.0
  * @category Error handling
  */
-export const altW: <E2, B>(that: Lazy<Either<E2, B>>) => <E1, A>(fa: Either<E1, A>) => Either<E2, A | B> =
+export const altW: <E2, B>(that: LazyArg<Either<E2, B>>) => <E1, A>(fa: Either<E1, A>) => Either<E2, A | B> =
   that => fa => (isLeft(fa) ? that() : fa)
 
 /**
@@ -787,7 +771,7 @@ export const altW: <E2, B>(that: Lazy<Either<E2, B>>) => <E1, A>(fa: Either<E1, 
  *     E.right(1),
  *   )
  */
-export const alt: <E, A>(that: Lazy<Either<E, A>>) => (fa: Either<E, A>) => Either<E, A> = altW
+export const alt: <E, A>(that: LazyArg<Either<E, A>>) => (fa: Either<E, A>) => Either<E, A> = altW
 
 /**
  * @since 2.7.0
@@ -821,7 +805,7 @@ export const ChainRec: ChainRec2<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
   chainRec: _chainRec,
 }
 
@@ -837,7 +821,7 @@ export const MonadThrow: MonadThrow2<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
   throwError,
 }
 
@@ -911,7 +895,7 @@ export const fromPredicate: {
  *     E.left('error'),
  *   )
  */
-export const fromOption: <E>(onNone: Lazy<E>) => <A>(fa: Option<A>) => Either<E, A> =
+export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => Either<E, A> =
   /*#__PURE__*/ fromOption_(FromEither)
 
 // -------------------------------------------------------------------------------------
@@ -1073,22 +1057,13 @@ export const apSecondW: <E2, B>(second: Either<E2, B>) => <E1, A>(first: Either<
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.0.0
- * @category Sequencing
+ * @since 2.15.0
+ * @category Combinators
  */
-export const chainFirst: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Either<E, A>) => Either<E, A> =
-  /*#__PURE__*/ chainFirst_(Chain)
-
-/**
- * Less strict version of [`chainFirst`](#chainfirst)
- *
- * The `W` suffix (short for **W**idening) means that the error types will be merged.
- *
- * @since 2.8.0
- * @category Sequencing
- */
-export const chainFirstW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Either<E1, A>) => Either<E1 | E2, A> =
-  chainFirst as any
+export const tap: {
+  <E1, A, E2, _>(self: Either<E1, A>, f: (a: A) => Either<E2, _>): Either<E1 | E2, A>
+  <A, E2, _>(f: (a: A) => Either<E2, _>): <E1>(self: Either<E1, A>) => Either<E2 | E1, A>
+} = /*#__PURE__*/ dual(2, chainable.tap(Chain))
 
 /**
  * Less strict version of [`flatten`](#flatten).
@@ -1099,7 +1074,7 @@ export const chainFirstW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Eit
  * @category Sequencing
  */
 export const flattenW: <E1, E2, A>(mma: Either<E1, Either<E2, A>>) => Either<E1 | E2, A> =
-  /*#__PURE__*/ chainW(identity)
+  /*#__PURE__*/ flatMap(identity)
 
 /**
  * The `flatten` function is the conventional monad join operator. It is used to remove one level of monadic structure,
@@ -1120,24 +1095,96 @@ export const flatten: <E, A>(mma: Either<E, Either<E, A>>) => Either<E, A> = fla
 export const duplicate: <E, A>(ma: Either<E, A>) => Either<E, Either<E, A>> = /*#__PURE__*/ extend(identity)
 
 /**
+ * Use `liftOption`.
+ *
  * @since 2.10.0
- * @category Lifting
+ * @category Legacy
  */
 export const fromOptionK: <E>(
-  onNone: Lazy<E>,
+  onNone: LazyArg<E>,
 ) => <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => Option<B>) => (...a: A) => Either<E, B> =
   /*#__PURE__*/ fromOptionK_(FromEither)
 
 /**
+ * Use `flatMapOption`.
+ *
  * @since 2.11.0
- * @category Sequencing
+ * @category Legacy
  */
 export const chainOptionK: <E>(
-  onNone: Lazy<E>,
+  onNone: LazyArg<E>,
 ) => <A, B>(f: (a: A) => Option<B>) => (ma: Either<E, A>) => Either<E, B> = /*#__PURE__*/ chainOptionK_(
   FromEither,
   Chain,
 )
+
+/**
+ * Use `flatMapOption`.
+ *
+ * @since 2.13.2
+ * @category Legacy
+ */
+export const chainOptionKW: <E2>(
+  onNone: LazyArg<E2>,
+) => <A, B>(f: (a: A) => Option<B>) => <E1>(ma: Either<E1, A>) => Either<E1 | E2, B> = /*#__PURE__*/ chainOptionK as any
+
+/** @internal */
+interface EitherTypeLambda extends _.TypeLambda {
+  readonly type: Either<this['Out1'], this['Target']>
+}
+
+/** @internal */
+const _FromEither: _.FromEither<EitherTypeLambda> = {
+  fromEither: FromEither.fromEither,
+}
+
+/**
+ * @since 2.15.0
+ * @category Lifting
+ */
+export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
+  f: (...a: A) => B | null | undefined,
+  onNullable: (...a: A) => E,
+) => (...a: A) => Either<E, NonNullable<B>> = /*#__PURE__*/ _.liftNullable(_FromEither)
+
+/**
+ * @since 2.15.0
+ * @category Lifting
+ */
+export const liftOption: <A extends ReadonlyArray<unknown>, B, E>(
+  f: (...a: A) => Option<B>,
+  onNone: (...a: A) => E,
+) => (...a: A) => Either<E, B> = /*#__PURE__*/ _.liftOption(_FromEither)
+
+/** @internal */
+const _FlatMap: _.FlatMap<EitherTypeLambda> = {
+  flatMap,
+}
+
+/**
+ * @since 2.15.0
+ * @category Sequencing
+ */
+export const flatMapNullable: {
+  <A, B, E2>(
+    f: (a: A) => B | null | undefined,
+    onNullable: (a: A) => E2,
+  ): <E1>(self: Either<E1, A>) => Either<E2 | E1, NonNullable<B>>
+  <E1, A, B, E2>(
+    self: Either<E1, A>,
+    f: (a: A) => B | null | undefined,
+    onNullable: (a: A) => E2,
+  ): Either<E1 | E2, NonNullable<B>>
+} = /*#__PURE__*/ _.flatMapNullable(_FromEither, _FlatMap)
+
+/**
+ * @since 2.15.0
+ * @category Sequencing
+ */
+export const flatMapOption: {
+  <A, B, E2>(f: (a: A) => Option<B>, onNone: (a: A) => E2): <E1>(self: Either<E1, A>) => Either<E2 | E1, B>
+  <E1, A, B, E2>(self: Either<E1, A>, f: (a: A) => Option<B>, onNone: (a: A) => E2): Either<E1 | E2, B>
+} = /*#__PURE__*/ _.flatMapOption(_FromEither, _FlatMap)
 
 /**
  * @since 2.0.0
@@ -1177,7 +1224,11 @@ export const chainOptionK: <E>(
  *     E.left('a'),
  *   )
  */
-export const filterOrElse = /*#__PURE__*/ filterOrElse_(FromEither, Chain)
+export const filterOrElse: {
+  <A, B extends A, E>(refinement: Refinement<A, B>, onFalse: (a: A) => E): (self: Either<E, A>) => Either<E, B>
+  <A, E>(predicate: Predicate<A>, onFalse: (a: A) => E): <B extends A>(self: Either<E, B>) => Either<E, B>
+  <A, E>(predicate: Predicate<A>, onFalse: (a: A) => E): (self: Either<E, A>) => Either<E, A>
+} = /*#__PURE__*/ filterOrElse_(FromEither, Chain)
 
 /**
  * Less strict version of [`filterOrElse`](#filterorelse).
@@ -1270,7 +1321,7 @@ export const fromNullable =
  *   assert.deepStrictEqual(head([]), E.left(new Error('empty array')))
  *   assert.deepStrictEqual(head([1, 2, 3]), E.right(1))
  */
-export const tryCatch = <E, A>(f: Lazy<A>, onThrow: (e: unknown) => E): Either<E, A> => {
+export const tryCatch = <E, A>(f: LazyArg<A>, onThrow: (e: unknown) => E): Either<E, A> => {
   try {
     return right(f())
   } catch (e) {
@@ -1293,8 +1344,10 @@ export const tryCatchK =
     tryCatch(() => f(...a), onThrow)
 
 /**
+ * Use `liftNullable`.
+ *
  * @since 2.9.0
- * @category Lifting
+ * @category Legacy
  */
 export const fromNullableK = <E>(
   e: E,
@@ -1306,14 +1359,16 @@ export const fromNullableK = <E>(
 }
 
 /**
+ * Use `flatMapNullable`.
+ *
  * @since 2.9.0
- * @category Sequencing
+ * @category Legacy
  */
 export const chainNullableK = <E>(
   e: E,
 ): (<A, B>(f: (a: A) => B | null | undefined) => (ma: Either<E, A>) => Either<E, NonNullable<B>>) => {
   const from = fromNullableK(e)
-  return f => chain(from(f))
+  return f => flatMap(from(f))
 }
 
 /**
@@ -1398,7 +1453,7 @@ export {
  * @since 2.8.0
  * @category Do notation
  */
-export const bind = /*#__PURE__*/ bind_(Chain)
+export const bind = /*#__PURE__*/ chainable.bind(Chain)
 
 /**
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
@@ -1506,6 +1561,42 @@ export const sequenceArray: <E, A>(as: ReadonlyArray<Either<E, A>>) => Either<E,
   /*#__PURE__*/ traverseArray(identity)
 
 // -------------------------------------------------------------------------------------
+// legacy
+// -------------------------------------------------------------------------------------
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.6.0
+ * @category Legacy
+ */
+export const chainW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Either<E1, A>) => Either<E2 | E1, B> = flatMap
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.0.0
+ * @category Legacy
+ */
+export const chain: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Either<E, A>) => Either<E, B> = flatMap
+
+/**
+ * Alias of `tap`.
+ *
+ * @since 2.0.0
+ * @category Legacy
+ */
+export const chainFirst: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Either<E, A>) => Either<E, A> = tap
+
+/**
+ * Alias of `tap`.
+ *
+ * @since 2.8.0
+ * @category Legacy
+ */
+export const chainFirstW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Either<E1, A>) => Either<E1 | E2, A> = tap
+
+// -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
 
@@ -1585,7 +1676,7 @@ export const either: Monad2<URI> &
   map: _map,
   of,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
   reduce: _reduce,
   foldMap: _foldMap,
   reduceRight: _reduceRight,
@@ -1666,7 +1757,7 @@ export function getValidation<E>(
     _E: undefined as any,
     map: _map,
     of,
-    chain: _chain,
+    chain: flatMap,
     bimap: _bimap,
     mapLeft: _mapLeft,
     reduce: _reduce,

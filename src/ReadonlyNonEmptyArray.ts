@@ -22,7 +22,7 @@ import { type Eq, fromEquals } from './Eq'
 import { type Extend1 } from './Extend'
 import { type Foldable1 } from './Foldable'
 import { type FoldableWithIndex1 } from './FoldableWithIndex'
-import { flow, identity, type Lazy, pipe, SK } from './function'
+import { dual, flow, identity, type LazyArg, pipe, SK } from './function'
 import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
 import { type FunctorWithIndex1 } from './FunctorWithIndex'
 import { type HKT } from './HKT'
@@ -36,10 +36,11 @@ import { type Predicate } from './Predicate'
 import { type ReadonlyRecord } from './ReadonlyRecord'
 import { type Refinement } from './Refinement'
 import * as Se from './Semigroup'
-import { type Semigroup } from './Semigroup'
 import { type Show } from './Show'
 import { type PipeableTraverse1, type Traversable1 } from './Traversable'
 import { type PipeableTraverseWithIndex1, type TraversableWithIndex1 } from './TraversableWithIndex'
+
+import Semigroup = Se.Semigroup
 
 // -------------------------------------------------------------------------------------
 // model
@@ -568,7 +569,6 @@ const _map: Functor1<URI>['map'] = (fa, f) => pipe(fa, map(f))
 /* istanbul ignore next */
 const _mapWithIndex: FunctorWithIndex1<URI, number>['mapWithIndex'] = (fa, f) => pipe(fa, mapWithIndex(f))
 const _ap: Apply1<URI>['ap'] = (fab, fa) => pipe(fab, ap(fa))
-const _chain: Monad1<URI>['chain'] = (ma, f) => pipe(ma, chain(f))
 /* istanbul ignore next */
 const _extend: Extend1<URI>['extend'] = (wa, f) => pipe(wa, extend(f))
 /* istanbul ignore next */
@@ -634,7 +634,7 @@ export const of: <A>(a: A) => ReadonlyNonEmptyArray<A> = _.singleton
  *   )
  */
 export const altW =
-  <B>(that: Lazy<ReadonlyNonEmptyArray<B>>) =>
+  <B>(that: LazyArg<ReadonlyNonEmptyArray<B>>) =>
   <A>(as: ReadonlyNonEmptyArray<A>): ReadonlyNonEmptyArray<A | B> =>
     pipe(as, concatW(that()))
 
@@ -659,18 +659,16 @@ export const altW =
  *   )
  */
 export const alt: <A>(
-  that: Lazy<ReadonlyNonEmptyArray<A>>,
+  that: LazyArg<ReadonlyNonEmptyArray<A>>,
 ) => (as: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArray<A> = altW
 
 /** @since 2.5.0 */
 export const ap = <A>(
   as: ReadonlyNonEmptyArray<A>,
-): (<B>(fab: ReadonlyNonEmptyArray<(a: A) => B>) => ReadonlyNonEmptyArray<B>) => chain(f => pipe(as, map(f)))
+): (<B>(fab: ReadonlyNonEmptyArray<(a: A) => B>) => ReadonlyNonEmptyArray<B>) => flatMap(f => pipe(as, map(f)))
 
 /**
- * Composes computations in sequence, using the return value of one computation to determine the next computation.
- *
- * @since 2.5.0
+ * @since 2.14.0
  * @category Sequencing
  * @example
  *   import * as RNEA from 'fp-ts/ReadonlyNonEmptyArray'
@@ -679,14 +677,22 @@ export const ap = <A>(
  *   assert.deepStrictEqual(
  *     pipe(
  *       [1, 2, 3],
- *       RNEA.chain(n => [`a${n}`, `b${n}`]),
+ *       RNEA.flatMap(n => [`a${n}`, `b${n}`]),
  *     ),
  *     ['a1', 'b1', 'a2', 'b2', 'a3', 'b3'],
  *   )
  */
-export const chain = <A, B>(
-  f: (a: A) => ReadonlyNonEmptyArray<B>,
-): ((ma: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArray<B>) => chainWithIndex((_, a) => f(a))
+export const flatMap: {
+  <A, B>(f: (a: A, i: number) => ReadonlyNonEmptyArray<B>): (ma: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArray<B>
+  <A, B>(ma: ReadonlyNonEmptyArray<A>, f: (a: A, i: number) => ReadonlyNonEmptyArray<B>): ReadonlyNonEmptyArray<B>
+} = /*#__PURE__*/ dual(
+  2,
+  <A, B>(ma: ReadonlyNonEmptyArray<A>, f: (a: A, i: number) => ReadonlyNonEmptyArray<B>): ReadonlyNonEmptyArray<B> =>
+    pipe(
+      ma,
+      chainWithIndex((i, a) => f(a, i)),
+    ),
+)
 
 /** @since 2.5.0 */
 export const extend =
@@ -710,7 +716,7 @@ export const duplicate: <A>(ma: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArr
  * @category Sequencing
  */
 export const flatten: <A>(mma: ReadonlyNonEmptyArray<ReadonlyNonEmptyArray<A>>) => ReadonlyNonEmptyArray<A> =
-  /*#__PURE__*/ chain(identity)
+  /*#__PURE__*/ flatMap(identity)
 
 /**
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
@@ -970,7 +976,7 @@ export const Chain: Chain1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -1004,7 +1010,7 @@ export const Monad: Monad1<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -1239,6 +1245,20 @@ export const intercalate = <A>(S: Semigroup<A>): ((middle: A) => (as: ReadonlyNo
 }
 
 // -------------------------------------------------------------------------------------
+// legacy
+// -------------------------------------------------------------------------------------
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.5.0
+ * @category Legacy
+ */
+export const chain: <A, B>(
+  f: (a: A) => ReadonlyNonEmptyArray<B>,
+) => (ma: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArray<B> = flatMap
+
+// -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
 
@@ -1383,7 +1403,7 @@ export const readonlyNonEmptyArray: Monad1<URI> &
   map: _map,
   mapWithIndex: _mapWithIndex,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
   extend: _extend,
   extract: extract,
   reduce: _reduce,

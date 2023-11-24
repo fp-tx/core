@@ -1,9 +1,9 @@
-import * as U from './util'
 import { fanin, splitChoice } from '../src/Choice'
 import { left, right } from '../src/Either'
 import * as R from '../src/Reader'
+import * as U from './util'
 
-describe('Choice', () => {
+describe.concurrent('Choice', () => {
   it('splitChoice', () => {
     const ab = (s: string) => s.length
     const cd = (n: number) => n >= 2

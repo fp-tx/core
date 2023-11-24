@@ -1,9 +1,9 @@
-import * as U from './util'
+import { pipe } from '../src/function'
 import * as I from '../src/IO'
 import { IORef, newIORef } from '../src/IORef'
-import { pipe } from '../src/function'
+import * as U from './util'
 
-describe('IORef', () => {
+describe.concurrent('IORef', () => {
   it('read', () => {
     const ref = new IORef(1)
     U.deepStrictEqual(ref.read(), 1)

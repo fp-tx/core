@@ -3,11 +3,11 @@ import { pipe } from '../src/function'
 import * as _ from '../src/IO'
 import * as N from '../src/number'
 import * as RA from '../src/ReadonlyArray'
-import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
+import { type ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import * as U from './util'
 
-describe('IO', () => {
-  describe('pipeables', () => {
+describe.concurrent('IO', () => {
+  describe.concurrent('pipeables', () => {
     it('map', () => {
       U.deepStrictEqual(pipe(_.of(1), _.map(U.double))(), 2)
     })
@@ -24,6 +24,12 @@ describe('IO', () => {
       U.deepStrictEqual(pipe(_.of('a'), _.apSecond(_.of('b')))(), 'b')
     })
 
+    it('flatMap', () => {
+      const f = (n: number) => _.of(n * 2)
+      U.deepStrictEqual(pipe(_.of(1), _.flatMap(f))(), 2)
+      U.deepStrictEqual(_.flatMap(_.of(1), f)(), 2)
+    })
+
     it('chain', () => {
       const f = (n: number) => _.of(n * 2)
       U.deepStrictEqual(pipe(_.of(1), _.chain(f))(), 2)
@@ -31,6 +37,12 @@ describe('IO', () => {
 
     it('flatten', () => {
       U.deepStrictEqual(pipe(_.of(_.of(1)), _.flatten)(), 1)
+    })
+
+    it('tap', () => {
+      const f = (n: number) => _.of(n * 2)
+      U.deepStrictEqual(pipe(_.of(1), _.tap(f))(), 1)
+      U.deepStrictEqual(_.tap(_.of(1), f)(), 1)
     })
 
     it('chainFirst', () => {
@@ -80,13 +92,10 @@ describe('IO', () => {
   })
 
   it('apS', () => {
-    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(), {
-      a: 1,
-      b: 'b',
-    })
+    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(), { a: 1, b: 'b' })
   })
 
-  describe('array utils', () => {
+  describe.concurrent('array utils', () => {
     const input: ReadonlyNonEmptyArray<string> = ['a', 'b']
 
     it('traverseReadonlyArrayWithIndex', () => {
@@ -107,5 +116,13 @@ describe('IO', () => {
       U.deepStrictEqual(pipe([append(1), append(2)], _.sequenceArray)(), [1, 2])
       U.deepStrictEqual(log, [1, 2])
     })
+  })
+
+  it('as', () => {
+    U.deepStrictEqual(pipe(_.of('a'), _.as('b'))(), 'b')
+  })
+
+  it('asUnit', () => {
+    U.deepStrictEqual(pipe(_.of('a'), _.asUnit)(), undefined)
   })
 })

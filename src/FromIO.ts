@@ -3,28 +3,9 @@
  *
  * @since 2.10.0
  */
-import {
-  type Chain,
-  type Chain1,
-  type Chain2,
-  type Chain2C,
-  type Chain3,
-  type Chain3C,
-  type Chain4,
-  chainFirst,
-} from './Chain'
+import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C, type Chain4, tap } from './Chain'
 import { flow } from './function'
-import {
-  type HKT,
-  type Kind,
-  type Kind2,
-  type Kind3,
-  type Kind4,
-  type URIS,
-  type URIS2,
-  type URIS3,
-  type URIS4,
-} from './HKT'
+import { type HKT, type Kind, type Kind2, type Kind3, type Kind4, type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
 import { type IO } from './IO'
 
 // -------------------------------------------------------------------------------------
@@ -194,6 +175,44 @@ export function chainFirstIOK<M>(
   F: FromIO<M>,
   M: Chain<M>,
 ): <A, B>(f: (a: A) => IO<B>) => (first: HKT<M, A>) => HKT<M, A> {
-  const chainFirstM = chainFirst(M)
-  return f => chainFirstM(flow(f, F.fromIO))
+  const tapIOM = tapIO(F, M)
+  return f => first => tapIOM(first, f)
+}
+
+/** @internal */
+export function tapIO<M extends URIS4>(
+  F: FromIO4<M>,
+  M: Chain4<M>,
+): <A, B, S, R, E>(self: Kind4<M, S, R, E, A>, f: (a: A) => IO<B>) => Kind4<M, S, R, E, A>
+/** @internal */
+export function tapIO<M extends URIS3>(
+  F: FromIO3<M>,
+  M: Chain3<M>,
+): <A, B, R, E>(self: Kind3<M, R, E, A>, f: (a: A) => IO<B>) => Kind3<M, R, E, A>
+/** @internal */
+export function tapIO<M extends URIS3, E>(
+  F: FromIO3C<M, E>,
+  M: Chain3C<M, E>,
+): <A, B, R, E>(self: Kind3<M, R, E, A>, f: (a: A) => IO<B>) => Kind3<M, R, E, A>
+/** @internal */
+export function tapIO<M extends URIS2>(
+  F: FromIO2<M>,
+  M: Chain2<M>,
+): <A, B, E>(self: Kind2<M, E, A>, f: (a: A) => IO<B>) => Kind2<M, E, A>
+/** @internal */
+export function tapIO<M extends URIS2, E>(
+  F: FromIO2C<M, E>,
+  M: Chain2C<M, E>,
+): <A, B, E>(self: Kind2<M, E, A>, f: (a: A) => IO<B>) => Kind2<M, E, A>
+/** @internal */
+export function tapIO<M extends URIS>(
+  F: FromIO1<M>,
+  M: Chain1<M>,
+): <A, B>(self: Kind<M, A>, f: (a: A) => IO<B>) => Kind<M, A>
+/** @internal */
+export function tapIO<M>(F: FromIO<M>, M: Chain<M>): <A, B>(self: HKT<M, A>, f: (a: A) => IO<B>) => HKT<M, A>
+/** @internal */
+export function tapIO<M>(F: FromIO<M>, M: Chain<M>): <A, B>(self: HKT<M, A>, f: (a: A) => IO<B>) => HKT<M, A> {
+  const chainFirstM = tap(M)
+  return (self, f) => chainFirstM(self, flow(f, F.fromIO))
 }

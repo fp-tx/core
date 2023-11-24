@@ -1,22 +1,15 @@
 /** @since 2.4.0 */
 import { ap as ap_, type Apply, type Apply1, type Apply2, type Apply2C, type Apply3, type Apply3C } from './Apply'
 import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C } from './Chain'
-import { flow, type Lazy, pipe } from './function'
-import {
-  type Functor,
-  type Functor1,
-  type Functor2,
-  type Functor2C,
-  type Functor3,
-  type Functor3C,
-  map as map_,
-} from './Functor'
+import { flow, type LazyArg, pipe } from './function'
+import { type Functor, type Functor1, type Functor2, type Functor2C, type Functor3, type Functor3C, map as map_ } from './Functor'
 import { type HKT, type Kind, type Kind2, type Kind3, type URIS, type URIS2, type URIS3 } from './HKT'
 import { type Monad, type Monad1, type Monad2, type Monad2C, type Monad3, type Monad3C } from './Monad'
 import { type Pointed, type Pointed1, type Pointed2, type Pointed2C, type Pointed3, type Pointed3C } from './Pointed'
 import { type Semigroup } from './Semigroup'
 import * as T from './These'
-import { type These } from './These'
+
+import These = T.These
 
 /** @since 2.10.0 */
 export function right<F extends URIS3>(F: Pointed3<F>): <A, R, FE, E = never>(a: A) => Kind3<F, R, FE, These<E, A>>
@@ -380,25 +373,25 @@ export function swap<F>(F: Functor<F>): <E, A>(ma: HKT<F, These<E, A>>) => HKT<F
 /** @since 2.10.0 */
 export function toTuple2<F extends URIS3>(
   F: Functor3<F>,
-): <E, A>(e: Lazy<E>, a: Lazy<A>) => <R, FE>(fa: Kind3<F, R, FE, These<E, A>>) => Kind3<F, R, FE, readonly [E, A]>
+): <E, A>(e: LazyArg<E>, a: LazyArg<A>) => <R, FE>(fa: Kind3<F, R, FE, These<E, A>>) => Kind3<F, R, FE, readonly [E, A]>
 export function toTuple2<F extends URIS3, FE>(
   F: Functor3C<F, FE>,
-): <E, A>(e: Lazy<E>, a: Lazy<A>) => <R>(fa: Kind3<F, R, FE, These<E, A>>) => Kind3<F, R, FE, readonly [E, A]>
+): <E, A>(e: LazyArg<E>, a: LazyArg<A>) => <R>(fa: Kind3<F, R, FE, These<E, A>>) => Kind3<F, R, FE, readonly [E, A]>
 export function toTuple2<F extends URIS2>(
   F: Functor2<F>,
-): <E, A>(e: Lazy<E>, a: Lazy<A>) => <FE>(fa: Kind2<F, FE, These<E, A>>) => Kind2<F, FE, readonly [E, A]>
+): <E, A>(e: LazyArg<E>, a: LazyArg<A>) => <FE>(fa: Kind2<F, FE, These<E, A>>) => Kind2<F, FE, readonly [E, A]>
 export function toTuple2<F extends URIS2, FE>(
   F: Functor2C<F, FE>,
-): <E, A>(e: Lazy<E>, a: Lazy<A>) => (fa: Kind2<F, FE, These<E, A>>) => Kind2<F, FE, readonly [E, A]>
+): <E, A>(e: LazyArg<E>, a: LazyArg<A>) => (fa: Kind2<F, FE, These<E, A>>) => Kind2<F, FE, readonly [E, A]>
 export function toTuple2<F extends URIS>(
   F: Functor1<F>,
-): <E, A>(e: Lazy<E>, a: Lazy<A>) => (fa: Kind<F, These<E, A>>) => Kind<F, readonly [E, A]>
+): <E, A>(e: LazyArg<E>, a: LazyArg<A>) => (fa: Kind<F, These<E, A>>) => Kind<F, readonly [E, A]>
 export function toTuple2<F>(
   F: Functor<F>,
-): <E, A>(e: Lazy<E>, a: Lazy<A>) => (fa: HKT<F, These<E, A>>) => HKT<F, readonly [E, A]>
+): <E, A>(e: LazyArg<E>, a: LazyArg<A>) => (fa: HKT<F, These<E, A>>) => HKT<F, readonly [E, A]>
 export function toTuple2<F>(
   F: Functor<F>,
-): <E, A>(e: Lazy<E>, a: Lazy<A>) => (fa: HKT<F, These<E, A>>) => HKT<F, readonly [E, A]> {
+): <E, A>(e: LazyArg<E>, a: LazyArg<A>) => (fa: HKT<F, These<E, A>>) => HKT<F, readonly [E, A]> {
   return (e, a) => fa => F.map(fa, T.toTuple2(e, a))
 }
 
@@ -537,7 +530,9 @@ export function getTheseM<M>(M: Monad<M>): TheseM<M> {
   const _bimap = bimap(M)
   const _mapLeft = mapLeft(M)
   const _fold = matchE(M)
-  const _toTuple2: <E, A>(e: Lazy<E>, a: Lazy<A>) => (fa: HKT<M, T.These<E, A>>) => HKT<M, [E, A]> = toTuple2(M) as any
+  const _toTuple2: <E, A>(e: LazyArg<E>, a: LazyArg<A>) => (fa: HKT<M, T.These<E, A>>) => HKT<M, [E, A]> = toTuple2(
+    M,
+  ) as any
   const of = right(M)
 
   const mapT = <E, A, B>(fa: TheseT<M, E, A>, f: (a: A) => B): TheseT<M, E, B> => pipe(fa, _map(f))

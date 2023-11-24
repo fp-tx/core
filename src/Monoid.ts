@@ -134,9 +134,7 @@ export const reverse = <A>(M: Monoid<A>): Monoid<A> => ({
  *
  *   assert.deepStrictEqual(M.concat({ x: 1, y: 2 }, { x: 3, y: 4 }), { x: 4, y: 6 })
  */
-export const struct = <A>(monoids: { [K in keyof A]: Monoid<A[K]> }): Monoid<{
-  readonly [K in keyof A]: A[K]
-}> => {
+export const struct = <A>(monoids: { [K in keyof A]: Monoid<A[K]> }): Monoid<{ readonly [K in keyof A]: A[K] }> => {
   const empty: A = {} as any
   for (const k in monoids) {
     if (_.has.call(monoids, k)) {

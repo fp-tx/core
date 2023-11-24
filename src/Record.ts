@@ -24,17 +24,7 @@ import { type FoldableWithIndex1 } from './FoldableWithIndex'
 import { pipe } from './function'
 import { flap as flap_, type Functor1 } from './Functor'
 import { type FunctorWithIndex1 } from './FunctorWithIndex'
-import {
-  type HKT,
-  type Kind,
-  type Kind2,
-  type Kind3,
-  type Kind4,
-  type URIS,
-  type URIS2,
-  type URIS3,
-  type URIS4,
-} from './HKT'
+import { type HKT, type Kind, type Kind2, type Kind3, type Kind4, type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
 import * as _ from './internal'
 import { type Magma } from './Magma'
 import { type Monoid } from './Monoid'
@@ -44,7 +34,6 @@ import { type Predicate } from './Predicate'
 import * as RR from './ReadonlyRecord'
 import { type Refinement } from './Refinement'
 import * as Se from './Semigroup'
-import { type Semigroup } from './Semigroup'
 import { type Separated } from './Separated'
 import { type Show } from './Show'
 import * as S from './string'
@@ -52,6 +41,8 @@ import { type Traversable1 } from './Traversable'
 import { type TraversableWithIndex1 } from './TraversableWithIndex'
 import { type Unfoldable, type Unfoldable1 } from './Unfoldable'
 import { type PipeableWilt1, type PipeableWither1, wiltDefault, type Witherable1, witherDefault } from './Witherable'
+
+import Semigroup = Se.Semigroup
 
 // -------------------------------------------------------------------------------------
 // model
@@ -315,20 +306,12 @@ export function pop(k: string): <A>(r: Record<string, A>) => Option<[A, Record<s
  *   import { string } from 'fp-ts'
  *
  *   assert.deepStrictEqual(
- *     isSubrecord(string.Eq)({ a: 'foo', b: 'bar', c: 'baz' })({
- *       a: 'foo',
- *       b: 'bar',
- *       c: 'baz',
- *     }),
+ *     isSubrecord(string.Eq)({ a: 'foo', b: 'bar', c: 'baz' })({ a: 'foo', b: 'bar', c: 'baz' }),
  *     true,
  *   )
  *   assert.deepStrictEqual(isSubrecord(string.Eq)({ a: 'foo', b: 'bar', c: 'baz' })({ a: 'foo', c: 'baz' }), true)
  *   assert.deepStrictEqual(
- *     isSubrecord(string.Eq)({ a: 'foo', b: 'bar', c: 'baz' })({
- *       a: 'foo',
- *       b: 'not-bar',
- *       c: 'baz',
- *     }),
+ *     isSubrecord(string.Eq)({ a: 'foo', b: 'bar', c: 'baz' })({ a: 'foo', b: 'not-bar', c: 'baz' }),
  *     false,
  *   )
  *   assert.deepStrictEqual(isSubrecord(string.Eq)({ a: 'foo', b: 'bar' })({ a: 'foo', b: 'bar', c: 'baz' }), false)
@@ -424,10 +407,7 @@ export function reduceWithIndex<A, B>(
  *   import { Ord } from 'fp-ts/string'
  *   import { Monoid } from 'fp-ts/Monoid'
  *
- *   const m: Monoid<string> = {
- *     empty: '',
- *     concat: (x: string, y: string) => (x ? `${x} -> ${y}` : `${y}`),
- *   }
+ *   const m: Monoid<string> = { empty: '', concat: (x: string, y: string) => (x ? `${x} -> ${y}` : `${y}`) }
  *   const f = (k: string, a: number) => `${k}-${a}`
  *   const x = { c: 3, a: 1, b: 2 }
  *   assert.deepStrictEqual(foldMapWithIndex(Ord)(m)(f)(x), 'a-1 -> b-2 -> c-3')
@@ -657,11 +637,7 @@ export const partitionMapWithIndex: <K extends string, A, B, C>(
  *   import { partitionWithIndex } from 'fp-ts/Record'
  *
  *   assert.deepStrictEqual(
- *     partitionWithIndex((key: string, a: number) => key.length <= 1 && a > 0)({
- *       a: -1,
- *       b: 2,
- *       ccc: 7,
- *     }),
+ *     partitionWithIndex((key: string, a: number) => key.length <= 1 && a > 0)({ a: -1, b: 2, ccc: 7 }),
  *     {
  *       left: {
  *         a: -1,
@@ -715,11 +691,7 @@ export const filterMapWithIndex: <K extends string, A, B>(
  *   import { filterWithIndex } from 'fp-ts/Record'
  *
  *   assert.deepStrictEqual(
- *     filterWithIndex((s: string, v: number) => s.length <= 1 && v > 0)({
- *       a: 1,
- *       b: -2,
- *       ccc: 3,
- *     }),
+ *     filterWithIndex((s: string, v: number) => s.length <= 1 && v > 0)({ a: 1, b: -2, ccc: 3 }),
  *     {
  *       a: 1,
  *     },
@@ -911,17 +883,9 @@ export const elem: <A>(E: Eq<A>) => {
  *   import { Magma } from 'fp-ts/Magma'
  *
  *   const m1: Magma<number> = { concat: (x: number, y: number) => x + y }
- *   assert.deepStrictEqual(union(m1)({ a: 3, c: 3 })({ a: 1, b: 2 }), {
- *     a: 4,
- *     b: 2,
- *     c: 3,
- *   })
+ *   assert.deepStrictEqual(union(m1)({ a: 3, c: 3 })({ a: 1, b: 2 }), { a: 4, b: 2, c: 3 })
  *   const m2: Magma<number> = { concat: (x: number) => x }
- *   assert.deepStrictEqual(union(m2)({ a: 3, c: 3 })({ a: 1, b: 2 }), {
- *     a: 1,
- *     b: 2,
- *     c: 3,
- *   })
+ *   assert.deepStrictEqual(union(m2)({ a: 3, c: 3 })({ a: 1, b: 2 }), { a: 1, b: 2, c: 3 })
  */
 export const union = <A>(
   M: Magma<A>,
@@ -1155,10 +1119,7 @@ export function reduce<A, B>(
  *   import { Ord } from 'fp-ts/string'
  *   import { Monoid } from 'fp-ts/Monoid'
  *
- *   const m: Monoid<string> = {
- *     empty: '',
- *     concat: (x: string, y: string) => (x ? `${x} -> ${y}` : `${y}`),
- *   }
+ *   const m: Monoid<string> = { empty: '', concat: (x: string, y: string) => (x ? `${x} -> ${y}` : `${y}`) }
  *   const f = (a: number) => `-${a}-`
  *   const x = { c: 3, a: 1, b: 2 }
  *   assert.deepStrictEqual(foldMap(Ord)(m)(f)(x), '-1- -> -2- -> -3-')
@@ -1233,22 +1194,15 @@ export const compact: <A>(fa: Record<string, Option<A>>) => Record<string, A> = 
  *   import { separate } from 'fp-ts/Record'
  *   import { either } from 'fp-ts'
  *
- *   assert.deepStrictEqual(
- *     separate({
- *       a: either.right('foo'),
- *       b: either.left('bar'),
- *       c: either.right('baz'),
- *     }),
- *     {
- *       right: {
- *         a: 'foo',
- *         c: 'baz',
- *       },
- *       left: {
- *         b: 'bar',
- *       },
+ *   assert.deepStrictEqual(separate({ a: either.right('foo'), b: either.left('bar'), c: either.right('baz') }), {
+ *     right: {
+ *       a: 'foo',
+ *       c: 'baz',
  *     },
- *   )
+ *     left: {
+ *       b: 'bar',
+ *     },
+ *   })
  */
 export const separate: <A, B>(fa: Record<string, Either<A, B>>) => Separated<Record<string, A>, Record<string, B>> =
   RR.separate
@@ -1520,11 +1474,7 @@ export const getWitherable = (O: Ord<string>): Witherable1<URI> => {
  *
  *   const sNumber: Semigroup<number> = { concat: (x, y) => x - y }
  *   const sRecord: Semigroup<Record<string, number>> = getUnionSemigroup(sNumber)
- *   assert.deepStrictEqual(sRecord.concat({ a: 1, b: 2 }, { b: 3, c: 4 }), {
- *     a: 1,
- *     b: -1,
- *     c: 4,
- *   })
+ *   assert.deepStrictEqual(sRecord.concat({ a: 1, b: 2 }, { b: 3, c: 4 }), { a: 1, b: -1, c: 4 })
  */
 export const getUnionSemigroup = <A>(S: Semigroup<A>): Semigroup<Record<string, A>> => {
   const unionS = union(S)

@@ -3,11 +3,12 @@
  *
  * @since 2.11.0
  */
-import { type Chain, type Chain2, type Chain3, type Chain3C, type Chain4, chainFirst } from './Chain'
+import { type Chain, type Chain2, type Chain3, type Chain3C, type Chain4, tap } from './Chain'
 import { flow } from './function'
 import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, type URIS4 } from './HKT'
 import * as R from './Reader'
-import { type Reader } from './Reader'
+
+import Reader = R.Reader
 
 // -------------------------------------------------------------------------------------
 // model
@@ -169,5 +170,39 @@ export function chainFirstReaderK<M extends URIS2>(
   F: FromReader2<M>,
   M: Chain2<M>,
 ): <A, R, B>(f: (a: A) => Reader<R, B>) => (ma: Kind2<M, R, A>) => Kind2<M, R, A> {
-  return flow(fromReaderK(F), chainFirst(M))
+  const tapM = tapReader(F, M)
+  return f => self => tapM(self, f)
+}
+
+/** @internal */
+export function tapReader<M extends URIS4>(
+  F: FromReader4<M>,
+  M: Chain4<M>,
+): <A, S, R, E, B>(self: Kind4<M, S, R, E, A>, f: (a: A) => Reader<R, B>) => Kind4<M, S, R, E, A>
+/** @internal */
+export function tapReader<M extends URIS3>(
+  F: FromReader3<M>,
+  M: Chain3<M>,
+): <A, R, E, B>(self: Kind3<M, R, E, A>, f: (a: A) => Reader<R, B>) => Kind3<M, R, E, A>
+/** @internal */
+export function tapReader<M extends URIS3, E>(
+  F: FromReader3C<M, E>,
+  M: Chain3C<M, E>,
+): <A, R, E, B>(self: Kind3<M, R, E, A>, f: (a: A) => Reader<R, B>) => Kind3<M, R, E, A>
+/** @internal */
+export function tapReader<M extends URIS2>(
+  F: FromReader2<M>,
+  M: Chain2<M>,
+): <A, R, E, B>(self: Kind2<M, E, A>, f: (a: A) => Reader<R, B>) => Kind2<M, E, A>
+export function tapReader<M extends URIS2>(
+  F: FromReader<M>,
+  M: Chain<M>,
+): <A, R, B>(self: HKT2<M, R, A>, f: (a: A) => Reader<R, B>) => HKT2<M, R, A>
+/** @internal */
+export function tapReader<M extends URIS2>(
+  F: FromReader2<M>,
+  M: Chain2<M>,
+): <A, R, B>(self: Kind2<M, R, A>, f: (a: A) => Reader<R, B>) => Kind2<M, R, A> {
+  const tapM = tap(M)
+  return (self, f) => tapM(self, flow(f, F.fromReader))
 }

@@ -21,7 +21,7 @@ const fooEq: Eq.Eq<Foo> = {
   equals: (a: Foo, b: Foo) => a.x === b.x,
 }
 
-describe('ReadonlySet', () => {
+describe.concurrent('ReadonlySet', () => {
   it('toReadonlyArray', () => {
     U.deepStrictEqual(_.toReadonlyArray(N.Ord)(new Set()), [])
     U.deepStrictEqual(_.toReadonlyArray(N.Ord)(new Set([1, 2, 3])), [1, 2, 3])
@@ -70,7 +70,7 @@ describe('ReadonlySet', () => {
   })
 
   it('filter', () => {
-    U.deepStrictEqual(_.filter(gte2)(new Set([1, 2, 3])), new Set([2, 3]) as ReadonlySet<number>)
+    U.deepStrictEqual(_.filter(gte2)(new Set([1, 2, 3])), new Set([2, 3]))
 
     // refinements
     const isNumber = (u: string | number): u is number => typeof u === 'number'
@@ -84,7 +84,7 @@ describe('ReadonlySet', () => {
     U.deepStrictEqual(_.partition(() => false)(new Set([1])), separated(new Set([1]), new Set([])))
     U.deepStrictEqual(
       _.partition((n: number) => n % 2 === 0)(new Set([1, 2, 3, 4])),
-      separated(new Set([1, 3]) as ReadonlySet<number>, new Set([2, 4]) as ReadonlySet<number>),
+      separated(new Set([1, 3]), new Set([2, 4])),
     )
 
     // refinements

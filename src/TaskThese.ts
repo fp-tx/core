@@ -13,7 +13,7 @@ import {
 import { type FromIO2, fromIOK as fromIOK_ } from './FromIO'
 import { type FromTask2, fromTaskK as fromTaskK_ } from './FromTask'
 import { type FromThese2, fromTheseK as fromTheseK_ } from './FromThese'
-import { flow, type Lazy, pipe, SK } from './function'
+import { flow, type LazyArg, pipe, SK } from './function'
 import { flap as flap_, type Functor2 } from './Functor'
 import * as _ from './internal'
 import { type IO } from './IO'
@@ -28,10 +28,11 @@ import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
 import { type Semigroup } from './Semigroup'
 import * as T from './Task'
-import { type Task } from './Task'
 import * as TH from './These'
-import { type These } from './These'
 import * as TT from './TheseT'
+
+import These = TH.These
+import Task = T.Task
 
 // -------------------------------------------------------------------------------------
 // model
@@ -359,7 +360,7 @@ export const FromEither: FromEither2<URI> = {
  * @since 2.10.0
  * @category Conversions
  */
-export const fromOption: <E>(onNone: Lazy<E>) => <A>(fa: Option<A>) => TaskThese<E, A> =
+export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => TaskThese<E, A> =
   /*#__PURE__*/ fromOption_(FromEither)
 
 /**
@@ -367,7 +368,7 @@ export const fromOption: <E>(onNone: Lazy<E>) => <A>(fa: Option<A>) => TaskThese
  * @category Lifting
  */
 export const fromOptionK: <E>(
-  onNone: Lazy<E>,
+  onNone: LazyArg<E>,
 ) => <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => Option<B>) => (...a: A) => TaskThese<E, B> =
   /*#__PURE__*/ fromOptionK_(FromEither)
 
@@ -438,7 +439,7 @@ export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
 // -------------------------------------------------------------------------------------
 
 /** @since 2.10.0 */
-export const toTuple2: <E, A>(e: Lazy<E>, a: Lazy<A>) => (fa: TaskThese<E, A>) => Task<readonly [E, A]> =
+export const toTuple2: <E, A>(e: LazyArg<E>, a: LazyArg<A>) => (fa: TaskThese<E, A>) => Task<readonly [E, A]> =
   /*#__PURE__*/ TT.toTuple2(T.Functor)
 
 /** @since 2.11.0 */

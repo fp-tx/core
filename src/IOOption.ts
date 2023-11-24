@@ -10,7 +10,7 @@ import { type Alt1 } from './Alt'
 import { type Alternative1 } from './Alternative'
 import { type Applicative1 } from './Applicative'
 import { apFirst as apFirst_, type Apply1, apS as apS_, apSecond as apSecond_ } from './Apply'
-import { bind as bind_, type Chain1, chainFirst as chainFirst_ } from './Chain'
+import * as chainable from './Chain'
 import { compact as compact_, type Compactable1, separate as separate_ } from './Compactable'
 import { type Either } from './Either'
 import {
@@ -20,23 +20,16 @@ import {
   partition as partition_,
   partitionMap as partitionMap_,
 } from './Filterable'
-import {
-  chainEitherK as chainEitherK_,
-  chainFirstEitherK as chainFirstEitherK_,
-  type FromEither1,
-  fromEitherK as fromEitherK_,
-} from './FromEither'
-import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, type FromIO1, fromIOK as fromIOK_ } from './FromIO'
-import { flow, identity, type Lazy, pipe, SK } from './function'
-import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
+import { type FromEither1, fromEitherK as fromEitherK_, tapEither as tapEither_ } from './FromEither'
+import { type FromIO1, fromIOK as fromIOK_, tapIO as tapIO_ } from './FromIO'
+import { dual, flow, identity, type LazyArg, pipe, SK } from './function'
+import { as as as_, asUnit as asUnit_, bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
 import * as _ from './internal'
 import * as I from './IO'
-import { type IO } from './IO'
 import { type IOEither } from './IOEither'
 import { type Monad1 } from './Monad'
 import { type MonadIO1 } from './MonadIO'
 import * as O from './Option'
-import { type Option } from './Option'
 import * as OT from './OptionT'
 import { type Pointed1 } from './Pointed'
 import { type Predicate } from './Predicate'
@@ -44,6 +37,9 @@ import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
 import { type Separated } from './Separated'
 import { guard as guard_, type Zero1 } from './Zero'
+
+import IO = I.IO
+import Option = O.Option
 
 // -------------------------------------------------------------------------------------
 // model
@@ -153,7 +149,7 @@ export const matchEW: <B, C, A>(onNone: () => IO<B>, onSome: (a: A) => IO<C>) =>
  * @since 2.12.0
  * @category Error handling
  */
-export const getOrElse: <A>(onNone: Lazy<IO<A>>) => (fa: IOOption<A>) => IO<A> = /*#__PURE__*/ OT.getOrElse(I.Monad)
+export const getOrElse: <A>(onNone: LazyArg<IO<A>>) => (fa: IOOption<A>) => IO<A> = /*#__PURE__*/ OT.getOrElse(I.Monad)
 
 /**
  * Less strict version of [`getOrElse`](#getorelse).
@@ -163,7 +159,7 @@ export const getOrElse: <A>(onNone: Lazy<IO<A>>) => (fa: IOOption<A>) => IO<A> =
  * @since 2.12.0
  * @category Error handling
  */
-export const getOrElseW: <B>(onNone: Lazy<IO<B>>) => <A>(ma: IOOption<A>) => IO<A | B> = getOrElse as any
+export const getOrElseW: <B>(onNone: LazyArg<IO<B>>) => <A>(ma: IOOption<A>) => IO<A | B> = getOrElse as any
 
 /**
  * @since 2.12.0
@@ -192,8 +188,10 @@ export const fromNullableK: <A extends ReadonlyArray<unknown>, B>(
 ) => (...a: A) => IOOption<NonNullable<B>> = /*#__PURE__*/ OT.fromNullableK(I.Pointed)
 
 /**
+ * Alias of `flatMapNullable`.
+ *
  * @since 2.12.0
- * @category Sequencing
+ * @category Legacy
  */
 export const chainNullableK: <A, B>(
   f: (a: A) => B | null | undefined,
@@ -209,13 +207,6 @@ export const chainNullableK: <A, B>(
  */
 export const fromOptionK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => Option<B>) => (...a: A) => IOOption<B> =
   /*#__PURE__*/ OT.fromOptionK(I.Pointed)
-
-/**
- * @since 2.12.0
- * @category Sequencing
- */
-export const chainOptionK: <A, B>(f: (a: A) => Option<B>) => (ma: IOOption<A>) => IOOption<B> =
-  /*#__PURE__*/ OT.chainOptionK(I.Monad)
 
 /**
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
@@ -236,24 +227,27 @@ export const ap: <A>(fa: IOOption<A>) => <B>(fab: IOOption<(a: A) => B>) => IOOp
 export const of: <A>(a: A) => IOOption<A> = some
 
 /**
- * @since 2.12.0
+ * @since 2.14.0
  * @category Sequencing
  */
-export const chain: <A, B>(f: (a: A) => IOOption<B>) => (ma: IOOption<A>) => IOOption<B> = /*#__PURE__*/ OT.chain(
-  I.Monad,
-)
+export const flatMap: {
+  <A, B>(f: (a: A) => IOOption<B>): (ma: IOOption<A>) => IOOption<B>
+  <A, B>(ma: IOOption<A>, f: (a: A) => IOOption<B>): IOOption<B>
+} = /*#__PURE__*/ dual(2, OT.flatMap(I.Monad))
 
 /**
  * @since 2.12.0
  * @category Sequencing
  */
-export const flatten: <A>(mma: IOOption<IOOption<A>>) => IOOption<A> = /*#__PURE__*/ chain(identity)
+export const flatten: <A>(mma: IOOption<IOOption<A>>) => IOOption<A> = /*#__PURE__*/ flatMap(identity)
 
 /**
  * @since 2.12.0
  * @category Error handling
  */
-export const alt: <A>(second: Lazy<IOOption<A>>) => (first: IOOption<A>) => IOOption<A> = /*#__PURE__*/ OT.alt(I.Monad)
+export const alt: <A>(second: LazyArg<IOOption<A>>) => (first: IOOption<A>) => IOOption<A> = /*#__PURE__*/ OT.alt(
+  I.Monad,
+)
 
 /**
  * Less strict version of [`alt`](#alt).
@@ -263,7 +257,7 @@ export const alt: <A>(second: Lazy<IOOption<A>>) => (first: IOOption<A>) => IOOp
  * @since 2.12.0
  * @category Error handling
  */
-export const altW: <B>(second: Lazy<IOOption<B>>) => <A>(first: IOOption<A>) => IOOption<A | B> = alt as any
+export const altW: <B>(second: LazyArg<IOOption<B>>) => <A>(first: IOOption<A>) => IOOption<A | B> = alt as any
 
 /** @since 2.12.0 */
 export const zero: <A>() => IOOption<A> = /*#__PURE__*/ OT.zero(I.Pointed)
@@ -331,8 +325,6 @@ const _map: Functor1<URI>['map'] = (fa, f) => pipe(fa, map(f))
 /* istanbul ignore next */
 const _ap: Apply1<URI>['ap'] = (fab, fa) => pipe(fab, ap(fa))
 /* istanbul ignore next */
-const _chain: Monad1<URI>['chain'] = (ma, f) => pipe(ma, chain(f))
-/* istanbul ignore next */
 const _alt: Alt1<URI>['alt'] = (fa, that) => pipe(fa, alt(that))
 /* istanbul ignore next */
 const _filter: Filterable1<URI>['filter'] = <A>(fa: IOOption<A>, predicate: Predicate<A>) => pipe(fa, filter(predicate))
@@ -370,6 +362,25 @@ export const Functor: Functor1<URI> = {
   URI,
   map: _map,
 }
+
+/**
+ * Maps the `Some` value of this `IOOption` to the specified constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const as: {
+  <A>(a: A): <_>(self: IOOption<_>) => IOOption<A>
+  <_, A>(self: IOOption<_>, a: A): IOOption<A>
+} = dual(2, as_(Functor))
+
+/**
+ * Maps the `Some` value of this `IOOption` to the void constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const asUnit: <_>(self: IOOption<_>) => IOOption<void> = asUnit_(Functor)
 
 /**
  * @since 2.12.0
@@ -425,22 +436,104 @@ export const Applicative: Applicative1<URI> = {
  * @since 2.12.0
  * @category Instances
  */
-export const Chain: Chain1<URI> = {
+export const Chain: chainable.Chain1<URI> = {
   URI,
   map: _map,
   ap: _ap,
-  chain: _chain,
+  chain: flatMap,
+}
+
+/**
+ * @since 2.12.0
+ * @category Instances
+ */
+export const FromEither: FromEither1<URI> = {
+  URI,
+  fromEither,
+}
+
+/**
+ * @since 2.12.0
+ * @category Instances
+ */
+export const FromIO: FromIO1<URI> = {
+  URI,
+  fromIO,
 }
 
 /**
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.12.0
- * @category Sequencing
+ * @since 2.15.0
+ * @category Combinators
  */
-export const chainFirst: <A, B>(f: (a: A) => IOOption<B>) => (first: IOOption<A>) => IOOption<A> =
-  /*#__PURE__*/ chainFirst_(Chain)
+export const tap: {
+  <A, _>(self: IOOption<A>, f: (a: A) => IOOption<_>): IOOption<A>
+  <A, _>(f: (a: A) => IOOption<_>): (self: IOOption<A>) => IOOption<A>
+} = /*#__PURE__*/ dual(2, chainable.tap(Chain))
+
+/**
+ * Composes computations in sequence, using the return value of one computation to determine the next computation and
+ * keeping only the result of the first.
+ *
+ * @since 2.16.0
+ * @category Combinators
+ * @example
+ *   import { pipe } from 'fp-ts/function'
+ *   import * as IOO from 'fp-ts/IOOption'
+ *   import * as O from 'fp-ts/Option'
+ *   import * as E from 'fp-ts/Either'
+ *
+ *   const compute = (value: number) =>
+ *     pipe(
+ *       IOO.of(value),
+ *       IOO.tapEither(value => (value > 0 ? E.right('ok') : E.left('error'))),
+ *     )
+ *
+ *   assert.deepStrictEqual(compute(1)(), O.of(1))
+ *   assert.deepStrictEqual(compute(-1)(), O.none)
+ */
+export const tapEither: {
+  <A, E, _>(f: (a: A) => Either<E, _>): (self: IOOption<A>) => IOOption<A>
+  <A, E, _>(self: IOOption<A>, f: (a: A) => Either<E, _>): IOOption<A>
+} = /*#__PURE__*/ dual(2, tapEither_(FromEither, Chain))
+
+/**
+ * Composes computations in sequence, using the return value of one computation to determine the next computation and
+ * keeping only the result of the first.
+ *
+ * @since 2.16.0
+ * @category Combinators
+ * @example
+ *   import { pipe } from 'fp-ts/function'
+ *   import * as IOO from 'fp-ts/IOOption'
+ *   import * as O from 'fp-ts/Option'
+ *   import * as Console from 'fp-ts/Console'
+ *
+ *   // Will produce `Hello, fp-ts` to the stdout
+ *   const effectA = pipe(
+ *     IOO.of('fp-ts'),
+ *     IOO.tapIO(value => Console.log(`Hello, ${value}`)),
+ *   )
+ *
+ *   // No output to the stdout
+ *   const effectB = pipe(
+ *     IOO.none as IOO.IOOption<string>,
+ *     IOO.tapIO(value => Console.log(`Hello, ${value}`)),
+ *   )
+ *
+ *   async function test() {
+ *     assert.deepStrictEqual(effectA(), O.of('fp-ts'))
+ *     assert.deepStrictEqual(effectB(), O.none)
+ *   }
+ *
+ *   test()
+ */
+export const tapIO: {
+  <A, _>(f: (a: A) => IO<_>): (self: IOOption<A>) => IOOption<A>
+  <A, _>(self: IOOption<A>, f: (a: A) => IO<_>): IOOption<A>
+} = /*#__PURE__*/ dual(2, tapIO_(FromIO, Chain))
 
 /**
  * @since 2.12.0
@@ -489,7 +582,7 @@ export const Monad: Monad1<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -501,7 +594,7 @@ export const MonadIO: MonadIO1<URI> = {
   map: _map,
   ap: _ap,
   of,
-  chain: _chain,
+  chain: flatMap,
   fromIO,
 }
 
@@ -530,14 +623,67 @@ export const Filterable: Filterable1<URI> = {
   partitionMap: _partitionMap,
 }
 
-/**
- * @since 2.12.0
- * @category Instances
- */
-export const FromIO: FromIO1<URI> = {
-  URI,
-  fromIO,
+/** @internal */
+interface IOOptionTypeLambda extends _.TypeLambda {
+  readonly type: IOOption<this['Target']>
 }
+
+/** @internal */
+const _FlatMap: _.FlatMap<IOOptionTypeLambda> = {
+  flatMap,
+}
+
+/** @internal */
+const _FromIO: _.FromIO<IOOptionTypeLambda> = {
+  fromIO: FromIO.fromIO,
+}
+
+/** @internal */
+const _FromEither: _.FromEither<IOOptionTypeLambda> = {
+  fromEither,
+}
+
+/**
+ * @since 2.16.0
+ * @category Sequencing
+ */
+export const flatMapIO: {
+  <A, B>(f: (a: A) => IO<B>): (self: IOOption<A>) => IOOption<B>
+  <A, B>(self: IOOption<A>, f: (a: A) => IO<B>): IOOption<B>
+} = _.flatMapIO(_FromIO, _FlatMap)
+
+/**
+ * @since 2.16.0
+ * @category Sequencing
+ */
+export const flatMapOption: {
+  <A, B>(f: (a: A) => Option<B>): (self: IOOption<A>) => IOOption<B>
+  <A, B>(self: IOOption<A>, f: (a: A) => Option<B>): IOOption<B>
+} = /*#__PURE__*/ dual(
+  2,
+  <A, B>(self: IOOption<A>, f: (a: A) => Option<B>): IOOption<B> => flatMap(self, fromOptionK(f)),
+)
+
+/**
+ * @since 2.16.0
+ * @category Sequencing
+ */
+export const flatMapEither: {
+  <A, B, _>(f: (a: A) => Either<_, B>): (self: IOOption<A>) => IOOption<B>
+  <A, B, _>(self: IOOption<A>, f: (a: A) => Either<_, B>): IOOption<B>
+} = /*#__PURE__*/ _.flatMapEither(_FromEither, _FlatMap)
+
+/**
+ * @since 2.16.0
+ * @category Sequencing
+ */
+export const flatMapNullable: {
+  <A, B>(f: (a: A) => B | null | undefined): (self: IOOption<A>) => IOOption<B>
+  <A, B>(self: IOOption<A>, f: (a: A) => B | null | undefined): IOOption<B>
+} = /*#__PURE__*/ dual(
+  2,
+  <A, B>(self: IOOption<A>, f: (a: A) => B | null | undefined): IOOption<B> => flatMap(self, fromNullableK(f)),
+)
 
 /**
  * @since 2.12.0
@@ -547,29 +693,20 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => I.IO
   /*#__PURE__*/ fromIOK_(FromIO)
 
 /**
+ * Alias of `flatMapIO`.
+ *
  * @since 2.12.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainIOK: <A, B>(f: (a: A) => I.IO<B>) => (first: IOOption<A>) => IOOption<B> = /*#__PURE__*/ chainIOK_(
-  FromIO,
-  Chain,
-)
+export const chainIOK: <A, B>(f: (a: A) => I.IO<B>) => (first: IOOption<A>) => IOOption<B> = flatMapIO
 
 /**
+ * Alias of `tapIO`.
+ *
  * @since 2.12.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainFirstIOK: <A, B>(f: (a: A) => I.IO<B>) => (first: IOOption<A>) => IOOption<A> =
-  /*#__PURE__*/ chainFirstIOK_(FromIO, Chain)
-
-/**
- * @since 2.12.0
- * @category Instances
- */
-export const FromEither: FromEither1<URI> = {
-  URI,
-  fromEither,
-}
+export const chainFirstIOK: <A, B>(f: (a: A) => I.IO<B>) => (first: IOOption<A>) => IOOption<A> = tapIO
 
 /**
  * @since 2.12.0
@@ -580,18 +717,28 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 ) => (...a: A) => IOOption<B> = /*#__PURE__*/ fromEitherK_(FromEither)
 
 /**
+ * Alias of `flatMapEither`.
+ *
  * @since 2.12.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: IOOption<A>) => IOOption<B> =
-  /*#__PURE__*/ chainEitherK_(FromEither, Chain)
+export const chainEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: IOOption<A>) => IOOption<B> = flatMapEither
 
 /**
+ * Alias of `tapEither`.
+ *
  * @since 2.12.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: IOOption<A>) => IOOption<A> =
-  /*#__PURE__*/ chainFirstEitherK_(FromEither, Chain)
+export const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: IOOption<A>) => IOOption<A> = tapEither
+
+/**
+ * Alias of `flatMapOption`.
+ *
+ * @since 2.12.0
+ * @category Legacy
+ */
+export const chainOptionK: <A, B>(f: (a: A) => Option<B>) => (ma: IOOption<A>) => IOOption<B> = flatMapOption
 
 // -------------------------------------------------------------------------------------
 // do notation
@@ -623,7 +770,7 @@ export {
  * @since 2.12.0
  * @category Do notation
  */
-export const bind = /*#__PURE__*/ bind_(Chain)
+export const bind = /*#__PURE__*/ chainable.bind(Chain)
 
 /**
  * @since 2.12.0
@@ -661,3 +808,23 @@ export const traverseReadonlyArrayWithIndex = <A, B>(
   const g = traverseReadonlyNonEmptyArrayWithIndex(f)
   return as => (_.isNonEmpty(as) ? g(as) : ApT)
 }
+
+// -------------------------------------------------------------------------------------
+// legacy
+// -------------------------------------------------------------------------------------
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.12.0
+ * @category Legacy
+ */
+export const chain: <A, B>(f: (a: A) => IOOption<B>) => (ma: IOOption<A>) => IOOption<B> = flatMap
+
+/**
+ * Alias of `tap`.
+ *
+ * @since 2.12.0
+ * @category Legacy
+ */
+export const chainFirst: <A, B>(f: (a: A) => IOOption<B>) => (first: IOOption<A>) => IOOption<A> = tap

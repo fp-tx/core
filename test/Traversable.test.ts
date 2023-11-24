@@ -1,15 +1,15 @@
-import * as U from './util'
-import * as RA from '../src/ReadonlyArray'
-import * as O from '../src/Option'
-import * as _ from '../src/Traversable'
 import * as E from '../src/Either'
 import { identity, pipe } from '../src/function'
+import * as O from '../src/Option'
+import * as RA from '../src/ReadonlyArray'
+import * as _ from '../src/Traversable'
+import * as U from './util'
 
 export const ArrayOptionURI = 'ArrayOption'
 
 export type ArrayOptionURI = typeof ArrayOptionURI
 
-describe('Traversable', () => {
+describe.concurrent('Traversable', () => {
   it('getTraversableComposition', () => {
     const T = _.getTraversableComposition(RA.Traversable, O.Traversable)
     U.deepStrictEqual(

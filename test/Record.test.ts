@@ -1,4 +1,5 @@
 import * as assert from 'assert'
+
 import * as A from '../src/Array'
 import { left, right } from '../src/Either'
 import { identity, pipe } from '../src/function'
@@ -17,8 +18,8 @@ const p = (n: number) => n > 2
 
 const noPrototype = Object.create(null)
 
-describe('Record', () => {
-  describe('pipeables', () => {
+describe.concurrent('Record', () => {
+  describe.concurrent('pipeables', () => {
     it('collect', () => {
       const x: { readonly a: string; readonly b: boolean } = { a: 'c', b: false }
       U.deepStrictEqual(_.collect(S.Ord)((key, val) => ({ key: key, value: val }))(x), [
@@ -38,10 +39,7 @@ describe('Record', () => {
 
     it('mapWithIndex', () => {
       const doubleWithIndex = (_: string, n: number): number => n * 2
-      U.deepStrictEqual(pipe({ a: 1, b: 2 }, _.mapWithIndex(doubleWithIndex)), {
-        a: 2,
-        b: 4,
-      })
+      U.deepStrictEqual(pipe({ a: 1, b: 2 }, _.mapWithIndex(doubleWithIndex)), { a: 2, b: 4 })
     })
 
     it('reduce', () => {
@@ -254,19 +252,10 @@ describe('Record', () => {
 
     it('traverse', () => {
       U.deepStrictEqual(
-        _.traverse(O.Applicative)((n: number) => (n <= 2 ? O.some(n) : O.none))({
-          a: 1,
-          b: 2,
-        }),
+        _.traverse(O.Applicative)((n: number) => (n <= 2 ? O.some(n) : O.none))({ a: 1, b: 2 }),
         O.some({ a: 1, b: 2 }),
       )
-      U.deepStrictEqual(
-        _.traverse(O.Applicative)((n: number) => (n >= 2 ? O.some(n) : O.none))({
-          a: 1,
-          b: 2,
-        }),
-        O.none,
-      )
+      U.deepStrictEqual(_.traverse(O.Applicative)((n: number) => (n >= 2 ? O.some(n) : O.none))({ a: 1, b: 2 }), O.none)
     })
 
     it('getTraversable', () => {

@@ -1,6 +1,7 @@
 import * as assert from 'assert'
 import * as fc from 'fast-check'
 import { isDeepStrictEqual } from 'util'
+
 import * as B from '../src/boolean'
 import * as E from '../src/Either'
 import * as Eq from '../src/Eq'
@@ -9,16 +10,16 @@ import * as M from '../src/Monoid'
 import * as N from '../src/number'
 import * as O from '../src/Option'
 import * as Ord from '../src/Ord'
-import { Predicate } from '../src/Predicate'
+import { type Predicate } from '../src/Predicate'
 import * as _ from '../src/ReadonlyArray'
-import { Refinement } from '../src/Refinement'
+import { type Refinement } from '../src/Refinement'
 import { separated } from '../src/Separated'
 import * as S from '../src/string'
 import * as T from '../src/Task'
 import * as U from './util'
 
-describe('ReadonlyArray', () => {
-  describe('pipeables', () => {
+describe.concurrent('ReadonlyArray', () => {
+  describe.concurrent('pipeables', () => {
     it('traverse', () => {
       const traverse = _.traverse(O.Applicative)((n: number): O.Option<number> => (n % 2 === 0 ? O.none : O.some(n)))
       U.deepStrictEqual(traverse([1, 2]), O.none)
@@ -119,6 +120,20 @@ describe('ReadonlyArray', () => {
 
     it('apSecond', () => {
       U.deepStrictEqual(pipe([1, 2], _.apSecond(['a', 'b', 'c'])), ['a', 'b', 'c', 'a', 'b', 'c'])
+    })
+
+    it('flatMap', () => {
+      U.deepStrictEqual(
+        pipe(
+          [1, 2, 3],
+          _.flatMap(n => [n, n + 1]),
+        ),
+        [1, 2, 2, 3, 3, 4],
+      )
+      U.deepStrictEqual(
+        _.flatMap([1, 2, 3], n => [n, n + 1]),
+        [1, 2, 2, 3, 3, 4],
+      )
     })
 
     it('chain', () => {
@@ -989,7 +1004,7 @@ describe('ReadonlyArray', () => {
     assertSplitAt(empty, 3, empty, _.empty)
   })
 
-  describe('chunksOf', () => {
+  describe.concurrent('chunksOf', () => {
     it('should split a `ReadonlyArray` into length-n pieces', () => {
       U.deepStrictEqual(_.chunksOf(2)([1, 2, 3, 4, 5]), [[1, 2], [3, 4], [5]])
       U.deepStrictEqual(_.chunksOf(2)([1, 2, 3, 4, 5, 6]), [
@@ -1251,7 +1266,7 @@ describe('ReadonlyArray', () => {
     U.deepStrictEqual(_.size(['a']), 1)
   })
 
-  describe('chainRec', () => {
+  describe.concurrent('chainRec', () => {
     it('depth-first', () => {
       const chainRec = _.ChainRecDepthFirst.chainRec
       assert.deepStrictEqual(
@@ -1382,7 +1397,7 @@ describe('ReadonlyArray', () => {
     })
   })
 
-  describe('fromPredicate', () => {
+  describe.concurrent('fromPredicate', () => {
     it('can create an array from a Refinement', () => {
       const refinement: Refinement<unknown, string> = (a): a is string => typeof a === 'string'
       U.deepStrictEqual(_.fromPredicate(refinement)('hello'), ['hello'])

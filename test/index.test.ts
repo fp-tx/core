@@ -1,6 +1,7 @@
 import * as assert from 'assert'
 import * as glob from 'glob'
 import * as path from 'path'
+
 import * as _ from '../src'
 
 const getExportName = (name: string): string => {
@@ -26,7 +27,7 @@ function getModuleNames(): ReadonlyArray<string> {
     .filter(name => name !== 'internal')
 }
 
-describe('index', () => {
+describe.concurrent('index', () => {
   it('check exported modules', () => {
     const moduleNames = getModuleNames()
     moduleNames.forEach(name => {

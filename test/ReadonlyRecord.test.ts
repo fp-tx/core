@@ -1,4 +1,5 @@
 import * as assert from 'assert'
+
 import * as E from '../src/Either'
 import { identity, pipe } from '../src/function'
 import * as IO from '../src/IO'
@@ -17,8 +18,8 @@ const p = (n: number) => n > 2
 
 const noPrototype = Object.create(null)
 
-describe('ReadonlyRecord', () => {
-  describe('pipeables', () => {
+describe.concurrent('ReadonlyRecord', () => {
+  describe.concurrent('pipeables', () => {
     it('collect', () => {
       const x: { readonly a: string; readonly b: boolean } = { a: 'c', b: false }
       U.deepStrictEqual(_.collect(S.Ord)((key, val) => ({ key: key, value: val }))(x), [
@@ -92,9 +93,7 @@ describe('ReadonlyRecord', () => {
     it('separate', () => {
       U.deepStrictEqual(_.separate({ foo: E.left(123), bar: E.right(123) }), separated({ foo: 123 }, { bar: 123 }))
       // should ignore non own properties
-      const o: _.ReadonlyRecord<string, E.Either<string, number>> = Object.create({
-        a: 1,
-      })
+      const o: _.ReadonlyRecord<string, E.Either<string, number>> = Object.create({ a: 1 })
       U.deepStrictEqual(pipe(o, _.separate), separated({}, {}))
     })
 
@@ -248,19 +247,10 @@ describe('ReadonlyRecord', () => {
 
     it('traverse', () => {
       U.deepStrictEqual(
-        _.traverse(O.Applicative)((n: number) => (n <= 2 ? O.some(n) : O.none))({
-          a: 1,
-          b: 2,
-        }),
+        _.traverse(O.Applicative)((n: number) => (n <= 2 ? O.some(n) : O.none))({ a: 1, b: 2 }),
         O.some({ a: 1, b: 2 }),
       )
-      U.deepStrictEqual(
-        _.traverse(O.Applicative)((n: number) => (n >= 2 ? O.some(n) : O.none))({
-          a: 1,
-          b: 2,
-        }),
-        O.none,
-      )
+      U.deepStrictEqual(_.traverse(O.Applicative)((n: number) => (n >= 2 ? O.some(n) : O.none))({ a: 1, b: 2 }), O.none)
     })
 
     it('getTraversable', () => {
@@ -287,7 +277,7 @@ describe('ReadonlyRecord', () => {
       )
     })
 
-    describe('traverseWithIndex', () => {
+    describe.concurrent('traverseWithIndex', () => {
       it('simple Traversal', () => {
         const f = (k: string, n: number): O.Option<number> => (k !== 'a' ? O.some(n) : O.none)
         const traverseWithIndex = _.traverseWithIndex(O.Applicative)(f)
@@ -559,7 +549,6 @@ describe('ReadonlyRecord', () => {
     U.deepStrictEqual(_.hasOwnProperty('a', x), true)
     // eslint-disable-next-line no-prototype-builtins
     U.deepStrictEqual(_.hasOwnProperty('b', x), false)
-    // eslint-disable-next-line deprecation/deprecation
     const hasOwnProperty: any = _.hasOwnProperty
     U.deepStrictEqual(hasOwnProperty.call(x, 'a'), true)
     U.deepStrictEqual(hasOwnProperty.call(x, 'b'), false)

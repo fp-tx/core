@@ -14,7 +14,6 @@ import * as _ from './internal'
 import { type Magma } from './Magma'
 import { type Monoid } from './Monoid'
 import * as O from './Option'
-import { type Option } from './Option'
 import { type Ord } from './Ord'
 import { type Predicate } from './Predicate'
 import * as RM from './ReadonlyMap'
@@ -25,6 +24,8 @@ import { type Show } from './Show'
 import { type TraversableWithIndex2C } from './TraversableWithIndex'
 import { type Unfoldable, type Unfoldable1 } from './Unfoldable'
 import { wiltDefault, type Witherable2C, witherDefault } from './Witherable'
+
+import Option = O.Option
 
 /**
  * @since 2.0.0

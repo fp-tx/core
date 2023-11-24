@@ -20,10 +20,9 @@ import {
   getApplySemigroup as getApplySemigroup_,
 } from './Apply'
 import { type Bifunctor2 } from './Bifunctor'
-import { bind as bind_, type Chain2, chainFirst as chainFirst_ } from './Chain'
+import * as chainable from './Chain'
 import { compact as compact_, type Compactable2C, separate as separate_ } from './Compactable'
 import * as E from './Either'
-import { type Either } from './Either'
 import * as ET from './EitherT'
 import {
   filter as filter_,
@@ -33,8 +32,6 @@ import {
   partitionMap as partitionMap_,
 } from './Filterable'
 import {
-  chainEitherK as chainEitherK_,
-  chainFirstEitherK as chainFirstEitherK_,
   chainOptionK as chainOptionK_,
   filterOrElse as filterOrElse_,
   type FromEither2,
@@ -42,16 +39,12 @@ import {
   fromOption as fromOption_,
   fromOptionK as fromOptionK_,
   fromPredicate as fromPredicate_,
+  tapEither as tapEither_,
 } from './FromEither'
-import { chainFirstIOK as chainFirstIOK_, chainIOK as chainIOK_, type FromIO2, fromIOK as fromIOK_ } from './FromIO'
-import {
-  chainFirstTaskK as chainFirstTaskK_,
-  chainTaskK as chainTaskK_,
-  type FromTask2,
-  fromTaskK as fromTaskK_,
-} from './FromTask'
-import { flow, identity, type Lazy, pipe, SK } from './function'
-import { bindTo as bindTo_, flap as flap_, type Functor2, let as let__ } from './Functor'
+import { type FromIO2, fromIOK as fromIOK_, tapIO as tapIO_ } from './FromIO'
+import { type FromTask2, fromTaskK as fromTaskK_, tapTask as tapTask_ } from './FromTask'
+import { dual, flow, identity, type LazyArg, pipe, SK } from './function'
+import { as as as_, asUnit as asUnit_, bindTo as bindTo_, flap as flap_, type Functor2, let as let__ } from './Functor'
 import * as _ from './internal'
 import { type IO } from './IO'
 import { type IOEither } from './IOEither'
@@ -68,12 +61,14 @@ import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
 import { type Semigroup } from './Semigroup'
 import * as T from './Task'
-import { type Task } from './Task'
 import { type TaskOption } from './TaskOption'
 
 // -------------------------------------------------------------------------------------
 // model
 // -------------------------------------------------------------------------------------
+
+import Either = E.Either
+import Task = T.Task
 
 /**
  * @since 2.0.0
@@ -153,7 +148,7 @@ export const fromIOEither: <E, A>(fa: IOEither<E, A>) => TaskEither<E, A> = T.fr
  * @since 2.11.0
  * @category Conversions
  */
-export const fromTaskOption: <E>(onNone: Lazy<E>) => <A>(fa: TaskOption<A>) => TaskEither<E, A> = onNone =>
+export const fromTaskOption: <E>(onNone: LazyArg<E>) => <A>(fa: TaskOption<A>) => TaskEither<E, A> = onNone =>
   T.map(E.fromOption(onNone))
 
 /**
@@ -251,7 +246,7 @@ export const getOrElseW: <E, B>(onLeft: (e: E) => Task<B>) => <A>(ma: TaskEither
  *   })
  */
 export const tryCatch =
-  <E, A>(f: Lazy<Promise<A>>, onRejected: (reason: unknown) => E): TaskEither<E, A> =>
+  <E, A>(f: LazyArg<Promise<A>>, onRejected: (reason: unknown) => E): TaskEither<E, A> =>
   async () => {
     try {
       return await f().then(_.right)
@@ -289,8 +284,10 @@ export const fromNullable: <E>(e: E) => <A>(a: A) => TaskEither<E, NonNullable<A
 )
 
 /**
+ * Use `liftNullable`.
+ *
  * @since 2.12.0
- * @category Lifting
+ * @category Legacy
  */
 export const fromNullableK: <E>(
   e: E,
@@ -299,8 +296,10 @@ export const fromNullableK: <E>(
 ) => (...a: A) => TaskEither<E, NonNullable<B>> = /*#__PURE__*/ ET.fromNullableK(T.Pointed)
 
 /**
+ * Use `flatMapNullable`.
+ *
  * @since 2.12.0
- * @category Sequencing
+ * @category Legacy
  */
 export const chainNullableK: <E>(
   e: E,
@@ -347,21 +346,15 @@ export const orElseW: <E1, E2, B>(
 ) => <A>(ma: TaskEither<E1, A>) => TaskEither<E2, A | B> = orElse as any
 
 /**
- * @since 2.11.0
- * @category Error handling
- */
-export const orElseFirst: <E, B>(onLeft: (e: E) => TaskEither<E, B>) => <A>(ma: TaskEither<E, A>) => TaskEither<E, A> =
-  /*#__PURE__*/ ET.orElseFirst(T.Monad)
-
-/**
- * The `W` suffix (short for **W**idening) means that the error types will be merged.
+ * Returns an effect that effectfully "peeks" at the failure of this effect.
  *
- * @since 2.11.0
+ * @since 2.15.0
  * @category Error handling
  */
-export const orElseFirstW: <E1, E2, B>(
-  onLeft: (e: E1) => TaskEither<E2, B>,
-) => <A>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, A> = orElseFirst as any
+export const tapError: {
+  <E1, E2, _>(onLeft: (e: E1) => TaskEither<E2, _>): <A>(self: TaskEither<E1, A>) => TaskEither<E1 | E2, A>
+  <E1, A, E2, _>(self: TaskEither<E1, A>, onLeft: (e: E1) => TaskEither<E2, _>): TaskEither<E1 | E2, A>
+} = /*#__PURE__*/ dual(2, ET.tapError(T.Monad))
 
 /**
  * @since 2.12.0
@@ -369,7 +362,7 @@ export const orElseFirstW: <E1, E2, B>(
  */
 export const orElseFirstIOK: <E, B>(
   onLeft: (e: E) => IO<B>,
-) => <A>(ma: TaskEither<E, A>) => TaskEither<E, A> = onLeft => orElseFirst(fromIOK(onLeft))
+) => <A>(ma: TaskEither<E, A>) => TaskEither<E, A> = onLeft => tapError(fromIOK(onLeft))
 
 /**
  * @since 2.12.0
@@ -377,7 +370,7 @@ export const orElseFirstIOK: <E, B>(
  */
 export const orElseFirstTaskK: <E, B>(
   onLeft: (e: E) => Task<B>,
-) => <A>(ma: TaskEither<E, A>) => TaskEither<E, A> = onLeft => orElseFirst(fromTaskK(onLeft))
+) => <A>(ma: TaskEither<E, A>) => TaskEither<E, A> = onLeft => tapError(fromTaskK(onLeft))
 
 /**
  * @since 2.11.0
@@ -394,30 +387,34 @@ export const swap: <E, A>(ma: TaskEither<E, A>) => TaskEither<A, E> = /*#__PURE_
  * @category Lifting
  */
 export const fromTaskOptionK = <E>(
-  onNone: Lazy<E>,
+  onNone: LazyArg<E>,
 ): (<A extends ReadonlyArray<unknown>, B>(f: (...a: A) => TaskOption<B>) => (...a: A) => TaskEither<E, B>) => {
   const from = fromTaskOption(onNone)
   return f => flow(f, from)
 }
 
 /**
+ * Use `flatMapTaskOption`.
+ *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
  * @since 2.12.3
- * @category Sequencing
+ * @category Legacy
  */
 export const chainTaskOptionKW =
-  <E2>(onNone: Lazy<E2>) =>
+  <E2>(onNone: LazyArg<E2>) =>
   <A, B>(f: (a: A) => TaskOption<B>) =>
   <E1>(ma: TaskEither<E1, A>): TaskEither<E1 | E2, B> =>
-    pipe(ma, chain(fromTaskOptionK<E1 | E2>(onNone)(f)))
+    flatMap(ma, fromTaskOptionK<E1 | E2>(onNone)(f))
 
 /**
+ * Use `flatMapTaskOption`.
+ *
  * @since 2.11.0
- * @category Sequencing
+ * @category Legacy
  */
 export const chainTaskOptionK: <E>(
-  onNone: Lazy<E>,
+  onNone: LazyArg<E>,
 ) => <A, B>(f: (a: A) => TaskOption<B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> = chainTaskOptionKW
 
 /**
@@ -428,38 +425,9 @@ export const fromIOEitherK = <E, A extends ReadonlyArray<unknown>, B>(
   f: (...a: A) => IOEither<E, B>,
 ): ((...a: A) => TaskEither<E, B>) => flow(f, fromIOEither)
 
-/**
- * Less strict version of [`chainIOEitherK`](#chainioeitherk).
- *
- * The `W` suffix (short for **W**idening) means that the error types will be merged.
- *
- * @since 2.6.1
- * @category Sequencing
- */
-export const chainIOEitherKW: <E2, A, B>(
-  f: (a: A) => IOEither<E2, B>,
-) => <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, B> = f => chainW(fromIOEitherK(f))
-
-/**
- * @since 2.4.0
- * @category Sequencing
- */
-export const chainIOEitherK: <E, A, B>(f: (a: A) => IOEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> =
-  chainIOEitherKW
-
 const _map: Functor2<URI>['map'] = (fa, f) => pipe(fa, map(f))
 const _apPar: Apply2<URI>['ap'] = (fab, fa) => pipe(fab, ap(fa))
-const _apSeq: Apply2<URI>['ap'] = (fab, fa) =>
-  pipe(
-    fab,
-    chain(f => pipe(fa, map(f))),
-  )
-/* istanbul ignore next */
-const _chain: Chain2<URI>['chain'] = (ma, f) => pipe(ma, chain(f))
-/* istanbul ignore next */
-const _bimap: Bifunctor2<URI>['bimap'] = (fa, f, g) => pipe(fa, bimap(f, g))
-/* istanbul ignore next */
-const _mapLeft: Bifunctor2<URI>['mapLeft'] = (fa, f) => pipe(fa, mapLeft(f))
+const _apSeq: Apply2<URI>['ap'] = (fab, fa) => flatMap(fab, f => pipe(fa, map(f)))
 /* istanbul ignore next */
 const _alt: Alt2<URI>['alt'] = (fa, that) => pipe(fa, alt(that))
 
@@ -475,22 +443,68 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: TaskEither<E, A>) => TaskEit
 )
 
 /**
- * Map a pair of functions over the two type arguments of the bifunctor.
+ * Returns a `TaskEither` whose failure and success channels have been mapped by the specified pair of functions, `f`
+ * and `g`.
  *
- * @since 2.0.0
- * @category Mapping
+ * @since 2.16.0
+ * @category Error handling
+ * @example
+ *   import * as TaskEither from 'fp-ts/TaskEither'
+ *   import * as Either from 'fp-ts/Either'
+ *
+ *   const f = (s: string) => new Error(s)
+ *   const g = (n: number) => n * 2
+ *
+ *   async function test() {
+ *     assert.deepStrictEqual(await TaskEither.mapBoth(TaskEither.right(1), f, g)(), Either.right(2))
+ *     assert.deepStrictEqual(await TaskEither.mapBoth(TaskEither.left('err'), f, g)(), Either.left(new Error('err')))
+ *   }
+ *
+ *   test()
  */
-export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: TaskEither<E, A>) => TaskEither<G, B> =
-  /*#__PURE__*/ ET.bimap(T.Functor)
+export const mapBoth: {
+  <E, G, A, B>(f: (e: E) => G, g: (a: A) => B): (self: TaskEither<E, A>) => TaskEither<G, B>
+  <E, A, G, B>(self: TaskEither<E, A>, f: (e: E) => G, g: (a: A) => B): TaskEither<G, B>
+} = /*#__PURE__*/ dual(3, ET.mapBoth(T.Functor))
 
 /**
- * Map a function over the first type argument of a bifunctor.
+ * Alias of `mapBoth`.
  *
  * @since 2.0.0
- * @category Error handling
+ * @category Legacy
  */
-export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: TaskEither<E, A>) => TaskEither<G, A> =
-  /*#__PURE__*/ ET.mapLeft(T.Functor)
+export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: TaskEither<E, A>) => TaskEither<G, B> = mapBoth
+
+/**
+ * Returns a `TaskEither` with its error channel mapped using the specified function.
+ *
+ * @since 2.16.0
+ * @category Error handling
+ * @example
+ *   import * as TaskEither from 'fp-ts/TaskEither'
+ *   import * as Either from 'fp-ts/Either'
+ *
+ *   const f = (s: string) => new Error(s)
+ *
+ *   async function test() {
+ *     assert.deepStrictEqual(await TaskEither.mapError(TaskEither.right(1), f)(), Either.right(1))
+ *     assert.deepStrictEqual(await TaskEither.mapError(TaskEither.left('err'), f)(), Either.left(new Error('err')))
+ *   }
+ *
+ *   test()
+ */
+export const mapError: {
+  <E, G>(f: (e: E) => G): <A>(self: TaskEither<E, A>) => TaskEither<G, A>
+  <E, A, G>(self: TaskEither<E, A>, f: (e: E) => G): TaskEither<G, A>
+} = /*#__PURE__*/ dual(2, ET.mapError(T.Functor))
+
+/**
+ * Alias of `mapError`.
+ *
+ * @since 2.0.0
+ * @category Legacy
+ */
+export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: TaskEither<E, A>) => TaskEither<G, A> = mapError
 
 /** @since 2.0.0 */
 export const ap: <E, A>(fa: TaskEither<E, A>) => <B>(fab: TaskEither<E, (a: A) => B>) => TaskEither<E, B> =
@@ -508,25 +522,13 @@ export const apW: <E2, A>(
 ) => <E1, B>(fab: TaskEither<E1, (a: A) => B>) => TaskEither<E1 | E2, B> = ap as any
 
 /**
- * Composes computations in sequence, using the return value of one computation to determine the next computation.
- *
- * @since 2.0.0
+ * @since 2.14.0
  * @category Sequencing
  */
-export const chain: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> =
-  /*#__PURE__*/ ET.chain(T.Monad)
-
-/**
- * Less strict version of [`chain`](#chain).
- *
- * The `W` suffix (short for **W**idening) means that the error types will be merged.
- *
- * @since 2.6.0
- * @category Sequencing
- */
-export const chainW: <E2, A, B>(
-  f: (a: A) => TaskEither<E2, B>,
-) => <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, B> = chain as any
+export const flatMap: {
+  <A, E2, B>(f: (a: A) => TaskEither<E2, B>): <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, B>
+  <E1, A, E2, B>(ma: TaskEither<E1, A>, f: (a: A) => TaskEither<E2, B>): TaskEither<E1 | E2, B>
+} = /*#__PURE__*/ dual(2, ET.flatMap(T.Monad))
 
 /**
  * Less strict version of [`flatten`](#flatten).
@@ -537,7 +539,7 @@ export const chainW: <E2, A, B>(
  * @category Sequencing
  */
 export const flattenW: <E1, E2, A>(mma: TaskEither<E1, TaskEither<E2, A>>) => TaskEither<E1 | E2, A> =
-  /*#__PURE__*/ chainW(identity)
+  /*#__PURE__*/ flatMap(identity)
 
 /**
  * @since 2.0.0
@@ -586,7 +588,7 @@ export const flatten: <E, A>(mma: TaskEither<E, TaskEither<E, A>>) => TaskEither
  *
  *   test()
  */
-export const alt: <E, A>(that: Lazy<TaskEither<E, A>>) => (fa: TaskEither<E, A>) => TaskEither<E, A> =
+export const alt: <E, A>(that: LazyArg<TaskEither<E, A>>) => (fa: TaskEither<E, A>) => TaskEither<E, A> =
   /*#__PURE__*/ ET.alt(T.Monad)
 
 /**
@@ -597,8 +599,9 @@ export const alt: <E, A>(that: Lazy<TaskEither<E, A>>) => (fa: TaskEither<E, A>)
  * @since 2.9.0
  * @category Error handling
  */
-export const altW: <E2, B>(that: Lazy<TaskEither<E2, B>>) => <E1, A>(fa: TaskEither<E1, A>) => TaskEither<E2, A | B> =
-  alt as any
+export const altW: <E2, B>(
+  that: LazyArg<TaskEither<E2, B>>,
+) => <E1, A>(fa: TaskEither<E1, A>) => TaskEither<E2, A | B> = alt as any
 
 /**
  * @since 2.0.0
@@ -755,6 +758,25 @@ export const Functor: Functor2<URI> = {
 }
 
 /**
+ * Maps the `Right` value of this `TaskEither` to the specified constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const as: {
+  <A>(a: A): <E, _>(self: TaskEither<E, _>) => TaskEither<E, A>
+  <E, _, A>(self: TaskEither<E, _>, a: A): TaskEither<E, A>
+} = dual(2, as_(Functor))
+
+/**
+ * Maps the `Right` value of this `TaskEither` to the void constant value.
+ *
+ * @since 2.16.0
+ * @category Mapping
+ */
+export const asUnit: <E, _>(self: TaskEither<E, _>) => TaskEither<E, void> = asUnit_(Functor)
+
+/**
  * @since 2.10.0
  * @category Mapping
  */
@@ -859,11 +881,11 @@ export const ApplicativeSeq: Applicative2<URI> = {
  * @since 2.10.0
  * @category Instances
  */
-export const Chain: Chain2<URI> = {
+export const Chain: chainable.Chain2<URI> = {
   URI,
   map: _map,
   ap: _apPar,
-  chain: _chain,
+  chain: flatMap,
 }
 
 /**
@@ -874,7 +896,7 @@ export const Monad: Monad2<URI> = {
   URI,
   map: _map,
   ap: _apPar,
-  chain: _chain,
+  chain: flatMap,
   of,
 }
 
@@ -886,7 +908,7 @@ export const MonadIO: MonadIO2<URI> = {
   URI,
   map: _map,
   ap: _apPar,
-  chain: _chain,
+  chain: flatMap,
   of,
   fromIO,
 }
@@ -899,7 +921,7 @@ export const MonadTask: MonadTask2<URI> = {
   URI,
   map: _map,
   ap: _apPar,
-  chain: _chain,
+  chain: flatMap,
   of,
   fromIO,
   fromTask,
@@ -913,32 +935,136 @@ export const MonadThrow: MonadThrow2<URI> = {
   URI,
   map: _map,
   ap: _apPar,
-  chain: _chain,
+  chain: flatMap,
   of,
   throwError,
+}
+
+/**
+ * @since 2.10.0
+ * @category Instances
+ */
+export const FromEither: FromEither2<URI> = {
+  URI,
+  fromEither,
+}
+
+/**
+ * @since 2.10.0
+ * @category Instances
+ */
+export const FromIO: FromIO2<URI> = {
+  URI,
+  fromIO,
+}
+
+/**
+ * @since 2.10.0
+ * @category Instances
+ */
+export const FromTask: FromTask2<URI> = {
+  URI,
+  fromIO,
+  fromTask,
 }
 
 /**
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.0.0
- * @category Sequencing
+ * @since 2.15.0
+ * @category Combinators
  */
-export const chainFirst: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, A> =
-  /*#__PURE__*/ chainFirst_(Chain)
+export const tap: {
+  <E1, A, E2, _>(self: TaskEither<E1, A>, f: (a: A) => TaskEither<E2, _>): TaskEither<E1 | E2, A>
+  <A, E2, _>(f: (a: A) => TaskEither<E2, _>): <E1>(self: TaskEither<E1, A>) => TaskEither<E2 | E1, A>
+} = /*#__PURE__*/ dual(2, chainable.tap(Chain))
 
 /**
- * Less strict version of [`chainFirst`](#chainfirst).
+ * Composes computations in sequence, using the return value of one computation to determine the next computation and
+ * keeping only the result of the first.
  *
- * The `W` suffix (short for **W**idening) means that the error types will be merged.
+ * @since 2.16.0
+ * @category Combinators
+ * @example
+ *   import * as E from 'fp-ts/Either'
+ *   import { pipe } from 'fp-ts/function'
+ *   import * as TE from 'fp-ts/TaskEither'
  *
- * @since 2.8.0
- * @category Sequencing
+ *   const checkString = (value: string) =>
+ *     pipe(
+ *       TE.of(value),
+ *       TE.tapEither(() => (value.length > 0 ? E.right('ok') : E.left('error'))),
+ *     )
+ *
+ *   async function test() {
+ *     assert.deepStrictEqual(await checkString('')(), E.left('error'))
+ *     assert.deepStrictEqual(await checkString('fp-ts')(), E.right('fp-ts'))
+ *   }
+ *
+ *   test()
  */
-export const chainFirstW: <E2, A, B>(
-  f: (a: A) => TaskEither<E2, B>,
-) => <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, A> = chainFirst as any
+export const tapEither: {
+  <A, E2, _>(f: (a: A) => Either<E2, _>): <E1>(self: TaskEither<E1, A>) => TaskEither<E2 | E1, A>
+  <E1, A, E2, _>(self: TaskEither<E1, A>, f: (a: A) => Either<E2, _>): TaskEither<E1 | E2, A>
+} = /*#__PURE__*/ dual(2, tapEither_(FromEither, Chain))
+
+/**
+ * Composes computations in sequence, using the return value of one computation to determine the next computation and
+ * keeping only the result of the first.
+ *
+ * @since 2.16.0
+ * @category Combinators
+ * @example
+ *   import { pipe } from 'fp-ts/function'
+ *   import * as TE from 'fp-ts/TaskEither'
+ *   import * as E from 'fp-ts/Either'
+ *   import * as Console from 'fp-ts/Console'
+ *
+ *   // Will produce `Hello, fp-ts` to the stdout
+ *   const effectA = TE.tapIO(TE.of(1), value => Console.log(`Hello, ${value}`))
+ *
+ *   // No output to the stdout
+ *   const effectB = pipe(
+ *     TE.left('error'),
+ *     TE.tapIO(value => Console.log(`Hello, ${value}`)),
+ *   )
+ *
+ *   async function test() {
+ *     assert.deepStrictEqual(await effectA(), E.of(1))
+ *     assert.deepStrictEqual(await effectB(), E.left('error'))
+ *   }
+ *
+ *   test()
+ */
+export const tapIO: {
+  <A, _>(f: (a: A) => IO<_>): <E>(self: TaskEither<E, A>) => TaskEither<E, A>
+  <E, A, _>(self: TaskEither<E, A>, f: (a: A) => IO<_>): TaskEither<E, A>
+} = /*#__PURE__*/ dual(2, tapIO_(FromIO, Chain))
+
+/**
+ * Composes computations in sequence, using the return value of one computation to determine the next computation and
+ * keeping only the result of the first.
+ *
+ * @since 2.16.0
+ * @category Combinators
+ * @example
+ *   import * as TE from 'fp-ts/TaskEither'
+ *   import * as T from 'fp-ts/Task'
+ *   import * as E from 'fp-ts/Either'
+ *
+ *   const effect = TE.tapIO(TE.of(1), value => T.of(value + 1))
+ *
+ *   async function test() {
+ *     assert.deepStrictEqual(await effect(), E.of(1))
+ *   }
+ *
+ *   test()
+ */
+export const tapTask: {
+  <A, _>(f: (a: A) => Task<_>): <E>(self: TaskEither<E, A>) => TaskEither<E, A>
+  <E, A, _>(self: TaskEither<E, A>, f: (a: A) => Task<_>): TaskEither<E, A>
+} = /*#__PURE__*/ dual(2, tapTask_(FromTask, Chain))
 
 /**
  * @since 2.7.0
@@ -946,8 +1072,8 @@ export const chainFirstW: <E2, A, B>(
  */
 export const Bifunctor: Bifunctor2<URI> = {
   URI,
-  bimap: _bimap,
-  mapLeft: _mapLeft,
+  bimap: mapBoth,
+  mapLeft: mapError,
 }
 
 /**
@@ -961,78 +1087,209 @@ export const Alt: Alt2<URI> = {
 }
 
 /**
- * @since 2.10.0
- * @category Instances
- */
-export const FromEither: FromEither2<URI> = {
-  URI,
-  fromEither,
-}
-
-/**
  * @since 2.0.0
  * @category Conversions
  */
-export const fromOption: <E>(onNone: Lazy<E>) => <A>(fa: Option<A>) => TaskEither<E, A> =
+export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => TaskEither<E, A> =
   /*#__PURE__*/ fromOption_(FromEither)
 
 /**
+ * Use `liftOption`.
+ *
  * @since 2.10.0
- * @category Lifting
+ * @category Legacy
  */
 export const fromOptionK: <E>(
-  onNone: Lazy<E>,
+  onNone: LazyArg<E>,
 ) => <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => Option<B>) => (...a: A) => TaskEither<E, B> =
   /*#__PURE__*/ fromOptionK_(FromEither)
 
 /**
+ * Use `flatMapOption`.
+ *
  * @since 2.10.0
- * @category Sequencing
+ * @category Legacy
  */
 export const chainOptionK: <E>(
-  onNone: Lazy<E>,
+  onNone: LazyArg<E>,
 ) => <A, B>(f: (a: A) => Option<B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> = /*#__PURE__*/ chainOptionK_(
   FromEither,
   Chain,
 )
 
 /**
- * @since 2.4.0
- * @category Sequencing
+ * Use `flatMapOption`.
+ *
+ * @since 2.13.2
+ * @category Legacy
  */
-export const chainEitherK: <E, A, B>(f: (a: A) => E.Either<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> =
-  /*#__PURE__*/ chainEitherK_(FromEither, Chain)
+export const chainOptionKW: <E2>(
+  onNone: LazyArg<E2>,
+) => <A, B>(f: (a: A) => Option<B>) => <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, B> =
+  /*#__PURE__*/ chainOptionK as any
+
+/** @internal */
+interface TaskEitherTypeLambda extends _.TypeLambda {
+  readonly type: TaskEither<this['Out1'], this['Target']>
+}
+
+/** @internal */
+const _FromEither: _.FromEither<TaskEitherTypeLambda> = {
+  fromEither: FromEither.fromEither,
+}
 
 /**
- * Less strict version of [`chainEitherK`](#chaineitherk).
+ * @since 2.15.0
+ * @category Lifting
+ */
+export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
+  f: (...a: A) => B | null | undefined,
+  onNullable: (...a: A) => E,
+) => (...a: A) => TaskEither<E, NonNullable<B>> = /*#__PURE__*/ _.liftNullable(_FromEither)
+
+/**
+ * @since 2.15.0
+ * @category Lifting
+ */
+export const liftOption: <A extends ReadonlyArray<unknown>, B, E>(
+  f: (...a: A) => Option<B>,
+  onNone: (...a: A) => E,
+) => (...a: A) => TaskEither<E, B> = /*#__PURE__*/ _.liftOption(_FromEither)
+
+/** @internal */
+const _FlatMap: _.FlatMap<TaskEitherTypeLambda> = {
+  flatMap,
+}
+
+/** @internal */
+const _FromIO: _.FromIO<TaskEitherTypeLambda> = {
+  fromIO: FromIO.fromIO,
+}
+
+/** @internal */
+const _FromTask: _.FromTask<TaskEitherTypeLambda> = {
+  fromTask,
+}
+
+/**
+ * @since 2.15.0
+ * @category Sequencing
+ */
+export const flatMapNullable: {
+  <A, B, E2>(
+    f: (a: A) => B | null | undefined,
+    onNullable: (a: A) => E2,
+  ): <E1>(self: TaskEither<E1, A>) => TaskEither<E2 | E1, NonNullable<B>>
+  <E1, A, B, E2>(
+    self: TaskEither<E1, A>,
+    f: (a: A) => B | null | undefined,
+    onNullable: (a: A) => E2,
+  ): TaskEither<E1 | E2, NonNullable<B>>
+} = /*#__PURE__*/ _.flatMapNullable(_FromEither, _FlatMap)
+
+/**
+ * @since 2.15.0
+ * @category Sequencing
+ */
+export const flatMapOption: {
+  <A, B, E2>(f: (a: A) => Option<B>, onNone: (a: A) => E2): <E1>(self: TaskEither<E1, A>) => TaskEither<E2 | E1, B>
+  <E1, A, B, E2>(self: TaskEither<E1, A>, f: (a: A) => Option<B>, onNone: (a: A) => E2): TaskEither<E1 | E2, B>
+} = /*#__PURE__*/ _.flatMapOption(_FromEither, _FlatMap)
+
+/**
+ * @since 2.15.0
+ * @category Sequencing
+ */
+export const flatMapEither: {
+  <A, E2, B>(f: (a: A) => E.Either<E2, B>): <E1>(self: TaskEither<E1, A>) => TaskEither<E1 | E2, B>
+  <E1, A, E2, B>(self: TaskEither<E1, A>, f: (a: A) => E.Either<E2, B>): TaskEither<E1 | E2, B>
+} = /*#__PURE__*/ _.flatMapEither(_FromEither, _FlatMap)
+
+/**
+ * @since 2.15.0
+ * @category Sequencing
+ */
+export const flatMapIO: {
+  <A, B>(f: (a: A) => IO<B>): <E>(self: TaskEither<E, A>) => TaskEither<E, B>
+  <E, A, B>(self: TaskEither<E, A>, f: (a: A) => IO<B>): TaskEither<E, B>
+} = /*#__PURE__*/ _.flatMapIO(_FromIO, _FlatMap)
+
+/**
+ * @since 2.16.0
+ * @category Sequencing
+ */
+export const flatMapTask: {
+  <A, B>(f: (a: A) => Task<B>): <E>(self: TaskEither<E, A>) => TaskEither<E, B>
+  <E, A, B>(self: TaskEither<E, A>, f: (a: A) => Task<B>): TaskEither<E, B>
+} = /*#__PURE__*/ _.flatMapTask(_FromTask, _FlatMap)
+
+/**
+ * @since 2.16.0
+ * @category Sequencing
+ */
+export const flatMapIOEither: {
+  <A, E2, B>(f: (a: A) => IOEither<E2, B>): <E1>(self: TaskEither<E1, A>) => TaskEither<E1 | E2, B>
+  <E1, A, E2, B>(self: TaskEither<E1, A>, f: (a: A) => IOEither<E2, B>): TaskEither<E1 | E2, B>
+} = /*#__PURE__*/ dual(
+  2,
+  <E1, A, E2, B>(self: TaskEither<E1, A>, f: (a: A) => IOEither<E2, B>): TaskEither<E1 | E2, B> =>
+    flatMap(self, fromIOEitherK(f)),
+)
+
+/**
+ * @since 2.16.0
+ * @category Sequencing
+ */
+export const flatMapTaskOption: {
+  <A, E2, B>(f: (a: A) => TaskOption<B>, onNone: (a: A) => E2): <E1>(self: TaskEither<E1, A>) => TaskEither<E1 | E2, B>
+  <E1, A, E2, B>(self: TaskEither<E1, A>, f: (a: A) => TaskOption<B>, onNone: (a: A) => E2): TaskEither<E1 | E2, B>
+} = /*#__PURE__*/ dual(
+  3,
+  <E1, A, E2, B>(self: TaskEither<E1, A>, f: (a: A) => TaskOption<B>, onNone: (a: A) => E2): TaskEither<E1 | E2, B> =>
+    flatMap(self, a => fromTaskOption(() => onNone(a))(f(a))),
+)
+
+/**
+ * Alias of `flatMapEither`.
  *
- * The `W` suffix (short for **W**idening) means that the error types will be merged.
+ * @since 2.4.0
+ * @category Legacy
+ */
+export const chainEitherK: <E, A, B>(f: (a: A) => E.Either<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> =
+  flatMapEither
+
+/**
+ * Alias of `flatMapEither`.
  *
  * @since 2.6.1
- * @category Sequencing
+ * @category Legacy
  */
 export const chainEitherKW: <E2, A, B>(
   f: (a: A) => Either<E2, B>,
-) => <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, B> = chainEitherK as any
+) => <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, B> = flatMapEither
 
 /**
+ * Alias of `tapEither`.
+ *
  * @since 2.12.0
- * @category Sequencing
+ * @category Legacy
  */
 export const chainFirstEitherK: <A, E, B>(f: (a: A) => E.Either<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, A> =
-  /*#__PURE__*/ chainFirstEitherK_(FromEither, Chain)
+  tapEither
 
 /**
+ * Alias of `tapEither`.
+ *
  * Less strict version of [`chainFirstEitherK`](#chainfirsteitherk).
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
  * @since 2.12.0
- * @category Sequencing
+ * @category Legacy
  */
 export const chainFirstEitherKW: <A, E2, B>(
   f: (a: A) => E.Either<E2, B>,
-) => <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, A> = chainFirstEitherK as any
+) => <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, A> = tapEither
 
 /**
  * @since 2.0.0
@@ -1084,15 +1341,6 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 
 /**
  * @since 2.10.0
- * @category Instances
- */
-export const FromIO: FromIO2<URI> = {
-  URI,
-  fromIO,
-}
-
-/**
- * @since 2.10.0
  * @category Lifting
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
@@ -1100,28 +1348,20 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
 ) => <E = never>(...a: A) => TaskEither<E, B> = /*#__PURE__*/ fromIOK_(FromIO)
 
 /**
+ * Alias of `flatMapIO`.
+ *
  * @since 2.10.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, B> =
-  /*#__PURE__*/ chainIOK_(FromIO, Chain)
+export const chainIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, B> = flatMapIO
 
 /**
+ * Alias of `tapIO`.
+ *
  * @since 2.10.0
- * @category Sequencing
+ * @category Legacy
  */
-export const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, A> =
-  /*#__PURE__*/ chainFirstIOK_(FromIO, Chain)
-
-/**
- * @since 2.10.0
- * @category Instances
- */
-export const FromTask: FromTask2<URI> = {
-  URI,
-  fromIO,
-  fromTask,
-}
+export const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, A> = tapIO
 
 /**
  * @since 2.10.0
@@ -1132,18 +1372,45 @@ export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
 ) => <E = never>(...a: A) => TaskEither<E, B> = /*#__PURE__*/ fromTaskK_(FromTask)
 
 /**
+ * Alias of `flatMapTask`.
+ *
  * @since 2.10.0
- * @category Sequencing
+ * @category Legacy
  */
 export const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, B> =
-  /*#__PURE__*/ chainTaskK_(FromTask, Chain)
+  flatMapTask
 
 /**
+ * Alias of `tapTask`.
+ *
  * @since 2.10.0
- * @category Sequencing
+ * @category Legacy
  */
 export const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, A> =
-  /*#__PURE__*/ chainFirstTaskK_(FromTask, Chain)
+  tapTask
+
+/**
+ * Alias of `flatMapIOEither`.
+ *
+ * Less strict version of [`chainIOEitherK`](#chainioeitherk).
+ *
+ * The `W` suffix (short for **W**idening) means that the error types will be merged.
+ *
+ * @since 2.6.1
+ * @category Legacy
+ */
+export const chainIOEitherKW: <E2, A, B>(
+  f: (a: A) => IOEither<E2, B>,
+) => <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, B> = flatMapIOEither
+
+/**
+ * Alias of `flatMapIOEither`.
+ *
+ * @since 2.4.0
+ * @category Legacy
+ */
+export const chainIOEitherK: <E, A, B>(f: (a: A) => IOEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> =
+  flatMapIOEither
 
 // -------------------------------------------------------------------------------------
 // utils
@@ -1204,8 +1471,8 @@ export function taskify<L, R>(f: Function): () => TaskEither<L, R> {
 }
 
 /**
- * Make sure that a resource is cleaned up in the event of an exception (_). The release action is called regardless of
- * whether the body action throws (_) or returns.
+ * Make sure that a resource is cleaned up in the event of an exception (*). The release action is called regardless of
+ * whether the body action throws (*) or returns.
  *
  * (*) i.e. returns a `Left`
  *
@@ -1229,20 +1496,7 @@ export const bracketW: <E1, A, E2, B, E3>(
   use: (a: A) => TaskEither<E2, B>,
   release: (a: A, e: E.Either<E2, B>) => TaskEither<E3, void>,
 ) => TaskEither<E1 | E2 | E3, B> = (acquire, use, release) =>
-  pipe(
-    acquire,
-    chainW(a =>
-      pipe(
-        use(a),
-        T.chain(e =>
-          pipe(
-            release(a, e),
-            chainW(() => T.of(e)),
-          ),
-        ),
-      ),
-    ),
-  )
+  flatMap(acquire, a => T.flatMap(use(a), e => flatMap(release(a, e), () => T.of(e))))
 
 // -------------------------------------------------------------------------------------
 // do notation
@@ -1274,7 +1528,7 @@ export {
  * @since 2.8.0
  * @category Do notation
  */
-export const bind = /*#__PURE__*/ bind_(Chain)
+export const bind = /*#__PURE__*/ chainable.bind(Chain)
 
 /**
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
@@ -1437,6 +1691,65 @@ export const sequenceSeqArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A>>) => T
   /*#__PURE__*/ traverseSeqArray(identity)
 
 // -------------------------------------------------------------------------------------
+// legacy
+// -------------------------------------------------------------------------------------
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.0.0
+ * @category Legacy
+ */
+export const chain: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> = flatMap
+
+/**
+ * Alias of `flatMap`.
+ *
+ * @since 2.6.0
+ * @category Legacy
+ */
+export const chainW: <E2, A, B>(
+  f: (a: A) => TaskEither<E2, B>,
+) => <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, B> = flatMap
+
+/**
+ * Alias of `tap`.
+ *
+ * @since 2.0.0
+ * @category Legacy
+ */
+export const chainFirst: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, A> = tap
+
+/**
+ * Alias of `tap`.
+ *
+ * @since 2.8.0
+ * @category Legacy
+ */
+export const chainFirstW: <E2, A, B>(
+  f: (a: A) => TaskEither<E2, B>,
+) => <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, A> = tap
+
+/**
+ * Alias of `tapError`.
+ *
+ * @since 2.11.0
+ * @category Legacy
+ */
+export const orElseFirst: <E, B>(onLeft: (e: E) => TaskEither<E, B>) => <A>(ma: TaskEither<E, A>) => TaskEither<E, A> =
+  tapError
+
+/**
+ * Alias of `tapError`.
+ *
+ * @since 2.11.0
+ * @category Legacy
+ */
+export const orElseFirstW: <E1, E2, B>(
+  onLeft: (e: E1) => TaskEither<E2, B>,
+) => <A>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, A> = tapError
+
+// -------------------------------------------------------------------------------------
 // deprecated
 // -------------------------------------------------------------------------------------
 
@@ -1450,12 +1763,12 @@ export const sequenceSeqArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A>>) => T
  */
 export const taskEither: Monad2<URI> & Bifunctor2<URI> & Alt2<URI> & MonadTask2<URI> & MonadThrow2<URI> = {
   URI,
-  bimap: _bimap,
-  mapLeft: _mapLeft,
+  bimap: mapBoth,
+  mapLeft: mapError,
   map: _map,
   of,
   ap: _apPar,
-  chain: _chain,
+  chain: flatMap,
   alt: _alt,
   fromIO,
   fromTask,
@@ -1473,12 +1786,12 @@ export const taskEither: Monad2<URI> & Bifunctor2<URI> & Alt2<URI> & MonadTask2<
 
 export const taskEitherSeq: typeof taskEither = {
   URI,
-  bimap: _bimap,
-  mapLeft: _mapLeft,
+  bimap: mapBoth,
+  mapLeft: mapError,
   map: _map,
   of,
   ap: _apSeq,
-  chain: _chain,
+  chain: flatMap,
   alt: _alt,
   fromIO,
   fromTask,
@@ -1534,9 +1847,9 @@ export function getTaskValidation<E>(
     map: _map,
     ap: applicativeTaskValidation.ap,
     of,
-    chain: _chain,
-    bimap: _bimap,
-    mapLeft: _mapLeft,
+    chain: flatMap,
+    bimap: mapBoth,
+    mapLeft: mapError,
     alt: altTaskValidation.alt,
     fromIO,
     fromTask,

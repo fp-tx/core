@@ -33,7 +33,7 @@ import {
   fromPredicate as fromPredicate_,
 } from './FromEither'
 import { type FromThese2 } from './FromThese'
-import { identity, type Lazy, pipe } from './function'
+import { identity, type LazyArg, pipe } from './function'
 import { flap as flap_, type Functor2 } from './Functor'
 import { type HKT } from './HKT'
 import * as _ from './internal'
@@ -656,7 +656,7 @@ export const fromPredicate: {
  * @since 2.10.0
  * @category Conversions
  */
-export const fromOption: <E>(onNone: Lazy<E>) => <A>(fa: Option<A>) => These<E, A> =
+export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => These<E, A> =
   /*#__PURE__*/ fromOption_(FromEither)
 
 /**
@@ -664,7 +664,7 @@ export const fromOption: <E>(onNone: Lazy<E>) => <A>(fa: Option<A>) => These<E, 
  * @category Lifting
  */
 export const fromOptionK: <E>(
-  onNone: Lazy<E>,
+  onNone: LazyArg<E>,
 ) => <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => Option<B>) => (...a: A) => These<E, B> =
   /*#__PURE__*/ fromOptionK_(FromEither)
 
@@ -714,7 +714,7 @@ export const exists =
  *   )
  */
 export const toTuple2 =
-  <E, A>(e: Lazy<E>, a: Lazy<A>) =>
+  <E, A>(e: LazyArg<E>, a: LazyArg<A>) =>
   (fa: These<E, A>): readonly [E, A] =>
     isLeft(fa) ? [fa.left, a()]
     : isRight(fa) ? [e(), fa.right]

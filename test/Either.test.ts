@@ -4,14 +4,14 @@ import { identity, pipe } from '../src/function'
 import * as N from '../src/number'
 import * as O from '../src/Option'
 import * as RA from '../src/ReadonlyArray'
-import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
+import { type ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import { separated } from '../src/Separated'
 import * as S from '../src/string'
 import * as T from '../src/Task'
 import * as U from './util'
 
-describe('Either', () => {
-  describe('pipeables', () => {
+describe.concurrent('Either', () => {
+  describe.concurrent('pipeables', () => {
     it('mapLeft', () => {
       U.deepStrictEqual(pipe(_.right('bar'), _.mapLeft(U.double)), _.right('bar'))
       U.deepStrictEqual(pipe(_.left(2), _.mapLeft(U.double)), _.left(4))
@@ -85,10 +85,26 @@ describe('Either', () => {
       U.deepStrictEqual(pipe(_.left<string, string>('maError'), _.apSecondW(f)), _.left('maError'))
     })
 
+    it('flatMap', () => {
+      const f = (s: string) => _.right<string, number>(s.length)
+      U.deepStrictEqual(pipe(_.right('abc'), _.flatMap(f)), _.right(3))
+      U.deepStrictEqual(_.flatMap(_.right('abc'), f), _.right(3))
+      U.deepStrictEqual(pipe(_.left<string, string>('maError'), _.flatMap(f)), _.left('maError'))
+      U.deepStrictEqual(_.flatMap(_.left<string, string>('maError'), f), _.left('maError'))
+    })
+
     it('chain', () => {
       const f = (s: string) => _.right<string, number>(s.length)
       U.deepStrictEqual(pipe(_.right('abc'), _.chain(f)), _.right(3))
       U.deepStrictEqual(pipe(_.left<string, string>('maError'), _.chain(f)), _.left('maError'))
+    })
+
+    it('tap', () => {
+      const f = (s: string) => _.right<string, number>(s.length)
+      U.deepStrictEqual(pipe(_.right('abc'), _.tap(f)), _.right('abc'))
+      U.deepStrictEqual(pipe(_.left<string, string>('maError'), _.tap(f)), _.left('maError'))
+      U.deepStrictEqual(_.tap(_.right('abc'), f), _.right('abc'))
+      U.deepStrictEqual(_.tap(_.left<string, string>('maError'), f), _.left('maError'))
     })
 
     it('chainFirst', () => {
@@ -379,7 +395,7 @@ describe('Either', () => {
     )
   })
 
-  describe('getEq', () => {
+  describe.concurrent('getEq', () => {
     it('equals', () => {
       const equals = _.getEq(S.Eq, N.Eq).equals
       U.deepStrictEqual(equals(_.right(1), _.right(1)), true)
@@ -391,7 +407,7 @@ describe('Either', () => {
     })
   })
 
-  describe('ChainRec', () => {
+  describe.concurrent('ChainRec', () => {
     it('chainRec', () => {
       const chainRec = _.ChainRec.chainRec
       U.deepStrictEqual(
@@ -415,7 +431,7 @@ describe('Either', () => {
     })
   })
 
-  describe('getWitherable', () => {
+  describe.concurrent('getWitherable', () => {
     const W = _.getWitherable(S.Monoid)
     const p = (n: number) => n > 2
 
@@ -474,7 +490,7 @@ describe('Either', () => {
     })
   })
 
-  describe('getSemigroup', () => {
+  describe.concurrent('getSemigroup', () => {
     it('concat', () => {
       const S = _.getSemigroup(N.SemigroupSum)
       U.deepStrictEqual(S.concat(_.left('a'), _.left('b')), _.left('a'))
@@ -484,7 +500,7 @@ describe('Either', () => {
     })
   })
 
-  describe('getApplySemigroup', () => {
+  describe.concurrent('getApplySemigroup', () => {
     it('concat', () => {
       const S = _.getApplySemigroup(N.SemigroupSum)
       U.deepStrictEqual(S.concat(_.left('a'), _.left('b')), _.left('a'))
@@ -494,7 +510,7 @@ describe('Either', () => {
     })
   })
 
-  describe('getApplyMonoid', () => {
+  describe.concurrent('getApplyMonoid', () => {
     it('concat', () => {
       const M = _.getApplyMonoid(N.MonoidSum)
       U.deepStrictEqual(M.concat(_.left('a'), M.empty), _.left('a'))
@@ -504,7 +520,7 @@ describe('Either', () => {
     })
   })
 
-  describe('getShow', () => {
+  describe.concurrent('getShow', () => {
     it('show', () => {
       const Sh = _.getShow(S.Show, S.Show)
       U.deepStrictEqual(Sh.show(_.left('a')), `left("a")`)
@@ -565,6 +581,16 @@ describe('Either', () => {
     U.deepStrictEqual(f(-1), _.left('a'))
   })
 
+  it('flatMapOption', () => {
+    const f = _.flatMapOption(
+      (n: number) => (n > 0 ? O.some(n) : O.none),
+      () => 'a',
+    )
+    U.deepStrictEqual(f(_.right(1)), _.right(1))
+    U.deepStrictEqual(f(_.right(-1)), _.left('a'))
+    U.deepStrictEqual(f(_.left('b')), _.left('b'))
+  })
+
   it('chainOptionK', () => {
     const f = _.chainOptionK(() => 'a')((n: number) => (n > 0 ? O.some(n) : O.none))
     U.deepStrictEqual(f(_.right(1)), _.right(1))
@@ -604,6 +630,16 @@ describe('Either', () => {
     U.deepStrictEqual(f(-1), _.left('error'))
   })
 
+  it('flatMapNullable', () => {
+    const f = _.flatMapNullable(
+      (n: number) => (n > 0 ? n : null),
+      () => 'error',
+    )
+    U.deepStrictEqual(f(_.right(1)), _.right(1))
+    U.deepStrictEqual(f(_.right(-1)), _.left('error'))
+    U.deepStrictEqual(f(_.left('a')), _.left('a'))
+  })
+
   it('chainNullableK', () => {
     const f = _.chainNullableK('error')((n: number) => (n > 0 ? n : null))
     U.deepStrictEqual(f(_.right(1)), _.right(1))
@@ -611,7 +647,7 @@ describe('Either', () => {
     U.deepStrictEqual(f(_.left('a')), _.left('a'))
   })
 
-  describe('array utils', () => {
+  describe.concurrent('array utils', () => {
     const input: ReadonlyNonEmptyArray<string> = ['a', 'b']
 
     it('traverseReadonlyArrayWithIndex', () => {
@@ -628,7 +664,7 @@ describe('Either', () => {
     })
   })
 
-  describe('getCompactable', () => {
+  describe.concurrent('getCompactable', () => {
     const C = _.getCompactable(S.Monoid)
     it('compact', () => {
       U.deepStrictEqual(C.compact(_.left('1')), _.left('1'))
@@ -658,5 +694,15 @@ describe('Either', () => {
     }, identity)
     U.deepStrictEqual(f('a'), _.right(1))
     U.deepStrictEqual(f(''), _.left(new Error('empty string')))
+  })
+
+  it('as', () => {
+    U.deepStrictEqual(pipe(_.right('a'), _.as('b')), _.right('b'))
+    U.deepStrictEqual(_.as(_.of('a'), 'b'), _.right('b'))
+    U.deepStrictEqual(_.as(_.left('error'), 'b'), _.left('error'))
+  })
+
+  it('asUnit', () => {
+    U.deepStrictEqual(pipe(_.of('a'), _.asUnit), _.of(undefined))
   })
 })

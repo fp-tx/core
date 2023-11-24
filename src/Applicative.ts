@@ -17,17 +17,7 @@
  *
  * @since 2.0.0
  */
-import {
-  ap,
-  type Apply,
-  type Apply1,
-  type Apply2,
-  type Apply2C,
-  type Apply3,
-  type Apply3C,
-  type Apply4,
-  getApplySemigroup,
-} from './Apply'
+import { ap, type Apply, type Apply1, type Apply2, type Apply2C, type Apply3, type Apply3C, type Apply4, getApplySemigroup } from './Apply'
 import { pipe } from './function'
 import {
   type FunctorComposition,
@@ -43,27 +33,9 @@ import {
   type FunctorCompositionHKT2C,
   getFunctorComposition,
 } from './Functor'
-import {
-  type HKT,
-  type Kind,
-  type Kind2,
-  type Kind3,
-  type Kind4,
-  type URIS,
-  type URIS2,
-  type URIS3,
-  type URIS4,
-} from './HKT'
+import { type HKT, type Kind, type Kind2, type Kind3, type Kind4, type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
 import { type Monoid } from './Monoid'
-import {
-  type Pointed,
-  type Pointed1,
-  type Pointed2,
-  type Pointed2C,
-  type Pointed3,
-  type Pointed3C,
-  type Pointed4,
-} from './Pointed'
+import { type Pointed, type Pointed1, type Pointed2, type Pointed2C, type Pointed3, type Pointed3C, type Pointed4 } from './Pointed'
 
 // -------------------------------------------------------------------------------------
 // model
