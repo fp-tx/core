@@ -1,5 +1,5 @@
 {
-  "name": "fp-tx",
+  "name": "@fp-tx/core",
   "version": "1.0.0",
   "description": "fp-ts forever: functional programming in TypeScript",
   "sideEffects": false,
@@ -37,14 +37,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jacob-alford/fp-tx.git"
+    "url": "https://github.com/fp-tx/core.git"
   },
   "author": "Jacob Alford <jacob.alford@me.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gcanti/fp-tx/issues"
+    "url": "https://github.com/fp-tx/core/issues"
   },
-  "homepage": "https://github.com/jacob-alford/fp-tx",
+  "homepage": "https://fp-tx.org",
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.13.1",
     "@swc/core": "^1.3.96",
