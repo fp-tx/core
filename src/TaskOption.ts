@@ -30,6 +30,7 @@ import { type MonadIO1 } from './MonadIO'
 import { type MonadTask1 } from './MonadTask'
 import { type NonEmptyArray } from './NonEmptyArray'
 import * as O from './Option'
+import { type Option } from './Option'
 import * as OT from './OptionT'
 import { type Pointed1 } from './Pointed'
 import { type Predicate } from './Predicate'
@@ -37,11 +38,9 @@ import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
 import { type Separated } from './Separated'
 import * as T from './Task'
+import { type Task } from './Task'
 import { type TaskEither } from './TaskEither'
 import { guard as guard_, type Zero1 } from './Zero'
-
-import Task = T.Task
-import Option = O.Option
 
 // -------------------------------------------------------------------------------------
 // model

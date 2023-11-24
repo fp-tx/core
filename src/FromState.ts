@@ -8,8 +8,7 @@ import { type Endomorphism } from './Endomorphism'
 import { flow } from './function'
 import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, type URIS4 } from './HKT'
 import * as S from './State'
-
-import State = S.State
+import { type State } from './State'
 
 // -------------------------------------------------------------------------------------
 // model

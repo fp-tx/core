@@ -3,10 +3,37 @@
  *
  * @since 2.10.0
  */
-import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C, type Chain4, tap } from './Chain'
-import { type FromIO, type FromIO1, type FromIO2, type FromIO2C, type FromIO3, type FromIO3C, type FromIO4 } from './FromIO'
+import {
+  type Chain,
+  type Chain1,
+  type Chain2,
+  type Chain2C,
+  type Chain3,
+  type Chain3C,
+  type Chain4,
+  tap,
+} from './Chain'
+import {
+  type FromIO,
+  type FromIO1,
+  type FromIO2,
+  type FromIO2C,
+  type FromIO3,
+  type FromIO3C,
+  type FromIO4,
+} from './FromIO'
 import { flow } from './function'
-import { type HKT, type Kind, type Kind2, type Kind3, type Kind4, type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4,
+} from './HKT'
 import { type Task } from './Task'
 
 // -------------------------------------------------------------------------------------

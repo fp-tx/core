@@ -33,14 +33,12 @@ import { getMonoid, type Ord } from './Ord'
 import { type Pointed1 } from './Pointed'
 import { type Predicate } from './Predicate'
 import * as RNEA from './ReadonlyNonEmptyArray'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
-import * as Se from './Semigroup'
+import { type Semigroup } from './Semigroup'
 import { type Show } from './Show'
 import { type PipeableTraverse1, type Traversable1 } from './Traversable'
 import { type PipeableTraverseWithIndex1, type TraversableWithIndex1 } from './TraversableWithIndex'
-
-import Semigroup = Se.Semigroup
-import ReadonlyNonEmptyArray = RNEA.ReadonlyNonEmptyArray
 
 // -------------------------------------------------------------------------------------
 // model

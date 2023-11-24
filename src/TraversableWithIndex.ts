@@ -20,9 +20,26 @@
  *
  * @since 2.0.0
  */
-import { type Applicative, type Applicative1, type Applicative2, type Applicative2C, type Applicative3, type Applicative3C } from './Applicative'
-import { type FoldableWithIndex, type FoldableWithIndex1, type FoldableWithIndex2, type FoldableWithIndex2C } from './FoldableWithIndex'
-import { type FunctorWithIndex, type FunctorWithIndex1, type FunctorWithIndex2, type FunctorWithIndex2C } from './FunctorWithIndex'
+import {
+  type Applicative,
+  type Applicative1,
+  type Applicative2,
+  type Applicative2C,
+  type Applicative3,
+  type Applicative3C,
+} from './Applicative'
+import {
+  type FoldableWithIndex,
+  type FoldableWithIndex1,
+  type FoldableWithIndex2,
+  type FoldableWithIndex2C,
+} from './FoldableWithIndex'
+import {
+  type FunctorWithIndex,
+  type FunctorWithIndex1,
+  type FunctorWithIndex2,
+  type FunctorWithIndex2C,
+} from './FunctorWithIndex'
 import { type HKT, type Kind, type Kind2, type Kind3, type URIS, type URIS2, type URIS3 } from './HKT'
 import { type Traversable, type Traversable1, type Traversable2, type Traversable2C } from './Traversable'
 

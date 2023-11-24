@@ -5,6 +5,7 @@ import { apFirst as apFirst_, type Apply4, apS as apS_, apSecond as apSecond_ } 
 import { type Bifunctor4 } from './Bifunctor'
 import * as chainable from './Chain'
 import * as E from './Either'
+import { type Either } from './Either'
 import { type Endomorphism } from './Endomorphism'
 import {
   chainOptionK as chainOptionK_,
@@ -48,22 +49,16 @@ import { type Option } from './Option'
 import { type Pointed4 } from './Pointed'
 import { type Predicate } from './Predicate'
 import * as R from './Reader'
+import { type Reader } from './Reader'
 import { type ReaderEither } from './ReaderEither'
 import * as RTE from './ReaderTaskEither'
+import { type ReaderTaskEither } from './ReaderTaskEither'
 import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
 import { type State } from './State'
 import * as ST from './StateT'
 import { type Task } from './Task'
 import { type TaskEither } from './TaskEither'
-
-// -------------------------------------------------------------------------------------
-// model
-// -------------------------------------------------------------------------------------
-
-import ReaderTaskEither = RTE.ReaderTaskEither
-import Either = E.Either
-import Reader = R.Reader
 
 /**
  * @since 2.0.0

@@ -6,13 +6,12 @@ import {
   getApplicativeComposition,
 } from './Applicative'
 import * as E from './Either'
+import { type Either } from './Either'
 import { type LazyArg } from './function'
 import { type HKT, type Kind, type Kind2, type URIS, type URIS2 } from './HKT'
 import * as _ from './internal'
 import { type Monad, type Monad1, type Monad2 } from './Monad'
 import { type Semigroup } from './Semigroup'
-
-import Either = E.Either
 
 // -------------------------------------------------------------------------------------
 // deprecated

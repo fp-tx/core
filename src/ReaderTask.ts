@@ -27,18 +27,12 @@ import { type MonadTask2 } from './MonadTask'
 import { type Monoid } from './Monoid'
 import { type Pointed2 } from './Pointed'
 import * as R from './Reader'
-import * as RIO from './ReaderIO'
+import { type ReaderIO } from './ReaderIO'
 import * as RT from './ReaderT'
 import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Semigroup } from './Semigroup'
 import * as T from './Task'
-
-// -------------------------------------------------------------------------------------
-// model
-// -------------------------------------------------------------------------------------
-
-import ReaderIO = RIO.ReaderIO
-import Task = T.Task
+import { type Task } from './Task'
 
 /**
  * @since 2.3.0

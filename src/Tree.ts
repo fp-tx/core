@@ -17,9 +17,27 @@ import { type Extend1 } from './Extend'
 import { type Foldable1 } from './Foldable'
 import { dual, identity, pipe } from './function'
 import { bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
-import { type HKT, type Kind, type Kind2, type Kind3, type Kind4, type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4,
+} from './HKT'
 import * as _ from './internal'
-import { type Monad as MonadHKT, type Monad1, type Monad2, type Monad2C, type Monad3, type Monad3C, type Monad4 } from './Monad'
+import {
+  type Monad as MonadHKT,
+  type Monad1,
+  type Monad2,
+  type Monad2C,
+  type Monad3,
+  type Monad3C,
+  type Monad4,
+} from './Monad'
 import { type Monoid } from './Monoid'
 import { type Pointed1 } from './Pointed'
 import { type Predicate } from './Predicate'

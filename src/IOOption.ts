@@ -26,10 +26,12 @@ import { dual, flow, identity, type LazyArg, pipe, SK } from './function'
 import { as as as_, asUnit as asUnit_, bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
 import * as _ from './internal'
 import * as I from './IO'
+import { type IO } from './IO'
 import { type IOEither } from './IOEither'
 import { type Monad1 } from './Monad'
 import { type MonadIO1 } from './MonadIO'
 import * as O from './Option'
+import { type Option } from './Option'
 import * as OT from './OptionT'
 import { type Pointed1 } from './Pointed'
 import { type Predicate } from './Predicate'
@@ -37,9 +39,6 @@ import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
 import { type Separated } from './Separated'
 import { guard as guard_, type Zero1 } from './Zero'
-
-import IO = I.IO
-import Option = O.Option
 
 // -------------------------------------------------------------------------------------
 // model

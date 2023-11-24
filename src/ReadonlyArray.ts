@@ -29,6 +29,7 @@ import { fromCompare, type Ord } from './Ord'
 import { type Pointed1 } from './Pointed'
 import { type Predicate } from './Predicate'
 import * as RNEA from './ReadonlyNonEmptyArray'
+import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
 import { type Semigroup } from './Semigroup'
 import { type Separated, separated } from './Separated'
@@ -45,8 +46,6 @@ import {
   witherDefault,
 } from './Witherable'
 import { guard as guard_, type Zero1 } from './Zero'
-
-import ReadonlyNonEmptyArray = RNEA.ReadonlyNonEmptyArray
 
 // -------------------------------------------------------------------------------------
 // refinements

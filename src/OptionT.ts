@@ -5,19 +5,54 @@ import {
   type ApplicativeComposition21,
   type ApplicativeCompositionHKT1,
 } from './Applicative'
-import { ap as ap_, type Apply, type Apply1, type Apply2, type Apply2C, type Apply3, type Apply3C, type Apply4 } from './Apply'
+import {
+  ap as ap_,
+  type Apply,
+  type Apply1,
+  type Apply2,
+  type Apply2C,
+  type Apply3,
+  type Apply3C,
+  type Apply4,
+} from './Apply'
 import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C, type Chain4 } from './Chain'
 import { type Either } from './Either'
 import { constant, flow, type LazyArg, pipe } from './function'
-import { type Functor, type Functor1, type Functor2, type Functor2C, type Functor3, type Functor3C, type Functor4, map as map_ } from './Functor'
-import { type HKT, type Kind, type Kind2, type Kind3, type Kind4, type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
+import {
+  type Functor,
+  type Functor1,
+  type Functor2,
+  type Functor2C,
+  type Functor3,
+  type Functor3C,
+  type Functor4,
+  map as map_,
+} from './Functor'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4,
+} from './HKT'
 import { type Monad, type Monad1, type Monad2, type Monad2C, type Monad3, type Monad3C, type Monad4 } from './Monad'
 import * as O from './Option'
-import { type Pointed, type Pointed1, type Pointed2, type Pointed2C, type Pointed3, type Pointed3C, type Pointed4 } from './Pointed'
+import { type Option } from './Option'
+import {
+  type Pointed,
+  type Pointed1,
+  type Pointed2,
+  type Pointed2C,
+  type Pointed3,
+  type Pointed3C,
+  type Pointed4,
+} from './Pointed'
 import { type Predicate } from './Predicate'
 import { type Refinement } from './Refinement'
-
-import Option = O.Option
 
 // -------------------------------------------------------------------------------------
 // constructors

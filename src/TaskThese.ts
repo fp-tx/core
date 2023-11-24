@@ -28,11 +28,10 @@ import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
 import { type Semigroup } from './Semigroup'
 import * as T from './Task'
+import { type Task } from './Task'
 import * as TH from './These'
+import { type These } from './These'
 import * as TT from './TheseT'
-
-import These = TH.These
-import Task = T.Task
 
 // -------------------------------------------------------------------------------------
 // model

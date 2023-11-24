@@ -7,8 +7,7 @@ import { type Chain, type Chain2, type Chain3, type Chain3C, type Chain4, tap } 
 import { flow } from './function'
 import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, type URIS4 } from './HKT'
 import * as R from './Reader'
-
-import Reader = R.Reader
+import { type Reader } from './Reader'
 
 // -------------------------------------------------------------------------------------
 // model

@@ -23,6 +23,7 @@ import { type Bifunctor2 } from './Bifunctor'
 import * as chainable from './Chain'
 import { compact as compact_, type Compactable2C, separate as separate_ } from './Compactable'
 import * as E from './Either'
+import { type Either } from './Either'
 import * as ET from './EitherT'
 import {
   filter as filter_,
@@ -61,14 +62,8 @@ import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
 import { type Semigroup } from './Semigroup'
 import * as T from './Task'
+import { type Task } from './Task'
 import { type TaskOption } from './TaskOption'
-
-// -------------------------------------------------------------------------------------
-// model
-// -------------------------------------------------------------------------------------
-
-import Either = E.Either
-import Task = T.Task
 
 /**
  * @since 2.0.0
@@ -1471,8 +1466,8 @@ export function taskify<L, R>(f: Function): () => TaskEither<L, R> {
 }
 
 /**
- * Make sure that a resource is cleaned up in the event of an exception (*). The release action is called regardless of
- * whether the body action throws (*) or returns.
+ * Make sure that a resource is cleaned up in the event of an exception (_). The release action is called regardless of
+ * whether the body action throws (_) or returns.
  *
  * (*) i.e. returns a `Left`
  *

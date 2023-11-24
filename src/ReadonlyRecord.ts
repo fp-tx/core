@@ -23,7 +23,17 @@ import { type FoldableWithIndex1 } from './FoldableWithIndex'
 import { flow, identity, pipe, SK } from './function'
 import { flap as flap_, type Functor1 } from './Functor'
 import { type FunctorWithIndex1 } from './FunctorWithIndex'
-import { type HKT, type Kind, type Kind2, type Kind3, type Kind4, type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4,
+} from './HKT'
 import * as _ from './internal'
 import { type Magma } from './Magma'
 import { type Monoid } from './Monoid'
@@ -31,7 +41,7 @@ import { type Option } from './Option'
 import { type Ord } from './Ord'
 import { type Predicate } from './Predicate'
 import { type Refinement } from './Refinement'
-import * as Se from './Semigroup'
+import { type Semigroup } from './Semigroup'
 import { type Separated, separated } from './Separated'
 import { type Show } from './Show'
 import * as S from './string'
@@ -39,8 +49,6 @@ import { type Traversable1 } from './Traversable'
 import { type TraversableWithIndex1 } from './TraversableWithIndex'
 import { type Unfoldable, type Unfoldable1 } from './Unfoldable'
 import { type PipeableWilt1, type PipeableWither1, wiltDefault, type Witherable1, witherDefault } from './Witherable'
-
-import Semigroup = Se.Semigroup
 
 // -------------------------------------------------------------------------------------
 // model

@@ -13,6 +13,7 @@ import { type Bifunctor3 } from './Bifunctor'
 import * as chainable from './Chain'
 import { compact as compact_, type Compactable3C, separate as separate_ } from './Compactable'
 import * as E from './Either'
+import { type Either } from './Either'
 import * as ET from './EitherT'
 import {
   filter as filter_,
@@ -48,12 +49,10 @@ import { type Option } from './Option'
 import { type Pointed3 } from './Pointed'
 import { type Predicate } from './Predicate'
 import * as R from './Reader'
+import { type Reader } from './Reader'
 import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
 import { type Semigroup } from './Semigroup'
-
-import Reader = R.Reader
-import Either = E.Either
 
 // -------------------------------------------------------------------------------------
 // model

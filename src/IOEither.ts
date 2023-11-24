@@ -21,6 +21,7 @@ import { type Bifunctor2 } from './Bifunctor'
 import * as chainable from './Chain'
 import { compact as compact_, type Compactable2C, separate as separate_ } from './Compactable'
 import * as E from './Either'
+import { type Either } from './Either'
 import * as ET from './EitherT'
 import {
   filter as filter_,
@@ -44,6 +45,7 @@ import { dual, flow, identity, type LazyArg, pipe, SK } from './function'
 import { as as as_, asUnit as asUnit_, bindTo as bindTo_, flap as flap_, type Functor2, let as let__ } from './Functor'
 import * as _ from './internal'
 import * as I from './IO'
+import { type IO } from './IO'
 import { type Monad2, type Monad2C } from './Monad'
 import { type MonadIO2, type MonadIO2C } from './MonadIO'
 import { type MonadThrow2, type MonadThrow2C } from './MonadThrow'
@@ -55,13 +57,6 @@ import { type Predicate } from './Predicate'
 import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
 import { type Semigroup } from './Semigroup'
-
-// -------------------------------------------------------------------------------------
-// model
-// -------------------------------------------------------------------------------------
-
-import Either = E.Either
-import IO = I.IO
 
 /**
  * @since 2.0.0
@@ -1017,8 +1012,8 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 // -------------------------------------------------------------------------------------
 
 /**
- * Make sure that a resource is cleaned up in the event of an exception (*). The release action is called regardless of
- * whether the body action throws (*) or returns.
+ * Make sure that a resource is cleaned up in the event of an exception (_). The release action is called regardless of
+ * whether the body action throws (_) or returns.
  *
  * (*) i.e. returns a `Left`
  *

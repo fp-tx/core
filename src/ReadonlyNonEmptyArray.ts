@@ -36,11 +36,10 @@ import { type Predicate } from './Predicate'
 import { type ReadonlyRecord } from './ReadonlyRecord'
 import { type Refinement } from './Refinement'
 import * as Se from './Semigroup'
+import { type Semigroup } from './Semigroup'
 import { type Show } from './Show'
 import { type PipeableTraverse1, type Traversable1 } from './Traversable'
 import { type PipeableTraverseWithIndex1, type TraversableWithIndex1 } from './TraversableWithIndex'
-
-import Semigroup = Se.Semigroup
 
 // -------------------------------------------------------------------------------------
 // model

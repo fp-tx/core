@@ -3,7 +3,15 @@
  *
  * @since 2.0.0
  */
-import { type FromIO, type FromIO1, type FromIO2, type FromIO2C, type FromIO3, type FromIO3C, type FromIO4 } from './FromIO'
+import {
+  type FromIO,
+  type FromIO1,
+  type FromIO2,
+  type FromIO2C,
+  type FromIO3,
+  type FromIO3C,
+  type FromIO4,
+} from './FromIO'
 import { type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
 import { type Monad, type Monad1, type Monad2, type Monad2C, type Monad3, type Monad3C, type Monad4 } from './Monad'
 

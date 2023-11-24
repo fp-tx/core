@@ -11,8 +11,24 @@ import {
   type Apply4,
   apSecond as apSecond_,
 } from './Apply'
-import { type Bifunctor, type Bifunctor2, type Bifunctor2C, type Bifunctor3, type Bifunctor3C, type Bifunctor4 } from './Bifunctor'
-import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C, type Chain4, chainFirst as chainFirst_ } from './Chain'
+import {
+  type Bifunctor,
+  type Bifunctor2,
+  type Bifunctor2C,
+  type Bifunctor3,
+  type Bifunctor3C,
+  type Bifunctor4,
+} from './Bifunctor'
+import {
+  type Chain,
+  type Chain1,
+  type Chain2,
+  type Chain2C,
+  type Chain3,
+  type Chain3C,
+  type Chain4,
+  chainFirst as chainFirst_,
+} from './Chain'
 import {
   type Compactable,
   type Compactable1,
@@ -32,7 +48,15 @@ import {
   type Contravariant4,
 } from './Contravariant'
 import { type Either } from './Either'
-import { type Extend, type Extend1, type Extend2, type Extend2C, type Extend3, type Extend3C, type Extend4 } from './Extend'
+import {
+  type Extend,
+  type Extend1,
+  type Extend2,
+  type Extend2C,
+  type Extend3,
+  type Extend3C,
+  type Extend4,
+} from './Extend'
 import {
   type Filterable,
   type Filterable1,
@@ -53,7 +77,15 @@ import {
   type PredicateWithIndex,
   type RefinementWithIndex,
 } from './FilterableWithIndex'
-import { type Foldable, type Foldable1, type Foldable2, type Foldable2C, type Foldable3, type Foldable3C, type Foldable4 } from './Foldable'
+import {
+  type Foldable,
+  type Foldable1,
+  type Foldable2,
+  type Foldable2C,
+  type Foldable3,
+  type Foldable3C,
+  type Foldable4,
+} from './Foldable'
 import {
   type FoldableWithIndex,
   type FoldableWithIndex1,
@@ -64,7 +96,15 @@ import {
   type FoldableWithIndex4,
 } from './FoldableWithIndex'
 import { identity, type LazyArg, pipe as pipeFromFunctionModule } from './function'
-import { type Functor, type Functor1, type Functor2, type Functor2C, type Functor3, type Functor3C, type Functor4 } from './Functor'
+import {
+  type Functor,
+  type Functor1,
+  type Functor2,
+  type Functor2C,
+  type Functor3,
+  type Functor3C,
+  type Functor4,
+} from './Functor'
 import {
   type FunctorWithIndex,
   type FunctorWithIndex1,
@@ -74,7 +114,18 @@ import {
   type FunctorWithIndex3C,
   type FunctorWithIndex4,
 } from './FunctorWithIndex'
-import { type HKT, type HKT2, type Kind, type Kind2, type Kind3, type Kind4, type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
+import {
+  type HKT,
+  type HKT2,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4,
+} from './HKT'
 import {
   type MonadThrow,
   type MonadThrow1,
@@ -87,7 +138,14 @@ import {
 import { type Monoid } from './Monoid'
 import { type Option } from './Option'
 import { type Predicate } from './Predicate'
-import { type Profunctor, type Profunctor2, type Profunctor2C, type Profunctor3, type Profunctor3C, type Profunctor4 } from './Profunctor'
+import {
+  type Profunctor,
+  type Profunctor2,
+  type Profunctor2C,
+  type Profunctor3,
+  type Profunctor3C,
+  type Profunctor4,
+} from './Profunctor'
 import { type Refinement } from './Refinement'
 import {
   type Semigroupoid,

@@ -14,6 +14,7 @@ import { type Bifunctor3 } from './Bifunctor'
 import * as chainable from './Chain'
 import { compact as compact_, type Compactable3C, separate as separate_ } from './Compactable'
 import * as E from './Either'
+import { type Either } from './Either'
 import * as ET from './EitherT'
 import {
   filter as filter_,
@@ -55,21 +56,18 @@ import { type Option } from './Option'
 import { type Pointed3 } from './Pointed'
 import { type Predicate } from './Predicate'
 import * as R from './Reader'
+import { type Reader } from './Reader'
 import { type ReaderEither } from './ReaderEither'
-import * as RIO from './ReaderIO'
+import { type ReaderIO } from './ReaderIO'
 import * as RT from './ReaderTask'
+import { type ReaderTask } from './ReaderTask'
 import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 import { type Refinement } from './Refinement'
 import { type Semigroup } from './Semigroup'
 import * as T from './Task'
+import { type Task } from './Task'
 import * as TE from './TaskEither'
-
-import Either = E.Either
-import Task = T.Task
-import TaskEither = TE.TaskEither
-import Reader = R.Reader
-import ReaderIO = RIO.ReaderIO
-import ReaderTask = RT.ReaderTask
+import { type TaskEither } from './TaskEither'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -1873,8 +1871,8 @@ export const chainReaderEitherK: <R, E, A, B>(
 // -------------------------------------------------------------------------------------
 
 /**
- * Make sure that a resource is cleaned up in the event of an exception (*). The release action is called regardless of
- * whether the body action throws (*) or returns.
+ * Make sure that a resource is cleaned up in the event of an exception (_). The release action is called regardless of
+ * whether the body action throws (_) or returns.
  *
  * (*) i.e. returns a `Left`
  *

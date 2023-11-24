@@ -60,7 +60,12 @@
  *   assert.deepStrictEqual(imperative([0]), functional([0]))
  */
 import { type Alt2, type Alt2C } from './Alt'
-import { type Applicative as ApplicativeHKT, type Applicative2, type Applicative2C, getApplicativeMonoid } from './Applicative'
+import {
+  type Applicative as ApplicativeHKT,
+  type Applicative2,
+  type Applicative2C,
+  getApplicativeMonoid,
+} from './Applicative'
 import {
   apFirst as apFirst_,
   type Apply2,

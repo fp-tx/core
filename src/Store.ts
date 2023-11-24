@@ -3,7 +3,15 @@ import { type Comonad2 } from './Comonad'
 import { type Endomorphism } from './Endomorphism'
 import { type Extend2 } from './Extend'
 import { identity, pipe } from './function'
-import { flap as flap_, type Functor as FunctorHKT, type Functor1, type Functor2, type Functor2C, type Functor3, type Functor3C } from './Functor'
+import {
+  flap as flap_,
+  type Functor as FunctorHKT,
+  type Functor1,
+  type Functor2,
+  type Functor2C,
+  type Functor3,
+  type Functor3C,
+} from './Functor'
 import { type HKT, type Kind, type Kind2, type Kind3, type URIS, type URIS2, type URIS3 } from './HKT'
 
 // -------------------------------------------------------------------------------------

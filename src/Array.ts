@@ -29,6 +29,7 @@ import { type Magma } from './Magma'
 import { type Monad1 } from './Monad'
 import { type Monoid } from './Monoid'
 import * as NEA from './NonEmptyArray'
+import { type NonEmptyArray } from './NonEmptyArray'
 import { type Option } from './Option'
 import { type Ord } from './Ord'
 import { type Pointed1 } from './Pointed'
@@ -50,8 +51,6 @@ import {
   witherDefault,
 } from './Witherable'
 import { guard as guard_, type Zero1 } from './Zero'
-
-import NonEmptyArray = NEA.NonEmptyArray
 
 // -------------------------------------------------------------------------------------
 // refinements

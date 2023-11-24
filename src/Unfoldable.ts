@@ -3,7 +3,17 @@
  *
  * @since 2.0.0
  */
-import { type HKT, type Kind, type Kind2, type Kind3, type Kind4, type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4,
+} from './HKT'
 import { type Option } from './Option'
 
 // -------------------------------------------------------------------------------------

@@ -1,6 +1,16 @@
 import { type Apply, type Apply1, type Apply2, type Apply2C, type Apply3, type Apply4, sequenceT } from '../src/Apply'
 import { type FromTask, type FromTask1, type FromTask2, type FromTask3, type FromTask4 } from '../src/FromTask'
-import { type HKT, type Kind, type Kind2, type Kind3, type Kind4, type URIS, type URIS2, type URIS3, type URIS4 } from '../src/HKT'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4,
+} from '../src/HKT'
 import * as T from '../src/Task'
 
 export const deepStrictEqual = <A>(actual: A, expected: A) => {

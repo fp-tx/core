@@ -35,8 +35,26 @@
  *   )
  */
 import { tuple } from './function'
-import { type Functor, type Functor1, type Functor2, type Functor2C, type Functor3, type Functor3C, type Functor4 } from './Functor'
-import { type HKT, type Kind, type Kind2, type Kind3, type Kind4, type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
+import {
+  type Functor,
+  type Functor1,
+  type Functor2,
+  type Functor2C,
+  type Functor3,
+  type Functor3C,
+  type Functor4,
+} from './Functor'
+import {
+  type HKT,
+  type Kind,
+  type Kind2,
+  type Kind3,
+  type Kind4,
+  type URIS,
+  type URIS2,
+  type URIS3,
+  type URIS4,
+} from './HKT'
 import * as _ from './internal'
 import { type Semigroup } from './Semigroup'
 
