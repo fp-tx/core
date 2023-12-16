@@ -2,6 +2,7 @@
 import { type Applicative2 } from './Applicative'
 import { apFirst as apFirst_, type Apply2, apS as apS_, apSecond as apSecond_ } from './Apply'
 import * as chainable from './Chain'
+import { type ChainRec2 } from './ChainRec'
 import { type FromState2 } from './FromState'
 import { dual, identity, pipe } from './function'
 import { bindTo as bindTo_, flap as flap_, type Functor2, let as let__ } from './Functor'
@@ -197,6 +198,30 @@ export const Chain: chainable.Chain2<URI> = {
   map: _map,
   ap: _ap,
   chain: flatMap,
+}
+
+/**
+ * @since 1.0.0
+ * @category Instance methods
+ */
+export const chainRec: ChainRec2<URI>['chainRec'] = (a, f) => initialState => {
+  let [current, state] = f(a)(initialState)
+  while (_.isLeft(current)) {
+    // eslint-disable-next-line @typescript-eslint/no-extra-semi, no-extra-semi
+    ;[current, state] = f(current.left)(state)
+  }
+  return [current.right, state]
+}
+
+/**
+ * ChainRec for `State`
+ *
+ * @since 1.0.0
+ * @category Instances
+ */
+export const ChainRec: ChainRec2<URI> = {
+  ...Chain,
+  chainRec,
 }
 
 /**

@@ -12,6 +12,7 @@ import {
 } from './Apply'
 import { type Bifunctor3 } from './Bifunctor'
 import * as chainable from './Chain'
+import { type ChainRec3 } from './ChainRec'
 import { compact as compact_, type Compactable3C, separate as separate_ } from './Compactable'
 import * as E from './Either'
 import { type Either } from './Either'
@@ -863,6 +864,41 @@ export const Chain: chainable.Chain3<URI> = {
   map: _map,
   ap: _apPar,
   chain: flatMap,
+}
+
+/**
+ * @since 1.0.0
+ * @category Instance methods
+ */
+export const chainRec: ChainRec3<URI>['chainRec'] =
+  <R, E, A, B>(a: A, f: (a: A) => ReaderTaskEither<R, E, E.Either<A, B>>) =>
+  (r: R) =>
+  async () => {
+    let current = await f(a)(r)()
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      if (E.isRight(current) && E.isLeft(current.right)) {
+        current = await f(current.right.left)(r)()
+        continue
+      }
+      if (E.isLeft(current)) {
+        return current as E.Either<E, B>
+      }
+      if (E.isRight(current.right)) {
+        return E.right(current.right.right) as E.Either<E, B>
+      }
+    }
+  }
+
+/**
+ * ChainRec for `ReaderTaskEither`
+ *
+ * @since 1.0.0
+ * @category Instances
+ */
+export const ChainRec: ChainRec3<URI> = {
+  ...Chain,
+  chainRec,
 }
 
 /**

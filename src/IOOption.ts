@@ -11,6 +11,7 @@ import { type Alternative1 } from './Alternative'
 import { type Applicative1 } from './Applicative'
 import { apFirst as apFirst_, type Apply1, apS as apS_, apSecond as apSecond_ } from './Apply'
 import * as chainable from './Chain'
+import { type ChainRec1 } from './ChainRec'
 import { compact as compact_, type Compactable1, separate as separate_ } from './Compactable'
 import { type Either } from './Either'
 import {
@@ -440,6 +441,40 @@ export const Chain: chainable.Chain1<URI> = {
   map: _map,
   ap: _ap,
   chain: flatMap,
+}
+
+/**
+ * @since 1.0.0
+ * @category Instance methods
+ */
+export const chainRec: ChainRec1<URI>['chainRec'] =
+  <A, B>(a: A, f: (a: A) => IOOption<Either<A, B>>) =>
+  () => {
+    let current = f(a)()
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      if (O.isSome(current) && _.isLeft(current.value)) {
+        current = f(current.value.left)()
+        continue
+      }
+      if (O.isNone(current)) {
+        return current as O.Option<B>
+      }
+      if (_.isRight(current.value)) {
+        return O.some(current.value.right) as O.Option<B>
+      }
+    }
+  }
+
+/**
+ * ChainRec for `IOOption`
+ *
+ * @since 1.0.0
+ * @category Instances
+ */
+export const ChainRec: ChainRec1<URI> = {
+  ...Chain,
+  chainRec,
 }
 
 /**

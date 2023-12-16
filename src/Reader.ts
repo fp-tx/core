@@ -43,6 +43,7 @@ import { type Applicative2, getApplicativeMonoid } from './Applicative'
 import { apFirst as apFirst_, type Apply2, apS as apS_, apSecond as apSecond_, getApplySemigroup } from './Apply'
 import { type Category2 } from './Category'
 import * as chainable from './Chain'
+import { type ChainRec2 } from './ChainRec'
 import { type Choice2 } from './Choice'
 import * as E from './Either'
 import { constant, dual, flow, identity, pipe } from './function'
@@ -352,6 +353,29 @@ export const Chain: chainable.Chain2<URI> = {
   map: _map,
   ap: _ap,
   chain: flatMap,
+}
+
+/**
+ * @since 1.0.0
+ * @category Instance methods
+ */
+export const chainRec: ChainRec2<URI>['chainRec'] = (a, f) => r => {
+  let current = f(a)(r)
+  while (E.isLeft(current)) {
+    current = f(current.left)(r)
+  }
+  return current.right
+}
+
+/**
+ * ChainRec for `Reader`
+ *
+ * @since 1.0.0
+ * @category Instances
+ */
+export const ChainRec: ChainRec2<URI> = {
+  ...Chain,
+  chainRec,
 }
 
 /**

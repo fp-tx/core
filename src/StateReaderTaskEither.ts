@@ -4,6 +4,7 @@ import { type Applicative4 } from './Applicative'
 import { apFirst as apFirst_, type Apply4, apS as apS_, apSecond as apSecond_ } from './Apply'
 import { type Bifunctor4 } from './Bifunctor'
 import * as chainable from './Chain'
+import { type ChainRec4 } from './ChainRec'
 import * as E from './Either'
 import { type Either } from './Either'
 import { type Endomorphism } from './Endomorphism'
@@ -756,6 +757,42 @@ export const Chain: chainable.Chain4<URI> = {
   map: _map,
   ap: _ap,
   chain: flatMap,
+}
+
+/**
+ * @since 1.0.0
+ * @category Instance methods
+ */
+export const chainRec: ChainRec4<URI>['chainRec'] =
+  <S, R, E, A, B>(a: A, f: (a: A) => StateReaderTaskEither<S, R, E, E.Either<A, B>>) =>
+  (initialState: S) =>
+  (r: R) =>
+  async () => {
+    let current = await f(a)(initialState)(r)()
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      if (E.isLeft(current)) {
+        return current as E.Either<E, [B, S]>
+      }
+      const [result, state] = current.right
+      if (E.isLeft(result)) {
+        current = await f(result.left)(state)(r)()
+        continue
+      } else {
+        return E.right([result.right, state]) as E.Either<E, [B, S]>
+      }
+    }
+  }
+
+/**
+ * ChainRec for `StateReaderTaskEither`
+ *
+ * @since 1.0.0
+ * @category Instances
+ */
+export const ChainRec: ChainRec4<URI> = {
+  ...Chain,
+  chainRec,
 }
 
 /**

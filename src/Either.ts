@@ -193,12 +193,6 @@ const _mapLeft: Bifunctor2<URI>['mapLeft'] = (fa, f) => pipe(fa, mapLeft(f))
 const _alt: Alt2<URI>['alt'] = (fa, that) => pipe(fa, alt(that))
 /* istanbul ignore next */
 const _extend: Extend2<URI>['extend'] = (wa, f) => pipe(wa, extend(f))
-const _chainRec: ChainRec2<URI>['chainRec'] = (a, f) =>
-  tailRec(f(a), e =>
-    isLeft(e) ? right(left(e.left))
-    : isLeft(e.right) ? left(f(e.right.left))
-    : right(right(e.right.right)),
-  )
 
 /**
  * @since 2.0.0
@@ -803,6 +797,17 @@ export const Extend: Extend2<URI> = {
 }
 
 /**
+ * @since 1.0.0
+ * @category Instance Methods
+ */
+const chainRec: ChainRec2<URI>['chainRec'] = (a, f) =>
+  tailRec(f(a), e =>
+    isLeft(e) ? right(left(e.left))
+    : isLeft(e.right) ? left(f(e.right.left))
+    : right(right(e.right.right)),
+  )
+
+/**
  * @since 2.7.0
  * @category Instances
  */
@@ -811,7 +816,7 @@ export const ChainRec: ChainRec2<URI> = {
   map: _map,
   ap: _ap,
   chain: flatMap,
-  chainRec: _chainRec,
+  chainRec,
 }
 
 /** @since 2.6.3 */
@@ -1691,7 +1696,7 @@ export const either: Monad2<URI> &
   mapLeft: _mapLeft,
   alt: _alt,
   extend: _extend,
-  chainRec: _chainRec,
+  chainRec,
   throwError: throwError,
 }
 
@@ -1771,7 +1776,7 @@ export function getValidation<E>(
     extend: _extend,
     traverse: _traverse,
     sequence,
-    chainRec: _chainRec,
+    chainRec,
     throwError,
     ap,
     alt,

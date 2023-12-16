@@ -8,6 +8,7 @@ import {
   getApplySemigroup as getApplySemigroup_,
 } from './Apply'
 import * as chainable from './Chain'
+import { type ChainRec2 } from './ChainRec'
 import { type FromIO2, fromIOK as fromIOK_, tapIO as tapIO_ } from './FromIO'
 import {
   ask as ask_,
@@ -296,6 +297,29 @@ export const Chain: chainable.Chain2<URI> = {
   map: _map,
   ap: _apPar,
   chain: flatMap,
+}
+
+/**
+ * @since 1.0.0
+ * @category Instance methods
+ */
+export const chainRec: ChainRec2<URI>['chainRec'] = (a, f) => r => async () => {
+  let current = await f(a)(r)()
+  while (_.isLeft(current)) {
+    current = await f(current.left)(r)()
+  }
+  return current.right
+}
+
+/**
+ * ChainRec for `ReaderTask`
+ *
+ * @since 1.0.0
+ * @category Instances
+ */
+export const ChainRec: ChainRec2<URI> = {
+  ...Chain,
+  chainRec,
 }
 
 /**

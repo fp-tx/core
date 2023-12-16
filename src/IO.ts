@@ -43,13 +43,6 @@ export interface IO<A> {
 
 const _map: Monad1<URI>['map'] = (ma, f) => () => f(ma())
 const _ap: Monad1<URI>['ap'] = (mab, ma) => () => mab()(ma())
-const _chainRec: ChainRec1<URI>['chainRec'] = (a, f) => () => {
-  let e = f(a)()
-  while (e._tag === 'Left') {
-    e = f(e.left)()
-  }
-  return e.right
-}
 
 /**
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
@@ -241,6 +234,18 @@ export const MonadIO: MonadIO1<URI> = {
 }
 
 /**
+ * @since 1.0.0
+ * @category Instance Methods
+ */
+export const chainRec: ChainRec1<URI>['chainRec'] = (a, f) => () => {
+  let e = f(a)()
+  while (e._tag === 'Left') {
+    e = f(e.left)()
+  }
+  return e.right
+}
+
+/**
  * @since 2.7.0
  * @category Instances
  */
@@ -249,7 +254,7 @@ export const ChainRec: ChainRec1<URI> = {
   map: _map,
   ap: _ap,
   chain: flatMap,
-  chainRec: _chainRec,
+  chainRec,
 }
 
 /**
@@ -403,7 +408,7 @@ export const io: Monad1<URI> & MonadIO1<URI> & ChainRec1<URI> = {
   ap: _ap,
   chain: flatMap,
   fromIO,
-  chainRec: _chainRec,
+  chainRec,
 }
 
 /**
