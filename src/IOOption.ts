@@ -31,6 +31,7 @@ import { type IO } from './IO'
 import { type IOEither } from './IOEither'
 import { type Monad1 } from './Monad'
 import { type MonadIO1 } from './MonadIO'
+import { type MonadThrow1 } from './MonadThrow'
 import * as O from './Option'
 import { type Option } from './Option'
 import * as OT from './OptionT'
@@ -261,6 +262,9 @@ export const altW: <B>(second: LazyArg<IOOption<B>>) => <A>(first: IOOption<A>) 
 
 /** @since 2.12.0 */
 export const zero: <A>() => IOOption<A> = /*#__PURE__*/ OT.zero(I.Pointed)
+
+/** @since 1.0.0 */
+export const throwError: MonadThrow1<URI>['throwError'] = zero
 
 /**
  * @since 2.12.0
@@ -630,6 +634,15 @@ export const MonadIO: MonadIO1<URI> = {
   of,
   chain: flatMap,
   fromIO,
+}
+
+/**
+ * @since 1.0.0
+ * @category Instances
+ */
+export const MonadThrow: MonadThrow1<URI> = {
+  ...Monad,
+  throwError,
 }
 
 /**

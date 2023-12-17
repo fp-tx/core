@@ -29,6 +29,7 @@ import { type IO } from './IO'
 import { type Monad1 } from './Monad'
 import { type MonadIO1 } from './MonadIO'
 import { type MonadTask1 } from './MonadTask'
+import { type MonadThrow1 } from './MonadThrow'
 import { type NonEmptyArray } from './NonEmptyArray'
 import * as O from './Option'
 import { type Option } from './Option'
@@ -344,6 +345,9 @@ export const altW: <B>(second: LazyArg<TaskOption<B>>) => <A>(first: TaskOption<
 
 /** @since 2.10.0 */
 export const zero: <A>() => TaskOption<A> = /*#__PURE__*/ OT.zero(T.Pointed)
+
+/** @since 1.0.0 */
+export const throwError: MonadThrow1<URI>['throwError'] = zero
 
 /**
  * @since 2.10.0
@@ -780,6 +784,15 @@ export const MonadIO: MonadIO1<URI> = {
   of,
   chain: flatMap,
   fromIO,
+}
+
+/**
+ * @since 1.0.0
+ * @category Instances
+ */
+export const MonadThrow: MonadThrow1<URI> = {
+  ...Monad,
+  throwError,
 }
 
 /**
