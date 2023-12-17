@@ -19,6 +19,7 @@ import {
 } from './Apply'
 import { type Bifunctor2 } from './Bifunctor'
 import * as chainable from './Chain'
+import { type ChainRec2 } from './ChainRec'
 import { compact as compact_, type Compactable2C, separate as separate_ } from './Compactable'
 import * as E from './Either'
 import { type Either } from './Either'
@@ -639,6 +640,38 @@ export const Chain: chainable.Chain2<URI> = {
   map: _map,
   ap: _ap,
   chain: flatMap,
+}
+
+/**
+ * @since 1.0.0
+ * @category Instance Methods
+ */
+export const chainRec: ChainRec2<URI>['chainRec'] =
+  <E, A, B>(a: A, f: (a: A) => IOEither<E, E.Either<A, B>>) =>
+  () => {
+    let current = f(a)()
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      if (E.isRight(current) && E.isLeft(current.right)) {
+        current = f(current.right.left)()
+        continue
+      }
+      if (E.isLeft(current)) {
+        return current as E.Either<E, B>
+      }
+      if (E.isRight(current.right)) {
+        return E.right(current.right.right) as E.Either<E, B>
+      }
+    }
+  }
+
+/**
+ * @since 1.0.0
+ * @category Instances
+ */
+export const ChainRec: ChainRec2<URI> = {
+  ...Chain,
+  chainRec,
 }
 
 /**

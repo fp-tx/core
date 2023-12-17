@@ -2,6 +2,7 @@
 import { type Applicative2 } from './Applicative'
 import { apFirst as apFirst_, type Apply2, apS as apS_, apSecond as apSecond_ } from './Apply'
 import * as chainable from './Chain'
+import { type ChainRec2 } from './ChainRec'
 import { type FromIO2, fromIOK as fromIOK_, tapIO as tapIO_ } from './FromIO'
 import {
   ask as ask_,
@@ -241,6 +242,29 @@ export const Chain: chainable.Chain2<URI> = {
   map: _map,
   ap: _ap,
   chain: flatMap,
+}
+
+/**
+ * @since 1.0.0
+ * @category Instance methods
+ */
+export const chainRec: ChainRec2<URI>['chainRec'] = (a, f) => r => () => {
+  let current = f(a)(r)()
+  while (_.isLeft(current)) {
+    current = f(current.left)(r)()
+  }
+  return current.right
+}
+
+/**
+ * ChainRec for `ReaderIO`
+ *
+ * @since 1.0.0
+ * @category Instances
+ */
+export const ChainRec: ChainRec2<URI> = {
+  ...Chain,
+  chainRec,
 }
 
 /**

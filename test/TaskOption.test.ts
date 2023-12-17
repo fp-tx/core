@@ -10,6 +10,22 @@ import * as _ from '../src/TaskOption'
 import * as U from './util'
 
 describe('TaskOption', () => {
+  describe('chain-rec', () => {
+    it('calculates large factorials', async () => {
+      const test = jest.fn()
+      const runTest = U.testFactM(_.ChainRec, _.Pointed, test)
+      const result = await runTest(100n)()
+      expect(result).toStrictEqual(O.some(U.fact100String))
+      expect(test).toHaveBeenCalledTimes(100)
+    })
+    it('short circuits', async () => {
+      const test = jest.fn()
+      const runTest = U.testShortCircuitM(_.MonadThrow, _.ChainRec, test)
+      const result = await runTest()
+      expect(result).toStrictEqual(O.none)
+      expect(test).toHaveBeenCalledTimes(1)
+    })
+  })
   // -------------------------------------------------------------------------------------
   // type class members
   // -------------------------------------------------------------------------------------

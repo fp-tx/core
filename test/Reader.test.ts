@@ -11,6 +11,15 @@ interface Env {
 }
 
 describe('Reader', () => {
+  describe('chain-rec', () => {
+    it('calculates large factorials', async () => {
+      const test = jest.fn()
+      const runTest = U.testFactM(_.ChainRec, _.Pointed, test)
+      const result = runTest(100n)('')
+      expect(result).toStrictEqual(U.fact100String)
+      expect(test).toHaveBeenCalledTimes(100)
+    })
+  })
   describe('pipeables', () => {
     it('map', () => {
       U.deepStrictEqual(pipe(_.of(1), _.map(U.double))({}), 2)

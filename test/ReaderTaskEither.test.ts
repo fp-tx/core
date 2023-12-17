@@ -19,6 +19,22 @@ import * as TE from '../src/TaskEither'
 import * as U from './util'
 
 describe('ReaderTaskEither', () => {
+  describe('chain-rec', () => {
+    it('calculates large factorials', async () => {
+      const test = jest.fn()
+      const runTest = U.testFactM(_.ChainRec, _.Pointed, test)
+      const result = await runTest(100n)('')()
+      expect(result).toStrictEqual(E.right(U.fact100String))
+      expect(test).toHaveBeenCalledTimes(100)
+    })
+    it('short circuits', async () => {
+      const test = jest.fn()
+      const runTest = U.testShortCircuitM(_.MonadThrow, _.ChainRec, test)
+      const result = await runTest('')()
+      expect(result).toStrictEqual(E.left('short circuit'))
+      expect(test).toHaveBeenCalledTimes(1)
+    })
+  })
   describe('pipeables', () => {
     it('map', async () => {
       U.deepStrictEqual(await pipe(_.right(1), _.map(U.double))({})(), E.right(2))

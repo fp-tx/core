@@ -4,6 +4,7 @@ import { type Alternative1 } from './Alternative'
 import { type Applicative1 } from './Applicative'
 import { apFirst as apFirst_, type Apply1, apS as apS_, apSecond as apSecond_ } from './Apply'
 import * as chainable from './Chain'
+import { type ChainRec1 } from './ChainRec'
 import { compact as compact_, type Compactable1, separate as separate_ } from './Compactable'
 import { type Either } from './Either'
 import {
@@ -28,6 +29,7 @@ import { type IO } from './IO'
 import { type Monad1 } from './Monad'
 import { type MonadIO1 } from './MonadIO'
 import { type MonadTask1 } from './MonadTask'
+import { type MonadThrow1 } from './MonadThrow'
 import { type NonEmptyArray } from './NonEmptyArray'
 import * as O from './Option'
 import { type Option } from './Option'
@@ -344,6 +346,9 @@ export const altW: <B>(second: LazyArg<TaskOption<B>>) => <A>(first: TaskOption<
 /** @since 2.10.0 */
 export const zero: <A>() => TaskOption<A> = /*#__PURE__*/ OT.zero(T.Pointed)
 
+/** @since 1.0.0 */
+export const throwError: MonadThrow1<URI>['throwError'] = zero
+
 /**
  * @since 2.10.0
  * @category Constructors
@@ -558,6 +563,40 @@ export const Chain: chainable.Chain1<URI> = {
 }
 
 /**
+ * @since 1.0.0
+ * @category Instance methods
+ */
+export const chainRec: ChainRec1<URI>['chainRec'] =
+  <A, B>(a: A, f: (a: A) => TaskOption<Either<A, B>>) =>
+  async () => {
+    let current = await f(a)()
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      if (O.isSome(current) && _.isLeft(current.value)) {
+        current = await f(current.value.left)()
+        continue
+      }
+      if (O.isNone(current)) {
+        return current as O.Option<B>
+      }
+      if (_.isRight(current.value)) {
+        return O.some(current.value.right) as O.Option<B>
+      }
+    }
+  }
+
+/**
+ * ChainRec for `TaskOption`
+ *
+ * @since 1.0.0
+ * @category Instances
+ */
+export const ChainRec: ChainRec1<URI> = {
+  ...Chain,
+  chainRec,
+}
+
+/**
  * @since 2.11.0
  * @category Instances
  */
@@ -745,6 +784,15 @@ export const MonadIO: MonadIO1<URI> = {
   of,
   chain: flatMap,
   fromIO,
+}
+
+/**
+ * @since 1.0.0
+ * @category Instances
+ */
+export const MonadThrow: MonadThrow1<URI> = {
+  ...Monad,
+  throwError,
 }
 
 /**

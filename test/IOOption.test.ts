@@ -9,6 +9,22 @@ import { type ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import * as U from './util'
 
 describe('IOOption', () => {
+  describe('chain-rec', () => {
+    it('calculates large factorials', () => {
+      const test = jest.fn()
+      const runTest = U.testFactM(_.ChainRec, _.Pointed, test)
+      const result = runTest(100n)()
+      expect(result).toStrictEqual(O.some(U.fact100String))
+      expect(test).toHaveBeenCalledTimes(100)
+    })
+    it('short circuits', () => {
+      const test = jest.fn()
+      const runTest = U.testShortCircuitM(_.MonadThrow, _.ChainRec, test)
+      const result = runTest()
+      expect(result).toStrictEqual(O.none)
+      expect(test).toHaveBeenCalledTimes(1)
+    })
+  })
   // -------------------------------------------------------------------------------------
   // type class members
   // -------------------------------------------------------------------------------------

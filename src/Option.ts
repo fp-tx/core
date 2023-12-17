@@ -67,6 +67,7 @@ import {
   getApplySemigroup as getApplySemigroup_,
 } from './Apply'
 import * as chainable from './Chain'
+import { type ChainRec1 } from './ChainRec'
 import { type Compactable1 } from './Compactable'
 import { type Either } from './Either'
 import { type Eq } from './Eq'
@@ -424,6 +425,38 @@ export const Chain: chainable.Chain1<URI> = {
   map: _map,
   ap: _ap,
   chain: flatMap,
+}
+
+/**
+ * @since 1.0.0
+ * @category Instance methods
+ */
+export const chainRec: ChainRec1<URI>['chainRec'] = <A, B>(a: A, f: (a: A) => Option<Either<A, B>>) => {
+  let current = f(a)
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    if (isSome(current) && _.isLeft(current.value)) {
+      current = f(current.value.left)
+      continue
+    }
+    if (_.isNone(current)) {
+      return current as Option<B>
+    }
+    if (_.isRight(current.value)) {
+      return some(current.value.right) as Option<B>
+    }
+  }
+}
+
+/**
+ * ChainRec for `Option`
+ *
+ * @since 1.0.0
+ * @category Instances
+ */
+export const ChainRec: ChainRec1<URI> = {
+  ...Chain,
+  chainRec,
 }
 
 /**

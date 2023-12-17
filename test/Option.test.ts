@@ -12,6 +12,21 @@ import * as U from './util'
 const p = (n: number): boolean => n > 2
 
 describe('Option', () => {
+  describe('chain-rec', () => {
+    it('calculates large factorials', async () => {
+      const test = jest.fn()
+      const runTest = U.testFactM(_.ChainRec, _.Pointed, test)
+      const result = runTest(100n)
+      expect(result).toStrictEqual(_.some(U.fact100String))
+      expect(test).toHaveBeenCalledTimes(100)
+    })
+    it('short circuits', async () => {
+      const test = jest.fn()
+      const result = U.testShortCircuitM(_.MonadThrow, _.ChainRec, test)
+      expect(result).toStrictEqual(_.none)
+      expect(test).toHaveBeenCalledTimes(1)
+    })
+  })
   describe('pipeables', () => {
     it('map', () => {
       U.deepStrictEqual(pipe(_.some(2), _.map(U.double)), _.some(4))

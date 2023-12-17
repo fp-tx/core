@@ -47,7 +47,6 @@ const _traverse = <F>(
   const traverseF = traverse(F)
   return (ta, f) => pipe(ta, traverseF(f))
 }
-const _chainRec: ChainRec1<URI>['chainRec'] = tailRec
 
 /**
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
@@ -319,6 +318,12 @@ export const Comonad: Comonad1<URI> = {
 }
 
 /**
+ * @since 1.0.0
+ * @category Instance Methods
+ */
+export const chainRec: ChainRec1<URI>['chainRec'] = tailRec
+
+/**
  * @since 2.7.0
  * @category Instances
  */
@@ -327,7 +332,7 @@ export const ChainRec: ChainRec1<URI> = {
   map: _map,
   ap: _ap,
   chain: flatMap,
-  chainRec: _chainRec,
+  chainRec,
 }
 
 // -------------------------------------------------------------------------------------
@@ -406,5 +411,5 @@ export const identity: Monad1<URI> & Foldable1<URI> & Traversable1<URI> & Alt1<U
   alt: _alt,
   extract,
   extend: _extend,
-  chainRec: _chainRec,
+  chainRec,
 }
