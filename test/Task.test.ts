@@ -32,6 +32,15 @@ const assertOp =
   }
 
 describe('Task', () => {
+  describe('chain-rec', () => {
+    it('calculates large factorials', async () => {
+      const test = jest.fn()
+      const runTest = U.testFactM(_.ChainRec, _.Pointed, test)
+      const result = await runTest(100n)()
+      expect(result).toStrictEqual(U.fact100String)
+      expect(test).toHaveBeenCalledTimes(100)
+    })
+  })
   // -------------------------------------------------------------------------------------
   // safety
   // -------------------------------------------------------------------------------------

@@ -5,6 +5,15 @@ import * as _ from '../src/State'
 import * as U from './util'
 
 describe('State', () => {
+  describe('chain-rec', () => {
+    it('calculates large factorials', async () => {
+      const test = jest.fn()
+      const runTest = U.testFactM(_.ChainRec, _.Pointed, test)
+      const [result] = runTest(100n)('')
+      expect(result).toStrictEqual(U.fact100String)
+      expect(test).toHaveBeenCalledTimes(100)
+    })
+  })
   describe('pipeables', () => {
     it('map', () => {
       const x = (s: number) => tuple(s - 1, s + 1)

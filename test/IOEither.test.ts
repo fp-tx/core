@@ -13,6 +13,22 @@ import * as S from '../src/string'
 import * as U from './util'
 
 describe('IOEither', () => {
+  describe('chain-rec', () => {
+    it('calculates large factorials', () => {
+      const test = jest.fn()
+      const runTest = U.testFactM(_.ChainRec, _.Pointed, test)
+      const result = runTest(100n)()
+      expect(result).toStrictEqual(E.right(U.fact100String))
+      expect(test).toHaveBeenCalledTimes(100)
+    })
+    it('short circuits', () => {
+      const test = jest.fn()
+      const runTest = U.testShortCircuitM(_.MonadThrow, _.ChainRec, test)
+      const result = runTest()
+      expect(result).toStrictEqual(E.left('short circuit'))
+      expect(test).toHaveBeenCalledTimes(1)
+    })
+  })
   describe('pipeables', () => {
     it('alt', () => {
       const r1 = _.right<string, number>(1)
