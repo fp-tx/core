@@ -1,4 +1,5 @@
 import * as assert from 'assert'
+import { expectTypeOf } from 'expect-type'
 
 import * as A from '../src/Array'
 import * as E from '../src/Either'
@@ -21,6 +22,59 @@ import * as U from './util'
 const state: unknown = {}
 
 describe('StateReaderTaskEither', () => {
+  describe('do-notation', () => {
+    it('should echo the sum of two inputs', async () => {
+      const result = _.do(function* (unwrap) {
+        const { foo: fooS } = yield* unwrap(_.ask<{ foo: number }, { foo: number }>())
+        const { foo: fooR } = yield* unwrap(_.get<{ foo: number }, { foo: number }>())
+        const { bar: barS } = yield* unwrap(_.ask<{ bar: string }, { bar: string }>())
+        yield* unwrap(_.modify<{ bar: string }, { bar: string }>((s: { bar: string }) => ({ bar: s.bar + '!' })))
+        const { bar: barR } = yield* unwrap(_.get<{ bar: string }, { bar: string }>())
+        return String(fooS + fooR) + barS + barR
+      })
+      expectTypeOf(result).toEqualTypeOf<
+        _.StateReaderTaskEither<
+          {
+            foo: number
+          } & { bar: string },
+          {
+            foo: number
+          } & { bar: string },
+          never,
+          string
+        >
+      >()
+
+      const TE = result({ foo: 1, bar: 'bar' })({ foo: 1, bar: 'bar' })
+      U.deepStrictEqual(
+        await TE(),
+        E.right([
+          '2barbar!',
+          {
+            bar: 'bar!',
+          },
+        ]),
+      )
+    })
+    it('should short circuit', async () => {
+      const result = _.do(function* (unwrap) {
+        const { foo } = yield* unwrap(_.ask<{ foo: string }, { foo: string }>())
+        const num = yield* unwrap(_.throwError<{ baz: string }, { baz: string }, Error, number>(new Error('ouchies')))
+        const bool = yield* unwrap(_.throwError<{ qaz: 'qux' }, { quz: 'baz' }, string, boolean>('ouchies'))
+        return bool ? foo : num
+      })
+      expectTypeOf(result).toEqualTypeOf<
+        _.StateReaderTaskEither<
+          { foo: string } & { baz: string } & { qaz: 'qux' },
+          { foo: string } & { baz: string } & { quz: 'baz' },
+          Error | string,
+          string | number
+        >
+      >()
+      const TE = result({ foo: 'foo', baz: 'baz', qaz: 'qux' })({ foo: 'foo', baz: 'baz', quz: 'baz' })
+      U.deepStrictEqual(await TE(), E.left(new Error('ouchies')))
+    })
+  })
   describe('chain-rec', () => {
     it('calculates large factorials', async () => {
       const test = jest.fn()
