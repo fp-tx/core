@@ -9,6 +9,7 @@ import {
 } from './Apply'
 import * as chainable from './Chain'
 import { type ChainRec2 } from './ChainRec'
+import * as ChnRec from './ChainRec'
 import { type FromIO2, fromIOK as fromIOK_, tapIO as tapIO_ } from './FromIO'
 import {
   ask as ask_,
@@ -786,6 +787,26 @@ export const apSW: <A, N extends string, R2, B>(
 
 /** @since 2.11.0 */
 export const ApT: ReaderTask<unknown, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
+
+interface ReaderTaskIterable<R, A> {
+  readonly value: ReaderTask<R, A>
+  [Symbol.iterator]: () => Generator<ReaderTaskIterable<R, A>, A, any>
+}
+
+const do_: <MA extends ReaderTaskIterable<any, any>, A>(
+  yieldFunction: (unwrap: <R, A>(ma: ReaderTask<R, A>) => ReaderTaskIterable<R, A>) => Generator<MA, A>,
+) => ReaderTask<_.UnionToIntersection<MA extends ReaderTaskIterable<infer R, any> ? R : never>, A> = ChnRec.do(
+  Pointed,
+  ChainRec,
+)
+
+export {
+  /**
+   * @since 1.0.0
+   * @category Do notation
+   */
+  do_ as do,
+}
 
 // -------------------------------------------------------------------------------------
 // array utils
