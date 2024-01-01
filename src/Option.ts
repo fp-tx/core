@@ -68,6 +68,7 @@ import {
 } from './Apply'
 import * as chainable from './Chain'
 import { type ChainRec1 } from './ChainRec'
+import * as ChnRec from './ChainRec'
 import { type Compactable1 } from './Compactable'
 import { type Either } from './Either'
 import { type Eq } from './Eq'
@@ -1291,6 +1292,23 @@ export const apS = /*#__PURE__*/ apS_(Apply)
 
 /** @since 2.11.0 */
 export const ApT: Option<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
+
+interface OptionIterable<A> {
+  readonly value: Option<A>
+  [Symbol.iterator]: () => Generator<OptionIterable<A>, A, any>
+}
+
+const do_: <MA extends OptionIterable<any>, A>(
+  yieldFunction: (unwrap: <A>(ma: Option<A>) => OptionIterable<A>) => Generator<MA, A>,
+) => Option<A> = ChnRec.do(Pointed, ChainRec)
+
+export {
+  /**
+   * @since 1.0.0
+   * @category Do notation
+   */
+  do_ as do,
+}
 
 // -------------------------------------------------------------------------------------
 // array utils
