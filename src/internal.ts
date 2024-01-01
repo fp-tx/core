@@ -280,3 +280,12 @@ export const flatMapReader = <F extends TypeLambda>(
     <R1, O, E, A, R2, B>(self: Kind<F, R1, O, E, A>, f: (a: A) => Reader<R2, B>): Kind<F, R1 & R2, O, E, B> =>
       M.flatMap(self, a => F.fromReader(f(a))),
   )
+
+// Credit to sindresorhus > type-fest for this excellent type
+/** @since 1.0.0 */
+export type UnionToIntersection<Union> =
+  (Union extends unknown ? (distributedUnion: Union) => void : never) extends (
+    (mergedIntersection: infer Intersection) => void
+  ) ?
+    Intersection & Union
+  : never
