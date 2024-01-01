@@ -3,6 +3,7 @@ import { type Applicative2 } from './Applicative'
 import { apFirst as apFirst_, type Apply2, apS as apS_, apSecond as apSecond_ } from './Apply'
 import * as chainable from './Chain'
 import { type ChainRec2 } from './ChainRec'
+import * as ChnRec from './ChainRec'
 import { type FromState2 } from './FromState'
 import { dual, identity, pipe } from './function'
 import { bindTo as bindTo_, flap as flap_, type Functor2, let as let__ } from './Functor'
@@ -297,6 +298,23 @@ export {
 
 /** @since 2.8.0 */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
+
+interface StateIterable<S, A> {
+  readonly value: State<S, A>
+  [Symbol.iterator]: () => Generator<StateIterable<S, A>, A, any>
+}
+
+const do_: <MA extends StateIterable<any, any>, A>(
+  yieldFunction: (unwrap: <S, A>(ma: State<S, A>) => StateIterable<S, A>) => Generator<MA, A>,
+) => State<_.UnionToIntersection<MA extends StateIterable<infer S, any> ? S : never>, A> = ChnRec.do(Pointed, ChainRec)
+
+export {
+  /**
+   * @since 1.0.0
+   * @category Do notation
+   */
+  do_ as do,
+}
 
 // -------------------------------------------------------------------------------------
 // pipeable sequence S
