@@ -19,6 +19,7 @@ import {
   getApplySemigroup as getApplySemigroup_,
 } from './Apply'
 import * as chainable from './Chain'
+import * as ChnRec from './ChainRec'
 import { type ChainRec1 } from './ChainRec'
 import { type FromIO1, fromIOK as fromIOK_, tapIO as tapIO_ } from './FromIO'
 import { type FromTask1 } from './FromTask'
@@ -520,6 +521,23 @@ export {
  * @category Do notation
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
+
+interface TaskIterable<A> {
+  readonly value: Task<A>
+  [Symbol.iterator]: () => Generator<TaskIterable<A>, A, any>
+}
+
+const do_: <MA extends TaskIterable<any>, A>(
+  yieldFunction: (unwrap: <A>(ma: Task<A>) => TaskIterable<A>) => Generator<MA, A>,
+) => Task<A> = ChnRec.do(Pointed, ChainRec)
+
+export {
+  /**
+   * @since 1.0.0
+   * @category Do notation
+   */
+  do_ as do,
+}
 
 /**
  * @since 2.8.0
