@@ -21,6 +21,7 @@ import {
 } from './Apply'
 import { type Bifunctor2 } from './Bifunctor'
 import * as chainable from './Chain'
+import * as ChnRec from './ChainRec'
 import { type ChainRec2 } from './ChainRec'
 import { compact as compact_, type Compactable2C, separate as separate_ } from './Compactable'
 import * as E from './Either'
@@ -1571,6 +1572,23 @@ export const bindW: <N extends string, A, E2, B>(
   f: (a: A) => TaskEither<E2, B>,
 ) => <E1>(fa: TaskEither<E1, A>) => TaskEither<E1 | E2, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }> =
   bind as any
+
+interface TaskEitherIterable<E, A> {
+  readonly value: TaskEither<E, A>
+  [Symbol.iterator]: () => Generator<TaskEitherIterable<E, A>, A, any>
+}
+
+const do_: <MA extends TaskEitherIterable<any, any>, A>(
+  yieldFunction: (unwrap: <E, A>(ma: TaskEither<E, A>) => TaskEitherIterable<E, A>) => Generator<MA, A>,
+) => TaskEither<MA extends TaskEitherIterable<infer E, any> ? E : never, A> = ChnRec.do(Pointed, ChainRec)
+
+export {
+  /**
+   * @since 1.0.0
+   * @category Do notation
+   */
+  do_ as do,
+}
 
 /**
  * @since 2.8.0
