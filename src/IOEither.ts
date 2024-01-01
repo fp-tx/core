@@ -20,6 +20,7 @@ import {
 import { type Bifunctor2 } from './Bifunctor'
 import * as chainable from './Chain'
 import { type ChainRec2 } from './ChainRec'
+import * as ChnRec from './ChainRec'
 import { compact as compact_, type Compactable2C, separate as separate_ } from './Compactable'
 import * as E from './Either'
 import { type Either } from './Either'
@@ -1138,6 +1139,23 @@ export const apSW: <A, N extends string, E2, B>(
 
 /** @since 2.11.0 */
 export const ApT: IOEither<never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
+
+interface IOEitherIterable<E, A> {
+  readonly value: IOEither<E, A>
+  [Symbol.iterator]: () => Generator<IOEitherIterable<E, A>, A, any>
+}
+
+const do_: <MA extends IOEitherIterable<any, any>, A>(
+  yieldFunction: (unwrap: <E, A>(ma: IOEither<E, A>) => IOEitherIterable<E, A>) => Generator<MA, A>,
+) => IOEither<MA extends IOEitherIterable<infer E, any> ? E : never, A> = ChnRec.do(Pointed, ChainRec)
+
+export {
+  /**
+   * @since 1.0.0
+   * @category Do notation
+   */
+  do_ as do,
+}
 
 // -------------------------------------------------------------------------------------
 // array utils
