@@ -17,6 +17,7 @@ import { type Applicative1, getApplicativeMonoid } from './Applicative'
 import { apFirst as apFirst_, type Apply1, apS as apS_, apSecond as apSecond_, getApplySemigroup } from './Apply'
 import * as chainable from './Chain'
 import { type ChainRec1 } from './ChainRec'
+import * as ChnRec from './ChainRec'
 import { type FromIO1 } from './FromIO'
 import { constant, dual, identity } from './function'
 import { as as as_, asUnit as asUnit_, bindTo as bindTo_, flap as flap_, type Functor1, let as let__ } from './Functor'
@@ -306,6 +307,23 @@ export const apS = /*#__PURE__*/ apS_(Apply)
 
 /** @since 2.11.0 */
 export const ApT: IO<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
+
+interface IOIterable<A> {
+  readonly value: IO<A>
+  [Symbol.iterator]: () => Generator<IOIterable<A>, A, any>
+}
+
+const do_: <MA extends IOIterable<any>, A>(
+  yieldFunction: (unwrap: <A>(ma: IO<A>) => IOIterable<A>) => Generator<MA, A>,
+) => IO<A> = ChnRec.do(Pointed, ChainRec)
+
+export {
+  /**
+   * @since 1.0.0
+   * @category Do notation
+   */
+  do_ as do,
+}
 
 // -------------------------------------------------------------------------------------
 // array utils
