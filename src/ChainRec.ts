@@ -15,6 +15,15 @@ import {
 } from './HKT'
 import type * as Mn from './Monoid'
 import * as O from './Option'
+import {
+  type Pointed,
+  type Pointed1,
+  type Pointed2,
+  type Pointed2C,
+  type Pointed3,
+  type Pointed3C,
+  type Pointed4,
+} from './Pointed'
 
 // -------------------------------------------------------------------------------------
 // model
@@ -263,3 +272,149 @@ export const tailRec3: <A, B, C, D>(a: A, b: B, c: C, f: (a: A, b: B, c: C) => E
   }
   return result.right
 }
+
+function do_<M extends URIS4>(P: Pointed4<M>, M: ChainRec4<M>): DoFunction4<M>
+function do_<M extends URIS3>(P: Pointed3<M>, M: ChainRec3<M>): DoFunction3<M>
+function do_<M extends URIS3, E>(P: Pointed3C<M, E>, M: ChainRec3C<M, E>): DoFunction3C<M, E>
+function do_<M extends URIS2>(P: Pointed2<M>, M: ChainRec2<M>): DoFunction2<M>
+function do_<M extends URIS2, E>(P: Pointed2C<M, E>, M: ChainRec2C<M, E>): DoFunction2C<M, E>
+function do_<M extends URIS>(P: Pointed1<M>, M: ChainRec1<M>): DoFunction1<M>
+function do_<M>(P: Pointed<M>, M: ChainRec<M>): DoFunction<M> {
+  return <MA extends KindGenerator<M, any>, A>(
+    yieldFunction: (unwrap: <A>(ma: HKT<M, A>) => KindGenerator<M, A>) => Generator<MA, A, any>,
+  ) => {
+    const iterator = yieldFunction(unwrap)
+    const state = iterator.next()
+    const go = (state: IteratorResult<MA, A>): HKT<M, E.Either<IteratorResult<MA, A>, A>> => {
+      if (state.done) {
+        return P.of(E.right(state.value))
+      }
+      return M.map(state.value.value, a => E.left(iterator.next(a)))
+    }
+    return M.chainRec(state, go)
+  }
+}
+
+export {
+  /** @internal */
+  do_ as do,
+}
+
+// -------------------------------------------------------------------------------------
+// internal
+// -------------------------------------------------------------------------------------
+
+class SingletonGenerator<T, A> implements Generator<T, A> {
+  private finished = false
+
+  constructor(public readonly value: T) {}
+
+  next(this: SingletonGenerator<T, A>, value: A): IteratorResult<T, A> {
+    if (this.finished) {
+      return { done: true, value }
+    }
+    this.finished = true
+    return { done: false, value: this.value }
+  }
+
+  return(this: SingletonGenerator<T, A>, value: A) {
+    return this.next(value)
+  }
+
+  throw(e: unknown): IteratorResult<T, A> {
+    throw e
+  }
+
+  [Symbol.iterator](): Generator<T, A> {
+    return new SingletonGenerator<T, A>(this.value)
+  }
+}
+
+interface KindGenerator4<M extends URIS4, S, R, E, A> {
+  readonly value: Kind4<M, S, R, E, A>
+  [Symbol.iterator](): Generator<KindGenerator4<M, S, R, E, A>, A>
+}
+
+interface KindGenerator3<M extends URIS3, R, E, A> {
+  readonly value: Kind3<M, R, E, A>
+  [Symbol.iterator](): Generator<KindGenerator3<M, R, E, A>, A>
+}
+
+export interface KindGenerator2<M extends URIS2, E, out A> {
+  readonly value: Kind2<M, E, A>
+  [Symbol.iterator](): Generator<KindGenerator2<M, E, A>, A>
+}
+
+interface KindGenerator1<M extends URIS, A> {
+  readonly value: Kind<M, A>
+  [Symbol.iterator](): Generator<KindGenerator1<M, A>, A>
+}
+
+interface KindGenerator<M, A> {
+  readonly value: HKT<M, A>
+  [Symbol.iterator](): Generator<KindGenerator<M, A>, A>
+}
+
+function kindGenerator<M extends URIS4, S, R, E, A>(ma: Kind4<M, S, R, A, A>): KindGenerator4<M, S, R, E, A>
+function kindGenerator<M extends URIS3, R, E, A>(ma: Kind3<M, R, E, A>): KindGenerator3<M, R, E, A>
+function kindGenerator<M extends URIS2, E, A>(ma: Kind2<M, E, A>): KindGenerator2<M, E, A>
+function kindGenerator<M extends URIS, A>(ma: Kind<M, A>): KindGenerator1<M, A>
+function kindGenerator<M, A>(ma: HKT<M, A>): KindGenerator<M, A> {
+  class KindGenerator<A> {
+    constructor(public readonly value: HKT<M, A>) {}
+    [Symbol.iterator](this: KindGenerator<A>): Generator<KindGenerator<A>, A> {
+      return new SingletonGenerator<KindGenerator<A>, A>(this)
+    }
+  }
+  return new KindGenerator<A>(ma)
+}
+
+function unwrap<M extends URIS4, S, R, E, A>(ma: Kind4<M, S, R, E, A>): KindGenerator4<M, S, R, E, A>
+function unwrap<M extends URIS3, R, E, A>(ma: Kind3<M, R, E, A>): KindGenerator3<M, R, E, A>
+function unwrap<M extends URIS2, E, A>(ma: Kind2<M, E, A>): KindGenerator2<M, E, A>
+function unwrap<M extends URIS, A>(ma: Kind<M, A>): KindGenerator1<M, A>
+function unwrap<M, A>(ma: HKT<M, A>): KindGenerator<M, A>
+function unwrap(ma: any): any {
+  return kindGenerator(ma)
+}
+
+type DoFunction4<M extends URIS4> = <MA extends KindGenerator4<M, any, any, any, any>, A>(
+  yieldFunction: (
+    unwrap: <S, R, E, A>(ma: Kind4<M, S, R, E, A>) => KindGenerator4<M, S, R, E, A>,
+  ) => Generator<MA, A, any>,
+) => Kind4<
+  M,
+  MA extends KindGenerator4<M, infer S, any, any, any> ? S : never,
+  MA extends KindGenerator4<M, any, infer R, any, any> ? R : never,
+  MA extends KindGenerator4<M, any, any, infer E, any> ? E : never,
+  A
+>
+
+type DoFunction3<M extends URIS3> = <MA extends KindGenerator3<M, any, any, any>, A>(
+  yieldFunction: (unwrap: <R, E, A>(ma: Kind3<M, R, E, A>) => KindGenerator3<M, R, E, A>) => Generator<MA, A, any>,
+) => Kind3<
+  M,
+  MA extends KindGenerator3<M, infer R, any, any> ? R : never,
+  MA extends KindGenerator3<M, any, infer E, any> ? E : never,
+  A
+>
+
+type DoFunction3C<M extends URIS3, E> = <MA extends KindGenerator3<M, any, E, any>, A>(
+  yieldFunction: (unwrap: <R, A>(ma: Kind3<M, R, E, A>) => KindGenerator3<M, R, E, A>) => Generator<MA, A, any>,
+) => Kind3<M, MA extends KindGenerator3<M, infer R, E, any> ? R : never, E, A>
+
+type DoFunction2<M extends URIS2> = <MA extends KindGenerator2<M, any, any>, A>(
+  yieldFunction: (unwrap: <E, A>(ma: Kind2<M, E, A>) => KindGenerator2<M, E, A>) => Generator<MA, A, any>,
+) => MA extends KindGenerator2<M, infer E, any> ? Kind2<M, E, A> : never
+
+type DoFunction2C<M extends URIS2, E> = <MA extends KindGenerator2<M, any, any>, A>(
+  yieldFunction: (unwrap: <A>(ma: Kind2<M, E, A>) => KindGenerator2<M, E, A>) => Generator<MA, A, any>,
+) => Kind2<M, E, A>
+
+type DoFunction1<M extends URIS> = <MA extends KindGenerator1<M, any>, A>(
+  yieldFunction: (unwrap: <A>(ma: Kind<M, A>) => KindGenerator1<M, A>) => Generator<MA, A, any>,
+) => Kind<M, A>
+
+type DoFunction<M> = <MA extends KindGenerator<M, any>, A>(
+  yieldFunction: (unwrap: <A>(ma: HKT<M, A>) => KindGenerator<M, A>) => Generator<MA, A, any>,
+) => HKT<M, A>

@@ -4,6 +4,7 @@ import { type Applicative4 } from './Applicative'
 import { apFirst as apFirst_, type Apply4, apS as apS_, apSecond as apSecond_ } from './Apply'
 import { type Bifunctor4 } from './Bifunctor'
 import * as chainable from './Chain'
+import * as ChnRec from './ChainRec'
 import { type ChainRec4 } from './ChainRec'
 import * as E from './Either'
 import { type Either } from './Either'
@@ -1431,6 +1432,30 @@ export const bindW: <N extends string, A, S, R2, E2, B>(
   fa: StateReaderTaskEither<S, R1, E1, A>,
 ) => StateReaderTaskEither<S, R1 & R2, E1 | E2, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }> =
   bind as any
+
+interface StateReaderTaskEitherIterable<S, R, E, A> {
+  readonly value: StateReaderTaskEither<S, R, E, A>
+  [Symbol.iterator]: () => Generator<StateReaderTaskEitherIterable<S, R, E, A>, A, any>
+}
+
+const do_: <MA extends StateReaderTaskEitherIterable<any, any, any, any>, A>(
+  yieldFunction: (
+    unwrap: <S, R, E, A>(ma: StateReaderTaskEither<S, R, E, A>) => StateReaderTaskEitherIterable<S, R, E, A>,
+  ) => Generator<MA, A>,
+) => StateReaderTaskEither<
+  _.UnionToIntersection<MA extends StateReaderTaskEitherIterable<infer S, any, any, any> ? S : never>,
+  _.UnionToIntersection<MA extends StateReaderTaskEitherIterable<any, infer R, any, any> ? R : never>,
+  MA extends StateReaderTaskEitherIterable<any, any, infer E, any> ? E : never,
+  A
+> = ChnRec.do(Pointed, ChainRec) as any
+
+export {
+  /**
+   * @since 1.0.0
+   * @category Do notation
+   */
+  do_ as do,
+}
 
 // -------------------------------------------------------------------------------------
 // pipeable sequence S

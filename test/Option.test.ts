@@ -1,3 +1,5 @@
+import { expectTypeOf } from 'expect-type'
+
 import * as E from '../src/Either'
 import { identity, pipe } from '../src/function'
 import * as N from '../src/number'
@@ -12,6 +14,26 @@ import * as U from './util'
 const p = (n: number): boolean => n > 2
 
 describe('Option', () => {
+  describe('do-notation', () => {
+    it('should short circuit', () => {
+      const result = _.do(function* (unwrap) {
+        const a = yield* unwrap(_.of(1))
+        yield* unwrap(_.throwError(''))
+        return a
+      })
+      expectTypeOf(result).toEqualTypeOf<_.Option<number>>()
+      U.deepStrictEqual(result, _.none)
+    })
+    it("should return the wrapped value when it's not short circuited", () => {
+      const result = _.do(function* (unwrap) {
+        const a = yield* unwrap(_.of(1))
+        const b = yield* unwrap(_.of(2))
+        return a + b
+      })
+      expectTypeOf(result).toEqualTypeOf<_.Option<number>>()
+      U.deepStrictEqual(result, _.of(3))
+    })
+  })
   describe('chain-rec', () => {
     it('calculates large factorials', async () => {
       const test = jest.fn()

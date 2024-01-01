@@ -1,3 +1,5 @@
+import { expectTypeOf } from 'expect-type'
+
 import { sequenceT } from '../src/Apply'
 import * as E from '../src/Either'
 import { constVoid, identity, pipe, SK } from '../src/function'
@@ -17,6 +19,27 @@ import * as TO from '../src/TaskOption'
 import * as U from './util'
 
 describe('TaskEither', () => {
+  describe('do-notation', () => {
+    it('should short circuit', async () => {
+      const result = _.do(function* (unwrap) {
+        const a = yield* unwrap(_.right(1))
+        const b = yield* unwrap(_.left('error'))
+        yield* unwrap(_.throwError(new Error('oopsies')))
+        return a + b
+      })
+      expectTypeOf(result).toEqualTypeOf<_.TaskEither<string | Error, number>>()
+      U.deepStrictEqual(await result(), E.left('error'))
+    })
+    it("should return the wrapped value when it's not short circuited", async () => {
+      const result = _.do(function* (unwrap) {
+        const a = yield* unwrap(_.right(1))
+        const b = yield* unwrap(_.right(2))
+        return a + b
+      })
+      expectTypeOf(result).toEqualTypeOf<_.TaskEither<never, number>>()
+      U.deepStrictEqual(await result(), E.right(3))
+    })
+  })
   describe('chain-rec', () => {
     it('calculates large factorials', async () => {
       const test = jest.fn()

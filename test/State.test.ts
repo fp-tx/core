@@ -1,3 +1,5 @@
+import { expectTypeOf } from 'expect-type'
+
 import { pipe, tuple } from '../src/function'
 import * as RA from '../src/ReadonlyArray'
 import { type ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
@@ -5,6 +7,19 @@ import * as _ from '../src/State'
 import * as U from './util'
 
 describe('State', () => {
+  describe('do-notation', () => {
+    it('should echo the sum of two inputs', () => {
+      const incrementAdd = _.do(function* (unwrap) {
+        const foo = yield* unwrap(_.get<number>())
+        yield* unwrap(_.modify((s: number) => s + 1))
+        const bar = yield* unwrap(_.get<number>())
+        return String(foo + bar)
+      })
+      expectTypeOf(incrementAdd).toEqualTypeOf<_.State<number, string>>()
+      const [result] = incrementAdd(1)
+      U.deepStrictEqual(result, '3')
+    })
+  })
   describe('chain-rec', () => {
     it('calculates large factorials', async () => {
       const test = jest.fn()

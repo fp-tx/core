@@ -3,6 +3,7 @@ import { type Applicative2 } from './Applicative'
 import { apFirst as apFirst_, type Apply2, apS as apS_, apSecond as apSecond_ } from './Apply'
 import * as chainable from './Chain'
 import { type ChainRec2 } from './ChainRec'
+import * as ChnRec from './ChainRec'
 import { type FromIO2, fromIOK as fromIOK_, tapIO as tapIO_ } from './FromIO'
 import {
   ask as ask_,
@@ -550,6 +551,26 @@ export const apSW: <N extends string, A, R2, B>(
 
 /** @since 2.13.0 */
 export const ApT: ReaderIO<unknown, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
+
+interface ReaderIOIterable<R, A> {
+  readonly value: ReaderIO<R, A>
+  [Symbol.iterator]: () => Generator<ReaderIOIterable<R, A>, A, any>
+}
+
+const do_: <MA extends ReaderIOIterable<any, any>, A>(
+  yieldFunction: (unwrap: <R, A>(ma: ReaderIO<R, A>) => ReaderIOIterable<R, A>) => Generator<MA, A>,
+) => ReaderIO<_.UnionToIntersection<MA extends ReaderIOIterable<infer R, any> ? R : never>, A> = ChnRec.do(
+  Pointed,
+  ChainRec,
+)
+
+export {
+  /**
+   * @since 1.0.0
+   * @category Do notation
+   */
+  do_ as do,
+}
 
 // -------------------------------------------------------------------------------------
 // array utils

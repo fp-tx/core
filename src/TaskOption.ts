@@ -5,6 +5,7 @@ import { type Applicative1 } from './Applicative'
 import { apFirst as apFirst_, type Apply1, apS as apS_, apSecond as apSecond_ } from './Apply'
 import * as chainable from './Chain'
 import { type ChainRec1 } from './ChainRec'
+import * as ChnRec from './ChainRec'
 import { compact as compact_, type Compactable1, separate as separate_ } from './Compactable'
 import { type Either } from './Either'
 import {
@@ -934,6 +935,23 @@ export {
  * @category Do notation
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
+
+interface TaskOptionIterable<A> {
+  readonly value: TaskOption<A>
+  [Symbol.iterator]: () => Generator<TaskOptionIterable<A>, A, any>
+}
+
+const do_: <MA extends TaskOptionIterable<any>, A>(
+  yieldFunction: (unwrap: <A>(ma: TaskOption<A>) => TaskOptionIterable<A>) => Generator<MA, A>,
+) => TaskOption<A> = ChnRec.do(Pointed, ChainRec)
+
+export {
+  /**
+   * @since 1.0.0
+   * @category Do notation
+   */
+  do_ as do,
+}
 
 /**
  * @since 2.10.0

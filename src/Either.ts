@@ -75,7 +75,7 @@ import {
 } from './Apply'
 import { type Bifunctor2 } from './Bifunctor'
 import * as chainable from './Chain'
-import { type ChainRec2, type ChainRec2C, tailRec } from './ChainRec'
+import * as ChnRec from './ChainRec'
 import { type Compactable2C } from './Compactable'
 import { type Eq } from './Eq'
 import { type Extend2 } from './Extend'
@@ -800,8 +800,8 @@ export const Extend: Extend2<URI> = {
  * @since 1.0.0
  * @category Instance Methods
  */
-const chainRec: ChainRec2<URI>['chainRec'] = (a, f) =>
-  tailRec(f(a), e =>
+const chainRec: ChnRec.ChainRec2<URI>['chainRec'] = (a, f) =>
+  ChnRec.tailRec(f(a), e =>
     isLeft(e) ? right(left(e.left))
     : isLeft(e.right) ? left(f(e.right.left))
     : right(right(e.right.right)),
@@ -811,7 +811,7 @@ const chainRec: ChainRec2<URI>['chainRec'] = (a, f) =>
  * @since 2.7.0
  * @category Instances
  */
-export const ChainRec: ChainRec2<URI> = {
+export const ChainRec: ChnRec.ChainRec2<URI> = {
   URI,
   map: _map,
   ap: _ap,
@@ -1500,6 +1500,23 @@ export const apSW: <A, N extends string, E2, B>(
 /** @since 2.11.0 */
 export const ApT: Either<never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 
+interface EitherIterable<E, A> {
+  readonly value: Either<E, A>
+  [Symbol.iterator]: () => Generator<EitherIterable<E, A>, A, any>
+}
+
+const do_: <MA extends EitherIterable<any, any>, A>(
+  yieldFunction: (unwrap: <E, A>(ma: Either<E, A>) => EitherIterable<E, A>) => Generator<MA, A>,
+) => Either<MA extends EitherIterable<infer E, any> ? E : never, A> = ChnRec.do(Pointed, ChainRec)
+
+export {
+  /**
+   * @since 1.0.0
+   * @category Do notation
+   */
+  do_ as do,
+}
+
 // -------------------------------------------------------------------------------------
 // array utils
 // -------------------------------------------------------------------------------------
@@ -1680,7 +1697,7 @@ export const either: Monad2<URI> &
   Bifunctor2<URI> &
   Alt2<URI> &
   Extend2<URI> &
-  ChainRec2<URI> &
+  ChnRec.ChainRec2<URI> &
   MonadThrow2<URI> = {
   URI,
   map: _map,
@@ -1758,7 +1775,7 @@ export function getValidation<E>(
   Bifunctor2<URI> &
   Alt2C<URI, E> &
   Extend2<URI> &
-  ChainRec2C<URI, E> &
+  ChnRec.ChainRec2C<URI, E> &
   MonadThrow2C<URI, E> {
   const ap = getApplicativeValidation(SE).ap
   const alt = getAltValidation(SE).alt

@@ -1,3 +1,5 @@
+import { expectTypeOf } from 'expect-type'
+
 import * as Apply from '../src/Apply'
 import * as E from '../src/Either'
 import { pipe } from '../src/function'
@@ -12,6 +14,44 @@ import * as S from '../src/string'
 import * as U from './util'
 
 describe('ReaderEither', () => {
+  describe('do-notation', () => {
+    it('should echo the sum of two inputs', () => {
+      const result = _.do(function* (unwrap) {
+        const { foo } = yield* unwrap(_.ask<{ foo: string }>())
+        const { bar } = yield* unwrap(_.ask<{ bar: string }>())
+        return foo + bar
+      })
+      expectTypeOf(result).toEqualTypeOf<
+        _.ReaderEither<
+          {
+            foo: string
+          } & { bar: string },
+          never,
+          string
+        >
+      >()
+      U.deepStrictEqual(result({ foo: 'foo', bar: 'bar' }), E.right('foobar'))
+    })
+    it('should short circuit', () => {
+      const result = _.do(function* (unwrap) {
+        const { foo } = yield* unwrap(_.ask<{ foo: string }>())
+        const { bar } = yield* unwrap(_.ask<{ bar: string }>())
+        const { baz } = yield* unwrap(_.throwError<{ baz: string }, Error, { baz: string }>(new Error('ouchies')))
+        yield* unwrap(_.throwError<{ qaz: 'qux' }, string, never>('ouchies'))
+        return foo + bar + baz
+      })
+      expectTypeOf(result).toEqualTypeOf<
+        _.ReaderEither<
+          {
+            foo: string
+          } & { bar: string } & { baz: string } & { qaz: 'qux' },
+          Error | string,
+          string
+        >
+      >()
+      U.deepStrictEqual(result({ foo: 'foo', bar: 'bar', baz: 'baz', qaz: 'qux' }), E.left(new Error('ouchies')))
+    })
+  })
   describe('chain-rec', () => {
     it('calculates large factorials', async () => {
       const test = jest.fn()

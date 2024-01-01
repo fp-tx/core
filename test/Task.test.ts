@@ -1,4 +1,5 @@
 import * as assert from 'assert'
+import { expectTypeOf } from 'expect-type'
 
 import { pipe, SK } from '../src/function'
 import * as I from '../src/IO'
@@ -32,6 +33,17 @@ const assertOp =
   }
 
 describe('Task', () => {
+  describe('do-notation', () => {
+    it("should return the wrapped value when it's not short circuited", async () => {
+      const result = _.do(function* ($) {
+        const a = yield* $(_.of(1))
+        const b = yield* $(async () => 1)
+        return a + b
+      })
+      expectTypeOf(result).toEqualTypeOf<_.Task<number>>()
+      U.deepStrictEqual(await result(), 2)
+    })
+  })
   describe('chain-rec', () => {
     it('calculates large factorials', async () => {
       const test = jest.fn()

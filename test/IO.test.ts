@@ -1,3 +1,5 @@
+import { expectTypeOf } from 'expect-type'
+
 import * as E from '../src/Either'
 import { pipe } from '../src/function'
 import * as _ from '../src/IO'
@@ -7,6 +9,17 @@ import { type ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import * as U from './util'
 
 describe('IO', () => {
+  describe('do-notation', () => {
+    it('should return the wrapped value', () => {
+      const result = _.do(function* (unwrap) {
+        const a = yield* unwrap(() => 1)
+        const b = yield* unwrap(() => 2)
+        return a + b
+      })
+      expectTypeOf(result).toEqualTypeOf<_.IO<number>>()
+      U.deepStrictEqual(result(), 3)
+    })
+  })
   describe('pipeables', () => {
     it('map', () => {
       U.deepStrictEqual(pipe(_.of(1), _.map(U.double))(), 2)

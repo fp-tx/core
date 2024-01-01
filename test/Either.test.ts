@@ -1,3 +1,5 @@
+import { expectTypeOf } from 'expect-type'
+
 import { sequenceT } from '../src/Apply'
 import * as _ from '../src/Either'
 import { identity, pipe } from '../src/function'
@@ -11,6 +13,27 @@ import * as T from '../src/Task'
 import * as U from './util'
 
 describe('Either', () => {
+  describe('do-notation', () => {
+    it('should short circuit', () => {
+      const result = _.do(function* (unwrap) {
+        const a = yield* unwrap(_.right(1))
+        const b = yield* unwrap(_.left('error'))
+        yield* unwrap(_.left(new Error('oopsies')))
+        return a + b
+      })
+      expectTypeOf(result).toEqualTypeOf<_.Either<string | Error, number>>()
+      U.deepStrictEqual(result, _.left('error'))
+    })
+    it("should return the wrapped value when it's not short circuited", () => {
+      const result = _.do(function* (unwrap) {
+        const a = yield* unwrap(_.right(1))
+        const b = yield* unwrap(_.right(2))
+        return a + b
+      })
+      expectTypeOf(result).toEqualTypeOf<_.Either<never, number>>()
+      U.deepStrictEqual(result, _.right(3))
+    })
+  })
   describe('pipeables', () => {
     it('mapLeft', () => {
       U.deepStrictEqual(pipe(_.right('bar'), _.mapLeft(U.double)), _.right('bar'))

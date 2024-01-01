@@ -1,3 +1,5 @@
+import { expectTypeOf } from 'expect-type'
+
 import * as E from '../src/Either'
 import { pipe, SK } from '../src/function'
 import * as I from '../src/IO'
@@ -9,6 +11,26 @@ import { type ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import * as U from './util'
 
 describe('IOOption', () => {
+  describe('do-notation', () => {
+    it('should short circuit', () => {
+      const result = _.do(function* (unwrap) {
+        const a = yield* unwrap(_.of(1))
+        yield* unwrap(_.throwError({}))
+        return a
+      })
+      expectTypeOf(result).toEqualTypeOf<_.IOOption<number>>()
+      U.deepStrictEqual(result(), _.none())
+    })
+    it("should return the wrapped value when it's not short circuited", () => {
+      const result = _.do(function* (unwrap) {
+        const a = yield* unwrap(_.of(1))
+        const b = yield* unwrap(_.of(2))
+        return a + b
+      })
+      expectTypeOf(result).toEqualTypeOf<_.IOOption<number>>()
+      U.deepStrictEqual(result(), O.of(3))
+    })
+  })
   describe('chain-rec', () => {
     it('calculates large factorials', () => {
       const test = jest.fn()

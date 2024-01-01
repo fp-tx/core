@@ -1,3 +1,5 @@
+import { expectTypeOf } from 'expect-type'
+
 import { pipe } from '../src/function'
 import * as N from '../src/number'
 import * as _ from '../src/Reader'
@@ -11,6 +13,24 @@ interface Env {
 }
 
 describe('Reader', () => {
+  describe('do-notation', () => {
+    it('should echo the sum of two inputs', () => {
+      const result = _.do(function* (unwrap) {
+        const { foo } = yield* unwrap(_.ask<{ foo: string }>())
+        const { bar } = yield* unwrap(_.ask<{ bar: string }>())
+        return foo + bar
+      })
+      expectTypeOf(result).toEqualTypeOf<
+        _.Reader<
+          {
+            foo: string
+          } & { bar: string },
+          string
+        >
+      >()
+      U.deepStrictEqual(result({ foo: 'foo', bar: 'bar' }), 'foobar')
+    })
+  })
   describe('chain-rec', () => {
     it('calculates large factorials', async () => {
       const test = jest.fn()

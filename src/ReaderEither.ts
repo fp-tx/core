@@ -12,6 +12,7 @@ import {
 import { type Bifunctor3 } from './Bifunctor'
 import * as chainable from './Chain'
 import { type ChainRec3 } from './ChainRec'
+import * as ChnRec from './ChainRec'
 import { compact as compact_, type Compactable3C, separate as separate_ } from './Compactable'
 import * as E from './Either'
 import { type Either } from './Either'
@@ -1162,6 +1163,27 @@ export const apSW: <A, N extends string, R2, E2, B>(
 
 /** @since 2.11.0 */
 export const ApT: ReaderEither<unknown, never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
+
+interface ReaderEitherIterable<R, E, A> {
+  readonly value: ReaderEither<R, E, A>
+  [Symbol.iterator]: () => Generator<ReaderEitherIterable<R, E, A>, A, any>
+}
+
+const do_: <MA extends ReaderEitherIterable<any, any, any>, A>(
+  yieldFunction: (unwrap: <R, E, A>(ma: ReaderEither<R, E, A>) => ReaderEitherIterable<R, E, A>) => Generator<MA, A>,
+) => ReaderEither<
+  _.UnionToIntersection<MA extends ReaderEitherIterable<infer R, any, any> ? R : never>,
+  MA extends ReaderEitherIterable<any, infer E, any> ? E : never,
+  A
+> = ChnRec.do(Pointed, ChainRec) as any
+
+export {
+  /**
+   * @since 1.0.0
+   * @category Do notation
+   */
+  do_ as do,
+}
 
 // -------------------------------------------------------------------------------------
 // array utils
