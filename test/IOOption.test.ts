@@ -15,7 +15,7 @@ describe('IOOption', () => {
     it('should short circuit', () => {
       const result = _.do(function* (unwrap) {
         const a = yield* unwrap(_.of(1))
-        yield* unwrap(_.throwError())
+        yield* unwrap(_.throwError({}))
         return a
       })
       expectTypeOf(result).toEqualTypeOf<_.IOOption<number>>()
