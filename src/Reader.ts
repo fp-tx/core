@@ -44,6 +44,7 @@ import { apFirst as apFirst_, type Apply2, apS as apS_, apSecond as apSecond_, g
 import { type Category2 } from './Category'
 import * as chainable from './Chain'
 import { type ChainRec2 } from './ChainRec'
+import * as ChnRec from './ChainRec'
 import { type Choice2 } from './Choice'
 import * as E from './Either'
 import { constant, dual, flow, identity, pipe } from './function'
@@ -512,6 +513,26 @@ export const apSW: <A, N extends string, R2, B>(
 
 /** @since 2.11.0 */
 export const ApT: Reader<unknown, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
+
+interface ReaderIterable<R, A> {
+  readonly value: Reader<R, A>
+  [Symbol.iterator]: () => Generator<ReaderIterable<R, A>, A, any>
+}
+
+const do_: <MA extends ReaderIterable<any, any>, A>(
+  yieldFunction: (unwrap: <R, A>(ma: Reader<R, A>) => ReaderIterable<R, A>) => Generator<MA, A>,
+) => Reader<_.UnionToIntersection<MA extends ReaderIterable<infer R, any> ? R : never>, A> = ChnRec.do(
+  Pointed,
+  ChainRec,
+)
+
+export {
+  /**
+   * @since 1.0.0
+   * @category Do notation
+   */
+  do_ as do,
+}
 
 // -------------------------------------------------------------------------------------
 // array utils
