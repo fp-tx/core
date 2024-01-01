@@ -12,6 +12,7 @@ import { type Applicative1 } from './Applicative'
 import { apFirst as apFirst_, type Apply1, apS as apS_, apSecond as apSecond_ } from './Apply'
 import * as chainable from './Chain'
 import { type ChainRec1 } from './ChainRec'
+import * as ChnRec from './ChainRec'
 import { compact as compact_, type Compactable1, separate as separate_ } from './Compactable'
 import { type Either } from './Either'
 import {
@@ -827,6 +828,23 @@ export const apS = /*#__PURE__*/ apS_(Apply)
 
 /** @since 2.12.0 */
 export const ApT: IOOption<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
+
+interface IOOptionIterable<A> {
+  readonly value: IOOption<A>
+  [Symbol.iterator]: () => Generator<IOOptionIterable<A>, A, any>
+}
+
+const do_: <MA extends IOOptionIterable<any>, A>(
+  yieldFunction: (unwrap: <A>(ma: IOOption<A>) => IOOptionIterable<A>) => Generator<MA, A>,
+) => IOOption<A> = ChnRec.do(Pointed, ChainRec)
+
+export {
+  /**
+   * @since 1.0.0
+   * @category Do notation
+   */
+  do_ as do,
+}
 
 // -------------------------------------------------------------------------------------
 // array utils
