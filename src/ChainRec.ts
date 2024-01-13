@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C, type Chain4 } from './Chain'
 import * as E from './Either'
 import { constUndefined, tuple } from './function'
@@ -30,7 +30,7 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface ChainRec<F> extends Chain<F> {
@@ -38,7 +38,7 @@ export interface ChainRec<F> extends Chain<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface ChainRec1<F extends URIS> extends Chain1<F> {
@@ -46,7 +46,7 @@ export interface ChainRec1<F extends URIS> extends Chain1<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface ChainRec2<F extends URIS2> extends Chain2<F> {
@@ -54,7 +54,7 @@ export interface ChainRec2<F extends URIS2> extends Chain2<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface ChainRec2C<F extends URIS2, E> extends Chain2C<F, E> {
@@ -62,7 +62,7 @@ export interface ChainRec2C<F extends URIS2, E> extends Chain2C<F, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface ChainRec3<F extends URIS3> extends Chain3<F> {
@@ -70,7 +70,7 @@ export interface ChainRec3<F extends URIS3> extends Chain3<F> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface ChainRec3C<F extends URIS3, E> extends Chain3C<F, E> {
@@ -78,14 +78,14 @@ export interface ChainRec3C<F extends URIS3, E> extends Chain3C<F, E> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface ChainRec4<F extends URIS4> extends Chain4<F> {
   readonly chainRec: <S, R, E, A, B>(a: A, f: (a: A) => Kind4<F, S, R, E, E.Either<A, B>>) => Kind4<F, S, R, E, B>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const tailRec = <A, B>(startWith: A, f: (a: A) => E.Either<A, B>): B => {
   let ab = f(startWith)
   while (ab._tag === 'Left') {

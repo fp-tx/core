@@ -3,7 +3,7 @@
  *
  * - Inverse: `concat(inverse(a), a) <-> empty = concat(a, inverse(a))`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type Monoid } from './Monoid'
 
@@ -12,7 +12,7 @@ import { type Monoid } from './Monoid'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Group<A> extends Monoid<A> {

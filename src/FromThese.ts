@@ -1,7 +1,7 @@
 /**
  * The `FromThese` type class represents those data types which support errors and warnings.
  *
- * @since 2.11.0
+ * @since 1.0.0
  */
 import { flow } from './function'
 import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, type URIS4 } from './HKT'
@@ -12,7 +12,7 @@ import { type These } from './These'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromThese<F> {
@@ -21,7 +21,7 @@ export interface FromThese<F> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromThese2<F extends URIS2> {
@@ -30,7 +30,7 @@ export interface FromThese2<F extends URIS2> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromThese2C<F extends URIS2, E> {
@@ -40,7 +40,7 @@ export interface FromThese2C<F extends URIS2, E> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromThese3<F extends URIS3> {
@@ -49,7 +49,7 @@ export interface FromThese3<F extends URIS3> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromThese3C<F extends URIS3, E> {
@@ -59,7 +59,7 @@ export interface FromThese3C<F extends URIS3, E> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromThese4<F extends URIS4> {
@@ -71,7 +71,7 @@ export interface FromThese4<F extends URIS4> {
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export function fromTheseK<F extends URIS4>(
   F: FromThese4<F>,
 ): <A extends ReadonlyArray<unknown>, E, B>(f: (...a: A) => These<E, B>) => <S, R>(...a: A) => Kind4<F, S, R, E, B>

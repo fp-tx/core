@@ -13,7 +13,7 @@
  * 4. Distributivity: `A.ap(A.alt(fab, gab), fa) <-> A.alt(A.ap(fab, fa), A.ap(gab, fa))`
  * 5. Annihilation: `A.ap(zero, fa) <-> zero`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type Alt, type Alt1, type Alt2, type Alt2C, type Alt3, type Alt3C, type Alt4, altAll as altAll_ } from './Alt'
 import {
@@ -46,43 +46,43 @@ import { type Zero, type Zero1, type Zero2, type Zero2C, type Zero3, type Zero3C
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Alternative<F> extends Applicative<F>, Alt<F>, Zero<F> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Alternative1<F extends URIS> extends Applicative1<F>, Alt1<F>, Zero1<F> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Alternative2<F extends URIS2> extends Applicative2<F>, Alt2<F>, Zero2<F> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Alternative2C<F extends URIS2, E> extends Applicative2C<F, E>, Alt2C<F, E>, Zero2C<F, E> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Alternative3<F extends URIS3> extends Applicative3<F>, Alt3<F>, Zero3<F> {}
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Alternative3C<F extends URIS3, E> extends Applicative3C<F, E>, Alt3C<F, E>, Zero3C<F, E> {}
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Alternative4<F extends URIS4> extends Applicative4<F>, Alt4<F>, Zero4<F> {}
@@ -91,7 +91,7 @@ export interface Alternative4<F extends URIS4> extends Applicative4<F>, Alt4<F>,
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export function altAll<F extends URIS4>(
   F: Alternative4<F>,
 ): <S, R, E, A>(as: ReadonlyArray<Kind4<F, S, R, E, A>>) => Kind4<F, S, R, E, A>
@@ -114,7 +114,7 @@ export function altAll<F>(F: Alternative<F>): <A>(as: ReadonlyArray<HKT<F, A>>) 
 /**
  * Lift a semigroup into a monoid alternative 'F', the inner values are concatenated using the provided `Semigroup`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  */
 export function getAlternativeMonoid<F extends URIS4>(
   F: Alternative4<F>,

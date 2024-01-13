@@ -11,7 +11,7 @@
  * `None` is replaced with a `Left` which can contain useful information. `Right` takes the place of `Some`. Convention
  * dictates that `Left` is used for failure and `Right` is used for success.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import * as E from 'fp-ts/Either'
  *   import { pipe } from 'fp-ts/function'
@@ -113,7 +113,7 @@ import { wiltDefault, type Witherable2C, witherDefault } from './Witherable'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Left<E> {
@@ -122,7 +122,7 @@ export interface Left<E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Right<A> {
@@ -131,7 +131,7 @@ export interface Right<A> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export type Either<E, A> = Left<E> | Right<A>
@@ -144,7 +144,7 @@ export type Either<E, A> = Left<E> | Right<A>
  * Constructs a new `Either` holding a `Left` value. This usually represents a failure, due to the right-bias of this
  * structure.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const left: <E = never, A = never>(e: E) => Either<E, A> = _.left
@@ -153,13 +153,13 @@ export const left: <E = never, A = never>(e: E) => Either<E, A> = _.left
  * Constructs a new `Either` holding a `Right` value. This usually represents a successful value due to the right bias
  * of this structure.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const right: <E = never, A = never>(a: A) => Either<E, A> = _.right
 
 /**
- * @since 2.14.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMap: {
@@ -195,13 +195,13 @@ const _alt: Alt2<URI>['alt'] = (fa, that) => pipe(fa, alt(that))
 const _extend: Extend2<URI>['extend'] = (wa, f) => pipe(wa, extend(f))
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'Either'
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -213,7 +213,7 @@ declare module './HKT' {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getShow = <E, A>(SE: Show<E>, SA: Show<A>): Show<Either<E, A>> => ({
@@ -221,7 +221,7 @@ export const getShow = <E, A>(SE: Show<E>, SA: Show<A>): Show<Either<E, A>> => (
 })
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getEq = <E, A>(EL: Eq<E>, EA: Eq<A>): Eq<Either<E, A>> => ({
@@ -233,7 +233,7 @@ export const getEq = <E, A>(EL: Eq<E>, EA: Eq<A>): Eq<Either<E, A>> => ({
  * Semigroup returning the left-most non-`Left` value. If both operands are `Right`s then the inner values are
  * concatenated using the provided `Semigroup`
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getSemigroup, left, right } from 'fp-ts/Either'
@@ -255,7 +255,7 @@ export const getSemigroup = <E, A>(S: Semigroup<A>): Semigroup<Either<E, A>> => 
 /**
  * Builds a `Compactable` instance for `Either` given `Monoid` for the left side.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const getCompactable = <E>(M: Monoid<E>): Compactable2C<URI, E> => {
@@ -277,7 +277,7 @@ export const getCompactable = <E>(M: Monoid<E>): Compactable2C<URI, E> => {
 /**
  * Builds a `Filterable` instance for `Either` given `Monoid` for the left side
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const getFilterable = <E>(M: Monoid<E>): Filterable2C<URI, E> => {
@@ -326,7 +326,7 @@ export const getFilterable = <E>(M: Monoid<E>): Filterable2C<URI, E> => {
 /**
  * Builds `Witherable` instance for `Either` given `Monoid` for the left side
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const getWitherable = <E>(M: Monoid<E>): Witherable2C<URI, E> => {
@@ -356,7 +356,7 @@ export const getWitherable = <E>(M: Monoid<E>): Witherable2C<URI, E> => {
  * The default [`Applicative`](#applicative) instance returns the first error, if you want to get all errors you need to
  * provide a way to concatenate them via a `Semigroup`.
  *
- * @since 2.7.0
+ * @since 1.0.0
  * @category Error handling
  * @example
  *   import * as A from 'fp-ts/Apply'
@@ -407,7 +407,7 @@ export const getApplicativeValidation = <E>(SE: Semigroup<E>): Applicative2C<URI
  * The default [`Alt`](#alt) instance returns the last error, if you want to get all errors you need to provide a way to
  * concatenate them via a `Semigroup`.
  *
- * @since 2.7.0
+ * @since 1.0.0
  * @category Error handling
  * @example
  *   import * as E from 'fp-ts/Either'
@@ -450,14 +450,14 @@ export const getAltValidation = <E>(SE: Semigroup<E>): Alt2C<URI, E> => ({
 })
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: Either<E, A>) => Either<E, B> = f => fa =>
   isLeft(fa) ? fa : right(f(fa.right))
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Functor: Functor2<URI> = {
@@ -468,7 +468,7 @@ export const Functor: Functor2<URI> = {
 /**
  * Maps the `Right` value of this `Either` to the specified constant value.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const as: {
@@ -479,19 +479,19 @@ export const as: {
 /**
  * Maps the `Right` value of this `Either` to the void constant value.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const asUnit: <E, _>(self: Either<E, _>) => Either<E, void> = asUnit_(Functor)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const of: <E = never, A = never>(a: A) => Either<E, A> = right
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Pointed: Pointed2<URI> = {
@@ -504,7 +504,7 @@ export const Pointed: Pointed2<URI> = {
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.8.0
+ * @since 1.0.0
  */
 export const apW: <E2, A>(fa: Either<E2, A>) => <E1, B>(fab: Either<E1, (a: A) => B>) => Either<E1 | E2, B> =
   fa => fab =>
@@ -512,11 +512,11 @@ export const apW: <E2, A>(fa: Either<E2, A>) => <E1, B>(fab: Either<E1, (a: A) =
     : isLeft(fa) ? fa
     : right(fab.right(fa.right))
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const ap: <E, A>(fa: Either<E, A>) => <B>(fab: Either<E, (a: A) => B>) => Either<E, B> = apW
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Apply: Apply2<URI> = {
@@ -526,7 +526,7 @@ export const Apply: Apply2<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Applicative: Applicative2<URI> = {
@@ -537,7 +537,7 @@ export const Applicative: Applicative2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Chain: chainable.Chain2<URI> = {
@@ -548,7 +548,7 @@ export const Chain: chainable.Chain2<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Monad: Monad2<URI> = {
@@ -562,7 +562,7 @@ export const Monad: Monad2<URI> = {
 /**
  * Left-associative fold of a structure.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { pipe } from 'fp-ts/function'
@@ -581,7 +581,7 @@ export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => <E>(fa: Either<E, A>)
 /**
  * Map each element of the structure to a monoid, and combine the results.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { pipe } from 'fp-ts/function'
@@ -600,7 +600,7 @@ export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => <E>(fa: Either
 /**
  * Right-associative fold of a structure.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { pipe } from 'fp-ts/function'
@@ -617,7 +617,7 @@ export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => <E>(fa: Either<E
   isLeft(fa) ? b : f(fa.right, b)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Foldable: Foldable2<URI> = {
@@ -630,7 +630,7 @@ export const Foldable: Foldable2<URI> = {
 /**
  * Map each element of a structure to an action, evaluate these actions from left to right, and collect the results.
  *
- * @since 2.6.3
+ * @since 1.0.0
  * @category Traversing
  * @example
  *   import { pipe } from 'fp-ts/function'
@@ -651,7 +651,7 @@ export const traverse: PipeableTraverse2<URI> =
 /**
  * Evaluate each monadic action in the structure from left to right, and collect the results.
  *
- * @since 2.6.3
+ * @since 1.0.0
  * @category Traversing
  * @example
  *   import { pipe } from 'fp-ts/function'
@@ -669,7 +669,7 @@ export const sequence: Traversable2<URI>['sequence'] =
   }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Traversable: Traversable2<URI> = {
@@ -685,7 +685,7 @@ export const Traversable: Traversable2<URI> = {
 /**
  * Map a pair of functions over the two type arguments of the bifunctor.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: Either<E, A>) => Either<G, B> =
@@ -694,14 +694,14 @@ export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: Either<
 /**
  * Map a function over the first type argument of a bifunctor.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: Either<E, A>) => Either<G, A> = f => fa =>
   isLeft(fa) ? left(f(fa.left)) : fa
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Bifunctor: Bifunctor2<URI> = {
@@ -715,7 +715,7 @@ export const Bifunctor: Bifunctor2<URI> = {
  *
  * The `W` suffix (short for **W**idening) means that the error and the return types will be merged.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const altW: <E2, B>(that: LazyArg<Either<E2, B>>) => <E1, A>(fa: Either<E1, A>) => Either<E2, A | B> =
@@ -735,7 +735,7 @@ export const altW: <E2, B>(that: LazyArg<Either<E2, B>>) => <E1, A>(fa: Either<E
  * | right(1) | left(b)  | right(1)             |
  * | right(1) | right(2) | right(1)             |
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Error handling
  * @example
  *   import * as E from 'fp-ts/Either'
@@ -773,7 +773,7 @@ export const altW: <E2, B>(that: LazyArg<Either<E2, B>>) => <E1, A>(fa: Either<E
 export const alt: <E, A>(that: LazyArg<Either<E, A>>) => (fa: Either<E, A>) => Either<E, A> = altW
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Alt: Alt2<URI> = {
@@ -782,12 +782,12 @@ export const Alt: Alt2<URI> = {
   alt: _alt,
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const extend: <E, A, B>(f: (wa: Either<E, A>) => B) => (wa: Either<E, A>) => Either<E, B> = f => wa =>
   isLeft(wa) ? wa : right(f(wa))
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Extend: Extend2<URI> = {
@@ -808,7 +808,7 @@ const chainRec: ChnRec.ChainRec2<URI>['chainRec'] = (a, f) =>
   )
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const ChainRec: ChnRec.ChainRec2<URI> = {
@@ -819,11 +819,11 @@ export const ChainRec: ChnRec.ChainRec2<URI> = {
   chainRec,
 }
 
-/** @since 2.6.3 */
+/** @since 1.0.0 */
 export const throwError: MonadThrow2<URI>['throwError'] = left
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const MonadThrow: MonadThrow2<URI> = {
@@ -836,7 +836,7 @@ export const MonadThrow: MonadThrow2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromEither: FromEither2<URI> = {
@@ -845,7 +845,7 @@ export const FromEither: FromEither2<URI> = {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Lifting
  * @example
  *   import { fromPredicate, left, right } from 'fp-ts/Either'
@@ -883,7 +883,7 @@ export const fromPredicate: {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Conversions
  * @example
  *   import * as E from 'fp-ts/Either'
@@ -915,7 +915,7 @@ export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => Either
 /**
  * Returns `true` if the either is an instance of `Left`, `false` otherwise.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Refinements
  */
 export const isLeft: <E>(ma: Either<E, unknown>) => ma is Left<E> = _.isLeft
@@ -923,7 +923,7 @@ export const isLeft: <E>(ma: Either<E, unknown>) => ma is Left<E> = _.isLeft
 /**
  * Returns `true` if the either is an instance of `Right`, `false` otherwise.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Refinements
  */
 export const isRight: <A>(ma: Either<unknown, A>) => ma is Right<A> = _.isRight
@@ -933,7 +933,7 @@ export const isRight: <A>(ma: Either<unknown, A>) => ma is Right<A> = _.isRight
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchW =
@@ -944,7 +944,7 @@ export const matchW =
 /**
  * Alias of [`matchW`](#matchw).
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const foldW = matchW
@@ -953,7 +953,7 @@ export const foldW = matchW
  * Takes two functions and an `Either` value, if the value is a `Left` the inner value is applied to the first function,
  * if the value is a `Right` the inner value is applied to the second function.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  * @example
  *   import { match, left, right } from 'fp-ts/Either'
@@ -975,7 +975,7 @@ export const match: <E, A, B>(onLeft: (e: E) => B, onRight: (a: A) => B) => (ma:
 /**
  * Alias of [`match`](#match).
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const fold: <E, A, B>(onLeft: (e: E) => B, onRight: (a: A) => B) => (ma: Either<E, A>) => B = match
@@ -985,7 +985,7 @@ export const fold: <E, A, B>(onLeft: (e: E) => B, onRight: (a: A) => B) => (ma: 
  *
  * The `W` suffix (short for **W**idening) means that the handler return type will be merged.
  *
- * @since 2.6.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const getOrElseW =
@@ -996,7 +996,7 @@ export const getOrElseW =
 /**
  * Returns the wrapped value if it's a `Right` or a default value if is a `Left`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Error handling
  * @example
  *   import { getOrElse, left, right } from 'fp-ts/Either'
@@ -1024,7 +1024,7 @@ export const getOrElse: <E, A>(onLeft: (e: E) => A) => (ma: Either<E, A>) => A =
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
@@ -1032,7 +1032,7 @@ export const flap = /*#__PURE__*/ flap_(Functor)
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
 
@@ -1041,7 +1041,7 @@ export const apFirst = /*#__PURE__*/ apFirst_(Apply)
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.12.0
+ * @since 1.0.0
  */
 export const apFirstW: <E2, B>(second: Either<E2, B>) => <E1, A>(first: Either<E1, A>) => Either<E1 | E2, A> =
   apFirst as any
@@ -1049,7 +1049,7 @@ export const apFirstW: <E2, B>(second: Either<E2, B>) => <E1, A>(first: Either<E
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
@@ -1058,7 +1058,7 @@ export const apSecond = /*#__PURE__*/ apSecond_(Apply)
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.12.0
+ * @since 1.0.0
  */
 export const apSecondW: <E2, B>(second: Either<E2, B>) => <E1, A>(first: Either<E1, A>) => Either<E1 | E2, B> =
   apSecond as any
@@ -1067,7 +1067,7 @@ export const apSecondW: <E2, B>(second: Either<E2, B>) => <E1, A>(first: Either<
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.15.0
+ * @since 1.0.0
  * @category Combinators
  */
 export const tap: {
@@ -1080,7 +1080,7 @@ export const tap: {
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flattenW: <E1, E2, A>(mma: Either<E1, Either<E2, A>>) => Either<E1 | E2, A> =
@@ -1090,7 +1090,7 @@ export const flattenW: <E1, E2, A>(mma: Either<E1, Either<E2, A>>) => Either<E1 
  * The `flatten` function is the conventional monad join operator. It is used to remove one level of monadic structure,
  * projecting its bound argument into the outer level.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Sequencing
  * @example
  *   import * as E from 'fp-ts/Either'
@@ -1101,13 +1101,13 @@ export const flattenW: <E1, E2, A>(mma: Either<E1, Either<E2, A>>) => Either<E1 
  */
 export const flatten: <E, A>(mma: Either<E, Either<E, A>>) => Either<E, A> = flattenW
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const duplicate: <E, A>(ma: Either<E, A>) => Either<E, Either<E, A>> = /*#__PURE__*/ extend(identity)
 
 /**
  * Use `liftOption`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const fromOptionK: <E>(
@@ -1118,7 +1118,7 @@ export const fromOptionK: <E>(
 /**
  * Use `flatMapOption`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainOptionK: <E>(
@@ -1131,7 +1131,7 @@ export const chainOptionK: <E>(
 /**
  * Use `flatMapOption`.
  *
- * @since 2.13.2
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainOptionKW: <E2>(
@@ -1149,7 +1149,7 @@ const _FromEither: _.FromEither<EitherTypeLambda> = {
 }
 
 /**
- * @since 2.15.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
@@ -1158,7 +1158,7 @@ export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
 ) => (...a: A) => Either<E, NonNullable<B>> = /*#__PURE__*/ _.liftNullable(_FromEither)
 
 /**
- * @since 2.15.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const liftOption: <A extends ReadonlyArray<unknown>, B, E>(
@@ -1172,7 +1172,7 @@ const _FlatMap: _.FlatMap<EitherTypeLambda> = {
 }
 
 /**
- * @since 2.15.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapNullable: {
@@ -1188,7 +1188,7 @@ export const flatMapNullable: {
 } = /*#__PURE__*/ _.flatMapNullable(_FromEither, _FlatMap)
 
 /**
- * @since 2.15.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapOption: {
@@ -1197,7 +1197,7 @@ export const flatMapOption: {
 } = /*#__PURE__*/ _.flatMapOption(_FromEither, _FlatMap)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import * as E from 'fp-ts/Either'
@@ -1245,7 +1245,7 @@ export const filterOrElse: {
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const filterOrElseW: {
@@ -1260,7 +1260,7 @@ export const filterOrElseW: {
 /**
  * Returns a `Right` if is a `Left` (and vice versa).
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const swap = <E, A>(ma: Either<E, A>): Either<A, E> => (isLeft(ma) ? right(ma.left) : left(ma.right))
 
@@ -1269,7 +1269,7 @@ export const swap = <E, A>(ma: Either<E, A>): Either<A, E> => (isLeft(ma) ? righ
  *
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const orElseW =
@@ -1280,7 +1280,7 @@ export const orElseW =
 /**
  * Useful for recovering from errors.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const orElse: <E1, A, E2>(onLeft: (e: E1) => Either<E2, A>) => (ma: Either<E1, A>) => Either<E2, A> = orElseW
@@ -1289,7 +1289,7 @@ export const orElse: <E1, A, E2>(onLeft: (e: E1) => Either<E2, A>) => (ma: Eithe
  * Takes a default and a nullable value, if the value is not nully, turn it into a `Right`, if the value is nully use
  * the provided default as a `Left`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Conversions
  * @example
  *   import { fromNullable, left, right } from 'fp-ts/Either'
@@ -1309,7 +1309,7 @@ export const fromNullable =
  *
  * See also [`tryCatchK`](#trycatchk).
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Interop
  * @example
  *   import * as E from 'fp-ts/Either'
@@ -1342,7 +1342,7 @@ export const tryCatch = <E, A>(f: LazyArg<A>, onThrow: (e: unknown) => E): Eithe
 /**
  * Converts a function that may throw to one returning a `Either`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Interop
  */
 export const tryCatchK =
@@ -1356,7 +1356,7 @@ export const tryCatchK =
 /**
  * Use `liftNullable`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const fromNullableK = <E>(
@@ -1371,7 +1371,7 @@ export const fromNullableK = <E>(
 /**
  * Use `flatMapNullable`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainNullableK = <E>(
@@ -1382,7 +1382,7 @@ export const chainNullableK = <E>(
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const toUnion: <E, A>(fa: Either<E, A>) => E | A = /*#__PURE__*/ foldW(identity, identity)
@@ -1394,13 +1394,13 @@ export const toUnion: <E, A>(fa: Either<E, A>) => E | A = /*#__PURE__*/ foldW(id
 /**
  * Default value for the `onError` argument of `tryCatch`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export function toError(e: unknown): Error {
   return e instanceof Error ? e : new Error(String(e))
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export function elem<A>(E: Eq<A>): {
   (a: A): <E>(ma: Either<E, A>) => boolean
   <E>(a: A, ma: Either<E, A>): boolean
@@ -1418,7 +1418,7 @@ export function elem<A>(E: Eq<A>): <E>(a: A, ma?: Either<E, A>) => boolean | ((m
 /**
  * Returns `false` if `Left` or returns the result of the application of the given predicate to the `Right` value.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { exists, left, right } from 'fp-ts/Either'
  *
@@ -1438,13 +1438,13 @@ export const exists =
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.9.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const Do: Either<never, {}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
@@ -1453,14 +1453,14 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @since 2.13.0
+   * @since 1.0.0
    * @category Do notation
    */
   let_ as let,
 }
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
@@ -1468,7 +1468,7 @@ export const bind = /*#__PURE__*/ chainable.bind(Chain)
 /**
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bindW: <N extends string, A, E2, B>(
@@ -1478,7 +1478,7 @@ export const bindW: <N extends string, A, E2, B>(
   bind as any
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
@@ -1488,7 +1488,7 @@ export const apS = /*#__PURE__*/ apS_(Apply)
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const apSW: <A, N extends string, E2, B>(
@@ -1497,7 +1497,7 @@ export const apSW: <A, N extends string, E2, B>(
 ) => <E1>(fa: Either<E1, A>) => Either<E1 | E2, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }> =
   apS as any
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const ApT: Either<never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 
 interface EitherIterable<E, A> {
@@ -1524,7 +1524,7 @@ export {
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(Applicative)`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyNonEmptyArrayWithIndex =
@@ -1548,7 +1548,7 @@ export const traverseReadonlyNonEmptyArrayWithIndex =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyArrayWithIndex = <A, E, B>(
@@ -1561,7 +1561,7 @@ export const traverseReadonlyArrayWithIndex = <A, E, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseArrayWithIndex: <E, A, B>(
@@ -1571,7 +1571,7 @@ export const traverseArrayWithIndex: <E, A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseArray = <E, A, B>(
@@ -1581,7 +1581,7 @@ export const traverseArray = <E, A, B>(
 /**
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const sequenceArray: <E, A>(as: ReadonlyArray<Either<E, A>>) => Either<E, ReadonlyArray<A>> =
@@ -1594,7 +1594,7 @@ export const sequenceArray: <E, A>(as: ReadonlyArray<Either<E, A>>) => Either<E,
 /**
  * Alias of `flatMap`.
  *
- * @since 2.6.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Either<E1, A>) => Either<E2 | E1, B> = flatMap
@@ -1602,7 +1602,7 @@ export const chainW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Either<E
 /**
  * Alias of `flatMap`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chain: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Either<E, A>) => Either<E, B> = flatMap
@@ -1610,7 +1610,7 @@ export const chain: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Either<E, A>) =
 /**
  * Alias of `tap`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirst: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Either<E, A>) => Either<E, A> = tap
@@ -1618,7 +1618,7 @@ export const chainFirst: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Either<E, 
 /**
  * Alias of `tap`.
  *
- * @since 2.8.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Either<E1, A>) => Either<E1 | E2, A> = tap
@@ -1631,7 +1631,7 @@ export const chainFirstW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Eit
  * Use [`Json`](./Json.ts.html) module instead.
  *
  * @deprecated
- * @since 2.6.7
+ * @since 1.0.0
  * @category Zone of death
  */
 export type Json = boolean | number | string | null | JsonArray | JsonRecord
@@ -1640,7 +1640,7 @@ export type Json = boolean | number | string | null | JsonArray | JsonRecord
  * Use [`Json`](./Json.ts.html) module instead.
  *
  * @deprecated
- * @since 2.6.7
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface JsonRecord {
@@ -1651,7 +1651,7 @@ export interface JsonRecord {
  * Use [`Json`](./Json.ts.html) module instead.
  *
  * @deprecated
- * @since 2.6.7
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface JsonArray extends ReadonlyArray<Json> {}
@@ -1660,7 +1660,7 @@ export interface JsonArray extends ReadonlyArray<Json> {}
  * Use [`parse`](./Json.ts.html#parse) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function parseJSON<E>(s: string, onError: (reason: unknown) => E): Either<E, Json> {
@@ -1671,7 +1671,7 @@ export function parseJSON<E>(s: string, onError: (reason: unknown) => E): Either
  * Use [`stringify`](./Json.ts.html#stringify) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const stringifyJSON = <E>(u: unknown, onError: (reason: unknown) => E): Either<E, string> =>
@@ -1688,7 +1688,7 @@ export const stringifyJSON = <E>(u: unknown, onError: (reason: unknown) => E): E
  * instance, pass `E.Functor` instead of `E.either` (where `E` is from `import E from 'fp-ts/Either'`)
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const either: Monad2<URI> &
@@ -1724,7 +1724,7 @@ export const either: Monad2<URI> &
  * using the provided `Semigroup`
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<Either<E, A>> =
@@ -1734,7 +1734,7 @@ export const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<Either<E, A
  * Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<Either<E, A>> =
@@ -1744,7 +1744,7 @@ export const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<Either<E, A>> =
  * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getValidationSemigroup = <E, A>(SE: Semigroup<E>, SA: Semigroup<A>): Semigroup<Either<E, A>> =>
@@ -1754,7 +1754,7 @@ export const getValidationSemigroup = <E, A>(SE: Semigroup<E>, SA: Semigroup<A>)
  * Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getValidationMonoid = <E, A>(SE: Semigroup<E>, MA: Monoid<A>): Monoid<Either<E, A>> =>
@@ -1764,7 +1764,7 @@ export const getValidationMonoid = <E, A>(SE: Semigroup<E>, MA: Monoid<A>): Mono
  * Use [`getApplicativeValidation`](#getapplicativevalidation) and [`getAltValidation`](#getaltvalidation) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function getValidation<E>(

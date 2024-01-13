@@ -18,7 +18,7 @@
  * mapWithIndex(ta, f) = traverseWithIndex(identity)(ta, (i, a) => new Identity(f(i, a))).value
  * ```
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import {
   type Applicative,
@@ -47,12 +47,12 @@ import { type Traversable, type Traversable1, type Traversable2, type Traversabl
 // model
 // -------------------------------------------------------------------------------------
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface TraversableWithIndex<T, I> extends FunctorWithIndex<T, I>, FoldableWithIndex<T, I>, Traversable<T> {
   readonly traverseWithIndex: TraverseWithIndex<T, I>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface TraversableWithIndex1<T extends URIS, I>
   extends FunctorWithIndex1<T, I>,
     FoldableWithIndex1<T, I>,
@@ -60,7 +60,7 @@ export interface TraversableWithIndex1<T extends URIS, I>
   readonly traverseWithIndex: TraverseWithIndex1<T, I>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface TraversableWithIndex2<T extends URIS2, I>
   extends FunctorWithIndex2<T, I>,
     FoldableWithIndex2<T, I>,
@@ -68,7 +68,7 @@ export interface TraversableWithIndex2<T extends URIS2, I>
   readonly traverseWithIndex: TraverseWithIndex2<T, I>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface TraversableWithIndex2C<T extends URIS2, I, E>
   extends FunctorWithIndex2C<T, I, E>,
     FoldableWithIndex2C<T, I, E>,
@@ -76,7 +76,7 @@ export interface TraversableWithIndex2C<T extends URIS2, I, E>
   readonly traverseWithIndex: TraverseWithIndex2C<T, I, E>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface TraverseWithIndex<T, I> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -94,7 +94,7 @@ export interface TraverseWithIndex<T, I> {
   <F>(F: Applicative<F>): <A, B>(ta: HKT<T, A>, f: (i: I, a: A) => HKT<F, B>) => HKT<F, HKT<T, B>>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface TraverseWithIndex1<T extends URIS, I> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -112,7 +112,7 @@ export interface TraverseWithIndex1<T extends URIS, I> {
   <F>(F: Applicative<F>): <A, B>(ta: Kind<T, A>, f: (i: I, a: A) => HKT<F, B>) => HKT<F, Kind<T, B>>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface TraverseWithIndex2<T extends URIS2, I> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -129,7 +129,7 @@ export interface TraverseWithIndex2<T extends URIS2, I> {
   <F>(F: Applicative<F>): <E, A, B>(ta: Kind2<T, E, A>, f: (i: I, a: A) => HKT<F, B>) => HKT<F, Kind2<T, E, B>>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface TraverseWithIndex2C<T extends URIS2, I, E> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -153,7 +153,7 @@ export interface TraverseWithIndex2C<T extends URIS2, I, E> {
 // pipeable `TraverseWithIndex`
 //
 
-/** @since 2.6.3 */
+/** @since 1.0.0 */
 export interface PipeableTraverseWithIndex1<T extends URIS, I> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -171,7 +171,7 @@ export interface PipeableTraverseWithIndex1<T extends URIS, I> {
   <F>(F: Applicative<F>): <A, B>(f: (i: I, a: A) => HKT<F, B>) => (ta: Kind<T, A>) => HKT<F, Kind<T, B>>
 }
 
-/** @since 2.6.3 */
+/** @since 1.0.0 */
 export interface PipeableTraverseWithIndex2<T extends URIS2, I> {
   <F extends URIS3>(
     F: Applicative3<F>,

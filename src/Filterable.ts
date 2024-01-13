@@ -3,7 +3,7 @@
  *
  * Adapted from https://github.com/LiamGoodacre/purescript-filterable/blob/master/src/Data/Filterable.purs
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import {
   compact,
@@ -62,20 +62,20 @@ import { type Separated, separated } from './Separated'
 // model
 // -------------------------------------------------------------------------------------
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Filter<F> {
   <A, B extends A>(fa: HKT<F, A>, refinement: Refinement<A, B>): HKT<F, B>
   <A>(fa: HKT<F, A>, predicate: Predicate<A>): HKT<F, A>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Partition<F> {
   <A, B extends A>(fa: HKT<F, A>, refinement: Refinement<A, B>): Separated<HKT<F, A>, HKT<F, B>>
   <A>(fa: HKT<F, A>, predicate: Predicate<A>): Separated<HKT<F, A>, HKT<F, A>>
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Filterable<F> extends Functor<F>, Compactable<F> {
@@ -89,20 +89,20 @@ export interface Filterable<F> extends Functor<F>, Compactable<F> {
   readonly filter: Filter<F>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Filter1<F extends URIS> {
   <A, B extends A>(fa: Kind<F, A>, refinement: Refinement<A, B>): Kind<F, B>
   <A>(fa: Kind<F, A>, predicate: Predicate<A>): Kind<F, A>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Partition1<F extends URIS> {
   <A, B extends A>(fa: Kind<F, A>, refinement: Refinement<A, B>): Separated<Kind<F, A>, Kind<F, B>>
   <A>(fa: Kind<F, A>, predicate: Predicate<A>): Separated<Kind<F, A>, Kind<F, A>>
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Filterable1<F extends URIS> extends Functor1<F>, Compactable1<F> {
@@ -112,20 +112,20 @@ export interface Filterable1<F extends URIS> extends Functor1<F>, Compactable1<F
   readonly filter: Filter1<F>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Filter2<F extends URIS2> {
   <E, A, B extends A>(fa: Kind2<F, E, A>, refinement: Refinement<A, B>): Kind2<F, E, B>
   <E, A>(fa: Kind2<F, E, A>, predicate: Predicate<A>): Kind2<F, E, A>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Partition2<F extends URIS2> {
   <E, A, B extends A>(fa: Kind2<F, E, A>, refinement: Refinement<A, B>): Separated<Kind2<F, E, A>, Kind2<F, E, B>>
   <E, A>(fa: Kind2<F, E, A>, predicate: Predicate<A>): Separated<Kind2<F, E, A>, Kind2<F, E, A>>
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Filterable2<F extends URIS2> extends Functor2<F>, Compactable2<F> {
@@ -138,20 +138,20 @@ export interface Filterable2<F extends URIS2> extends Functor2<F>, Compactable2<
   readonly filter: Filter2<F>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Filter2C<F extends URIS2, E> {
   <A, B extends A>(fa: Kind2<F, E, A>, refinement: Refinement<A, B>): Kind2<F, E, B>
   <A>(fa: Kind2<F, E, A>, predicate: Predicate<A>): Kind2<F, E, A>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Partition2C<F extends URIS2, E> {
   <A, B extends A>(fa: Kind2<F, E, A>, refinement: Refinement<A, B>): Separated<Kind2<F, E, A>, Kind2<F, E, B>>
   <A>(fa: Kind2<F, E, A>, predicate: Predicate<A>): Separated<Kind2<F, E, A>, Kind2<F, E, A>>
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Filterable2C<F extends URIS2, E> extends Functor2C<F, E>, Compactable2C<F, E> {
@@ -164,13 +164,13 @@ export interface Filterable2C<F extends URIS2, E> extends Functor2C<F, E>, Compa
   readonly filter: Filter2C<F, E>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Filter3<F extends URIS3> {
   <R, E, A, B extends A>(fa: Kind3<F, R, E, A>, refinement: Refinement<A, B>): Kind3<F, R, E, B>
   <R, E, A>(fa: Kind3<F, R, E, A>, predicate: Predicate<A>): Kind3<F, R, E, A>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Partition3<F extends URIS3> {
   <R, E, A, B extends A>(
     fa: Kind3<F, R, E, A>,
@@ -180,7 +180,7 @@ export interface Partition3<F extends URIS3> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Filterable3<F extends URIS3> extends Functor3<F>, Compactable3<F> {
@@ -193,13 +193,13 @@ export interface Filterable3<F extends URIS3> extends Functor3<F>, Compactable3<
   readonly filter: Filter3<F>
 }
 
-/** @since 2.2.0 */
+/** @since 1.0.0 */
 export interface Filter3C<F extends URIS3, E> {
   <R, A, B extends A>(fa: Kind3<F, R, E, A>, refinement: Refinement<A, B>): Kind3<F, R, E, B>
   <R, A>(fa: Kind3<F, R, E, A>, predicate: Predicate<A>): Kind3<F, R, E, A>
 }
 
-/** @since 2.2.0 */
+/** @since 1.0.0 */
 export interface Partition3C<F extends URIS3, E> {
   <R, A, B extends A>(
     fa: Kind3<F, R, E, A>,
@@ -209,7 +209,7 @@ export interface Partition3C<F extends URIS3, E> {
 }
 
 /**
- * @since 2.2.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Filterable3C<F extends URIS3, E> extends Functor3C<F, E>, Compactable3C<F, E> {
@@ -222,13 +222,13 @@ export interface Filterable3C<F extends URIS3, E> extends Functor3C<F, E>, Compa
   readonly filter: Filter3C<F, E>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Filter4<F extends URIS4> {
   <S, R, E, A, B extends A>(fa: Kind4<F, S, R, E, A>, refinement: Refinement<A, B>): Kind4<F, S, R, E, B>
   <S, R, E, A>(fa: Kind4<F, S, R, E, A>, predicate: Predicate<A>): Kind4<F, S, R, E, A>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Partition4<F extends URIS4> {
   <S, R, E, A, B extends A>(
     fa: Kind4<F, S, R, E, A>,
@@ -238,7 +238,7 @@ export interface Partition4<F extends URIS4> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Filterable4<F extends URIS4> extends Functor4<F>, Compactable4<F> {
@@ -258,7 +258,7 @@ export interface Filterable4<F extends URIS4> extends Functor4<F>, Compactable4<
 /**
  * `filter` composition.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function filter<F extends URIS2, G extends URIS2, E>(
   F: Functor2<F>,
@@ -302,7 +302,7 @@ export function filter<F, G>(
 /**
  * `filterMap` composition.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function filterMap<F extends URIS2, G extends URIS2, E>(
   F: Functor2<F>,
@@ -330,7 +330,7 @@ export function filterMap<F, G>(
 /**
  * `partition` composition.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function partition<F extends URIS2, G extends URIS2, E>(
   F: Functor2<F>,
@@ -399,7 +399,7 @@ export function partition<F, G>(
 /**
  * `partitionMap` composition.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function partitionMap<F extends URIS2, G extends URIS2, E>(
   F: Functor2<F>,
@@ -447,7 +447,7 @@ export function partitionMap<F, G>(
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FilterableComposition<F, G> extends FunctorComposition<F, G>, CompactableComposition<F, G> {
@@ -465,7 +465,7 @@ export interface FilterableComposition<F, G> extends FunctorComposition<F, G>, C
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FilterableComposition11<F extends URIS, G extends URIS>
@@ -485,7 +485,7 @@ export interface FilterableComposition11<F extends URIS, G extends URIS>
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FilterableComposition12<F extends URIS, G extends URIS2>
@@ -505,7 +505,7 @@ export interface FilterableComposition12<F extends URIS, G extends URIS2>
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FilterableComposition12C<F extends URIS, G extends URIS2, E>
@@ -525,7 +525,7 @@ export interface FilterableComposition12C<F extends URIS, G extends URIS2, E>
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FilterableComposition21<F extends URIS2, G extends URIS>
@@ -545,7 +545,7 @@ export interface FilterableComposition21<F extends URIS2, G extends URIS>
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FilterableComposition2C1<F extends URIS2, G extends URIS, E>
@@ -565,7 +565,7 @@ export interface FilterableComposition2C1<F extends URIS2, G extends URIS, E>
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FilterableComposition22<F extends URIS2, G extends URIS2>
@@ -591,7 +591,7 @@ export interface FilterableComposition22<F extends URIS2, G extends URIS2>
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FilterableComposition22C<F extends URIS2, G extends URIS2, E>
@@ -614,7 +614,7 @@ export interface FilterableComposition22C<F extends URIS2, G extends URIS2, E>
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FilterableComposition23C<F extends URIS2, G extends URIS3, E>
@@ -649,7 +649,7 @@ export interface FilterableComposition23C<F extends URIS2, G extends URIS3, E>
  * Instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function getFilterableComposition<F extends URIS2, G extends URIS3, E>(

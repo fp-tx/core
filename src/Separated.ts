@@ -8,7 +8,7 @@
  *
  * Represents a result of separating a whole into two parts.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 
 import { type Bifunctor2 } from './Bifunctor'
@@ -22,7 +22,7 @@ import { flap as flap_, type Functor2 } from './Functor'
 /**
  * A `Separated` type which holds `left` and `right` parts.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Separated<E, A> {
@@ -35,7 +35,7 @@ export interface Separated<E, A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const separated = <E, A>(left: E, right: A): Separated<E, A> => ({ left, right })
@@ -48,7 +48,7 @@ const _bimap: Bifunctor2<URI>['bimap'] = (fa, g, f) => pipe(fa, bimap(g, f))
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const map =
@@ -59,7 +59,7 @@ export const map =
 /**
  * Map a function over the first type argument of a bifunctor.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const mapLeft =
@@ -70,7 +70,7 @@ export const mapLeft =
 /**
  * Map a pair of functions over the two type arguments of the bifunctor.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const bimap =
@@ -79,13 +79,13 @@ export const bimap =
     separated(f(left(fa)), g(right(fa)))
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'Separated'
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -97,7 +97,7 @@ declare module './HKT' {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Bifunctor: Bifunctor2<URI> = {
@@ -107,7 +107,7 @@ export const Bifunctor: Bifunctor2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Functor: Functor2<URI> = {
@@ -116,7 +116,7 @@ export const Functor: Functor2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
@@ -125,8 +125,8 @@ export const flap = /*#__PURE__*/ flap_(Functor)
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export const left = <E, A>(s: Separated<E, A>): E => s.left
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export const right = <E, A>(s: Separated<E, A>): A => s.right

@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, type URIS4 } from './HKT'
 
 // -------------------------------------------------------------------------------------
@@ -6,7 +6,7 @@ import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, 
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Semigroupoid<F> {
@@ -15,7 +15,7 @@ export interface Semigroupoid<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Semigroupoid2<F extends URIS2> {
@@ -24,7 +24,7 @@ export interface Semigroupoid2<F extends URIS2> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Semigroupoid2C<F extends URIS2, A> {
@@ -34,7 +34,7 @@ export interface Semigroupoid2C<F extends URIS2, A> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Semigroupoid3<F extends URIS3> {
@@ -43,7 +43,7 @@ export interface Semigroupoid3<F extends URIS3> {
 }
 
 /**
- * @since 2.2.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Semigroupoid3C<F extends URIS3, A> {
@@ -53,7 +53,7 @@ export interface Semigroupoid3C<F extends URIS3, A> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Semigroupoid4<F extends URIS4> {

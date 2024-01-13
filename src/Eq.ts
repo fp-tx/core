@@ -7,7 +7,7 @@
  * 2. Symmetry: `E.equals(a, b) === E.equals(b, a)`
  * 3. Transitivity: if `E.equals(a, b) === true` and `E.equals(b, c) === true`, then `E.equals(a, c) === true`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type Contravariant1 } from './Contravariant'
 import { pipe } from './function'
@@ -20,7 +20,7 @@ import { type Semigroup } from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Eq<A> {
@@ -32,7 +32,7 @@ export interface Eq<A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const fromEquals = <A>(equals: Eq<A>['equals']): Eq<A> => ({
@@ -43,7 +43,7 @@ export const fromEquals = <A>(equals: Eq<A>['equals']): Eq<A> => ({
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export const struct = <A>(eqs: { [K in keyof A]: Eq<A[K]> }): Eq<{ readonly [K in keyof A]: A[K] }> =>
   fromEquals((first, second) => {
     for (const key in eqs) {
@@ -57,7 +57,7 @@ export const struct = <A>(eqs: { [K in keyof A]: Eq<A[K]> }): Eq<{ readonly [K i
 /**
  * Given a tuple of `Eq`s returns a `Eq` for the tuple
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { tuple } from 'fp-ts/Eq'
  *   import * as S from 'fp-ts/string'
@@ -88,7 +88,7 @@ const contramap_: <A, B>(fa: Eq<A>, f: (b: B) => A) => Eq<B> = (fa, f) => pipe(f
  * If we have a way of comparing `UUID`s for equality (`eqUUID: Eq<UUID>`) and we know how to go from `User -> UUID`,
  * using `contramap` we can do this
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { contramap, Eq } from 'fp-ts/Eq'
  *   import { pipe } from 'fp-ts/function'
@@ -128,13 +128,13 @@ export const contramap: <A, B>(f: (b: B) => A) => (fa: Eq<A>) => Eq<B> = f => fa
   fromEquals((x, y) => fa.equals(f(x), f(y)))
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'Eq'
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -146,7 +146,7 @@ declare module './HKT' {
 }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Instances
  */
 export const eqStrict: Eq<unknown> = {
@@ -158,7 +158,7 @@ const empty: Eq<unknown> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getSemigroup = <A>(): Semigroup<Eq<A>> => ({
@@ -166,7 +166,7 @@ export const getSemigroup = <A>(): Semigroup<Eq<A>> => ({
 })
 
 /**
- * @since 2.6.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getMonoid = <A>(): Monoid<Eq<A>> => ({
@@ -175,7 +175,7 @@ export const getMonoid = <A>(): Monoid<Eq<A>> => ({
 })
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Contravariant: Contravariant1<URI> = {
@@ -191,7 +191,7 @@ export const Contravariant: Contravariant1<URI> = {
  * Use [`tuple`](#tuple) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getTupleEq: <T extends ReadonlyArray<Eq<any>>>(
@@ -202,7 +202,7 @@ export const getTupleEq: <T extends ReadonlyArray<Eq<any>>>(
  * Use [`struct`](#struct) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getStructEq: <O extends ReadonlyRecord<string, any>>(eqs: { [K in keyof O]: Eq<O[K]> }) => Eq<O> = struct
@@ -211,7 +211,7 @@ export const getStructEq: <O extends ReadonlyRecord<string, any>>(eqs: { [K in k
  * Use [`eqStrict`](#eqstrict) instead
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const strictEqual: <A>(a: A, b: A) => boolean = eqStrict.equals
@@ -221,7 +221,7 @@ export const strictEqual: <A>(a: A, b: A) => boolean = eqStrict.equals
  * instance, pass `E.Contravariant` instead of `E.eq` (where `E` is from `import E from 'fp-ts/Eq'`)
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const eq: Contravariant1<URI> = Contravariant
@@ -230,7 +230,7 @@ export const eq: Contravariant1<URI> = Contravariant
  * Use [`Eq`](./boolean.ts.html#eq) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const eqBoolean: Eq<boolean> = eqStrict
@@ -239,7 +239,7 @@ export const eqBoolean: Eq<boolean> = eqStrict
  * Use [`Eq`](./string.ts.html#eq) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const eqString: Eq<string> = eqStrict
@@ -248,7 +248,7 @@ export const eqString: Eq<string> = eqStrict
  * Use [`Eq`](./number.ts.html#eq) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const eqNumber: Eq<number> = eqStrict
@@ -257,7 +257,7 @@ export const eqNumber: Eq<number> = eqStrict
  * Use [`Eq`](./Date.ts.html#eq) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const eqDate: Eq<Date> = {

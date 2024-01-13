@@ -3,7 +3,7 @@
  *
  * Adapted from https://github.com/LiamGoodacre/purescript-filterable/blob/master/src/Data/Witherable.purs
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import {
   type Applicative,
@@ -33,7 +33,7 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Witherable<T> extends Traversable<T>, Filterable<T> {
@@ -45,7 +45,7 @@ export interface Witherable<T> extends Traversable<T>, Filterable<T> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Witherable1<T extends URIS> extends Traversable1<T>, Filterable1<T> {
@@ -54,7 +54,7 @@ export interface Witherable1<T extends URIS> extends Traversable1<T>, Filterable
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Witherable2<T extends URIS2> extends Traversable2<T>, Filterable2<T> {
@@ -63,7 +63,7 @@ export interface Witherable2<T extends URIS2> extends Traversable2<T>, Filterabl
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Witherable2C<T extends URIS2, TL> extends Traversable2C<T, TL>, Filterable2C<T, TL> {
@@ -72,7 +72,7 @@ export interface Witherable2C<T extends URIS2, TL> extends Traversable2C<T, TL>,
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Witherable3<T extends URIS3> extends Traversable3<T>, Filterable3<T> {
@@ -80,7 +80,7 @@ export interface Witherable3<T extends URIS3> extends Traversable3<T>, Filterabl
   readonly wither: Wither3<T>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Wither<W> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -98,7 +98,7 @@ export interface Wither<W> {
   <F>(F: Applicative<F>): <A, B>(ta: HKT<W, A>, f: (a: A) => HKT<F, Option<B>>) => HKT<F, HKT<W, B>>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Wither1<W extends URIS> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -116,7 +116,7 @@ export interface Wither1<W extends URIS> {
   <F>(F: Applicative<F>): <A, B>(ta: Kind<W, A>, f: (a: A) => HKT<F, Option<B>>) => HKT<F, Kind<W, B>>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Wither2<W extends URIS2> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -133,7 +133,7 @@ export interface Wither2<W extends URIS2> {
   <F>(F: Applicative<F>): <E, A, B>(ta: Kind2<W, E, A>, f: (a: A) => HKT<F, Option<B>>) => HKT<F, Kind2<W, E, B>>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Wither2C<W extends URIS2, E> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -150,7 +150,7 @@ export interface Wither2C<W extends URIS2, E> {
   <F>(F: Applicative<F>): <A, B>(ta: Kind2<W, E, A>, f: (a: A) => HKT<F, Option<B>>) => HKT<F, Kind2<W, E, B>>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Wither3<W extends URIS3> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -175,7 +175,7 @@ export interface Wither3<W extends URIS3> {
   ): <R, E, A, B>(ta: Kind3<W, R, E, A>, f: (a: A) => HKT<F, Option<B>>) => HKT<F, Kind3<W, R, E, B>>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Wilt<W> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -203,7 +203,7 @@ export interface Wilt<W> {
   ): <A, B, C>(wa: HKT<W, A>, f: (a: A) => HKT<F, Either<B, C>>) => HKT<F, Separated<HKT<W, B>, HKT<W, C>>>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Wilt1<W extends URIS> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -234,7 +234,7 @@ export interface Wilt1<W extends URIS> {
   ): <A, B, C>(wa: Kind<W, A>, f: (a: A) => HKT<F, Either<B, C>>) => HKT<F, Separated<Kind<W, B>, Kind<W, C>>>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Wilt2<W extends URIS2> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -268,7 +268,7 @@ export interface Wilt2<W extends URIS2> {
   ) => HKT<F, Separated<Kind2<W, E, B>, Kind2<W, E, C>>>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Wilt2C<W extends URIS2, E> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -302,7 +302,7 @@ export interface Wilt2C<W extends URIS2, E> {
   ) => HKT<F, Separated<Kind2<W, E, B>, Kind2<W, E, C>>>
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export interface Wilt3<W extends URIS3> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -340,7 +340,7 @@ export interface Wilt3<W extends URIS3> {
 // pipeable `Wither`
 //
 
-/** @since 2.6.5 */
+/** @since 1.0.0 */
 export interface PipeableWither<W> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -358,7 +358,7 @@ export interface PipeableWither<W> {
   <F>(F: Applicative<F>): <A, B>(f: (a: A) => HKT<F, Option<B>>) => (ta: HKT<W, A>) => HKT<F, HKT<W, B>>
 }
 
-/** @since 2.6.5 */
+/** @since 1.0.0 */
 export interface PipeableWither1<W extends URIS> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -378,7 +378,7 @@ export interface PipeableWither1<W extends URIS> {
   <F>(F: Applicative<F>): <A, B>(f: (a: A) => HKT<F, Option<B>>) => (ta: Kind<W, A>) => HKT<F, Kind<W, B>>
 }
 
-/** @since 2.6.5 */
+/** @since 1.0.0 */
 export interface PipeableWither2<W extends URIS2> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -397,7 +397,7 @@ export interface PipeableWither2<W extends URIS2> {
   <F>(F: Applicative<F>): <A, B>(f: (a: A) => HKT<F, Option<B>>) => <WE>(ta: Kind2<W, WE, A>) => HKT<F, Kind2<W, WE, B>>
 }
 
-/** @since 2.6.5 */
+/** @since 1.0.0 */
 export interface PipeableWither2C<W extends URIS2, WE> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -414,7 +414,7 @@ export interface PipeableWither2C<W extends URIS2, WE> {
   <F>(F: Applicative<F>): <A, B>(f: (a: A) => HKT<F, Option<B>>) => (ta: Kind2<W, WE, A>) => HKT<F, Kind2<W, WE, B>>
 }
 
-/** @since 2.6.5 */
+/** @since 1.0.0 */
 export interface PipeableWither3<W extends URIS3> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -443,7 +443,7 @@ export interface PipeableWither3<W extends URIS3> {
 // pipeable `Wilt`
 //
 
-/** @since 2.6.5 */
+/** @since 1.0.0 */
 export interface PipeableWilt<W> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -473,7 +473,7 @@ export interface PipeableWilt<W> {
   ): <A, B, C>(f: (a: A) => HKT<F, Either<B, C>>) => (wa: HKT<W, A>) => HKT<F, Separated<HKT<W, B>, HKT<W, C>>>
 }
 
-/** @since 2.6.5 */
+/** @since 1.0.0 */
 export interface PipeableWilt1<W extends URIS> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -503,7 +503,7 @@ export interface PipeableWilt1<W extends URIS> {
   ): <A, B, C>(f: (a: A) => HKT<F, Either<B, C>>) => (wa: Kind<W, A>) => HKT<F, Separated<Kind<W, B>, Kind<W, C>>>
 }
 
-/** @since 2.6.5 */
+/** @since 1.0.0 */
 export interface PipeableWilt2<W extends URIS2> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -532,7 +532,7 @@ export interface PipeableWilt2<W extends URIS2> {
   ) => <WE>(wa: Kind2<W, WE, A>) => HKT<F, Separated<Kind2<W, WE, B>, Kind2<W, WE, C>>>
 }
 
-/** @since 2.6.5 */
+/** @since 1.0.0 */
 export interface PipeableWilt2C<W extends URIS2, WE> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -561,7 +561,7 @@ export interface PipeableWilt2C<W extends URIS2, WE> {
   ) => (wa: Kind2<W, WE, A>) => HKT<F, Separated<Kind2<W, WE, B>, Kind2<W, WE, C>>>
 }
 
-/** @since 2.6.5 */
+/** @since 1.0.0 */
 export interface PipeableWilt3<W extends URIS3> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -597,7 +597,7 @@ export interface PipeableWilt3<W extends URIS3> {
 /**
  * Return a `wilt` implementation from `Traversable` and `Compactable`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Defaults
  */
 export function wiltDefault<W extends URIS2, E>(T: Traversable2C<W, E>, C: Compactable2<W>): Witherable2C<W, E>['wilt']
@@ -616,7 +616,7 @@ export function wiltDefault<W>(T: Traversable<W>, C: Compactable<W>): Witherable
 /**
  * Return a `wither` implementation from `Traversable` and `Compactable`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Defaults
  */
 export function witherDefault<W extends URIS2, E>(
@@ -640,7 +640,7 @@ export function witherDefault<W>(T: Traversable<W>, C: Compactable<W>): Witherab
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export interface FilterE1<G extends URIS> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -665,7 +665,7 @@ export interface FilterE1<G extends URIS> {
  *
  * See `ReadonlyArray`'s `filterE` for an example of usage.
  *
- * @since 2.11.0
+ * @since 1.0.0
  */
 export function filterE<G extends URIS>(W: Witherable1<G>): FilterE1<G>
 export function filterE<G>(

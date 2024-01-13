@@ -1,4 +1,4 @@
-/** @since 2.5.0 */
+/** @since 1.0.0 */
 import { type Alt1 } from './Alt'
 import { type Alternative1 } from './Alternative'
 import { type Applicative as ApplicativeHKT, type Applicative1 } from './Applicative'
@@ -54,7 +54,7 @@ import { guard as guard_, type Zero1 } from './Zero'
 /**
  * Test whether a `ReadonlyArray` is empty.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Refinements
  * @example
  *   import { isEmpty } from 'fp-ts/ReadonlyArray'
@@ -66,7 +66,7 @@ export const isEmpty = <A>(as: ReadonlyArray<A>): as is readonly [] => as.length
 /**
  * Test whether a `ReadonlyArray` is non empty.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Refinements
  */
 export const isNonEmpty: <A>(as: ReadonlyArray<A>) => as is ReadonlyNonEmptyArray<A> = RNEA.isNonEmpty
@@ -78,7 +78,7 @@ export const isNonEmpty: <A>(as: ReadonlyArray<A>) => as is ReadonlyNonEmptyArra
 /**
  * Prepend an element to the front of a `ReadonlyArray`, creating a new `ReadonlyNonEmptyArray`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { prepend } from 'fp-ts/ReadonlyArray'
  *   import { pipe } from 'fp-ts/function'
@@ -90,14 +90,14 @@ export const prepend = RNEA.prepend
 /**
  * Less strict version of [`prepend`](#prepend).
  *
- * @since 2.11.0
+ * @since 1.0.0
  */
 export const prependW = RNEA.prependW
 
 /**
  * Append an element to the end of a `ReadonlyArray`, creating a new `ReadonlyNonEmptyArray`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { append } from 'fp-ts/ReadonlyArray'
  *   import { pipe } from 'fp-ts/function'
@@ -109,7 +109,7 @@ export const append = RNEA.append
 /**
  * Less strict version of [`append`](#append).
  *
- * @since 2.11.0
+ * @since 1.0.0
  */
 export const appendW = RNEA.appendW
 
@@ -118,7 +118,7 @@ export const appendW = RNEA.appendW
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Constructors
  * @example
  *   import { makeBy } from 'fp-ts/ReadonlyArray'
@@ -133,7 +133,7 @@ export const makeBy = <A>(n: number, f: (i: number) => A): ReadonlyArray<A> => (
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Constructors
  * @example
  *   import { replicate } from 'fp-ts/ReadonlyArray'
@@ -143,7 +143,7 @@ export const makeBy = <A>(n: number, f: (i: number) => A): ReadonlyArray<A> => (
 export const replicate = <A>(n: number, a: A): ReadonlyArray<A> => makeBy(n, () => a)
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Lifting
  */
 export function fromPredicate<A, B extends A>(refinement: Refinement<A, B>): (a: A) => ReadonlyArray<B>
@@ -158,7 +158,7 @@ export function fromPredicate<A>(predicate: Predicate<A>): (a: A) => ReadonlyArr
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromOption: <A>(fa: Option<A>) => ReadonlyArray<A> = ma => (_.isNone(ma) ? empty : [ma.value])
@@ -166,7 +166,7 @@ export const fromOption: <A>(fa: Option<A>) => ReadonlyArray<A> = ma => (_.isNon
 /**
  * Transforms an `Either` to a `ReadonlyArray`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromEither: <A>(fa: Either<unknown, A>) => ReadonlyArray<A> = e => (_.isLeft(e) ? empty : [e.right])
@@ -176,7 +176,7 @@ export const fromEither: <A>(fa: Either<unknown, A>) => ReadonlyArray<A> = e => 
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchW =
@@ -185,7 +185,7 @@ export const matchW =
     isNonEmpty(as) ? onNonEmpty(as) : onEmpty()
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const match: <B, A>(
@@ -196,7 +196,7 @@ export const match: <B, A>(
 /**
  * Less strict version of [`matchLeft`](#matchleft).
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchLeftW =
@@ -207,7 +207,7 @@ export const matchLeftW =
 /**
  * Break a `ReadonlyArray` into its first element and remaining elements.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  * @example
  *   import { matchLeft } from 'fp-ts/ReadonlyArray'
@@ -226,7 +226,7 @@ export const matchLeft: <B, A>(
 /**
  * Alias of [`matchLeft`](#matchleft).
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const foldLeft: <A, B>(
@@ -237,7 +237,7 @@ export const foldLeft: <A, B>(
 /**
  * Less strict version of [`matchRight`](#matchright).
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchRightW =
@@ -248,7 +248,7 @@ export const matchRightW =
 /**
  * Break a `ReadonlyArray` into its initial elements and the last element.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchRight: <B, A>(
@@ -259,7 +259,7 @@ export const matchRight: <B, A>(
 /**
  * Alias of [`matchRight`](#matchright).
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const foldRight: <A, B>(
@@ -272,7 +272,7 @@ export const foldRight: <A, B>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const chainWithIndex =
@@ -291,7 +291,7 @@ export const chainWithIndex =
 /**
  * Same as `reduce` but it carries over the intermediate steps.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { scanLeft } from 'fp-ts/ReadonlyArray'
  *
@@ -312,7 +312,7 @@ export const scanLeft =
 /**
  * Fold an array from the right, keeping all intermediate results instead of only the final result
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { scanRight } from 'fp-ts/ReadonlyArray'
  *
@@ -333,14 +333,14 @@ export const scanRight =
 /**
  * Calculate the number of elements in a `ReadonlyArray`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export const size = <A>(as: ReadonlyArray<A>): number => as.length
 
 /**
  * Test whether an array contains a particular index
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export const isOutOfBound: <A>(i: number, as: ReadonlyArray<A>) => boolean = RNEA.isOutOfBound
 
@@ -348,7 +348,7 @@ export const isOutOfBound: <A>(i: number, as: ReadonlyArray<A>) => boolean = RNE
 /**
  * This function provides a safe way to read a value at a particular index from an array
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { lookup } from 'fp-ts/ReadonlyArray'
  *   import { some, none } from 'fp-ts/Option'
@@ -370,7 +370,7 @@ export function lookup<A>(i: number, as?: ReadonlyArray<A>): Option<A> | (<A>(as
 /**
  * Get the first element in an array, or `None` if the array is empty
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { head } from 'fp-ts/ReadonlyArray'
  *   import { some, none } from 'fp-ts/Option'
@@ -383,7 +383,7 @@ export const head = <A>(as: ReadonlyArray<A>): Option<A> => (isNonEmpty(as) ? _.
 /**
  * Get the last element in an array, or `None` if the array is empty
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { last } from 'fp-ts/ReadonlyArray'
  *   import { some, none } from 'fp-ts/Option'
@@ -396,7 +396,7 @@ export const last = <A>(as: ReadonlyArray<A>): Option<A> => (isNonEmpty(as) ? _.
 /**
  * Get all but the first element of an array, creating a new array, or `None` if the array is empty
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { tail } from 'fp-ts/ReadonlyArray'
  *   import { some, none } from 'fp-ts/Option'
@@ -410,7 +410,7 @@ export const tail = <A>(as: ReadonlyArray<A>): Option<ReadonlyArray<A>> =>
 /**
  * Get all but the last element of an array, creating a new array, or `None` if the array is empty
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { init } from 'fp-ts/ReadonlyArray'
  *   import { some, none } from 'fp-ts/Option'
@@ -426,7 +426,7 @@ export const init = <A>(as: ReadonlyArray<A>): Option<ReadonlyArray<A>> =>
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import * as RA from 'fp-ts/ReadonlyArray'
  *   import { pipe } from 'fp-ts/function'
@@ -450,7 +450,7 @@ export const takeLeft =
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import * as RA from 'fp-ts/ReadonlyArray'
  *   import { pipe } from 'fp-ts/function'
@@ -472,7 +472,7 @@ export const takeRight =
 /**
  * Calculate the longest initial subarray for which all element satisfy the specified predicate, creating a new array
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { takeLeftWhile } from 'fp-ts/ReadonlyArray'
  *
@@ -499,7 +499,7 @@ export function takeLeftWhile<A>(predicate: Predicate<A>): (as: ReadonlyArray<A>
   }
 }
 
-/** @since 2.5.0 */
+/** @since 1.0.0 */
 export interface Spanned<I, R> {
   readonly init: ReadonlyArray<I>
   readonly rest: ReadonlyArray<R>
@@ -522,7 +522,7 @@ const spanLeftIndex = <A>(as: ReadonlyArray<A>, predicate: Predicate<A>): number
  * 1. The longest initial subarray for which all elements satisfy the specified predicate
  * 2. The remaining elements
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { spanLeft } from 'fp-ts/ReadonlyArray'
  *
@@ -543,7 +543,7 @@ export function spanLeft<A>(predicate: Predicate<A>): (as: ReadonlyArray<A>) => 
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import * as RA from 'fp-ts/ReadonlyArray'
  *   import { pipe } from 'fp-ts/function'
@@ -565,7 +565,7 @@ export const dropLeft =
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import * as RA from 'fp-ts/ReadonlyArray'
  *   import { pipe } from 'fp-ts/function'
@@ -585,7 +585,7 @@ export const dropRight =
 /**
  * Remove the longest initial subarray for which all element satisfy the specified predicate, creating a new array
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { dropLeftWhile } from 'fp-ts/ReadonlyArray'
  *
@@ -608,7 +608,7 @@ export function dropLeftWhile<A>(predicate: Predicate<A>): (as: ReadonlyArray<A>
 /**
  * Find the first index for which a predicate holds
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { findIndex } from 'fp-ts/ReadonlyArray'
  *   import { some, none } from 'fp-ts/Option'
@@ -630,7 +630,7 @@ export const findIndex =
 /**
  * Find the first element which satisfies a predicate (or a refinement) function
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { findFirst } from 'fp-ts/ReadonlyArray'
  *   import { some } from 'fp-ts/Option'
@@ -665,7 +665,7 @@ export function findFirst<A>(predicate: Predicate<A>): (as: ReadonlyArray<A>) =>
 /**
  * Find the first element returned by an option based selector function
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { findFirstMap } from 'fp-ts/ReadonlyArray'
  *   import { some, none } from 'fp-ts/Option'
@@ -698,7 +698,7 @@ export const findFirstMap =
 /**
  * Find the last element which satisfies a predicate function
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { findLast } from 'fp-ts/ReadonlyArray'
  *   import { some } from 'fp-ts/Option'
@@ -733,7 +733,7 @@ export function findLast<A>(predicate: Predicate<A>): (as: ReadonlyArray<A>) => 
 /**
  * Find the last element returned by an option based selector function
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { findLastMap } from 'fp-ts/ReadonlyArray'
  *   import { some, none } from 'fp-ts/Option'
@@ -766,7 +766,7 @@ export const findLastMap =
 /**
  * Returns the index of the last element of the list which matches the predicate
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { findLastIndex } from 'fp-ts/ReadonlyArray'
  *   import { some, none } from 'fp-ts/Option'
@@ -796,7 +796,7 @@ export const findLastIndex =
 /**
  * Insert an element at the specified index, creating a new array, or returning `None` if the index is out of bounds
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { insertAt } from 'fp-ts/ReadonlyArray'
  *   import { some } from 'fp-ts/Option'
@@ -811,7 +811,7 @@ export const insertAt =
 /**
  * Change the element at the specified index, creating a new array, or returning `None` if the index is out of bounds
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { updateAt } from 'fp-ts/ReadonlyArray'
  *   import { some, none } from 'fp-ts/Option'
@@ -825,7 +825,7 @@ export const updateAt = <A>(i: number, a: A): ((as: ReadonlyArray<A>) => Option<
 /**
  * Delete the element at the specified index, creating a new array, or returning `None` if the index is out of bounds
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { deleteAt } from 'fp-ts/ReadonlyArray'
  *   import { some, none } from 'fp-ts/Option'
@@ -842,7 +842,7 @@ export const deleteAt =
  * Apply a function to the element at the specified index, creating a new array, or returning `None` if the index is out
  * of bounds
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { modifyAt } from 'fp-ts/ReadonlyArray'
  *   import { some, none } from 'fp-ts/Option'
@@ -859,7 +859,7 @@ export const modifyAt =
 /**
  * Reverse an array, creating a new array
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { reverse } from 'fp-ts/ReadonlyArray'
  *
@@ -870,7 +870,7 @@ export const reverse = <A>(as: ReadonlyArray<A>): ReadonlyArray<A> => (as.length
 /**
  * Extracts from an array of `Either` all the `Right` elements. All the `Right` elements are extracted in order
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { rights } from 'fp-ts/ReadonlyArray'
  *   import { right, left } from 'fp-ts/Either'
@@ -891,7 +891,7 @@ export const rights = <E, A>(as: ReadonlyArray<Either<E, A>>): ReadonlyArray<A> 
 /**
  * Extracts from an array of `Either` all the `Left` elements. All the `Left` elements are extracted in order
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { lefts } from 'fp-ts/ReadonlyArray'
  *   import { left, right } from 'fp-ts/Either'
@@ -912,7 +912,7 @@ export const lefts = <E, A>(as: ReadonlyArray<Either<E, A>>): ReadonlyArray<E> =
 /**
  * Sort the elements of an array in increasing order, creating a new array
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { sort } from 'fp-ts/ReadonlyArray'
  *   import * as N from 'fp-ts/number'
@@ -929,7 +929,7 @@ export const sort =
  * Apply a function to pairs of elements at the same index in two arrays, collecting the results in a new array. If one
  * input array is short, excess elements of the longer array are discarded.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { zipWith } from 'fp-ts/ReadonlyArray'
  *
@@ -956,7 +956,7 @@ export const zipWith = <A, B, C>(
  * Takes two arrays and returns an array of corresponding pairs. If one input array is short, excess elements of the
  * longer array are discarded
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { zip } from 'fp-ts/ReadonlyArray'
  *   import { pipe } from 'fp-ts/function'
@@ -982,7 +982,7 @@ export function zip<A, B>(
 /**
  * The function is reverse of `zip`. Takes an array of pairs and return two corresponding arrays
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { unzip } from 'fp-ts/ReadonlyArray'
  *
@@ -1011,7 +1011,7 @@ export const unzip = <A, B>(as: ReadonlyArray<readonly [A, B]>): readonly [Reado
 /**
  * Prepend an element to every member of an array
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { prependAll } from 'fp-ts/ReadonlyArray'
  *
@@ -1025,7 +1025,7 @@ export const prependAll = <A>(middle: A): ((as: ReadonlyArray<A>) => ReadonlyArr
 /**
  * Places an element in between members of an array
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @example
  *   import { intersperse } from 'fp-ts/ReadonlyArray'
  *
@@ -1039,7 +1039,7 @@ export const intersperse = <A>(middle: A): ((as: ReadonlyArray<A>) => ReadonlyAr
 /**
  * Rotate a `ReadonlyArray` by `n` steps.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { rotate } from 'fp-ts/ReadonlyArray'
  *
@@ -1055,7 +1055,7 @@ export const rotate = (n: number): (<A>(as: ReadonlyArray<A>) => ReadonlyArray<A
  * Test if a value is a member of an array. Takes a `Eq<A>` as a single argument which returns the function to use to
  * search for a value of type `A` in an array of type `ReadonlyArray<A>`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { elem } from 'fp-ts/ReadonlyArray'
  *   import * as N from 'fp-ts/number'
@@ -1088,7 +1088,7 @@ export function elem<A>(E: Eq<A>): (a: A, as?: ReadonlyArray<A>) => boolean | ((
 /**
  * Remove duplicates from an array, keeping the first occurrence of an element.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { uniq } from 'fp-ts/ReadonlyArray'
  *   import * as N from 'fp-ts/number'
@@ -1104,7 +1104,7 @@ export const uniq = <A>(E: Eq<A>): ((as: ReadonlyArray<A>) => ReadonlyArray<A>) 
  * Sort the elements of an array in increasing order, where elements are compared using first `ords[0]`, then `ords[1]`,
  * etc...
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { sortBy } from 'fp-ts/ReadonlyArray'
  *   import { contramap } from 'fp-ts/Ord'
@@ -1150,7 +1150,7 @@ export const sortBy = <B>(ords: ReadonlyArray<Ord<B>>): (<A extends B>(as: Reado
  * "chopping" up the input `ReadonlyArray`. Typically `chop` is called with some function that will consume an initial
  * prefix of the `ReadonlyArray` and produce a value and the tail of the `ReadonlyArray`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { Eq } from 'fp-ts/Eq'
  *   import * as RA from 'fp-ts/ReadonlyArray'
@@ -1178,7 +1178,7 @@ export const chop = <A, B>(
 /**
  * Splits a `ReadonlyArray` into two pieces, the first piece has max `n` elements.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { splitAt } from 'fp-ts/ReadonlyArray'
  *
@@ -1205,7 +1205,7 @@ export const splitAt =
  *
  * Whenever `n` evenly divides the length of `as`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { chunksOf } from 'fp-ts/ReadonlyArray'
  *
@@ -1217,7 +1217,7 @@ export const chunksOf = (n: number): (<A>(as: ReadonlyArray<A>) => ReadonlyArray
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromOptionK =
@@ -1230,7 +1230,7 @@ export const fromOptionK =
  *
  *     [ f(x, y, ...) | x ← xs, y ← ys, ..., g(x, y, ...) ]
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { comprehension } from 'fp-ts/ReadonlyArray'
  *   import { tuple } from 'fp-ts/function'
@@ -1284,7 +1284,7 @@ export function comprehension<A, R>(
   return go(empty, input)
 }
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const concatW =
   <B>(second: ReadonlyArray<B>) =>
   <A>(first: ReadonlyArray<A>): ReadonlyArray<A | B> =>
@@ -1292,14 +1292,14 @@ export const concatW =
     : isEmpty(second) ? first
     : (first as ReadonlyArray<A | B>).concat(second)
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const concat: <A>(second: ReadonlyArray<A>) => (first: ReadonlyArray<A>) => ReadonlyArray<A> = concatW
 
 // TODO: remove non-curried overloading in v3
 /**
  * Creates an array of unique values, in order, from all given arrays using a `Eq` for equality comparisons
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { union } from 'fp-ts/ReadonlyArray'
  *   import * as N from 'fp-ts/number'
@@ -1333,7 +1333,7 @@ export function union<A>(
  * Creates an array of unique values that are included in all given arrays using a `Eq` for equality comparisons. The
  * order and references of result values are determined by the first array.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { intersection } from 'fp-ts/ReadonlyArray'
  *   import * as N from 'fp-ts/number'
@@ -1363,7 +1363,7 @@ export function intersection<A>(
  * Creates an array of array values not included in the other given array using a `Eq` for equality comparisons. The
  * order and references of result values are determined by the first array.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { difference } from 'fp-ts/ReadonlyArray'
  *   import * as N from 'fp-ts/number'
@@ -1448,12 +1448,12 @@ export const _chainRecDepthFirst: ChainRec1<URI>['chainRec'] = (a, f) => pipe(a,
 export const _chainRecBreadthFirst: ChainRec1<URI>['chainRec'] = (a, f) => pipe(a, chainRecBreadthFirst(f))
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const of: <A>(a: A) => ReadonlyArray<A> = RNEA.of
 
-/** @since 2.7.0 */
+/** @since 1.0.0 */
 export const zero: <A>() => ReadonlyArray<A> = () => empty
 
 /**
@@ -1461,7 +1461,7 @@ export const zero: <A>() => ReadonlyArray<A> = () => empty
  *
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Error handling
  * @example
  *   import * as RA from 'fp-ts/ReadonlyArray'
@@ -1486,7 +1486,7 @@ export const altW =
  *
  * In case of `ReadonlyArray` concatenates the inputs into a single array.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Error handling
  * @example
  *   import * as RA from 'fp-ts/ReadonlyArray'
@@ -1502,14 +1502,14 @@ export const altW =
  */
 export const alt: <A>(that: LazyArg<ReadonlyArray<A>>) => (fa: ReadonlyArray<A>) => ReadonlyArray<A> = altW
 
-/** @since 2.5.0 */
+/** @since 1.0.0 */
 export const ap: <A>(fa: ReadonlyArray<A>) => <B>(fab: ReadonlyArray<(a: A) => B>) => ReadonlyArray<B> = fa =>
   flatMap(f => pipe(fa, map(f)))
 
 /**
  * Composes computations in sequence, using the return value of one computation to determine the next computation.
  *
- * @since 2.14.0
+ * @since 1.0.0
  * @category Sequencing
  * @example
  *   import * as RA from 'fp-ts/ReadonlyArray'
@@ -1543,7 +1543,7 @@ export const flatMap: {
 )
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatten: <A>(mma: ReadonlyArray<ReadonlyArray<A>>) => ReadonlyArray<A> = /*#__PURE__*/ flatMap(identity)
@@ -1552,20 +1552,20 @@ export const flatten: <A>(mma: ReadonlyArray<ReadonlyArray<A>>) => ReadonlyArray
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const map: <A, B>(f: (a: A) => B) => (fa: ReadonlyArray<A>) => ReadonlyArray<B> = f => fa => fa.map(a => f(a))
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const mapWithIndex: <A, B>(f: (i: number, a: A) => B) => (fa: ReadonlyArray<A>) => ReadonlyArray<B> = f => fa =>
   fa.map((a, i) => f(i, a))
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const separate = <A, B>(fa: ReadonlyArray<Either<A, B>>): Separated<ReadonlyArray<A>, ReadonlyArray<B>> => {
@@ -1582,7 +1582,7 @@ export const separate = <A, B>(fa: ReadonlyArray<Either<A, B>>): Separated<Reado
 }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const filter: {
@@ -1595,7 +1595,7 @@ export const filter: {
     as.filter(predicate)
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const filterMapWithIndex =
@@ -1612,20 +1612,20 @@ export const filterMapWithIndex =
   }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: ReadonlyArray<A>) => ReadonlyArray<B> = f =>
   filterMapWithIndex((_, a) => f(a))
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const compact: <A>(fa: ReadonlyArray<Option<A>>) => ReadonlyArray<A> = /*#__PURE__*/ filterMap(identity)
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const partition: {
@@ -1638,7 +1638,7 @@ export const partition: {
   partitionWithIndex((_, a) => predicate(a))
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const partitionWithIndex: {
@@ -1668,7 +1668,7 @@ export const partitionWithIndex: {
   }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const partitionMap: <A, B, C>(
@@ -1677,7 +1677,7 @@ export const partitionMap: <A, B, C>(
   partitionMapWithIndex((_, a) => f(a))
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const partitionMapWithIndex =
@@ -1697,7 +1697,7 @@ export const partitionMapWithIndex =
   }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const filterWithIndex: {
@@ -1709,15 +1709,15 @@ export const filterWithIndex: {
   (as: ReadonlyArray<A>): ReadonlyArray<A> =>
     as.filter((a, i) => predicateWithIndex(i, a))
 
-/** @since 2.5.0 */
+/** @since 1.0.0 */
 export const extend: <A, B>(f: (fa: ReadonlyArray<A>) => B) => (wa: ReadonlyArray<A>) => ReadonlyArray<B> = f => wa =>
   wa.map((_, i) => f(wa.slice(i)))
 
-/** @since 2.5.0 */
+/** @since 1.0.0 */
 export const duplicate: <A>(wa: ReadonlyArray<A>) => ReadonlyArray<ReadonlyArray<A>> = /*#__PURE__*/ extend(identity)
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Folding
  */
 export const foldMapWithIndex =
@@ -1727,14 +1727,14 @@ export const foldMapWithIndex =
     fa.reduce((b, a, i) => M.concat(b, f(i, a)), M.empty)
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Folding
  */
 export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => (fa: ReadonlyArray<A>) => B = (b, f) =>
   reduceWithIndex(b, (_, b, a) => f(b, a))
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Folding
  */
 export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: ReadonlyArray<A>) => M = M => {
@@ -1743,7 +1743,7 @@ export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: ReadonlyA
 }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Folding
  */
 export const reduceWithIndex: <A, B>(b: B, f: (i: number, b: B, a: A) => B) => (fa: ReadonlyArray<A>) => B =
@@ -1757,14 +1757,14 @@ export const reduceWithIndex: <A, B>(b: B, f: (i: number, b: B, a: A) => B) => (
   }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Folding
  */
 export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => (fa: ReadonlyArray<A>) => B = (b, f) =>
   reduceRightWithIndex(b, (_, a, b) => f(a, b))
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Folding
  */
 export const reduceRightWithIndex: <A, B>(b: B, f: (i: number, a: A, b: B) => B) => (fa: ReadonlyArray<A>) => B =
@@ -1772,7 +1772,7 @@ export const reduceRightWithIndex: <A, B>(b: B, f: (i: number, a: A, b: B) => B)
     fa.reduceRight((b, a, i) => f(i, a, b), b)
 
 /**
- * @since 2.6.3
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverse: PipeableTraverse1<URI> = <F>(
@@ -1783,7 +1783,7 @@ export const traverse: PipeableTraverse1<URI> = <F>(
 }
 
 /**
- * @since 2.6.3
+ * @since 1.0.0
  * @category Traversing
  */
 export const sequence: Traversable1<URI>['sequence'] =
@@ -1798,7 +1798,7 @@ export const sequence: Traversable1<URI>['sequence'] =
   }
 
 /**
- * @since 2.6.3
+ * @since 1.0.0
  * @category Sequencing
  */
 export const traverseWithIndex: PipeableTraverseWithIndex1<URI, number> =
@@ -1812,7 +1812,7 @@ export const traverseWithIndex: PipeableTraverseWithIndex1<URI, number> =
     )
 
 /**
- * @since 2.6.5
+ * @since 1.0.0
  * @category Filtering
  */
 export const wither: PipeableWither1<URI> = <F>(
@@ -1823,7 +1823,7 @@ export const wither: PipeableWither1<URI> = <F>(
 }
 
 /**
- * @since 2.6.5
+ * @since 1.0.0
  * @category Filtering
  */
 export const wilt: PipeableWilt1<URI> = <F>(
@@ -1835,7 +1835,7 @@ export const wilt: PipeableWilt1<URI> = <F>(
   return f => fa => _wiltF(fa, f)
 }
 
-/** @since 2.6.6 */
+/** @since 1.0.0 */
 export const unfold = <A, B>(b: B, f: (b: B) => Option<readonly [A, B]>): ReadonlyArray<A> => {
   const out: Array<A> = []
   let bb: B = b
@@ -1854,13 +1854,13 @@ export const unfold = <A, B>(b: B, f: (b: B) => Option<readonly [A, B]>): Readon
 }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'ReadonlyArray'
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -1872,7 +1872,7 @@ declare module './HKT' {
 }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getShow = <A>(S: Show<A>): Show<ReadonlyArray<A>> => ({
@@ -1880,7 +1880,7 @@ export const getShow = <A>(S: Show<A>): Show<ReadonlyArray<A>> => ({
 })
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getSemigroup = <A = never>(): Semigroup<ReadonlyArray<A>> => ({
@@ -1893,7 +1893,7 @@ export const getSemigroup = <A = never>(): Semigroup<ReadonlyArray<A>> => ({
 /**
  * Returns a `Monoid` for `ReadonlyArray<A>`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getMonoid } from 'fp-ts/ReadonlyArray'
@@ -1911,7 +1911,7 @@ export const getMonoid = <A = never>(): Monoid<ReadonlyArray<A>> => ({
  * two arrays as equal if all elements of both arrays are compared equal pairwise with the given `E`. In case of arrays
  * of different lengths, the result is non equality.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import * as S from 'fp-ts/string'
@@ -1930,7 +1930,7 @@ export const getEq = <A>(E: Eq<A>): Eq<ReadonlyArray<A>> =>
  * order, in case of equality over all the pairwise elements; the longest array is considered the greatest, if both
  * arrays have the same length, the result is equality.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getOrd } from 'fp-ts/ReadonlyArray'
@@ -1956,7 +1956,7 @@ export const getOrd = <A>(O: Ord<A>): Ord<ReadonlyArray<A>> =>
   })
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<ReadonlyArray<A>> => {
@@ -1967,7 +1967,7 @@ export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<ReadonlyArray<A>> => {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getUnionMonoid = <A>(E: Eq<A>): Monoid<ReadonlyArray<A>> => ({
@@ -1976,7 +1976,7 @@ export const getUnionMonoid = <A>(E: Eq<A>): Monoid<ReadonlyArray<A>> => ({
 })
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<ReadonlyArray<A>> => {
@@ -1987,7 +1987,7 @@ export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<ReadonlyArray<A
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getDifferenceMagma = <A>(E: Eq<A>): Magma<ReadonlyArray<A>> => {
@@ -1998,7 +1998,7 @@ export const getDifferenceMagma = <A>(E: Eq<A>): Magma<ReadonlyArray<A>> => {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Functor: Functor1<URI> = {
@@ -2007,13 +2007,13 @@ export const Functor: Functor1<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Pointed: Pointed1<URI> = {
@@ -2022,7 +2022,7 @@ export const Pointed: Pointed1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FunctorWithIndex: FunctorWithIndex1<URI, number> = {
@@ -2032,7 +2032,7 @@ export const FunctorWithIndex: FunctorWithIndex1<URI, number> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Apply: Apply1<URI> = {
@@ -2044,19 +2044,19 @@ export const Apply: Apply1<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
 
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Applicative: Applicative1<URI> = {
@@ -2067,7 +2067,7 @@ export const Applicative: Applicative1<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Chain: Chain1<URI> = {
@@ -2078,7 +2078,7 @@ export const Chain: Chain1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Monad: Monad1<URI> = {
@@ -2093,7 +2093,7 @@ export const Monad: Monad1<URI> = {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Sequencing
  * @example
  *   import * as RA from 'fp-ts/ReadonlyArray'
@@ -2118,7 +2118,7 @@ export const chainFirst: <A, B>(f: (a: A) => ReadonlyArray<B>) => (first: Readon
   /*#__PURE__*/ chainFirst_(Chain)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Unfoldable: Unfoldable1<URI> = {
@@ -2127,7 +2127,7 @@ export const Unfoldable: Unfoldable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Alt: Alt1<URI> = {
@@ -2137,7 +2137,7 @@ export const Alt: Alt1<URI> = {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Zero: Zero1<URI> = {
@@ -2146,13 +2146,13 @@ export const Zero: Zero1<URI> = {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const guard = /*#__PURE__*/ guard_(Zero, Pointed)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Alternative: Alternative1<URI> = {
@@ -2165,7 +2165,7 @@ export const Alternative: Alternative1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Extend: Extend1<URI> = {
@@ -2175,7 +2175,7 @@ export const Extend: Extend1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Compactable: Compactable1<URI> = {
@@ -2185,7 +2185,7 @@ export const Compactable: Compactable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Filterable: Filterable1<URI> = {
@@ -2200,7 +2200,7 @@ export const Filterable: Filterable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FilterableWithIndex: FilterableWithIndex1<URI, number> = {
@@ -2220,7 +2220,7 @@ export const FilterableWithIndex: FilterableWithIndex1<URI, number> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Foldable: Foldable1<URI> = {
@@ -2231,7 +2231,7 @@ export const Foldable: Foldable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FoldableWithIndex: FoldableWithIndex1<URI, number> = {
@@ -2245,7 +2245,7 @@ export const FoldableWithIndex: FoldableWithIndex1<URI, number> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Traversable: Traversable1<URI> = {
@@ -2259,7 +2259,7 @@ export const Traversable: Traversable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const TraversableWithIndex: TraversableWithIndex1<URI, number> = {
@@ -2278,7 +2278,7 @@ export const TraversableWithIndex: TraversableWithIndex1<URI, number> = {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const chainRecDepthFirst =
@@ -2300,7 +2300,7 @@ export const chainRecDepthFirst =
   }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const ChainRecDepthFirst: ChainRec1<URI> = {
@@ -2312,7 +2312,7 @@ export const ChainRecDepthFirst: ChainRec1<URI> = {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const chainRecBreadthFirst =
@@ -2342,7 +2342,7 @@ export const chainRecBreadthFirst =
   }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const ChainRecBreadthFirst: ChainRec1<URI> = {
@@ -2357,7 +2357,7 @@ const _wither: Witherable1<URI>['wither'] = /*#__PURE__*/ witherDefault(Traversa
 const _wilt: Witherable1<URI>['wilt'] = /*#__PURE__*/ wiltDefault(Traversable, Compactable)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Witherable: Witherable1<URI> = {
@@ -2381,7 +2381,7 @@ export const Witherable: Witherable1<URI> = {
 /**
  * Filter values inside a context.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import { pipe } from 'fp-ts/function'
  *   import * as RA from 'fp-ts/ReadonlyArray'
@@ -2402,7 +2402,7 @@ export const Witherable: Witherable1<URI> = {
 export const filterE = /*#__PURE__*/ filterE_(Witherable)
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromEither: FromEither1<URI> = {
@@ -2411,7 +2411,7 @@ export const FromEither: FromEither1<URI> = {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
@@ -2423,21 +2423,21 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Unsafe
  */
 export const unsafeInsertAt: <A>(i: number, a: A, as: ReadonlyArray<A>) => ReadonlyNonEmptyArray<A> =
   RNEA.unsafeInsertAt
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Unsafe
  */
 export const unsafeUpdateAt = <A>(i: number, a: A, as: ReadonlyArray<A>): ReadonlyArray<A> =>
   isNonEmpty(as) ? RNEA.unsafeUpdateAt(i, a, as) : as
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Unsafe
  */
 export const unsafeDeleteAt = <A>(i: number, as: ReadonlyArray<A>): ReadonlyArray<A> => {
@@ -2447,13 +2447,13 @@ export const unsafeDeleteAt = <A>(i: number, as: ReadonlyArray<A>): ReadonlyArra
 }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const toArray = <A>(as: ReadonlyArray<A>): Array<A> => as.slice()
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromArray = <A>(as: Array<A>): ReadonlyArray<A> => (isEmpty(as) ? empty : as.slice())
@@ -2465,14 +2465,14 @@ export const fromArray = <A>(as: Array<A>): ReadonlyArray<A> => (isEmpty(as) ? e
 /**
  * An empty array
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export const empty: ReadonlyArray<never> = RNEA.empty
 
 /**
  * Check if a predicate holds true for every array member.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @example
  *   import { every } from 'fp-ts/ReadonlyArray'
  *   import { pipe } from 'fp-ts/function'
@@ -2491,7 +2491,7 @@ export function every<A>(predicate: Predicate<A>): Predicate<ReadonlyArray<A>> {
 /**
  * Check if a predicate holds true for any array member.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @example
  *   import { some } from 'fp-ts/ReadonlyArray'
  *   import { pipe } from 'fp-ts/function'
@@ -2509,7 +2509,7 @@ export const some =
 /**
  * Alias of [`some`](#some)
  *
- * @since 2.11.0
+ * @since 1.0.0
  */
 export const exists: <A>(predicate: Predicate<A>) => (as: ReadonlyArray<A>) => as is RNEA.ReadonlyNonEmptyArray<A> =
   some
@@ -2517,7 +2517,7 @@ export const exists: <A>(predicate: Predicate<A>) => (as: ReadonlyArray<A>) => a
 /**
  * Places an element in between members of a `ReadonlyArray`, then folds the results using the provided `Monoid`.
  *
- * @since 2.12.0
+ * @since 1.0.0
  * @example
  *   import * as S from 'fp-ts/string'
  *   import { intercalate } from 'fp-ts/ReadonlyArray'
@@ -2534,13 +2534,13 @@ export const intercalate = <A>(M: Monoid<A>): ((middle: A) => (as: ReadonlyArray
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.9.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const Do: ReadonlyArray<{}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
@@ -2549,20 +2549,20 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @since 2.13.0
+   * @since 1.0.0
    * @category Do notation
    */
   let_ as let,
 }
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bind = /*#__PURE__*/ bind_(Chain)
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
@@ -2574,7 +2574,7 @@ export const apS = /*#__PURE__*/ apS_(Apply)
 /**
  * Alias of `flatMap`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chain: <A, B>(f: (a: A) => ReadonlyArray<B>) => (ma: ReadonlyArray<A>) => ReadonlyArray<B> = flatMap
@@ -2587,7 +2587,7 @@ export const chain: <A, B>(f: (a: A) => ReadonlyArray<B>) => (ma: ReadonlyArray<
  * Use `ReadonlyNonEmptyArray` module instead.
  *
  * @deprecated
- * @since 2.5.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const range = RNEA.range
@@ -2596,7 +2596,7 @@ export const range = RNEA.range
  * Use [`prepend`](#prepend) instead.
  *
  * @deprecated
- * @since 2.5.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const cons = RNEA.cons
@@ -2605,7 +2605,7 @@ export const cons = RNEA.cons
  * Use [`append`](#append) instead.
  *
  * @deprecated
- * @since 2.5.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const snoc = RNEA.snoc
@@ -2614,7 +2614,7 @@ export const snoc = RNEA.snoc
  * Use [`prependAll`](#prependall) instead.
  *
  * @deprecated
- * @since 2.9.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const prependToAll = prependAll
@@ -2625,7 +2625,7 @@ export const prependToAll = prependAll
  * 'fp-ts/ReadonlyArray'`)
  *
  * @deprecated
- * @since 2.5.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const readonlyArray: FunctorWithIndex1<URI, number> &

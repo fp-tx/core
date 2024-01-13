@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import { type Applicative2C } from './Applicative'
 import { type Apply2C } from './Apply'
 import { type Chain2C } from './Chain'
@@ -14,7 +14,7 @@ import { type Semigroup } from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Writer<W, A> {
@@ -28,7 +28,7 @@ export interface Writer<W, A> {
 /**
  * Appends a value to the accumulator
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const tell: <W>(w: W) => Writer<W, void> = w => () => [undefined, w]
@@ -40,7 +40,7 @@ export const tell: <W>(w: W) => Writer<W, void> = w => () => [undefined, w]
 /**
  * Modifies the result to include the changes to the accumulator
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const listen: <W, A>(fa: Writer<W, A>) => Writer<W, [A, W]> = fa => () => {
   const [a, w] = fa()
@@ -50,7 +50,7 @@ export const listen: <W, A>(fa: Writer<W, A>) => Writer<W, [A, W]> = fa => () =>
 /**
  * Applies the returned function to the accumulator
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const pass: <W, A>(fa: Writer<W, [A, (w: W) => W]>) => Writer<W, A> = fa => () => {
   const [[a, f], w] = fa()
@@ -60,7 +60,7 @@ export const pass: <W, A>(fa: Writer<W, [A, (w: W) => W]>) => Writer<W, A> = fa 
 /**
  * Projects a value from modifications made to the accumulator during an action
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const listens: <W, B>(f: (w: W) => B) => <A>(fa: Writer<W, A>) => Writer<W, [A, B]> = f => fa => () => {
   const [a, w] = fa()
@@ -70,7 +70,7 @@ export const listens: <W, B>(f: (w: W) => B) => <A>(fa: Writer<W, A>) => Writer<
 /**
  * Modify the final accumulator value by applying a function
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const censor: <W>(f: (w: W) => W) => <A>(fa: Writer<W, A>) => Writer<W, A> = f => fa => () => {
   const [a, w] = fa()
@@ -84,7 +84,7 @@ const _map: Functor2<URI>['map'] = (fa, f) => pipe(fa, map(f))
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: Writer<E, A>) => Writer<E, B> = f => fa => () => {
@@ -93,13 +93,13 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: Writer<E, A>) => Writer<E, B
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'Writer'
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -111,7 +111,7 @@ declare module './HKT' {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getPointed = <W>(M: Monoid<W>): Pointed2C<URI, W> => ({
@@ -121,7 +121,7 @@ export const getPointed = <W>(M: Monoid<W>): Pointed2C<URI, W> => ({
 })
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getApply = <W>(S: Semigroup<W>): Apply2C<URI, W> => ({
@@ -136,7 +136,7 @@ export const getApply = <W>(S: Semigroup<W>): Apply2C<URI, W> => ({
 })
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getApplicative = <W>(M: Monoid<W>): Applicative2C<URI, W> => {
@@ -152,7 +152,7 @@ export const getApplicative = <W>(M: Monoid<W>): Applicative2C<URI, W> => {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export function getChain<W>(S: Semigroup<W>): Chain2C<URI, W> {
@@ -171,7 +171,7 @@ export function getChain<W>(S: Semigroup<W>): Chain2C<URI, W> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  */
 export function getMonad<W>(M: Monoid<W>): Monad2C<URI, W> {
@@ -188,7 +188,7 @@ export function getMonad<W>(M: Monoid<W>): Monad2C<URI, W> {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Functor: Functor2<URI> = {
@@ -197,7 +197,7 @@ export const Functor: Functor2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
@@ -206,10 +206,10 @@ export const flap = /*#__PURE__*/ flap_(Functor)
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 2.8.0 */
+/** @since 1.0.0 */
 export const evaluate: <W, A>(fa: Writer<W, A>) => A = fa => fa()[0]
 
-/** @since 2.8.0 */
+/** @since 1.0.0 */
 export const execute: <W, A>(fa: Writer<W, A>) => W = fa => fa()[1]
 
 // -------------------------------------------------------------------------------------
@@ -220,7 +220,7 @@ export const execute: <W, A>(fa: Writer<W, A>) => W = fa => fa()[1]
  * Use [`evaluate`](#evaluate) instead
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const evalWriter: <W, A>(fa: Writer<W, A>) => A = fa => fa()[0]
@@ -229,7 +229,7 @@ export const evalWriter: <W, A>(fa: Writer<W, A>) => A = fa => fa()[0]
  * Use [`execute`](#execute) instead
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const execWriter: <W, A>(fa: Writer<W, A>) => W = fa => fa()[1]
@@ -238,7 +238,7 @@ export const execWriter: <W, A>(fa: Writer<W, A>) => W = fa => fa()[1]
  * Use [`Functor`](#functor) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const writer: Functor2<URI> = Functor

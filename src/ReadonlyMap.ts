@@ -1,4 +1,4 @@
-/** @since 2.5.0 */
+/** @since 1.0.0 */
 import { type Applicative } from './Applicative'
 import { type Compactable2 } from './Compactable'
 import { type Either } from './Either'
@@ -28,13 +28,13 @@ import { type Unfoldable, type Unfoldable1 } from './Unfoldable'
 import { wiltDefault, type Witherable2C, witherDefault } from './Witherable'
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromMap = <K, A>(m: Map<K, A>): ReadonlyMap<K, A> => new Map(m)
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Conversions
  */
 export function toMap<K, A>(m: ReadonlyMap<K, A>): Map<K, A> {
@@ -42,7 +42,7 @@ export function toMap<K, A>(m: ReadonlyMap<K, A>): Map<K, A> {
 }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Instances
  */
 export function getShow<K, A>(SK: Show<K>, SA: Show<A>): Show<ReadonlyMap<K, A>> {
@@ -60,14 +60,14 @@ export function getShow<K, A>(SK: Show<K>, SA: Show<A>): Show<ReadonlyMap<K, A>>
 /**
  * Calculate the number of key/value pairs in a map
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export const size = <K, A>(m: ReadonlyMap<K, A>): number => m.size
 
 /**
  * Test whether or not a map is empty
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export const isEmpty = <K, A>(m: ReadonlyMap<K, A>): boolean => m.size === 0
 
@@ -75,7 +75,7 @@ export const isEmpty = <K, A>(m: ReadonlyMap<K, A>): boolean => m.size === 0
 /**
  * Test whether or not a key exists in a map
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export function member<K>(E: Eq<K>): {
   (k: K): <A>(m: ReadonlyMap<K, A>) => boolean
@@ -101,7 +101,7 @@ interface Next<A> {
 /**
  * Test whether or not a value is a member of a map
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export function elem<A>(E: Eq<A>): {
   (a: A): <K>(m: ReadonlyMap<K, A>) => boolean
@@ -128,7 +128,7 @@ export function elem<A>(E: Eq<A>): <K>(a: A, m?: ReadonlyMap<K, A>) => boolean |
 /**
  * Get a sorted `ReadonlyArray` of the keys contained in a `ReadonlyMap`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export const keys =
   <K>(O: Ord<K>) =>
@@ -138,14 +138,14 @@ export const keys =
 /**
  * Get a sorted `ReadonlyArray` of the values contained in a `ReadonlyMap`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export const values =
   <A>(O: Ord<A>) =>
   <K>(m: ReadonlyMap<K, A>): ReadonlyArray<A> =>
     Array.from(m.values()).sort(O.compare)
 
-/** @since 2.5.0 */
+/** @since 1.0.0 */
 export function collect<K>(O: Ord<K>): <A, B>(f: (k: K, a: A) => B) => (m: ReadonlyMap<K, A>) => ReadonlyArray<B> {
   const keysO = keys(O)
   return <A, B>(f: (k: K, a: A) => B) =>
@@ -162,7 +162,7 @@ export function collect<K>(O: Ord<K>): <A, B>(f: (k: K, a: A) => B) => (m: Reado
 /**
  * Get a sorted `ReadonlyArray` of the key/value pairs contained in a `ReadonlyMap`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const toReadonlyArray = <K>(O: Ord<K>): (<A>(m: ReadonlyMap<K, A>) => ReadonlyArray<readonly [K, A]>) =>
@@ -171,7 +171,7 @@ export const toReadonlyArray = <K>(O: Ord<K>): (<A>(m: ReadonlyMap<K, A>) => Rea
 /**
  * Unfolds a map into a list of key/value pairs
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Conversions
  */
 export function toUnfoldable<K, F extends URIS>(
@@ -194,7 +194,7 @@ export function toUnfoldable<K, F>(
 /**
  * Insert or replace a key/value pair in a `ReadonlyMap`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export const upsertAt = <K>(E: Eq<K>): (<A>(k: K, a: A) => (m: ReadonlyMap<K, A>) => ReadonlyMap<K, A>) => {
   const lookupWithKeyE = lookupWithKey(E)
@@ -219,7 +219,7 @@ export const upsertAt = <K>(E: Eq<K>): (<A>(k: K, a: A) => (m: ReadonlyMap<K, A>
 /**
  * Delete a key and value from a map
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export const deleteAt = <K>(E: Eq<K>): ((k: K) => <A>(m: ReadonlyMap<K, A>) => ReadonlyMap<K, A>) => {
   const lookupWithKeyE = lookupWithKey(E)
@@ -234,13 +234,13 @@ export const deleteAt = <K>(E: Eq<K>): ((k: K) => <A>(m: ReadonlyMap<K, A>) => R
   }
 }
 
-/** @since 2.5.0 */
+/** @since 1.0.0 */
 export const updateAt = <K>(E: Eq<K>): (<A>(k: K, a: A) => (m: ReadonlyMap<K, A>) => Option<ReadonlyMap<K, A>>) => {
   const modifyAtE = modifyAt(E)
   return (k, a) => modifyAtE(k, () => a)
 }
 
-/** @since 2.5.0 */
+/** @since 1.0.0 */
 export const modifyAt = <K>(
   E: Eq<K>,
 ): (<A>(k: K, f: (a: A) => A) => (m: ReadonlyMap<K, A>) => Option<ReadonlyMap<K, A>>) => {
@@ -264,7 +264,7 @@ export const modifyAt = <K>(
 /**
  * Delete a key and value from a map, returning the value as well as the subsequent map
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export function pop<K>(E: Eq<K>): (k: K) => <A>(m: ReadonlyMap<K, A>) => Option<readonly [A, ReadonlyMap<K, A>]> {
   const lookupE = lookup(E)
@@ -283,7 +283,7 @@ export function pop<K>(E: Eq<K>): (k: K) => <A>(m: ReadonlyMap<K, A>) => Option<
 /**
  * Lookup the value for a key in a `Map`. If the result is a `Some`, the existing key is also returned.
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export function lookupWithKey<K>(E: Eq<K>): {
   (k: K): <A>(m: ReadonlyMap<K, A>) => Option<readonly [K, A]>
@@ -313,7 +313,7 @@ export function lookupWithKey<K>(
 /**
  * Lookup the value for a key in a `Map`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export function lookup<K>(E: Eq<K>): {
   (k: K): <A>(m: ReadonlyMap<K, A>) => Option<A>
@@ -339,7 +339,7 @@ export function lookup<K>(
 /**
  * Test whether or not one `Map` contains all of the keys and values contained in another `Map`
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export function isSubmap<K, A>(
   SK: Eq<K>,
@@ -371,13 +371,13 @@ export function isSubmap<K, A>(
   }
 }
 
-/** @since 2.5.0 */
+/** @since 1.0.0 */
 export const empty: ReadonlyMap<never, never> =
   // the type annotation here is intended (otherwise it doesn't type-check)
   new Map<never, never>()
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Instances
  */
 export function getEq<K, A>(SK: Eq<K>, SA: Eq<A>): Eq<ReadonlyMap<K, A>> {
@@ -388,7 +388,7 @@ export function getEq<K, A>(SK: Eq<K>, SA: Eq<A>): Eq<ReadonlyMap<K, A>> {
 /**
  * Gets `Monoid` instance for Maps given `Semigroup` instance for their values
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Instances
  */
 export function getMonoid<K, A>(SK: Eq<K>, SA: Semigroup<A>): Monoid<ReadonlyMap<K, A>> {
@@ -422,7 +422,7 @@ export function getMonoid<K, A>(SK: Eq<K>, SA: Semigroup<A>): Monoid<ReadonlyMap
 /**
  * Create a map with one key/value pair
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const singleton = <K, A>(k: K, a: A): ReadonlyMap<K, A> => new Map([[k, a]])
@@ -431,7 +431,7 @@ export const singleton = <K, A>(k: K, a: A): ReadonlyMap<K, A> => new Map([[k, a
  * Create a map from a foldable collection of key/value pairs, using the specified `Magma` to combine values for
  * duplicate keys.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Constructors
  */
 export function fromFoldable<F extends URIS3, K, A>(
@@ -484,7 +484,7 @@ const _mapWithIndex = <K, A, B>(fa: ReadonlyMap<K, A>, f: (k: K, a: A) => B): Re
   return m
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export const partitionMapWithIndex =
   <K, A, B, C>(f: (k: K, a: A) => Either<B, C>) =>
   (fa: ReadonlyMap<K, A>): Separated<ReadonlyMap<K, B>, ReadonlyMap<K, C>> => {
@@ -504,7 +504,7 @@ export const partitionMapWithIndex =
     return separated(left, right)
   }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function partitionWithIndex<K, A, B extends A>(
   predicateWithIndex: (k: K, a: A) => a is B,
 ): (m: ReadonlyMap<K, A>) => Separated<ReadonlyMap<K, A>, ReadonlyMap<K, B>>
@@ -534,7 +534,7 @@ export function partitionWithIndex<K, A>(
   }
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export const filterMapWithIndex =
   <K, A, B>(f: (k: K, a: A) => Option<B>) =>
   (fa: ReadonlyMap<K, A>): ReadonlyMap<K, B> => {
@@ -551,7 +551,7 @@ export const filterMapWithIndex =
     return m
   }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function filterWithIndex<K, A, B extends A>(
   predicateWithIndex: (k: K, a: A) => a is B,
 ): (m: ReadonlyMap<K, A>) => ReadonlyMap<K, B>
@@ -593,7 +593,7 @@ const _partitionMapWithIndex = <K, A, B, C>(fa: ReadonlyMap<K, A>, f: (k: K, a: 
   pipe(fa, partitionMapWithIndex(f))
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const compact = <K, A>(fa: ReadonlyMap<K, Option<A>>): ReadonlyMap<K, A> => {
@@ -610,7 +610,7 @@ export const compact = <K, A>(fa: ReadonlyMap<K, Option<A>>): ReadonlyMap<K, A> 
 }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const filter: {
@@ -623,7 +623,7 @@ export const filter: {
     _filter(fa, predicate)
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const filterMap: <A, B>(f: (a: A) => Option<B>) => <K>(fa: ReadonlyMap<K, A>) => ReadonlyMap<K, B> = f => fa =>
@@ -633,20 +633,20 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => <K>(fa: ReadonlyMap<K,
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const map: <A, B>(f: (a: A) => B) => <K>(fa: ReadonlyMap<K, A>) => ReadonlyMap<K, B> = f => fa => _map(fa, f)
 
 /**
- * @since 2.7.1
+ * @since 1.0.0
  * @category Mapping
  */
 export const mapWithIndex: <K, A, B>(f: (k: K, a: A) => B) => (fa: ReadonlyMap<K, A>) => ReadonlyMap<K, B> = f => fa =>
   _mapWithIndex(fa, f)
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const partition: {
@@ -663,7 +663,7 @@ export const partition: {
     _partition(fa, predicate)
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const partitionMap: <A, B, C>(
@@ -671,7 +671,7 @@ export const partitionMap: <A, B, C>(
 ) => <K>(fa: ReadonlyMap<K, A>) => Separated<ReadonlyMap<K, B>, ReadonlyMap<K, C>> = f => fa => _partitionMap(fa, f)
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const separate = <K, A, B>(
@@ -693,13 +693,13 @@ export const separate = <K, A, B>(
 }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'ReadonlyMap'
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -711,7 +711,7 @@ declare module './HKT' {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getUnionSemigroup = <K, A>(E: Eq<K>, S: Semigroup<A>): Semigroup<ReadonlyMap<K, A>> => {
@@ -722,7 +722,7 @@ export const getUnionSemigroup = <K, A>(E: Eq<K>, S: Semigroup<A>): Semigroup<Re
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getUnionMonoid = <K, A>(E: Eq<K>, S: Semigroup<A>): Monoid<ReadonlyMap<K, A>> => ({
@@ -731,7 +731,7 @@ export const getUnionMonoid = <K, A>(E: Eq<K>, S: Semigroup<A>): Monoid<Readonly
 })
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getIntersectionSemigroup = <K, A>(E: Eq<K>, S: Semigroup<A>): Semigroup<ReadonlyMap<K, A>> => {
@@ -742,7 +742,7 @@ export const getIntersectionSemigroup = <K, A>(E: Eq<K>, S: Semigroup<A>): Semig
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getDifferenceMagma =
@@ -755,7 +755,7 @@ export const getDifferenceMagma =
   }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export function getFilterableWithIndex<K = never>(): FilterableWithIndex2C<URI, K, K> {
@@ -778,7 +778,7 @@ export function getFilterableWithIndex<K = never>(): FilterableWithIndex2C<URI, 
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Functor: Functor2<URI> = {
@@ -787,13 +787,13 @@ export const Functor: Functor2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getFunctorWithIndex = <K = never>(): FunctorWithIndex2C<URI, K, K> => ({
@@ -804,7 +804,7 @@ export const getFunctorWithIndex = <K = never>(): FunctorWithIndex2C<URI, K, K> 
 })
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Compactable: Compactable2<URI> = {
@@ -814,7 +814,7 @@ export const Compactable: Compactable2<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Filterable: Filterable2<URI> = {
@@ -829,7 +829,7 @@ export const Filterable: Filterable2<URI> = {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Folding
  */
 export const reduce = <K>(O: Ord<K>): (<B, A>(b: B, f: (b: B, a: A) => B) => (m: ReadonlyMap<K, A>) => B) => {
@@ -838,7 +838,7 @@ export const reduce = <K>(O: Ord<K>): (<B, A>(b: B, f: (b: B, a: A) => B) => (m:
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Folding
  */
 export const foldMap = <K>(O: Ord<K>): (<M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (m: ReadonlyMap<K, A>) => M) => {
@@ -850,7 +850,7 @@ export const foldMap = <K>(O: Ord<K>): (<M>(M: Monoid<M>) => <A>(f: (a: A) => M)
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Folding
  */
 export const reduceRight = <K>(O: Ord<K>): (<B, A>(b: B, f: (a: A, b: B) => B) => (m: ReadonlyMap<K, A>) => B) => {
@@ -859,7 +859,7 @@ export const reduceRight = <K>(O: Ord<K>): (<B, A>(b: B, f: (a: A, b: B) => B) =
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Folding
  */
 export const getFoldable = <K>(O: Ord<K>): Foldable2C<URI, K> => {
@@ -879,7 +879,7 @@ export const getFoldable = <K>(O: Ord<K>): Foldable2C<URI, K> => {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Folding
  */
 export const reduceWithIndex = <K>(
@@ -896,7 +896,7 @@ export const reduceWithIndex = <K>(
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Folding
  */
 export const foldMapWithIndex = <K>(
@@ -913,7 +913,7 @@ export const foldMapWithIndex = <K>(
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Folding
  */
 export const reduceRightWithIndex = <K>(
@@ -933,7 +933,7 @@ export const reduceRightWithIndex = <K>(
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Folding
  */
 export const getFoldableWithIndex = <K>(O: Ord<K>): FoldableWithIndex2C<URI, K, K> => {
@@ -957,7 +957,7 @@ export const getFoldableWithIndex = <K>(O: Ord<K>): FoldableWithIndex2C<URI, K, 
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const getTraversable = <K>(O: Ord<K>): Traversable2C<URI, K> => {
@@ -976,7 +976,7 @@ export const getTraversable = <K>(O: Ord<K>): Traversable2C<URI, K> => {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const getTraversableWithIndex = <K>(O: Ord<K>): TraversableWithIndex2C<URI, K, K> => {
@@ -1029,7 +1029,7 @@ export const getTraversableWithIndex = <K>(O: Ord<K>): TraversableWithIndex2C<UR
 }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  */
 export function getWitherable<K>(O: Ord<K>): Witherable2C<URI, K> & TraversableWithIndex2C<URI, K, K> {
@@ -1063,7 +1063,7 @@ export function getWitherable<K>(O: Ord<K>): Witherable2C<URI, K> & TraversableW
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const union = <K, A>(
   E: Eq<K>,
   M: Magma<A>,
@@ -1100,7 +1100,7 @@ export const union = <K, A>(
   }
 }
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const intersection = <K, A>(
   E: Eq<K>,
   M: Magma<A>,
@@ -1124,7 +1124,7 @@ export const intersection = <K, A>(
   }
 }
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const difference = <K>(
   E: Eq<K>,
 ): (<A>(_second: ReadonlyMap<K, A>) => (first: ReadonlyMap<K, A>) => ReadonlyMap<K, A>) => {
@@ -1165,7 +1165,7 @@ export const difference = <K>(
  * Use [`upsertAt`](#upsertat) instead.
  *
  * @deprecated
- * @since 2.5.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const insertAt: <K>(E: Eq<K>) => <A>(k: K, a: A) => (m: ReadonlyMap<K, A>) => ReadonlyMap<K, A> = upsertAt
@@ -1175,7 +1175,7 @@ export const insertAt: <K>(E: Eq<K>) => <A>(k: K, a: A) => (m: ReadonlyMap<K, A>
  * instance, pass `RM.Functor` instead of `RM.readonlyMap` (where `RM` is from `import RM from 'fp-ts/ReadonlyMap'`)
  *
  * @deprecated
- * @since 2.5.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const readonlyMap: Filterable2<URI> = {

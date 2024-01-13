@@ -6,7 +6,7 @@
  * `TaskEither<E, A>` represents an asynchronous computation that either yields a value of type `A` or fails yielding an
  * error of type `E`. If you want to represent an asynchronous computation that never fails, please see `Task`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type Alt2, type Alt2C } from './Alt'
 import { type Applicative2, type Applicative2C, getApplicativeMonoid } from './Applicative'
@@ -68,7 +68,7 @@ import { type Task } from './Task'
 import { type TaskOption } from './TaskOption'
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface TaskEither<E, A> extends Task<Either<E, A>> {}
@@ -78,37 +78,37 @@ export interface TaskEither<E, A> extends Task<Either<E, A>> {}
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const left: <E = never, A = never>(e: E) => TaskEither<E, A> = /*#__PURE__*/ ET.left(T.Pointed)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const right: <E = never, A = never>(a: A) => TaskEither<E, A> = /*#__PURE__*/ ET.right(T.Pointed)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const rightTask: <E = never, A = never>(ma: Task<A>) => TaskEither<E, A> = /*#__PURE__*/ ET.rightF(T.Functor)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const leftTask: <E = never, A = never>(me: Task<E>) => TaskEither<E, A> = /*#__PURE__*/ ET.leftF(T.Functor)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const rightIO: <E = never, A = never>(ma: IO<A>) => TaskEither<E, A> = /*#__PURE__*/ flow(T.fromIO, rightTask)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const leftIO: <E = never, A = never>(me: IO<E>) => TaskEither<E, A> = /*#__PURE__*/ flow(T.fromIO, leftTask)
@@ -118,38 +118,38 @@ export const leftIO: <E = never, A = never>(me: IO<E>) => TaskEither<E, A> = /*#
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromIO: <A, E = never>(fa: IO<A>) => TaskEither<E, A> = rightIO
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromTask: <A, E = never>(fa: Task<A>) => TaskEither<E, A> = rightTask
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromEither: <E, A>(fa: Either<E, A>) => TaskEither<E, A> = T.of
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromIOEither: <E, A>(fa: IOEither<E, A>) => TaskEither<E, A> = T.fromIO
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromTaskOption: <E>(onNone: LazyArg<E>) => <A>(fa: TaskOption<A>) => TaskEither<E, A> = onNone =>
   T.map(E.fromOption(onNone))
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const match: <E, B, A>(onLeft: (e: E) => B, onRight: (a: A) => B) => (ma: TaskEither<E, A>) => Task<B> =
@@ -160,7 +160,7 @@ export const match: <E, B, A>(onLeft: (e: E) => B, onRight: (a: A) => B) => (ma:
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchW: <E, B, A, C>(onLeft: (e: E) => B, onRight: (a: A) => C) => (ma: TaskEither<E, A>) => Task<B | C> =
@@ -169,7 +169,7 @@ export const matchW: <E, B, A, C>(onLeft: (e: E) => B, onRight: (a: A) => C) => 
 /**
  * The `E` suffix (short for **E**ffect) means that the handlers return an effect (`Task`).
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchE: <E, A, B>(
@@ -180,7 +180,7 @@ export const matchE: <E, A, B>(
 /**
  * Alias of [`matchE`](#matche).
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const fold = matchE
@@ -190,7 +190,7 @@ export const fold = matchE
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchEW: <E, B, A, C>(
@@ -201,13 +201,13 @@ export const matchEW: <E, B, A, C>(
 /**
  * Alias of [`matchEW`](#matchew).
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const foldW = matchEW
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const getOrElse: <E, A>(onLeft: (e: E) => Task<A>) => (ma: TaskEither<E, A>) => Task<A> =
@@ -218,7 +218,7 @@ export const getOrElse: <E, A>(onLeft: (e: E) => Task<A>) => (ma: TaskEither<E, 
  *
  * The `W` suffix (short for **W**idening) means that the handler return type will be merged.
  *
- * @since 2.6.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const getOrElseW: <E, B>(onLeft: (e: E) => Task<B>) => <A>(ma: TaskEither<E, A>) => Task<A | B> =
@@ -229,7 +229,7 @@ export const getOrElseW: <E, B>(onLeft: (e: E) => Task<B>) => <A>(ma: TaskEither
  *
  * See also [`tryCatchK`](#trycatchk).
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Interop
  * @example
  *   import { left, right } from 'fp-ts/Either'
@@ -255,7 +255,7 @@ export const tryCatch =
 /**
  * Converts a function returning a `Promise` to one returning a `TaskEither`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Interop
  */
 export const tryCatchK =
@@ -267,13 +267,13 @@ export const tryCatchK =
     tryCatch(() => f(...a), onRejected)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const toUnion: <E, A>(fa: TaskEither<E, A>) => Task<E | A> = /*#__PURE__*/ ET.toUnion(T.Functor)
 
 /**
- * @since 2.12.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromNullable: <E>(e: E) => <A>(a: A) => TaskEither<E, NonNullable<A>> = /*#__PURE__*/ ET.fromNullable(
@@ -283,7 +283,7 @@ export const fromNullable: <E>(e: E) => <A>(a: A) => TaskEither<E, NonNullable<A
 /**
  * Use `liftNullable`.
  *
- * @since 2.12.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const fromNullableK: <E>(
@@ -295,7 +295,7 @@ export const fromNullableK: <E>(
 /**
  * Use `flatMapNullable`.
  *
- * @since 2.12.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainNullableK: <E>(
@@ -312,7 +312,7 @@ export const chainNullableK: <E>(
  *
  * See also [alt](#alt).
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Error handling
  * @example
  *   import * as E from 'fp-ts/Either'
@@ -335,7 +335,7 @@ export const orElse: <E1, A, E2>(onLeft: (e: E1) => TaskEither<E2, A>) => (ma: T
  *
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const orElseW: <E1, E2, B>(
@@ -345,7 +345,7 @@ export const orElseW: <E1, E2, B>(
 /**
  * Returns an effect that effectfully "peeks" at the failure of this effect.
  *
- * @since 2.15.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const tapError: {
@@ -354,7 +354,7 @@ export const tapError: {
 } = /*#__PURE__*/ dual(2, ET.tapError(T.Monad))
 
 /**
- * @since 2.12.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const orElseFirstIOK: <E, B>(
@@ -362,7 +362,7 @@ export const orElseFirstIOK: <E, B>(
 ) => <A>(ma: TaskEither<E, A>) => TaskEither<E, A> = onLeft => tapError(fromIOK(onLeft))
 
 /**
- * @since 2.12.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const orElseFirstTaskK: <E, B>(
@@ -370,17 +370,17 @@ export const orElseFirstTaskK: <E, B>(
 ) => <A>(ma: TaskEither<E, A>) => TaskEither<E, A> = onLeft => tapError(fromTaskK(onLeft))
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const orLeft: <E1, E2>(onLeft: (e: E1) => Task<E2>) => <A>(fa: TaskEither<E1, A>) => TaskEither<E2, A> =
   /*#__PURE__*/ ET.orLeft(T.Monad)
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const swap: <E, A>(ma: TaskEither<E, A>) => TaskEither<A, E> = /*#__PURE__*/ ET.swap(T.Functor)
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromTaskOptionK = <E>(
@@ -395,7 +395,7 @@ export const fromTaskOptionK = <E>(
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.12.3
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainTaskOptionKW =
@@ -407,7 +407,7 @@ export const chainTaskOptionKW =
 /**
  * Use `flatMapTaskOption`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainTaskOptionK: <E>(
@@ -415,7 +415,7 @@ export const chainTaskOptionK: <E>(
 ) => <A, B>(f: (a: A) => TaskOption<B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> = chainTaskOptionKW
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromIOEitherK = <E, A extends ReadonlyArray<unknown>, B>(
@@ -432,7 +432,7 @@ const _alt: Alt2<URI>['alt'] = (fa, that) => pipe(fa, alt(that))
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: TaskEither<E, A>) => TaskEither<E, B> = /*#__PURE__*/ ET.map(
@@ -443,7 +443,7 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: TaskEither<E, A>) => TaskEit
  * Returns a `TaskEither` whose failure and success channels have been mapped by the specified pair of functions, `f`
  * and `g`.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Error handling
  * @example
  *   import * as TaskEither from 'fp-ts/TaskEither'
@@ -467,7 +467,7 @@ export const mapBoth: {
 /**
  * Alias of `mapBoth`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: TaskEither<E, A>) => TaskEither<G, B> = mapBoth
@@ -475,7 +475,7 @@ export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: TaskEit
 /**
  * Returns a `TaskEither` with its error channel mapped using the specified function.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Error handling
  * @example
  *   import * as TaskEither from 'fp-ts/TaskEither'
@@ -498,12 +498,12 @@ export const mapError: {
 /**
  * Alias of `mapError`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: TaskEither<E, A>) => TaskEither<G, A> = mapError
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const ap: <E, A>(fa: TaskEither<E, A>) => <B>(fab: TaskEither<E, (a: A) => B>) => TaskEither<E, B> =
   /*#__PURE__*/ ET.ap(T.ApplyPar)
 
@@ -512,14 +512,14 @@ export const ap: <E, A>(fa: TaskEither<E, A>) => <B>(fab: TaskEither<E, (a: A) =
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.8.0
+ * @since 1.0.0
  */
 export const apW: <E2, A>(
   fa: TaskEither<E2, A>,
 ) => <E1, B>(fab: TaskEither<E1, (a: A) => B>) => TaskEither<E1 | E2, B> = ap as any
 
 /**
- * @since 2.14.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMap: {
@@ -532,14 +532,14 @@ export const flatMap: {
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flattenW: <E1, E2, A>(mma: TaskEither<E1, TaskEither<E2, A>>) => TaskEither<E1 | E2, A> =
   /*#__PURE__*/ flatMap(identity)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatten: <E, A>(mma: TaskEither<E, TaskEither<E, A>>) => TaskEither<E, A> = flattenW
@@ -552,7 +552,7 @@ export const flatten: <E, A>(mma: TaskEither<E, TaskEither<E, A>>) => TaskEither
  *
  * See also [orElse](#orelse).
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Error handling
  * @example
  *   import * as E from 'fp-ts/Either'
@@ -593,7 +593,7 @@ export const alt: <E, A>(that: LazyArg<TaskEither<E, A>>) => (fa: TaskEither<E, 
  *
  * The `W` suffix (short for **W**idening) means that the error and the return types will be merged.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const altW: <E2, B>(
@@ -601,22 +601,22 @@ export const altW: <E2, B>(
 ) => <E1, A>(fa: TaskEither<E1, A>) => TaskEither<E2, A | B> = alt as any
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const of: <E = never, A = never>(a: A) => TaskEither<E, A> = right
 
-/** @since 2.7.0 */
+/** @since 1.0.0 */
 export const throwError: MonadThrow2<URI>['throwError'] = left
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'TaskEither'
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -631,7 +631,7 @@ declare module './HKT' {
  * The default [`ApplicativePar`](#applicativepar) instance returns the first error, if you want to get all errors you
  * need to provide a way to concatenate them via a `Semigroup`.
  *
- * @since 2.7.0
+ * @since 1.0.0
  * @category Error handling
  * @example
  *   import * as E from 'fp-ts/Either'
@@ -693,7 +693,7 @@ export function getApplicativeTaskValidation<E>(A: Apply1<T.URI>, S: Semigroup<E
  *
  * See [`getAltValidation`](./Either.ts.html#getaltvalidation).
  *
- * @since 2.7.0
+ * @since 1.0.0
  * @category Error handling
  */
 export function getAltTaskValidation<E>(S: Semigroup<E>): Alt2C<URI, E> {
@@ -707,7 +707,7 @@ export function getAltTaskValidation<E>(S: Semigroup<E>): Alt2C<URI, E> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const getCompactable = <E>(M: Monoid<E>): Compactable2C<URI, E> => {
@@ -721,7 +721,7 @@ export const getCompactable = <E>(M: Monoid<E>): Compactable2C<URI, E> => {
 }
 
 /**
- * @since 2.1.0
+ * @since 1.0.0
  * @category Filtering
  */
 export function getFilterable<E>(M: Monoid<E>): Filterable2C<URI, E> {
@@ -746,7 +746,7 @@ export function getFilterable<E>(M: Monoid<E>): Filterable2C<URI, E> {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Functor: Functor2<URI> = {
@@ -757,7 +757,7 @@ export const Functor: Functor2<URI> = {
 /**
  * Maps the `Right` value of this `TaskEither` to the specified constant value.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const as: {
@@ -768,19 +768,19 @@ export const as: {
 /**
  * Maps the `Right` value of this `TaskEither` to the void constant value.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const asUnit: <E, _>(self: TaskEither<E, _>) => TaskEither<E, void> = asUnit_(Functor)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Pointed: Pointed2<URI> = {
@@ -791,7 +791,7 @@ export const Pointed: Pointed2<URI> = {
 /**
  * Runs computations in parallel.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const ApplyPar: Apply2<URI> = {
@@ -803,7 +803,7 @@ export const ApplyPar: Apply2<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const apFirst = /*#__PURE__*/ apFirst_(ApplyPar)
 
@@ -812,7 +812,7 @@ export const apFirst = /*#__PURE__*/ apFirst_(ApplyPar)
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.12.0
+ * @since 1.0.0
  */
 export const apFirstW: <E2, B>(
   second: TaskEither<E2, B>,
@@ -821,7 +821,7 @@ export const apFirstW: <E2, B>(
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
 
@@ -830,7 +830,7 @@ export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.12.0
+ * @since 1.0.0
  */
 export const apSecondW: <E2, B>(
   second: TaskEither<E2, B>,
@@ -839,7 +839,7 @@ export const apSecondW: <E2, B>(
 /**
  * Runs computations in parallel.
  *
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const ApplicativePar: Applicative2<URI> = {
@@ -852,7 +852,7 @@ export const ApplicativePar: Applicative2<URI> = {
 /**
  * Runs computations sequentially.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const ApplySeq: Apply2<URI> = {
@@ -864,7 +864,7 @@ export const ApplySeq: Apply2<URI> = {
 /**
  * Runs computations sequentially.
  *
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const ApplicativeSeq: Applicative2<URI> = {
@@ -875,7 +875,7 @@ export const ApplicativeSeq: Applicative2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Chain: chainable.Chain2<URI> = {
@@ -920,7 +920,7 @@ export const ChainRec: ChainRec2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Monad: Monad2<URI> = {
@@ -932,7 +932,7 @@ export const Monad: Monad2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const MonadIO: MonadIO2<URI> = {
@@ -945,7 +945,7 @@ export const MonadIO: MonadIO2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const MonadTask: MonadTask2<URI> = {
@@ -959,7 +959,7 @@ export const MonadTask: MonadTask2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const MonadThrow: MonadThrow2<URI> = {
@@ -972,7 +972,7 @@ export const MonadThrow: MonadThrow2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromEither: FromEither2<URI> = {
@@ -981,7 +981,7 @@ export const FromEither: FromEither2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromIO: FromIO2<URI> = {
@@ -990,7 +990,7 @@ export const FromIO: FromIO2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromTask: FromTask2<URI> = {
@@ -1003,7 +1003,7 @@ export const FromTask: FromTask2<URI> = {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.15.0
+ * @since 1.0.0
  * @category Combinators
  */
 export const tap: {
@@ -1015,7 +1015,7 @@ export const tap: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Combinators
  * @example
  *   import * as E from 'fp-ts/Either'
@@ -1044,7 +1044,7 @@ export const tapEither: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Combinators
  * @example
  *   import { pipe } from 'fp-ts/function'
@@ -1077,7 +1077,7 @@ export const tapIO: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Combinators
  * @example
  *   import * as TE from 'fp-ts/TaskEither'
@@ -1098,7 +1098,7 @@ export const tapTask: {
 } = /*#__PURE__*/ dual(2, tapTask_(FromTask, Chain))
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Bifunctor: Bifunctor2<URI> = {
@@ -1108,7 +1108,7 @@ export const Bifunctor: Bifunctor2<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Alt: Alt2<URI> = {
@@ -1118,7 +1118,7 @@ export const Alt: Alt2<URI> = {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => TaskEither<E, A> =
@@ -1127,7 +1127,7 @@ export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => TaskEi
 /**
  * Use `liftOption`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const fromOptionK: <E>(
@@ -1138,7 +1138,7 @@ export const fromOptionK: <E>(
 /**
  * Use `flatMapOption`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainOptionK: <E>(
@@ -1151,7 +1151,7 @@ export const chainOptionK: <E>(
 /**
  * Use `flatMapOption`.
  *
- * @since 2.13.2
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainOptionKW: <E2>(
@@ -1170,7 +1170,7 @@ const _FromEither: _.FromEither<TaskEitherTypeLambda> = {
 }
 
 /**
- * @since 2.15.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
@@ -1179,7 +1179,7 @@ export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
 ) => (...a: A) => TaskEither<E, NonNullable<B>> = /*#__PURE__*/ _.liftNullable(_FromEither)
 
 /**
- * @since 2.15.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const liftOption: <A extends ReadonlyArray<unknown>, B, E>(
@@ -1203,7 +1203,7 @@ const _FromTask: _.FromTask<TaskEitherTypeLambda> = {
 }
 
 /**
- * @since 2.15.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapNullable: {
@@ -1219,7 +1219,7 @@ export const flatMapNullable: {
 } = /*#__PURE__*/ _.flatMapNullable(_FromEither, _FlatMap)
 
 /**
- * @since 2.15.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapOption: {
@@ -1228,7 +1228,7 @@ export const flatMapOption: {
 } = /*#__PURE__*/ _.flatMapOption(_FromEither, _FlatMap)
 
 /**
- * @since 2.15.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapEither: {
@@ -1237,7 +1237,7 @@ export const flatMapEither: {
 } = /*#__PURE__*/ _.flatMapEither(_FromEither, _FlatMap)
 
 /**
- * @since 2.15.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapIO: {
@@ -1246,7 +1246,7 @@ export const flatMapIO: {
 } = /*#__PURE__*/ _.flatMapIO(_FromIO, _FlatMap)
 
 /**
- * @since 2.16.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapTask: {
@@ -1255,7 +1255,7 @@ export const flatMapTask: {
 } = /*#__PURE__*/ _.flatMapTask(_FromTask, _FlatMap)
 
 /**
- * @since 2.16.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapIOEither: {
@@ -1268,7 +1268,7 @@ export const flatMapIOEither: {
 )
 
 /**
- * @since 2.16.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapTaskOption: {
@@ -1283,7 +1283,7 @@ export const flatMapTaskOption: {
 /**
  * Alias of `flatMapEither`.
  *
- * @since 2.4.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainEitherK: <E, A, B>(f: (a: A) => E.Either<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> =
@@ -1292,7 +1292,7 @@ export const chainEitherK: <E, A, B>(f: (a: A) => E.Either<E, B>) => (ma: TaskEi
 /**
  * Alias of `flatMapEither`.
  *
- * @since 2.6.1
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainEitherKW: <E2, A, B>(
@@ -1302,7 +1302,7 @@ export const chainEitherKW: <E2, A, B>(
 /**
  * Alias of `tapEither`.
  *
- * @since 2.12.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstEitherK: <A, E, B>(f: (a: A) => E.Either<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, A> =
@@ -1315,7 +1315,7 @@ export const chainFirstEitherK: <A, E, B>(f: (a: A) => E.Either<E, B>) => (ma: T
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.12.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstEitherKW: <A, E2, B>(
@@ -1323,7 +1323,7 @@ export const chainFirstEitherKW: <A, E2, B>(
 ) => <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, A> = tapEither
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromPredicate: {
@@ -1333,7 +1333,7 @@ export const fromPredicate: {
 } = /*#__PURE__*/ fromPredicate_(FromEither)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const filterOrElse: {
@@ -1347,7 +1347,7 @@ export const filterOrElse: {
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const filterOrElseW: {
@@ -1363,7 +1363,7 @@ export const filterOrElseW: {
 } = filterOrElse
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
@@ -1371,7 +1371,7 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 ) => (...a: A) => TaskEither<E, B> = /*#__PURE__*/ fromEitherK_(FromEither)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
@@ -1381,7 +1381,7 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
 /**
  * Alias of `flatMapIO`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, B> = flatMapIO
@@ -1389,13 +1389,13 @@ export const chainIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: TaskEither<E, A>
 /**
  * Alias of `tapIO`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, A> = tapIO
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
@@ -1405,7 +1405,7 @@ export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
 /**
  * Alias of `flatMapTask`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, B> =
@@ -1414,7 +1414,7 @@ export const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(first: TaskEither
 /**
  * Alias of `tapTask`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, A> =
@@ -1427,7 +1427,7 @@ export const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(first: TaskE
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.6.1
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainIOEitherKW: <E2, A, B>(
@@ -1437,7 +1437,7 @@ export const chainIOEitherKW: <E2, A, B>(
 /**
  * Alias of `flatMapIOEither`.
  *
- * @since 2.4.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainIOEitherK: <E, A, B>(f: (a: A) => IOEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> =
@@ -1464,7 +1464,7 @@ export const chainIOEitherK: <E, A, B>(f: (a: A) => IOEither<E, B>) => (ma: Task
  * )
  * ```
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Interop
  * @example
  *   import { taskify } from 'fp-ts/TaskEither'
@@ -1507,7 +1507,7 @@ export function taskify<L, R>(f: Function): () => TaskEither<L, R> {
  *
  * (*) i.e. returns a `Left`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const bracket = <E, A, B>(
   acquire: TaskEither<E, A>,
@@ -1520,7 +1520,7 @@ export const bracket = <E, A, B>(
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.12.0
+ * @since 1.0.0
  */
 export const bracketW: <E1, A, E2, B, E3>(
   acquire: TaskEither<E1, A>,
@@ -1534,13 +1534,13 @@ export const bracketW: <E1, A, E2, B, E3>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.9.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const Do: TaskEither<never, {}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
@@ -1549,14 +1549,14 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @since 2.13.0
+   * @since 1.0.0
    * @category Do notation
    */
   let_ as let,
 }
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
@@ -1564,7 +1564,7 @@ export const bind = /*#__PURE__*/ chainable.bind(Chain)
 /**
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bindW: <N extends string, A, E2, B>(
@@ -1591,7 +1591,7 @@ export {
 }
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const apS = /*#__PURE__*/ apS_(ApplyPar)
@@ -1601,7 +1601,7 @@ export const apS = /*#__PURE__*/ apS_(ApplyPar)
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const apSW: <A, N extends string, E2, B>(
@@ -1610,7 +1610,7 @@ export const apSW: <A, N extends string, E2, B>(
 ) => <E1>(fa: TaskEither<E1, A>) => TaskEither<E1 | E2, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }> =
   apS as any
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const ApT: TaskEither<never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 
 // -------------------------------------------------------------------------------------
@@ -1620,7 +1620,7 @@ export const ApT: TaskEither<never, readonly []> = /*#__PURE__*/ of(_.emptyReado
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(ApplicativePar)`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyNonEmptyArrayWithIndex = <A, E, B>(
@@ -1631,7 +1631,7 @@ export const traverseReadonlyNonEmptyArrayWithIndex = <A, E, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativePar)`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyArrayWithIndex = <A, E, B>(
@@ -1644,7 +1644,7 @@ export const traverseReadonlyArrayWithIndex = <A, E, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyNonEmptyArrayWithIndexSeq =
@@ -1670,7 +1670,7 @@ export const traverseReadonlyNonEmptyArrayWithIndexSeq =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyArrayWithIndexSeq = <A, E, B>(
@@ -1683,7 +1683,7 @@ export const traverseReadonlyArrayWithIndexSeq = <A, E, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseArrayWithIndex: <A, B, E>(
@@ -1693,7 +1693,7 @@ export const traverseArrayWithIndex: <A, B, E>(
 /**
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseArray = <A, B, E>(
@@ -1703,7 +1703,7 @@ export const traverseArray = <A, B, E>(
 /**
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const sequenceArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A>>) => TaskEither<E, ReadonlyArray<A>> =
@@ -1712,7 +1712,7 @@ export const sequenceArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A>>) => Task
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseSeqArrayWithIndex: <A, B, E>(
@@ -1722,7 +1722,7 @@ export const traverseSeqArrayWithIndex: <A, B, E>(
 /**
  * Equivalent to `ReadonlyArray#traverse(ApplicativeSeq)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseSeqArray = <A, B, E>(
@@ -1732,7 +1732,7 @@ export const traverseSeqArray = <A, B, E>(
 /**
  * Equivalent to `ReadonlyArray#sequence(ApplicativeSeq)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const sequenceSeqArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A>>) => TaskEither<E, ReadonlyArray<A>> =
@@ -1745,7 +1745,7 @@ export const sequenceSeqArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A>>) => T
 /**
  * Alias of `flatMap`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chain: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> = flatMap
@@ -1753,7 +1753,7 @@ export const chain: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEither<
 /**
  * Alias of `flatMap`.
  *
- * @since 2.6.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainW: <E2, A, B>(
@@ -1763,7 +1763,7 @@ export const chainW: <E2, A, B>(
 /**
  * Alias of `tap`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirst: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, A> = tap
@@ -1771,7 +1771,7 @@ export const chainFirst: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEi
 /**
  * Alias of `tap`.
  *
- * @since 2.8.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstW: <E2, A, B>(
@@ -1781,7 +1781,7 @@ export const chainFirstW: <E2, A, B>(
 /**
  * Alias of `tapError`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const orElseFirst: <E, B>(onLeft: (e: E) => TaskEither<E, B>) => <A>(ma: TaskEither<E, A>) => TaskEither<E, A> =
@@ -1790,7 +1790,7 @@ export const orElseFirst: <E, B>(onLeft: (e: E) => TaskEither<E, B>) => <A>(ma: 
 /**
  * Alias of `tapError`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const orElseFirstW: <E1, E2, B>(
@@ -1806,7 +1806,7 @@ export const orElseFirstW: <E1, E2, B>(
  * instance, pass `TE.Functor` instead of `TE.taskEither` (where `TE` is from `import TE from 'fp-ts/TaskEither'`)
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const taskEither: Monad2<URI> & Bifunctor2<URI> & Alt2<URI> & MonadTask2<URI> & MonadThrow2<URI> = {
@@ -1828,7 +1828,7 @@ export const taskEither: Monad2<URI> & Bifunctor2<URI> & Alt2<URI> & MonadTask2<
  * instance, pass `TE.Functor` instead of `TE.taskEitherSeq` (where `TE` is from `import TE from 'fp-ts/TaskEither'`)
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 
@@ -1850,7 +1850,7 @@ export const taskEitherSeq: typeof taskEither = {
  * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<TaskEither<E, A>> =
@@ -1860,7 +1860,7 @@ export const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<TaskEither<
  * Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<TaskEither<E, A>> =
@@ -1870,7 +1870,7 @@ export const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<TaskEither<E, A>> =
  * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getSemigroup = <E, A>(S: Semigroup<A>): Semigroup<TaskEither<E, A>> =>
@@ -1881,7 +1881,7 @@ export const getSemigroup = <E, A>(S: Semigroup<A>): Semigroup<TaskEither<E, A>>
  * [`getAltTaskValidation`](#getalttaskvalidation) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function getTaskValidation<E>(

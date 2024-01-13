@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import { type Comonad2C } from './Comonad'
 import { pipe } from './function'
 import { flap as flap_, type Functor2 } from './Functor'
@@ -9,7 +9,7 @@ import { type Monoid } from './Monoid'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Traced<P, A> {
@@ -20,7 +20,7 @@ export interface Traced<P, A> {
 /**
  * Extracts a value at a relative position which depends on the current value.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export function tracks<P, A>(M: Monoid<P>, f: (a: A) => P): (wa: Traced<P, A>) => A {
   return wa => wa(f(wa(M.empty)))
@@ -29,7 +29,7 @@ export function tracks<P, A>(M: Monoid<P>, f: (a: A) => P): (wa: Traced<P, A>) =
 /**
  * Get the current position
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export function listen<P, A>(wa: Traced<P, A>): Traced<P, [A, P]> {
   return e => [wa(e), e]
@@ -38,7 +38,7 @@ export function listen<P, A>(wa: Traced<P, A>): Traced<P, [A, P]> {
 /**
  * Get a value which depends on the current position
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export function listens<P, B>(f: (p: P) => B): <A>(wa: Traced<P, A>) => Traced<P, [A, B]> {
   return wa => e => [wa(e), f(e)]
@@ -47,14 +47,14 @@ export function listens<P, B>(f: (p: P) => B): <A>(wa: Traced<P, A>) => Traced<P
 /**
  * Apply a function to the current position
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export function censor<P>(f: (p: P) => P): <A>(wa: Traced<P, A>) => Traced<P, A> {
   return wa => e => wa(f(e))
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  */
 export function getComonad<P>(monoid: Monoid<P>): Comonad2C<URI, P> {
@@ -82,19 +82,19 @@ const _map: Functor2<URI>['map'] = (fa, f) => pipe(fa, map(f))
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: Traced<E, A>) => Traced<E, B> = f => fa => p => f(fa(p))
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'Traced'
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -106,7 +106,7 @@ declare module './HKT' {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Functor: Functor2<URI> = {
@@ -115,7 +115,7 @@ export const Functor: Functor2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
@@ -128,7 +128,7 @@ export const flap = /*#__PURE__*/ flap_(Functor)
  * Use [`Functor`](#functor) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const traced: Functor2<URI> = Functor

@@ -1,4 +1,4 @@
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 import {
   type HKT,
   type Kind,
@@ -25,7 +25,7 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Zero<F> {
@@ -34,7 +34,7 @@ export interface Zero<F> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Zero1<F extends URIS> {
@@ -43,7 +43,7 @@ export interface Zero1<F extends URIS> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Zero2<F extends URIS2> {
@@ -52,7 +52,7 @@ export interface Zero2<F extends URIS2> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Zero2C<F extends URIS2, E> {
@@ -62,7 +62,7 @@ export interface Zero2C<F extends URIS2, E> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Zero3<F extends URIS3> {
@@ -71,7 +71,7 @@ export interface Zero3<F extends URIS3> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Zero3C<F extends URIS3, E> {
@@ -81,7 +81,7 @@ export interface Zero3C<F extends URIS3, E> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Zero4<F extends URIS4> {
@@ -90,7 +90,7 @@ export interface Zero4<F extends URIS4> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Do notation
  */
 export function guard<F extends URIS4>(F: Zero4<F>, P: Pointed4<F>): <S, R, E>(b: boolean) => Kind4<F, S, R, E, void>

@@ -1,4 +1,4 @@
-/** @since 2.4.0 */
+/** @since 1.0.0 */
 import { ap as ap_, type Apply, type Apply1, type Apply2, type Apply2C, type Apply3, type Apply3C } from './Apply'
 import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C } from './Chain'
 import { flow, type LazyArg, pipe } from './function'
@@ -18,7 +18,7 @@ import { type Semigroup } from './Semigroup'
 import * as T from './These'
 import { type These } from './These'
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function right<F extends URIS3>(F: Pointed3<F>): <A, R, FE, E = never>(a: A) => Kind3<F, R, FE, These<E, A>>
 export function right<F extends URIS3, FE>(F: Pointed3C<F, FE>): <A, R, E = never>(a: A) => Kind3<F, R, FE, These<E, A>>
 export function right<F extends URIS2>(F: Pointed2<F>): <A, FE, E = never>(a: A) => Kind2<F, FE, These<E, A>>
@@ -29,7 +29,7 @@ export function right<F>(F: Pointed<F>): <A, E = never>(a: A) => HKT<F, These<E,
   return flow(T.right, F.of)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function left<F extends URIS3>(F: Pointed3<F>): <E, R, FE, A = never>(e: E) => Kind3<F, R, FE, These<E, A>>
 export function left<F extends URIS3, FE>(F: Pointed3C<F, FE>): <E, R, A = never>(e: E) => Kind3<F, R, FE, These<E, A>>
 export function left<F extends URIS2>(F: Pointed2<F>): <E, FE, A = never>(e: E) => Kind2<F, FE, These<E, A>>
@@ -40,7 +40,7 @@ export function left<F>(F: Pointed<F>): <E, A = never>(e: E) => HKT<F, These<E, 
   return flow(T.left, F.of)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function both<F extends URIS3>(F: Pointed3<F>): <E, A, S, R>(e: E, a: A) => Kind3<F, S, R, These<E, A>>
 export function both<F extends URIS3, R>(F: Pointed3C<F, R>): <E, A>(e: E, a: A) => Kind3<F, R, R, These<E, A>>
 export function both<F extends URIS2>(F: Pointed2<F>): <E, A, R>(e: E, a: A) => Kind2<F, R, These<E, A>>
@@ -51,7 +51,7 @@ export function both<F>(F: Pointed<F>): <E, A = never>(e: E, a: A) => HKT<F, The
   return flow(T.both, F.of)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function rightF<F extends URIS3>(
   F: Functor3<F>,
 ): <R, FE, A, E = never>(fa: Kind3<F, R, FE, A>) => Kind3<F, R, FE, These<E, A>>
@@ -70,7 +70,7 @@ export function rightF<F>(F: Functor<F>): <A, E = never>(fa: HKT<F, A>) => HKT<F
   return fa => F.map(fa, T.right)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function leftF<F extends URIS3>(
   F: Functor3<F>,
 ): <R, FE, E, A = never>(fe: Kind3<F, R, FE, E>) => Kind3<F, R, FE, These<E, A>>
@@ -89,7 +89,7 @@ export function leftF<F>(F: Functor<F>): <E, A = never>(fe: HKT<F, E>) => HKT<F,
   return fe => F.map(fe, T.left)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function map<F extends URIS3>(
   F: Functor3<F>,
 ): <A, B>(f: (a: A) => B) => <R, FE, E>(fa: Kind3<F, R, FE, These<E, A>>) => Kind3<F, R, FE, These<E, B>>
@@ -110,7 +110,7 @@ export function map<F>(F: Functor<F>): <A, B>(f: (a: A) => B) => <E>(fa: HKT<F, 
   return map_(F, T.Functor)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function ap<F extends URIS3, E>(
   F: Apply3<F>,
   S: Semigroup<E>,
@@ -146,7 +146,7 @@ export function ap<F, E>(
   return ap_(F, T.getApply(S))
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function chain<M extends URIS3, E>(
   M: Monad3<M>,
   S: Semigroup<E>,
@@ -196,7 +196,7 @@ export function chain<M, E>(
     )
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function bimap<F extends URIS3>(
   F: Functor3<F>,
 ): <E, G, A, B>(
@@ -227,7 +227,7 @@ export function bimap<F>(
   return (f, g) => fea => F.map(fea, T.bimap(f, g))
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function mapLeft<F extends URIS3>(
   F: Functor3<F>,
 ): <E, G>(f: (e: E) => G) => <R, FE, A>(fea: Kind3<F, R, FE, These<E, A>>) => Kind3<F, R, FE, These<G, A>>
@@ -252,7 +252,7 @@ export function mapLeft<F>(
   return f => fea => F.map(fea, T.mapLeft(f))
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function match<F extends URIS3>(
   F: Functor3<F>,
 ): <E, B, A>(
@@ -305,7 +305,7 @@ export function match<F>(
   return (onLeft, onRight, onBoth) => ma => F.map(ma, T.match(onLeft, onRight, onBoth))
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function matchE<M extends URIS3>(
   M: Chain3<M>,
 ): <E, R, ME, B, A>(
@@ -358,7 +358,7 @@ export function matchE<M>(
   return (onLeft, onRight, onBoth) => ma => M.chain(ma, T.match(onLeft, onRight, onBoth))
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function swap<F extends URIS3>(
   F: Functor3<F>,
 ): <R, FE, E, A>(ma: Kind3<F, R, FE, These<E, A>>) => Kind3<F, R, FE, These<A, E>>
@@ -377,7 +377,7 @@ export function swap<F>(F: Functor<F>): <E, A>(ma: HKT<F, These<E, A>>) => HKT<F
   return ma => F.map(ma, T.swap)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function toTuple2<F extends URIS3>(
   F: Functor3<F>,
 ): <E, A>(e: LazyArg<E>, a: LazyArg<A>) => <R, FE>(fa: Kind3<F, R, FE, These<E, A>>) => Kind3<F, R, FE, readonly [E, A]>
@@ -408,14 +408,14 @@ export function toTuple2<F>(
 
 /**
  * @deprecated
- * @since 2.4.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface TheseT<M, E, A> extends HKT<M, These<E, A>> {}
 
 /**
  * @deprecated
- * @since 2.4.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface TheseM<M> {
@@ -446,14 +446,14 @@ export interface TheseM<M> {
 
 /**
  * @deprecated
- * @since 2.4.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export type TheseT1<M extends URIS, E, A> = Kind<M, These<E, A>>
 
 /**
  * @deprecated
- * @since 2.4.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface TheseM1<M extends URIS> {
@@ -484,14 +484,14 @@ export interface TheseM1<M extends URIS> {
 
 /**
  * @deprecated
- * @since 2.4.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export type TheseT2<M extends URIS2, R, E, A> = Kind2<M, R, These<E, A>>
 
 /**
  * @deprecated
- * @since 2.4.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface TheseM2<M extends URIS2> {
@@ -522,7 +522,7 @@ export interface TheseM2<M extends URIS2> {
 
 /**
  * @deprecated
- * @since 2.4.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function getTheseM<M extends URIS2>(M: Monad2<M>): TheseM2<M>

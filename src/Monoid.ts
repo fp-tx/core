@@ -31,7 +31,7 @@
  *
  * _Adapted from https://typelevel.org/cats_
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type Bounded } from './Bounded'
 import { type Endomorphism, getMonoid as getEM } from './Endomorphism'
@@ -45,7 +45,7 @@ import * as Se from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Monoid<A> extends Se.Semigroup<A> {
@@ -61,7 +61,7 @@ export interface Monoid<A> extends Se.Semigroup<A> {
  *
  * The `empty` value is the `top` value.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Constructors
  * @example
  *   import * as N from 'fp-ts/number'
@@ -80,7 +80,7 @@ export const min = <A>(B: Bounded<A>): Monoid<A> => ({
  *
  * The `empty` value is the `bottom` value.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Constructors
  * @example
  *   import * as N from 'fp-ts/number'
@@ -102,7 +102,7 @@ export const max = <A>(B: Bounded<A>): Monoid<A> => ({
 /**
  * The dual of a `Monoid`, obtained by swapping the arguments of `concat`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { reverse } from 'fp-ts/Monoid'
  *   import * as S from 'fp-ts/string'
@@ -117,7 +117,7 @@ export const reverse = <A>(M: Monoid<A>): Monoid<A> => ({
 /**
  * Given a struct of monoids returns a monoid for the struct.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { struct } from 'fp-ts/Monoid'
  *   import * as N from 'fp-ts/number'
@@ -150,7 +150,7 @@ export const struct = <A>(monoids: { [K in keyof A]: Monoid<A[K]> }): Monoid<{ r
 /**
  * Given a tuple of monoids returns a monoid for the tuple.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { tuple } from 'fp-ts/Monoid'
  *   import * as B from 'fp-ts/boolean'
@@ -180,7 +180,7 @@ export const tuple = <A extends ReadonlyArray<unknown>>(
  *
  * If `as` is empty, return the monoid `empty` value.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { concatAll } from 'fp-ts/Monoid'
  *   import * as N from 'fp-ts/number'
@@ -198,7 +198,7 @@ export const concatAll = <A>(M: Monoid<A>): ((as: ReadonlyArray<A>) => A) => Se.
  * Use [`Monoid`](./void.ts.html#monoid) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const monoidVoid: Monoid<void> = {
@@ -210,7 +210,7 @@ export const monoidVoid: Monoid<void> = {
  * Use [`tuple`](#tuple) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getTupleMonoid: <T extends ReadonlyArray<Monoid<any>>>(
@@ -221,7 +221,7 @@ export const getTupleMonoid: <T extends ReadonlyArray<Monoid<any>>>(
  * Use [`struct`](#struct) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getStructMonoid: <O extends ReadonlyRecord<string, any>>(monoids: {
@@ -232,7 +232,7 @@ export const getStructMonoid: <O extends ReadonlyRecord<string, any>>(monoids: {
  * Use [`reverse`](#reverse) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getDualMonoid = reverse
@@ -241,7 +241,7 @@ export const getDualMonoid = reverse
  * Use [`max`](#max) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getJoinMonoid = max
@@ -250,7 +250,7 @@ export const getJoinMonoid = max
  * Use [`min`](#min) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getMeetMonoid = min
@@ -259,7 +259,7 @@ export const getMeetMonoid = min
  * Use [`concatAll`](#concatall) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const fold = concatAll
@@ -268,7 +268,7 @@ export const fold = concatAll
  * Use [`MonoidAll`](./boolean.ts.html#monoidall) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const monoidAll: Monoid<boolean> = {
@@ -280,7 +280,7 @@ export const monoidAll: Monoid<boolean> = {
  * Use [`MonoidAny`](./boolean.ts.html#monoidany) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const monoidAny: Monoid<boolean> = {
@@ -292,7 +292,7 @@ export const monoidAny: Monoid<boolean> = {
  * Use [`getMonoid`](./function.ts.html#getmonoid) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getFunctionMonoid: <M>(M: Monoid<M>) => <A = never>() => Monoid<(a: A) => M> = getFM
@@ -303,7 +303,7 @@ export const getFunctionMonoid: <M>(M: Monoid<M>) => <A = never>() => Monoid<(a:
  * **Note**. The execution order in [`getEndomorphismMonoid`](./function.ts.html#getendomorphismmonoid) is reversed.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => reverse(getEM())
@@ -312,7 +312,7 @@ export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => r
  * Use [`Monoid`](./string.ts.html#monoid) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const monoidString: Monoid<string> = {
@@ -324,7 +324,7 @@ export const monoidString: Monoid<string> = {
  * Use [`MonoidSum`](./number.ts.html#monoidsum) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const monoidSum: Monoid<number> = {
@@ -336,7 +336,7 @@ export const monoidSum: Monoid<number> = {
  * Use [`MonoidProduct`](./number.ts.html#monoidproduct) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const monoidProduct: Monoid<number> = {

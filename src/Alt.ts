@@ -8,7 +8,7 @@
  * 1. Associativity: `A.alt(A.alt(fa, ga), ha) <-> A.alt(fa, A.alt(ga, ha))`
  * 2. Distributivity: `A.map(A.alt(fa, ga), ab) <-> A.alt(A.map(fa, ab), A.map(ga, ab))`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type LazyArg } from './function'
 import {
@@ -37,7 +37,7 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Alt<F> extends Functor<F> {
@@ -45,7 +45,7 @@ export interface Alt<F> extends Functor<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Alt1<F extends URIS> extends Functor1<F> {
@@ -53,7 +53,7 @@ export interface Alt1<F extends URIS> extends Functor1<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Alt2<F extends URIS2> extends Functor2<F> {
@@ -61,7 +61,7 @@ export interface Alt2<F extends URIS2> extends Functor2<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Alt2C<F extends URIS2, E> extends Functor2C<F, E> {
@@ -69,7 +69,7 @@ export interface Alt2C<F extends URIS2, E> extends Functor2C<F, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Alt3<F extends URIS3> extends Functor3<F> {
@@ -77,7 +77,7 @@ export interface Alt3<F extends URIS3> extends Functor3<F> {
 }
 
 /**
- * @since 2.2.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Alt3C<F extends URIS3, E> extends Functor3C<F, E> {
@@ -85,7 +85,7 @@ export interface Alt3C<F extends URIS3, E> extends Functor3C<F, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Alt4<F extends URIS4> extends Functor4<F> {
@@ -96,7 +96,7 @@ export interface Alt4<F extends URIS4> extends Functor4<F> {
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export function altAll<F extends URIS4>(
   F: Alt4<F>,
 ): <S, R, E, A>(startWith: Kind4<F, S, R, E, A>) => (as: ReadonlyArray<Kind4<F, S, R, E, A>>) => Kind4<F, S, R, E, A>

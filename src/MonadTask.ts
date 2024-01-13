@@ -1,7 +1,7 @@
 /**
  * Lift a computation from the `Task` monad
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import {
   type FromTask,
@@ -28,43 +28,43 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface MonadTask<M> extends MonadIO<M>, FromTask<M> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface MonadTask1<M extends URIS> extends MonadIO1<M>, FromTask1<M> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface MonadTask2<M extends URIS2> extends MonadIO2<M>, FromTask2<M> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface MonadTask2C<M extends URIS2, E> extends MonadIO2C<M, E>, FromTask2C<M, E> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface MonadTask3<M extends URIS3> extends MonadIO3<M>, FromTask3<M> {}
 
 /**
- * @since 2.2.0
+ * @since 1.0.0
  * @category Model
  */
 export interface MonadTask3C<M extends URIS3, E> extends MonadIO3C<M, E>, FromTask3C<M, E> {}
 
 /**
- * @since 2.4.4
+ * @since 1.0.0
  * @category Model
  */
 export interface MonadTask4<M extends URIS4> extends MonadIO4<M>, FromTask4<M> {}

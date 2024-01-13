@@ -3,7 +3,7 @@
  *
  * In functional jargon, this module provides a monadic interface over Typescript's Array<T>.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type Alt1 } from './Alt'
 import { type Alternative1 } from './Alternative'
@@ -59,7 +59,7 @@ import { guard as guard_, type Zero1 } from './Zero'
 /**
  * Test whether an array is empty
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Refinements
  * @example
  *   import { isEmpty } from 'fp-ts/Array'
@@ -72,7 +72,7 @@ export const isEmpty = <A>(as: Array<A>): as is [] => as.length === 0
 /**
  * Test whether an array is non empty narrowing down the type to `NonEmptyArray<A>`
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Refinements
  * @example
  *   import { isNonEmpty } from 'fp-ts/Array'
@@ -89,7 +89,7 @@ export const isNonEmpty: <A>(as: Array<A>) => as is NonEmptyArray<A> = NEA.isNon
 /**
  * Prepend an element to the front of a `Array`, creating a new `NonEmptyArray`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { prepend } from 'fp-ts/Array'
  *   import { pipe } from 'fp-ts/function'
@@ -101,7 +101,7 @@ export const prepend: <A>(head: A) => (tail: Array<A>) => NEA.NonEmptyArray<A> =
 /**
  * Less strict version of [`prepend`](#prepend).
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import { prependW } from 'fp-ts/Array'
  *   import { pipe } from 'fp-ts/function'
@@ -113,7 +113,7 @@ export const prependW: <A, B>(head: B) => (tail: Array<A>) => NEA.NonEmptyArray<
 /**
  * Append an element to the end of a `Array`, creating a new `NonEmptyArray`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { append } from 'fp-ts/Array'
  *   import { pipe } from 'fp-ts/function'
@@ -125,7 +125,7 @@ export const append: <A>(end: A) => (init: Array<A>) => NEA.NonEmptyArray<A> = N
 /**
  * Less strict version of [`append`](#append).
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import { appendW } from 'fp-ts/Array'
  *   import { pipe } from 'fp-ts/function'
@@ -139,7 +139,7 @@ export const appendW: <A, B>(end: B) => (init: Array<A>) => NEA.NonEmptyArray<A 
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  * @example
  *   import { makeBy } from 'fp-ts/Array'
@@ -156,7 +156,7 @@ export const makeBy = <A>(n: number, f: (i: number) => A): Array<A> => (n <= 0 ?
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  * @example
  *   import { replicate } from 'fp-ts/Array'
@@ -170,7 +170,7 @@ export const replicate = <A>(n: number, a: A): Array<A> => makeBy(n, () => a)
 /**
  * Create an array with one element, if the element satisfies the predicate, otherwise it returns an empty array.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Lifting
  * @example
  *   import { fromPredicate } from 'fp-ts/Array'
@@ -210,7 +210,7 @@ export function fromPredicate<A>(predicate: Predicate<A>): (a: A) => Array<A> {
  * Create an array from an `Option`. The resulting array will contain the content of the `Option` if it is `Some` and it
  * will be empty if the `Option` is `None`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Conversions
  * @example
  *   import { fromOption } from 'fp-ts/Array'
@@ -226,7 +226,7 @@ export const fromOption: <A>(fa: Option<A>) => Array<A> = ma => (_.isNone(ma) ? 
  * Create an array from an `Either`. The resulting array will contain the content of the `Either` if it is `Right` and
  * it will be empty if the `Either` is `Left`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Conversions
  * @example
  *   import { fromEither } from 'fp-ts/Array'
@@ -243,7 +243,7 @@ export const fromEither: <A>(fa: Either<unknown, A>) => Array<A> = e => (_.isLef
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Pattern matching
  * @example
  *   import { matchW } from 'fp-ts/Array'
@@ -265,7 +265,7 @@ export const matchW =
  * Takes an array, if the array is empty it returns the result of `onEmpty`, otherwise it passes the array to
  * `onNonEmpty` and returns the result.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Pattern matching
  * @example
  *   import { match } from 'fp-ts/Array'
@@ -284,7 +284,7 @@ export const match: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (as: NonEmptyArray<A
  * Less strict version of [`matchLeft`](#matchleft). It will work when `onEmpty` and `onNonEmpty` have different return
  * types.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Pattern matching
  * @example
  *   import { matchLeftW } from 'fp-ts/Array'
@@ -305,7 +305,7 @@ export const matchLeftW =
  * Takes an array, if the array is empty it returns the result of `onEmpty`, otherwise it passes the array to
  * `onNonEmpty` broken into its first element and remaining elements.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  * @example
  *   import { matchLeft } from 'fp-ts/Array'
@@ -322,7 +322,7 @@ export const matchLeft: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: 
 /**
  * Alias of [`matchLeft`](#matchleft).
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const foldLeft: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: Array<A>) => B) => (as: Array<A>) => B =
@@ -332,7 +332,7 @@ export const foldLeft: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: A
  * Less strict version of [`matchRight`](#matchright). It will work when `onEmpty` and `onNonEmpty` have different
  * return types.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Pattern matching
  * @example
  *   import { matchRightW } from 'fp-ts/Array'
@@ -353,7 +353,7 @@ export const matchRightW =
  * Takes an array, if the array is empty it returns the result of `onEmpty`, otherwise it passes the array to
  * `onNonEmpty` broken into its initial elements and the last element.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  * @example
  *   import { matchRight } from 'fp-ts/Array'
@@ -372,7 +372,7 @@ export const matchRight: <B, A>(
 /**
  * Alias of [`matchRight`](#matchright).
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const foldRight: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (init: Array<A>, last: A) => B) => (as: Array<A>) => B =
@@ -385,7 +385,7 @@ export const foldRight: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (init: Array<A>,
 /**
  * Same as [`chain`](#chain), but passing also the index to the iterating function.
  *
- * @since 2.7.0
+ * @since 1.0.0
  * @category Sequencing
  * @example
  *   import { chainWithIndex, replicate } from 'fp-ts/Array'
@@ -407,7 +407,7 @@ export const chainWithIndex =
 /**
  * Same as `reduce` but it carries over the intermediate steps
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { scanLeft } from 'fp-ts/Array'
  *
@@ -428,7 +428,7 @@ export const scanLeft =
 /**
  * Fold an array from the right, keeping all intermediate results instead of only the final result
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { scanRight } from 'fp-ts/Array'
  *
@@ -449,7 +449,7 @@ export const scanRight =
 /**
  * Calculate the number of elements in a `Array`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { size } from 'fp-ts/Array'
  *
@@ -460,7 +460,7 @@ export const size = <A>(as: Array<A>): number => as.length
 /**
  * Test whether an array contains a particular index
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { isOutOfBound } from 'fp-ts/Array'
  *
@@ -475,7 +475,7 @@ export const isOutOfBound: <A>(i: number, as: Array<A>) => boolean = NEA.isOutOf
  * This function provides a safe way to read a value at a particular index from an array. It returns a `none` if the
  * index is out of bounds, and a `some` of the element if the index is valid.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { lookup } from 'fp-ts/Array'
  *   import { some, none } from 'fp-ts/Option'
@@ -492,7 +492,7 @@ export const lookup: {
 /**
  * Get the first element in an array, or `None` if the array is empty
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { head } from 'fp-ts/Array'
  *   import { some, none } from 'fp-ts/Option'
@@ -505,7 +505,7 @@ export const head: <A>(as: Array<A>) => Option<A> = RA.head
 /**
  * Get the last element in an array, or `None` if the array is empty
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { last } from 'fp-ts/Array'
  *   import { some, none } from 'fp-ts/Option'
@@ -518,7 +518,7 @@ export const last: <A>(as: Array<A>) => Option<A> = RA.last
 /**
  * Get all but the first element of an array, creating a new array, or `None` if the array is empty
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { tail } from 'fp-ts/Array'
  *   import { some, none } from 'fp-ts/Option'
@@ -531,7 +531,7 @@ export const tail = <A>(as: Array<A>): Option<Array<A>> => (isNonEmpty(as) ? _.s
 /**
  * Get all but the last element of an array, creating a new array, or `None` if the array is empty
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { init } from 'fp-ts/Array'
  *   import { some, none } from 'fp-ts/Option'
@@ -546,7 +546,7 @@ export const init = <A>(as: Array<A>): Option<Array<A>> => (isNonEmpty(as) ? _.s
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { takeLeft } from 'fp-ts/Array'
  *
@@ -565,7 +565,7 @@ export const takeLeft =
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { takeRight } from 'fp-ts/Array'
  *
@@ -584,7 +584,7 @@ export const takeRight =
 /**
  * Calculate the longest initial subarray for which all element satisfy the specified predicate, creating a new array
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { takeLeftWhile } from 'fp-ts/Array'
  *
@@ -620,7 +620,7 @@ const spanLeftIndex = <A>(as: Array<A>, predicate: Predicate<A>): number => {
 /**
  * Type returned by [`spanLeft`](#spanLeft) composed of an `init` array and a `rest` array.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export interface Spanned<I, R> {
   init: Array<I>
@@ -633,7 +633,7 @@ export interface Spanned<I, R> {
  * 1. The longest initial subarray for which all elements satisfy the specified predicate
  * 2. The remaining elements
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { spanLeft } from 'fp-ts/Array'
  *
@@ -657,7 +657,7 @@ export function spanLeft<A>(predicate: Predicate<A>): (as: Array<A>) => Spanned<
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { dropLeft } from 'fp-ts/Array'
  *
@@ -678,7 +678,7 @@ export const dropLeft =
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { dropRight } from 'fp-ts/Array'
  *
@@ -698,7 +698,7 @@ export const dropRight =
  * Creates a new `Array` which is a copy of the input dropping the longest initial subarray for which all element
  * satisfy the specified predicate.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { dropLeftWhile } from 'fp-ts/Array'
  *
@@ -716,7 +716,7 @@ export function dropLeftWhile<A>(predicate: Predicate<A>): (as: Array<A>) => Arr
  * element satisfies the predicate. Similar to [`findFirst`](#findFirst) but returning the index instead of the
  * element.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { findIndex } from 'fp-ts/Array'
  *   import { some, none } from 'fp-ts/Option'
@@ -730,7 +730,7 @@ export const findIndex: <A>(predicate: Predicate<A>) => (as: Array<A>) => Option
  * Find the first element which satisfies a predicate (or a refinement) function. It returns an `Option` containing the
  * element or `None` if not found.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { findFirst } from 'fp-ts/Array'
  *   import { some } from 'fp-ts/Option'
@@ -759,7 +759,7 @@ export function findFirst<A>(predicate: Predicate<A>): (as: Array<A>) => Option<
  * Given a selector function which takes an element and returns an option, this function applies the selector to each
  * element of the array and returns the first `Some` result. Otherwise it returns `None`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { findFirstMap } from 'fp-ts/Array'
  *   import { some, none } from 'fp-ts/Option'
@@ -786,7 +786,7 @@ export const findFirstMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<A>) => O
  * Find the last element which satisfies a predicate function. It returns an `Option` containing the element or `None`
  * if not found.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { findLast } from 'fp-ts/Array'
  *   import { some } from 'fp-ts/Option'
@@ -815,7 +815,7 @@ export function findLast<A>(predicate: Predicate<A>): (as: Array<A>) => Option<A
  * Given a selector function which takes an element and returns an option, this function applies the selector to each
  * element of the array starting from the end and returns the last `Some` result. Otherwise it returns `None`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { findLastMap } from 'fp-ts/Array'
  *   import { some, none } from 'fp-ts/Option'
@@ -842,7 +842,7 @@ export const findLastMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<A>) => Op
  * Returns the index of the last element of the list which matches the predicate. It returns an `Option` containing the
  * index or `None` if not found.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { findLastIndex } from 'fp-ts/Array'
  *   import { some, none } from 'fp-ts/Option'
@@ -863,14 +863,14 @@ export const findLastIndex: <A>(predicate: Predicate<A>) => (as: Array<A>) => Op
 /**
  * This function takes an array and makes a new array containing the same elements.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const copy = <A>(as: Array<A>): Array<A> => as.slice()
 
 /**
  * Insert an element at the specified index, creating a new array, or returning `None` if the index is out of bounds.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { insertAt } from 'fp-ts/Array'
  *   import { some } from 'fp-ts/Option'
@@ -885,7 +885,7 @@ export const insertAt =
 /**
  * Change the element at the specified index, creating a new array, or returning `None` if the index is out of bounds.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { updateAt } from 'fp-ts/Array'
  *   import { some, none } from 'fp-ts/Option'
@@ -898,7 +898,7 @@ export const updateAt = <A>(i: number, a: A): ((as: Array<A>) => Option<Array<A>
 /**
  * Delete the element at the specified index, creating a new array, or returning `None` if the index is out of bounds.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { deleteAt } from 'fp-ts/Array'
  *   import { some, none } from 'fp-ts/Option'
@@ -915,7 +915,7 @@ export const deleteAt =
  * Apply a function to the element at the specified index, creating a new array, or returning `None` if the index is out
  * of bounds.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { modifyAt } from 'fp-ts/Array'
  *   import { some, none } from 'fp-ts/Option'
@@ -932,7 +932,7 @@ export const modifyAt =
 /**
  * Reverse an array, creating a new array
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { reverse } from 'fp-ts/Array'
  *
@@ -944,7 +944,7 @@ export const reverse = <A>(as: Array<A>): Array<A> => (isEmpty(as) ? [] : as.sli
  * Takes an `Array` of `Either` and produces a new `Array` containing the values of all the `Right` elements in the same
  * order.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { rights } from 'fp-ts/Array'
  *   import { right, left } from 'fp-ts/Either'
@@ -966,7 +966,7 @@ export const rights = <E, A>(as: Array<Either<E, A>>): Array<A> => {
  * Takes an `Array` of `Either` and produces a new `Array` containing the values of all the `Left` elements in the same
  * order.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { lefts } from 'fp-ts/Array'
  *   import { left, right } from 'fp-ts/Either'
@@ -987,7 +987,7 @@ export const lefts = <E, A>(as: Array<Either<E, A>>): Array<E> => {
 /**
  * Sort the elements of an array in increasing order, creating a new array
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { sort } from 'fp-ts/Array'
  *   import * as N from 'fp-ts/number'
@@ -1003,7 +1003,7 @@ export const sort =
  * Apply a function to pairs of elements at the same index in two arrays, collecting the results in a new array. If one
  * input array is short, excess elements of the longer array are discarded.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { zipWith } from 'fp-ts/Array'
  *
@@ -1026,7 +1026,7 @@ export const zipWith = <A, B, C>(fa: Array<A>, fb: Array<B>, f: (a: A, b: B) => 
  * Takes two arrays and returns an array of corresponding pairs. If one input array is short, excess elements of the
  * longer array are discarded
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { zip } from 'fp-ts/Array'
  *   import { pipe } from 'fp-ts/function'
@@ -1049,7 +1049,7 @@ export function zip<A, B>(as: Array<A>, bs?: Array<B>): Array<[A, B]> | ((bs: Ar
 /**
  * The function is reverse of `zip`. Takes an array of pairs and return two corresponding arrays
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { unzip } from 'fp-ts/Array'
  *
@@ -1078,7 +1078,7 @@ export const unzip = <A, B>(as: Array<[A, B]>): [Array<A>, Array<B>] => {
 /**
  * Creates a new `Array`, prepending an element to every member of the input `Array`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { prependAll } from 'fp-ts/Array'
  *
@@ -1092,7 +1092,7 @@ export const prependAll = <A>(middle: A): ((as: Array<A>) => Array<A>) => {
 /**
  * Creates a new `Array` placing an element in between members of the input `Array`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @example
  *   import { intersperse } from 'fp-ts/Array'
  *
@@ -1106,7 +1106,7 @@ export const intersperse = <A>(middle: A): ((as: Array<A>) => Array<A>) => {
 /**
  * Creates a new `Array` rotating the input `Array` by `n` steps.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { rotate } from 'fp-ts/Array'
  *
@@ -1122,7 +1122,7 @@ export const rotate = (n: number): (<A>(as: Array<A>) => Array<A>) => {
  * Test if a value is a member of an `Array`. Takes a `Eq<A>` as a single argument which returns the function to use to
  * search for a value of type `A` in an `Array<A>`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { elem } from 'fp-ts/Array'
  *   import * as N from 'fp-ts/number'
@@ -1139,7 +1139,7 @@ export const elem: <A>(E: Eq<A>) => {
 /**
  * Creates a new `Array` removing duplicate elements, keeping the first occurrence of an element, based on a `Eq<A>`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { uniq } from 'fp-ts/Array'
  *   import * as N from 'fp-ts/number'
@@ -1155,7 +1155,7 @@ export const uniq = <A>(E: Eq<A>): ((as: Array<A>) => Array<A>) => {
  * Sort the elements of an array in increasing order, where elements are compared using first `ords[0]`, then `ords[1]`,
  * etc...
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { sortBy } from 'fp-ts/Array'
  *   import { contramap } from 'fp-ts/Ord'
@@ -1201,7 +1201,7 @@ export const sortBy = <B>(ords: Array<Ord<B>>): (<A extends B>(as: Array<A>) => 
  * array. Typically chop is called with some function that will consume an initial prefix of the array and produce a
  * value and the rest of the array.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { Eq } from 'fp-ts/Eq'
  *   import * as A from 'fp-ts/Array'
@@ -1227,7 +1227,7 @@ export const chop = <A, B>(f: (as: NonEmptyArray<A>) => [B, Array<A>]): ((as: Ar
 /**
  * Splits an `Array` into two pieces, the first piece has max `n` elements.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { splitAt } from 'fp-ts/Array'
  *
@@ -1254,7 +1254,7 @@ export const splitAt =
  *
  * Whenever `n` evenly divides the length of `xs`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { chunksOf } from 'fp-ts/Array'
  *
@@ -1266,7 +1266,7 @@ export const chunksOf = (n: number): (<A>(as: Array<A>) => Array<NonEmptyArray<A
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromOptionK =
@@ -1279,7 +1279,7 @@ export const fromOptionK =
  *
  *     [ f(x, y, ...) | x ← xs, y ← ys, ..., g(x, y, ...) ]
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { comprehension } from 'fp-ts/Array'
  *   import { tuple } from 'fp-ts/function'
@@ -1329,7 +1329,7 @@ export function comprehension<A, R>(
   return go([], input)
 }
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const concatW =
   <B>(second: Array<B>) =>
   <A>(first: Array<A>): Array<A | B> =>
@@ -1337,14 +1337,14 @@ export const concatW =
     : isEmpty(second) ? copy(first)
     : (first as Array<A | B>).concat(second)
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const concat: <A>(second: Array<A>) => (first: Array<A>) => Array<A> = concatW
 
 // TODO: remove non-curried overloading in v3
 /**
  * Creates an array of unique values, in order, from all given arrays using a `Eq` for equality comparisons
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { union } from 'fp-ts/Array'
  *   import * as N from 'fp-ts/number'
@@ -1376,7 +1376,7 @@ export function union<A>(E: Eq<A>): (xs: Array<A>, ys?: Array<A>) => Array<A> | 
  * Creates an array of unique values that are included in all given arrays using a `Eq` for equality comparisons. The
  * order and references of result values are determined by the first array.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { intersection } from 'fp-ts/Array'
  *   import * as N from 'fp-ts/number'
@@ -1404,7 +1404,7 @@ export function intersection<A>(E: Eq<A>): (xs: Array<A>, ys?: Array<A>) => Arra
  * Creates an array of array values not included in the other given array using a `Eq` for equality comparisons. The
  * order and references of result values are determined by the first array.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { difference } from 'fp-ts/Array'
  *   import * as N from 'fp-ts/number'
@@ -1504,7 +1504,7 @@ const _chainRecBreadthFirst: ChainRec1<URI>['chainRec'] = RA._chainRecBreadthFir
  * Given an element of the base type, `of` builds an `Array` containing just that element of the base type (this is
  * useful for building a `Monad`).
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  * @example
  *   import { of } from 'fp-ts/Array'
@@ -1516,7 +1516,7 @@ export const of: <A>(a: A) => Array<A> = NEA.of
 /**
  * Makes an empty `Array`, useful for building a [`Monoid`](#Monoid)
  *
- * @since 2.7.0
+ * @since 1.0.0
  */
 export const zero: <A>() => Array<A> = () => []
 
@@ -1524,7 +1524,7 @@ export const zero: <A>() => Array<A> = () => []
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: Array<A>) => Array<B>`. In practice it applies
  * the base function to each element of the array and collects the results in a new array.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Mapping
  * @example
  *   import { map } from 'fp-ts/Array'
@@ -1536,7 +1536,7 @@ export const zero: <A>() => Array<A> = () => []
 export const map: <A, B>(f: (a: A) => B) => (fa: Array<A>) => Array<B> = f => fa => fa.map(a => f(a))
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { ap, map, of } from 'fp-ts/Array'
  *   import { pipe } from 'fp-ts/function'
@@ -1577,7 +1577,7 @@ export const ap: <A>(fa: Array<A>) => <B>(fab: Array<(a: A) => B>) => Array<B> =
  * a new function which applies `f` to each element of the input array (like [`map`](#map)) and, instead of returning an
  * array of arrays, concatenates the results into a single array (like [`flatten`](#flatten)).
  *
- * @since 2.14.0
+ * @since 1.0.0
  * @category Sequencing
  * @example
  *   import { flatMap, map, replicate } from 'fp-ts/Array'
@@ -1603,7 +1603,7 @@ export const flatMap: {
  * Takes an array of arrays of `A` and flattens them into an array of `A` by concatenating the elements of each array in
  * order.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Sequencing
  * @example
  *   import { flatten } from 'fp-ts/Array'
@@ -1615,7 +1615,7 @@ export const flatten: <A>(mma: Array<Array<A>>) => Array<A> = /*#__PURE__*/ flat
 /**
  * Same as [`map`](#map), but the iterating function takes both the index and the value of the element.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Mapping
  * @example
  *   import { mapWithIndex } from 'fp-ts/Array'
@@ -1633,7 +1633,7 @@ export const mapWithIndex: <A, B>(f: (i: number, a: A) => B) => (fa: Array<A>) =
  *
  * Same as [`filterMap`](#filterMap), but with an iterating function which takes also the index as input.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { filterMapWithIndex } from 'fp-ts/Array'
@@ -1660,7 +1660,7 @@ export const filterMapWithIndex =
  * Maps an array with an iterating function that returns an `Option` and it keeps only the `Some` values discarding the
  * `None`s.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { filterMap } from 'fp-ts/Array'
@@ -1677,7 +1677,7 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Array<A>) => Arra
  * Compact an array of `Option`s discarding the `None` values and keeping the `Some` values. It returns a new array
  * containing the values of the `Some` options.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { compact } from 'fp-ts/Array'
@@ -1691,7 +1691,7 @@ export const compact: <A>(fa: Array<Option<A>>) => Array<A> = /*#__PURE__*/ filt
  * Separate an array of `Either`s into `Left`s and `Right`s, creating two new arrays: one containing all the left values
  * and one containing all the right values.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { separate } from 'fp-ts/Array'
@@ -1719,7 +1719,7 @@ export const separate = <A, B>(fa: Array<Either<A, B>>): Separated<Array<A>, Arr
  * Given an iterating function that is a `Predicate` or a `Refinement`, `filter` creates a new `Array` containing the
  * elements of the original `Array` for which the iterating function is `true`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { filter } from 'fp-ts/Array'
@@ -1742,7 +1742,7 @@ export const filter: {
  * containing the elements of the original `Array` for which the iterating function is `true`, `left` containing the
  * elements for which it is false.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { partition } from 'fp-ts/Array'
@@ -1761,7 +1761,7 @@ export const partition: {
 /**
  * Same as [`partition`](#partition), but passing also the index to the iterating function.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { partitionWithIndex } from 'fp-ts/Array'
@@ -1798,7 +1798,7 @@ export const partitionWithIndex: {
  * and it creates two `Array`s: `right` containing the values of `Right` results, `left` containing the values of `Left`
  * results.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { partitionMap } from 'fp-ts/Array'
@@ -1817,7 +1817,7 @@ export const partitionMap: <A, B, C>(
 /**
  * Same as [`partitionMap`](#partitionMap), but passing also the index to the iterating function.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { partitionMapWithIndex } from 'fp-ts/Array'
@@ -1851,7 +1851,7 @@ export const partitionMapWithIndex =
  *
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Error handling
  * @example
  *   import * as A from 'fp-ts/Array'
@@ -1876,7 +1876,7 @@ export const altW =
  *
  * In case of `Array` concatenates the inputs into a single array.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Error handling
  * @example
  *   import * as A from 'fp-ts/Array'
@@ -1895,7 +1895,7 @@ export const alt: <A>(that: LazyArg<Array<A>>) => (fa: Array<A>) => Array<A> = a
 /**
  * Same as [`filter`](#filter), but passing also the index to the iterating function.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { filterWithIndex } from 'fp-ts/Array'
@@ -1917,7 +1917,7 @@ export const filterWithIndex: {
  * iterating function applied to the whole input `Array`, then to the input `Array` without the first element, then to
  * the input `Array` without the first two elements, etc.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { extend } from 'fp-ts/Array'
  *
@@ -1931,7 +1931,7 @@ export const extend: <A, B>(f: (as: Array<A>) => B) => (as: Array<A>) => Array<B
  * `duplicate` returns an array containing the whole input `Array`, then to the input `Array` dropping the first
  * element, then to the input `Array` dropping the first two elements, etc.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { duplicate } from 'fp-ts/Array'
  *
@@ -1943,7 +1943,7 @@ export const duplicate: <A>(wa: Array<A>) => Array<Array<A>> = /*#__PURE__*/ ext
  * Map and fold an `Array`. Map the `Array` passing each value to the iterating function. Then fold the results using
  * the provided `Monoid`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { foldMap } from 'fp-ts/Array'
@@ -1957,7 +1957,7 @@ export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: Array<A>)
 /**
  * Same as [`foldMap`](#foldMap) but passing also the index to the iterating function.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { foldMapWithIndex } from 'fp-ts/Array'
@@ -1978,7 +1978,7 @@ export const foldMapWithIndex: <M>(M: Monoid<M>) => <A>(f: (i: number, a: A) => 
  * The first time that the iterating function is called there is no "return value of the previous calculation", the
  * initial value is used in its place.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { reduce } from 'fp-ts/Array'
@@ -1990,7 +1990,7 @@ export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => (fa: Array<A>) => B =
 /**
  * Same as [`reduce`](#reduce) but passing also the index to the iterating function.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { reduceWithIndex } from 'fp-ts/Array'
@@ -2006,7 +2006,7 @@ export const reduceWithIndex: <A, B>(b: B, f: (i: number, b: B, a: A) => B) => (
  *
  * _Note_: the iterating function in this case takes the accumulator as the last argument.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { reduceRight } from 'fp-ts/Array'
@@ -2018,7 +2018,7 @@ export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => (fa: Array<A>) =
 /**
  * Same as [`reduceRight`](#reduceRight) but passing also the index to the iterating function.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { reduceRightWithIndex } from 'fp-ts/Array'
@@ -2039,7 +2039,7 @@ export const reduceRightWithIndex: <A, B>(b: B, f: (i: number, a: A, b: B) => B)
  * a result an `Either<Error,Array<B>>` i.e. an `Array<B>` if all the results are `B`, or an `Error` if some of the
  * results are `Error`s.
  *
- * @since 2.6.3
+ * @since 1.0.0
  * @category Traversing
  * @example
  *   import { traverse } from 'fp-ts/Array'
@@ -2065,7 +2065,7 @@ export const traverse: PipeableTraverse1<URI> = <F>(
  * `Either<E, Array<A>>`, it needs an `Applicative` for `Either`, to to turn an `Array<Option<A>>` into an
  * `Option<Array<A>>`, it needs an `Applicative` for `Option`.
  *
- * @since 2.6.3
+ * @since 1.0.0
  * @category Traversing
  * @example
  *   import { sequence } from 'fp-ts/Array'
@@ -2091,7 +2091,7 @@ export const sequence: Traversable1<URI>['sequence'] =
 /**
  * Same as [`traverse`](#traverse) but passing also the index to the iterating function.
  *
- * @since 2.6.3
+ * @since 1.0.0
  * @category Sequencing
  * @example
  *   import { traverseWithIndex } from 'fp-ts/Array'
@@ -2113,7 +2113,7 @@ export const traverseWithIndex: PipeableTraverseWithIndex1<URI, number> =
     )
 
 /**
- * @since 2.6.5
+ * @since 1.0.0
  * @category Filtering
  */
 export const wither: PipeableWither1<URI> = <F>(
@@ -2124,7 +2124,7 @@ export const wither: PipeableWither1<URI> = <F>(
 }
 
 /**
- * @since 2.6.5
+ * @since 1.0.0
  * @category Filtering
  */
 export const wilt: PipeableWilt1<URI> = <F>(
@@ -2139,7 +2139,7 @@ export const wilt: PipeableWilt1<URI> = <F>(
  * following iteration. `unfold` applies `f` to the initial value `b` and then recursively to the second element of the
  * tuple contained in the returned `option` of the previous calculation until `f` returns `Option.none`.
  *
- * @since 2.6.6
+ * @since 1.0.0
  * @example
  *   import { unfold } from 'fp-ts/Array'
  *   import { option } from 'fp-ts'
@@ -2170,13 +2170,13 @@ export const unfold = <A, B>(b: B, f: (b: B) => Option<readonly [A, B]>): Array<
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'Array'
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -2190,7 +2190,7 @@ declare module './HKT' {
 /**
  * `getShow` makes a `Show` for an `Array<A>` from a `Show` for an `A`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getShow } from 'fp-ts/Array'
@@ -2203,7 +2203,7 @@ export const getShow: <A>(S: Show<A>) => Show<Array<A>> = RA.getShow
 /**
  * Get a `Semigroup` based on the concatenation of `Array`s. See also [`getMonoid`](#getMonoid).
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getSemigroup } from 'fp-ts/Array'
@@ -2218,7 +2218,7 @@ export const getSemigroup = <A = never>(): Semigroup<Array<A>> => ({
 /**
  * Returns a `Monoid` for `Array<A>` based on the concatenation of `Array`s.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getMonoid } from 'fp-ts/Array'
@@ -2236,7 +2236,7 @@ export const getMonoid = <A = never>(): Monoid<Array<A>> => ({
  * arrays as equal if all elements of both arrays are compared equal pairwise with the given `E`. In case of arrays of
  * different lengths, the result is non equality.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import * as S from 'fp-ts/string'
@@ -2254,7 +2254,7 @@ export const getEq: <A>(E: Eq<A>) => Eq<Array<A>> = RA.getEq
  * case of equality over all the pairwise elements; the longest array is considered the greatest, if both arrays have
  * the same length, the result is equality.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getOrd } from 'fp-ts/Array'
@@ -2271,7 +2271,7 @@ export const getOrd: <A>(O: Ord<A>) => Ord<Array<A>> = RA.getOrd
  * Get a `Semigroup` based on the union of the elements of `Array`s. Elements which equal according to the provided `Eq`
  * are included only once in the result. See also [`getUnionMonoid`](#getUnionMonoid).
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getUnionSemigroup } from 'fp-ts/Array'
@@ -2291,7 +2291,7 @@ export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<Array<A>> => {
  * Get a `Monoid` based on the union of the elements of `Array`s. Elements which equal according to the provided `Eq`
  * are included only once in the result.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getUnionMonoid } from 'fp-ts/Array'
@@ -2310,7 +2310,7 @@ export const getUnionMonoid = <A>(E: Eq<A>): Monoid<Array<A>> => ({
  * Get a `Semigroup` based on the intersection of the elements of `Array`s. Only elements present in the two arrays
  * which are equal according to the provided `Eq` are included in the result.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getIntersectionSemigroup } from 'fp-ts/Array'
@@ -2331,7 +2331,7 @@ export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<Array<A>> => {
  * the result contains all the elements of the first array for which their is no equal element in the second array
  * according to the `Eq` provided.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getDifferenceMagma } from 'fp-ts/Array'
@@ -2348,7 +2348,7 @@ export const getDifferenceMagma = <A>(E: Eq<A>): Magma<Array<A>> => {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Functor: Functor1<URI> = {
@@ -2360,7 +2360,7 @@ export const Functor: Functor1<URI> = {
  * Given an input an `Array` of functions, `flap` returns an `Array` containing the results of applying each function to
  * the given input.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  * @example
  *   import { flap } from 'fp-ts/Array'
@@ -2375,7 +2375,7 @@ export const Functor: Functor1<URI> = {
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Pointed: Pointed1<URI> = {
@@ -2384,7 +2384,7 @@ export const Pointed: Pointed1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FunctorWithIndex: FunctorWithIndex1<URI, number> = {
@@ -2394,7 +2394,7 @@ export const FunctorWithIndex: FunctorWithIndex1<URI, number> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Apply: Apply1<URI> = {
@@ -2406,19 +2406,19 @@ export const Apply: Apply1<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
 
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Applicative: Applicative1<URI> = {
@@ -2429,7 +2429,7 @@ export const Applicative: Applicative1<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Chain: Chain1<URI> = {
@@ -2443,7 +2443,7 @@ export const Chain: Chain1<URI> = {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Sequencing
  * @example
  *   import * as A from 'fp-ts/Array'
@@ -2468,7 +2468,7 @@ export const chainFirst: <A, B>(f: (a: A) => Array<B>) => (first: Array<A>) => A
   /*#__PURE__*/ chainFirst_(Chain)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Monad: Monad1<URI> = {
@@ -2480,7 +2480,7 @@ export const Monad: Monad1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Unfoldable: Unfoldable1<URI> = {
@@ -2489,7 +2489,7 @@ export const Unfoldable: Unfoldable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Alt: Alt1<URI> = {
@@ -2499,7 +2499,7 @@ export const Alt: Alt1<URI> = {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Zero: Zero1<URI> = {
@@ -2508,13 +2508,13 @@ export const Zero: Zero1<URI> = {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const guard = /*#__PURE__*/ guard_(Zero, Pointed)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Alternative: Alternative1<URI> = {
@@ -2527,7 +2527,7 @@ export const Alternative: Alternative1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Extend: Extend1<URI> = {
@@ -2537,7 +2537,7 @@ export const Extend: Extend1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Compactable: Compactable1<URI> = {
@@ -2547,7 +2547,7 @@ export const Compactable: Compactable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Filterable: Filterable1<URI> = {
@@ -2562,7 +2562,7 @@ export const Filterable: Filterable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FilterableWithIndex: FilterableWithIndex1<URI, number> = {
@@ -2582,7 +2582,7 @@ export const FilterableWithIndex: FilterableWithIndex1<URI, number> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Foldable: Foldable1<URI> = {
@@ -2593,7 +2593,7 @@ export const Foldable: Foldable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FoldableWithIndex: FoldableWithIndex1<URI, number> = {
@@ -2607,7 +2607,7 @@ export const FoldableWithIndex: FoldableWithIndex1<URI, number> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Traversable: Traversable1<URI> = {
@@ -2621,7 +2621,7 @@ export const Traversable: Traversable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const TraversableWithIndex: TraversableWithIndex1<URI, number> = {
@@ -2643,7 +2643,7 @@ const _wither: Witherable1<URI>['wither'] = /*#__PURE__*/ witherDefault(Traversa
 const _wilt: Witherable1<URI>['wilt'] = /*#__PURE__*/ wiltDefault(Traversable, Compactable)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Witherable: Witherable1<URI> = {
@@ -2665,14 +2665,14 @@ export const Witherable: Witherable1<URI> = {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const chainRecDepthFirst: <A, B>(f: (a: A) => Array<Either<A, B>>) => (a: A) => Array<B> =
   RA.chainRecDepthFirst as any
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const ChainRecDepthFirst: ChainRec1<URI> = {
@@ -2684,14 +2684,14 @@ export const ChainRecDepthFirst: ChainRec1<URI> = {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const chainRecBreadthFirst: <A, B>(f: (a: A) => Array<Either<A, B>>) => (a: A) => Array<B> =
   RA.chainRecBreadthFirst as any
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const ChainRecBreadthFirst: ChainRec1<URI> = {
@@ -2705,12 +2705,12 @@ export const ChainRecBreadthFirst: ChainRec1<URI> = {
 /**
  * Filter values inside a context.
  *
- * @since 2.11.0
+ * @since 1.0.0
  */
 export const filterE = /*#__PURE__*/ filterE_(Witherable)
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromEither: FromEither1<URI> = {
@@ -2719,7 +2719,7 @@ export const FromEither: FromEither1<URI> = {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
@@ -2731,20 +2731,20 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Unsafe
  */
 export const unsafeInsertAt: <A>(i: number, a: A, as: Array<A>) => NonEmptyArray<A> = NEA.unsafeInsertAt
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Unsafe
  */
 export const unsafeUpdateAt = <A>(i: number, a: A, as: Array<A>): Array<A> =>
   isNonEmpty(as) ? NEA.unsafeUpdateAt(i, a, as) : []
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Unsafe
  */
 export const unsafeDeleteAt = <A>(i: number, as: Array<A>): Array<A> => {
@@ -2760,7 +2760,7 @@ export const unsafeDeleteAt = <A>(i: number, as: Array<A>): Array<A> => {
 /**
  * `every` tells if the provided predicate holds true for every element in the `Array`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @example
  *   import { every } from 'fp-ts/Array'
  *
@@ -2775,7 +2775,7 @@ export const every: {
 /**
  * `some` tells if the provided predicate holds true at least for one element in the `Array`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @example
  *   import { some } from 'fp-ts/Array'
  *
@@ -2790,14 +2790,14 @@ export const some =
 /**
  * Alias of [`some`](#some)
  *
- * @since 2.11.0
+ * @since 1.0.0
  */
 export const exists: <A>(predicate: Predicate<A>) => (as: Array<A>) => as is NEA.NonEmptyArray<A> = some
 
 /**
  * Places an element in between members of an `Array`, then folds the results using the provided `Monoid`.
  *
- * @since 2.12.0
+ * @since 1.0.0
  * @example
  *   import * as S from 'fp-ts/string'
  *   import { intercalate } from 'fp-ts/Array'
@@ -2811,13 +2811,13 @@ export const intercalate: <A>(M: Monoid<A>) => (middle: A) => (as: Array<A>) => 
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.9.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const Do: Array<{}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
@@ -2826,20 +2826,20 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @since 2.13.0
+   * @since 1.0.0
    * @category Do notation
    */
   let_ as let,
 }
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bind = /*#__PURE__*/ bind_(Chain)
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
@@ -2851,7 +2851,7 @@ export const apS = /*#__PURE__*/ apS_(Apply)
 /**
  * Alias of `flatMap`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chain: <A, B>(f: (a: A) => Array<B>) => (ma: Array<A>) => Array<B> = flatMap
@@ -2864,7 +2864,7 @@ export const chain: <A, B>(f: (a: A) => Array<B>) => (ma: Array<A>) => Array<B> 
  * Use `NonEmptyArray` module instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const range = NEA.range
@@ -2873,7 +2873,7 @@ export const range = NEA.range
  * Use a new `[]` instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const empty: Array<never> = []
@@ -2882,7 +2882,7 @@ export const empty: Array<never> = []
  * Use `prepend` instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const cons = NEA.cons
@@ -2891,7 +2891,7 @@ export const cons = NEA.cons
  * Use `append` instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const snoc = NEA.snoc
@@ -2900,7 +2900,7 @@ export const snoc = NEA.snoc
  * Use `prependAll` instead
  *
  * @deprecated
- * @since 2.9.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const prependToAll = prependAll
@@ -2910,7 +2910,7 @@ export const prependToAll = prependAll
  * instance, pass `A.Functor` instead of `A.array` (where `A` is from `import A from 'fp-ts/Array'`)
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const array: FunctorWithIndex1<URI, number> &

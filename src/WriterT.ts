@@ -1,4 +1,4 @@
-/** @since 2.4.0 */
+/** @since 1.0.0 */
 import { type HKT, type Kind, type Kind2, type Kind3, type URIS, type URIS2, type URIS3 } from './HKT'
 import { type Monad, type Monad1, type Monad2, type Monad2C, type Monad3 } from './Monad'
 import { type Monoid } from './Monoid'
@@ -6,14 +6,14 @@ import { type Monoid } from './Monoid'
 // TODO: remove module in v3
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Model
  */
 export interface WriterT<M, W, A> {
   (): HKT<M, [A, W]>
 }
 
-/** @since 2.4.0 */
+/** @since 1.0.0 */
 export interface WriterM<M> {
   readonly map: <W, A, B>(fa: WriterT<M, W, A>, f: (a: A) => B) => WriterT<M, W, B>
   readonly evalWriter: <W, A>(fa: WriterT<M, W, A>) => HKT<M, A>
@@ -33,14 +33,14 @@ export interface WriterM<M> {
 }
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Model
  */
 export interface WriterT1<M extends URIS, W, A> {
   (): Kind<M, [A, W]>
 }
 
-/** @since 2.4.0 */
+/** @since 1.0.0 */
 export interface WriterM1<M extends URIS> {
   readonly map: <W, A, B>(fa: WriterT1<M, W, A>, f: (a: A) => B) => WriterT1<M, W, B>
   readonly evalWriter: <W, A>(fa: WriterT1<M, W, A>) => Kind<M, A>
@@ -60,14 +60,14 @@ export interface WriterM1<M extends URIS> {
 }
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Model
  */
 export interface WriterT2<M extends URIS2, E, W, A> {
   (): Kind2<M, E, [A, W]>
 }
 
-/** @since 2.4.0 */
+/** @since 1.0.0 */
 export interface WriterM2<M extends URIS2> {
   readonly map: <E, W, A, B>(fa: WriterT2<M, E, W, A>, f: (a: A) => B) => WriterT2<M, E, W, B>
   readonly evalWriter: <E, W, A>(fa: WriterT2<M, E, W, A>) => Kind2<M, E, A>
@@ -86,7 +86,7 @@ export interface WriterM2<M extends URIS2> {
   }
 }
 
-/** @since 2.4.0 */
+/** @since 1.0.0 */
 export interface WriterM2C<M extends URIS2, E> {
   readonly map: <W, A, B>(fa: WriterT2<M, E, W, A>, f: (a: A) => B) => WriterT2<M, E, W, B>
   readonly evalWriter: <W, A>(fa: WriterT2<M, E, W, A>) => Kind2<M, E, A>
@@ -105,12 +105,12 @@ export interface WriterM2C<M extends URIS2, E> {
   }
 }
 
-/** @since 2.4.0 */
+/** @since 1.0.0 */
 export interface WriterT3<M extends URIS3, R, E, W, A> {
   (): Kind3<M, R, E, [A, W]>
 }
 
-/** @since 2.4.0 */
+/** @since 1.0.0 */
 export interface WriterM3<M extends URIS3> {
   readonly map: <R, E, W, A, B>(fa: WriterT3<M, R, E, W, A>, f: (a: A) => B) => WriterT3<M, R, E, W, B>
   readonly evalWriter: <R, E, W, A>(fa: WriterT3<M, R, E, W, A>) => Kind3<M, R, E, A>
@@ -135,7 +135,7 @@ export interface WriterM3<M extends URIS3> {
   }
 }
 
-/** @since 2.4.0 */
+/** @since 1.0.0 */
 export function getWriterM<M extends URIS3>(M: Monad3<M>): WriterM3<M>
 export function getWriterM<M extends URIS2>(M: Monad2<M>): WriterM2<M>
 export function getWriterM<M extends URIS2, E>(M: Monad2C<M, E>): WriterM2C<M, E>

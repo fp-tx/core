@@ -21,7 +21,7 @@
  *
  *   - `¬a <-> a → 0`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type BoundedDistributiveLattice } from './BoundedDistributiveLattice'
 
@@ -30,7 +30,7 @@ import { type BoundedDistributiveLattice } from './BoundedDistributiveLattice'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface HeytingAlgebra<A> extends BoundedDistributiveLattice<A> {

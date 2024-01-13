@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import { type Functor2, type Functor2C, type Functor3, type Functor3C, type Functor4 } from './Functor'
 import { type HKT, type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, type URIS4 } from './HKT'
 
@@ -7,7 +7,7 @@ import { type HKT, type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, ty
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Profunctor<F> {
@@ -17,7 +17,7 @@ export interface Profunctor<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Profunctor2<F extends URIS2> extends Functor2<F> {
@@ -25,7 +25,7 @@ export interface Profunctor2<F extends URIS2> extends Functor2<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Profunctor2C<F extends URIS2, E> extends Functor2C<F, E> {
@@ -33,7 +33,7 @@ export interface Profunctor2C<F extends URIS2, E> extends Functor2C<F, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Profunctor3<F extends URIS3> extends Functor3<F> {
@@ -41,7 +41,7 @@ export interface Profunctor3<F extends URIS3> extends Functor3<F> {
 }
 
 /**
- * @since 2.2.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Profunctor3C<F extends URIS3, E> extends Functor3C<F, E> {
@@ -49,7 +49,7 @@ export interface Profunctor3C<F extends URIS3, E> extends Functor3C<F, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Profunctor4<F extends URIS4> extends Functor4<F> {

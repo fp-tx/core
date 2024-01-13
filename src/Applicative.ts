@@ -15,7 +15,7 @@
  *
  * Note. `Functor`'s `map` can be derived: `A.map(x, f) = A.ap(A.of(f), x)`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import {
   ap,
@@ -70,43 +70,43 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Applicative<F> extends Apply<F>, Pointed<F> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Applicative1<F extends URIS> extends Apply1<F>, Pointed1<F> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Applicative2<F extends URIS2> extends Apply2<F>, Pointed2<F> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Applicative2C<F extends URIS2, E> extends Apply2C<F, E>, Pointed2C<F, E> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Applicative3<F extends URIS3> extends Apply3<F>, Pointed3<F> {}
 
 /**
- * @since 2.2.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Applicative3C<F extends URIS3, E> extends Apply3C<F, E>, Pointed3C<F, E> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Applicative4<F extends URIS4> extends Apply4<F>, Pointed4<F> {}
@@ -118,7 +118,7 @@ export interface Applicative4<F extends URIS4> extends Apply4<F>, Pointed4<F> {}
 /**
  * Lift a monoid into 'F', the inner values are concatenated using the provided `Monoid`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function getApplicativeMonoid<F extends URIS4>(
   F: Applicative4<F>,
@@ -151,7 +151,7 @@ export function getApplicativeMonoid<F>(F: Applicative<F>): <A>(M: Monoid<A>) =>
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface ApplicativeComposition<F, G> extends FunctorComposition<F, G> {
@@ -161,7 +161,7 @@ export interface ApplicativeComposition<F, G> extends FunctorComposition<F, G> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface ApplicativeCompositionHKT1<F, G extends URIS> extends FunctorCompositionHKT1<F, G> {
@@ -171,7 +171,7 @@ export interface ApplicativeCompositionHKT1<F, G extends URIS> extends FunctorCo
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface ApplicativeCompositionHKT2<F, G extends URIS2> extends FunctorCompositionHKT2<F, G> {
@@ -181,7 +181,7 @@ export interface ApplicativeCompositionHKT2<F, G extends URIS2> extends FunctorC
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface ApplicativeCompositionHKT2C<F, G extends URIS2, E> extends FunctorCompositionHKT2C<F, G, E> {
@@ -191,7 +191,7 @@ export interface ApplicativeCompositionHKT2C<F, G extends URIS2, E> extends Func
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface ApplicativeComposition11<F extends URIS, G extends URIS> extends FunctorComposition11<F, G> {
@@ -201,7 +201,7 @@ export interface ApplicativeComposition11<F extends URIS, G extends URIS> extend
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface ApplicativeComposition12<F extends URIS, G extends URIS2> extends FunctorComposition12<F, G> {
@@ -214,7 +214,7 @@ export interface ApplicativeComposition12<F extends URIS, G extends URIS2> exten
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface ApplicativeComposition12C<F extends URIS, G extends URIS2, E> extends FunctorComposition12C<F, G, E> {
@@ -224,7 +224,7 @@ export interface ApplicativeComposition12C<F extends URIS, G extends URIS2, E> e
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface ApplicativeComposition21<F extends URIS2, G extends URIS> extends FunctorComposition21<F, G> {
@@ -237,7 +237,7 @@ export interface ApplicativeComposition21<F extends URIS2, G extends URIS> exten
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface ApplicativeComposition2C1<F extends URIS2, G extends URIS, E> extends FunctorComposition2C1<F, G, E> {
@@ -247,7 +247,7 @@ export interface ApplicativeComposition2C1<F extends URIS2, G extends URIS, E> e
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface ApplicativeComposition22<F extends URIS2, G extends URIS2> extends FunctorComposition22<F, G> {
@@ -260,7 +260,7 @@ export interface ApplicativeComposition22<F extends URIS2, G extends URIS2> exte
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface ApplicativeComposition22C<F extends URIS2, G extends URIS2, E> extends FunctorComposition22C<F, G, E> {
@@ -275,7 +275,7 @@ export interface ApplicativeComposition22C<F extends URIS2, G extends URIS2, E> 
  * Use [`ap`](./Apply.ts.html#ap) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function getApplicativeComposition<F extends URIS2, G extends URIS2, E>(

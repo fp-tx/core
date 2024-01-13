@@ -21,7 +21,7 @@
  * **Note:** The `number` type is not fully law abiding members of this class hierarchy due to the potential for
  * arithmetic overflows, and the presence of `NaN` and `Infinity` values. The behaviour is unspecified in these cases.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { getSemiring } from './function'
 
@@ -30,7 +30,7 @@ import { getSemiring } from './function'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Semiring<A> {
@@ -48,7 +48,7 @@ export interface Semiring<A> {
  * Use [`getSemiring`](./function.ts.html#getsemiring) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getFunctionSemiring: <A, B>(S: Semiring<B>) => Semiring<(a: A) => B> = getSemiring

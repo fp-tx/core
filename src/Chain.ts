@@ -8,7 +8,7 @@
  *
  * Note. `Apply`'s `ap` can be derived: `(fab, fa) => F.chain(fab, f => F.map(fa, f))`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type Apply, type Apply1, type Apply2, type Apply2C, type Apply3, type Apply3C, type Apply4 } from './Apply'
 import {
@@ -28,7 +28,7 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Chain<F> extends Apply<F> {
@@ -36,7 +36,7 @@ export interface Chain<F> extends Apply<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Chain1<F extends URIS> extends Apply1<F> {
@@ -44,7 +44,7 @@ export interface Chain1<F extends URIS> extends Apply1<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Chain2<F extends URIS2> extends Apply2<F> {
@@ -52,7 +52,7 @@ export interface Chain2<F extends URIS2> extends Apply2<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Chain2C<F extends URIS2, E> extends Apply2C<F, E> {
@@ -60,7 +60,7 @@ export interface Chain2C<F extends URIS2, E> extends Apply2C<F, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Chain3<F extends URIS3> extends Apply3<F> {
@@ -68,7 +68,7 @@ export interface Chain3<F extends URIS3> extends Apply3<F> {
 }
 
 /**
- * @since 2.2.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Chain3C<F extends URIS3, E> extends Apply3C<F, E> {
@@ -76,7 +76,7 @@ export interface Chain3C<F extends URIS3, E> extends Apply3C<F, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Chain4<F extends URIS4> extends Apply4<F> {
@@ -87,7 +87,7 @@ export interface Chain4<F extends URIS4> extends Apply4<F> {
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function chainFirst<M extends URIS4>(
   M: Chain4<M>,
 ): <A, S, R, E, _>(f: (a: A) => Kind4<M, S, R, E, _>) => (first: Kind4<M, S, R, E, A>) => Kind4<M, S, R, E, A>
@@ -140,7 +140,7 @@ export function tap<M>(M: Chain<M>): <A, _>(first: HKT<M, A>, f: (a: A) => HKT<M
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function bind<M extends URIS4>(
   M: Chain4<M>,
 ): <N extends string, A, S, R, E, B>(

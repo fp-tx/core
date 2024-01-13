@@ -2,7 +2,7 @@
  * The `Record` module enables dealing with Typescript's `Record<K, T>` type in a functional way, basically treating it
  * as a `Functor` in `T`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import {
   type Applicative,
@@ -60,7 +60,7 @@ import { type PipeableWilt1, type PipeableWither1, wiltDefault, type Witherable1
 /**
  * Calculate the number of key/value pairs in a `Record`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { size } from 'fp-ts/Record'
  *
@@ -71,7 +71,7 @@ export const size: <A>(r: Record<string, A>) => number = RR.size
 /**
  * Test whether a `Record` is empty.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { isEmpty } from 'fp-ts/Record'
  *
@@ -88,7 +88,7 @@ const keys_ =
 /**
  * The keys of a `Record`, sorted alphabetically.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { keys } from 'fp-ts/Record'
  *
@@ -100,7 +100,7 @@ export const keys: <K extends string>(r: Record<K, unknown>) => Array<K> = /*#__
  * Map a `Record` into an `Array`. It passes each key/value pair to the iterating function and collects the results in
  * an array, sorted alphabetically by the original key.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { collect } from 'fp-ts/Record'
  *   import { Ord } from 'fp-ts/string'
@@ -138,7 +138,7 @@ export function collect<A, B>(
 /**
  * Get a sorted `Array` of the key/value pairs contained in a `Record`. Sorted alphabetically by key.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Conversions
  * @example
  *   import { toArray } from 'fp-ts/Record'
@@ -162,7 +162,7 @@ export const toArray: <K extends string, A>(r: Record<K, A>) => Array<[K, A]> = 
  * instance of `U`, providing an iterating function that iterates over each key/value pair in the record sorted
  * alphabetically by key.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { array, readonlyArray } from 'fp-ts'
  *   import { toUnfoldable } from 'fp-ts/Record'
@@ -191,7 +191,7 @@ export function toUnfoldable<F>(U: Unfoldable<F>): <A>(r: Record<string, A>) => 
 /**
  * Insert or replace a key/value pair in a `Record`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { upsertAt } from 'fp-ts/Record'
  *
@@ -205,7 +205,7 @@ export const upsertAt: <A>(k: string, a: A) => (r: Record<string, A>) => Record<
  *
  * Note. This function is not pipeable because is a `Refinement`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { has } from 'fp-ts/Record'
  *
@@ -217,7 +217,7 @@ export const has: <K extends string>(k: string, r: Record<K, unknown>) => k is K
 /**
  * Delete a key and value from a `Record`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { deleteAt } from 'fp-ts/Record'
  *
@@ -241,7 +241,7 @@ export function deleteAt(k: string): <A>(r: Record<string, A>) => Record<string,
 /**
  * Replace a key/value pair in a `Record`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { updateAt } from 'fp-ts/Record'
  *   import { option } from 'fp-ts'
@@ -258,7 +258,7 @@ export const updateAt = <A>(k: string, a: A): (<K extends string>(r: Record<K, A
 /**
  * Applies a mapping function to one spcific key/value pair in a `Record`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { modifyAt } from 'fp-ts/Record'
  *   import { option } from 'fp-ts'
@@ -283,7 +283,7 @@ export const modifyAt =
 /**
  * Delete a key and value from a `Record`, returning the value as well as the subsequent `Record`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { pop } from 'fp-ts/Record'
  *   import { option } from 'fp-ts'
@@ -309,7 +309,7 @@ export function pop(k: string): <A>(r: Record<string, A>) => Option<[A, Record<s
 /**
  * Test whether one `Record` contains all of the keys and values contained in another `Record`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { isSubrecord } from 'fp-ts/Record'
  *   import { string } from 'fp-ts'
@@ -334,7 +334,7 @@ export const isSubrecord: <A>(E: Eq<A>) => {
 /**
  * Lookup the value for a key in a `Record`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { lookup } from 'fp-ts/Record'
  *   import { option } from 'fp-ts'
@@ -352,7 +352,7 @@ export const lookup: {
 /**
  * Map a `Record` passing the key/value pairs to the iterating function.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { mapWithIndex } from 'fp-ts/Record'
  *
@@ -365,7 +365,7 @@ export const mapWithIndex: <K extends string, A, B>(f: (k: K, a: A) => B) => (fa
 /**
  * Map a `Record` passing the values to the iterating function.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Mapping
  * @example
  *   import { map } from 'fp-ts/Record'
@@ -379,7 +379,7 @@ export const map: <A, B>(f: (a: A) => B) => <K extends string>(fa: Record<K, A>)
  * Reduces a `Record` passing each key/value pair to the iterating function. Entries are processed in the order, sorted
  * by key according to the given `Ord`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { reduceWithIndex } from 'fp-ts/Record'
  *   import { Ord } from 'fp-ts/string'
@@ -410,7 +410,7 @@ export function reduceWithIndex<A, B>(
  * Map and fold a `Record`. Map the `Record` passing each key/value pair to the iterating function. Then fold the
  * results using the provided `Monoid`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { foldMapWithIndex } from 'fp-ts/Record'
  *   import { Ord } from 'fp-ts/string'
@@ -444,7 +444,7 @@ export function foldMapWithIndex<M>(
  * Same as `reduceWithIndex`, but reduce starting from the right (i.e. in reverse order, from the last to the first
  * entry according to the given `Ord`).
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { reduceRightWithIndex } from 'fp-ts/Record'
  *   import { Ord } from 'fp-ts/string'
@@ -474,7 +474,7 @@ export function reduceRightWithIndex<A, B>(
 /**
  * Create a `Record` with one key/value pair.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { singleton } from 'fp-ts/Record'
  *
@@ -482,7 +482,7 @@ export function reduceRightWithIndex<A, B>(
  */
 export const singleton: <A>(k: string, a: A) => Record<string, A> = RR.singleton
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export function traverseWithIndex<F extends URIS4>(
   F: Applicative4<F>,
 ): <K extends string, S, R, E, A, B>(
@@ -516,7 +516,7 @@ export function traverseWithIndex<F>(
   return RR.traverseWithIndex(F)
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export function traverse<F extends URIS4>(
   F: Applicative4<F>,
 ): <S, R, E, A, B>(
@@ -553,7 +553,7 @@ export function traverse<F>(
  *
  * `sequence` in `Record` is equivalent to `sequenceS` in `Apply.ts`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { sequence } from 'fp-ts/Record'
  *   import { option } from 'fp-ts'
@@ -590,7 +590,7 @@ export function sequence<F>(F: Applicative<F>): <A>(ta: Record<string, HKT<F, A>
 }
 
 /**
- * @since 2.6.5
+ * @since 1.0.0
  * @category Filtering
  */
 export const wither: PipeableWither1<URI> = <F>(
@@ -601,7 +601,7 @@ export const wither: PipeableWither1<URI> = <F>(
 }
 
 /**
- * @since 2.6.5
+ * @since 1.0.0
  * @category Filtering
  */
 export const wilt: PipeableWilt1<URI> = <F>(
@@ -617,7 +617,7 @@ export const wilt: PipeableWilt1<URI> = <F>(
  * Maps a `Record` with a function returning an `Either` and partitions the resulting `Record` into `Left`s and
  * `Right`s.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { partitionMapWithIndex } from 'fp-ts/Record'
  *   import { either } from 'fp-ts'
@@ -641,7 +641,7 @@ export const partitionMapWithIndex: <K extends string, A, B, C>(
 /**
  * Partition a `Record` into two parts according to a predicate that takes a key and a value.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { partitionWithIndex } from 'fp-ts/Record'
  *
@@ -677,7 +677,7 @@ export function partitionWithIndex<A>(
  * Maps a `Record` with an iterating function that takes key and value and returns an `Option`, keeping only the `Some`
  * values and discarding `None`s.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { filterMapWithIndex } from 'fp-ts/Record'
  *   import { option } from 'fp-ts'
@@ -695,7 +695,7 @@ export const filterMapWithIndex: <K extends string, A, B>(
 /**
  * Produce a new `Record` keeping only the entries that satisfy a predicate taking key and value as input.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { filterWithIndex } from 'fp-ts/Record'
  *
@@ -725,7 +725,7 @@ export function filterWithIndex<A>(
  * Create a `Record` from a foldable collection of key/value pairs, using the specified `Magma` to combine values for
  * duplicate keys.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export function fromFoldable<F extends URIS3, A>(
   M: Magma<A>,
@@ -747,7 +747,7 @@ export function fromFoldable<F, A>(M: Magma<A>, F: FoldableHKT<F>): (fka: HKT<F,
 /**
  * Alias of [`toArray`](#toArray).
  *
- * @since 2.12.0
+ * @since 1.0.0
  * @category Conversions
  * @example
  *   import { toEntries } from 'fp-ts/Record'
@@ -762,7 +762,7 @@ export const toEntries = toArray
 /**
  * Converts an `Array` of `[key, value]` tuples into a `Record`.
  *
- * @since 2.12.0
+ * @since 1.0.0
  * @category Conversions
  * @example
  *   import { fromEntries } from 'fp-ts/Record'
@@ -784,7 +784,7 @@ export const fromEntries = <A>(fa: Array<[string, A]>): Record<string, A> => fro
  * - Map to key/value pairs
  * - Combine values for duplicate keys.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { last } from 'fp-ts/Semigroup'
  *   import { Foldable, zip } from 'fp-ts/Array'
@@ -841,7 +841,7 @@ export function fromFoldableMap<F, B>(
 /**
  * Test if every value in a `Record` satisfies the predicate.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { every } from 'fp-ts/Record'
  *
@@ -856,7 +856,7 @@ export const every: {
 /**
  * Test if at least one value in a `Record` satisfies the predicate.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { some } from 'fp-ts/Record'
  *
@@ -869,7 +869,7 @@ export const some: <A>(predicate: (a: A) => boolean) => (r: Record<string, A>) =
 /**
  * Given an `Eq` checks if a `Record` contains an entry with value equal to a provided value.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { elem } from 'fp-ts/Record'
  *   import { number } from 'fp-ts'
@@ -886,7 +886,7 @@ export const elem: <A>(E: Eq<A>) => {
  * Union of two `Record`s. Takes two `Record`s and produces a `Record` combining all the entries of the two inputs. It
  * uses the `concat` function of the provided `Magma` to combine the elements with the same key.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import { union } from 'fp-ts/Record'
  *   import { Magma } from 'fp-ts/Magma'
@@ -915,7 +915,7 @@ export const union = <A>(
  * Intersection of two `Record`s. Takes two `Record`s and produces a `Record` combining only the entries of the two
  * inputswith the same key. It uses the `concat` function of the provided `Magma` to combine the elements.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import { intersection } from 'fp-ts/Record'
  *   import { Magma } from 'fp-ts/Magma'
@@ -939,7 +939,7 @@ export const intersection =
  * Difference between two `Record`s. Takes two `Record`s and produces a `Record` composed by the entries of the two
  * inputs, removing the entries with the same key in both inputs.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import { difference } from 'fp-ts/Record'
  *
@@ -1006,7 +1006,7 @@ const _traverseWithIndex =
  * Given a `Predicate`, it produces a new `Record` keeping only the entries with a value that satisfies the provided
  * predicate.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { filter } from 'fp-ts/Record'
@@ -1026,7 +1026,7 @@ export const filter: {
  * Maps a `Record` with an iterating function that returns an `Option` and it keeps only the `Some` values discarding
  * the `None`s.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { filterMap } from 'fp-ts/Record'
@@ -1043,7 +1043,7 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Record<string, A>
 /**
  * Partition a `Record` into two parts according to a `Predicate`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { partition } from 'fp-ts/Record'
@@ -1070,7 +1070,7 @@ export const partition: {
  * Maps a `Record` with a function returning an `Either` and partitions the resulting `Record` into `Left`s and
  * `Right`s.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { partitionMap } from 'fp-ts/Record'
@@ -1095,7 +1095,7 @@ export const partitionMap: <A, B, C>(
  * Reduces a `Record` passing each value to the iterating function. Entries are processed in order, sorted by key
  * according to the given `Ord`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { reduce } from 'fp-ts/Record'
@@ -1121,7 +1121,7 @@ export function reduce<A, B>(
  * Map and fold a `Record`. Map the `Record` passing each value to the iterating function. Then fold the results using
  * the provided `Monoid`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { foldMap } from 'fp-ts/Record'
@@ -1152,7 +1152,7 @@ export function foldMap<M>(
  * Same as `reduce` but entries are processed _from the right_, i.e. in reverse order, from the last to the first entry,
  * according to the given `Ord`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { reduceRight } from 'fp-ts/Record'
@@ -1181,7 +1181,7 @@ export function reduceRight<A, B>(
 /**
  * Compact a `Record` of `Option`s discarding the `None` values and keeping the `Some` values.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { compact } from 'fp-ts/Record'
@@ -1197,7 +1197,7 @@ export const compact: <A>(fa: Record<string, Option<A>>) => Record<string, A> = 
 /**
  * Separate a `Record` of `Either`s into `Left`s and `Right`s.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { separate } from 'fp-ts/Record'
@@ -1217,13 +1217,13 @@ export const separate: <A, B>(fa: Record<string, Either<A, B>>) => Separated<Rec
   RR.separate
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'Record'
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -1238,7 +1238,7 @@ declare module './HKT' {
  * Produces a `Show` for a `Record`, given a `Show` for the base type (a `Show` produces a human-readable representation
  * of an instance). `Record` entries are sorted by key with the provided `Ord`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getShow } from 'fp-ts/Record'
@@ -1266,7 +1266,7 @@ export function getShow<A>(
 /**
  * Given an `Eq` for the base type, it produces an `Eq` for a `Record` of that base type.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getEq } from 'fp-ts/Record'
@@ -1283,7 +1283,7 @@ export const getEq: <K extends string, A>(E: Eq<A>) => Eq<Record<K, A>> = RR.get
  * Returns a `Monoid` instance for `Record`s, given a `Semigroup` instance for the base type. The `Monoid` makes the
  * union of two `Record`s comining the overlapping entries with the provided `Semigroup`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { SemigroupSum } from 'fp-ts/number'
@@ -1299,7 +1299,7 @@ export const getEq: <K extends string, A>(E: Eq<A>) => Eq<Record<K, A>> = RR.get
 export const getMonoid: <K extends string, A>(S: Semigroup<A>) => Monoid<Record<K, A>> = RR.getMonoid
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Functor: Functor1<URI> = {
@@ -1310,7 +1310,7 @@ export const Functor: Functor1<URI> = {
 /**
  * Takes a value and a `Record` of functions and returns a `Record` by applying each function to the input value.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  * @example
  *   import { flap } from 'fp-ts/Record'
@@ -1324,7 +1324,7 @@ export const Functor: Functor1<URI> = {
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FunctorWithIndex: FunctorWithIndex1<URI, string> = {
@@ -1336,7 +1336,7 @@ export const FunctorWithIndex: FunctorWithIndex1<URI, string> = {
 /**
  * Produces a `Foldable` instance for a `Record`, using the provided `Ord` to sort the `Record`'s entries by key.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Folding
  */
 export const getFoldable = (O: Ord<string>): Foldable1<URI> => ({
@@ -1350,7 +1350,7 @@ export const getFoldable = (O: Ord<string>): Foldable1<URI> => ({
  * Produces a `FoldableWithIndex1` instance for a `Record`, using the provided `Ord` to sort the `Record`'s entries by
  * key.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Folding
  */
 export const getFoldableWithIndex = (O: Ord<string>): FoldableWithIndex1<URI, string> => ({
@@ -1364,7 +1364,7 @@ export const getFoldableWithIndex = (O: Ord<string>): FoldableWithIndex1<URI, st
 })
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Compactable: Compactable1<URI> = {
@@ -1374,7 +1374,7 @@ export const Compactable: Compactable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Filterable: Filterable1<URI> = {
@@ -1389,7 +1389,7 @@ export const Filterable: Filterable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FilterableWithIndex: FilterableWithIndex1<URI, string> = {
@@ -1411,7 +1411,7 @@ export const FilterableWithIndex: FilterableWithIndex1<URI, string> = {
 /**
  * Produces a `Traversable` instance for a `Record`, using the provided `Ord` to sort the `Record`'s entries by key.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const getTraversable = (O: Ord<string>): Traversable1<URI> => ({
@@ -1428,7 +1428,7 @@ export const getTraversable = (O: Ord<string>): Traversable1<URI> => ({
  * Produces a `TraversableWithIndex` instance for a `Record`, using the provided `Ord` to sort the `Record`'s entries by
  * key.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const getTraversableWithIndex = (O: Ord<string>): TraversableWithIndex1<URI, string> => ({
@@ -1447,7 +1447,7 @@ export const getTraversableWithIndex = (O: Ord<string>): TraversableWithIndex1<U
 })
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const getWitherable = (O: Ord<string>): Witherable1<URI> => {
@@ -1475,7 +1475,7 @@ export const getWitherable = (O: Ord<string>): Witherable1<URI> => {
  * Given a `Semigroup` in the base type, it produces a `Semigroup` in the `Record` of the base type. The resulting
  * `Semigroup` concatenates two `Record`s by `union`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getUnionSemigroup } from 'fp-ts/Record'
@@ -1497,7 +1497,7 @@ export const getUnionSemigroup = <A>(S: Semigroup<A>): Semigroup<Record<string, 
  * `Monoid` makes the union of two `Record`s combining the entries that have the same key with the provided
  * `Semigroup`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { SemigroupSum } from 'fp-ts/number'
@@ -1519,7 +1519,7 @@ export const getUnionMonoid = <A>(S: Semigroup<A>): Monoid<Record<string, A>> =>
  * Given a `Semigroup` in the base type, it produces a `Semigroup` in the `Record` of the base type. The resulting
  * `Semigroup` concatenates two `Record`s by `intersection`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getIntersectionSemigroup } from 'fp-ts/Record'
@@ -1539,7 +1539,7 @@ export const getIntersectionSemigroup = <A>(S: Semigroup<A>): Semigroup<Record<s
 /**
  * Produces a `Magma` with a `concat` function that combines two `Record`s by making the `difference`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getDifferenceMagma, difference } from 'fp-ts/Record'
@@ -1563,7 +1563,7 @@ export const getDifferenceMagma = <A>(): Magma<Record<string, A>> => ({
  * Use `getFoldable` instead.
  *
  * @deprecated
- * @since 2.7.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const Foldable: Foldable1<URI> = {
@@ -1577,7 +1577,7 @@ export const Foldable: Foldable1<URI> = {
  * Use `getFoldableWithIndex` instead.
  *
  * @deprecated
- * @since 2.7.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const FoldableWithIndex: FoldableWithIndex1<URI, string> = {
@@ -1594,7 +1594,7 @@ export const FoldableWithIndex: FoldableWithIndex1<URI, string> = {
  * Use `getTraversable` instead.
  *
  * @deprecated
- * @since 2.7.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const Traversable: Traversable1<URI> = {
@@ -1611,7 +1611,7 @@ export const Traversable: Traversable1<URI> = {
  * Use the `getTraversableWithIndex` instead.
  *
  * @deprecated
- * @since 2.7.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const TraversableWithIndex: TraversableWithIndex1<URI, string> = {
@@ -1636,7 +1636,7 @@ const _wilt = /*#__PURE__*/ wiltDefault(Traversable, Compactable)
  * Use `getWitherable` instead.
  *
  * @deprecated
- * @since 2.7.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const Witherable: Witherable1<URI> = {
@@ -1661,7 +1661,7 @@ export const Witherable: Witherable1<URI> = {
  * Use a new `{}` instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const empty: Record<string, never> = {}
@@ -1670,7 +1670,7 @@ export const empty: Record<string, never> = {}
  * Use [`upsertAt`](#upsertat) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const insertAt: <A>(k: string, a: A) => (r: Record<string, A>) => Record<string, A> = upsertAt
@@ -1679,7 +1679,7 @@ export const insertAt: <A>(k: string, a: A) => (r: Record<string, A>) => Record<
  * Use [`has`](#has) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const hasOwnProperty: <K extends string>(k: string, r: Record<K, unknown>) => k is K = RR.hasOwnProperty
@@ -1689,7 +1689,7 @@ export const hasOwnProperty: <K extends string>(k: string, r: Record<K, unknown>
  * instance, pass `R.Functor` instead of `R.record` (where `R` is from `import R from 'fp-ts/Record'`)
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const record: FunctorWithIndex1<URI, string> &

@@ -1,4 +1,4 @@
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 import type * as B from './Bounded'
 import type * as E from './Eq'
 import type * as F from './Field'
@@ -14,7 +14,7 @@ import type * as S from './Show'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Refinements
  */
 export const isNumber: Refinement<unknown, number> = (u: unknown): u is number => typeof u === 'number'
@@ -24,7 +24,7 @@ export const isNumber: Refinement<unknown, number> = (u: unknown): u is number =
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Eq: E.Eq<number> = {
@@ -32,7 +32,7 @@ export const Eq: E.Eq<number> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Ord: O.Ord<number> = {
@@ -44,7 +44,7 @@ export const Ord: O.Ord<number> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Bounded: B.Bounded<number> = {
@@ -55,7 +55,7 @@ export const Bounded: B.Bounded<number> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Show: S.Show<number> = {
@@ -63,7 +63,7 @@ export const Show: S.Show<number> = {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const MagmaSub: Magma<number> = {
@@ -73,7 +73,7 @@ export const MagmaSub: Magma<number> = {
 /**
  * `number` semigroup under addition.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { SemigroupSum } from 'fp-ts/number'
@@ -87,7 +87,7 @@ export const SemigroupSum: Semigroup<number> = {
 /**
  * `number` semigroup under multiplication.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { SemigroupProduct } from 'fp-ts/number'
@@ -103,7 +103,7 @@ export const SemigroupProduct: Semigroup<number> = {
  *
  * The `empty` value is `0`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { MonoidSum } from 'fp-ts/number'
@@ -120,7 +120,7 @@ export const MonoidSum: Monoid<number> = {
  *
  * The `empty` value is `1`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { MonoidProduct } from 'fp-ts/number'
@@ -133,7 +133,7 @@ export const MonoidProduct: Monoid<number> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Field: F.Field<number> = {

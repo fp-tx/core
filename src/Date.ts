@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import type * as E from './Eq'
 import { pipe } from './function'
 import { type IO } from './IO'
@@ -10,7 +10,7 @@ import * as O from './Ord'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Eq: E.Eq<Date> = {
@@ -18,7 +18,7 @@ export const Eq: E.Eq<Date> = {
 }
 
 /**
- * @since 2.6.0
+ * @since 1.0.0
  * @category Instances
  */
 export const eqDate: E.Eq<Date> = {
@@ -26,7 +26,7 @@ export const eqDate: E.Eq<Date> = {
 }
 
 /**
- * @since 2.6.0
+ * @since 1.0.0
  * @category Instances
  */
 export const eqMonth: E.Eq<Date> = {
@@ -34,7 +34,7 @@ export const eqMonth: E.Eq<Date> = {
 }
 
 /**
- * @since 2.6.0
+ * @since 1.0.0
  * @category Instances
  */
 export const eqYear: E.Eq<Date> = {
@@ -42,7 +42,7 @@ export const eqYear: E.Eq<Date> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { Ord } from 'fp-ts/Date'
@@ -61,7 +61,7 @@ export const Ord: O.Ord<Date> = /*#__PURE__*/ pipe(
 /**
  * Returns the current `Date`
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const create: IO<Date> = () => new Date()
@@ -69,6 +69,6 @@ export const create: IO<Date> = () => new Date()
 /**
  * Returns the number of milliseconds elapsed since January 1, 1970, 00:00:00 UTC
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const now: IO<number> = () => new Date().getTime()

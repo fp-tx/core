@@ -1,7 +1,7 @@
 /**
  * Lift a computation from the `Task` monad
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 import {
   type Chain,
@@ -41,7 +41,7 @@ import { type Task } from './Task'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromTask<F> extends FromIO<F> {
@@ -49,7 +49,7 @@ export interface FromTask<F> extends FromIO<F> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromTask1<F extends URIS> extends FromIO1<F> {
@@ -57,7 +57,7 @@ export interface FromTask1<F extends URIS> extends FromIO1<F> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromTask2<F extends URIS2> extends FromIO2<F> {
@@ -65,7 +65,7 @@ export interface FromTask2<F extends URIS2> extends FromIO2<F> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromTask2C<F extends URIS2, E> extends FromIO2C<F, E> {
@@ -73,7 +73,7 @@ export interface FromTask2C<F extends URIS2, E> extends FromIO2C<F, E> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromTask3<F extends URIS3> extends FromIO3<F> {
@@ -81,7 +81,7 @@ export interface FromTask3<F extends URIS3> extends FromIO3<F> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromTask3C<F extends URIS3, E> extends FromIO3C<F, E> {
@@ -89,7 +89,7 @@ export interface FromTask3C<F extends URIS3, E> extends FromIO3C<F, E> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromTask4<F extends URIS4> extends FromIO4<F> {
@@ -100,7 +100,7 @@ export interface FromTask4<F extends URIS4> extends FromIO4<F> {
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function fromTaskK<F extends URIS4>(
   F: FromTask4<F>,
 ): <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => Task<B>) => <S, R, E>(...a: A) => Kind4<F, S, R, E, B>
@@ -128,7 +128,7 @@ export function fromTaskK<F>(
   return f => flow(f, F.fromTask)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function chainTaskK<M extends URIS4>(
   F: FromTask4<M>,
   M: Chain4<M>,
@@ -167,7 +167,7 @@ export function chainTaskK<M>(
   }
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function chainFirstTaskK<M extends URIS4>(
   F: FromTask4<M>,
   M: Chain4<M>,

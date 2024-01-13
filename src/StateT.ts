@@ -4,7 +4,7 @@
  * The `of` function leaves the state unchanged, while `chain` uses the final state of the first computation as the
  * initial state of the second.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C } from './Chain'
 import { pipe } from './function'
@@ -16,7 +16,7 @@ import { snd } from './ReadonlyTuple'
 import { type State } from './State'
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface StateT<M, S, A> {
@@ -24,7 +24,7 @@ export interface StateT<M, S, A> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface StateT1<M extends URIS, S, A> {
@@ -32,7 +32,7 @@ export interface StateT1<M extends URIS, S, A> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface StateT2<M extends URIS2, S, E, A> {
@@ -40,14 +40,14 @@ export interface StateT2<M extends URIS2, S, E, A> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface StateT3<M extends URIS3, S, R, E, A> {
   (s: S): Kind3<M, R, E, [A, S]>
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function of<F extends URIS3>(F: Pointed3<F>): <A, S, R, E>(a: A) => StateT3<F, S, R, E, A>
 export function of<F extends URIS3, E>(F: Pointed3C<F, E>): <A, S, R>(a: A) => StateT3<F, S, R, E, A>
 export function of<F extends URIS2>(F: Pointed2<F>): <A, S, E>(a: A) => StateT2<F, S, E, A>
@@ -58,7 +58,7 @@ export function of<F>(F: Pointed<F>): <A, S>(a: A) => StateT<F, S, A> {
   return a => s => F.of([a, s])
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function map<F extends URIS3>(
   F: Functor3<F>,
 ): <A, B>(f: (a: A) => B) => <S, R, E>(fa: StateT3<F, S, R, E, A>) => StateT3<F, S, R, E, B>
@@ -79,7 +79,7 @@ export function map<F>(F: Functor<F>): <A, B>(f: (a: A) => B) => <S>(fa: StateT<
   return f => fa => s => F.map(fa(s), ([a, s1]) => [f(a), s1])
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function ap<M extends URIS3>(
   M: Chain3<M>,
 ): <S, R, E, A>(fa: StateT3<M, S, R, E, A>) => <B>(fab: StateT3<M, S, R, E, (a: A) => B>) => StateT3<M, S, R, E, B>
@@ -104,7 +104,7 @@ export function ap<M>(
   return fa => fab => s => M.chain(fab(s), ([f, s]) => M.map(fa(s), ([a, s]) => [f(a), s]))
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function chain<M extends URIS3>(
   M: Chain3<M>,
 ): <A, S, R, E, B>(f: (a: A) => StateT3<M, S, R, E, B>) => (ma: StateT3<M, S, R, E, A>) => StateT3<M, S, R, E, B>
@@ -143,7 +143,7 @@ export function flatMap<M>(
   return (ma, f) => s => M.chain(ma(s), ([a, s1]) => f(a)(s1))
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function fromState<F extends URIS3>(F: Pointed3<F>): <S, A, R, E>(sa: State<S, A>) => StateT3<F, S, R, E, A>
 export function fromState<F extends URIS3, E>(F: Pointed3C<F, E>): <S, A, R>(sa: State<S, A>) => StateT3<F, S, R, E, A>
 export function fromState<F extends URIS2>(F: Pointed2<F>): <S, A, E>(sa: State<S, A>) => StateT2<F, S, E, A>
@@ -154,7 +154,7 @@ export function fromState<F>(F: Pointed<F>): <S, A>(sa: State<S, A>) => StateT<F
   return sa => s => F.of(sa(s))
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function fromF<F extends URIS3>(F: Functor3<F>): <R, E, A, S>(ma: Kind3<F, R, E, A>) => StateT3<F, S, R, E, A>
 export function fromF<F extends URIS3, E>(
   F: Functor3C<F, E>,
@@ -167,7 +167,7 @@ export function fromF<F>(F: Functor<F>): <A, S>(ma: HKT<F, A>) => StateT<F, S, A
   return ma => s => F.map(ma, a => [a, s])
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function evaluate<F extends URIS3>(
   F: Functor3<F>,
 ): <S>(s: S) => <R, E, A>(ma: StateT3<F, S, R, E, A>) => Kind3<F, R, E, A>
@@ -186,7 +186,7 @@ export function evaluate<F>(F: Functor<F>): <S>(s: S) => <A>(ma: StateT<F, S, A>
   return s => ma => F.map(ma(s), ([a]) => a)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function execute<F extends URIS3>(
   F: Functor3<F>,
 ): <S>(s: S) => <R, E, A>(ma: StateT3<F, S, R, E, A>) => Kind3<F, R, E, S>
@@ -209,7 +209,7 @@ export function execute<F>(F: Functor<F>): <S>(s: S) => <A>(ma: StateT<F, S, A>)
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface StateM<M> {
@@ -229,7 +229,7 @@ export interface StateM<M> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface StateM1<M extends URIS> {
@@ -249,7 +249,7 @@ export interface StateM1<M extends URIS> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface StateM2<M extends URIS2> {
@@ -269,7 +269,7 @@ export interface StateM2<M extends URIS2> {
 
 /**
  * @deprecated
- * @since 2.5.4
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface StateM2C<M extends URIS2, E> {
@@ -289,7 +289,7 @@ export interface StateM2C<M extends URIS2, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface StateM3<M extends URIS3> {
@@ -315,7 +315,7 @@ export interface StateM3<M extends URIS3> {
 
 /**
  * @deprecated
- * @since 2.5.4
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface StateM3C<M extends URIS3, E> {
@@ -338,7 +338,7 @@ export interface StateM3C<M extends URIS3, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function getStateM<M extends URIS3>(M: Monad3<M>): StateM3<M>

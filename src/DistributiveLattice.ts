@@ -4,7 +4,7 @@
  * - Distributivity for meet: `a ∨ (b ∧ c) <-> (a ∨ b) ∧ (a ∨ c)`
  * - Distributivity for join: `a ∧ (b ∨ c) <-> (a ∧ b) ∨ (a ∧ c)`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type Lattice } from './Lattice'
 import { max, min, type Ord } from './Ord'
@@ -14,7 +14,7 @@ import { max, min, type Ord } from './Ord'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface DistributiveLattice<A> extends Lattice<A> {}
@@ -24,7 +24,7 @@ export interface DistributiveLattice<A> extends Lattice<A> {}
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export function getMinMaxDistributiveLattice<A>(O: Ord<A>): DistributiveLattice<A> {

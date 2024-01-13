@@ -1,4 +1,4 @@
-/** @since 2.13.0 */
+/** @since 1.0.0 */
 import { type Applicative2 } from './Applicative'
 import { apFirst as apFirst_, type Apply2, apS as apS_, apSecond as apSecond_ } from './Apply'
 import * as chainable from './Chain'
@@ -26,7 +26,7 @@ import * as RT from './ReaderT'
 import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Model
  */
 
@@ -39,13 +39,13 @@ export interface ReaderIO<R, A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromReader: <R, A>(fa: Reader<R, A>) => ReaderIO<R, A> = /*#__PURE__*/ RT.fromReader(I.Pointed)
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromIO: <A, R = unknown>(fa: IO<A>) => ReaderIO<R, A> = /*#__PURE__*/ R.of
@@ -58,7 +58,7 @@ export const fromIO: <A, R = unknown>(fa: IO<A>) => ReaderIO<R, A> = /*#__PURE__
  * Changes the value of the local context during the execution of the action `ma` (similar to `Contravariant`'s
  * `contramap`).
  *
- * @since 2.13.0
+ * @since 1.0.0
  */
 export const local: <R2, R1>(f: (r2: R2) => R1) => <A>(ma: ReaderIO<R1, A>) => ReaderIO<R2, A> = R.local
 
@@ -67,7 +67,7 @@ export const local: <R2, R1>(f: (r2: R2) => R1) => <A>(ma: ReaderIO<R1, A>) => R
  *
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const asksReaderIOW: <R1, R2, A>(f: (r1: R1) => ReaderIO<R2, A>) => ReaderIO<R1 & R2, A> = R.asksReaderW
@@ -75,7 +75,7 @@ export const asksReaderIOW: <R1, R2, A>(f: (r1: R1) => ReaderIO<R2, A>) => Reade
 /**
  * Effectfully accesses the environment.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const asksReaderIO: <R, A>(f: (r: R) => ReaderIO<R, A>) => ReaderIO<R, A> = asksReaderIOW
@@ -87,12 +87,12 @@ const _ap: Apply2<URI>['ap'] = (fab, fa) => pipe(fab, ap(fa))
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const map: <A, B>(f: (a: A) => B) => <R>(fa: ReaderIO<R, A>) => ReaderIO<R, B> = /*#__PURE__*/ RT.map(I.Functor)
 
-/** @since 2.13.0 */
+/** @since 1.0.0 */
 export const ap: <R, A>(fa: ReaderIO<R, A>) => <B>(fab: ReaderIO<R, (a: A) => B>) => ReaderIO<R, B> =
   /*#__PURE__*/ RT.ap(I.Apply)
 
@@ -101,19 +101,19 @@ export const ap: <R, A>(fa: ReaderIO<R, A>) => <B>(fab: ReaderIO<R, (a: A) => B>
  *
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
- * @since 2.13.0
+ * @since 1.0.0
  */
 export const apW: <R2, A>(fa: ReaderIO<R2, A>) => <R1, B>(fab: ReaderIO<R1, (a: A) => B>) => ReaderIO<R1 & R2, B> =
   ap as any
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const of: <R = unknown, A = never>(a: A) => ReaderIO<R, A> = /*#__PURE__*/ RT.of(I.Pointed)
 
 /**
- * @since 2.14.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMap: {
@@ -126,26 +126,26 @@ export const flatMap: {
  *
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flattenW: <R1, R2, A>(mma: ReaderIO<R1, ReaderIO<R2, A>>) => ReaderIO<R1 & R2, A> =
   /*#__PURE__*/ flatMap(identity)
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatten: <R, A>(mma: ReaderIO<R, ReaderIO<R, A>>) => ReaderIO<R, A> = flattenW
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'ReaderIO'
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -157,7 +157,7 @@ declare module './HKT' {
 }
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Functor: Functor2<URI> = {
@@ -168,7 +168,7 @@ export const Functor: Functor2<URI> = {
 /**
  * Maps the value to the specified constant value.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const as: {
@@ -179,19 +179,19 @@ export const as: {
 /**
  * Maps the value to the void constant value.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const asUnit: <R, _>(self: ReaderIO<R, _>) => ReaderIO<R, void> = asUnit_(Functor)
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Pointed: Pointed2<URI> = {
@@ -200,7 +200,7 @@ export const Pointed: Pointed2<URI> = {
 }
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Apply: Apply2<URI> = {
@@ -212,19 +212,19 @@ export const Apply: Apply2<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @since 2.13.0
+ * @since 1.0.0
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
 
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @since 2.13.0
+ * @since 1.0.0
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Applicative: Applicative2<URI> = {
@@ -235,7 +235,7 @@ export const Applicative: Applicative2<URI> = {
 }
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Chain: chainable.Chain2<URI> = {
@@ -269,7 +269,7 @@ export const ChainRec: ChainRec2<URI> = {
 }
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Monad: Monad2<URI> = {
@@ -281,7 +281,7 @@ export const Monad: Monad2<URI> = {
 }
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Instances
  */
 export const MonadIO: MonadIO2<URI> = {
@@ -294,7 +294,7 @@ export const MonadIO: MonadIO2<URI> = {
 }
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromIO: FromIO2<URI> = {
@@ -303,7 +303,7 @@ export const FromIO: FromIO2<URI> = {
 }
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromReader: FromReader2<URI> = {
@@ -332,7 +332,7 @@ const _FromReader: _.FromReader<ReaderIOTypeLambda> = {
 }
 
 /**
- * @since 2.16.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapIO: {
@@ -341,7 +341,7 @@ export const flatMapIO: {
 } = _.flatMapIO(_FromIO, _FlatMap)
 
 /**
- * @since 2.16.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapReader: {
@@ -353,7 +353,7 @@ export const flatMapReader: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.15.0
+ * @since 1.0.0
  * @category Combinators
  */
 export const tap: {
@@ -365,7 +365,7 @@ export const tap: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Combinators
  * @example
  *   import { pipe } from 'fp-ts/function'
@@ -393,7 +393,7 @@ export const tapIO: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Combinators
  */
 export const tapReader: {
@@ -402,7 +402,7 @@ export const tapReader: {
 } = /*#__PURE__*/ dual(2, tapReader_(FromReader, Chain))
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
@@ -412,7 +412,7 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
 /**
  * Alias of `flatMapIO`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainIOK: <A, B>(f: (a: A) => I.IO<B>) => <E>(first: ReaderIO<E, A>) => ReaderIO<E, B> = flatMapIO
@@ -420,7 +420,7 @@ export const chainIOK: <A, B>(f: (a: A) => I.IO<B>) => <E>(first: ReaderIO<E, A>
 /**
  * Alias of `tapIO`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstIOK: <A, B>(f: (a: A) => I.IO<B>) => <E>(first: ReaderIO<E, A>) => ReaderIO<E, A> = tapIO
@@ -428,7 +428,7 @@ export const chainFirstIOK: <A, B>(f: (a: A) => I.IO<B>) => <E>(first: ReaderIO<
 /**
  * Reads the current context.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const ask = /*#__PURE__*/ ask_(FromReader)
@@ -436,13 +436,13 @@ export const ask = /*#__PURE__*/ ask_(FromReader)
 /**
  * Projects a value from the global context in a `ReaderIO`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const asks = /*#__PURE__*/ asks_(FromReader)
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromReaderK: <A extends ReadonlyArray<unknown>, R, B>(
@@ -452,7 +452,7 @@ export const fromReaderK: <A extends ReadonlyArray<unknown>, R, B>(
 /**
  * Alias of `flatMapReader`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainReaderK: <A, R, B>(f: (a: A) => R.Reader<R, B>) => (ma: ReaderIO<R, A>) => ReaderIO<R, B> =
@@ -465,7 +465,7 @@ export const chainReaderK: <A, R, B>(f: (a: A) => R.Reader<R, B>) => (ma: Reader
  *
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainReaderKW: <A, R1, B>(
@@ -475,7 +475,7 @@ export const chainReaderKW: <A, R1, B>(
 /**
  * Alias of `tapReader`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstReaderK: <A, R, B>(f: (a: A) => R.Reader<R, B>) => (ma: ReaderIO<R, A>) => ReaderIO<R, A> =
@@ -488,7 +488,7 @@ export const chainFirstReaderK: <A, R, B>(f: (a: A) => R.Reader<R, B>) => (ma: R
  *
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstReaderKW: <A, R1, B>(
@@ -500,19 +500,19 @@ export const chainFirstReaderKW: <A, R1, B>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const Do: ReaderIO<unknown, {}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
@@ -520,7 +520,7 @@ export const bind = /*#__PURE__*/ chainable.bind(Chain)
 /**
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bindW: <N extends string, A, R2, B>(
@@ -530,7 +530,7 @@ export const bindW: <N extends string, A, R2, B>(
   bind as any
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
@@ -540,7 +540,7 @@ export const apS = /*#__PURE__*/ apS_(Apply)
  *
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const apSW: <N extends string, A, R2, B>(
@@ -549,7 +549,7 @@ export const apSW: <N extends string, A, R2, B>(
 ) => <R1>(fa: ReaderIO<R1, A>) => ReaderIO<R1 & R2, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }> =
   apS as any
 
-/** @since 2.13.0 */
+/** @since 1.0.0 */
 export const ApT: ReaderIO<unknown, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 
 interface ReaderIOIterable<R, A> {
@@ -579,7 +579,7 @@ export {
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(Applicative)`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyNonEmptyArrayWithIndex = <A, R, B>(
@@ -590,7 +590,7 @@ export const traverseReadonlyNonEmptyArrayWithIndex = <A, R, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyArrayWithIndex = <A, R, B>(
@@ -603,7 +603,7 @@ export const traverseReadonlyArrayWithIndex = <A, R, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseArrayWithIndex: <A, R, B>(
@@ -613,7 +613,7 @@ export const traverseArrayWithIndex: <A, R, B>(
 /**
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseArray = <A, R, B>(
@@ -623,7 +623,7 @@ export const traverseArray = <A, R, B>(
 /**
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const sequenceArray: <R, A>(arr: ReadonlyArray<ReaderIO<R, A>>) => ReaderIO<R, ReadonlyArray<A>> =
@@ -636,7 +636,7 @@ export const sequenceArray: <R, A>(arr: ReadonlyArray<ReaderIO<R, A>>) => Reader
 /**
  * Alias of `flatMap`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chain: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (ma: ReaderIO<R, A>) => ReaderIO<R, B> = flatMap
@@ -644,7 +644,7 @@ export const chain: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (ma: ReaderIO<R, A
 /**
  * Alias of `flatMap`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainW: <A, R2, B>(f: (a: A) => ReaderIO<R2, B>) => <R1>(ma: ReaderIO<R1, A>) => ReaderIO<R1 & R2, B> =
@@ -653,7 +653,7 @@ export const chainW: <A, R2, B>(f: (a: A) => ReaderIO<R2, B>) => <R1>(ma: Reader
 /**
  * Alias of `tap`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirst: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (first: ReaderIO<R, A>) => ReaderIO<R, A> = tap
@@ -661,7 +661,7 @@ export const chainFirst: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (first: Reade
 /**
  * Alias of `tap`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstW: <A, R2, B>(

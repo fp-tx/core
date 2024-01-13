@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import {
   type ApplicativeComposition12C,
   type ApplicativeComposition22C,
@@ -19,14 +19,14 @@ import { type Semigroup } from './Semigroup'
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface ValidationT<M, E, A> extends HKT<M, Either<E, A>> {}
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 
@@ -38,14 +38,14 @@ export interface ValidationM<M, E> extends ApplicativeCompositionHKT2C<M, E.URI,
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export type ValidationT1<M extends URIS, E, A> = Kind<M, Either<E, A>>
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 
@@ -57,14 +57,14 @@ export interface ValidationM1<M extends URIS, E> extends ApplicativeComposition1
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export type ValidationT2<M extends URIS2, R, E, A> = Kind2<M, R, Either<E, A>>
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 
@@ -85,7 +85,7 @@ export interface ValidationM2<M extends URIS2, E> extends ApplicativeComposition
  * Use `EitherT` instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 

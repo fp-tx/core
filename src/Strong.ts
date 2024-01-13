@@ -25,7 +25,7 @@
  *
  * Adapted from https://github.com/purescript/purescript-profunctor/blob/master/src/Data/Profunctor/Strong.purs
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type Category, type Category2, type Category3, type Category4 } from './Category'
 import { identity } from './function'
@@ -37,7 +37,7 @@ import { type Profunctor, type Profunctor2, type Profunctor3, type Profunctor4 }
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Strong<F> extends Profunctor<F> {
@@ -46,7 +46,7 @@ export interface Strong<F> extends Profunctor<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Strong2<F extends URIS2> extends Profunctor2<F> {
@@ -55,7 +55,7 @@ export interface Strong2<F extends URIS2> extends Profunctor2<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Strong3<F extends URIS3> extends Profunctor3<F> {
@@ -64,7 +64,7 @@ export interface Strong3<F extends URIS3> extends Profunctor3<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Strong4<F extends URIS4> extends Profunctor4<F> {
@@ -84,7 +84,7 @@ export interface Strong4<F extends URIS4> extends Profunctor4<F> {
  * We take two functions, `f` and `g`, and we transform them into a single function which takes a tuple and maps `f`
  * over the first element and `g` over the second. Just like `bi-map` would do for the `bi-functor` instance of tuple.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function split<F extends URIS4>(
   S: Strong4<F>,
@@ -126,7 +126,7 @@ export function split<F>(
  * takes one parameter and returns a tuple of the results of running `f` and `g` on the parameter, respectively. This
  * allows us to run two parallel computations on the same input and return both results in a tuple.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function fanOut<F extends URIS4>(
   S: Strong4<F>,
@@ -164,7 +164,7 @@ export function fanOut<F>(
  * Use [`split`](#split) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function splitStrong<F extends URIS4>(
@@ -192,7 +192,7 @@ export function splitStrong<F>(
  * Use [`fanOut`](#fanout) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function fanout<F extends URIS4>(

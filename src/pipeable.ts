@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import { type Alt, type Alt1, type Alt2, type Alt2C, type Alt3, type Alt3C, type Alt4 } from './Alt'
 import {
   apFirst as apFirst_,
@@ -164,7 +164,7 @@ import { type Separated } from './Separated'
 /**
  * Returns a pipeable `map`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function map<F extends URIS4>(
@@ -191,7 +191,7 @@ export function map<F>(F: Functor<F>): <A, B>(f: (a: A) => B) => (fa: HKT<F, A>)
 /**
  * Returns a pipeable `contramap`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function contramap<F extends URIS4>(
@@ -220,7 +220,7 @@ export function contramap<F>(F: Contravariant<F>): <A, B>(f: (b: B) => A) => (fa
 /**
  * Returns a pipeable `mapWithIndex`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function mapWithIndex<F extends URIS4, I>(
@@ -253,7 +253,7 @@ export function mapWithIndex<F, I>(
 /**
  * Returns a pipeable `ap`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function ap<F extends URIS4>(
@@ -280,7 +280,7 @@ export function ap<F>(F: Apply<F>): <A>(fa: HKT<F, A>) => <B>(fab: HKT<F, (a: A)
 /**
  * Returns a pipeable `chain`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function chain<F extends URIS4>(
@@ -307,7 +307,7 @@ export function chain<F>(F: Chain<F>): <A, B>(f: (a: A) => HKT<F, B>) => (fa: HK
 /**
  * Returns a pipeable `bimap`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function bimap<F extends URIS4>(
@@ -337,7 +337,7 @@ export function bimap<F>(
 /**
  * Returns a pipeable `mapLeft`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function mapLeft<F extends URIS4>(
@@ -363,7 +363,7 @@ export function mapLeft<F>(F: Bifunctor<F>): <E, G>(f: (e: E) => G) => <A>(fea: 
 /**
  * Returns a pipeable `extend`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function extend<F extends URIS4>(
@@ -392,7 +392,7 @@ export function extend<F>(F: Extend<F>): <A, B>(f: (wa: HKT<F, A>) => B) => (wa:
 /**
  * Returns a pipeable `reduce`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function reduce<F extends URIS4>(
@@ -419,7 +419,7 @@ export function reduce<F>(F: Foldable<F>): <A, B>(b: B, f: (b: B, a: A) => B) =>
 /**
  * Returns a pipeable `foldMap`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function foldMap<F extends URIS4>(
@@ -451,7 +451,7 @@ export function foldMap<F>(F: Foldable<F>): <M>(M: Monoid<M>) => <A>(f: (a: A) =
 /**
  * Returns a pipeable `reduceRight`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function reduceRight<F extends URIS4>(
@@ -480,7 +480,7 @@ export function reduceRight<F>(F: Foldable<F>): <A, B>(b: B, f: (a: A, b: B) => 
 /**
  * Returns a pipeable `reduceWithIndex`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function reduceWithIndex<F extends URIS4, I>(
@@ -513,7 +513,7 @@ export function reduceWithIndex<F, I>(
 /**
  * Returns a pipeable `foldMapWithIndex`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function foldMapWithIndex<F extends URIS4, I>(
@@ -549,7 +549,7 @@ export function foldMapWithIndex<F, I>(
 /**
  * Returns a pipeable `reduceRightWithIndex`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function reduceRightWithIndex<F extends URIS4, I>(
@@ -582,7 +582,7 @@ export function reduceRightWithIndex<F, I>(
 /**
  * Returns a pipeable `alt`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function alt<F extends URIS4>(
@@ -609,7 +609,7 @@ export function alt<F>(F: Alt<F>): <A>(that: LazyArg<HKT<F, A>>) => (fa: HKT<F, 
 /**
  * Returns a pipeable `filter`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function filter<F extends URIS4>(
@@ -659,7 +659,7 @@ export function filter<F>(F: Filterable<F>): <A>(predicate: Predicate<A>) => (fa
 /**
  * Returns a pipeable `filterMap`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function filterMap<F extends URIS4>(
@@ -688,7 +688,7 @@ export function filterMap<F>(F: Filterable<F>): <A, B>(f: (a: A) => Option<B>) =
 /**
  * Returns a pipeable `partition`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function partition<F extends URIS4>(
@@ -748,7 +748,7 @@ export function partition<F>(
 /**
  * Returns a pipeable `partitionMap`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function partitionMap<F extends URIS4>(
@@ -785,7 +785,7 @@ export function partitionMap<F>(
 /**
  * Returns a pipeable `filterWithIndex`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function filterWithIndex<F extends URIS4, I>(
@@ -841,7 +841,7 @@ export function filterWithIndex<F, I>(
 /**
  * Returns a pipeable `filterMapWithIndex`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function filterMapWithIndex<F extends URIS4, I>(
@@ -874,7 +874,7 @@ export function filterMapWithIndex<F, I>(
 /**
  * Returns a pipeable `partitionWithIndex`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function partitionWithIndex<F extends URIS4, I>(
@@ -944,7 +944,7 @@ export function partitionWithIndex<F, I>(
 /**
  * Returns a pipeable `partitionMapWithIndex`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function partitionMapWithIndex<F extends URIS4, I>(
@@ -983,7 +983,7 @@ export function partitionMapWithIndex<F, I>(
 /**
  * Returns a pipeable `promap`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function promap<F extends URIS4>(
@@ -1013,7 +1013,7 @@ export function promap<F>(
 /**
  * Returns a pipeable `compose`
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Pipeable helper
  */
 export function compose<F extends URIS4>(
@@ -1042,7 +1042,7 @@ export function compose<F>(F: Semigroupoid<F>): <E, A>(ea: HKT2<F, E, A>) => <B>
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFunctor<F> {
@@ -1051,7 +1051,7 @@ export interface PipeableFunctor<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFunctor1<F extends URIS> {
@@ -1060,7 +1060,7 @@ export interface PipeableFunctor1<F extends URIS> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFunctor2<F extends URIS2> {
@@ -1069,7 +1069,7 @@ export interface PipeableFunctor2<F extends URIS2> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFunctor2C<F extends URIS2, E> {
@@ -1078,7 +1078,7 @@ export interface PipeableFunctor2C<F extends URIS2, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFunctor3<F extends URIS3> {
@@ -1087,7 +1087,7 @@ export interface PipeableFunctor3<F extends URIS3> {
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableFunctor3C<F extends URIS3, E> {
   readonly map: <A, B>(f: (a: A) => B) => <R>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, B>
@@ -1095,7 +1095,7 @@ export interface PipeableFunctor3C<F extends URIS3, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFunctor4<F extends URIS4> {
@@ -1104,7 +1104,7 @@ export interface PipeableFunctor4<F extends URIS4> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableContravariant<F> {
@@ -1113,7 +1113,7 @@ export interface PipeableContravariant<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableContravariant1<F extends URIS> {
@@ -1122,7 +1122,7 @@ export interface PipeableContravariant1<F extends URIS> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableContravariant2<F extends URIS2> {
@@ -1131,7 +1131,7 @@ export interface PipeableContravariant2<F extends URIS2> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableContravariant2C<F extends URIS2, E> {
@@ -1140,7 +1140,7 @@ export interface PipeableContravariant2C<F extends URIS2, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableContravariant3<F extends URIS3> {
@@ -1149,7 +1149,7 @@ export interface PipeableContravariant3<F extends URIS3> {
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableContravariant3C<F extends URIS3, E> {
   readonly contramap: <A, B>(f: (b: B) => A) => <R>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, B>
@@ -1157,7 +1157,7 @@ export interface PipeableContravariant3C<F extends URIS3, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableContravariant4<F extends URIS4> {
@@ -1166,7 +1166,7 @@ export interface PipeableContravariant4<F extends URIS4> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFunctorWithIndex<F, I> extends PipeableFunctor<F> {
@@ -1175,7 +1175,7 @@ export interface PipeableFunctorWithIndex<F, I> extends PipeableFunctor<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFunctorWithIndex1<F extends URIS, I> extends PipeableFunctor1<F> {
@@ -1184,7 +1184,7 @@ export interface PipeableFunctorWithIndex1<F extends URIS, I> extends PipeableFu
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFunctorWithIndex2<F extends URIS2, I> extends PipeableFunctor2<F> {
@@ -1193,7 +1193,7 @@ export interface PipeableFunctorWithIndex2<F extends URIS2, I> extends PipeableF
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFunctorWithIndex2C<F extends URIS2, I, E> extends PipeableFunctor2C<F, E> {
@@ -1202,7 +1202,7 @@ export interface PipeableFunctorWithIndex2C<F extends URIS2, I, E> extends Pipea
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFunctorWithIndex3<F extends URIS3, I> extends PipeableFunctor3<F> {
@@ -1211,7 +1211,7 @@ export interface PipeableFunctorWithIndex3<F extends URIS3, I> extends PipeableF
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableFunctorWithIndex3C<F extends URIS3, I, E> extends PipeableFunctor3C<F, E> {
   readonly mapWithIndex: <A, B>(f: (i: I, a: A) => B) => <R>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, B>
@@ -1219,7 +1219,7 @@ export interface PipeableFunctorWithIndex3C<F extends URIS3, I, E> extends Pipea
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFunctorWithIndex4<F extends URIS4, I> extends PipeableFunctor4<F> {
@@ -1228,7 +1228,7 @@ export interface PipeableFunctorWithIndex4<F extends URIS4, I> extends PipeableF
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableApply<F> extends PipeableFunctor<F> {
@@ -1239,7 +1239,7 @@ export interface PipeableApply<F> extends PipeableFunctor<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableApply1<F extends URIS> extends PipeableFunctor1<F> {
@@ -1250,7 +1250,7 @@ export interface PipeableApply1<F extends URIS> extends PipeableFunctor1<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableApply2<F extends URIS2> extends PipeableFunctor2<F> {
@@ -1261,7 +1261,7 @@ export interface PipeableApply2<F extends URIS2> extends PipeableFunctor2<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableApply2C<F extends URIS2, E> extends PipeableFunctor2C<F, E> {
@@ -1272,7 +1272,7 @@ export interface PipeableApply2C<F extends URIS2, E> extends PipeableFunctor2C<F
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableApply3<F extends URIS3> extends PipeableFunctor3<F> {
@@ -1283,7 +1283,7 @@ export interface PipeableApply3<F extends URIS3> extends PipeableFunctor3<F> {
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableApply3C<F extends URIS3, E> extends PipeableFunctor3C<F, E> {
   readonly ap: <R, A>(fa: Kind3<F, R, E, A>) => <B>(fab: Kind3<F, R, E, (a: A) => B>) => Kind3<F, R, E, B>
@@ -1293,7 +1293,7 @@ export interface PipeableApply3C<F extends URIS3, E> extends PipeableFunctor3C<F
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableApply4<F extends URIS4> extends PipeableFunctor4<F> {
@@ -1306,7 +1306,7 @@ export interface PipeableApply4<F extends URIS4> extends PipeableFunctor4<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableChain<F> extends PipeableApply<F> {
@@ -1317,7 +1317,7 @@ export interface PipeableChain<F> extends PipeableApply<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableChain1<F extends URIS> extends PipeableApply1<F> {
@@ -1328,7 +1328,7 @@ export interface PipeableChain1<F extends URIS> extends PipeableApply1<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableChain2<F extends URIS2> extends PipeableApply2<F> {
@@ -1339,7 +1339,7 @@ export interface PipeableChain2<F extends URIS2> extends PipeableApply2<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableChain2C<F extends URIS2, E> extends PipeableApply2C<F, E> {
@@ -1350,7 +1350,7 @@ export interface PipeableChain2C<F extends URIS2, E> extends PipeableApply2C<F, 
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableChain3<F extends URIS3> extends PipeableApply3<F> {
@@ -1361,7 +1361,7 @@ export interface PipeableChain3<F extends URIS3> extends PipeableApply3<F> {
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableChain3C<F extends URIS3, E> extends PipeableApply3C<F, E> {
   readonly chain: <R, A, B>(f: (a: A) => Kind3<F, R, E, B>) => (ma: Kind3<F, R, E, A>) => Kind3<F, R, E, B>
@@ -1371,7 +1371,7 @@ export interface PipeableChain3C<F extends URIS3, E> extends PipeableApply3C<F, 
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableChain4<F extends URIS4> extends PipeableApply4<F> {
@@ -1386,7 +1386,7 @@ export interface PipeableChain4<F extends URIS4> extends PipeableApply4<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableExtend<F> extends PipeableFunctor<F> {
@@ -1396,7 +1396,7 @@ export interface PipeableExtend<F> extends PipeableFunctor<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableExtend1<F extends URIS> extends PipeableFunctor1<F> {
@@ -1406,7 +1406,7 @@ export interface PipeableExtend1<F extends URIS> extends PipeableFunctor1<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableExtend2<F extends URIS2> extends PipeableFunctor2<F> {
@@ -1416,7 +1416,7 @@ export interface PipeableExtend2<F extends URIS2> extends PipeableFunctor2<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableExtend2C<F extends URIS2, E> extends PipeableFunctor2C<F, E> {
@@ -1426,7 +1426,7 @@ export interface PipeableExtend2C<F extends URIS2, E> extends PipeableFunctor2C<
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableExtend3<F extends URIS3> extends PipeableFunctor3<F> {
@@ -1436,7 +1436,7 @@ export interface PipeableExtend3<F extends URIS3> extends PipeableFunctor3<F> {
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableExtend3C<F extends URIS3, E> extends PipeableFunctor3C<F, E> {
   readonly extend: <R, A, B>(f: (wa: Kind3<F, R, E, A>) => B) => (wa: Kind3<F, R, E, A>) => Kind3<F, R, E, B>
@@ -1445,7 +1445,7 @@ export interface PipeableExtend3C<F extends URIS3, E> extends PipeableFunctor3C<
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableExtend4<F extends URIS4> extends PipeableFunctor4<F> {
@@ -1457,7 +1457,7 @@ export interface PipeableExtend4<F extends URIS4> extends PipeableFunctor4<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableBifunctor<F> {
@@ -1467,7 +1467,7 @@ export interface PipeableBifunctor<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableBifunctor2<F extends URIS2> {
@@ -1477,7 +1477,7 @@ export interface PipeableBifunctor2<F extends URIS2> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableBifunctor3<F extends URIS3> {
@@ -1487,7 +1487,7 @@ export interface PipeableBifunctor3<F extends URIS3> {
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableBifunctor3C<F extends URIS3, E> {
   readonly bimap: <G, A, B>(f: (e: E) => G, g: (a: A) => B) => <R>(fa: Kind3<F, R, E, A>) => Kind3<F, R, G, B>
@@ -1496,7 +1496,7 @@ export interface PipeableBifunctor3C<F extends URIS3, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableBifunctor4<F extends URIS4> {
@@ -1509,7 +1509,7 @@ export interface PipeableBifunctor4<F extends URIS4> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFoldable<F> {
@@ -1520,7 +1520,7 @@ export interface PipeableFoldable<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFoldable1<F extends URIS> {
@@ -1531,7 +1531,7 @@ export interface PipeableFoldable1<F extends URIS> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFoldable2<F extends URIS2> {
@@ -1542,7 +1542,7 @@ export interface PipeableFoldable2<F extends URIS2> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFoldable2C<F extends URIS2, E> {
@@ -1553,7 +1553,7 @@ export interface PipeableFoldable2C<F extends URIS2, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFoldable3<F extends URIS3> {
@@ -1564,7 +1564,7 @@ export interface PipeableFoldable3<F extends URIS3> {
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableFoldable3C<F extends URIS3, E> {
   readonly reduce: <A, B>(b: B, f: (b: B, a: A) => B) => <R>(fa: Kind3<F, R, E, A>) => B
@@ -1574,7 +1574,7 @@ export interface PipeableFoldable3C<F extends URIS3, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFoldable4<F extends URIS4> {
@@ -1585,7 +1585,7 @@ export interface PipeableFoldable4<F extends URIS4> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFoldableWithIndex<F, I> extends PipeableFoldable<F> {
@@ -1596,7 +1596,7 @@ export interface PipeableFoldableWithIndex<F, I> extends PipeableFoldable<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFoldableWithIndex1<F extends URIS, I> extends PipeableFoldable1<F> {
@@ -1607,7 +1607,7 @@ export interface PipeableFoldableWithIndex1<F extends URIS, I> extends PipeableF
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFoldableWithIndex2<F extends URIS2, I> extends PipeableFoldable2<F> {
@@ -1618,7 +1618,7 @@ export interface PipeableFoldableWithIndex2<F extends URIS2, I> extends Pipeable
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFoldableWithIndex2C<F extends URIS2, I, E> extends PipeableFoldable2C<F, E> {
@@ -1629,7 +1629,7 @@ export interface PipeableFoldableWithIndex2C<F extends URIS2, I, E> extends Pipe
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFoldableWithIndex3<F extends URIS3, I> extends PipeableFoldable3<F> {
@@ -1640,7 +1640,7 @@ export interface PipeableFoldableWithIndex3<F extends URIS3, I> extends Pipeable
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableFoldableWithIndex3C<F extends URIS3, I, E> extends PipeableFoldable3C<F, E> {
   readonly reduceWithIndex: <A, B>(b: B, f: (i: I, b: B, a: A) => B) => <R>(fa: Kind3<F, R, E, A>) => B
@@ -1650,7 +1650,7 @@ export interface PipeableFoldableWithIndex3C<F extends URIS3, I, E> extends Pipe
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFoldableWithIndex4<F extends URIS4, I> extends PipeableFoldable4<F> {
@@ -1661,7 +1661,7 @@ export interface PipeableFoldableWithIndex4<F extends URIS4, I> extends Pipeable
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableAlt<F> {
@@ -1670,7 +1670,7 @@ export interface PipeableAlt<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableAlt1<F extends URIS> {
@@ -1679,7 +1679,7 @@ export interface PipeableAlt1<F extends URIS> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableAlt2<F extends URIS2> {
@@ -1688,7 +1688,7 @@ export interface PipeableAlt2<F extends URIS2> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableAlt2C<F extends URIS2, E> {
@@ -1697,7 +1697,7 @@ export interface PipeableAlt2C<F extends URIS2, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableAlt3<F extends URIS3> {
@@ -1706,7 +1706,7 @@ export interface PipeableAlt3<F extends URIS3> {
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableAlt3C<F extends URIS3, E> {
   readonly alt: <R, A>(that: LazyArg<Kind3<F, R, E, A>>) => (fa: Kind3<F, R, E, A>) => Kind3<F, R, E, A>
@@ -1714,7 +1714,7 @@ export interface PipeableAlt3C<F extends URIS3, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableAlt4<F extends URIS4> {
@@ -1723,7 +1723,7 @@ export interface PipeableAlt4<F extends URIS4> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableCompactable<F> {
@@ -1733,7 +1733,7 @@ export interface PipeableCompactable<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableCompactable1<F extends URIS> {
@@ -1743,7 +1743,7 @@ export interface PipeableCompactable1<F extends URIS> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableCompactable2<F extends URIS2> {
@@ -1753,7 +1753,7 @@ export interface PipeableCompactable2<F extends URIS2> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableCompactable2C<F extends URIS2, E> {
@@ -1763,7 +1763,7 @@ export interface PipeableCompactable2C<F extends URIS2, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableCompactable3<F extends URIS3> {
@@ -1773,7 +1773,7 @@ export interface PipeableCompactable3<F extends URIS3> {
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableCompactable3C<F extends URIS3, E> {
   readonly compact: <R, A>(fa: Kind3<F, R, E, Option<A>>) => Kind3<F, R, E, A>
@@ -1782,7 +1782,7 @@ export interface PipeableCompactable3C<F extends URIS3, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableCompactable4<F extends URIS4> {
@@ -1794,7 +1794,7 @@ export interface PipeableCompactable4<F extends URIS4> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFilterable<F> extends PipeableCompactable<F> {
@@ -1812,7 +1812,7 @@ export interface PipeableFilterable<F> extends PipeableCompactable<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFilterable1<F extends URIS> extends PipeableCompactable1<F> {
@@ -1830,7 +1830,7 @@ export interface PipeableFilterable1<F extends URIS> extends PipeableCompactable
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFilterable2<F extends URIS2> extends PipeableCompactable2<F> {
@@ -1850,7 +1850,7 @@ export interface PipeableFilterable2<F extends URIS2> extends PipeableCompactabl
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFilterable2C<F extends URIS2, E> extends PipeableCompactable2C<F, E> {
@@ -1870,7 +1870,7 @@ export interface PipeableFilterable2C<F extends URIS2, E> extends PipeableCompac
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFilterable3<F extends URIS3> extends PipeableCompactable3<F> {
@@ -1892,7 +1892,7 @@ export interface PipeableFilterable3<F extends URIS3> extends PipeableCompactabl
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableFilterable3C<F extends URIS3, E> extends PipeableCompactable3C<F, E> {
   readonly filter: {
@@ -1913,7 +1913,7 @@ export interface PipeableFilterable3C<F extends URIS3, E> extends PipeableCompac
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFilterable4<F extends URIS4> extends PipeableCompactable4<F> {
@@ -1937,7 +1937,7 @@ export interface PipeableFilterable4<F extends URIS4> extends PipeableCompactabl
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFilterableWithIndex<F, I> extends PipeableFilterable<F> {
@@ -1959,7 +1959,7 @@ export interface PipeableFilterableWithIndex<F, I> extends PipeableFilterable<F>
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFilterableWithIndex1<F extends URIS, I> extends PipeableFilterable1<F> {
@@ -1981,7 +1981,7 @@ export interface PipeableFilterableWithIndex1<F extends URIS, I> extends Pipeabl
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFilterableWithIndex2<F extends URIS2, I> extends PipeableFilterable2<F> {
@@ -2005,7 +2005,7 @@ export interface PipeableFilterableWithIndex2<F extends URIS2, I> extends Pipeab
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFilterableWithIndex2C<F extends URIS2, I, E> extends PipeableFilterable2C<F, E> {
@@ -2027,7 +2027,7 @@ export interface PipeableFilterableWithIndex2C<F extends URIS2, I, E> extends Pi
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFilterableWithIndex3<F extends URIS3, I> extends PipeableFilterable3<F> {
@@ -2055,7 +2055,7 @@ export interface PipeableFilterableWithIndex3<F extends URIS3, I> extends Pipeab
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableFilterableWithIndex3C<F extends URIS3, I, E> extends PipeableFilterable3C<F, E> {
   readonly filterWithIndex: {
@@ -2078,7 +2078,7 @@ export interface PipeableFilterableWithIndex3C<F extends URIS3, I, E> extends Pi
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableFilterableWithIndex4<F extends URIS4, I> extends PipeableFilterable4<F> {
@@ -2106,7 +2106,7 @@ export interface PipeableFilterableWithIndex4<F extends URIS4, I> extends Pipeab
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableProfunctor<F> {
@@ -2115,7 +2115,7 @@ export interface PipeableProfunctor<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableProfunctor2<F extends URIS2> extends PipeableFunctor2<F> {
@@ -2124,7 +2124,7 @@ export interface PipeableProfunctor2<F extends URIS2> extends PipeableFunctor2<F
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableProfunctor2C<F extends URIS2, E> extends PipeableFunctor2C<F, E> {
@@ -2133,7 +2133,7 @@ export interface PipeableProfunctor2C<F extends URIS2, E> extends PipeableFuncto
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableProfunctor3<F extends URIS3> extends PipeableFunctor3<F> {
@@ -2142,7 +2142,7 @@ export interface PipeableProfunctor3<F extends URIS3> extends PipeableFunctor3<F
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableProfunctor3C<F extends URIS3, E> extends PipeableFunctor3C<F, E> {
   readonly promap: <R, A, D, B>(f: (d: D) => E, g: (a: A) => B) => (fbc: Kind3<F, R, E, A>) => Kind3<F, R, D, B>
@@ -2150,7 +2150,7 @@ export interface PipeableProfunctor3C<F extends URIS3, E> extends PipeableFuncto
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableProfunctor4<F extends URIS4> extends PipeableFunctor4<F> {
@@ -2162,7 +2162,7 @@ export interface PipeableProfunctor4<F extends URIS4> extends PipeableFunctor4<F
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableSemigroupoid<F> {
@@ -2171,7 +2171,7 @@ export interface PipeableSemigroupoid<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableSemigroupoid2<F extends URIS2> {
@@ -2180,7 +2180,7 @@ export interface PipeableSemigroupoid2<F extends URIS2> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableSemigroupoid2C<F extends URIS2, E> {
@@ -2189,7 +2189,7 @@ export interface PipeableSemigroupoid2C<F extends URIS2, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableSemigroupoid3<F extends URIS3> {
@@ -2198,7 +2198,7 @@ export interface PipeableSemigroupoid3<F extends URIS3> {
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableSemigroupoid3C<F extends URIS3, E> {
   readonly compose: <R, A>(la: Kind3<F, R, E, A>) => <B>(ab: Kind3<F, R, A, B>) => Kind3<F, R, E, B>
@@ -2206,7 +2206,7 @@ export interface PipeableSemigroupoid3C<F extends URIS3, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableSemigroupoid4<F extends URIS4> {
@@ -2215,7 +2215,7 @@ export interface PipeableSemigroupoid4<F extends URIS4> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableMonadThrow<F> {
@@ -2233,7 +2233,7 @@ export interface PipeableMonadThrow<F> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableMonadThrow1<F extends URIS> {
@@ -2251,7 +2251,7 @@ export interface PipeableMonadThrow1<F extends URIS> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableMonadThrow2<F extends URIS2> {
@@ -2269,7 +2269,7 @@ export interface PipeableMonadThrow2<F extends URIS2> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableMonadThrow2C<F extends URIS2, E> {
@@ -2287,7 +2287,7 @@ export interface PipeableMonadThrow2C<F extends URIS2, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableMonadThrow3<F extends URIS3> {
@@ -2308,7 +2308,7 @@ export interface PipeableMonadThrow3<F extends URIS3> {
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  */
 export interface PipeableMonadThrow3C<F extends URIS3, E> {
   readonly fromOption: (onNone: LazyArg<E>) => <R, A>(ma: Option<A>) => Kind3<F, R, E, A>
@@ -2328,7 +2328,7 @@ export interface PipeableMonadThrow3C<F extends URIS3, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface PipeableMonadThrow4<F extends URIS4> {
@@ -2367,7 +2367,7 @@ const isMonadThrow = <F>(I: any): I is MonadThrow<F> => typeof I.throwError === 
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function pipeable<F extends URIS4, I>(
@@ -2609,6 +2609,6 @@ export function pipeable<F, I>(I: { readonly URI: F } & I): Record<string, unkno
  * Use [`pipe`](https://gcanti.github.io/fp-ts/modules/function.ts.html#pipe) from `function` module instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const pipe = pipeFromFunctionModule

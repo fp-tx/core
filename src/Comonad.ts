@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import {
   type Extend,
   type Extend1,
@@ -25,7 +25,7 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Comonad<W> extends Extend<W> {
@@ -33,7 +33,7 @@ export interface Comonad<W> extends Extend<W> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Comonad1<W extends URIS> extends Extend1<W> {
@@ -41,7 +41,7 @@ export interface Comonad1<W extends URIS> extends Extend1<W> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Comonad2<W extends URIS2> extends Extend2<W> {
@@ -49,7 +49,7 @@ export interface Comonad2<W extends URIS2> extends Extend2<W> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Comonad2C<W extends URIS2, E> extends Extend2C<W, E> {
@@ -57,7 +57,7 @@ export interface Comonad2C<W extends URIS2, E> extends Extend2C<W, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Comonad3<W extends URIS3> extends Extend3<W> {
@@ -65,7 +65,7 @@ export interface Comonad3<W extends URIS3> extends Extend3<W> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Comonad3C<W extends URIS3, E> extends Extend3C<W, E> {
@@ -73,7 +73,7 @@ export interface Comonad3C<W extends URIS3, E> extends Extend3C<W, E> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Comonad4<W extends URIS4> extends Extend4<W> {

@@ -1,7 +1,7 @@
 /**
  * The `FromEither` type class represents those data types which support errors.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 
 import {
@@ -37,7 +37,7 @@ import { type Refinement } from './Refinement'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromEither<F> {
@@ -46,7 +46,7 @@ export interface FromEither<F> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromEither1<F extends URIS> {
@@ -55,7 +55,7 @@ export interface FromEither1<F extends URIS> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromEither2<F extends URIS2> {
@@ -64,7 +64,7 @@ export interface FromEither2<F extends URIS2> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromEither2C<F extends URIS2, E> {
@@ -74,7 +74,7 @@ export interface FromEither2C<F extends URIS2, E> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromEither3<F extends URIS3> {
@@ -83,7 +83,7 @@ export interface FromEither3<F extends URIS3> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromEither3C<F extends URIS3, E> {
@@ -93,7 +93,7 @@ export interface FromEither3C<F extends URIS3, E> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromEither4<F extends URIS4> {
@@ -106,7 +106,7 @@ export interface FromEither4<F extends URIS4> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Constructors
  */
 export function fromOption<F extends URIS4>(
@@ -130,7 +130,7 @@ export function fromOption<F>(F: FromEither<F>): <E>(onNone: LazyArg<E>) => <A>(
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Lifting
  */
 export function fromPredicate<F extends URIS4>(
@@ -187,7 +187,7 @@ export function fromPredicate<F>(F: FromEither<F>): {
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function fromOptionK<F extends URIS4>(
   F: FromEither4<F>,
 ): <E>(
@@ -230,7 +230,7 @@ export function fromOptionK<F>(
   }
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function chainOptionK<F extends URIS4>(
   F: FromEither4<F>,
   M: Chain4<F>,
@@ -266,7 +266,7 @@ export function chainOptionK<F extends URIS2>(
   }
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function fromEitherK<F extends URIS4>(
   F: FromEither4<F>,
 ): <A extends ReadonlyArray<unknown>, E, B>(f: (...a: A) => Either<E, B>) => <S, R>(...a: A) => Kind4<F, S, R, E, B>
@@ -294,7 +294,7 @@ export function fromEitherK<F>(
   return f => flow(f, F.fromEither)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function chainEitherK<M extends URIS4>(
   F: FromEither4<M>,
   M: Chain4<M>,
@@ -331,7 +331,7 @@ export function chainEitherK<M extends URIS2>(
   return f => ma => M.chain(ma, fromEitherKF(f))
 }
 
-/** @since 2.12.0 */
+/** @since 1.0.0 */
 export function chainFirstEitherK<M extends URIS4>(
   F: FromEither4<M>,
   M: Chain4<M>,
@@ -368,7 +368,7 @@ export function chainFirstEitherK<M extends URIS2>(
   return f => ma => tapEitherM(ma, f)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function filterOrElse<M extends URIS4>(
   F: FromEither4<M>,
   M: Chain4<M>,

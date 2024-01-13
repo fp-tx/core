@@ -7,7 +7,7 @@
  * 2. Antisymmetry: if `S.compare(a, b) <= 0` and `S.compare(b, a) <= 0` then `a <-> b`
  * 3. Transitivity: if `S.compare(a, b) <= 0` and `S.compare(b, c) <= 0` then `S.compare(a, c) <= 0`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type Contravariant1 } from './Contravariant'
 import { type Eq, eqStrict } from './Eq'
@@ -21,7 +21,7 @@ import { type Semigroup } from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Ord<A> extends Eq<A> {
@@ -33,7 +33,7 @@ export interface Ord<A> extends Eq<A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Defaults
  */
 export const equalsDefault =
@@ -46,7 +46,7 @@ export const equalsDefault =
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const fromCompare = <A>(compare: Ord<A>['compare']): Ord<A> => ({
@@ -61,7 +61,7 @@ export const fromCompare = <A>(compare: Ord<A>['compare']): Ord<A> => ({
 /**
  * Given a tuple of `Ord`s returns an `Ord` for the tuple.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { tuple } from 'fp-ts/Ord'
  *   import * as B from 'fp-ts/boolean'
@@ -85,7 +85,7 @@ export const tuple = <A extends ReadonlyArray<unknown>>(...ords: { [K in keyof A
     return ords[i].compare(first[i], second[i])
   })
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export const reverse = <A>(O: Ord<A>): Ord<A> => fromCompare((first, second) => O.compare(second, first))
 
 /* istanbul ignore next */
@@ -103,7 +103,7 @@ const contramap_: <A, B>(fa: Ord<A>, f: (b: B) => A) => Ord<B> = (fa, f) => pipe
  * If we have a way of comparing `lastName`s for ordering (`ordLastName: Ord<string>`) and we know how to go from `User
  * -> string`, using `contramap` we can do this
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { pipe } from 'fp-ts/function'
  *   import { contramap, Ord } from 'fp-ts/Ord'
@@ -137,13 +137,13 @@ export const contramap: <A, B>(f: (b: B) => A) => (fa: Ord<A>) => Ord<B> = f => 
   fromCompare((first, second) => fa.compare(f(first), f(second)))
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'Ord'
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -160,7 +160,7 @@ declare module './HKT' {
  * For example the following snippet builds an `Ord` for a type `User` which sorts by `created` date descending, and
  * **then** `lastName`
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import * as D from 'fp-ts/Date'
@@ -214,7 +214,7 @@ export const getSemigroup = <A = never>(): Semigroup<Ord<A>> => ({
  * - Its `concat(ord1, ord2)` operation will order first by `ord1`, and then by `ord2`
  * - Its `empty` value is an `Ord` that always considers compared elements equal
  *
- * @since 2.4.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { sort } from 'fp-ts/Array'
@@ -280,7 +280,7 @@ export const getMonoid = <A = never>(): Monoid<Ord<A>> => ({
 })
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Contravariant: Contravariant1<URI> = {
@@ -292,13 +292,13 @@ export const Contravariant: Contravariant1<URI> = {
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const trivial: Ord<unknown> = {
   equals: constTrue,
   compare: /*#__PURE__*/ constant(0),
 }
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const equals =
   <A>(O: Ord<A>) =>
   (second: A) =>
@@ -309,7 +309,7 @@ export const equals =
 /**
  * Test whether one value is _strictly less than_ another
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const lt =
   <A>(O: Ord<A>) =>
@@ -320,7 +320,7 @@ export const lt =
 /**
  * Test whether one value is _strictly greater than_ another
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const gt =
   <A>(O: Ord<A>) =>
@@ -331,7 +331,7 @@ export const gt =
 /**
  * Test whether one value is _non-strictly less than_ another
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const leq =
   <A>(O: Ord<A>) =>
@@ -342,7 +342,7 @@ export const leq =
 /**
  * Test whether one value is _non-strictly greater than_ another
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const geq =
   <A>(O: Ord<A>) =>
@@ -353,7 +353,7 @@ export const geq =
 /**
  * Take the minimum of two values. If they are considered equal, the first argument is chosen
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const min =
   <A>(O: Ord<A>) =>
@@ -364,7 +364,7 @@ export const min =
 /**
  * Take the maximum of two values. If they are considered equal, the first argument is chosen
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const max =
   <A>(O: Ord<A>) =>
@@ -374,7 +374,7 @@ export const max =
 /**
  * Clamp a value between a minimum and a maximum
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const clamp = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => A) => {
   const minO = min(O)
@@ -385,7 +385,7 @@ export const clamp = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => A) => {
 /**
  * Test whether a value is between a minimum and a maximum (inclusive)
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const between = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => boolean) => {
   const ltO = lt(O)
@@ -401,7 +401,7 @@ export const between = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => boolean) =>
  * Use [`tuple`](#tuple) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getTupleOrd: <T extends ReadonlyArray<Ord<any>>>(
@@ -412,7 +412,7 @@ export const getTupleOrd: <T extends ReadonlyArray<Ord<any>>>(
  * Use [`reverse`](#reverse) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getDualOrd = reverse
@@ -421,7 +421,7 @@ export const getDualOrd = reverse
  * Use [`Contravariant`](#contravariant) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const ord: Contravariant1<URI> = Contravariant
@@ -444,7 +444,7 @@ const strictOrd = {
  * Use [`Ord`](./boolean.ts.html#ord) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const ordBoolean: Ord<boolean> = strictOrd
@@ -453,7 +453,7 @@ export const ordBoolean: Ord<boolean> = strictOrd
  * Use [`Ord`](./string.ts.html#ord) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const ordString: Ord<string> = strictOrd
@@ -462,7 +462,7 @@ export const ordString: Ord<string> = strictOrd
  * Use [`Ord`](./number.ts.html#ord) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const ordNumber: Ord<number> = strictOrd
@@ -471,7 +471,7 @@ export const ordNumber: Ord<number> = strictOrd
  * Use [`Ord`](./Date.ts.html#ord) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const ordDate: Ord<Date> = /*#__PURE__*/ pipe(

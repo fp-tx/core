@@ -3,7 +3,7 @@
  *
  * - `a ∧ 1 <-> a`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type MeetSemilattice } from './MeetSemilattice'
 
@@ -12,7 +12,7 @@ import { type MeetSemilattice } from './MeetSemilattice'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface BoundedMeetSemilattice<A> extends MeetSemilattice<A> {

@@ -1,4 +1,4 @@
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 import type * as E from './Eq'
 import type * as M from './Monoid'
 import type * as O from './Ord'
@@ -12,7 +12,7 @@ import type * as Sh from './Show'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import * as S from 'fp-ts/string'
@@ -27,7 +27,7 @@ export const Eq: E.Eq<string> = {
 /**
  * `string` semigroup under concatenation.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import * as S from 'fp-ts/string'
@@ -41,7 +41,7 @@ export const Semigroup: S.Semigroup<string> = {
 /**
  * An empty `string`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export const empty = ''
 
@@ -50,7 +50,7 @@ export const empty = ''
  *
  * The `empty` value is `''`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import * as S from 'fp-ts/string'
@@ -64,7 +64,7 @@ export const Monoid: M.Monoid<string> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import * as S from 'fp-ts/string'
@@ -82,7 +82,7 @@ export const Ord: O.Ord<string> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import * as S from 'fp-ts/string'
@@ -98,7 +98,7 @@ export const Show: Sh.Show<string> = {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Refinements
  * @example
  *   import * as S from 'fp-ts/string'
@@ -113,7 +113,7 @@ export const isString: Refinement<unknown, string> = (u: unknown): u is string =
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import * as S from 'fp-ts/string'
  *   import { pipe } from 'fp-ts/function'
@@ -123,7 +123,7 @@ export const isString: Refinement<unknown, string> = (u: unknown): u is string =
 export const toUpperCase = (s: string): string => s.toUpperCase()
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import * as S from 'fp-ts/string'
  *   import { pipe } from 'fp-ts/function'
@@ -133,7 +133,7 @@ export const toUpperCase = (s: string): string => s.toUpperCase()
 export const toLowerCase = (s: string): string => s.toLowerCase()
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import * as S from 'fp-ts/string'
  *   import { pipe } from 'fp-ts/function'
@@ -146,7 +146,7 @@ export const replace =
     s.replace(searchValue, replaceValue)
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import * as S from 'fp-ts/string'
  *   import { pipe } from 'fp-ts/function'
@@ -156,7 +156,7 @@ export const replace =
 export const trim = (s: string): string => s.trim()
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import * as S from 'fp-ts/string'
  *   import { pipe } from 'fp-ts/function'
@@ -166,7 +166,7 @@ export const trim = (s: string): string => s.trim()
 export const trimLeft = (s: string): string => s.trimLeft()
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import * as S from 'fp-ts/string'
  *   import { pipe } from 'fp-ts/function'
@@ -176,7 +176,7 @@ export const trimLeft = (s: string): string => s.trimLeft()
 export const trimRight = (s: string): string => s.trimRight()
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import * as S from 'fp-ts/string'
  *   import { pipe } from 'fp-ts/function'
@@ -195,7 +195,7 @@ export const slice =
 /**
  * Test whether a `string` is empty.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import * as S from 'fp-ts/string'
  *   import { pipe } from 'fp-ts/function'
@@ -208,7 +208,7 @@ export const isEmpty = (s: string): boolean => s.length === 0
 /**
  * Calculate the number of characters in a `string`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import * as S from 'fp-ts/string'
  *   import { pipe } from 'fp-ts/function'
@@ -218,7 +218,7 @@ export const isEmpty = (s: string): boolean => s.length === 0
 export const size = (s: string): number => s.length
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import * as S from 'fp-ts/string'
  *   import { pipe } from 'fp-ts/function'
@@ -234,7 +234,7 @@ export const split =
   }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import * as S from 'fp-ts/string'
  *   import { pipe } from 'fp-ts/function'
@@ -248,7 +248,7 @@ export const includes =
     s.includes(searchString, position)
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import * as S from 'fp-ts/string'
  *   import { pipe } from 'fp-ts/function'
@@ -262,7 +262,7 @@ export const startsWith =
     s.startsWith(searchString, position)
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import * as S from 'fp-ts/string'
  *   import { pipe } from 'fp-ts/function'

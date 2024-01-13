@@ -3,7 +3,7 @@
  *
  * - `a ∨ 0 <-> a`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type JoinSemilattice } from './JoinSemilattice'
 
@@ -12,7 +12,7 @@ import { type JoinSemilattice } from './JoinSemilattice'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface BoundedJoinSemilattice<A> extends JoinSemilattice<A> {

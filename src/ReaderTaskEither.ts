@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import { type Alt3, type Alt3C } from './Alt'
 import { type Applicative3, type Applicative3C, getApplicativeMonoid } from './Applicative'
 import {
@@ -76,7 +76,7 @@ import { type TaskEither } from './TaskEither'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface ReaderTaskEither<R, E, A> {
@@ -88,25 +88,25 @@ export interface ReaderTaskEither<R, E, A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromTaskEither: <E, A, R = unknown>(fa: TaskEither<E, A>) => ReaderTaskEither<R, E, A> = /*#__PURE__*/ R.of
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const left: <R, E = never, A = never>(e: E) => ReaderTaskEither<R, E, A> = /*#__PURE__*/ ET.left(RT.Pointed)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const right: <R, E = never, A = never>(a: A) => ReaderTaskEither<R, E, A> = /*#__PURE__*/ ET.right(RT.Pointed)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const rightTask: <R, E = never, A = never>(ma: Task<A>) => ReaderTaskEither<R, E, A> = /*#__PURE__*/ flow(
@@ -115,7 +115,7 @@ export const rightTask: <R, E = never, A = never>(ma: Task<A>) => ReaderTaskEith
 )
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const leftTask: <R, E = never, A = never>(me: Task<E>) => ReaderTaskEither<R, E, A> = /*#__PURE__*/ flow(
@@ -124,35 +124,35 @@ export const leftTask: <R, E = never, A = never>(me: Task<E>) => ReaderTaskEithe
 )
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const rightReader: <R, E = never, A = never>(ma: Reader<R, A>) => ReaderTaskEither<R, E, A> = ma =>
   flow(ma, TE.right)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const leftReader: <R, E = never, A = never>(me: Reader<R, E>) => ReaderTaskEither<R, E, A> = me =>
   flow(me, TE.left)
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const rightReaderTask: <R, E = never, A = never>(ma: ReaderTask<R, A>) => ReaderTaskEither<R, E, A> =
   /*#__PURE__*/ ET.rightF(RT.Functor)
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const leftReaderTask: <R, E = never, A = never>(me: ReaderTask<R, E>) => ReaderTaskEither<R, E, A> =
   /*#__PURE__*/ ET.leftF(RT.Functor)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const rightIO: <R, E = never, A = never>(ma: IO<A>) => ReaderTaskEither<R, E, A> = /*#__PURE__*/ flow(
@@ -161,7 +161,7 @@ export const rightIO: <R, E = never, A = never>(ma: IO<A>) => ReaderTaskEither<R
 )
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const leftIO: <R, E = never, A = never>(me: IO<E>) => ReaderTaskEither<R, E, A> = /*#__PURE__*/ flow(
@@ -170,7 +170,7 @@ export const leftIO: <R, E = never, A = never>(me: IO<E>) => ReaderTaskEither<R,
 )
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const rightReaderIO: <R, E = never, A = never>(
@@ -178,7 +178,7 @@ export const rightReaderIO: <R, E = never, A = never>(
 ) => ReaderTaskEither<R, E, A> = /*#__PURE__*/ ma => flow(ma, TE.rightIO)
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const leftReaderIO: <R, E = never, A = never>(
@@ -190,31 +190,31 @@ export const leftReaderIO: <R, E = never, A = never>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromEither: <E, A, R = unknown>(fa: Either<E, A>) => ReaderTaskEither<R, E, A> = RT.of
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromReader: <R, A, E = never>(fa: Reader<R, A>) => ReaderTaskEither<R, E, A> = rightReader
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromIO: <A, R = unknown, E = never>(fa: IO<A>) => ReaderTaskEither<R, E, A> = rightIO
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromTask: <A, R = unknown, E = never>(fa: Task<A>) => ReaderTaskEither<R, E, A> = rightTask
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromIOEither: <E, A, R = unknown>(fa: IOEither<E, A>) => ReaderTaskEither<R, E, A> = /*#__PURE__*/ flow(
@@ -223,14 +223,14 @@ export const fromIOEither: <E, A, R = unknown>(fa: IOEither<E, A>) => ReaderTask
 )
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromReaderEither: <R, E, A>(fa: ReaderEither<R, E, A>) => ReaderTaskEither<R, E, A> = ma =>
   flow(ma, TE.fromEither)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const match: <E, B, A>(
@@ -243,7 +243,7 @@ export const match: <E, B, A>(
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchW: <E, B, A, C>(
@@ -254,7 +254,7 @@ export const matchW: <E, B, A, C>(
 /**
  * The `E` suffix (short for **E**ffect) means that the handlers return an effect (`ReaderTask`).
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchE: <R, E, A, B>(
@@ -265,7 +265,7 @@ export const matchE: <R, E, A, B>(
 /**
  * Alias of [`matchE`](#matche).
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const fold = matchE
@@ -275,7 +275,7 @@ export const fold = matchE
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchEW: <E, R2, B, A, R3, C>(
@@ -286,13 +286,13 @@ export const matchEW: <E, R2, B, A, R3, C>(
 /**
  * Alias of [`matchEW`](#matchew).
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const foldW = matchEW
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const getOrElse: <R, E, A>(
@@ -304,7 +304,7 @@ export const getOrElse: <R, E, A>(
  *
  * The `W` suffix (short for **W**idening) means that the handler return type will be merged.
  *
- * @since 2.6.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const getOrElseW: <R2, E, B>(
@@ -312,7 +312,7 @@ export const getOrElseW: <R2, E, B>(
 ) => <R1, A>(ma: ReaderTaskEither<R1, E, A>) => ReaderTask<R1 & R2, A | B> = getOrElse as any
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const toUnion: <R, E, A>(fa: ReaderTaskEither<R, E, A>) => ReaderTask<R, E | A> = /*#__PURE__*/ ET.toUnion(
@@ -320,7 +320,7 @@ export const toUnion: <R, E, A>(fa: ReaderTaskEither<R, E, A>) => ReaderTask<R, 
 )
 
 /**
- * @since 2.12.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromNullable: <E>(e: E) => <R, A>(a: A) => ReaderTaskEither<R, E, NonNullable<A>> =
@@ -329,7 +329,7 @@ export const fromNullable: <E>(e: E) => <R, A>(a: A) => ReaderTaskEither<R, E, N
 /**
  * Use `liftNullable`.
  *
- * @since 2.12.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const fromNullableK: <E>(
@@ -341,7 +341,7 @@ export const fromNullableK: <E>(
 /**
  * Use `flatMapNullable`.
  *
- * @since 2.12.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainNullableK: <E>(
@@ -360,7 +360,7 @@ export const chainNullableK: <E>(
  * Changes the value of the local context during the execution of the action `ma` (similar to `Contravariant`'s
  * `contramap`).
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const local: <R2, R1>(
   f: (r2: R2) => R1,
@@ -371,7 +371,7 @@ export const local: <R2, R1>(
  *
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const asksReaderTaskEitherW: <R1, R2, E, A>(
@@ -381,14 +381,14 @@ export const asksReaderTaskEitherW: <R1, R2, E, A>(
 /**
  * Effectfully accesses the environment.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const asksReaderTaskEither: <R, E, A>(f: (r: R) => ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, A> =
   asksReaderTaskEitherW
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const orElse: <R, E1, A, E2>(
@@ -400,7 +400,7 @@ export const orElse: <R, E1, A, E2>(
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the return types will be merged.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const orElseW: <E1, R1, E2, B>(
@@ -410,7 +410,7 @@ export const orElseW: <E1, R1, E2, B>(
 /**
  * Returns an effect that effectfully "peeks" at the failure of this effect.
  *
- * @since 2.15.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const tapError: {
@@ -424,20 +424,20 @@ export const tapError: {
 } = /*#__PURE__*/ dual(2, ET.tapError(RT.Monad))
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const orLeft: <E1, R, E2>(
   onLeft: (e: E1) => ReaderTask<R, E2>,
 ) => <A>(fa: ReaderTaskEither<R, E1, A>) => ReaderTaskEither<R, E2, A> = /*#__PURE__*/ ET.orLeft(RT.Monad)
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const swap: <R, E, A>(ma: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, A, E> = /*#__PURE__*/ ET.swap(
   RT.Functor,
 )
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromIOEitherK = <E, A extends ReadonlyArray<unknown>, B>(
@@ -445,7 +445,7 @@ export const fromIOEitherK = <E, A extends ReadonlyArray<unknown>, B>(
 ): (<R = unknown>(...a: A) => ReaderTaskEither<R, E, B>) => flow(f, fromIOEither)
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromTaskEitherK = <E, A extends ReadonlyArray<unknown>, B>(
@@ -453,7 +453,7 @@ export const fromTaskEitherK = <E, A extends ReadonlyArray<unknown>, B>(
 ): (<R = unknown>(...a: A) => ReaderTaskEither<R, E, B>) => flow(f, fromTaskEither)
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromReaderEitherK = <R, E, A extends ReadonlyArray<unknown>, B>(
@@ -470,7 +470,7 @@ const _alt: Alt3<URI>['alt'] = (fa, that) => pipe(fa, alt(that))
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const map: <A, B>(f: (a: A) => B) => <R, E>(fa: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, B> =
@@ -480,7 +480,7 @@ export const map: <A, B>(f: (a: A) => B) => <R, E>(fa: ReaderTaskEither<R, E, A>
  * Returns a `ReaderTaskEither` whose failure and success channels have been mapped by the specified pair of functions,
  * `f` and `g`.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Error handling
  * @example
  *   import * as ReaderTaskEither from 'fp-ts/ReaderTaskEither'
@@ -507,7 +507,7 @@ export const mapBoth: {
 /**
  * Alias of `mapBoth`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const bimap: <E, G, A, B>(
@@ -518,7 +518,7 @@ export const bimap: <E, G, A, B>(
 /**
  * Returns a `ReaderTaskEither` with its error channel mapped using the specified function.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Error handling
  * @example
  *   import * as ReaderTaskEither from 'fp-ts/ReaderTaskEither'
@@ -544,13 +544,13 @@ export const mapError: {
 /**
  * Alias of `mapError`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const mapLeft: <E, G>(f: (e: E) => G) => <R, A>(fa: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, G, A> =
   mapError
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const ap: <R, E, A>(
   fa: ReaderTaskEither<R, E, A>,
 ) => <B>(fab: ReaderTaskEither<R, E, (a: A) => B>) => ReaderTaskEither<R, E, B> = /*#__PURE__*/ ET.ap(RT.ApplyPar)
@@ -560,20 +560,20 @@ export const ap: <R, E, A>(
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.8.0
+ * @since 1.0.0
  */
 export const apW: <R2, E2, A>(
   fa: ReaderTaskEither<R2, E2, A>,
 ) => <R1, E1, B>(fab: ReaderTaskEither<R1, E1, (a: A) => B>) => ReaderTaskEither<R1 & R2, E1 | E2, B> = ap as any
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const of: <R = unknown, E = never, A = never>(a: A) => ReaderTaskEither<R, E, A> = right
 
 /**
- * @since 2.14.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMap: {
@@ -591,7 +591,7 @@ export const flatMap: {
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flattenW: <R1, E1, R2, E2, A>(
@@ -599,7 +599,7 @@ export const flattenW: <R1, E1, R2, E2, A>(
 ) => ReaderTaskEither<R1 & R2, E1 | E2, A> = /*#__PURE__*/ flatMap(identity)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatten: <R, E, A>(mma: ReaderTaskEither<R, E, ReaderTaskEither<R, E, A>>) => ReaderTaskEither<R, E, A> =
@@ -609,7 +609,7 @@ export const flatten: <R, E, A>(mma: ReaderTaskEither<R, E, ReaderTaskEither<R, 
  * Identifies an associative operation on a type constructor. It is similar to `Semigroup`, except that it applies to
  * types of kind `* -> *`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const alt: <R, E, A>(
@@ -621,24 +621,24 @@ export const alt: <R, E, A>(
  *
  * The `W` suffix (short for **W**idening) means that the environment, the error and the return types will be merged.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const altW: <R2, E2, B>(
   that: () => ReaderTaskEither<R2, E2, B>,
 ) => <R1, E1, A>(fa: ReaderTaskEither<R1, E1, A>) => ReaderTaskEither<R1 & R2, E2, A | B> = alt as any
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const throwError: MonadThrow3<URI>['throwError'] = left
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'ReaderTaskEither'
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -650,7 +650,7 @@ declare module './HKT' {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const getCompactable = <E>(M: Monoid<E>): Compactable3C<URI, E> => {
@@ -664,7 +664,7 @@ export const getCompactable = <E>(M: Monoid<E>): Compactable3C<URI, E> => {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Filtering
  */
 export function getFilterable<E>(M: Monoid<E>): Filterable3C<URI, E> {
@@ -694,7 +694,7 @@ export function getFilterable<E>(M: Monoid<E>): Filterable3C<URI, E> {
  *
  * See [`getApplicativeValidation`](./Either.ts.html#getapplicativevalidation).
  *
- * @since 2.7.0
+ * @since 1.0.0
  * @category Error handling
  */
 export function getApplicativeReaderTaskValidation<E>(A: Apply1<T.URI>, S: Semigroup<E>): Applicative3C<URI, E> {
@@ -714,7 +714,7 @@ export function getApplicativeReaderTaskValidation<E>(A: Apply1<T.URI>, S: Semig
  *
  * See [`getAltValidation`](./Either.ts.html#getaltvalidation).
  *
- * @since 2.7.0
+ * @since 1.0.0
  * @category Error handling
  */
 export function getAltReaderTaskValidation<E>(S: Semigroup<E>): Alt3C<URI, E> {
@@ -728,7 +728,7 @@ export function getAltReaderTaskValidation<E>(S: Semigroup<E>): Alt3C<URI, E> {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Functor: Functor3<URI> = {
@@ -739,7 +739,7 @@ export const Functor: Functor3<URI> = {
 /**
  * Maps the `Right` value of this `ReaderTaskEither` to the specified constant value.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const as: {
@@ -750,19 +750,19 @@ export const as: {
 /**
  * Maps the `Right` value of this `ReaderTaskEither` to the void constant value.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const asUnit: <R, E, _>(self: ReaderTaskEither<R, E, _>) => ReaderTaskEither<R, E, void> = asUnit_(Functor)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Pointed: Pointed3<URI> = {
@@ -773,7 +773,7 @@ export const Pointed: Pointed3<URI> = {
 /**
  * Runs computations in parallel.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const ApplyPar: Apply3<URI> = {
@@ -785,7 +785,7 @@ export const ApplyPar: Apply3<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const apFirst = /*#__PURE__*/ apFirst_(ApplyPar)
 
@@ -794,7 +794,7 @@ export const apFirst = /*#__PURE__*/ apFirst_(ApplyPar)
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.12.0
+ * @since 1.0.0
  */
 export const apFirstW: <R2, E2, B>(
   second: ReaderTaskEither<R2, E2, B>,
@@ -803,7 +803,7 @@ export const apFirstW: <R2, E2, B>(
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
 
@@ -812,7 +812,7 @@ export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.12.0
+ * @since 1.0.0
  */
 export const apSecondW: <R2, E2, B>(
   second: ReaderTaskEither<R2, E2, B>,
@@ -821,7 +821,7 @@ export const apSecondW: <R2, E2, B>(
 /**
  * Runs computations in parallel.
  *
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const ApplicativePar: Applicative3<URI> = {
@@ -834,7 +834,7 @@ export const ApplicativePar: Applicative3<URI> = {
 /**
  * Runs computations sequentially.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const ApplySeq: Apply3<URI> = {
@@ -846,7 +846,7 @@ export const ApplySeq: Apply3<URI> = {
 /**
  * Runs computations sequentially.
  *
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const ApplicativeSeq: Applicative3<URI> = {
@@ -857,7 +857,7 @@ export const ApplicativeSeq: Applicative3<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Chain: chainable.Chain3<URI> = {
@@ -903,7 +903,7 @@ export const ChainRec: ChainRec3<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Monad: Monad3<URI> = {
@@ -915,7 +915,7 @@ export const Monad: Monad3<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const MonadIO: MonadIO3<URI> = {
@@ -928,7 +928,7 @@ export const MonadIO: MonadIO3<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const MonadTask: MonadTask3<URI> = {
@@ -942,7 +942,7 @@ export const MonadTask: MonadTask3<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const MonadThrow: MonadThrow3<URI> = {
@@ -955,7 +955,7 @@ export const MonadThrow: MonadThrow3<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromEither: FromEither3<URI> = {
@@ -964,7 +964,7 @@ export const FromEither: FromEither3<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromIO: FromIO3<URI> = {
@@ -973,7 +973,7 @@ export const FromIO: FromIO3<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromTask: FromTask3<URI> = {
@@ -983,7 +983,7 @@ export const FromTask: FromTask3<URI> = {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromReader: FromReader3<URI> = {
@@ -995,7 +995,7 @@ export const FromReader: FromReader3<URI> = {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.15.0
+ * @since 1.0.0
  * @category Combinators
  */
 export const tap: {
@@ -1012,7 +1012,7 @@ export const tap: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Combinators
  * @example
  *   import * as E from 'fp-ts/Either'
@@ -1041,7 +1041,7 @@ export const tapEither: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Combinators
  * @example
  *   import * as RTE from 'fp-ts/ReaderTaskEither'
@@ -1066,7 +1066,7 @@ export const tapIO: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Combinators
  * @example
  *   import * as RTE from 'fp-ts/ReaderTaskEither'
@@ -1090,7 +1090,7 @@ export const tapTask: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Combinators
  */
 export const tapReader: {
@@ -1102,7 +1102,7 @@ export const tapReader: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Combinators
  */
 export const tapReaderEither: {
@@ -1125,7 +1125,7 @@ export const tapReaderEither: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Combinators
  */
 export const tapTaskEither: {
@@ -1145,7 +1145,7 @@ export const tapTaskEither: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Combinators
  */
 export const tapReaderTask: {
@@ -1165,7 +1165,7 @@ export const tapReaderTask: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.16.0
+ * @since 1.0.0
  * @category Combinators
  */
 export const tapReaderIO: {
@@ -1178,7 +1178,7 @@ export const tapReaderIO: {
 )
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Bifunctor: Bifunctor3<URI> = {
@@ -1188,7 +1188,7 @@ export const Bifunctor: Bifunctor3<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Alt: Alt3<URI> = {
@@ -1200,7 +1200,7 @@ export const Alt: Alt3<URI> = {
 /**
  * Reads the current context.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const ask: <R, E = never>() => ReaderTaskEither<R, E, R> = /*#__PURE__*/ ask_(FromReader)
@@ -1208,13 +1208,13 @@ export const ask: <R, E = never>() => ReaderTaskEither<R, E, R> = /*#__PURE__*/ 
 /**
  * Projects a value from the global context in a `ReaderEither`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const asks: <R, A, E = never>(f: (r: R) => A) => ReaderTaskEither<R, E, A> = /*#__PURE__*/ asks_(FromReader)
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromReaderK: <A extends ReadonlyArray<unknown>, R, B>(
@@ -1224,7 +1224,7 @@ export const fromReaderK: <A extends ReadonlyArray<unknown>, R, B>(
 /**
  * Alias of `tapReader`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstReaderK: <A, R, B>(
@@ -1238,7 +1238,7 @@ export const chainFirstReaderK: <A, R, B>(
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstReaderKW: <A, R1, B>(
@@ -1252,7 +1252,7 @@ export const chainFirstReaderKW: <A, R1, B>(
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstReaderEitherKW: <R2, E2, A, B>(
@@ -1262,7 +1262,7 @@ export const chainFirstReaderEitherKW: <R2, E2, A, B>(
 /**
  * Alias of `tapReaderEither`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstReaderEitherK: <R, E, A, B>(
@@ -1276,7 +1276,7 @@ export const chainFirstReaderEitherK: <R, E, A, B>(
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstTaskEitherKW: <E2, A, B>(
@@ -1286,7 +1286,7 @@ export const chainFirstTaskEitherKW: <E2, A, B>(
 /**
  * Alias of `tapTaskEither`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstTaskEitherK: <E, A, B>(
@@ -1294,7 +1294,7 @@ export const chainFirstTaskEitherK: <E, A, B>(
 ) => <R>(ma: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, A> = tapTaskEither
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromReaderTaskK =
@@ -1311,7 +1311,7 @@ export const fromReaderTaskK =
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstReaderTaskKW: <A, R2, B>(
@@ -1321,7 +1321,7 @@ export const chainFirstReaderTaskKW: <A, R2, B>(
 /**
  * Alias of `tapReaderTask`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstReaderTaskK: <A, R, B>(
@@ -1329,7 +1329,7 @@ export const chainFirstReaderTaskK: <A, R, B>(
 ) => <E>(ma: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, A> = tapReaderTask
 
 /**
- * @since 2.13.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromReaderIOK =
@@ -1344,7 +1344,7 @@ export const fromReaderIOK =
  *
  * Less strict version of [`chainFirstReaderIOK`](#chainfirstreaderiok).
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstReaderIOKW: <A, R2, B>(
@@ -1354,7 +1354,7 @@ export const chainFirstReaderIOKW: <A, R2, B>(
 /**
  * Alias of `tapReaderIO`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstReaderIOK: <A, R, B>(
@@ -1362,7 +1362,7 @@ export const chainFirstReaderIOK: <A, R, B>(
 ) => <E>(ma: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, A> = tapReaderIO
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromOption: <E>(onNone: LazyArg<E>) => <A, R = unknown>(fa: Option<A>) => ReaderTaskEither<R, E, A> =
@@ -1371,7 +1371,7 @@ export const fromOption: <E>(onNone: LazyArg<E>) => <A, R = unknown>(fa: Option<
 /**
  * Use `liftOption`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const fromOptionK: <E>(
@@ -1383,7 +1383,7 @@ export const fromOptionK: <E>(
 /**
  * Use `flatMapOption`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainOptionK: <E>(
@@ -1394,7 +1394,7 @@ export const chainOptionK: <E>(
 /**
  * Use `flatMapOption`.
  *
- * @since 2.13.2
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainOptionKW: <E2>(
@@ -1413,7 +1413,7 @@ const _FromEither: _.FromEither<ReaderTaskEitherTypeLambda> = {
 }
 
 /**
- * @since 2.15.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
@@ -1422,7 +1422,7 @@ export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
 ) => <R>(...a: A) => ReaderTaskEither<R, E, NonNullable<B>> = /*#__PURE__*/ _.liftNullable(_FromEither)
 
 /**
- * @since 2.15.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const liftOption: <A extends ReadonlyArray<unknown>, B, E>(
@@ -1451,7 +1451,7 @@ const _FromReader: _.FromReader<ReaderTaskEitherTypeLambda> = {
 }
 
 /**
- * @since 2.15.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapNullable: {
@@ -1467,7 +1467,7 @@ export const flatMapNullable: {
 } = /*#__PURE__*/ _.flatMapNullable(_FromEither, _FlatMap)
 
 /**
- * @since 2.15.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapOption: {
@@ -1483,7 +1483,7 @@ export const flatMapOption: {
 } = /*#__PURE__*/ _.flatMapOption(_FromEither, _FlatMap)
 
 /**
- * @since 2.15.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapEither: {
@@ -1492,7 +1492,7 @@ export const flatMapEither: {
 } = /*#__PURE__*/ _.flatMapEither(_FromEither, _FlatMap)
 
 /**
- * @since 2.16.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapTaskEither: {
@@ -1509,7 +1509,7 @@ export const flatMapTaskEither: {
 )
 
 /**
- * @since 2.16.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapReaderTask: {
@@ -1526,7 +1526,7 @@ export const flatMapReaderTask: {
 )
 
 /**
- * @since 2.16.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapIO: {
@@ -1535,7 +1535,7 @@ export const flatMapIO: {
 } = /*#__PURE__*/ _.flatMapIO(_FromIO, _FlatMap)
 
 /**
- * @since 2.16.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapTask: {
@@ -1544,7 +1544,7 @@ export const flatMapTask: {
 } = /*#__PURE__*/ _.flatMapTask(_FromTask, _FlatMap)
 
 /**
- * @since 2.16.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapReader: {
@@ -1553,7 +1553,7 @@ export const flatMapReader: {
 } = /*#__PURE__*/ _.flatMapReader(_FromReader, _FlatMap)
 
 /**
- * @since 2.16.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapReaderIO: {
@@ -1566,7 +1566,7 @@ export const flatMapReaderIO: {
 )
 
 /**
- * @since 2.16.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapIOEither: {
@@ -1579,7 +1579,7 @@ export const flatMapIOEither: {
 )
 
 /**
- * @since 2.16.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMapReaderEither: {
@@ -1601,7 +1601,7 @@ export const flatMapReaderEither: {
 /**
  * Alias of `flatMapEither`.
  *
- * @since 2.4.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainEitherK: <E, A, B>(
@@ -1611,7 +1611,7 @@ export const chainEitherK: <E, A, B>(
 /**
  * Alias of `flatMapEither`.
  *
- * @since 2.6.1
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainEitherKW: <E2, A, B>(
@@ -1621,7 +1621,7 @@ export const chainEitherKW: <E2, A, B>(
 /**
  * Alias of `tapEither`.
  *
- * @since 2.12.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstEitherK: <A, E, B>(
@@ -1635,7 +1635,7 @@ export const chainFirstEitherK: <A, E, B>(
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.12.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstEitherKW: <A, E2, B>(
@@ -1649,7 +1649,7 @@ export const chainFirstEitherKW: <A, E2, B>(
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.6.1
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainTaskEitherKW: <E2, A, B>(
@@ -1659,7 +1659,7 @@ export const chainTaskEitherKW: <E2, A, B>(
 /**
  * Alias of `flatMapTaskEither`.
  *
- * @since 2.4.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainTaskEitherK: <E, A, B>(
@@ -1673,7 +1673,7 @@ export const chainTaskEitherK: <E, A, B>(
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainReaderTaskKW: <A, R2, B>(
@@ -1683,7 +1683,7 @@ export const chainReaderTaskKW: <A, R2, B>(
 /**
  * Alias of `flatMapReaderTask`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainReaderTaskK: <A, R, B>(
@@ -1691,7 +1691,7 @@ export const chainReaderTaskK: <A, R, B>(
 ) => <E>(ma: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, B> = flatMapReaderTask
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromPredicate: {
@@ -1707,7 +1707,7 @@ export const fromPredicate: {
 } = /*#__PURE__*/ fromPredicate_(FromEither)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const filterOrElse: {
@@ -1727,7 +1727,7 @@ export const filterOrElse: {
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const filterOrElseW: {
@@ -1746,7 +1746,7 @@ export const filterOrElseW: {
 } = filterOrElse
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
@@ -1754,7 +1754,7 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 ) => <R = unknown>(...a: A) => ReaderTaskEither<R, E, B> = /*#__PURE__*/ fromEitherK_(FromEither)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
@@ -1764,7 +1764,7 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
 /**
  * Alias of `flatMapIO`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainIOK: <A, B>(
@@ -1774,7 +1774,7 @@ export const chainIOK: <A, B>(
 /**
  * Alias of `tapIO`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstIOK: <A, B>(
@@ -1782,7 +1782,7 @@ export const chainFirstIOK: <A, B>(
 ) => <R, E>(first: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, A> = tapIO
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
@@ -1792,7 +1792,7 @@ export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
 /**
  * Alias of `flatMapTask`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainTaskK: <A, B>(
@@ -1802,7 +1802,7 @@ export const chainTaskK: <A, B>(
 /**
  * Alias of `tapTask`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstTaskK: <A, B>(
@@ -1812,7 +1812,7 @@ export const chainFirstTaskK: <A, B>(
 /**
  * Alias of `flatMapReader`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainReaderK: <A, R, B>(
@@ -1826,7 +1826,7 @@ export const chainReaderK: <A, R, B>(
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainReaderKW: <A, R1, B>(
@@ -1838,7 +1838,7 @@ export const chainReaderKW: <A, R1, B>(
  *
  * Less strict version of [`chainReaderIOK`](#chainreaderiok).
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainReaderIOKW: <A, R2, B>(
@@ -1848,7 +1848,7 @@ export const chainReaderIOKW: <A, R2, B>(
 /**
  * Alias of `flatMapReaderIO`.
  *
- * @since 2.13.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainReaderIOK: <A, R, B>(
@@ -1862,7 +1862,7 @@ export const chainReaderIOK: <A, R, B>(
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.6.1
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainIOEitherKW: <E2, A, B>(
@@ -1872,7 +1872,7 @@ export const chainIOEitherKW: <E2, A, B>(
 /**
  * Alias of `flatMapIOEither`.
  *
- * @since 2.4.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainIOEitherK: <E, A, B>(
@@ -1886,7 +1886,7 @@ export const chainIOEitherK: <E, A, B>(
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainReaderEitherKW: <R2, E2, A, B>(
@@ -1896,7 +1896,7 @@ export const chainReaderEitherKW: <R2, E2, A, B>(
 /**
  * Alias of `flatMapReaderEither`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainReaderEitherK: <R, E, A, B>(
@@ -1913,7 +1913,7 @@ export const chainReaderEitherK: <R, E, A, B>(
  *
  * (*) i.e. returns a `Left`
  *
- * @since 2.0.4
+ * @since 1.0.0
  */
 export function bracket<R, E, A, B>(
   acquire: ReaderTaskEither<R, E, A>,
@@ -1926,7 +1926,7 @@ export function bracket<R, E, A, B>(
 /**
  * Less strict version of [`bracket`](#bracket).
  *
- * @since 2.12.0
+ * @since 1.0.0
  */
 export function bracketW<R1, E1, A, R2, E2, B, R3, E3>(
   acquire: ReaderTaskEither<R1, E1, A>,
@@ -1946,13 +1946,13 @@ export function bracketW<R1, E1, A, R2, E2, B, R3, E3>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.9.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const Do: ReaderTaskEither<unknown, never, {}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
@@ -1961,14 +1961,14 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @since 2.13.0
+   * @since 1.0.0
    * @category Do notation
    */
   let_ as let,
 }
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
@@ -1976,7 +1976,7 @@ export const bind = /*#__PURE__*/ chainable.bind(Chain)
 /**
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bindW: <N extends string, A, R2, E2, B>(
@@ -1987,7 +1987,7 @@ export const bindW: <N extends string, A, R2, E2, B>(
 ) => ReaderTaskEither<R1 & R2, E1 | E2, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }> = bind as any
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const apS = /*#__PURE__*/ apS_(ApplyPar)
@@ -1997,7 +1997,7 @@ export const apS = /*#__PURE__*/ apS_(ApplyPar)
  *
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const apSW: <A, N extends string, R2, E2, B>(
@@ -2007,7 +2007,7 @@ export const apSW: <A, N extends string, R2, E2, B>(
   fa: ReaderTaskEither<R1, E1, A>,
 ) => ReaderTaskEither<R1 & R2, E1 | E2, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }> = apS as any
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const ApT: ReaderTaskEither<unknown, never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 
 interface ReaderTaskEitherIterable<R, E, A> {
@@ -2040,7 +2040,7 @@ export {
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(ApplicativePar)`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyNonEmptyArrayWithIndex = <A, R, E, B>(
@@ -2051,7 +2051,7 @@ export const traverseReadonlyNonEmptyArrayWithIndex = <A, R, E, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativePar)`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyArrayWithIndex = <A, R, E, B>(
@@ -2064,7 +2064,7 @@ export const traverseReadonlyArrayWithIndex = <A, R, E, B>(
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyNonEmptyArrayWithIndexSeq = <A, R, E, B>(
@@ -2075,7 +2075,7 @@ export const traverseReadonlyNonEmptyArrayWithIndexSeq = <A, R, E, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyArrayWithIndexSeq = <A, R, E, B>(
@@ -2088,7 +2088,7 @@ export const traverseReadonlyArrayWithIndexSeq = <A, R, E, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseArrayWithIndex: <R, E, A, B>(
@@ -2098,7 +2098,7 @@ export const traverseArrayWithIndex: <R, E, A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseArray = <R, E, A, B>(
@@ -2109,7 +2109,7 @@ export const traverseArray = <R, E, A, B>(
 /**
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const sequenceArray: <R, E, A>(
@@ -2119,7 +2119,7 @@ export const sequenceArray: <R, E, A>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseSeqArrayWithIndex: <R, E, A, B>(
@@ -2129,7 +2129,7 @@ export const traverseSeqArrayWithIndex: <R, E, A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverse(ApplicativeSeq)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseSeqArray = <R, E, A, B>(
@@ -2140,7 +2140,7 @@ export const traverseSeqArray = <R, E, A, B>(
 /**
  * Equivalent to `ReadonlyArray#sequence(ApplicativeSeq)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const sequenceSeqArray: <R, E, A>(
@@ -2154,7 +2154,7 @@ export const sequenceSeqArray: <R, E, A>(
 /**
  * Alias of `flatMap`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chain: <R, E, A, B>(
@@ -2164,7 +2164,7 @@ export const chain: <R, E, A, B>(
 /**
  * Alias of `flatMap`.
  *
- * @since 2.6.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainW: <R2, E2, A, B>(
@@ -2174,7 +2174,7 @@ export const chainW: <R2, E2, A, B>(
 /**
  * Alias of `tap`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirst: <R, E, A, B>(
@@ -2184,7 +2184,7 @@ export const chainFirst: <R, E, A, B>(
 /**
  * Alias of `tap`.
  *
- * @since 2.8.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirstW: <R2, E2, A, B>(
@@ -2194,7 +2194,7 @@ export const chainFirstW: <R2, E2, A, B>(
 /**
  * Alias of `tapError`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const orElseFirst: <E, R, B>(
@@ -2204,7 +2204,7 @@ export const orElseFirst: <E, R, B>(
 /**
  * Alias of `tapError`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const orElseFirstW: <E1, R2, E2, B>(
@@ -2221,7 +2221,7 @@ export const orElseFirstW: <E1, R2, E2, B>(
  * 'fp-ts/ReaderTaskEither'`)
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const readerTaskEither: Monad3<URI> & Bifunctor3<URI> & Alt3<URI> & MonadTask3<URI> & MonadThrow3<URI> = {
@@ -2244,7 +2244,7 @@ export const readerTaskEither: Monad3<URI> & Bifunctor3<URI> & Alt3<URI> & Monad
  * 'fp-ts/ReaderTaskEither'`)
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 
@@ -2269,7 +2269,7 @@ export const readerTaskEitherSeq: typeof readerTaskEither = {
  * using the provided `Semigroup`
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getApplySemigroup: <R, E, A>(S: Semigroup<A>) => Semigroup<ReaderTaskEither<R, E, A>> =
@@ -2279,7 +2279,7 @@ export const getApplySemigroup: <R, E, A>(S: Semigroup<A>) => Semigroup<ReaderTa
  * Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getApplyMonoid: <R, E, A>(M: Monoid<A>) => Monoid<ReaderTaskEither<R, E, A>> =
@@ -2289,7 +2289,7 @@ export const getApplyMonoid: <R, E, A>(M: Monoid<A>) => Monoid<ReaderTaskEither<
  * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getSemigroup = <R, E, A>(S: Semigroup<A>): Semigroup<ReaderTaskEither<R, E, A>> =>
@@ -2300,7 +2300,7 @@ export const getSemigroup = <R, E, A>(S: Semigroup<A>): Semigroup<ReaderTaskEith
  * [`getAltReaderTaskValidation`](#getaltreadertaskvalidation) instead.
  *
  * @deprecated
- * @since 2.3.0
+ * @since 1.0.0
  * @category Instances
  */
 export function getReaderTaskValidation<E>(
@@ -2326,7 +2326,7 @@ export function getReaderTaskValidation<E>(
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 /* istanbul ignore next */

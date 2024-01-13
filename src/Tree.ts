@@ -5,7 +5,7 @@
  * type Forest<A> = Array<Tree<A>>
  * ```
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type Applicative as ApplicativeHKT, type Applicative1 } from './Applicative'
 import { apFirst as apFirst_, type Apply1, apS as apS_, apSecond as apSecond_ } from './Apply'
@@ -49,13 +49,13 @@ import { type PipeableTraverse1, type Traversable1 } from './Traversable'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export type Forest<A> = Array<Tree<A>>
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Tree<A> {
@@ -64,7 +64,7 @@ export interface Tree<A> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export function make<A>(value: A, forest: Forest<A> = []): Tree<A> {
@@ -75,7 +75,7 @@ export function make<A>(value: A, forest: Forest<A> = []): Tree<A> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  */
 export function getShow<A>(S: Show<A>): Show<Tree<A>> {
@@ -90,7 +90,7 @@ export function getShow<A>(S: Show<A>): Show<Tree<A>> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  */
 export function getEq<A>(E: Eq<A>): Eq<Tree<A>> {
@@ -117,7 +117,7 @@ const draw = (indentation: string, forest: Forest<string>): string => {
 /**
  * Neat 2-dimensional drawing of a forest
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export function drawForest(forest: Forest<string>): string {
   return draw('\n', forest)
@@ -126,7 +126,7 @@ export function drawForest(forest: Forest<string>): string {
 /**
  * Neat 2-dimensional drawing of a tree
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { make, drawTree } from 'fp-ts/Tree'
  *
@@ -149,7 +149,7 @@ export function drawTree(tree: Tree<string>): string {
 /**
  * Build a (possibly infinite) tree from a seed value in breadth-first order.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export function unfoldTree<A, B>(b: B, f: (b: B) => [A, Array<B>]): Tree<A> {
@@ -160,7 +160,7 @@ export function unfoldTree<A, B>(b: B, f: (b: B) => [A, Array<B>]): Tree<A> {
 /**
  * Build a (possibly infinite) forest from a list of seed values in breadth-first order.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export function unfoldForest<A, B>(bs: Array<B>, f: (b: B) => [A, Array<B>]): Forest<A> {
@@ -170,7 +170,7 @@ export function unfoldForest<A, B>(bs: Array<B>, f: (b: B) => [A, Array<B>]): Fo
 /**
  * Monadic tree builder, in depth-first order
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export function unfoldTreeM<M extends URIS4>(
@@ -200,7 +200,7 @@ export function unfoldTreeM<M>(M: MonadHKT<M>): <A, B>(b: B, f: (b: B) => HKT<M,
 /**
  * Monadic forest builder, in depth-first order
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export function unfoldForestM<M extends URIS4>(
@@ -242,7 +242,7 @@ export function unfoldForestM<M>(
  *
  * This is also known as the catamorphism on trees.
  *
- * @since 2.6.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { fold, make } from 'fp-ts/Tree'
@@ -287,11 +287,11 @@ const _traverse = <F>(F: ApplicativeHKT<F>): (<A, B>(ta: Tree<A>, f: (a: A) => H
   return (ta, f) => pipe(ta, traverseF(f))
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const ap: <A>(fa: Tree<A>) => <B>(fab: Tree<(a: A) => B>) => Tree<B> = fa => fab => _ap(fab, fa)
 
 /**
- * @since 2.14.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMap: {
@@ -306,17 +306,17 @@ export const flatMap: {
   }
 })
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const extend: <A, B>(f: (wa: Tree<A>) => B) => (wa: Tree<A>) => Tree<B> = f => wa => ({
   value: f(wa),
   forest: wa.forest.map(extend(f)),
 })
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const duplicate: <A>(wa: Tree<A>) => Tree<Tree<A>> = /*#__PURE__*/ extend(identity)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatten: <A>(mma: Tree<Tree<A>>) => Tree<A> = /*#__PURE__*/ flatMap(identity)
@@ -325,7 +325,7 @@ export const flatten: <A>(mma: Tree<Tree<A>>) => Tree<A> = /*#__PURE__*/ flatMap
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const map: <A, B>(f: (a: A) => B) => (fa: Tree<A>) => Tree<B> = f => fa => ({
@@ -334,7 +334,7 @@ export const map: <A, B>(f: (a: A) => B) => (fa: Tree<A>) => Tree<B> = f => fa =
 })
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  */
 export const reduce =
@@ -349,14 +349,14 @@ export const reduce =
   }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  */
 export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: Tree<A>) => M = M => f =>
   reduce(M.empty, (acc, a) => M.concat(acc, f(a)))
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  */
 export const reduceRight =
@@ -371,13 +371,13 @@ export const reduceRight =
   }
 
 /**
- * @since 2.6.2
+ * @since 1.0.0
  * @category Extract
  */
 export const extract: <A>(wa: Tree<A>) => A = wa => wa.value
 
 /**
- * @since 2.6.3
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverse: PipeableTraverse1<URI> = <F>(
@@ -398,7 +398,7 @@ export const traverse: PipeableTraverse1<URI> = <F>(
 }
 
 /**
- * @since 2.6.3
+ * @since 1.0.0
  * @category Traversing
  */
 export const sequence: Traversable1<URI>['sequence'] = <F>(
@@ -406,19 +406,19 @@ export const sequence: Traversable1<URI>['sequence'] = <F>(
 ): (<A>(ta: Tree<HKT<F, A>>) => HKT<F, Tree<A>>) => traverse(F)(identity)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const of: <A>(a: A) => Tree<A> = a => make(a)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'Tree'
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -430,7 +430,7 @@ declare module './HKT' {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Functor: Functor1<URI> = {
@@ -439,13 +439,13 @@ export const Functor: Functor1<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Pointed: Pointed1<URI> = {
@@ -454,7 +454,7 @@ export const Pointed: Pointed1<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Apply: Apply1<URI> = {
@@ -466,19 +466,19 @@ export const Apply: Apply1<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
 
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Applicative: Applicative1<URI> = {
@@ -489,7 +489,7 @@ export const Applicative: Applicative1<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Chain: Chain1<URI> = {
@@ -500,7 +500,7 @@ export const Chain: Chain1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Monad: Monad1<URI> = {
@@ -515,12 +515,12 @@ export const Monad: Monad1<URI> = {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const chainFirst: <A, B>(f: (a: A) => Tree<B>) => (first: Tree<A>) => Tree<A> = /*#__PURE__*/ chainFirst_(Chain)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Foldable: Foldable1<URI> = {
@@ -531,7 +531,7 @@ export const Foldable: Foldable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Traversable: Traversable1<URI> = {
@@ -545,7 +545,7 @@ export const Traversable: Traversable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Comonad: Comonad1<URI> = {
@@ -560,13 +560,13 @@ export const Comonad: Comonad1<URI> = {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.9.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const Do: Tree<{}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
@@ -575,20 +575,20 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @since 2.13.0
+   * @since 1.0.0
    * @category Do notation
    */
   let_ as let,
 }
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const bind = /*#__PURE__*/ bind_(Chain)
 
 /**
- * @since 2.8.0
+ * @since 1.0.0
  * @category Do notation
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
@@ -597,13 +597,13 @@ export const apS = /*#__PURE__*/ apS_(Apply)
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export function elem<A>(E: Eq<A>): (a: A, fa: Tree<A>) => boolean {
   const go = (a: A, fa: Tree<A>): boolean => E.equals(a, fa.value) || fa.forest.some(tree => go(a, tree))
   return go
 }
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const exists =
   <A>(predicate: Predicate<A>) =>
   (ma: Tree<A>): boolean =>
@@ -616,7 +616,7 @@ export const exists =
 /**
  * Alias of `flatMap`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chain: <A, B>(f: (a: A) => Tree<B>) => (ma: Tree<A>) => Tree<B> = flatMap
@@ -630,7 +630,7 @@ export const chain: <A, B>(f: (a: A) => Tree<B>) => (ma: Tree<A>) => Tree<B> = f
  * instance, pass `T.Functor` instead of `T.tree` (where `T` is from `import T from 'fp-ts/Tree'`)
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const tree: Monad1<URI> & Foldable1<URI> & Traversable1<URI> & Comonad1<URI> = {

@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import type * as E from './Eq'
 import type * as M from './Monoid'
 import type * as S from './Semigroup'
@@ -8,7 +8,7 @@ import type * as S from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export type Ordering = -1 | 0 | 1
@@ -18,7 +18,7 @@ export type Ordering = -1 | 0 | 1
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 2.12.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchW =
@@ -29,7 +29,7 @@ export const matchW =
     : onGreaterThan()
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const match: <A>(onLessThan: () => A, onEqual: () => A, onGreaterThan: () => A) => (o: Ordering) => A = matchW
@@ -38,7 +38,7 @@ export const match: <A>(onLessThan: () => A, onEqual: () => A, onGreaterThan: ()
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export const reverse = (o: Ordering): Ordering =>
   o === -1 ? 1
   : o === 1 ? -1
@@ -49,7 +49,7 @@ export const reverse = (o: Ordering): Ordering =>
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Eq: E.Eq<Ordering> = {
@@ -57,7 +57,7 @@ export const Eq: E.Eq<Ordering> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Semigroup: S.Semigroup<Ordering> = {
@@ -65,7 +65,7 @@ export const Semigroup: S.Semigroup<Ordering> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Monoid: M.Monoid<Ordering> = {
@@ -77,7 +77,7 @@ export const Monoid: M.Monoid<Ordering> = {
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const sign = (n: number): Ordering =>
   n <= -1 ? -1
   : n >= 1 ? 1
@@ -91,7 +91,7 @@ export const sign = (n: number): Ordering =>
  * Use [`reverse`](#reverse) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const invert = reverse
@@ -100,7 +100,7 @@ export const invert = reverse
  * Use [`Semigroup`](#semigroup) instead
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const semigroupOrdering: S.Semigroup<Ordering> = Semigroup
@@ -109,7 +109,7 @@ export const semigroupOrdering: S.Semigroup<Ordering> = Semigroup
  * Use [`Eq`](#eq) instead
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const eqOrdering: E.Eq<Ordering> = Eq
@@ -118,7 +118,7 @@ export const eqOrdering: E.Eq<Ordering> = Eq
  * Use [`Monoid`](#monoid) instead
  *
  * @deprecated
- * @since 2.4.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const monoidOrdering: M.Monoid<Ordering> = Monoid

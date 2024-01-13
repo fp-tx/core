@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, type URIS4 } from './HKT'
 
 // -------------------------------------------------------------------------------------
@@ -6,7 +6,7 @@ import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, 
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Bifunctor<F> {
@@ -16,7 +16,7 @@ export interface Bifunctor<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Bifunctor2<F extends URIS2> {
@@ -26,7 +26,7 @@ export interface Bifunctor2<F extends URIS2> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Bifunctor2C<F extends URIS2, E> {
@@ -37,7 +37,7 @@ export interface Bifunctor2C<F extends URIS2, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Bifunctor3<F extends URIS3> {
@@ -47,7 +47,7 @@ export interface Bifunctor3<F extends URIS3> {
 }
 
 /**
- * @since 2.2.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Bifunctor3C<F extends URIS3, E> {
@@ -58,7 +58,7 @@ export interface Bifunctor3C<F extends URIS3, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Bifunctor4<F extends URIS4> {

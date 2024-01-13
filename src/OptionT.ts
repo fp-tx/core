@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import {
   type ApplicativeComposition2C1,
   type ApplicativeComposition11,
@@ -58,7 +58,7 @@ import { type Refinement } from './Refinement'
 // constructors
 // -------------------------------------------------------------------------------------
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function some<F extends URIS4>(F: Pointed4<F>): <A, S, R, E>(a: A) => Kind4<F, S, R, E, Option<A>>
 export function some<F extends URIS3>(F: Pointed3<F>): <A, R, E>(a: A) => Kind3<F, R, E, Option<A>>
 export function some<F extends URIS3, E>(F: Pointed3C<F, E>): <A, R>(a: A) => Kind3<F, R, E, Option<A>>
@@ -70,7 +70,7 @@ export function some<F>(F: Pointed<F>): <A>(a: A) => HKT<F, Option<A>> {
   return flow(O.some, F.of)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function zero<F extends URIS4>(F: Pointed4<F>): <S, R, E, A>() => Kind4<F, S, R, E, Option<A>>
 export function zero<F extends URIS3>(F: Pointed3<F>): <R, E, A>() => Kind3<F, R, E, Option<A>>
 export function zero<F extends URIS3, E>(F: Pointed3C<F, E>): <R, A>() => Kind3<F, R, E, Option<A>>
@@ -82,7 +82,7 @@ export function zero<F>(F: Pointed<F>): <A>() => HKT<F, Option<A>> {
   return constant(F.of(O.none))
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function fromF<F extends URIS4>(
   F: Functor4<F>,
 ): <S, R, E, A>(ma: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, Option<A>>
@@ -98,7 +98,7 @@ export function fromF<F>(F: Functor<F>): <A>(ma: HKT<F, A>) => HKT<F, Option<A>>
   return ma => F.map(ma, O.some)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function fromNullable<F extends URIS4>(
   F: Pointed4<F>,
 ): <A, S, R, E>(a: A) => Kind4<F, S, R, E, Option<NonNullable<A>>>
@@ -114,7 +114,7 @@ export function fromNullable<F>(F: Pointed<F>): <A>(a: A) => HKT<F, Option<NonNu
   return flow(O.fromNullable, F.of)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function fromNullableK<F extends URIS4>(
   F: Pointed4<F>,
 ): <A extends ReadonlyArray<unknown>, B>(
@@ -159,7 +159,7 @@ export function fromNullableK<F>(
   return f => flow(f, fromNullableF)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function chainNullableK<M extends URIS4>(
   M: Monad4<M>,
 ): <A, B>(
@@ -195,7 +195,7 @@ export function chainNullableK<M>(
   return f => chainM(fromNullableKM(f))
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function fromOptionK<F extends URIS4>(
   F: Pointed4<F>,
 ): <A extends ReadonlyArray<unknown>, B>(
@@ -225,7 +225,7 @@ export function fromOptionK<F>(
   return f => flow(f, F.of)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function chainOptionK<M extends URIS4>(
   M: Monad4<M>,
 ): <A, B>(f: (a: A) => Option<B>) => <S, R, E>(ma: Kind4<M, S, R, E, Option<A>>) => Kind4<M, S, R, E, Option<B>>
@@ -256,7 +256,7 @@ export function chainOptionK<M>(
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Lifting
  */
 export function fromPredicate<F extends URIS4>(
@@ -316,7 +316,7 @@ export function fromPredicate<F>(F: Pointed<F>): {
       F.of(O.fromPredicate(predicate)(a))
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function fromEither<F extends URIS4>(
   F: Pointed4<F>,
 ): <A, S, R, E>(e: Either<unknown, A>) => Kind4<F, S, R, E, Option<A>>
@@ -336,7 +336,7 @@ export function fromEither<F>(F: Pointed<F>): <A>(e: Either<unknown, A>) => HKT<
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export function match<F extends URIS4>(
@@ -366,7 +366,7 @@ export function match<F>(
   return (onNone, onSome) => ma => F.map(ma, O.match(onNone, onSome))
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function matchE<M extends URIS4>(
   M: Chain4<M>,
 ): <S, R, E, B, A>(
@@ -409,7 +409,7 @@ export function matchE<M>(
   return (onNone, onSome) => ma => M.chain(ma, O.match(onNone, onSome))
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function getOrElse<M extends URIS4>(
   M: Monad4<M>,
 ): <S, R, E, A>(onNone: LazyArg<Kind4<M, S, R, E, A>>) => (fa: Kind4<M, S, R, E, Option<A>>) => Kind4<M, S, R, E, A>
@@ -433,7 +433,7 @@ export function getOrElse<M>(M: Monad<M>): <A>(onNone: LazyArg<HKT<M, A>>) => (f
   return onNone => fa => M.chain(fa, O.match(onNone, M.of))
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function map<F extends URIS4>(
   F: Functor4<F>,
 ): <A, B>(f: (a: A) => B) => <S, R, E>(fa: Kind4<F, S, R, E, Option<A>>) => Kind4<F, S, R, E, Option<B>>
@@ -457,7 +457,7 @@ export function map<F>(F: Functor<F>): <A, B>(f: (a: A) => B) => (fa: HKT<F, Opt
   return map_(F, O.Functor)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function ap<F extends URIS4>(
   F: Apply4<F>,
 ): <S, R, E, A>(
@@ -489,7 +489,7 @@ export function ap<F>(
   return ap_(F, O.Apply)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function chain<M extends URIS4>(
   M: Monad4<M>,
 ): <A, S, R, E, B>(
@@ -540,7 +540,7 @@ export function flatMap<M>(
     )
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function alt<M extends URIS4>(
   M: Monad4<M>,
 ): <S, R, E, A>(
@@ -579,14 +579,14 @@ export function alt<M>(
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface OptionT<M, A> extends HKT<M, Option<A>> {}
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface OptionM<M> extends ApplicativeCompositionHKT1<M, O.URI> {
@@ -600,14 +600,14 @@ export interface OptionM<M> extends ApplicativeCompositionHKT1<M, O.URI> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export type OptionT1<M extends URIS, A> = Kind<M, Option<A>>
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface OptionM1<M extends URIS> extends ApplicativeComposition11<M, O.URI> {
@@ -621,14 +621,14 @@ export interface OptionM1<M extends URIS> extends ApplicativeComposition11<M, O.
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export type OptionT2<M extends URIS2, E, A> = Kind2<M, E, Option<A>>
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface OptionM2<M extends URIS2> extends ApplicativeComposition21<M, O.URI> {
@@ -646,7 +646,7 @@ export interface OptionM2<M extends URIS2> extends ApplicativeComposition21<M, O
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface OptionM2C<M extends URIS2, E> extends ApplicativeComposition2C1<M, O.URI, E> {
@@ -664,7 +664,7 @@ export interface OptionM2C<M extends URIS2, E> extends ApplicativeComposition2C1
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function getOptionM<M extends URIS2>(M: Monad2<M>): OptionM2<M>

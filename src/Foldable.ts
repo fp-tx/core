@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import {
   type Applicative,
   type Applicative1,
@@ -26,7 +26,7 @@ import { type Monoid } from './Monoid'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Foldable<F> {
@@ -37,7 +37,7 @@ export interface Foldable<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Foldable1<F extends URIS> {
@@ -48,7 +48,7 @@ export interface Foldable1<F extends URIS> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Foldable2<F extends URIS2> {
@@ -59,7 +59,7 @@ export interface Foldable2<F extends URIS2> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Foldable2C<F extends URIS2, E> {
@@ -71,7 +71,7 @@ export interface Foldable2C<F extends URIS2, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Foldable3<F extends URIS3> {
@@ -82,7 +82,7 @@ export interface Foldable3<F extends URIS3> {
 }
 
 /**
- * @since 2.2.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Foldable3C<F extends URIS3, E> {
@@ -94,7 +94,7 @@ export interface Foldable3C<F extends URIS3, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Foldable4<F extends URIS4> {
@@ -111,7 +111,7 @@ export interface Foldable4<F extends URIS4> {
 /**
  * `reduce` composition.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function reduce<F extends URIS, G extends URIS>(
   F: Foldable1<F>,
@@ -131,7 +131,7 @@ export function reduce<F, G>(
 /**
  * `foldMap` composition.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function foldMap<F extends URIS, G extends URIS>(
   F: Foldable1<F>,
@@ -155,7 +155,7 @@ export function foldMap<F, G>(
 /**
  * `reduceRight` composition.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function reduceRight<F extends URIS, G extends URIS>(
   F: Foldable1<F>,
@@ -181,7 +181,7 @@ export function reduceRight<F, G>(
  *
  * Note: this function is not generally stack-safe, e.g., for monads which build up thunks a la `IO`.
  *
- * @since 2.8.0
+ * @since 1.0.0
  * @example
  *   import { reduceM } from 'fp-ts/Foldable'
  *   import { Monad, some } from 'fp-ts/Option'
@@ -233,7 +233,7 @@ export function reduceM<M, F>(
  * Fold a data structure, accumulating values in some `Monoid`, combining adjacent elements using the specified
  * separator
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { intercalate } from 'fp-ts/Foldable'
  *   import * as S from 'fp-ts/string'
@@ -268,7 +268,7 @@ export function intercalate<M, F>(M: Monoid<M>, F: Foldable<F>): (middle: M, fm:
 /**
  * Transforms a `Foldable` into a `toReadonlyArray`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { toReadonlyArray } from 'fp-ts/Foldable'
  *   import { Foldable, make } from 'fp-ts/Tree'
@@ -299,7 +299,7 @@ export function toReadonlyArray<F>(F: Foldable<F>): <A>(fa: HKT<F, A>) => Readon
  * Traverse a data structure, performing some effects encoded by an `Applicative` functor at each value, ignoring the
  * final result.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { Foldable } from 'fp-ts/Array'
  *   import { traverse_ } from 'fp-ts/Foldable'
@@ -347,7 +347,7 @@ export function traverse_<M, F>(
  * Use [`reduceM`](#reducem) instead
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function foldM<M extends URIS3, F extends URIS>(
@@ -390,14 +390,14 @@ export function foldM<M, F>(
  * Use [`toReadonlyArray`](#toreadonlyarray) instead
  *
  * @deprecated
- * @since 2.8.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const toArray = toReadonlyArray
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FoldableComposition<F, G> {
@@ -408,7 +408,7 @@ export interface FoldableComposition<F, G> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FoldableComposition11<F extends URIS, G extends URIS> {
@@ -419,7 +419,7 @@ export interface FoldableComposition11<F extends URIS, G extends URIS> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FoldableComposition12<F extends URIS, G extends URIS2> {
@@ -430,7 +430,7 @@ export interface FoldableComposition12<F extends URIS, G extends URIS2> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FoldableComposition12C<F extends URIS, G extends URIS2, E> {
@@ -441,7 +441,7 @@ export interface FoldableComposition12C<F extends URIS, G extends URIS2, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FoldableComposition21<F extends URIS2, G extends URIS> {
@@ -452,7 +452,7 @@ export interface FoldableComposition21<F extends URIS2, G extends URIS> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FoldableComposition2C1<F extends URIS2, G extends URIS, E> {
@@ -463,7 +463,7 @@ export interface FoldableComposition2C1<F extends URIS2, G extends URIS, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FoldableComposition22<F extends URIS2, G extends URIS2> {
@@ -474,7 +474,7 @@ export interface FoldableComposition22<F extends URIS2, G extends URIS2> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FoldableComposition22C<F extends URIS2, G extends URIS2, E> {
@@ -493,7 +493,7 @@ export interface FoldableComposition22C<F extends URIS2, G extends URIS2, E> {
  * Instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function getFoldableComposition<F extends URIS2, G extends URIS2, E>(

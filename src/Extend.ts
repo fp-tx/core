@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import {
   type Functor,
   type Functor1,
@@ -25,7 +25,7 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Extend<W> extends Functor<W> {
@@ -33,7 +33,7 @@ export interface Extend<W> extends Functor<W> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Extend1<W extends URIS> extends Functor1<W> {
@@ -41,7 +41,7 @@ export interface Extend1<W extends URIS> extends Functor1<W> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Extend2<W extends URIS2> extends Functor2<W> {
@@ -49,7 +49,7 @@ export interface Extend2<W extends URIS2> extends Functor2<W> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Extend2C<W extends URIS2, E> extends Functor2C<W, E> {
@@ -57,7 +57,7 @@ export interface Extend2C<W extends URIS2, E> extends Functor2C<W, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Extend3<W extends URIS3> extends Functor3<W> {
@@ -65,7 +65,7 @@ export interface Extend3<W extends URIS3> extends Functor3<W> {
 }
 
 /**
- * @since 2.2.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Extend3C<W extends URIS3, E> extends Functor3C<W, E> {
@@ -73,7 +73,7 @@ export interface Extend3C<W extends URIS3, E> extends Functor3C<W, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Extend4<W extends URIS4> extends Functor4<W> {

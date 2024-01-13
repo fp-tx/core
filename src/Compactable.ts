@@ -6,7 +6,7 @@
  *
  * Adapted from https://github.com/LiamGoodacre/purescript-filterable/blob/master/src/Data/Compactable.purs
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type Either } from './Either'
 import { pipe } from './function'
@@ -48,7 +48,7 @@ import * as S from './Separated'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Compactable<F> {
@@ -60,7 +60,7 @@ export interface Compactable<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Compactable1<F extends URIS> {
@@ -70,7 +70,7 @@ export interface Compactable1<F extends URIS> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Compactable2<F extends URIS2> {
@@ -80,7 +80,7 @@ export interface Compactable2<F extends URIS2> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Compactable2C<F extends URIS2, E> {
@@ -91,7 +91,7 @@ export interface Compactable2C<F extends URIS2, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Compactable3<F extends URIS3> {
@@ -101,7 +101,7 @@ export interface Compactable3<F extends URIS3> {
 }
 
 /**
- * @since 2.2.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Compactable3C<F extends URIS3, E> {
@@ -112,7 +112,7 @@ export interface Compactable3C<F extends URIS3, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Compactable4<F extends URIS4> {
@@ -130,7 +130,7 @@ export interface Compactable4<F extends URIS4> {
 /**
  * `compact` composition.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function compact<F extends URIS2, G extends URIS2, E>(
   F: Functor2<F>,
@@ -155,7 +155,7 @@ export function compact<F, G>(
 /**
  * `separate` composition.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function separate<F extends URIS2, G extends URIS2, E>(
   F: Functor2<F>,
@@ -195,7 +195,7 @@ export function separate<F, G>(
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface CompactableComposition<F, G> extends FunctorComposition<F, G> {
@@ -205,7 +205,7 @@ export interface CompactableComposition<F, G> extends FunctorComposition<F, G> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface CompactableComposition11<F extends URIS, G extends URIS> extends FunctorComposition11<F, G> {
@@ -215,7 +215,7 @@ export interface CompactableComposition11<F extends URIS, G extends URIS> extend
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface CompactableComposition12<F extends URIS, G extends URIS2> extends FunctorComposition12<F, G> {
@@ -227,7 +227,7 @@ export interface CompactableComposition12<F extends URIS, G extends URIS2> exten
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface CompactableComposition12C<F extends URIS, G extends URIS2, E> extends FunctorComposition12C<F, G, E> {
@@ -239,7 +239,7 @@ export interface CompactableComposition12C<F extends URIS, G extends URIS2, E> e
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface CompactableComposition21<F extends URIS2, G extends URIS> extends FunctorComposition21<F, G> {
@@ -251,7 +251,7 @@ export interface CompactableComposition21<F extends URIS2, G extends URIS> exten
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface CompactableComposition2C1<F extends URIS2, G extends URIS, E> extends FunctorComposition2C1<F, G, E> {
@@ -263,7 +263,7 @@ export interface CompactableComposition2C1<F extends URIS2, G extends URIS, E> e
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface CompactableComposition22<F extends URIS2, G extends URIS2> extends FunctorComposition22<F, G> {
@@ -275,7 +275,7 @@ export interface CompactableComposition22<F extends URIS2, G extends URIS2> exte
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface CompactableComposition22C<F extends URIS2, G extends URIS2, E> extends FunctorComposition22C<F, G, E> {
@@ -287,7 +287,7 @@ export interface CompactableComposition22C<F extends URIS2, G extends URIS2, E> 
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface CompactableComposition23<F extends URIS2, G extends URIS3> extends FunctorComposition23<F, G> {
@@ -299,7 +299,7 @@ export interface CompactableComposition23<F extends URIS2, G extends URIS3> exte
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface CompactableComposition23C<F extends URIS2, G extends URIS3, E> extends FunctorComposition23C<F, G, E> {
@@ -313,7 +313,7 @@ export interface CompactableComposition23C<F extends URIS2, G extends URIS3, E> 
  * Use [`compact`](#compact) and [`separate`](#separate) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function getCompactableComposition<F extends URIS2, G extends URIS3, E>(
@@ -377,7 +377,7 @@ export function getCompactableComposition<F, G>(
  * Use [`Separated`](./Separated.ts.html#separated) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  */
 export interface Separated<A, B> {
   readonly left: A

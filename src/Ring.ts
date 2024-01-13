@@ -7,7 +7,7 @@
  *
  * Adapted from https://github.com/purescript/purescript-prelude/blob/master/src/Data/Ring.purs
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { getRing } from './function'
 import { type Semiring } from './Semiring'
@@ -17,7 +17,7 @@ import { type Semiring } from './Semiring'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Ring<A> extends Semiring<A> {
@@ -31,7 +31,7 @@ export interface Ring<A> extends Semiring<A> {
 /**
  * Given a tuple of `Ring`s returns a `Ring` for the tuple
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { tuple } from 'fp-ts/Ring'
  *   import * as N from 'fp-ts/number'
@@ -59,7 +59,7 @@ export const tuple = <A extends ReadonlyArray<unknown>>(...rings: { [K in keyof 
 /**
  * `negate x` can be used as a shorthand for `zero - x`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const negate =
   <A>(R: Ring<A>) =>
@@ -74,7 +74,7 @@ export const negate =
  * Use [`tuple`](#tuple) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getTupleRing: <T extends ReadonlyArray<Ring<any>>>(
@@ -85,7 +85,7 @@ export const getTupleRing: <T extends ReadonlyArray<Ring<any>>>(
  * Use [`getRing`](./function.ts.html#getring) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getFunctionRing: <A, B>(R: Ring<B>) => Ring<(a: A) => B> = getRing

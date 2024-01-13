@@ -10,7 +10,7 @@
  *
  * Note. `Functor`'s `map` can be derived: `A.map = (fa, f) => A.chain(fa, a => A.of(f(a)))`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import {
   type Applicative,
@@ -29,43 +29,43 @@ import { type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Monad<F> extends Applicative<F>, Chain<F> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Monad1<F extends URIS> extends Applicative1<F>, Chain1<F> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Monad2<M extends URIS2> extends Applicative2<M>, Chain2<M> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Monad2C<M extends URIS2, L> extends Applicative2C<M, L>, Chain2C<M, L> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Monad3<M extends URIS3> extends Applicative3<M>, Chain3<M> {}
 
 /**
- * @since 2.2.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Monad3C<M extends URIS3, E> extends Applicative3C<M, E>, Chain3C<M, E> {}
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Monad4<M extends URIS4> extends Applicative4<M>, Chain4<M> {}

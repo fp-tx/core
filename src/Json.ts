@@ -1,22 +1,22 @@
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 import { type Either, tryCatch } from './Either'
 import { identity } from './function'
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export type Json = boolean | number | string | null | JsonArray | JsonRecord
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export interface JsonRecord {
   readonly [key: string]: Json
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export interface JsonArray extends ReadonlyArray<Json> {}
 
 /**
  * Converts a JavaScript Object Notation (JSON) string into a `Json` type.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import * as J from 'fp-ts/Json'
  *   import * as E from 'fp-ts/Either'
@@ -33,7 +33,7 @@ export const parse = (s: string): Either<unknown, Json> => tryCatch(() => JSON.p
 /**
  * Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import * as E from 'fp-ts/Either'
  *   import * as J from 'fp-ts/Json'

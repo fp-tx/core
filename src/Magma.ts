@@ -3,7 +3,7 @@
  *
  * See [Semigroup](https://gcanti.github.io/fp-ts/modules/Semigroup.ts.html) for some instances.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 
 import { type Endomorphism } from './Endomorphism'
@@ -14,7 +14,7 @@ import { type Predicate } from './Predicate'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Magma<A> {
@@ -28,7 +28,7 @@ export interface Magma<A> {
 /**
  * The dual of a `Magma`, obtained by swapping the arguments of `concat`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import { reverse, concatAll } from 'fp-ts/Magma'
  *   import * as N from 'fp-ts/number'
@@ -41,21 +41,21 @@ export const reverse = <A>(M: Magma<A>): Magma<A> => ({
   concat: (first, second) => M.concat(second, first),
 })
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const filterFirst =
   <A>(predicate: Predicate<A>) =>
   (M: Magma<A>): Magma<A> => ({
     concat: (first, second) => (predicate(first) ? M.concat(first, second) : second),
   })
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const filterSecond =
   <A>(predicate: Predicate<A>) =>
   (M: Magma<A>): Magma<A> => ({
     concat: (first, second) => (predicate(second) ? M.concat(first, second) : first),
   })
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const endo =
   <A>(f: Endomorphism<A>) =>
   (M: Magma<A>): Magma<A> => ({
@@ -71,7 +71,7 @@ export const endo =
  *
  * If `as` is empty, return the provided `startWith` value.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import { concatAll } from 'fp-ts/Magma'
  *   import * as N from 'fp-ts/number'

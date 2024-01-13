@@ -2,7 +2,7 @@
  * The `ReadonlyRecord.ts` module enables dealing in a functional way with Typescript's `Readonly<Record<K, T>>` type.
  * That is similar to the `Record.ts` module, but for a record with all properties declared as `readonly`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 import {
   type Applicative,
@@ -55,7 +55,7 @@ import { type PipeableWilt1, type PipeableWither1, wiltDefault, type Witherable1
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Model
  */
 export type ReadonlyRecord<K extends string, T> = Readonly<Record<K, T>>
@@ -63,7 +63,7 @@ export type ReadonlyRecord<K extends string, T> = Readonly<Record<K, T>>
 /**
  * Builds a `ReadonlyRecord` by copying a `Record`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Conversions
  * @example
  *   import { ReadonlyRecord, fromRecord } from 'fp-ts/ReadonlyRecord'
@@ -78,7 +78,7 @@ export const fromRecord = <K extends string, A>(r: Record<K, A>): ReadonlyRecord
 /**
  * Builds a mutable `Record` from a `ReadonlyRecord`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Conversions
  * @example
  *   import { ReadonlyRecord, toRecord } from 'fp-ts/ReadonlyRecord'
@@ -93,7 +93,7 @@ export const toRecord = <K extends string, A>(r: ReadonlyRecord<K, A>): Record<K
 /**
  * Calculate the number of key/value pairs in a `ReadonlyRecord`,
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { size } from 'fp-ts/ReadonlyRecord'
  *
@@ -104,7 +104,7 @@ export const size = <A>(r: ReadonlyRecord<string, A>): number => Object.keys(r).
 /**
  * Test whether a `ReadonlyRecord` is empty.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { isEmpty } from 'fp-ts/ReadonlyRecord'
  *
@@ -125,13 +125,13 @@ const keys_ =
   <K extends string>(r: ReadonlyRecord<K, unknown>): ReadonlyArray<K> =>
     (Object.keys(r) as any).sort(O.compare)
 
-/** @since 2.5.0 */
+/** @since 1.0.0 */
 export const keys: <K extends string>(r: ReadonlyRecord<K, unknown>) => ReadonlyArray<K> = /*#__PURE__*/ keys_(S.Ord)
 
 /**
  * Map a `ReadonlyRecord` into an `ReadonlyArray`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { collect } from 'fp-ts/ReadonlyRecord'
  *   import { Ord } from 'fp-ts/string'
@@ -171,7 +171,7 @@ export function collect<A, B>(
 /**
  * Get a sorted `ReadonlyArray` of the key/value pairs contained in a `ReadonlyRecord`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Conversions
  * @example
  *   import { toReadonlyArray } from 'fp-ts/ReadonlyRecord'
@@ -193,7 +193,7 @@ export const toReadonlyArray: <K extends string, A>(r: ReadonlyRecord<K, A>) => 
  * instance of `U`, providing an iterating function that iterates over each key/value pair in the record sorted
  * alphabetically by key.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Conversions
  * @example
  *   import { array, readonlyArray } from 'fp-ts'
@@ -225,7 +225,7 @@ export function toUnfoldable<F>(U: Unfoldable<F>): <A>(r: ReadonlyRecord<string,
 /**
  * Insert or replace a key/value pair in a `ReadonlyRecord`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { upsertAt } from 'fp-ts/ReadonlyRecord'
  *
@@ -248,7 +248,7 @@ export const upsertAt =
  *
  * Note. This function is not pipeable because is a `Refinement`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { has } from 'fp-ts/ReadonlyRecord'
  *
@@ -260,7 +260,7 @@ export const has = <K extends string>(k: string, r: ReadonlyRecord<K, unknown>):
 /**
  * Delete a key and value from a `ReadonlyRecord`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { deleteAt } from 'fp-ts/ReadonlyRecord'
  *
@@ -284,7 +284,7 @@ export function deleteAt(k: string): <A>(r: ReadonlyRecord<string, A>) => Readon
 /**
  * Replace a key/value pair in a `ReadonlyRecord`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { updateAt } from 'fp-ts/ReadonlyRecord'
  *   import { option } from 'fp-ts'
@@ -312,7 +312,7 @@ export const updateAt =
 /**
  * Applies a mapping function to one specific key/value pair in a `ReadonlyRecord`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { modifyAt } from 'fp-ts/ReadonlyRecord'
  *   import { option } from 'fp-ts'
@@ -341,7 +341,7 @@ export const modifyAt =
 /**
  * Delete a key and value from a `ReadonlyRecord`, returning the value as well as the subsequent `ReadonlyRecord`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { pop } from 'fp-ts/ReadonlyRecord'
  *   import { option } from 'fp-ts'
@@ -369,7 +369,7 @@ export function pop(k: string): <A>(r: ReadonlyRecord<string, A>) => Option<read
 /**
  * Test whether one `ReadonlyRecord` contains all of the keys and values contained in another `ReadonlyRecord`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { isSubrecord } from 'fp-ts/ReadonlyRecord'
  *   import { string } from 'fp-ts'
@@ -413,7 +413,7 @@ export function isSubrecord<A>(
 /**
  * Lookup the value for a key in a `ReadonlyRecord`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { lookup } from 'fp-ts/ReadonlyRecord'
  *   import { option } from 'fp-ts'
@@ -435,13 +435,13 @@ export function lookup<A>(
   return _.has.call(r, k) ? _.some(r[k]) : _.none
 }
 
-/** @since 2.5.0 */
+/** @since 1.0.0 */
 export const empty: ReadonlyRecord<string, never> = {}
 
 /**
  * Map a `ReadonlyRecord` passing the keys to the iterating function.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { mapWithIndex } from 'fp-ts/ReadonlyRecord'
  *
@@ -468,7 +468,7 @@ export function mapWithIndex<A, B>(
 /**
  * Map a `ReadonlyRecord` passing the values to the iterating function.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { map } from 'fp-ts/ReadonlyRecord'
  *
@@ -484,7 +484,7 @@ export function map<A, B>(f: (a: A) => B): (fa: ReadonlyRecord<string, A>) => Re
  * Reduces a `ReadonlyRecord` passing each key/value pair to the iterating function. Entries are processed in the order,
  * sorted by key according to the given `Ord`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { reduceWithIndex } from 'fp-ts/ReadonlyRecord'
  *   import { Ord } from 'fp-ts/string'
@@ -533,7 +533,7 @@ export function reduceWithIndex<A, B>(
  * Map and fold a `ReadonlyRecord`. Map the `ReadonlyRecord` passing each key/value pair to the iterating function. Then
  * fold the results using the provided `Monoid`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { foldMapWithIndex } from 'fp-ts/ReadonlyRecord'
  *   import { Ord } from 'fp-ts/string'
@@ -582,7 +582,7 @@ export function foldMapWithIndex<M>(
  * Same as `reduceWithIndex`, but reduce starting from the right (i.e. in reverse order, from the last to the first
  * entry according to the given `Ord`).
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { reduceRightWithIndex } from 'fp-ts/ReadonlyRecord'
  *   import { Ord } from 'fp-ts/string'
@@ -630,7 +630,7 @@ export function reduceRightWithIndex<A, B>(
 /**
  * Create a `ReadonlyRecord` with one key/value pair.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Constructors
  * @example
  *   import { singleton } from 'fp-ts/ReadonlyRecord'
@@ -639,7 +639,7 @@ export function reduceRightWithIndex<A, B>(
  */
 export const singleton = <A>(k: string, a: A): ReadonlyRecord<string, A> => ({ [k]: a })
 
-/** @since 2.5.0 */
+/** @since 1.0.0 */
 export function traverseWithIndex<F extends URIS4>(
   F: Applicative4<F>,
 ): <K extends string, S, R, E, A, B>(
@@ -680,7 +680,7 @@ export function traverseWithIndex<F>(
   return f => ta => traverseWithIndexOF(ta, f)
 }
 
-/** @since 2.5.0 */
+/** @since 1.0.0 */
 export function traverse<F extends URIS4>(
   F: Applicative4<F>,
 ): <S, R, E, A, B>(
@@ -726,7 +726,7 @@ export function traverse<F>(
  *
  * `sequence` in `ReadonlyRecord` is equivalent to `sequenceS` in `Apply.ts`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { sequence } from 'fp-ts/ReadonlyRecord'
  *   import { option } from 'fp-ts'
@@ -767,7 +767,7 @@ export function sequence<F>(
 }
 
 /**
- * @since 2.6.5
+ * @since 1.0.0
  * @category Filtering
  */
 export const wither: PipeableWither1<URI> = <F>(
@@ -778,7 +778,7 @@ export const wither: PipeableWither1<URI> = <F>(
 }
 
 /**
- * @since 2.6.5
+ * @since 1.0.0
  * @category Filtering
  */
 export const wilt: PipeableWilt1<URI> = <F>(
@@ -794,7 +794,7 @@ export const wilt: PipeableWilt1<URI> = <F>(
  * Maps a `ReadonlyRecord` with a function returning an `Either` and partitions the resulting `ReadonlyRecord` into
  * `Left`s and `Right`s.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { partitionMapWithIndex } from 'fp-ts/ReadonlyRecord'
  *   import { either } from 'fp-ts'
@@ -840,7 +840,7 @@ export function partitionMapWithIndex<A, B, C>(
 /**
  * Partition a `ReadonlyRecord` into two parts according to a predicate that takes a key and a value.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { partitionWithIndex } from 'fp-ts/ReadonlyRecord'
  *
@@ -890,7 +890,7 @@ export function partitionWithIndex<A>(
  * Maps a `ReadonlyRecord` with an iterating function that takes key and value and returns an `Option`, keeping only the
  * `Some` values and discarding `None`s.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { filterMapWithIndex } from 'fp-ts/ReadonlyRecord'
  *   import { option } from 'fp-ts'
@@ -924,7 +924,7 @@ export function filterMapWithIndex<A, B>(
 /**
  * Produce a new `ReadonlyRecord` keeping only the entries that satisfy a predicate taking key and value as input.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { filterWithIndex } from 'fp-ts/ReadonlyRecord'
  *
@@ -968,7 +968,7 @@ export function filterWithIndex<A>(
  * Create a `ReadonlyRecord` from a foldable collection of key/value pairs, using the specified `Magma` to combine
  * values for duplicate keys.
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export function fromFoldable<F extends URIS3, A>(
   M: Magma<A>,
@@ -1000,7 +1000,7 @@ export function fromFoldable<F, A>(
  * - Map to key/value pairs
  * - Combine values for duplicate keys.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { last } from 'fp-ts/Semigroup'
  *   import { Foldable, zip } from 'fp-ts/ReadonlyArray'
@@ -1065,7 +1065,7 @@ export function fromFoldableMap<F, B>(
 /**
  * Alias of [`toReadonlyArray`](#toreadonlyarray).
  *
- * @since 2.12.0
+ * @since 1.0.0
  * @category Conversions
  * @example
  *   import { toEntries } from 'fp-ts/ReadonlyRecord'
@@ -1080,7 +1080,7 @@ export const toEntries = toReadonlyArray
 /**
  * Converts a `ReadonlyArray` of `[key, value]` tuples into a `ReadonlyRecord`.
  *
- * @since 2.12.0
+ * @since 1.0.0
  * @category Conversions
  * @example
  *   import { fromEntries } from 'fp-ts/ReadonlyRecord'
@@ -1105,7 +1105,7 @@ export const fromEntries = <A>(fa: ReadonlyArray<readonly [string, A]>): Readonl
 /**
  * Test if every value in a `ReadonlyRecord` satisfies the predicate.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { every } from 'fp-ts/ReadonlyRecord'
  *
@@ -1130,7 +1130,7 @@ export function every<A>(predicate: Predicate<A>): Predicate<ReadonlyRecord<stri
 /**
  * Test if at least one value in a `ReadonlyRecord` satisfies the predicate.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { some } from 'fp-ts/ReadonlyRecord'
  *
@@ -1152,7 +1152,7 @@ export function some<A>(predicate: (a: A) => boolean): (r: ReadonlyRecord<string
 /**
  * Given an `Eq` checks if a `ReadonlyRecord` contains an entry with value equal to a provided value.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @example
  *   import { elem } from 'fp-ts/ReadonlyRecord'
  *   import { number } from 'fp-ts'
@@ -1185,7 +1185,7 @@ export function elem<A>(
  * Union of two `ReadonlyRecord`s. Takes two `ReadonlyRecord`s and produces a `ReadonlyRecord` combining all the entries
  * of the two inputs. It uses the `concat` function of the provided `Magma` to combine the elements with the same key.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import { union } from 'fp-ts/ReadonlyRecord'
  *   import { Magma } from 'fp-ts/Magma'
@@ -1226,7 +1226,7 @@ export const union =
  * entries of the two inputswith the same key. It uses the `concat` function of the provided `Magma` to combine the
  * elements.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import { intersection } from 'fp-ts/ReadonlyRecord'
  *   import { Magma } from 'fp-ts/Magma'
@@ -1256,7 +1256,7 @@ export const intersection =
  * Difference between two `ReadonlyRecord`s. Takes two `ReadonlyRecord`s and produces a `ReadonlyRecord` composed by the
  * entries of the two inputs, removing the entries with the same key in both inputs.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import { difference } from 'fp-ts/ReadonlyRecord'
  *
@@ -1421,7 +1421,7 @@ const _traverseWithIndex =
  * Given a `Predicate`, it produces a new `ReadonlyRecord` keeping only the entries with a value that satisfies the
  * provided predicate.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { filter } from 'fp-ts/ReadonlyRecord'
@@ -1442,7 +1442,7 @@ export const filter: {
  * Maps a `ReadonlyRecord` with an iterating function that returns an `Option` and it keeps only the `Some` values
  * discarding the `None`s.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { filterMap } from 'fp-ts/ReadonlyRecord'
@@ -1461,7 +1461,7 @@ export const filterMap: <A, B>(
 /**
  * Partition a `ReadonlyRecord` into two parts according to a `Predicate`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { partition } from 'fp-ts/ReadonlyRecord'
@@ -1495,7 +1495,7 @@ export const partition: {
  * Maps a `ReadonlyRecord` with a function returning an `Either` and partitions the resulting `ReadonlyRecord` into
  * `Left`s and `Right`s.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { partitionMap } from 'fp-ts/ReadonlyRecord'
@@ -1521,7 +1521,7 @@ export const partitionMap: <A, B, C>(
  * Reduces a `ReadonlyRecord` passing each value to the iterating function. Entries are processed in order, sorted by
  * key according to the given `Ord`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { reduce } from 'fp-ts/ReadonlyRecord'
@@ -1551,7 +1551,7 @@ export function reduce<A, B>(
  * Map and fold a `ReadonlyRecord`. Map the `ReadonlyRecord` passing each value to the iterating function. Then fold the
  * results using the provided `Monoid`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { foldMap } from 'fp-ts/ReadonlyRecord'
@@ -1591,7 +1591,7 @@ export function foldMap<M>(
  * Same as `reduce` but entries are processed _from the right_, i.e. in reverse order, from the last to the first entry,
  * according to the given `Ord`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Folding
  * @example
  *   import { reduceRight } from 'fp-ts/ReadonlyRecord'
@@ -1624,7 +1624,7 @@ export function reduceRight<A, B>(
 /**
  * Compact a `ReadonlyRecord` of `Option`s discarding the `None` values and keeping the `Some` values.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { compact } from 'fp-ts/ReadonlyRecord'
@@ -1651,7 +1651,7 @@ export const compact = <A>(r: ReadonlyRecord<string, Option<A>>): ReadonlyRecord
 /**
  * Separate a `ReadonlyRecord` of `Either`s into `Left`s and `Right`s.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Filtering
  * @example
  *   import { separate } from 'fp-ts/ReadonlyRecord'
@@ -1686,13 +1686,13 @@ export const separate = <A, B>(
 }
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'ReadonlyRecord'
 
 /**
- * @since 2.5.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -1707,7 +1707,7 @@ declare module './HKT' {
  * Produces a `Show` for a `ReadonlyRecord`, given a `Show` for the base type (a `Show` produces a human-readable
  * representation of an instance). `ReadonlyRecord` entries are sorted by key with the provided `Ord`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getShow, ReadonlyRecord } from 'fp-ts/ReadonlyRecord'
@@ -1743,7 +1743,7 @@ export function getShow<A>(
 /**
  * Given an `Eq` for the base type, it produces an `Eq` for a `ReadonlyRecord` of that base type.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getEq, ReadonlyRecord } from 'fp-ts/ReadonlyRecord'
@@ -1764,7 +1764,7 @@ export function getEq<A>(E: Eq<A>): Eq<ReadonlyRecord<string, A>> {
  * Returns a `Monoid` instance for `ReadonlyRecord`s, given a `Semigroup` instance for the base type. The `Monoid` makes
  * the union of two `ReadonlyRecord`s comining the overlapping entries with the provided `Semigroup`.
  *
- * @since 2.5.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { SemigroupSum } from 'fp-ts/number'
@@ -1800,7 +1800,7 @@ export function getMonoid<A>(S: Semigroup<A>): Monoid<ReadonlyRecord<string, A>>
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Functor: Functor1<URI> = {
@@ -1812,7 +1812,7 @@ export const Functor: Functor1<URI> = {
  * Takes a value and a `ReadonlyRecord` of functions and returns a `ReadonlyRecord` by applying each function to the
  * input value.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  * @example
  *   import { flap } from 'fp-ts/ReadonlyRecord'
@@ -1826,7 +1826,7 @@ export const Functor: Functor1<URI> = {
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FunctorWithIndex: FunctorWithIndex1<URI, string> = {
@@ -1839,7 +1839,7 @@ export const FunctorWithIndex: FunctorWithIndex1<URI, string> = {
  * Produces a `Foldable` instance for a `ReadonlyRecord`, using the provided `Ord` to sort the `ReadonlyRecord`'s
  * entries by key.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Folding
  */
 export const getFoldable = (O: Ord<string>): Foldable1<URI> => ({
@@ -1853,7 +1853,7 @@ export const getFoldable = (O: Ord<string>): Foldable1<URI> => ({
  * Produces a `FoldableWithIndex1` instance for a `ReadonlyRecord`, using the provided `Ord` to sort the
  * `ReadonlyRecord`'s entries by key.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Folding
  */
 export const getFoldableWithIndex = (O: Ord<string>): FoldableWithIndex1<URI, string> => ({
@@ -1867,7 +1867,7 @@ export const getFoldableWithIndex = (O: Ord<string>): FoldableWithIndex1<URI, st
 })
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Compactable: Compactable1<URI> = {
@@ -1877,7 +1877,7 @@ export const Compactable: Compactable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Filterable: Filterable1<URI> = {
@@ -1892,7 +1892,7 @@ export const Filterable: Filterable1<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FilterableWithIndex: FilterableWithIndex1<URI, string> = {
@@ -1915,7 +1915,7 @@ export const FilterableWithIndex: FilterableWithIndex1<URI, string> = {
  * Produces a `Traversable` instance for a `ReadonlyRecord`, using the provided `Ord` to sort the `ReadonlyRecord`'s
  * entries by key.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const getTraversable = (O: Ord<string>): Traversable1<URI> => ({
@@ -1932,7 +1932,7 @@ export const getTraversable = (O: Ord<string>): Traversable1<URI> => ({
  * Produces a `TraversableWithIndex` instance for a `ReadonlyRecord`, using the provided `Ord` to sort the
  * `ReadonlyRecord`'s entries by key.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const getTraversableWithIndex = (O: Ord<string>): TraversableWithIndex1<URI, string> => ({
@@ -1951,7 +1951,7 @@ export const getTraversableWithIndex = (O: Ord<string>): TraversableWithIndex1<U
 })
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Filtering
  */
 export const getWitherable = (O: Ord<string>): Witherable1<URI> => {
@@ -1979,7 +1979,7 @@ export const getWitherable = (O: Ord<string>): Witherable1<URI> => {
  * Given a `Semigroup` in the base type, it produces a `Semigroup` in the `ReadonlyRecord` of the base type. The
  * resulting `Semigroup` concatenates two `ReadonlyRecord`s by `union`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getUnionSemigroup, ReadonlyRecord } from 'fp-ts/ReadonlyRecord'
@@ -2001,7 +2001,7 @@ export const getUnionSemigroup = <A>(S: Semigroup<A>): Semigroup<ReadonlyRecord<
  * type. The `Monoid` makes the union of two `ReadonlyRecord`s combining the entries that have the same key with the
  * provided `Semigroup`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { SemigroupSum } from 'fp-ts/number'
@@ -2023,7 +2023,7 @@ export const getUnionMonoid = <A>(S: Semigroup<A>): Monoid<ReadonlyRecord<string
  * Given a `Semigroup` in the base type, it produces a `Semigroup` in the `ReadonlyRecord` of the base type. The
  * resulting `Semigroup` concatenates two `ReadonlyRecord`s by `intersection`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getIntersectionSemigroup, ReadonlyRecord } from 'fp-ts/ReadonlyRecord'
@@ -2043,7 +2043,7 @@ export const getIntersectionSemigroup = <A>(S: Semigroup<A>): Semigroup<Readonly
 /**
  * Produces a `Magma` with a `concat` function that combines two `ReadonlyRecord`s by making the `difference`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getDifferenceMagma, difference, ReadonlyRecord } from 'fp-ts/ReadonlyRecord'
@@ -2067,7 +2067,7 @@ export const getDifferenceMagma = <A>(): Magma<ReadonlyRecord<string, A>> => ({
  * Use `getFoldable` instead.
  *
  * @deprecated
- * @since 2.7.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const Foldable: Foldable1<URI> = {
@@ -2081,7 +2081,7 @@ export const Foldable: Foldable1<URI> = {
  * Use `getFoldableWithIndex` instead.
  *
  * @deprecated
- * @since 2.7.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const FoldableWithIndex: FoldableWithIndex1<URI, string> = {
@@ -2098,7 +2098,7 @@ export const FoldableWithIndex: FoldableWithIndex1<URI, string> = {
  * Use `getTraversable` instead.
  *
  * @deprecated
- * @since 2.7.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const Traversable: Traversable1<URI> = {
@@ -2115,7 +2115,7 @@ export const Traversable: Traversable1<URI> = {
  * Use `getTraversableWithIndex` instead.
  *
  * @deprecated
- * @since 2.7.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const TraversableWithIndex: TraversableWithIndex1<URI, string> = {
@@ -2140,7 +2140,7 @@ const _wilt = /*#__PURE__*/ wiltDefault(Traversable, Compactable)
  * Use `getWitherable` instead.
  *
  * @deprecated
- * @since 2.7.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const Witherable: Witherable1<URI> = {
@@ -2165,7 +2165,7 @@ export const Witherable: Witherable1<URI> = {
  * Use [`upsertAt`](#upsertat) instead.
  *
  * @deprecated
- * @since 2.5.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const insertAt: <A>(k: string, a: A) => (r: ReadonlyRecord<string, A>) => ReadonlyRecord<string, A> = upsertAt
@@ -2174,7 +2174,7 @@ export const insertAt: <A>(k: string, a: A) => (r: ReadonlyRecord<string, A>) =>
  * Use [`has`](#has) instead.
  *
  * @deprecated
- * @since 2.5.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function hasOwnProperty<K extends string>(k: string, r: ReadonlyRecord<K, unknown>): k is K
@@ -2188,7 +2188,7 @@ export function hasOwnProperty<K extends string>(this: any, k: string, r?: Reado
  * 'fp-ts/ReadonlyRecord'`)
  *
  * @deprecated
- * @since 2.5.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const readonlyRecord: FunctorWithIndex1<URI, string> &

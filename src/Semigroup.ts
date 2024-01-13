@@ -35,7 +35,7 @@
  *
  * _Adapted from https://typelevel.org/cats_
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { getSemigroup, identity } from './function'
 import * as _ from './internal'
@@ -50,7 +50,7 @@ import { type ReadonlyRecord } from './ReadonlyRecord'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Semigroup<A> extends Magma<A> {}
@@ -62,7 +62,7 @@ export interface Semigroup<A> extends Magma<A> {}
 /**
  * Get a semigroup where `concat` will return the minimum, based on the provided order.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Constructors
  * @example
  *   import * as N from 'fp-ts/number'
@@ -79,7 +79,7 @@ export const min = <A>(O: Ord<A>): Semigroup<A> => ({
 /**
  * Get a semigroup where `concat` will return the maximum, based on the provided order.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Constructors
  * @example
  *   import * as N from 'fp-ts/number'
@@ -94,7 +94,7 @@ export const max = <A>(O: Ord<A>): Semigroup<A> => ({
 })
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const constant = <A>(a: A): Semigroup<A> => ({
@@ -108,7 +108,7 @@ export const constant = <A>(a: A): Semigroup<A> => ({
 /**
  * The dual of a `Semigroup`, obtained by swapping the arguments of `concat`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { reverse } from 'fp-ts/Semigroup'
  *   import * as S from 'fp-ts/string'
@@ -120,7 +120,7 @@ export const reverse: <A>(S: Semigroup<A>) => Semigroup<A> = M.reverse
 /**
  * Given a struct of semigroups returns a semigroup for the struct.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { struct } from 'fp-ts/Semigroup'
  *   import * as N from 'fp-ts/number'
@@ -154,7 +154,7 @@ export const struct = <A>(semigroups: { [K in keyof A]: Semigroup<A[K]> }): Semi
 /**
  * Given a tuple of semigroups returns a semigroup for the tuple.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { tuple } from 'fp-ts/Semigroup'
  *   import * as B from 'fp-ts/boolean'
@@ -176,7 +176,7 @@ export const tuple = <A extends ReadonlyArray<unknown>>(
 /**
  * Between each pair of elements insert `middle`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { intercalate } from 'fp-ts/Semigroup'
  *   import * as S from 'fp-ts/string'
@@ -199,7 +199,7 @@ export const intercalate =
 /**
  * Always return the first argument.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import * as S from 'fp-ts/Semigroup'
@@ -211,7 +211,7 @@ export const first = <A = never>(): Semigroup<A> => ({ concat: identity })
 /**
  * Always return the last argument.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import * as S from 'fp-ts/Semigroup'
@@ -229,7 +229,7 @@ export const last = <A = never>(): Semigroup<A> => ({ concat: (_, y) => y })
  *
  * If `as` is empty, return the provided `startWith` value.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @example
  *   import { concatAll } from 'fp-ts/Semigroup'
  *   import * as N from 'fp-ts/number'
@@ -249,7 +249,7 @@ export const concatAll: <A>(S: Semigroup<A>) => (startWith: A) => (as: ReadonlyA
  * Use `void` module instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const semigroupVoid: Semigroup<void> = constant<void>(undefined)
@@ -258,7 +258,7 @@ export const semigroupVoid: Semigroup<void> = constant<void>(undefined)
  * Use [`getAssignSemigroup`](./struct.ts.html#getAssignSemigroup) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getObjectSemigroup = <A extends object = never>(): Semigroup<A> => ({
@@ -269,7 +269,7 @@ export const getObjectSemigroup = <A extends object = never>(): Semigroup<A> => 
  * Use [`last`](#last) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getLastSemigroup = last
@@ -278,7 +278,7 @@ export const getLastSemigroup = last
  * Use [`first`](#first) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getFirstSemigroup = first
@@ -287,7 +287,7 @@ export const getFirstSemigroup = first
  * Use [`tuple`](#tuple) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getTupleSemigroup: <T extends ReadonlyArray<Semigroup<any>>>(
@@ -298,7 +298,7 @@ export const getTupleSemigroup: <T extends ReadonlyArray<Semigroup<any>>>(
  * Use [`struct`](#struct) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getStructSemigroup: <O extends ReadonlyRecord<string, any>>(semigroups: {
@@ -309,7 +309,7 @@ export const getStructSemigroup: <O extends ReadonlyRecord<string, any>>(semigro
  * Use [`reverse`](#reverse) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getDualSemigroup = reverse
@@ -318,7 +318,7 @@ export const getDualSemigroup = reverse
  * Use [`max`](#max) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getJoinSemigroup = max
@@ -327,7 +327,7 @@ export const getJoinSemigroup = max
  * Use [`min`](#min) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getMeetSemigroup = min
@@ -336,7 +336,7 @@ export const getMeetSemigroup = min
  * Use [`intercalate`](#intercalate) instead.
  *
  * @deprecated
- * @since 2.5.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getIntercalateSemigroup = intercalate
@@ -345,7 +345,7 @@ export const getIntercalateSemigroup = intercalate
  * Use [`concatAll`](#concatall) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function fold<A>(S: Semigroup<A>): {
@@ -361,7 +361,7 @@ export function fold<A>(S: Semigroup<A>): (startWith: A, as?: ReadonlyArray<A>) 
  * Use [`SemigroupAll`](./boolean.ts.html#SemigroupAll) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const semigroupAll: Semigroup<boolean> = {
@@ -372,7 +372,7 @@ export const semigroupAll: Semigroup<boolean> = {
  * Use [`SemigroupAny`](./boolean.ts.html#SemigroupAny) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const semigroupAny: Semigroup<boolean> = {
@@ -383,7 +383,7 @@ export const semigroupAny: Semigroup<boolean> = {
  * Use [`getSemigroup`](./function.ts.html#getSemigroup) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getFunctionSemigroup: <S>(S: Semigroup<S>) => <A = never>() => Semigroup<(a: A) => S> = getSemigroup
@@ -392,7 +392,7 @@ export const getFunctionSemigroup: <S>(S: Semigroup<S>) => <A = never>() => Semi
  * Use [`Semigroup`](./string.ts.html#Semigroup) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const semigroupString: Semigroup<string> = {
@@ -403,7 +403,7 @@ export const semigroupString: Semigroup<string> = {
  * Use [`SemigroupSum`](./number.ts.html#SemigroupSum) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const semigroupSum: Semigroup<number> = {
@@ -414,7 +414,7 @@ export const semigroupSum: Semigroup<number> = {
  * Use [`SemigroupProduct`](./number.ts.html#SemigroupProduct) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const semigroupProduct: Semigroup<number> = {

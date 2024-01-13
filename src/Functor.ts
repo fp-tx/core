@@ -9,7 +9,7 @@
  * 1. Identity: `F.map(fa, a => a) <-> fa`
  * 2. Composition: `F.map(fa, a => bc(ab(a))) <-> F.map(F.map(fa, ab), bc)`
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { pipe } from './function'
 import {
@@ -29,7 +29,7 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Functor<F> {
@@ -38,7 +38,7 @@ export interface Functor<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Functor1<F extends URIS> {
@@ -47,7 +47,7 @@ export interface Functor1<F extends URIS> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Functor2<F extends URIS2> {
@@ -56,7 +56,7 @@ export interface Functor2<F extends URIS2> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Functor2C<F extends URIS2, E> {
@@ -66,7 +66,7 @@ export interface Functor2C<F extends URIS2, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Functor3<F extends URIS3> {
@@ -75,7 +75,7 @@ export interface Functor3<F extends URIS3> {
 }
 
 /**
- * @since 2.2.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Functor3C<F extends URIS3, E> {
@@ -85,7 +85,7 @@ export interface Functor3C<F extends URIS3, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Functor4<F extends URIS4> {
@@ -100,7 +100,7 @@ export interface Functor4<F extends URIS4> {
 /**
  * `map` composition.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function map<F extends URIS3, G extends URIS>(
   F: Functor3<F>,
@@ -146,7 +146,7 @@ export function map<F, G>(
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  */
 export function flap<F extends URIS4>(
@@ -168,7 +168,7 @@ export function flap<F>(F: Functor<F>): <A>(a: A) => <B>(fab: HKT<F, (a: A) => B
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function bindTo<F extends URIS4>(
   F: Functor4<F>,
 ): <N extends string>(name: N) => <S, R, E, A>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, { readonly [K in N]: A }>
@@ -196,7 +196,7 @@ export function bindTo<F>(
   return name => fa => F.map(fa, a => ({ [name]: a }) as any)
 }
 
-/** @since 2.13.0 */
+/** @since 1.0.0 */
 function let_<F extends URIS4>(
   F: Functor4<F>,
 ): <N extends string, A, B>(
@@ -251,7 +251,7 @@ function let_<F>(
 }
 
 export {
-  /** @since 2.13.0 */
+  /** @since 1.0.0 */
   let_ as let,
 }
 
@@ -261,7 +261,7 @@ export {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FunctorComposition<F, G> {
@@ -270,7 +270,7 @@ export interface FunctorComposition<F, G> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FunctorCompositionHKT1<F, G extends URIS> {
@@ -279,7 +279,7 @@ export interface FunctorCompositionHKT1<F, G extends URIS> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FunctorCompositionHKT2<F, G extends URIS2> {
@@ -288,7 +288,7 @@ export interface FunctorCompositionHKT2<F, G extends URIS2> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FunctorCompositionHKT2C<F, G extends URIS2, E> {
@@ -297,7 +297,7 @@ export interface FunctorCompositionHKT2C<F, G extends URIS2, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FunctorComposition11<F extends URIS, G extends URIS> {
@@ -306,7 +306,7 @@ export interface FunctorComposition11<F extends URIS, G extends URIS> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FunctorComposition12<F extends URIS, G extends URIS2> {
@@ -315,7 +315,7 @@ export interface FunctorComposition12<F extends URIS, G extends URIS2> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FunctorComposition12C<F extends URIS, G extends URIS2, E> {
@@ -324,7 +324,7 @@ export interface FunctorComposition12C<F extends URIS, G extends URIS2, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FunctorComposition21<F extends URIS2, G extends URIS> {
@@ -333,7 +333,7 @@ export interface FunctorComposition21<F extends URIS2, G extends URIS> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FunctorComposition2C1<F extends URIS2, G extends URIS, E> {
@@ -342,7 +342,7 @@ export interface FunctorComposition2C1<F extends URIS2, G extends URIS, E> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FunctorComposition22<F extends URIS2, G extends URIS2> {
@@ -351,7 +351,7 @@ export interface FunctorComposition22<F extends URIS2, G extends URIS2> {
 
 /**
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FunctorComposition22C<F extends URIS2, G extends URIS2, E> {
@@ -360,7 +360,7 @@ export interface FunctorComposition22C<F extends URIS2, G extends URIS2, E> {
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FunctorComposition23<F extends URIS2, G extends URIS3> {
@@ -369,7 +369,7 @@ export interface FunctorComposition23<F extends URIS2, G extends URIS3> {
 
 /**
  * @deprecated
- * @since 2.2.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface FunctorComposition23C<F extends URIS2, G extends URIS3, E> {
@@ -380,7 +380,7 @@ export interface FunctorComposition23C<F extends URIS2, G extends URIS3, E> {
  * Use [`map`](#map) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function getFunctorComposition<F extends URIS2, G extends URIS3, E>(

@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import { type Either } from './Either'
 import { type Eq } from './Eq'
 import { identity } from './function'
@@ -14,13 +14,13 @@ import { type Separated, separated } from './Separated'
 import { type Show } from './Show'
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getShow: <A>(S: Show<A>) => Show<Set<A>> = RS.getShow
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getEq: <A>(E: Eq<A>) => Eq<Set<A>> = RS.getEq
@@ -29,7 +29,7 @@ export const getEq: <A>(E: Eq<A>) => Eq<Set<A>> = RS.getEq
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export function map<B>(E: Eq<B>): <A>(f: (x: A) => B) => (set: Set<A>) => Set<B> {
   const elemE = elem(E)
@@ -48,7 +48,7 @@ export function map<B>(E: Eq<B>): <A>(f: (x: A) => B) => (set: Set<A>) => Set<B>
 /**
  * Composes computations in sequence, using the return value of one computation to determine the next computation.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export function chain<B>(E: Eq<B>): <A>(f: (x: A) => Set<B>) => (set: Set<A>) => Set<B> {
   const elemE = elem(E)
@@ -70,7 +70,7 @@ interface Next<A> {
   readonly value: A
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export function filter<A, B extends A>(refinement: Refinement<A, B>): (set: Set<A>) => Set<B>
 export function filter<A>(predicate: Predicate<A>): <B extends A>(set: Set<B>) => Set<B>
 export function filter<A>(predicate: Predicate<A>): (set: Set<A>) => Set<A>
@@ -89,7 +89,7 @@ export function filter<A>(predicate: Predicate<A>): (set: Set<A>) => Set<A> {
   }
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export function partition<A, B extends A>(refinement: Refinement<A, B>): (set: Set<A>) => Separated<Set<A>, Set<B>>
 export function partition<A>(predicate: Predicate<A>): <B extends A>(set: Set<B>) => Separated<Set<B>, Set<B>>
 export function partition<A>(predicate: Predicate<A>): (set: Set<A>) => Separated<Set<A>, Set<A>>
@@ -115,7 +115,7 @@ export function partition<A>(predicate: Predicate<A>): (set: Set<A>) => Separate
 /**
  * Form the union of two sets
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export function union<A>(E: Eq<A>): {
   (that: Set<A>): (me: Set<A>) => Set<A>
@@ -148,7 +148,7 @@ export function union<A>(E: Eq<A>): (me: Set<A>, that?: Set<A>) => Set<A> | ((me
 /**
  * The set of elements which are in both the first and second set
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export function intersection<A>(E: Eq<A>): {
   (that: Set<A>): (me: Set<A>) => Set<A>
@@ -174,7 +174,7 @@ export function intersection<A>(E: Eq<A>): (me: Set<A>, that?: Set<A>) => Set<A>
   }
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export function partitionMap<B, C>(
   EB: Eq<B>,
   EC: Eq<C>,
@@ -210,7 +210,7 @@ export function partitionMap<B, C>(
 /**
  * Form the set difference (`x` - `y`)
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { difference } from 'fp-ts/Set'
  *   import * as N from 'fp-ts/number'
@@ -234,7 +234,7 @@ export function difference<A>(E: Eq<A>): (me: Set<A>, that?: Set<A>) => Set<A> |
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<Set<A>> => ({
@@ -242,7 +242,7 @@ export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<Set<A>> => ({
 })
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getUnionMonoid = <A>(E: Eq<A>): Monoid<Set<A>> => ({
@@ -251,7 +251,7 @@ export const getUnionMonoid = <A>(E: Eq<A>): Monoid<Set<A>> => ({
 })
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<Set<A>> => ({
@@ -259,7 +259,7 @@ export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<Set<A>> => ({
 })
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getDifferenceMagma = <A>(E: Eq<A>): Magma<Set<A>> => ({
@@ -267,19 +267,19 @@ export const getDifferenceMagma = <A>(E: Eq<A>): Magma<Set<A>> => ({
 })
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  */
 export const reduce: <A>(O: Ord<A>) => <B>(b: B, f: (b: B, a: A) => B) => (fa: Set<A>) => B = RS.reduce
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Folding
  */
 export const foldMap: <A, M>(O: Ord<A>, M: Monoid<M>) => (f: (a: A) => M) => (fa: Set<A>) => M = RS.foldMap
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Folding
  */
 export const reduceRight: <A>(O: Ord<A>) => <B>(b: B, f: (a: A, b: B) => B) => (fa: Set<A>) => B = RS.reduceRight
@@ -287,7 +287,7 @@ export const reduceRight: <A>(O: Ord<A>) => <B>(b: B, f: (a: A, b: B) => B) => (
 /**
  * Create a set with one element
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const singleton = <A>(a: A): Set<A> => new Set([a])
@@ -295,7 +295,7 @@ export const singleton = <A>(a: A): Set<A> => new Set([a])
 /**
  * Insert a value into a set
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export function insert<A>(E: Eq<A>): (a: A) => (set: Set<A>) => Set<A> {
   const elemE = elem(E)
@@ -313,7 +313,7 @@ export function insert<A>(E: Eq<A>): (a: A) => (set: Set<A>) => Set<A> {
 /**
  * Delete a value from a set
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const remove =
   <A>(E: Eq<A>) =>
@@ -324,7 +324,7 @@ export const remove =
 /**
  * Checks an element is a member of a set; If yes, removes the value from the set If no, inserts the value to the set
  *
- * @since 2.5.0
+ * @since 1.0.0
  */
 export const toggle = <A>(E: Eq<A>): ((a: A) => (set: Set<A>) => Set<A>) => {
   const elemE = elem(E)
@@ -336,7 +336,7 @@ export const toggle = <A>(E: Eq<A>): ((a: A) => (set: Set<A>) => Set<A>) => {
 /**
  * Create a set from an array
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromArray =
@@ -354,10 +354,10 @@ export const fromArray =
     return out
   }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const compact = <A>(E: Eq<A>): ((fa: Set<Option<A>>) => Set<A>) => filterMap(E)(identity)
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export function separate<E, A>(EE: Eq<E>, EA: Eq<A>): (fa: Set<Either<E, A>>) => Separated<Set<E>, Set<A>> {
   return fa => {
     const elemEE = elem(EE)
@@ -382,7 +382,7 @@ export function separate<E, A>(EE: Eq<E>, EA: Eq<A>): (fa: Set<Either<E, A>>) =>
   }
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export function filterMap<B>(E: Eq<B>): <A>(f: (a: A) => Option<B>) => (fa: Set<A>) => Set<B> {
   const elemE = elem(E)
   return f => fa => {
@@ -401,40 +401,40 @@ export function filterMap<B>(E: Eq<B>): <A>(f: (a: A) => Option<B>) => (fa: Set<
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const empty: Set<never> = new Set()
 
 /**
  * Test whether a `Set` is empty.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export const isEmpty = <A>(set: Set<A>): boolean => set.size === 0
 
 /**
  * Calculate the number of elements in a `Set`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export const size = <A>(set: Set<A>): number => set.size
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const some: <A>(predicate: Predicate<A>) => (set: Set<A>) => boolean = RS.some
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const every: {
   <A, B extends A>(refinement: Refinement<A, B>): Refinement<Set<A>, Set<B>>
   <A>(predicate: Predicate<A>): Predicate<Set<A>>
 } = RS.every as any
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export const isSubset: <A>(E: Eq<A>) => (that: Set<A>) => (me: Set<A>) => boolean = RS.isSubset
 
 // TODO: remove non-curried overloading in v3
 /**
  * Test if a value is a member of a set
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const elem: <A>(E: Eq<A>) => {
   (a: A): (set: Set<A>) => boolean
@@ -444,7 +444,7 @@ export const elem: <A>(E: Eq<A>) => {
 /**
  * Get a sorted `Array` of the values contained in a `Set`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const toArray =
@@ -463,7 +463,7 @@ export const toArray =
  * Use [`isSubset`](#issubset) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const subset: <A>(E: Eq<A>) => {

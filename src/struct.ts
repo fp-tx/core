@@ -1,4 +1,4 @@
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 import * as _ from './internal'
 import { type Semigroup } from './Semigroup'
 
@@ -9,7 +9,7 @@ import { type Semigroup } from './Semigroup'
 /**
  * Return a semigroup which works like `Object.assign`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { getAssignSemigroup } from 'fp-ts/struct'
@@ -33,7 +33,7 @@ export const getAssignSemigroup = <A extends object = never>(): Semigroup<A> => 
 /**
  * Creates a new object by recursively evolving a shallow copy of `a`, according to the `transformation` functions.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @example
  *   import { pipe } from 'fp-ts/function'
  *   import { evolve } from 'fp-ts/struct'

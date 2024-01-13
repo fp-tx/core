@@ -1,7 +1,7 @@
 /**
  * This class identifies data structures which can be _unfolded_, generalizing `unfold` on arrays.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import {
   type HKT,
@@ -21,7 +21,7 @@ import { type Option } from './Option'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Unfoldable<F> {
@@ -30,7 +30,7 @@ export interface Unfoldable<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Unfoldable1<F extends URIS> {
@@ -39,7 +39,7 @@ export interface Unfoldable1<F extends URIS> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Unfoldable2<F extends URIS2> {
@@ -48,7 +48,7 @@ export interface Unfoldable2<F extends URIS2> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Unfoldable2C<F extends URIS2, E> {
@@ -58,7 +58,7 @@ export interface Unfoldable2C<F extends URIS2, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Unfoldable3<F extends URIS3> {
@@ -67,7 +67,7 @@ export interface Unfoldable3<F extends URIS3> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Unfoldable3C<F extends URIS3, E> {
@@ -77,7 +77,7 @@ export interface Unfoldable3C<F extends URIS3, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Unfoldable4<F extends URIS4> {

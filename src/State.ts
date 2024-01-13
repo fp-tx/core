@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import { type Applicative2 } from './Applicative'
 import { apFirst as apFirst_, type Apply2, apS as apS_, apSecond as apSecond_ } from './Apply'
 import * as chainable from './Chain'
@@ -18,7 +18,7 @@ import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface State<S, A> {
@@ -32,7 +32,7 @@ export interface State<S, A> {
 /**
  * Get the current state
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const get: <S>() => State<S, S> = () => s => [s, s]
@@ -40,7 +40,7 @@ export const get: <S>() => State<S, S> = () => s => [s, s]
 /**
  * Set the state
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const put: <S>(s: S) => State<S, void> = s => () => [undefined, s]
@@ -48,7 +48,7 @@ export const put: <S>(s: S) => State<S, void> = s => () => [undefined, s]
 /**
  * Modify the state by applying a function to the current state
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const modify: <S>(f: (s: S) => S) => State<S, void> = f => s => [undefined, f(s)]
@@ -56,7 +56,7 @@ export const modify: <S>(f: (s: S) => S) => State<S, void> = f => s => [undefine
 /**
  * Get a value which depends on the current state
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const gets: <S, A>(f: (s: S) => A) => State<S, A> = f => s => [f(s), s]
@@ -70,7 +70,7 @@ const _ap: Monad2<URI>['ap'] = (fab, fa) => pipe(fab, ap(fa))
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: State<E, A>) => State<E, B> = f => fa => s1 => {
@@ -78,7 +78,7 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: State<E, A>) => State<E, B> 
   return [f(a), s2]
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const ap: <E, A>(fa: State<E, A>) => <B>(fab: State<E, (a: A) => B>) => State<E, B> = fa => fab => s1 => {
   const [f, s2] = fab(s1)
   const [a, s3] = fa(s2)
@@ -86,13 +86,13 @@ export const ap: <E, A>(fa: State<E, A>) => <B>(fab: State<E, (a: A) => B>) => S
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const of: <S, A>(a: A) => State<S, A> = a => s => [a, s]
 
 /**
- * @since 2.14.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatMap: {
@@ -108,19 +108,19 @@ export const flatMap: {
 )
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Sequencing
  */
 export const flatten: <E, A>(mma: State<E, State<E, A>>) => State<E, A> = /*#__PURE__*/ flatMap(identity)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'State'
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -132,7 +132,7 @@ declare module './HKT' {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Functor: Functor2<URI> = {
@@ -141,13 +141,13 @@ export const Functor: Functor2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Pointed: Pointed2<URI> = {
@@ -156,7 +156,7 @@ export const Pointed: Pointed2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Apply: Apply2<URI> = {
@@ -168,19 +168,19 @@ export const Apply: Apply2<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
 
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Applicative: Applicative2<URI> = {
@@ -191,7 +191,7 @@ export const Applicative: Applicative2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Chain: chainable.Chain2<URI> = {
@@ -226,7 +226,7 @@ export const ChainRec: ChainRec2<URI> = {
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Monad: Monad2<URI> = {
@@ -241,7 +241,7 @@ export const Monad: Monad2<URI> = {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 2.15.0
+ * @since 1.0.0
  * @category Combinators
  */
 export const tap: {
@@ -250,7 +250,7 @@ export const tap: {
 } = /*#__PURE__*/ dual(2, chainable.tap(Chain))
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromState: FromState2<URI> = {
@@ -265,7 +265,7 @@ export const FromState: FromState2<URI> = {
 /**
  * Run a computation in the `State` monad, discarding the final state
  *
- * @since 2.8.0
+ * @since 1.0.0
  */
 export const evaluate =
   <S>(s: S) =>
@@ -275,7 +275,7 @@ export const evaluate =
 /**
  * Run a computation in the `State` monad discarding the result
  *
- * @since 2.8.0
+ * @since 1.0.0
  */
 export const execute =
   <S>(s: S) =>
@@ -286,17 +286,17 @@ export const execute =
 // do notation
 // -------------------------------------------------------------------------------------
 
-/** @since 2.8.0 */
+/** @since 1.0.0 */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
 
 const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
-  /** @since 2.13.0 */
+  /** @since 1.0.0 */
   let_ as let,
 }
 
-/** @since 2.8.0 */
+/** @since 1.0.0 */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
 
 interface StateIterable<S, A> {
@@ -320,7 +320,7 @@ export {
 // pipeable sequence S
 // -------------------------------------------------------------------------------------
 
-/** @since 2.8.0 */
+/** @since 1.0.0 */
 export const apS = /*#__PURE__*/ apS_(Apply)
 
 // -------------------------------------------------------------------------------------
@@ -330,7 +330,7 @@ export const apS = /*#__PURE__*/ apS_(Apply)
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(Applicative)`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyNonEmptyArrayWithIndex =
@@ -351,7 +351,7 @@ export const traverseReadonlyNonEmptyArrayWithIndex =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyArrayWithIndex = <A, S, B>(
@@ -364,7 +364,7 @@ export const traverseReadonlyArrayWithIndex = <A, S, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseArrayWithIndex: <A, S, B>(
@@ -374,7 +374,7 @@ export const traverseArrayWithIndex: <A, S, B>(
 /**
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseArray = <A, S, B>(
@@ -384,7 +384,7 @@ export const traverseArray = <A, S, B>(
 /**
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
- * @since 2.9.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const sequenceArray: <S, A>(arr: ReadonlyArray<State<S, A>>) => State<S, ReadonlyArray<A>> =
@@ -397,7 +397,7 @@ export const sequenceArray: <S, A>(arr: ReadonlyArray<State<S, A>>) => State<S, 
 /**
  * Alias of `flatMap`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chain: <S, A, B>(f: (a: A) => State<S, B>) => (ma: State<S, A>) => State<S, B> = flatMap
@@ -405,7 +405,7 @@ export const chain: <S, A, B>(f: (a: A) => State<S, B>) => (ma: State<S, A>) => 
 /**
  * Alias of `tap`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Legacy
  */
 export const chainFirst: <S, A, B>(f: (a: A) => State<S, B>) => (ma: State<S, A>) => State<S, A> = tap
@@ -418,7 +418,7 @@ export const chainFirst: <S, A, B>(f: (a: A) => State<S, B>) => (ma: State<S, A>
  * Use [`evaluate`](#evaluate) instead
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const evalState: <S, A>(ma: State<S, A>, s: S) => A = (ma, s) => ma(s)[0]
@@ -427,7 +427,7 @@ export const evalState: <S, A>(ma: State<S, A>, s: S) => A = (ma, s) => ma(s)[0]
  * Use [`execute`](#execute) instead
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const execState: <S, A>(ma: State<S, A>, s: S) => S = (ma, s) => ma(s)[1]
@@ -437,7 +437,7 @@ export const execState: <S, A>(ma: State<S, A>, s: S) => S = (ma, s) => ma(s)[1]
  * instance, pass `S.Functor` instead of `S.state` (where `S` is from `import S from 'fp-ts/State'`)
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const state: Monad2<URI> = Monad

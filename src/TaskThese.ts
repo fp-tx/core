@@ -1,4 +1,4 @@
-/** @since 2.4.0 */
+/** @since 1.0.0 */
 import { type Applicative2C } from './Applicative'
 import { type Apply1, type Apply2C, getApplySemigroup } from './Apply'
 import { type Bifunctor2 } from './Bifunctor'
@@ -38,49 +38,49 @@ import * as TT from './TheseT'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Model
  */
 export interface TaskThese<E, A> extends Task<These<E, A>> {}
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const left: <E = never, A = never>(e: E) => TaskThese<E, A> = /*#__PURE__*/ TT.left(T.Pointed)
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const right: <E = never, A = never>(a: A) => TaskThese<E, A> = /*#__PURE__*/ TT.right(T.Pointed)
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const both: <E, A>(e: E, a: A) => TaskThese<E, A> = /*#__PURE__*/ TT.both(T.Pointed)
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const rightTask: <E = never, A = never>(ma: Task<A>) => TaskThese<E, A> = /*#__PURE__*/ TT.rightF(T.Functor)
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const leftTask: <E = never, A = never>(me: Task<E>) => TaskThese<E, A> = /*#__PURE__*/ TT.leftF(T.Functor)
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const rightIO: <E = never, A = never>(ma: IO<A>) => TaskThese<E, A> = /*#__PURE__*/ flow(T.fromIO, rightTask)
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const leftIO: <E = never, A = never>(me: IO<E>) => TaskThese<E, A> = /*#__PURE__*/ flow(T.fromIO, leftTask)
@@ -90,37 +90,37 @@ export const leftIO: <E = never, A = never>(me: IO<E>) => TaskThese<E, A> = /*#_
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromEither: <E, A>(fa: Either<E, A>) => TaskThese<E, A> = T.of
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromThese: <E, A>(fa: These<E, A>) => TaskThese<E, A> = T.of
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromIO: <A, E = never>(fa: IO<A>) => TaskThese<E, A> = rightIO
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromIOEither: <E, A>(fa: IOEither<E, A>) => TaskThese<E, A> = /*#__PURE__*/ T.fromIO
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromTask: <A, E = never>(fa: Task<A>) => TaskThese<E, A> = rightTask
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const match: <E, B, A>(
@@ -134,7 +134,7 @@ export const match: <E, B, A>(
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchW: <E, B, A, C, D>(
@@ -146,7 +146,7 @@ export const matchW: <E, B, A, C, D>(
 /**
  * The `E` suffix (short for **E**ffect) means that the handlers return an effect (`Task`).
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchE: <E, B, A>(
@@ -158,7 +158,7 @@ export const matchE: <E, B, A>(
 /**
  * Alias of [`matchE`](#matche).
  *
- * @since 2.4.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const fold = matchE
@@ -168,7 +168,7 @@ export const fold = matchE
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchEW: <E, B, A, C, D>(
@@ -180,12 +180,12 @@ export const matchEW: <E, B, A, C, D>(
 /**
  * Alias of [`matchEW`](#matchew).
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const foldW = matchEW
 
-/** @since 2.4.0 */
+/** @since 1.0.0 */
 export const swap: <E, A>(fa: TaskThese<E, A>) => TaskThese<A, E> = /*#__PURE__*/ TT.swap(T.Functor)
 
 const _map: Functor2<URI>['map'] = (fa, f) => pipe(fa, map(f))
@@ -198,7 +198,7 @@ const _mapLeft: Bifunctor2<URI>['mapLeft'] = (fa, f) => pipe(fa, mapLeft(f))
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 2.4.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: TaskThese<E, A>) => TaskThese<E, B> = /*#__PURE__*/ TT.map(
@@ -208,7 +208,7 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: TaskThese<E, A>) => TaskThes
 /**
  * Map a pair of functions over the two type arguments of the bifunctor.
  *
- * @since 2.4.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: TaskThese<E, A>) => TaskThese<G, B> =
@@ -217,7 +217,7 @@ export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: TaskThe
 /**
  * Map a function over the first type argument of a bifunctor.
  *
- * @since 2.4.0
+ * @since 1.0.0
  * @category Error handling
  */
 export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: TaskThese<E, A>) => TaskThese<G, A> = /*#__PURE__*/ TT.mapLeft(
@@ -225,19 +225,19 @@ export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: TaskThese<E, A>) => Task
 )
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Constructors
  */
 export const of: <E = never, A = never>(a: A) => TaskThese<E, A> = right
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export const URI = 'TaskThese'
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Type lambdas
  */
 export type URI = typeof URI
@@ -249,7 +249,7 @@ declare module './HKT' {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getApply = <E>(A: Apply1<T.URI>, S: Semigroup<E>): Apply2C<URI, E> => {
@@ -263,7 +263,7 @@ export const getApply = <E>(A: Apply1<T.URI>, S: Semigroup<E>): Apply2C<URI, E> 
 }
 
 /**
- * @since 2.7.0
+ * @since 1.0.0
  * @category Instances
  */
 export function getApplicative<E>(A: Apply1<T.URI>, S: Semigroup<E>): Applicative2C<URI, E> {
@@ -278,7 +278,7 @@ export function getApplicative<E>(A: Apply1<T.URI>, S: Semigroup<E>): Applicativ
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export function getChain<E>(S: Semigroup<E>): Chain2C<URI, E> {
@@ -294,7 +294,7 @@ export function getChain<E>(S: Semigroup<E>): Chain2C<URI, E> {
 }
 
 /**
- * @since 2.4.0
+ * @since 1.0.0
  * @category Instances
  */
 export function getMonad<E>(S: Semigroup<E>): Monad2C<URI, E> & MonadTask2C<URI, E> {
@@ -313,7 +313,7 @@ export function getMonad<E>(S: Semigroup<E>): Monad2C<URI, E> & MonadTask2C<URI,
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Functor: Functor2<URI> = {
@@ -322,13 +322,13 @@ export const Functor: Functor2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Mapping
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Pointed: Pointed2<URI> = {
@@ -337,7 +337,7 @@ export const Pointed: Pointed2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Bifunctor: Bifunctor2<URI> = {
@@ -347,7 +347,7 @@ export const Bifunctor: Bifunctor2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromEither: FromEither2<URI> = {
@@ -356,14 +356,14 @@ export const FromEither: FromEither2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Conversions
  */
 export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => TaskThese<E, A> =
   /*#__PURE__*/ fromOption_(FromEither)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromOptionK: <E>(
@@ -372,7 +372,7 @@ export const fromOptionK: <E>(
   /*#__PURE__*/ fromOptionK_(FromEither)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromPredicate: {
@@ -382,7 +382,7 @@ export const fromPredicate: {
 } = /*#__PURE__*/ fromPredicate_(FromEither)
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromThese: FromThese2<URI> = {
@@ -391,7 +391,7 @@ export const FromThese: FromThese2<URI> = {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromTheseK: <A extends ReadonlyArray<unknown>, E, B>(
@@ -399,7 +399,7 @@ export const fromTheseK: <A extends ReadonlyArray<unknown>, E, B>(
 ) => (...a: A) => TaskThese<E, B> = /*#__PURE__*/ fromTheseK_(FromThese)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromIO: FromIO2<URI> = {
@@ -408,7 +408,7 @@ export const FromIO: FromIO2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
@@ -416,7 +416,7 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
 ) => <E = never>(...a: A) => TaskThese<E, B> = /*#__PURE__*/ fromIOK_(FromIO)
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const FromTask: FromTask2<URI> = {
@@ -426,7 +426,7 @@ export const FromTask: FromTask2<URI> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Lifting
  */
 export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
@@ -437,11 +437,11 @@ export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export const toTuple2: <E, A>(e: LazyArg<E>, a: LazyArg<A>) => (fa: TaskThese<E, A>) => Task<readonly [E, A]> =
   /*#__PURE__*/ TT.toTuple2(T.Functor)
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const ApT: TaskThese<never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 
 // -------------------------------------------------------------------------------------
@@ -451,7 +451,7 @@ export const ApT: TaskThese<never, readonly []> = /*#__PURE__*/ of(_.emptyReadon
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(getApplicative(T.ApplicativePar, S))`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyNonEmptyArrayWithIndex = <E>(
@@ -466,7 +466,7 @@ export const traverseReadonlyNonEmptyArrayWithIndex = <E>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(getApplicative(T.ApplicativePar, S))`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyArrayWithIndex =
@@ -479,7 +479,7 @@ export const traverseReadonlyArrayWithIndex =
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(getApplicative(T.ApplicativeSeq, S))`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyNonEmptyArrayWithIndexSeq =
@@ -511,7 +511,7 @@ export const traverseReadonlyNonEmptyArrayWithIndexSeq =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(getApplicative(T.ApplicativeSeq, S))`.
  *
- * @since 2.11.0
+ * @since 1.0.0
  * @category Traversing
  */
 export const traverseReadonlyArrayWithIndexSeq =
@@ -529,7 +529,7 @@ export const traverseReadonlyArrayWithIndexSeq =
  * Use [`Functor`](#functor) instead.
  *
  * @deprecated
- * @since 2.7.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const functorTaskThese: Functor2<URI> = {
@@ -541,7 +541,7 @@ export const functorTaskThese: Functor2<URI> = {
  * Use [`Bifunctor`](#bifunctor) instead.
  *
  * @deprecated
- * @since 2.7.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const bifunctorTaskThese: Bifunctor2<URI> = {
@@ -554,7 +554,7 @@ export const bifunctorTaskThese: Bifunctor2<URI> = {
  * Use [`toTuple2`](#totuple2) instead.
  *
  * @deprecated
- * @since 2.4.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const toTuple = <E, A>(e: E, a: A): ((fa: TaskThese<E, A>) => Task<[E, A]>) =>
@@ -568,7 +568,7 @@ export const toTuple = <E, A>(e: E, a: A): ((fa: TaskThese<E, A>) => Task<[E, A]
  * instance, pass `TT.Functor` instead of `TT.taskThese` (where `TT` is from `import TT from 'fp-ts/TaskThese'`)
  *
  * @deprecated
- * @since 2.4.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const taskThese: Functor2<URI> & Bifunctor2<URI> = {
@@ -582,7 +582,7 @@ export const taskThese: Functor2<URI> & Bifunctor2<URI> = {
  * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
  *
  * @deprecated
- * @since 2.4.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getSemigroup = <E, A>(SE: Semigroup<E>, SA: Semigroup<A>): Semigroup<TaskThese<E, A>> =>

@@ -8,7 +8,7 @@
  *
  * Boolean algebras generalize classical logic: one is equivalent to "true" and zero is equivalent to "false".
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { getBooleanAlgebra } from './function'
 import { type HeytingAlgebra } from './HeytingAlgebra'
@@ -18,7 +18,7 @@ import { type HeytingAlgebra } from './HeytingAlgebra'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface BooleanAlgebra<A> extends HeytingAlgebra<A> {}
@@ -30,7 +30,7 @@ export interface BooleanAlgebra<A> extends HeytingAlgebra<A> {}
 /**
  * Every boolean algebras has a dual algebra, which involves reversing one/zero as well as join/meet.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export const reverse = <A>(B: BooleanAlgebra<A>): BooleanAlgebra<A> => ({
   meet: (x, y) => B.join(x, y),
@@ -46,7 +46,7 @@ export const reverse = <A>(B: BooleanAlgebra<A>): BooleanAlgebra<A> => ({
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Instances
  */
 export const booleanAlgebraVoid: BooleanAlgebra<void> = {
@@ -66,7 +66,7 @@ export const booleanAlgebraVoid: BooleanAlgebra<void> = {
  * Use [`reverse`](#reverse) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getDualBooleanAlgebra = reverse
@@ -75,7 +75,7 @@ export const getDualBooleanAlgebra = reverse
  * Use [`BooleanAlgebra`](./boolean.ts.html#booleanalgebra) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const booleanAlgebraBoolean: BooleanAlgebra<boolean> = {
@@ -91,7 +91,7 @@ export const booleanAlgebraBoolean: BooleanAlgebra<boolean> = {
  * Use [`getBooleanAlgebra`](./function.ts.html#getbooleanalgebra) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getFunctionBooleanAlgebra: <B>(B: BooleanAlgebra<B>) => <A = never>() => BooleanAlgebra<(a: A) => B> =

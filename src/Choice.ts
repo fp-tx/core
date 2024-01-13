@@ -22,7 +22,7 @@
  *
  * Adapted from https://github.com/purescript/purescript-profunctor/blob/master/src/Data/Profunctor/Choice.purs
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type Category, type Category2, type Category3, type Category4 } from './Category'
 import { type Either } from './Either'
@@ -35,7 +35,7 @@ import { type Profunctor, type Profunctor2, type Profunctor3, type Profunctor4 }
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Choice<F> extends Profunctor<F> {
@@ -44,7 +44,7 @@ export interface Choice<F> extends Profunctor<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Choice2<F extends URIS2> extends Profunctor2<F> {
@@ -53,7 +53,7 @@ export interface Choice2<F extends URIS2> extends Profunctor2<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Choice3<F extends URIS3> extends Profunctor3<F> {
@@ -62,7 +62,7 @@ export interface Choice3<F extends URIS3> extends Profunctor3<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Choice4<F extends URIS4> extends Profunctor4<F> {
@@ -82,7 +82,7 @@ export interface Choice4<F extends URIS4> extends Profunctor4<F> {
  * We take two functions, `f` and `g`, and we transform them into a single function which takes an `Either`and maps `f`
  * over the left side and `g` over the right side. Just like `bimap` would do for the `Bifunctor` instance of `Either`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function split<P extends URIS4>(
   P: Choice4<P>,
@@ -128,7 +128,7 @@ export function split<P>(
  * `Right`. This allows us to bundle two different computations which both have the same result type into one function
  * which will run the appropriate computation based on the parameter supplied in the `Either` value.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function fanIn<P extends URIS4>(
   P: Choice4<P>,
@@ -166,7 +166,7 @@ export function fanIn<P>(
  * Use [`split`](#split) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function splitChoice<F extends URIS3>(
@@ -190,7 +190,7 @@ export function splitChoice<F>(
  * Use [`fanIn`](#fanIn) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  */
 export function fanin<F extends URIS3>(
   F: Category3<F> & Choice3<F>,

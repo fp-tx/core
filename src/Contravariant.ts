@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import {
   type HKT,
   type Kind,
@@ -16,7 +16,7 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Contravariant<F> {
@@ -25,7 +25,7 @@ export interface Contravariant<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Contravariant1<F extends URIS> {
@@ -34,7 +34,7 @@ export interface Contravariant1<F extends URIS> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Contravariant2<F extends URIS2> {
@@ -43,7 +43,7 @@ export interface Contravariant2<F extends URIS2> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Contravariant2C<F extends URIS2, E> {
@@ -53,7 +53,7 @@ export interface Contravariant2C<F extends URIS2, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Contravariant3<F extends URIS3> {
@@ -62,7 +62,7 @@ export interface Contravariant3<F extends URIS3> {
 }
 
 /**
- * @since 2.2.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Contravariant3C<F extends URIS3, E> {
@@ -72,7 +72,7 @@ export interface Contravariant3C<F extends URIS3, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Contravariant4<F extends URIS4> {

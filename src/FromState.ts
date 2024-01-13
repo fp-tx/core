@@ -1,7 +1,7 @@
 /**
  * Lift a computation from the `State` monad.
  *
- * @since 2.11.0
+ * @since 1.0.0
  */
 import { type Chain, type Chain2, type Chain3, type Chain4 } from './Chain'
 import { type Endomorphism } from './Endomorphism'
@@ -15,7 +15,7 @@ import { type State } from './State'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromState<F> {
@@ -24,7 +24,7 @@ export interface FromState<F> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromState2<F extends URIS2> {
@@ -33,7 +33,7 @@ export interface FromState2<F extends URIS2> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromState3<F extends URIS3> {
@@ -42,7 +42,7 @@ export interface FromState3<F extends URIS3> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromState3C<F extends URIS3, E> {
@@ -52,7 +52,7 @@ export interface FromState3C<F extends URIS3, E> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromState4<F extends URIS4> {
@@ -65,7 +65,7 @@ export interface FromState4<F extends URIS4> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Constructors
  */
 export function get<F extends URIS4>(F: FromState4<F>): <S, R, E>() => Kind4<F, S, R, E, S>
@@ -78,7 +78,7 @@ export function get<F>(F: FromState<F>): <S>() => HKT2<F, S, S> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Constructors
  */
 export function put<F extends URIS4>(F: FromState4<F>): <S, R, E>(s: S) => Kind4<F, S, R, E, void>
@@ -91,7 +91,7 @@ export function put<F>(F: FromState<F>): <S>(s: S) => HKT2<F, S, void> {
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Constructors
  */
 export function modify<F extends URIS4>(F: FromState4<F>): <S, R, E>(f: Endomorphism<S>) => Kind4<F, S, R, E, void>
@@ -104,7 +104,7 @@ export function modify<F>(F: FromState<F>): <S>(f: Endomorphism<S>) => HKT2<F, S
 }
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Constructors
  */
 export function gets<F extends URIS4>(F: FromState4<F>): <S, R, E, A>(f: (s: S) => A) => Kind4<F, S, R, E, A>
@@ -120,7 +120,7 @@ export function gets<F>(F: FromState<F>): <S, A>(f: (s: S) => A) => HKT2<F, S, A
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export function fromStateK<F extends URIS4>(
   F: FromState4<F>,
 ): <A extends ReadonlyArray<unknown>, S, B>(f: (...a: A) => State<S, B>) => <R, E>(...a: A) => Kind4<F, S, R, E, B>
@@ -142,7 +142,7 @@ export function fromStateK<F>(
   return f => flow(f, F.fromState)
 }
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export function chainStateK<M extends URIS4>(
   F: FromState4<M>,
   M: Chain4<M>,

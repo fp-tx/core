@@ -4,7 +4,7 @@
  * While not required, it is recommended that for any expression `x`, the string `show(x)` be executable TypeScript code
  * which evaluates to the same value as the expression `x`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import * as _ from './internal'
 import { type ReadonlyRecord } from './ReadonlyRecord'
@@ -14,7 +14,7 @@ import { type ReadonlyRecord } from './ReadonlyRecord'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Show<A> {
@@ -25,7 +25,7 @@ export interface Show<A> {
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export const struct = <A>(shows: { [K in keyof A]: Show<A[K]> }): Show<{ readonly [K in keyof A]: A[K] }> => ({
   show: a => {
     let s = '{'
@@ -42,7 +42,7 @@ export const struct = <A>(shows: { [K in keyof A]: Show<A[K]> }): Show<{ readonl
   },
 })
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export const tuple = <A extends ReadonlyArray<unknown>>(
   ...shows: { [K in keyof A]: Show<A[K]> }
 ): Show<Readonly<A>> => ({
@@ -57,7 +57,7 @@ export const tuple = <A extends ReadonlyArray<unknown>>(
  * Use [`tuple`](#tuple) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getTupleShow: <T extends ReadonlyArray<Show<any>>>(
@@ -68,7 +68,7 @@ export const getTupleShow: <T extends ReadonlyArray<Show<any>>>(
  * Use [`struct`](#struct) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getStructShow: <O extends ReadonlyRecord<string, any>>(shows: { [K in keyof O]: Show<O[K]> }) => Show<O> =
@@ -78,7 +78,7 @@ export const getStructShow: <O extends ReadonlyRecord<string, any>>(shows: { [K 
  * Use [`Show`](./boolean.ts.html#show) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const showBoolean: Show<boolean> = {
@@ -89,7 +89,7 @@ export const showBoolean: Show<boolean> = {
  * Use [`Show`](./string.ts.html#show) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const showString: Show<string> = {
@@ -100,7 +100,7 @@ export const showString: Show<string> = {
  * Use [`Show`](./number.ts.html#show) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const showNumber: Show<number> = {

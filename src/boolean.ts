@@ -1,4 +1,4 @@
-/** @since 2.2.0 */
+/** @since 1.0.0 */
 import type * as BA from './BooleanAlgebra'
 import type * as E from './Eq'
 import { type LazyArg } from './function'
@@ -13,7 +13,7 @@ import type * as S from './Show'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.11.0
+ * @since 1.0.0
  * @category Refinements
  */
 export const isBoolean: Refinement<unknown, boolean> = (u: unknown): u is boolean => typeof u === 'boolean'
@@ -23,7 +23,7 @@ export const isBoolean: Refinement<unknown, boolean> = (u: unknown): u is boolea
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const matchW =
@@ -34,7 +34,7 @@ export const matchW =
 /**
  * Alias of [`matchW`](#matchw).
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const foldW = matchW
@@ -43,7 +43,7 @@ export const foldW = matchW
  * Defines the fold over a boolean value. Takes two thunks `onTrue`, `onFalse` and a `boolean` value. If `value` is
  * false, `onFalse()` is returned, otherwise `onTrue()`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Pattern matching
  * @example
  *   import { some, map } from 'fp-ts/Option'
@@ -68,7 +68,7 @@ export const match: <A>(onFalse: LazyArg<A>, onTrue: LazyArg<A>) => (value: bool
 /**
  * Alias of [`match`](#match).
  *
- * @since 2.2.0
+ * @since 1.0.0
  * @category Pattern matching
  */
 export const fold = match
@@ -78,7 +78,7 @@ export const fold = match
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Eq: E.Eq<boolean> = {
@@ -86,7 +86,7 @@ export const Eq: E.Eq<boolean> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const BooleanAlgebra: BA.BooleanAlgebra<boolean> = {
@@ -101,7 +101,7 @@ export const BooleanAlgebra: BA.BooleanAlgebra<boolean> = {
 /**
  * `boolean` semigroup under conjunction.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { SemigroupAll } from 'fp-ts/boolean'
@@ -116,7 +116,7 @@ export const SemigroupAll: Semigroup<boolean> = {
 /**
  * `boolean` semigroup under disjunction.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { SemigroupAny } from 'fp-ts/boolean'
@@ -134,7 +134,7 @@ export const SemigroupAny: Semigroup<boolean> = {
  *
  * The `empty` value is `true`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { MonoidAll } from 'fp-ts/boolean'
@@ -152,7 +152,7 @@ export const MonoidAll: Monoid<boolean> = {
  *
  * The `empty` value is `false`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { MonoidAny } from 'fp-ts/boolean'
@@ -167,7 +167,7 @@ export const MonoidAny: Monoid<boolean> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Ord: O.Ord<boolean> = {
@@ -179,7 +179,7 @@ export const Ord: O.Ord<boolean> = {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const Show: S.Show<boolean> = {

@@ -1,7 +1,7 @@
 /**
  * Lift a computation from the `IO` monad
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 import {
   type Chain,
@@ -32,7 +32,7 @@ import { type IO } from './IO'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromIO<F> {
@@ -41,7 +41,7 @@ export interface FromIO<F> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromIO1<F extends URIS> {
@@ -50,7 +50,7 @@ export interface FromIO1<F extends URIS> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromIO2<F extends URIS2> {
@@ -59,7 +59,7 @@ export interface FromIO2<F extends URIS2> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromIO2C<F extends URIS2, E> {
@@ -69,7 +69,7 @@ export interface FromIO2C<F extends URIS2, E> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromIO3<F extends URIS3> {
@@ -78,7 +78,7 @@ export interface FromIO3<F extends URIS3> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromIO3C<F extends URIS3, E> {
@@ -88,7 +88,7 @@ export interface FromIO3C<F extends URIS3, E> {
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Model
  */
 export interface FromIO4<F extends URIS4> {
@@ -100,7 +100,7 @@ export interface FromIO4<F extends URIS4> {
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function fromIOK<F extends URIS4>(
   F: FromIO4<F>,
 ): <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => IO<B>) => <S, R, E>(...a: A) => Kind4<F, S, R, E, B>
@@ -128,7 +128,7 @@ export function fromIOK<F>(
   return f => flow(f, F.fromIO)
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function chainIOK<M extends URIS4>(
   F: FromIO4<M>,
   M: Chain4<M>,
@@ -161,7 +161,7 @@ export function chainIOK<M>(F: FromIO<M>, M: Chain<M>): <A, B>(f: (a: A) => IO<B
   }
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function chainFirstIOK<M extends URIS4>(
   F: FromIO4<M>,
   M: Chain4<M>,

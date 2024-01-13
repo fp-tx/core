@@ -10,7 +10,7 @@
  *
  * Formally, `Apply` represents a strong lax semi-monoidal endofunctor.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import * as O from 'fp-ts/Option'
  *   import { pipe } from 'fp-ts/function'
@@ -63,7 +63,7 @@ import { type Semigroup } from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Apply<F> extends Functor<F> {
@@ -71,7 +71,7 @@ export interface Apply<F> extends Functor<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Apply1<F extends URIS> extends Functor1<F> {
@@ -79,7 +79,7 @@ export interface Apply1<F extends URIS> extends Functor1<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Apply2<F extends URIS2> extends Functor2<F> {
@@ -87,7 +87,7 @@ export interface Apply2<F extends URIS2> extends Functor2<F> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Apply2C<F extends URIS2, E> extends Functor2C<F, E> {
@@ -95,7 +95,7 @@ export interface Apply2C<F extends URIS2, E> extends Functor2C<F, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Apply3<F extends URIS3> extends Functor3<F> {
@@ -103,7 +103,7 @@ export interface Apply3<F extends URIS3> extends Functor3<F> {
 }
 
 /**
- * @since 2.2.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Apply3C<F extends URIS3, E> extends Functor3C<F, E> {
@@ -111,7 +111,7 @@ export interface Apply3C<F extends URIS3, E> extends Functor3C<F, E> {
 }
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Apply4<F extends URIS4> extends Functor4<F> {
@@ -125,7 +125,7 @@ export interface Apply4<F extends URIS4> extends Functor4<F> {
 /**
  * `ap` composition.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function ap<F extends URIS4, G extends URIS4>(
   F: Apply4<F>,
@@ -377,7 +377,7 @@ export function ap<F, G>(
       )
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function apFirst<F extends URIS4>(
   A: Apply4<F>,
 ): <S, R, E, B>(second: Kind4<F, S, R, E, B>) => <A>(first: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, A>
@@ -403,7 +403,7 @@ export function apFirst<F>(A: Apply<F>): <B>(second: HKT<F, B>) => <A>(first: HK
     )
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function apSecond<F extends URIS4>(
   A: Apply4<F>,
 ): <S, R, E, B>(second: Kind4<F, S, R, E, B>) => <A>(first: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, B>
@@ -430,7 +430,7 @@ export function apSecond<F>(A: Apply<F>): <B>(second: HKT<F, B>) => <A>(first: H
       )
 }
 
-/** @since 2.10.0 */
+/** @since 1.0.0 */
 export function apS<F extends URIS4>(
   F: Apply4<F>,
 ): <N extends string, A, S, R, E, B>(
@@ -494,7 +494,7 @@ export function apS<F>(
 /**
  * Lift a semigroup into 'F', the inner values are concatenated using the provided `Semigroup`.
  *
- * @since 2.10.0
+ * @since 1.0.0
  */
 export function getApplySemigroup<F extends URIS4>(
   F: Apply4<F>,
@@ -551,7 +551,7 @@ function getTupleConstructor(len: number): (a: unknown) => any {
  * Tuple sequencing, i.e., take a tuple of monadic actions and does them from left-to-right, returning the resulting
  * tuple.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { sequenceT } from 'fp-ts/Apply'
  *   import * as O from 'fp-ts/Option'
@@ -652,7 +652,7 @@ function getRecordConstructor(keys: ReadonlyArray<string>) {
 /**
  * Like `Apply.sequenceT` but works with structs instead of tuples.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import * as E from 'fp-ts/Either'
  *   import { sequenceS } from 'fp-ts/Apply'

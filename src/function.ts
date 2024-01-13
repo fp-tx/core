@@ -1,4 +1,4 @@
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 import { type BooleanAlgebra } from './BooleanAlgebra'
 import { type Monoid } from './Monoid'
 import { type Ring } from './Ring'
@@ -10,7 +10,7 @@ import { type Semiring } from './Semiring'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getBooleanAlgebra =
@@ -27,7 +27,7 @@ export const getBooleanAlgebra =
 /**
  * Unary functions form a semigroup as long as you can provide a semigroup for the codomain.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { Predicate, getSemigroup } from 'fp-ts/function'
@@ -55,7 +55,7 @@ export const getSemigroup =
 /**
  * Unary functions form a monoid as long as you can provide a monoid for the codomain.
  *
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  * @example
  *   import { Predicate } from 'fp-ts/Predicate'
@@ -84,7 +84,7 @@ export const getMonoid = <M>(M: Monoid<M>): (<A = never>() => Monoid<(a: A) => M
 }
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getSemiring = <A, B>(S: Semiring<B>): Semiring<(a: A) => B> => ({
@@ -95,7 +95,7 @@ export const getSemiring = <A, B>(S: Semiring<B>): Semiring<(a: A) => B> => ({
 })
 
 /**
- * @since 2.10.0
+ * @since 1.0.0
  * @category Instances
  */
 export const getRing = <A, B>(R: Ring<B>): Ring<(a: A) => B> => {
@@ -113,14 +113,14 @@ export const getRing = <A, B>(R: Ring<B>): Ring<(a: A) => B> => {
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const apply =
   <A>(a: A) =>
   <B>(f: (a: A) => B): B =>
     f(a)
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { FunctionN } from 'fp-ts/function'
  *
@@ -130,15 +130,15 @@ export interface FunctionN<A extends ReadonlyArray<unknown>, B> {
   (...args: A): B
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export function identity<A>(a: A): A {
   return a
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export const unsafeCoerce: <A, B>(a: A) => B = identity as any
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export function constant<A>(a: A): LazyArg<A> {
   return () => a
 }
@@ -146,42 +146,42 @@ export function constant<A>(a: A): LazyArg<A> {
 /**
  * A thunk that returns always `true`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const constTrue: LazyArg<boolean> = /*#__PURE__*/ constant(true)
 
 /**
  * A thunk that returns always `false`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const constFalse: LazyArg<boolean> = /*#__PURE__*/ constant(false)
 
 /**
  * A thunk that returns always `null`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const constNull: LazyArg<null> = /*#__PURE__*/ constant(null)
 
 /**
  * A thunk that returns always `undefined`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const constUndefined: LazyArg<undefined> = /*#__PURE__*/ constant(undefined)
 
 /**
  * A thunk that returns always `void`.
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export const constVoid: LazyArg<void> = constUndefined
 
 /**
  * Flips the arguments of a curried function.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { flip } from 'fp-ts/function'
  *
@@ -208,7 +208,7 @@ export function flip(f: Function): Function {
  *
  * See also [`pipe`](#pipe).
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @example
  *   import { flow } from 'fp-ts/function'
  *
@@ -327,22 +327,22 @@ export function flow(
   return
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export function tuple<T extends ReadonlyArray<any>>(...t: T): T {
   return t
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export function increment(n: number): number {
   return n + 1
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export function decrement(n: number): number {
   return n - 1
 }
 
-/** @since 2.0.0 */
+/** @since 1.0.0 */
 export function absurd<A>(_: never): A {
   throw new Error('Called `absurd` function which should be uncallable')
 }
@@ -350,7 +350,7 @@ export function absurd<A>(_: never): A {
 /**
  * Creates a tupled version of this function: instead of `n` arguments, it accepts a single tuple argument.
  *
- * @since 2.4.0
+ * @since 1.0.0
  * @example
  *   import { tupled } from 'fp-ts/function'
  *
@@ -365,7 +365,7 @@ export function tupled<A extends ReadonlyArray<unknown>, B>(f: (...a: A) => B): 
 /**
  * Inverse function of `tupled`
  *
- * @since 2.4.0
+ * @since 1.0.0
  */
 export function untupled<A extends ReadonlyArray<unknown>, B>(f: (a: A) => B): (...a: A) => B {
   return (...a) => f(a)
@@ -376,7 +376,7 @@ export function untupled<A extends ReadonlyArray<unknown>, B>(f: (a: A) => B): (
  *
  * See also [`flow`](#flow).
  *
- * @since 2.6.3
+ * @since 1.0.0
  * @example
  *   import { pipe } from 'fp-ts/function'
  *
@@ -667,11 +667,11 @@ export function pipe(
 /**
  * Type hole simulation
  *
- * @since 2.7.0
+ * @since 1.0.0
  */
 export const hole: <T>() => T = absurd as any
 
-/** @since 2.11.0 */
+/** @since 1.0.0 */
 export const SK = <A, B>(_: A, b: B): B => b
 
 // -------------------------------------------------------------------------------------
@@ -682,7 +682,7 @@ export const SK = <A, B>(_: A, b: B): B => b
  * Use `Refinement` module instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface Refinement<A, B extends A> {
@@ -693,7 +693,7 @@ export interface Refinement<A, B extends A> {
  * Use `Predicate` module instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface Predicate<A> {
@@ -704,7 +704,7 @@ export interface Predicate<A> {
  * Use `Predicate` module instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export function not<A>(predicate: Predicate<A>): Predicate<A> {
@@ -715,7 +715,7 @@ export function not<A>(predicate: Predicate<A>): Predicate<A> {
  * Use `Endomorphism` module instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export interface Endomorphism<A> {
@@ -726,7 +726,7 @@ export interface Endomorphism<A> {
  * Use `Endomorphism` module instead.
  *
  * @deprecated
- * @since 2.10.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => ({
@@ -737,7 +737,7 @@ export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => (
 /**
  * A lazy argument.
  *
- * @since 2.15.0
+ * @since 1.0.0
  */
 export interface LazyArg<A> {
   (): A
@@ -771,7 +771,7 @@ export const dual: {
 /**
  * Use `LazyArg` instead.
  *
- * @since 2.0.0
+ * @since 1.0.0
  * @category Lagacy
  */
 export interface Lazy<A> {

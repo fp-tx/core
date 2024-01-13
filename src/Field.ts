@@ -1,7 +1,7 @@
 /**
  * Adapted from https://github.com/purescript/purescript-prelude/blob/master/src/Data/Field.purs
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 import { type Eq } from './Eq'
 import { type Ring } from './Ring'
@@ -11,7 +11,7 @@ import { type Ring } from './Ring'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 2.0.0
+ * @since 1.0.0
  * @category Model
  */
 export interface Field<A> extends Ring<A> {
@@ -27,7 +27,7 @@ export interface Field<A> extends Ring<A> {
 /**
  * The _greatest common divisor_ of two values
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export function gcd<A>(E: Eq<A>, field: Field<A>): (x: A, y: A) => A {
   const zero = field.zero
@@ -38,7 +38,7 @@ export function gcd<A>(E: Eq<A>, field: Field<A>): (x: A, y: A) => A {
 /**
  * The _least common multiple_ of two values
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 export function lcm<A>(E: Eq<A>, F: Field<A>): (x: A, y: A) => A {
   const zero = F.zero
@@ -54,7 +54,7 @@ export function lcm<A>(E: Eq<A>, F: Field<A>): (x: A, y: A) => A {
  * Use [`Field`](./number.ts.html#field) instead.
  *
  * @deprecated
- * @since 2.0.0
+ * @since 1.0.0
  * @category Zone of death
  */
 export const fieldNumber: Field<number> = {
