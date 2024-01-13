@@ -6,29 +6,29 @@
 
 fp-tx is a continuation of fp-ts, a functional programming library for TypeScript inspired by PureScript and Haskell.
 
-## Motiviation
+## Motivation
 
-Effect has officially replaced fp-ts, and there are many upsides to Effect. For example, there is no need to worry about picking an effect type, there is only one: Effect. It handles synchronous and asynchronous computation, stack-safe recursion, gracefully handled exits, dependency composition, and comes out of the box with pre-constructed services and providers.
+Effect has officially replaced fp-ts, and there are many upsides to Effect. For example, there is no need to worry about picking an effect type, there is only one: Effect. It handles synchronous and asynchronous computation, stack-safe recursion, graceful exits, dependency composition, and comes with pre-constructed services and providers.
 
 However, the core philosophy of fp-ts, inspired by typeclasses and monadic composition, makes it a valuable choice. The effect types in fp-ts are dead simple, easy to understand, and their inner mechanisms are transparent to users of the library. The downsides to this approach, namely: stack traces, error handling as a discipline, and stack safety are greatly outweighed by the purely functional nature and design of the library.
 
-`@fp-tx` was written as a passion project to revive fp-ts and improve on some of its critical downsides.
+`@fp-tx` was written as a passion project to revive fp-ts and improve on its critical downsides.
 
 ## Migration
 
-The API surface area of `@fp-tx/core` for versions 0.x and 1.x are intentionally identical to `fp-ts`. This is so that existing libraries and apps can migrate by simply replacing the import `fp-ts(/(lib | es6))/*` with `@fp-tx/core/*`
+The API surface of `@fp-tx/core` for versions 0.x and 1.x are intentionally identical to `fp-ts`. This is so that existing libraries and apps can migrate by simply replacing the import `fp-ts(/(lib | es6))/*` with `@fp-tx/core/*`
 
 ## Comparison to fp-ts
 
 ### ES Modules
 
-fp-ts has a critical weakness which inspired this entire project: incompatibility with Node ESModules. Within the last few years, certain libraries have adopted an ESM only philosophy which greatly restricts interoperability with other parts of the JavaScript ecosystem; fp-ts is itself restricted. fp-ts supports two module types: CommonJS and ES6 (a name for tree-shakable module code for browsers and bundlers). However, when Node adopted ESM it took a hard stance for when it would parse module code. If a `package.json` has `"type": "module"` it will interpret JS files as containing `import` / `export` (ESM). And it will restrict any JS file which contains require, requiring those files to have a `.cjs` extension. And the opposite is true, if the `package.json` omits or lists `"type": "commonjs"`, Node will interpret JS files as containing `require`, and require `import` / `export` to take place in `.mjs` files. The compatibility issue arises when a library forces a Node project to be written in ESM, because that project will no longer compatible with fp-ts.
+fp-ts has a critical weakness which inspired this entire project: incompatibility with Node ESModules. Within the last few years, certain libraries have adopted an ESM only philosophy which greatly restricted interoperability with other parts of the JavaScript ecosystem, like fp-ts. fp-ts supports two module types: CommonJS and ES6 (a name for tree-shakable module code for browsers and bundlers). However, when Node adopted ESM it took a hard stance for when it would parse module code. If a `package.json` has `"type": "module"` it will interpret JS files as containing `import` / `export` (ESM). And it will restrict any JS file which contains require, requiring those files to have a `.cjs` extension. And the opposite is true, if the `package.json` omits or lists `"type": "commonjs"` Node will interpret JS files as containing `require`, and interpret `.mjs` as containing `import` and `export`. The compatibility issue arises when a library forces a Node project to be written in ESM.  That project will no longer be compatible with fp-ts.
 
-### Extra Features
+### New Features
 
-`@fp-tx/core` comes with some juicy new features, below are a list of current and future features which aim to improve fp-ts in key areas while maintaining its core value.
+`@fp-tx/core` comes with juicy new features, below are a list of current and future features which aim to improve fp-ts in key areas while maintaining its core set of values.
 
-#### ChainRec
+#### `ChainRec`
 
 `@fp-tx/core` comes with a complete suite of `ChainRec` instances (see [@jacob-alford/chain-rec](https://github.com/jacob-alford/chain-rec)). ChainRec largely overcomes the stack-safety problem when constructing recursive effects.
 
@@ -79,7 +79,7 @@ Additionally, the following modules are planned for release once development of 
 
 `@fp-tx` readily welcomes community run libraries with a few caveats. The library must use `@fp-tx/build-tools` under the hood, and have been constructed using the GitHub template or `@fp-tx/create`. This guarantees that `@fp-tx` libraries will be compatible with other JavaScript libraries. These template constructors are not currently available but are planned for the near future.
 
-## Organization Roadmap
+## `@fp-tx` Organization Roadmap
 
 1. `@fp-tx/schema` – a port of [`schemata-ts`](https://github.com/jacob-alford/schemata-ts), a modern feature rich schema validation library
 2. `@fp-tx/parser` – based on [`parser-ts`](https://github.com/gcanti/parser-ts), a port of `purescript-eulalie`
