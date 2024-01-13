@@ -1,7 +1,7 @@
 {
   "name": "@fp-tx/core",
-  "version": "1.0.0",
-  "description": "fp-ts forever: functional programming in TypeScript",
+  "version": "0.1.0",
+  "description": "A function programming library for TypeScript, inspired by PureScript and Haskell",
   "sideEffects": false,
   "exports": {
     ".": {
