@@ -1,5 +1,5 @@
 <h3 align="center">
-  <img width="512px" height="512px" src="https://github.com/fp-tx/core/assets/7153123/f022715e-2778-48f3-93cd-ed0e2db9fb4e" />
+  ![fp-tx-core-banner](https://github.com/fp-tx/core/assets/7153123/268066f8-90e5-427a-9d15-9ccc99ee2632)
 </h3>
 
 <br/><br/><br/>
