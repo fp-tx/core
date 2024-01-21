@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import { type BooleanAlgebra } from './BooleanAlgebra'
 import { type Monoid } from './Monoid'
 import { type Ring } from './Ring'
@@ -10,8 +14,11 @@ import { type Semiring } from './Semiring'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getBooleanAlgebra =
   <B>(B: BooleanAlgebra<B>) =>
@@ -27,24 +34,31 @@ export const getBooleanAlgebra =
 /**
  * Unary functions form a semigroup as long as you can provide a semigroup for the codomain.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { Predicate, getSemigroup } from 'fp-ts/function'
- *   import * as B from 'fp-ts/boolean'
  *
- *   const f: Predicate<number> = n => n <= 2
- *   const g: Predicate<number> = n => n >= 0
+ * ```typescript
+ * import { Predicate, getSemigroup } from '@fp-tx/core/function'
+ * import * as B from '@fp-tx/core/boolean'
  *
- *   const S1 = getSemigroup(B.SemigroupAll)<number>()
+ * const f: Predicate<number> = n => n <= 2
+ * const g: Predicate<number> = n => n >= 0
  *
- *   assert.deepStrictEqual(S1.concat(f, g)(1), true)
- *   assert.deepStrictEqual(S1.concat(f, g)(3), false)
+ * const S1 = getSemigroup(B.SemigroupAll)<number>()
  *
- *   const S2 = getSemigroup(B.SemigroupAny)<number>()
+ * assert.deepStrictEqual(S1.concat(f, g)(1), true)
+ * assert.deepStrictEqual(S1.concat(f, g)(3), false)
  *
- *   assert.deepStrictEqual(S2.concat(f, g)(1), true)
- *   assert.deepStrictEqual(S2.concat(f, g)(3), true)
+ * const S2 = getSemigroup(B.SemigroupAny)<number>()
+ *
+ * assert.deepStrictEqual(S2.concat(f, g)(1), true)
+ * assert.deepStrictEqual(S2.concat(f, g)(3), true)
+ * ```
+ *
+ * @public
  */
 export const getSemigroup =
   <S>(S: Semigroup<S>) =>
@@ -55,25 +69,32 @@ export const getSemigroup =
 /**
  * Unary functions form a monoid as long as you can provide a monoid for the codomain.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { Predicate } from 'fp-ts/Predicate'
- *   import { getMonoid } from 'fp-ts/function'
- *   import * as B from 'fp-ts/boolean'
  *
- *   const f: Predicate<number> = n => n <= 2
- *   const g: Predicate<number> = n => n >= 0
+ * ```typescript
+ * import { Predicate } from '@fp-tx/core/Predicate'
+ * import { getMonoid } from '@fp-tx/core/function'
+ * import * as B from '@fp-tx/core/boolean'
  *
- *   const M1 = getMonoid(B.MonoidAll)<number>()
+ * const f: Predicate<number> = n => n <= 2
+ * const g: Predicate<number> = n => n >= 0
  *
- *   assert.deepStrictEqual(M1.concat(f, g)(1), true)
- *   assert.deepStrictEqual(M1.concat(f, g)(3), false)
+ * const M1 = getMonoid(B.MonoidAll)<number>()
  *
- *   const M2 = getMonoid(B.MonoidAny)<number>()
+ * assert.deepStrictEqual(M1.concat(f, g)(1), true)
+ * assert.deepStrictEqual(M1.concat(f, g)(3), false)
  *
- *   assert.deepStrictEqual(M2.concat(f, g)(1), true)
- *   assert.deepStrictEqual(M2.concat(f, g)(3), true)
+ * const M2 = getMonoid(B.MonoidAny)<number>()
+ *
+ * assert.deepStrictEqual(M2.concat(f, g)(1), true)
+ * assert.deepStrictEqual(M2.concat(f, g)(3), true)
+ * ```
+ *
+ * @public
  */
 export const getMonoid = <M>(M: Monoid<M>): (<A = never>() => Monoid<(a: A) => M>) => {
   const getSemigroupM = getSemigroup(M)
@@ -84,8 +105,11 @@ export const getMonoid = <M>(M: Monoid<M>): (<A = never>() => Monoid<(a: A) => M
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getSemiring = <A, B>(S: Semiring<B>): Semiring<(a: A) => B> => ({
   add: (f, g) => x => S.add(f(x), g(x)),
@@ -95,8 +119,11 @@ export const getSemiring = <A, B>(S: Semiring<B>): Semiring<(a: A) => B> => ({
 })
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getRing = <A, B>(R: Ring<B>): Ring<(a: A) => B> => {
   const S = getSemiring<A, B>(R)
@@ -113,32 +140,54 @@ export const getRing = <A, B>(R: Ring<B>): Ring<(a: A) => B> => {
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const apply =
   <A>(a: A) =>
   <B>(f: (a: A) => B): B =>
     f(a)
 
 /**
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { FunctionN } from 'fp-ts/function'
  *
- *   export const sum: FunctionN<[number, number], number> = (a, b) => a + b
+ * ```typescript
+ * import { FunctionN } from '@fp-tx/core/function'
+ *
+ * export const sum: FunctionN<[number, number], number> = (a, b) => a + b
+ * ```
+ *
+ * @public
  */
 export interface FunctionN<A extends ReadonlyArray<unknown>, B> {
   (...args: A): B
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function identity<A>(a: A): A {
   return a
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const unsafeCoerce: <A, B>(a: A) => B = identity as any
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function constant<A>(a: A): LazyArg<A> {
   return () => a
 }
@@ -146,48 +195,64 @@ export function constant<A>(a: A): LazyArg<A> {
 /**
  * A thunk that returns always `true`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const constTrue: LazyArg<boolean> = /*#__PURE__*/ constant(true)
 
 /**
  * A thunk that returns always `false`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const constFalse: LazyArg<boolean> = /*#__PURE__*/ constant(false)
 
 /**
  * A thunk that returns always `null`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const constNull: LazyArg<null> = /*#__PURE__*/ constant(null)
 
 /**
  * A thunk that returns always `undefined`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const constUndefined: LazyArg<undefined> = /*#__PURE__*/ constant(undefined)
 
 /**
  * A thunk that returns always `void`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const constVoid: LazyArg<void> = constUndefined
 
 /**
  * Flips the arguments of a curried function.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { flip } from 'fp-ts/function'
  *
- *   const f = (a: number) => (b: string) => a - b.length
+ * ```typescript
+ * import { flip } from '@fp-tx/core/function'
  *
- *   assert.strictEqual(flip(f)('aaa')(2), -1)
+ * const f = (a: number) => (b: string) => a - b.length
+ *
+ * assert.strictEqual(flip(f)('aaa')(2), -1)
+ * ```
+ *
+ * @public
  */
 export function flip<A, B, C>(f: (a: A) => (b: B) => C): (b: B) => (a: A) => C
 /** @deprecated */
@@ -208,16 +273,22 @@ export function flip(f: Function): Function {
  *
  * See also [`pipe`](#pipe).
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { flow } from 'fp-ts/function'
  *
- *   const len = (s: string): number => s.length
- *   const double = (n: number): number => n * 2
+ * ```typescript
+ * import { flow } from '@fp-tx/core/function'
  *
- *   const f = flow(len, double)
+ * const len = (s: string): number => s.length
+ * const double = (n: number): number => n * 2
  *
- *   assert.strictEqual(f('aaa'), 6)
+ * const f = flow(len, double)
+ *
+ * assert.strictEqual(f('aaa'), 6)
+ * ```
+ *
+ * @public
  */
 export function flow<A extends ReadonlyArray<unknown>, B>(ab: (...a: A) => B): (...a: A) => B
 export function flow<A extends ReadonlyArray<unknown>, B, C>(ab: (...a: A) => B, bc: (b: B) => C): (...a: A) => C
@@ -327,22 +398,38 @@ export function flow(
   return
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function tuple<T extends ReadonlyArray<any>>(...t: T): T {
   return t
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function increment(n: number): number {
   return n + 1
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function decrement(n: number): number {
   return n - 1
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function absurd<A>(_: never): A {
   throw new Error('Called `absurd` function which should be uncallable')
 }
@@ -350,13 +437,19 @@ export function absurd<A>(_: never): A {
 /**
  * Creates a tupled version of this function: instead of `n` arguments, it accepts a single tuple argument.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { tupled } from 'fp-ts/function'
  *
- *   const add = tupled((x: number, y: number): number => x + y)
+ * ```typescript
+ * import { tupled } from '@fp-tx/core/function'
  *
- *   assert.strictEqual(add([1, 2]), 3)
+ * const add = tupled((x: number, y: number): number => x + y)
+ *
+ * assert.strictEqual(add([1, 2]), 3)
+ * ```
+ *
+ * @public
  */
 export function tupled<A extends ReadonlyArray<unknown>, B>(f: (...a: A) => B): (a: A) => B {
   return a => f(...a)
@@ -365,7 +458,9 @@ export function tupled<A extends ReadonlyArray<unknown>, B>(f: (...a: A) => B): 
 /**
  * Inverse function of `tupled`
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function untupled<A extends ReadonlyArray<unknown>, B>(f: (a: A) => B): (...a: A) => B {
   return (...a) => f(a)
@@ -376,18 +471,24 @@ export function untupled<A extends ReadonlyArray<unknown>, B>(f: (a: A) => B): (
  *
  * See also [`flow`](#flow).
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { pipe } from 'fp-ts/function'
  *
- *   const len = (s: string): number => s.length
- *   const double = (n: number): number => n * 2
+ * ```typescript
+ * import { pipe } from '@fp-tx/core/function'
  *
- *   // without pipe
- *   assert.strictEqual(double(len('aaa')), 6)
+ * const len = (s: string): number => s.length
+ * const double = (n: number): number => n * 2
  *
- *   // with pipe
- *   assert.strictEqual(pipe('aaa', len, double), 6)
+ * // without pipe
+ * assert.strictEqual(double(len('aaa')), 6)
+ *
+ * // with pipe
+ * assert.strictEqual(pipe('aaa', len, double), 6)
+ * ```
+ *
+ * @public
  */
 export function pipe<A>(a: A): A
 export function pipe<A, B>(a: A, ab: (a: A) => B): B
@@ -667,11 +768,17 @@ export function pipe(
 /**
  * Type hole simulation
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const hole: <T>() => T = absurd as any
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const SK = <A, B>(_: A, b: B): B => b
 
 // -------------------------------------------------------------------------------------
@@ -681,9 +788,12 @@ export const SK = <A, B>(_: A, b: B): B => b
 /**
  * Use `Refinement` module instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface Refinement<A, B extends A> {
   (a: A): a is B
@@ -692,9 +802,12 @@ export interface Refinement<A, B extends A> {
 /**
  * Use `Predicate` module instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface Predicate<A> {
   (a: A): boolean
@@ -703,9 +816,12 @@ export interface Predicate<A> {
 /**
  * Use `Predicate` module instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export function not<A>(predicate: Predicate<A>): Predicate<A> {
   return a => !predicate(a)
@@ -714,9 +830,12 @@ export function not<A>(predicate: Predicate<A>): Predicate<A> {
 /**
  * Use `Endomorphism` module instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface Endomorphism<A> {
   (a: A): A
@@ -725,9 +844,12 @@ export interface Endomorphism<A> {
 /**
  * Use `Endomorphism` module instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => ({
   concat: (first, second) => flow(first, second),
@@ -737,7 +859,9 @@ export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => (
 /**
  * A lazy argument.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export interface LazyArg<A> {
   (): A
@@ -771,8 +895,11 @@ export const dual: {
 /**
  * Use `LazyArg` instead.
  *
- * @since 1.0.0
- * @category Lagacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lagacy
+ * @public
  */
 export interface Lazy<A> {
   (): A

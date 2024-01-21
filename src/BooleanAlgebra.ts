@@ -8,7 +8,9 @@
  *
  * Boolean algebras generalize classical logic: one is equivalent to "true" and zero is equivalent to "false".
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { getBooleanAlgebra } from './function'
 import { type HeytingAlgebra } from './HeytingAlgebra'
@@ -18,8 +20,11 @@ import { type HeytingAlgebra } from './HeytingAlgebra'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface BooleanAlgebra<A> extends HeytingAlgebra<A> {}
 
@@ -30,7 +35,9 @@ export interface BooleanAlgebra<A> extends HeytingAlgebra<A> {}
 /**
  * Every boolean algebras has a dual algebra, which involves reversing one/zero as well as join/meet.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const reverse = <A>(B: BooleanAlgebra<A>): BooleanAlgebra<A> => ({
   meet: (x, y) => B.join(x, y),
@@ -46,8 +53,11 @@ export const reverse = <A>(B: BooleanAlgebra<A>): BooleanAlgebra<A> => ({
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const booleanAlgebraVoid: BooleanAlgebra<void> = {
   meet: () => undefined,
@@ -65,18 +75,24 @@ export const booleanAlgebraVoid: BooleanAlgebra<void> = {
 /**
  * Use [`reverse`](#reverse) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const getDualBooleanAlgebra = reverse
 
 /**
  * Use [`BooleanAlgebra`](./boolean.ts.html#booleanalgebra) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const booleanAlgebraBoolean: BooleanAlgebra<boolean> = {
   meet: (x, y) => x && y,
@@ -90,9 +106,12 @@ export const booleanAlgebraBoolean: BooleanAlgebra<boolean> = {
 /**
  * Use [`getBooleanAlgebra`](./function.ts.html#getbooleanalgebra) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const getFunctionBooleanAlgebra: <B>(B: BooleanAlgebra<B>) => <A = never>() => BooleanAlgebra<(a: A) => B> =
   getBooleanAlgebra

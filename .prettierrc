@@ -5,5 +5,7 @@
   "arrowParens": "avoid",
   "plugins": ["prettier-plugin-jsdoc"],
   "trailingComma": "all",
-  "experimentalTernaries": true
+  "experimentalTernaries": true,
+  "tsdoc": true,
+  "jsdocPreferCodeFences": true
 }

@@ -1,7 +1,9 @@
 /**
  * The `FromEither` type class represents those data types which support errors.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 
 import {
@@ -37,8 +39,11 @@ import { type Refinement } from './Refinement'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromEither<F> {
   readonly URI: F
@@ -46,8 +51,11 @@ export interface FromEither<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromEither1<F extends URIS> {
   readonly URI: F
@@ -55,8 +63,11 @@ export interface FromEither1<F extends URIS> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromEither2<F extends URIS2> {
   readonly URI: F
@@ -64,8 +75,11 @@ export interface FromEither2<F extends URIS2> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromEither2C<F extends URIS2, E> {
   readonly URI: F
@@ -74,8 +88,11 @@ export interface FromEither2C<F extends URIS2, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromEither3<F extends URIS3> {
   readonly URI: F
@@ -83,8 +100,11 @@ export interface FromEither3<F extends URIS3> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromEither3C<F extends URIS3, E> {
   readonly URI: F
@@ -93,8 +113,11 @@ export interface FromEither3C<F extends URIS3, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromEither4<F extends URIS4> {
   readonly URI: F
@@ -106,8 +129,11 @@ export interface FromEither4<F extends URIS4> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export function fromOption<F extends URIS4>(
   F: FromEither4<F>,
@@ -130,8 +156,11 @@ export function fromOption<F>(F: FromEither<F>): <E>(onNone: LazyArg<E>) => <A>(
 }
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export function fromPredicate<F extends URIS4>(
   F: FromEither4<F>,
@@ -187,7 +216,11 @@ export function fromPredicate<F>(F: FromEither<F>): {
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function fromOptionK<F extends URIS4>(
   F: FromEither4<F>,
 ): <E>(
@@ -230,7 +263,11 @@ export function fromOptionK<F>(
   }
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function chainOptionK<F extends URIS4>(
   F: FromEither4<F>,
   M: Chain4<F>,
@@ -266,7 +303,11 @@ export function chainOptionK<F extends URIS2>(
   }
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function fromEitherK<F extends URIS4>(
   F: FromEither4<F>,
 ): <A extends ReadonlyArray<unknown>, E, B>(f: (...a: A) => Either<E, B>) => <S, R>(...a: A) => Kind4<F, S, R, E, B>
@@ -294,7 +335,11 @@ export function fromEitherK<F>(
   return f => flow(f, F.fromEither)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function chainEitherK<M extends URIS4>(
   F: FromEither4<M>,
   M: Chain4<M>,
@@ -331,7 +376,11 @@ export function chainEitherK<M extends URIS2>(
   return f => ma => M.chain(ma, fromEitherKF(f))
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function chainFirstEitherK<M extends URIS4>(
   F: FromEither4<M>,
   M: Chain4<M>,
@@ -368,7 +417,11 @@ export function chainFirstEitherK<M extends URIS2>(
   return f => ma => tapEitherM(ma, f)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function filterOrElse<M extends URIS4>(
   F: FromEither4<M>,
   M: Chain4<M>,

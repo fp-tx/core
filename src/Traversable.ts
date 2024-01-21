@@ -16,7 +16,7 @@
  * sense:
  *
  * ```ts
- * import { getApplicative, make } from 'fp-ts/Const'
+ * import { getApplicative, make } from '@fp-tx/core/Const'
  *
  * const A = getApplicative(M)
  *
@@ -25,7 +25,9 @@
  *
  * Where `M` is a `Monoid` instance
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import {
   type Applicative,
@@ -74,8 +76,11 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Traversable<T> extends Functor<T>, Foldable<T> {
   /** Runs an action for every element in a data structure and accumulates the results */
@@ -84,8 +89,11 @@ export interface Traversable<T> extends Functor<T>, Foldable<T> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Traversable1<T extends URIS> extends Functor1<T>, Foldable1<T> {
   readonly traverse: Traverse1<T>
@@ -93,8 +101,11 @@ export interface Traversable1<T extends URIS> extends Functor1<T>, Foldable1<T> 
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Traversable2<T extends URIS2> extends Functor2<T>, Foldable2<T> {
   readonly traverse: Traverse2<T>
@@ -102,8 +113,11 @@ export interface Traversable2<T extends URIS2> extends Functor2<T>, Foldable2<T>
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Traversable2C<T extends URIS2, TL> extends Functor2C<T, TL>, Foldable2C<T, TL> {
   readonly traverse: Traverse2C<T, TL>
@@ -111,15 +125,22 @@ export interface Traversable2C<T extends URIS2, TL> extends Functor2C<T, TL>, Fo
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Traversable3<T extends URIS3> extends Functor3<T>, Foldable3<T> {
   readonly traverse: Traverse3<T>
   readonly sequence: Sequence3<T>
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export interface Traverse<T> {
   <F extends URIS4>(
     F: Applicative4<F>,
@@ -138,7 +159,11 @@ export interface Traverse<T> {
   <F>(F: Applicative<F>): <A, B>(ta: HKT<T, A>, f: (a: A) => HKT<F, B>) => HKT<F, HKT<T, B>>
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export interface Traverse1<T extends URIS> {
   <F extends URIS4>(
     F: Applicative4<F>,
@@ -159,7 +184,11 @@ export interface Traverse1<T extends URIS> {
   <F>(F: Applicative<F>): <A, B>(ta: Kind<T, A>, f: (a: A) => HKT<F, B>) => HKT<F, Kind<T, B>>
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export interface Traverse2<T extends URIS2> {
   <F extends URIS4>(
     F: Applicative4<F>,
@@ -185,7 +214,11 @@ export interface Traverse2<T extends URIS2> {
   <F>(F: Applicative<F>): <E, A, B>(ta: Kind2<T, E, A>, f: (a: A) => HKT<F, B>) => HKT<F, Kind2<T, E, B>>
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export interface Traverse2C<T extends URIS2, E> {
   <F extends URIS4>(
     F: Applicative4<F>,
@@ -206,7 +239,11 @@ export interface Traverse2C<T extends URIS2, E> {
   <F>(F: Applicative<F>): <A, B>(ta: Kind2<T, E, A>, f: (a: A) => HKT<F, B>) => HKT<F, Kind2<T, E, B>>
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export interface Traverse3<T extends URIS3> {
   <F extends URIS4>(
     F: Applicative4<F>,
@@ -238,7 +275,11 @@ export interface Traverse3<T extends URIS3> {
   <F>(F: Applicative<F>): <R, E, A, B>(ta: Kind3<T, R, E, A>, f: (a: A) => HKT<F, B>) => HKT<F, Kind3<T, R, E, B>>
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export interface Sequence<T> {
   <F extends URIS4>(F: Applicative4<F>): <S, R, E, A>(ta: HKT<T, Kind4<F, S, R, E, A>>) => Kind4<F, S, R, E, HKT<T, A>>
   <F extends URIS3>(F: Applicative3<F>): <R, E, A>(ta: HKT<T, Kind3<F, R, E, A>>) => Kind3<F, R, E, HKT<T, A>>
@@ -249,7 +290,11 @@ export interface Sequence<T> {
   <F>(F: Applicative<F>): <A>(ta: HKT<T, HKT<F, A>>) => HKT<F, HKT<T, A>>
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export interface Sequence1<T extends URIS> {
   <F extends URIS4>(
     F: Applicative4<F>,
@@ -262,7 +307,11 @@ export interface Sequence1<T extends URIS> {
   <F>(F: Applicative<F>): <A>(ta: Kind<T, HKT<F, A>>) => HKT<F, Kind<T, A>>
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export interface Sequence2<T extends URIS2> {
   <F extends URIS4>(
     F: Applicative4<F>,
@@ -281,7 +330,11 @@ export interface Sequence2<T extends URIS2> {
   <F>(F: Applicative<F>): <E, A>(ta: Kind2<T, E, HKT<F, A>>) => HKT<F, Kind2<T, E, A>>
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export interface Sequence2C<T extends URIS2, E> {
   <F extends URIS4>(
     F: Applicative4<F>,
@@ -298,7 +351,11 @@ export interface Sequence2C<T extends URIS2, E> {
   <F>(F: Applicative<F>): <A>(ta: Kind2<T, E, HKT<F, A>>) => HKT<F, Kind2<T, E, A>>
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export interface Sequence3<T extends URIS3> {
   <F extends URIS4>(
     F: Applicative4<F>,
@@ -326,7 +383,9 @@ export interface Sequence3<T extends URIS3> {
 /**
  * `traverse` composition.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function traverse<T extends URIS, G extends URIS2>(
   T: Traversable1<T>,
@@ -408,7 +467,9 @@ export function traverse<T, G>(
 /**
  * `sequence` composition.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function sequence<T extends URIS, G extends URIS2>(
   T: Traversable1<T>,
@@ -477,7 +538,11 @@ export function sequence<T, G>(
 // pipeable `Traverse`
 //
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export interface PipeableTraverse1<T extends URIS> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -495,7 +560,11 @@ export interface PipeableTraverse1<T extends URIS> {
   <F>(F: Applicative<F>): <A, B>(f: (a: A) => HKT<F, B>) => (ta: Kind<T, A>) => HKT<F, Kind<T, B>>
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export interface PipeableTraverse2<T extends URIS2> {
   <F extends URIS3>(
     F: Applicative3<F>,
@@ -517,9 +586,12 @@ export interface PipeableTraverse2<T extends URIS2> {
 // -------------------------------------------------------------------------------------
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface TraversableComposition<F, G> extends FoldableComposition<F, G>, FunctorComposition<F, G> {
   readonly traverse: <H>(
@@ -529,9 +601,12 @@ export interface TraversableComposition<F, G> extends FoldableComposition<F, G>,
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface TraverseComposition11<F extends URIS, G extends URIS> {
   <H extends URIS3>(
@@ -550,9 +625,12 @@ export interface TraverseComposition11<F extends URIS, G extends URIS> {
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface SequenceComposition11<F extends URIS, G extends URIS> {
   <H extends URIS3>(
@@ -569,9 +647,12 @@ export interface SequenceComposition11<F extends URIS, G extends URIS> {
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface TraversableComposition11<F extends URIS, G extends URIS>
   extends FoldableComposition11<F, G>,
@@ -588,9 +669,12 @@ export interface TraversableComposition11<F extends URIS, G extends URIS>
  *
  * Instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export function getTraversableComposition<F extends URIS, G extends URIS>(
   F: Traversable1<F>,

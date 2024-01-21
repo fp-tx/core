@@ -1,25 +1,45 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import { type IO } from './IO'
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const log =
   <A>(a: A): IO<void> =>
   () =>
     console.log(a)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const warn =
   <A>(a: A): IO<void> =>
   () =>
     console.warn(a)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const error =
   <A>(a: A): IO<void> =>
   () =>
     console.error(a)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const info =
   <A>(a: A): IO<void> =>
   () =>

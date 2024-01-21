@@ -282,7 +282,11 @@ export const flatMapReader = <F extends TypeLambda>(
   )
 
 // Credit to sindresorhus > type-fest for this excellent type
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export type UnionToIntersection<Union> =
   (Union extends unknown ? (distributedUnion: Union) => void : never) extends (
     (mergedIntersection: infer Intersection) => void

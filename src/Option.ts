@@ -1,8 +1,4 @@
 /**
- * ```ts
- * type Option<A> = None | Some<A>
- * ```
- *
  * `Option<A>` is a container for an optional value of type `A`. If the value of type `A` is present, the `Option<A>` is
  * an instance of `Some<A>`, containing the present value of type `A`. If the value is absent, the `Option<A>` is an
  * instance of `None`.
@@ -10,51 +6,57 @@
  * An option could be looked at as a collection or foldable structure with either one or zero elements. Another way to
  * look at `Option` is: it represents the effect of a possibly failing computation.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as O from 'fp-ts/Option'
- *   import { pipe } from 'fp-ts/function'
  *
- *   const double = (n: number): number => n * 2
+ * ```typescript
+ * import * as O from '@fp-tx/core/Option'
+ * import { pipe } from '@fp-tx/core/function'
  *
- *   export const imperative = (as: ReadonlyArray<number>): string => {
- *     const head = (as: ReadonlyArray<number>): number => {
- *       if (as.length === 0) {
- *         throw new Error()
- *       }
- *       return as[0]
+ * const double = (n: number): number => n * 2
+ *
+ * export const imperative = (as: ReadonlyArray<number>): string => {
+ *   const head = (as: ReadonlyArray<number>): number => {
+ *     if (as.length === 0) {
+ *       throw new Error()
  *     }
- *     const inverse = (n: number): number => {
- *       if (n === 0) {
- *         throw new Error()
- *       }
- *       return 1 / n
- *     }
- *     try {
- *       return `Result is ${inverse(double(head(as)))}`
- *     } catch (e) {
- *       return 'no result'
- *     }
+ *     return as[0]
  *   }
- *
- *   export const functional = (as: ReadonlyArray<number>): string => {
- *     const head = <A>(as: ReadonlyArray<A>): O.Option<A> => (as.length === 0 ? O.none : O.some(as[0]))
- *     const inverse = (n: number): O.Option<number> => (n === 0 ? O.none : O.some(1 / n))
- *     return pipe(
- *       as,
- *       head,
- *       O.map(double),
- *       O.flatMap(inverse),
- *       O.match(
- *         () => 'no result', // onNone handler
- *         head => `Result is ${head}`, // onSome handler
- *       ),
- *     )
+ *   const inverse = (n: number): number => {
+ *     if (n === 0) {
+ *       throw new Error()
+ *     }
+ *     return 1 / n
  *   }
+ *   try {
+ *     return `Result is ${inverse(double(head(as)))}`
+ *   } catch (e) {
+ *     return 'no result'
+ *   }
+ * }
  *
- *   assert.deepStrictEqual(imperative([1, 2, 3]), functional([1, 2, 3]))
- *   assert.deepStrictEqual(imperative([]), functional([]))
- *   assert.deepStrictEqual(imperative([0]), functional([0]))
+ * export const functional = (as: ReadonlyArray<number>): string => {
+ *   const head = <A>(as: ReadonlyArray<A>): O.Option<A> => (as.length === 0 ? O.none : O.some(as[0]))
+ *   const inverse = (n: number): O.Option<number> => (n === 0 ? O.none : O.some(1 / n))
+ *   return pipe(
+ *     as,
+ *     head,
+ *     O.map(double),
+ *     O.flatMap(inverse),
+ *     O.match(
+ *       () => 'no result', // onNone handler
+ *       head => `Result is ${head}`, // onSome handler
+ *     ),
+ *   )
+ * }
+ *
+ * assert.deepStrictEqual(imperative([1, 2, 3]), functional([1, 2, 3]))
+ * assert.deepStrictEqual(imperative([]), functional([]))
+ * assert.deepStrictEqual(imperative([0]), functional([0]))
+ * ```
+ *
+ * @packageDocumentation
  */
 import { type Alt1 } from './Alt'
 import { type Alternative1 } from './Alternative'
@@ -106,16 +108,22 @@ import { guard as guard_, type Zero1 } from './Zero'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface None {
   readonly _tag: 'None'
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Some<A> {
   readonly _tag: 'Some'
@@ -123,8 +131,11 @@ export interface Some<A> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export type Option<A> = None | Some<A>
 
@@ -135,31 +146,44 @@ export type Option<A> = None | Some<A>
 /**
  * `None` doesn't have a constructor, instead you can use it directly as a value. Represents a missing value.
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const none: Option<never> = _.none
 
 /**
  * Constructs a `Some`. Represents an optional value that exists.
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const some: <A>(a: A) => Option<A> = _.some
 
 /**
  * Returns a _smart constructor_ based on the given predicate.
  *
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
  * @example
- *   import { none, some, fromPredicate } from 'fp-ts/Option'
  *
- *   const getOption = fromPredicate((n: number) => n >= 0)
+ * ```typescript
+ * import { none, some, fromPredicate } from '@fp-tx/core/Option'
  *
- *   assert.deepStrictEqual(getOption(-1), none)
- *   assert.deepStrictEqual(getOption(1), some(1))
+ * const getOption = fromPredicate((n: number) => n >= 0)
+ *
+ * assert.deepStrictEqual(getOption(-1), none)
+ * assert.deepStrictEqual(getOption(1), some(1))
+ * ```
+ *
+ * @public
  */
 export function fromPredicate<A, B extends A>(refinement: Refinement<A, B>): (a: A) => Option<B>
 export function fromPredicate<A>(predicate: Predicate<A>): <B extends A>(b: B) => Option<B>
@@ -171,28 +195,42 @@ export function fromPredicate<A>(predicate: Predicate<A>): (a: A) => Option<A> {
 /**
  * Returns the `Left` value of an `Either` if possible.
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
  * @example
- *   import { getLeft, none, some } from 'fp-ts/Option'
- *   import { right, left } from 'fp-ts/Either'
  *
- *   assert.deepStrictEqual(getLeft(right(1)), none)
- *   assert.deepStrictEqual(getLeft(left('a')), some('a'))
+ * ```typescript
+ * import { getLeft, none, some } from '@fp-tx/core/Option'
+ * import { right, left } from '@fp-tx/core/Either'
+ *
+ * assert.deepStrictEqual(getLeft(right(1)), none)
+ * assert.deepStrictEqual(getLeft(left('a')), some('a'))
+ * ```
+ *
+ * @public
  */
 export const getLeft = <E, A>(ma: Either<E, A>): Option<E> => (ma._tag === 'Right' ? none : some(ma.left))
 
 /**
  * Returns the `Right` value of an `Either` if possible.
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
  * @example
- *   import { getRight, none, some } from 'fp-ts/Option'
- *   import { right, left } from 'fp-ts/Either'
  *
- *   assert.deepStrictEqual(getRight(right(1)), some(1))
- *   assert.deepStrictEqual(getRight(left('a')), none)
+ * ```typescript
+ * import { getRight, none, some } from '@fp-tx/core/Option'
+ * import { right, left } from '@fp-tx/core/Either'
+ *
+ * assert.deepStrictEqual(getRight(right(1)), some(1))
+ * assert.deepStrictEqual(getRight(left('a')), none)
+ * ```
+ *
+ * @public
  */
 export const getRight = <E, A>(ma: Either<E, A>): Option<A> => (ma._tag === 'Left' ? none : some(ma.right))
 
@@ -224,14 +262,20 @@ const _partition: Filterable1<URI>['partition'] = <A>(fa: Option<A>, predicate: 
 const _partitionMap: Filterable1<URI>['partitionMap'] = (fa, f) => pipe(fa, partitionMap(f))
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export const URI = 'Option'
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export type URI = typeof URI
 
@@ -242,26 +286,36 @@ declare module './HKT' {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getShow = <A>(S: Show<A>): Show<Option<A>> => ({
   show: ma => (isNone(ma) ? 'none' : `some(${S.show(ma.value)})`),
 })
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { none, some, getEq } from 'fp-ts/Option'
- *   import * as N from 'fp-ts/number'
  *
- *   const E = getEq(N.Eq)
- *   assert.strictEqual(E.equals(none, none), true)
- *   assert.strictEqual(E.equals(none, some(1)), false)
- *   assert.strictEqual(E.equals(some(1), none), false)
- *   assert.strictEqual(E.equals(some(1), some(2)), false)
- *   assert.strictEqual(E.equals(some(1), some(1)), true)
+ * ```typescript
+ * import { none, some, getEq } from '@fp-tx/core/Option'
+ * import * as N from '@fp-tx/core/number'
+ *
+ * const E = getEq(N.Eq)
+ * assert.strictEqual(E.equals(none, none), true)
+ * assert.strictEqual(E.equals(none, some(1)), false)
+ * assert.strictEqual(E.equals(some(1), none), false)
+ * assert.strictEqual(E.equals(some(1), some(2)), false)
+ * assert.strictEqual(E.equals(some(1), some(1)), true)
+ * ```
+ *
+ * @public
  */
 export const getEq = <A>(E: Eq<A>): Eq<Option<A>> => ({
   equals: (x, y) =>
@@ -277,18 +331,25 @@ export const getEq = <A>(E: Eq<A>): Eq<Option<A>> => ({
  *
  * `None` is considered to be less than any `Some` value.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { none, some, getOrd } from 'fp-ts/Option'
- *   import * as N from 'fp-ts/number'
  *
- *   const O = getOrd(N.Ord)
- *   assert.strictEqual(O.compare(none, none), 0)
- *   assert.strictEqual(O.compare(none, some(1)), -1)
- *   assert.strictEqual(O.compare(some(1), none), 1)
- *   assert.strictEqual(O.compare(some(1), some(2)), -1)
- *   assert.strictEqual(O.compare(some(1), some(1)), 0)
+ * ```typescript
+ * import { none, some, getOrd } from '@fp-tx/core/Option'
+ * import * as N from '@fp-tx/core/number'
+ *
+ * const O = getOrd(N.Ord)
+ * assert.strictEqual(O.compare(none, none), 0)
+ * assert.strictEqual(O.compare(none, some(1)), -1)
+ * assert.strictEqual(O.compare(some(1), none), 1)
+ * assert.strictEqual(O.compare(some(1), some(2)), -1)
+ * assert.strictEqual(O.compare(some(1), some(1)), 0)
+ * ```
+ *
+ * @public
  */
 export const getOrd = <A>(O: Ord<A>): Ord<Option<A>> => ({
   equals: getEq(O).equals,
@@ -311,17 +372,24 @@ export const getOrd = <A>(O: Ord<A>): Ord<Option<A>> => ({
  * | none    | some(b) | some(b)            |
  * | some(a) | some(b) | some(concat(a, b)) |
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { getMonoid, some, none } from 'fp-ts/Option'
- *   import { SemigroupSum } from 'fp-ts/number'
  *
- *   const M = getMonoid(SemigroupSum)
- *   assert.deepStrictEqual(M.concat(none, none), none)
- *   assert.deepStrictEqual(M.concat(some(1), none), some(1))
- *   assert.deepStrictEqual(M.concat(none, some(1)), some(1))
- *   assert.deepStrictEqual(M.concat(some(1), some(2)), some(3))
+ * ```typescript
+ * import { getMonoid, some, none } from '@fp-tx/core/Option'
+ * import { SemigroupSum } from '@fp-tx/core/number'
+ *
+ * const M = getMonoid(SemigroupSum)
+ * assert.deepStrictEqual(M.concat(none, none), none)
+ * assert.deepStrictEqual(M.concat(some(1), none), some(1))
+ * assert.deepStrictEqual(M.concat(none, some(1)), some(1))
+ * assert.deepStrictEqual(M.concat(some(1), some(2)), some(3))
+ * ```
+ *
+ * @public
  */
 export const getMonoid = <A>(S: Semigroup<A>): Monoid<Option<A>> => ({
   concat: (x, y) =>
@@ -332,15 +400,21 @@ export const getMonoid = <A>(S: Semigroup<A>): Monoid<Option<A>> => ({
 })
 
 /**
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const map: <A, B>(f: (a: A) => B) => (fa: Option<A>) => Option<B> = f => fa =>
   isNone(fa) ? none : some(f(fa.value))
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Functor: Functor1<URI> = {
   URI,
@@ -350,8 +424,11 @@ export const Functor: Functor1<URI> = {
 /**
  * Maps the `Some` value of this `Option` to the specified constant value.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const as: {
   <A>(a: A): <_>(self: Option<_>) => Option<A>
@@ -361,35 +438,51 @@ export const as: {
 /**
  * Maps the `Some` value of this `Option` to the void constant value.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const asUnit: <_>(self: Option<_>) => Option<void> = asUnit_(Functor)
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const of: <A>(a: A) => Option<A> = some
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Pointed: Pointed1<URI> = {
   URI,
   of,
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const ap: <A>(fa: Option<A>) => <B>(fab: Option<(a: A) => B>) => Option<B> = fa => fab =>
   isNone(fab) ? none
   : isNone(fa) ? none
   : some(fab.value(fa.value))
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Apply: Apply1<URI> = {
   URI,
@@ -398,8 +491,11 @@ export const Apply: Apply1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Applicative: Applicative1<URI> = {
   URI,
@@ -409,8 +505,11 @@ export const Applicative: Applicative1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatMap: {
   <A, B>(f: (a: A) => Option<B>): (ma: Option<A>) => Option<B>
@@ -418,8 +517,11 @@ export const flatMap: {
 } = /*#__PURE__*/ dual(2, <A, B>(ma: Option<A>, f: (a: A) => Option<B>): Option<B> => (isNone(ma) ? none : f(ma.value)))
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Chain: chainable.Chain1<URI> = {
   URI,
@@ -429,8 +531,11 @@ export const Chain: chainable.Chain1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instance methods
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instance methods
+ * @public
  */
 export const chainRec: ChainRec1<URI>['chainRec'] = <A, B>(a: A, f: (a: A) => Option<Either<A, B>>) => {
   let current = f(a)
@@ -452,8 +557,11 @@ export const chainRec: ChainRec1<URI>['chainRec'] = <A, B>(a: A, f: (a: A) => Op
 /**
  * ChainRec for `Option`
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const ChainRec: ChainRec1<URI> = {
   ...Chain,
@@ -461,8 +569,11 @@ export const ChainRec: ChainRec1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Monad: Monad1<URI> = {
   URI,
@@ -473,29 +584,41 @@ export const Monad: Monad1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
+ * @public
  */
 export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => (fa: Option<A>) => B = (b, f) => fa =>
   isNone(fa) ? b : f(b, fa.value)
 
 /**
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
+ * @public
  */
 export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: Option<A>) => M = M => f => fa =>
   isNone(fa) ? M.empty : f(fa.value)
 
 /**
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
+ * @public
  */
 export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => (fa: Option<A>) => B = (b, f) => fa =>
   isNone(fa) ? b : f(fa.value, b)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Foldable: Foldable1<URI> = {
   URI,
@@ -507,30 +630,13 @@ export const Foldable: Foldable1<URI> = {
 /**
  * Returns the provided `Option` `that` if `self` is `None`, otherwise returns `self`.
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
  * @example
- *   import * as O from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(
- *     O.orElse(O.none, () => O.none),
- *     O.none,
- *   )
- *   assert.deepStrictEqual(
- *     O.orElse(O.some(1), () => O.none),
- *     O.some(1),
- *   )
- *   assert.deepStrictEqual(
- *     O.orElse(O.none, () => O.some('b')),
- *     O.some('b'),
- *   )
- *   assert.deepStrictEqual(
- *     O.orElse(O.some(1), () => O.some('b')),
- *     O.some(1),
- *   )
- *
- * @param self - The first `Option` to be checked.
- * @param that - The `Option` to return if `self` is `None`.
+ * @public
  */
 export const orElse: {
   <B>(that: LazyArg<Option<B>>): <A>(self: Option<A>) => Option<A | B>
@@ -544,22 +650,31 @@ export const orElse: {
  *
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const altW: <B>(that: LazyArg<Option<B>>) => <A>(fa: Option<A>) => Option<A | B> = orElse
 
 /**
  * Alias of `orElse`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const alt: <A>(that: LazyArg<Option<A>>) => (fa: Option<A>) => Option<A> = orElse
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Alt: Alt1<URI> = {
   URI,
@@ -567,12 +682,19 @@ export const Alt: Alt1<URI> = {
   alt: _alt,
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const zero: <A>() => Option<A> = () => none
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Zero: Zero1<URI> = {
   URI,
@@ -580,14 +702,20 @@ export const Zero: Zero1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const guard = /*#__PURE__*/ guard_(Zero, Pointed)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Alternative: Alternative1<URI> = {
   URI,
@@ -598,13 +726,20 @@ export const Alternative: Alternative1<URI> = {
   zero,
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const extend: <A, B>(f: (wa: Option<A>) => B) => (wa: Option<A>) => Option<B> = f => wa =>
   isNone(wa) ? none : some(f(wa))
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Extend: Extend1<URI> = {
   URI,
@@ -613,23 +748,32 @@ export const Extend: Extend1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const compact: <A>(fa: Option<Option<A>>) => Option<A> = /*#__PURE__*/ flatMap(identity)
 
 const defaultSeparated = /*#__PURE__*/ separated(none, none)
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const separate: <A, B>(ma: Option<Either<A, B>>) => Separated<Option<A>, Option<B>> = ma =>
   isNone(ma) ? defaultSeparated : separated(getLeft(ma.value), getRight(ma.value))
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Compactable: Compactable1<URI> = {
   URI,
@@ -638,8 +782,11 @@ export const Compactable: Compactable1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const filter: {
   <A, B extends A>(refinement: Refinement<A, B>): (fa: Option<A>) => Option<B>
@@ -653,15 +800,21 @@ export const filter: {
     : none
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Option<A>) => Option<B> = f => fa =>
   isNone(fa) ? none : f(fa.value)
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const partition: {
   <A, B extends A>(refinement: Refinement<A, B>): (fa: Option<A>) => Separated<Option<A>, Option<B>>
@@ -673,16 +826,22 @@ export const partition: {
     separated(_filter(fa, not(predicate)), _filter(fa, predicate))
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const partitionMap: <A, B, C>(
   f: (a: A) => Either<B, C>,
 ) => (fa: Option<A>) => Separated<Option<B>, Option<C>> = f => flow(map(f), separate)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Filterable: Filterable1<URI> = {
   URI,
@@ -696,8 +855,11 @@ export const Filterable: Filterable1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverse: PipeableTraverse1<URI> =
   <F>(F: ApplicativeHKT<F>) =>
@@ -706,8 +868,11 @@ export const traverse: PipeableTraverse1<URI> =
     isNone(ta) ? F.of(none) : F.map(f(ta.value), some)
 
 /**
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const sequence: Traversable1<URI>['sequence'] =
   <F>(F: ApplicativeHKT<F>) =>
@@ -715,8 +880,11 @@ export const sequence: Traversable1<URI>['sequence'] =
     isNone(ta) ? F.of(none) : F.map(ta.value, some)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Traversable: Traversable1<URI> = {
   URI,
@@ -733,8 +901,11 @@ const _wither: Witherable1<URI>['wither'] = /*#__PURE__*/ witherDefault(Traversa
 const _wilt: Witherable1<URI>['wilt'] = /*#__PURE__*/ wiltDefault(Traversable, Compactable)
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const wither: PipeableWither1<URI> = <F>(
   F: ApplicativeHKT<F>,
@@ -744,8 +915,11 @@ export const wither: PipeableWither1<URI> = <F>(
 }
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const wilt: PipeableWilt1<URI> = <F>(
   F: ApplicativeHKT<F>,
@@ -755,8 +929,11 @@ export const wilt: PipeableWilt1<URI> = <F>(
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Witherable: Witherable1<URI> = {
   URI,
@@ -776,12 +953,19 @@ export const Witherable: Witherable1<URI> = {
   wilt: _wilt,
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const throwError: MonadThrow1<URI>['throwError'] = () => none
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const MonadThrow: MonadThrow1<URI> = {
   URI,
@@ -797,14 +981,20 @@ export const MonadThrow: MonadThrow1<URI> = {
  *
  * Alias of [getRight](#getright)
  *
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
+ * @public
  */
 export const fromEither: <A>(fa: Either<unknown, A>) => Option<A> = getRight
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const FromEither: FromEither1<URI> = {
   URI,
@@ -818,26 +1008,40 @@ export const FromEither: FromEither1<URI> = {
 /**
  * Returns `true` if the option is an instance of `Some`, `false` otherwise.
  *
- * @since 1.0.0
- * @category Refinements
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Refinements
  * @example
- *   import { some, none, isSome } from 'fp-ts/Option'
  *
- *   assert.strictEqual(isSome(some(1)), true)
- *   assert.strictEqual(isSome(none), false)
+ * ```typescript
+ * import { some, none, isSome } from '@fp-tx/core/Option'
+ *
+ * assert.strictEqual(isSome(some(1)), true)
+ * assert.strictEqual(isSome(none), false)
+ * ```
+ *
+ * @public
  */
 export const isSome: <A>(fa: Option<A>) => fa is Some<A> = _.isSome
 
 /**
  * Returns `true` if the option is `None`, `false` otherwise.
  *
- * @since 1.0.0
- * @category Refinements
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Refinements
  * @example
- *   import { some, none, isNone } from 'fp-ts/Option'
  *
- *   assert.strictEqual(isNone(some(1)), false)
- *   assert.strictEqual(isNone(none), true)
+ * ```typescript
+ * import { some, none, isNone } from '@fp-tx/core/Option'
+ *
+ * assert.strictEqual(isNone(some(1)), false)
+ * assert.strictEqual(isNone(none), true)
+ * ```
+ *
+ * @public
  */
 export const isNone = (fa: Option<unknown>): fa is None => fa._tag === 'None'
 
@@ -846,8 +1050,11 @@ export const isNone = (fa: Option<unknown>): fa is None => fa._tag === 'None'
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const matchW =
   <B, A, C>(onNone: LazyArg<B>, onSome: (a: A) => C) =>
@@ -857,8 +1064,11 @@ export const matchW =
 /**
  * Alias of [`matchW`](#matchw).
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const foldW = matchW
 
@@ -866,41 +1076,51 @@ export const foldW = matchW
  * Takes a (lazy) default value, a function, and an `Option` value, if the `Option` value is `None` the default value is
  * returned, otherwise the function is applied to the value inside the `Some` and the result is returned.
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
  * @example
- *   import { some, none, match } from 'fp-ts/Option'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.strictEqual(
- *     pipe(
- *       some(1),
- *       match(
- *         () => 'a none',
- *         a => `a some containing ${a}`,
- *       ),
- *     ),
- *     'a some containing 1',
- *   )
+ * ```typescript
+ * import { some, none, match } from '@fp-tx/core/Option'
+ * import { pipe } from '@fp-tx/core/function'
  *
- *   assert.strictEqual(
- *     pipe(
- *       none,
- *       match(
- *         () => 'a none',
- *         a => `a some containing ${a}`,
- *       ),
+ * assert.strictEqual(
+ *   pipe(
+ *     some(1),
+ *     match(
+ *       () => 'a none',
+ *       a => `a some containing ${a}`,
  *     ),
- *     'a none',
- *   )
+ *   ),
+ *   'a some containing 1',
+ * )
+ *
+ * assert.strictEqual(
+ *   pipe(
+ *     none,
+ *     match(
+ *       () => 'a none',
+ *       a => `a some containing ${a}`,
+ *     ),
+ *   ),
+ *   'a none',
+ * )
+ * ```
+ *
+ * @public
  */
 export const match: <A, B>(onNone: LazyArg<B>, onSome: (a: A) => B) => (ma: Option<A>) => B = matchW
 
 /**
  * Alias of [`match`](#match).
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const fold = match
 
@@ -909,8 +1129,11 @@ export const fold = match
  *
  * The `W` suffix (short for **W**idening) means that the handler return type will be merged.
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
+ * @public
  */
 export const getOrElseW =
   <B>(onNone: LazyArg<B>) =>
@@ -920,52 +1143,69 @@ export const getOrElseW =
 /**
  * Extracts the value out of the structure, if it exists. Otherwise returns the given default value
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
  * @example
- *   import { some, none, getOrElse } from 'fp-ts/Option'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.strictEqual(
- *     pipe(
- *       some(1),
- *       getOrElse(() => 0),
- *     ),
- *     1,
- *   )
- *   assert.strictEqual(
- *     pipe(
- *       none,
- *       getOrElse(() => 0),
- *     ),
- *     0,
- *   )
+ * ```typescript
+ * import { some, none, getOrElse } from '@fp-tx/core/Option'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.strictEqual(
+ *   pipe(
+ *     some(1),
+ *     getOrElse(() => 0),
+ *   ),
+ *   1,
+ * )
+ * assert.strictEqual(
+ *   pipe(
+ *     none,
+ *     getOrElse(() => 0),
+ *   ),
+ *   0,
+ * )
+ * ```
+ *
+ * @public
  */
 export const getOrElse: <A>(onNone: LazyArg<A>) => (ma: Option<A>) => A = getOrElseW
 
 /**
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
 
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatten: <A>(mma: Option<Option<A>>) => Option<A> = compact
 
@@ -973,8 +1213,11 @@ export const flatten: <A>(mma: Option<Option<A>>) => Option<A> = compact
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 1.0.0
- * @category Combinators
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Combinators
+ * @public
  */
 export const tap: {
   <A, _>(self: Option<A>, f: (a: A) => Option<_>): Option<A>
@@ -985,41 +1228,58 @@ export const tap: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 1.0.0
- * @category Combinators
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Combinators
  * @example
- *   import { pipe } from 'fp-ts/function'
- *   import * as O from 'fp-ts/Option'
- *   import * as E from 'fp-ts/Either'
  *
- *   const compute = (value: number) =>
- *     pipe(
- *       O.of(value),
- *       O.tapEither(value => (value > 0 ? E.right('ok') : E.left('error'))),
- *     )
+ * ```typescript
+ * import { pipe } from '@fp-tx/core/function'
+ * import * as O from '@fp-tx/core/Option'
+ * import * as E from '@fp-tx/core/Either'
  *
- *   assert.deepStrictEqual(compute(1), O.of(1))
- *   assert.deepStrictEqual(compute(-42), O.none)
+ * const compute = (value: number) =>
+ *   pipe(
+ *     O.of(value),
+ *     O.tapEither(value => (value > 0 ? E.right('ok') : E.left('error'))),
+ *   )
+ *
+ * assert.deepStrictEqual(compute(1), O.of(1))
+ * assert.deepStrictEqual(compute(-42), O.none)
+ * ```
+ *
+ * @public
  */
 export const tapEither: {
   <A, E, _>(f: (a: A) => Either<E, _>): (self: Option<A>) => Option<A>
   <A, E, _>(self: Option<A>, f: (a: A) => Either<E, _>): Option<A>
 } = /*#__PURE__*/ dual(2, tapEither_(FromEither, Chain))
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const duplicate: <A>(ma: Option<A>) => Option<Option<A>> = /*#__PURE__*/ extend(identity)
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
   f: (...a: A) => Either<E, B>,
 ) => (...a: A) => Option<B> = /*#__PURE__*/ fromEitherK_(FromEither)
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const chainEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Option<A>) => Option<B> =
   /*#__PURE__*/ chainEitherK_(FromEither, Chain)
@@ -1027,8 +1287,11 @@ export const chainEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Option<A
 /**
  * Alias of `tapEither`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Option<A>) => Option<A> = tapEither
 
@@ -1036,14 +1299,21 @@ export const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Opt
  * Constructs a new `Option` from a nullable type. If the value is `null` or `undefined`, returns `None`, otherwise
  * returns the value wrapped in a `Some`.
  *
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
  * @example
- *   import { none, some, fromNullable } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(fromNullable(undefined), none)
- *   assert.deepStrictEqual(fromNullable(null), none)
- *   assert.deepStrictEqual(fromNullable(1), some(1))
+ * ```typescript
+ * import { none, some, fromNullable } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(fromNullable(undefined), none)
+ * assert.deepStrictEqual(fromNullable(null), none)
+ * assert.deepStrictEqual(fromNullable(1), some(1))
+ * ```
+ *
+ * @public
  */
 export const fromNullable = <A>(a: A): Option<NonNullable<A>> => (a == null ? none : some(a as NonNullable<A>))
 
@@ -1053,21 +1323,28 @@ export const fromNullable = <A>(a: A): Option<NonNullable<A>> => (a == null ? no
  *
  * See also [`tryCatchK`](#trycatchk).
  *
- * @since 1.0.0
- * @category Interop
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Interop
  * @example
- *   import { none, some, tryCatch } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(
- *     tryCatch(() => {
- *       throw new Error()
- *     }),
- *     none,
- *   )
- *   assert.deepStrictEqual(
- *     tryCatch(() => 1),
- *     some(1),
- *   )
+ * ```typescript
+ * import { none, some, tryCatch } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(
+ *   tryCatch(() => {
+ *     throw new Error()
+ *   }),
+ *   none,
+ * )
+ * assert.deepStrictEqual(
+ *   tryCatch(() => 1),
+ *   some(1),
+ * )
+ * ```
+ *
+ * @public
  */
 export const tryCatch = <A>(f: LazyArg<A>): Option<A> => {
   try {
@@ -1080,8 +1357,11 @@ export const tryCatch = <A>(f: LazyArg<A>): Option<A> => {
 /**
  * Converts a function that may throw to one returning a `Option`.
  *
- * @since 1.0.0
- * @category Interop
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Interop
+ * @public
  */
 export const tryCatchK =
   <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => B): ((...a: A) => Option<B>) =>
@@ -1091,20 +1371,27 @@ export const tryCatchK =
 /**
  * Returns a _smart constructor_ from a function that returns a nullable value.
  *
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
  * @example
- *   import { fromNullableK, none, some } from 'fp-ts/Option'
  *
- *   const f = (s: string): number | undefined => {
- *     const n = parseFloat(s)
- *     return isNaN(n) ? undefined : n
- *   }
+ * ```typescript
+ * import { fromNullableK, none, some } from '@fp-tx/core/Option'
  *
- *   const g = fromNullableK(f)
+ * const f = (s: string): number | undefined => {
+ *   const n = parseFloat(s)
+ *   return isNaN(n) ? undefined : n
+ * }
  *
- *   assert.deepStrictEqual(g('1'), some(1))
- *   assert.deepStrictEqual(g('a'), none)
+ * const g = fromNullableK(f)
+ *
+ * assert.deepStrictEqual(g('1'), some(1))
+ * assert.deepStrictEqual(g('a'), none)
+ * ```
+ *
+ * @public
  */
 export const fromNullableK: <A extends ReadonlyArray<unknown>, B>(
   f: (...a: A) => B | null | undefined,
@@ -1113,45 +1400,52 @@ export const fromNullableK: <A extends ReadonlyArray<unknown>, B>(
 /**
  * This is `chain` + `fromNullable`, useful when working with optional values.
  *
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
  * @example
- *   import { some, none, fromNullable, chainNullableK } from 'fp-ts/Option'
- *   import { pipe } from 'fp-ts/function'
  *
- *   interface Employee {
- *     readonly company?: {
- *       readonly address?: {
- *         readonly street?: {
- *           readonly name?: string
- *         }
+ * ```typescript
+ * import { some, none, fromNullable, chainNullableK } from '@fp-tx/core/Option'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * interface Employee {
+ *   readonly company?: {
+ *     readonly address?: {
+ *       readonly street?: {
+ *         readonly name?: string
  *       }
  *     }
  *   }
+ * }
  *
- *   const employee1: Employee = { company: { address: { street: { name: 'high street' } } } }
+ * const employee1: Employee = { company: { address: { street: { name: 'high street' } } } }
  *
- *   assert.deepStrictEqual(
- *     pipe(
- *       fromNullable(employee1.company),
- *       chainNullableK(company => company.address),
- *       chainNullableK(address => address.street),
- *       chainNullableK(street => street.name),
- *     ),
- *     some('high street'),
- *   )
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     fromNullable(employee1.company),
+ *     chainNullableK(company => company.address),
+ *     chainNullableK(address => address.street),
+ *     chainNullableK(street => street.name),
+ *   ),
+ *   some('high street'),
+ * )
  *
- *   const employee2: Employee = { company: { address: { street: {} } } }
+ * const employee2: Employee = { company: { address: { street: {} } } }
  *
- *   assert.deepStrictEqual(
- *     pipe(
- *       fromNullable(employee2.company),
- *       chainNullableK(company => company.address),
- *       chainNullableK(address => address.street),
- *       chainNullableK(street => street.name),
- *     ),
- *     none,
- *   )
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     fromNullable(employee2.company),
+ *     chainNullableK(company => company.address),
+ *     chainNullableK(address => address.street),
+ *     chainNullableK(street => street.name),
+ *   ),
+ *   none,
+ * )
+ * ```
+ *
+ * @public
  */
 export const chainNullableK =
   <A, B>(f: (a: A) => B | null | undefined) =>
@@ -1161,28 +1455,42 @@ export const chainNullableK =
 /**
  * Extracts the value out of the structure, if it exists. Otherwise returns `null`.
  *
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
  * @example
- *   import { some, none, toNullable } from 'fp-ts/Option'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.strictEqual(pipe(some(1), toNullable), 1)
- *   assert.strictEqual(pipe(none, toNullable), null)
+ * ```typescript
+ * import { some, none, toNullable } from '@fp-tx/core/Option'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.strictEqual(pipe(some(1), toNullable), 1)
+ * assert.strictEqual(pipe(none, toNullable), null)
+ * ```
+ *
+ * @public
  */
 export const toNullable: <A>(ma: Option<A>) => A | null = /*#__PURE__*/ match(constNull, identity)
 
 /**
  * Extracts the value out of the structure, if it exists. Otherwise returns `undefined`.
  *
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
  * @example
- *   import { some, none, toUndefined } from 'fp-ts/Option'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.strictEqual(pipe(some(1), toUndefined), 1)
- *   assert.strictEqual(pipe(none, toUndefined), undefined)
+ * ```typescript
+ * import { some, none, toUndefined } from '@fp-tx/core/Option'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.strictEqual(pipe(some(1), toUndefined), 1)
+ * assert.strictEqual(pipe(none, toUndefined), undefined)
+ * ```
+ *
+ * @public
  */
 export const toUndefined: <A>(ma: Option<A>) => A | undefined = /*#__PURE__*/ match(constUndefined, identity)
 
@@ -1193,15 +1501,21 @@ export const toUndefined: <A>(ma: Option<A>) => A | undefined = /*#__PURE__*/ ma
 /**
  * Returns `true` if `ma` contains `a`
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { some, none, elem } from 'fp-ts/Option'
- *   import { pipe } from 'fp-ts/function'
- *   import * as N from 'fp-ts/number'
  *
- *   assert.strictEqual(pipe(some(1), elem(N.Eq)(1)), true)
- *   assert.strictEqual(pipe(some(1), elem(N.Eq)(2)), false)
- *   assert.strictEqual(pipe(none, elem(N.Eq)(1)), false)
+ * ```typescript
+ * import { some, none, elem } from '@fp-tx/core/Option'
+ * import { pipe } from '@fp-tx/core/function'
+ * import * as N from '@fp-tx/core/number'
+ *
+ * assert.strictEqual(pipe(some(1), elem(N.Eq)(1)), true)
+ * assert.strictEqual(pipe(some(1), elem(N.Eq)(2)), false)
+ * assert.strictEqual(pipe(none, elem(N.Eq)(1)), false)
+ * ```
+ *
+ * @public
  */
 export function elem<A>(E: Eq<A>): {
   (a: A): (ma: Option<A>) => boolean
@@ -1220,32 +1534,38 @@ export function elem<A>(E: Eq<A>): (a: A, ma?: Option<A>) => boolean | ((ma: Opt
 /**
  * Returns `true` if the predicate is satisfied by the wrapped value
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { some, none, exists } from 'fp-ts/Option'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.strictEqual(
- *     pipe(
- *       some(1),
- *       exists(n => n > 0),
- *     ),
- *     true,
- *   )
- *   assert.strictEqual(
- *     pipe(
- *       some(1),
- *       exists(n => n > 1),
- *     ),
- *     false,
- *   )
- *   assert.strictEqual(
- *     pipe(
- *       none,
- *       exists(n => n > 0),
- *     ),
- *     false,
- *   )
+ * ```typescript
+ * import { some, none, exists } from '@fp-tx/core/Option'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.strictEqual(
+ *   pipe(
+ *     some(1),
+ *     exists(n => n > 0),
+ *   ),
+ *   true,
+ * )
+ * assert.strictEqual(
+ *   pipe(
+ *     some(1),
+ *     exists(n => n > 1),
+ *   ),
+ *   false,
+ * )
+ * assert.strictEqual(
+ *   pipe(
+ *     none,
+ *     exists(n => n > 0),
+ *   ),
+ *   false,
+ * )
+ * ```
+ *
+ * @public
  */
 export const exists =
   <A>(predicate: Predicate<A>) =>
@@ -1257,14 +1577,20 @@ export const exists =
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const Do: Option<{}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
 
@@ -1272,25 +1598,38 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @since 1.0.0
-   * @category Do notation
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Do notation
+   * @public
    */
   let_ as let,
 }
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const ApT: Option<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 
 interface OptionIterable<A> {
@@ -1304,8 +1643,11 @@ const do_: <MA extends OptionIterable<any>, A>(
 
 export {
   /**
-   * @since 1.0.0
-   * @category Do notation
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Do notation
+   * @public
    */
   do_ as do,
 }
@@ -1317,8 +1659,11 @@ export {
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndex =
   <A, B>(f: (index: number, a: A) => Option<B>) =>
@@ -1341,8 +1686,11 @@ export const traverseReadonlyNonEmptyArrayWithIndex =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseReadonlyArrayWithIndex = <A, B>(
   f: (index: number, a: A) => Option<B>,
@@ -1354,8 +1702,11 @@ export const traverseReadonlyArrayWithIndex = <A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseArrayWithIndex: <A, B>(
   f: (index: number, a: A) => Option<B>,
@@ -1364,8 +1715,11 @@ export const traverseArrayWithIndex: <A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseArray = <A, B>(f: (a: A) => Option<B>): ((as: ReadonlyArray<A>) => Option<ReadonlyArray<B>>) =>
   traverseReadonlyArrayWithIndex((_, a) => f(a))
@@ -1373,8 +1727,11 @@ export const traverseArray = <A, B>(f: (a: A) => Option<B>): ((as: ReadonlyArray
 /**
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const sequenceArray: <A>(arr: ReadonlyArray<Option<A>>) => Option<ReadonlyArray<A>> =
   /*#__PURE__*/ traverseArray(identity)
@@ -1386,16 +1743,22 @@ export const sequenceArray: <A>(arr: ReadonlyArray<Option<A>>) => Option<Readonl
 /**
  * Alias of `flatMap`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chain: <A, B>(f: (a: A) => Option<B>) => (ma: Option<A>) => Option<B> = flatMap
 
 /**
  * Alias of `tap`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainFirst: <A, B>(f: (a: A) => Option<B>) => (first: Option<A>) => Option<A> = tap
 
@@ -1406,9 +1769,12 @@ export const chainFirst: <A, B>(f: (a: A) => Option<B>) => (first: Option<A>) =>
 /**
  * Use `Refinement` module instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export function getRefinement<A, B extends A>(getOption: (a: A) => Option<B>): Refinement<A, B> {
   return (a: A): a is B => isSome(getOption(a))
@@ -1417,9 +1783,12 @@ export function getRefinement<A, B extends A>(getOption: (a: A) => Option<B>): R
 /**
  * Use [`chainNullableK`](#chainnullablek) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const mapNullable = chainNullableK
 
@@ -1427,9 +1796,12 @@ export const mapNullable = chainNullableK
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `O.Functor` instead of `O.option` (where `O` is from `import O from 'fp-ts/Option'`)
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const option: Monad1<URI> &
   Foldable1<URI> &
@@ -1464,18 +1836,24 @@ export const option: Monad1<URI> &
 /**
  * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const getApplySemigroup: <A>(S: Semigroup<A>) => Semigroup<Option<A>> = /*#__PURE__*/ getApplySemigroup_(Apply)
 
 /**
  * Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const getApplyMonoid: <A>(M: Monoid<A>) => Monoid<Option<A>> = /*#__PURE__*/ getApplicativeMonoid(Applicative)
 
@@ -1483,8 +1861,8 @@ export const getApplyMonoid: <A>(M: Monoid<A>) => Monoid<Option<A>> = /*#__PURE_
  * Use
  *
  * ```ts
- * import { first } from 'fp-ts/Semigroup'
- * import { getMonoid } from 'fp-ts/Option'
+ * import { first } from '@fp-tx/core/Semigroup'
+ * import { getMonoid } from '@fp-tx/core/Option'
  *
  * getMonoid(first())
  * ```
@@ -1500,17 +1878,24 @@ export const getApplyMonoid: <A>(M: Monoid<A>) => Monoid<Option<A>> = /*#__PURE_
  * | none    | some(b) | some(b)      |
  * | some(a) | some(b) | some(a)      |
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
  * @example
- *   import { getFirstMonoid, some, none } from 'fp-ts/Option'
  *
- *   const M = getFirstMonoid<number>()
- *   assert.deepStrictEqual(M.concat(none, none), none)
- *   assert.deepStrictEqual(M.concat(some(1), none), some(1))
- *   assert.deepStrictEqual(M.concat(none, some(2)), some(2))
- *   assert.deepStrictEqual(M.concat(some(1), some(2)), some(1))
+ * ```typescript
+ * import { getFirstMonoid, some, none } from '@fp-tx/core/Option'
+ *
+ * const M = getFirstMonoid<number>()
+ * assert.deepStrictEqual(M.concat(none, none), none)
+ * assert.deepStrictEqual(M.concat(some(1), none), some(1))
+ * assert.deepStrictEqual(M.concat(none, some(2)), some(2))
+ * assert.deepStrictEqual(M.concat(some(1), some(2)), some(1))
+ * ```
+ *
+ * @public
  */
 export const getFirstMonoid = <A = never>(): Monoid<Option<A>> => getMonoid(first())
 
@@ -1518,8 +1903,8 @@ export const getFirstMonoid = <A = never>(): Monoid<Option<A>> => getMonoid(firs
  * Use
  *
  * ```ts
- * import { last } from 'fp-ts/Semigroup'
- * import { getMonoid } from 'fp-ts/Option'
+ * import { last } from '@fp-tx/core/Semigroup'
+ * import { getMonoid } from '@fp-tx/core/Option'
  *
  * getMonoid(last())
  * ```
@@ -1535,16 +1920,23 @@ export const getFirstMonoid = <A = never>(): Monoid<Option<A>> => getMonoid(firs
  * | none    | some(b) | some(b)      |
  * | some(a) | some(b) | some(b)      |
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
  * @example
- *   import { getLastMonoid, some, none } from 'fp-ts/Option'
  *
- *   const M = getLastMonoid<number>()
- *   assert.deepStrictEqual(M.concat(none, none), none)
- *   assert.deepStrictEqual(M.concat(some(1), none), some(1))
- *   assert.deepStrictEqual(M.concat(none, some(2)), some(2))
- *   assert.deepStrictEqual(M.concat(some(1), some(2)), some(2))
+ * ```typescript
+ * import { getLastMonoid, some, none } from '@fp-tx/core/Option'
+ *
+ * const M = getLastMonoid<number>()
+ * assert.deepStrictEqual(M.concat(none, none), none)
+ * assert.deepStrictEqual(M.concat(some(1), none), some(1))
+ * assert.deepStrictEqual(M.concat(none, some(2)), some(2))
+ * assert.deepStrictEqual(M.concat(some(1), some(2)), some(2))
+ * ```
+ *
+ * @public
  */
 export const getLastMonoid = <A = never>(): Monoid<Option<A>> => getMonoid(last())

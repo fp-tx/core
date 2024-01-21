@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import { type Applicative, type Applicative2C } from './Applicative'
 import { type Apply2C } from './Apply'
 import { type Bifunctor2 } from './Bifunctor'
@@ -22,18 +26,33 @@ import { type PipeableTraverse2, type Traversable2 } from './Traversable'
 // model
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const fst: <A, E>(ea: [A, E]) => A = RT.fst
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const snd: <A, E>(ea: [A, E]) => E = RT.snd
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const swap = <A, E>(ea: [A, E]): [E, A] => [snd(ea), fst(ea)]
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export function getApply<S>(S: Semigroup<S>): Apply2C<URI, S> {
   return {
@@ -51,8 +70,11 @@ const of =
   }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export function getApplicative<M>(M: Monoid<M>): Applicative2C<URI, M> {
   const A = getApply(M)
@@ -66,8 +88,11 @@ export function getApplicative<M>(M: Monoid<M>): Applicative2C<URI, M> {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export function getChain<S>(S: Semigroup<S>): Chain2C<URI, S> {
   const A = getApply(S)
@@ -84,8 +109,11 @@ export function getChain<S>(S: Semigroup<S>): Chain2C<URI, S> {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export function getMonad<M>(M: Monoid<M>): Monad2C<URI, M> {
   const C = getChain(M)
@@ -100,8 +128,11 @@ export function getMonad<M>(M: Monoid<M>): Monad2C<URI, M> {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export function getChainRec<M>(M: Monoid<M>): ChainRec2C<URI, M> {
   const chainRec = <A, B>(a: A, f: (a: A) => [Either<A, B>, M]): [B, M] => {
@@ -155,8 +186,11 @@ function _traverse<F>(F: Applicative<F>): <A, S, B>(ta: [A, S], f: (a: A) => HKT
 /**
  * Map a pair of functions over the two type arguments of the bifunctor.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const bimap: <E, G, A, B>(mapSnd: (e: E) => G, mapFst: (a: A) => B) => (fa: [A, E]) => [B, G] = (f, g) => fa => [
   g(fst(fa)),
@@ -168,8 +202,11 @@ export const bimap: <E, G, A, B>(mapSnd: (e: E) => G, mapFst: (a: A) => B) => (f
  *
  * This is the `map` operation of the `Functor` instance.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const mapFst: <A, B>(f: (a: A) => B) => <E>(fa: [A, E]) => [B, E] = f => fa => [f(fst(fa)), snd(fa)]
 
@@ -178,47 +215,77 @@ export const mapFst: <A, B>(f: (a: A) => B) => <E>(fa: [A, E]) => [B, E] = f => 
  *
  * This is the `mapLeft` operation of the `Bifunctor` instance.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const mapSnd: <E, G>(f: (e: E) => G) => <A>(fa: [A, E]) => [A, G] = f => fa => [fst(fa), f(snd(fa))]
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const compose: <A, B>(ab: [B, A]) => <C>(bc: [C, B]) => [C, A] = ab => bc => [fst(bc), snd(ab)]
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const extend: <E, A, B>(f: (wa: [A, E]) => B) => (wa: [A, E]) => [B, E] = f => wa => [f(wa), snd(wa)]
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const duplicate: <E, A>(wa: [A, E]) => [[A, E], E] = /*#__PURE__*/ extend(identity)
 
 /**
- * @since 1.0.0
- * @category Extract
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Extract
+ * @public
  */
 export const extract: <E, A>(wa: [A, E]) => A = RT.extract
 
 /**
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
+ * @public
  */
 export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => <E>(fa: [A, E]) => M = RT.foldMap
 
 /**
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
+ * @public
  */
 export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => <E>(fa: [A, E]) => B = RT.reduce
 
 /**
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
+ * @public
  */
 export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => <E>(fa: [A, E]) => B = RT.reduceRight
 
 /**
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverse: PipeableTraverse2<URI> = <F>(
   F: Applicative<F>,
@@ -227,8 +294,11 @@ export const traverse: PipeableTraverse2<URI> = <F>(
 }
 
 /**
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const sequence: Traversable2<URI>['sequence'] =
   <F>(F: Applicative<F>) =>
@@ -237,14 +307,20 @@ export const sequence: Traversable2<URI>['sequence'] =
   }
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export const URI = 'Tuple'
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export type URI = typeof URI
 
@@ -255,8 +331,11 @@ declare module './HKT' {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Functor: Functor2<URI> = {
   URI,
@@ -264,14 +343,20 @@ export const Functor: Functor2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Bifunctor: Bifunctor2<URI> = {
   URI,
@@ -280,8 +365,11 @@ export const Bifunctor: Bifunctor2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Semigroupoid: Semigroupoid2<URI> = {
   URI,
@@ -289,8 +377,11 @@ export const Semigroupoid: Semigroupoid2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Comonad: Comonad2<URI> = {
   URI,
@@ -300,8 +391,11 @@ export const Comonad: Comonad2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Foldable: Foldable2<URI> = {
   URI,
@@ -311,8 +405,11 @@ export const Foldable: Foldable2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Traversable: Traversable2<URI> = {
   URI,
@@ -331,18 +428,24 @@ export const Traversable: Traversable2<URI> = {
 /**
  * Use [`mapFst`](#mapfst) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: [A, E]) => [B, E] = mapFst
 
 /**
  * Use [`mapSnd`](#mapsnd) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: [A, E]) => [A, G] = mapSnd
 
@@ -350,9 +453,12 @@ export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: [A, E]) => [A, G] = mapS
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `T.Functor` instead of `T.tuple` (where `T` is from `import T from 'fp-ts/Tuple'`)
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const tuple: Semigroupoid2<URI> & Bifunctor2<URI> & Comonad2<URI> & Foldable2<URI> & Traversable2<URI> = {
   URI,

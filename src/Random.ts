@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import { pipe } from './function'
 import { type IO, map } from './IO'
 import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
@@ -7,7 +11,9 @@ import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
  * Returns a random number between 0 (inclusive) and 1 (exclusive). This is a direct wrapper around JavaScript's
  * `Math.random()`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const random: IO<number> = () => Math.random()
 
@@ -16,7 +22,9 @@ export const random: IO<number> = () => Math.random()
  * distributed in the closed interval `[low, high]`. It is unspecified what happens if `low > high`, or if either of
  * `low` or `high` is not an integer.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function randomInt(low: number, high: number): IO<number> {
   return pipe(
@@ -29,7 +37,9 @@ export function randomInt(low: number, high: number): IO<number> {
  * Returns a random number between a minimum value (inclusive) and a maximum value (exclusive). It is unspecified what
  * happens if `maximum < minimum`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function randomRange(min: number, max: number): IO<number> {
   return pipe(
@@ -41,7 +51,9 @@ export function randomRange(min: number, max: number): IO<number> {
 /**
  * Returns a random boolean value with an equal chance of being `true` or `false`
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const randomBool: IO<boolean> = /*#__PURE__*/ pipe(
   random,
@@ -51,7 +63,9 @@ export const randomBool: IO<boolean> = /*#__PURE__*/ pipe(
 /**
  * Returns a random element of a `ReadonlyNonEmptyArray`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const randomElem = <A>(as: ReadonlyNonEmptyArray<A>): IO<A> =>
   pipe(

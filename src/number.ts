@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import type * as B from './Bounded'
 import type * as E from './Eq'
 import type * as F from './Field'
@@ -14,8 +18,11 @@ import type * as S from './Show'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Refinements
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Refinements
+ * @public
  */
 export const isNumber: Refinement<unknown, number> = (u: unknown): u is number => typeof u === 'number'
 
@@ -24,16 +31,22 @@ export const isNumber: Refinement<unknown, number> = (u: unknown): u is number =
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Eq: E.Eq<number> = {
   equals: (first, second) => first === second,
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Ord: O.Ord<number> = {
   equals: Eq.equals,
@@ -44,8 +57,11 @@ export const Ord: O.Ord<number> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Bounded: B.Bounded<number> = {
   equals: Eq.equals,
@@ -55,16 +71,22 @@ export const Bounded: B.Bounded<number> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Show: S.Show<number> = {
   show: n => JSON.stringify(n),
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const MagmaSub: Magma<number> = {
   concat: (first, second) => first - second,
@@ -73,12 +95,19 @@ export const MagmaSub: Magma<number> = {
 /**
  * `number` semigroup under addition.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { SemigroupSum } from 'fp-ts/number'
  *
- *   assert.deepStrictEqual(SemigroupSum.concat(2, 3), 5)
+ * ```typescript
+ * import { SemigroupSum } from '@fp-tx/core/number'
+ *
+ * assert.deepStrictEqual(SemigroupSum.concat(2, 3), 5)
+ * ```
+ *
+ * @public
  */
 export const SemigroupSum: Semigroup<number> = {
   concat: (first, second) => first + second,
@@ -87,12 +116,19 @@ export const SemigroupSum: Semigroup<number> = {
 /**
  * `number` semigroup under multiplication.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { SemigroupProduct } from 'fp-ts/number'
  *
- *   assert.deepStrictEqual(SemigroupProduct.concat(2, 3), 6)
+ * ```typescript
+ * import { SemigroupProduct } from '@fp-tx/core/number'
+ *
+ * assert.deepStrictEqual(SemigroupProduct.concat(2, 3), 6)
+ * ```
+ *
+ * @public
  */
 export const SemigroupProduct: Semigroup<number> = {
   concat: (first, second) => first * second,
@@ -103,12 +139,19 @@ export const SemigroupProduct: Semigroup<number> = {
  *
  * The `empty` value is `0`.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { MonoidSum } from 'fp-ts/number'
  *
- *   assert.deepStrictEqual(MonoidSum.concat(2, MonoidSum.empty), 2)
+ * ```typescript
+ * import { MonoidSum } from '@fp-tx/core/number'
+ *
+ * assert.deepStrictEqual(MonoidSum.concat(2, MonoidSum.empty), 2)
+ * ```
+ *
+ * @public
  */
 export const MonoidSum: Monoid<number> = {
   concat: SemigroupSum.concat,
@@ -120,12 +163,19 @@ export const MonoidSum: Monoid<number> = {
  *
  * The `empty` value is `1`.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { MonoidProduct } from 'fp-ts/number'
  *
- *   assert.deepStrictEqual(MonoidProduct.concat(2, MonoidProduct.empty), 2)
+ * ```typescript
+ * import { MonoidProduct } from '@fp-tx/core/number'
+ *
+ * assert.deepStrictEqual(MonoidProduct.concat(2, MonoidProduct.empty), 2)
+ * ```
+ *
+ * @public
  */
 export const MonoidProduct: Monoid<number> = {
   concat: SemigroupProduct.concat,
@@ -133,8 +183,11 @@ export const MonoidProduct: Monoid<number> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Field: F.Field<number> = {
   add: SemigroupSum.concat,

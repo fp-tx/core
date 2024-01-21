@@ -7,7 +7,9 @@
  * 2. Antisymmetry: if `S.compare(a, b) <= 0` and `S.compare(b, a) <= 0` then `a <-> b`
  * 3. Transitivity: if `S.compare(a, b) <= 0` and `S.compare(b, c) <= 0` then `S.compare(a, c) <= 0`
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type Contravariant1 } from './Contravariant'
 import { type Eq, eqStrict } from './Eq'
@@ -21,8 +23,11 @@ import { type Semigroup } from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Ord<A> extends Eq<A> {
   readonly compare: (first: A, second: A) => Ordering
@@ -33,8 +38,11 @@ export interface Ord<A> extends Eq<A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Defaults
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Defaults
+ * @public
  */
 export const equalsDefault =
   <A>(compare: Ord<A>['compare']): Eq<A>['equals'] =>
@@ -46,8 +54,11 @@ export const equalsDefault =
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const fromCompare = <A>(compare: Ord<A>['compare']): Ord<A> => ({
   equals: equalsDefault(compare),
@@ -61,17 +72,23 @@ export const fromCompare = <A>(compare: Ord<A>['compare']): Ord<A> => ({
 /**
  * Given a tuple of `Ord`s returns an `Ord` for the tuple.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { tuple } from 'fp-ts/Ord'
- *   import * as B from 'fp-ts/boolean'
- *   import * as S from 'fp-ts/string'
- *   import * as N from 'fp-ts/number'
  *
- *   const O = tuple(S.Ord, N.Ord, B.Ord)
- *   assert.strictEqual(O.compare(['a', 1, true], ['b', 2, true]), -1)
- *   assert.strictEqual(O.compare(['a', 1, true], ['a', 2, true]), -1)
- *   assert.strictEqual(O.compare(['a', 1, true], ['a', 1, false]), 1)
+ * ```typescript
+ * import { tuple } from '@fp-tx/core/Ord'
+ * import * as B from '@fp-tx/core/boolean'
+ * import * as S from '@fp-tx/core/string'
+ * import * as N from '@fp-tx/core/number'
+ *
+ * const O = tuple(S.Ord, N.Ord, B.Ord)
+ * assert.strictEqual(O.compare(['a', 1, true], ['b', 2, true]), -1)
+ * assert.strictEqual(O.compare(['a', 1, true], ['a', 2, true]), -1)
+ * assert.strictEqual(O.compare(['a', 1, true], ['a', 1, false]), 1)
+ * ```
+ *
+ * @public
  */
 export const tuple = <A extends ReadonlyArray<unknown>>(...ords: { [K in keyof A]: Ord<A[K]> }): Ord<Readonly<A>> =>
   fromCompare((first, second) => {
@@ -85,7 +102,11 @@ export const tuple = <A extends ReadonlyArray<unknown>>(...ords: { [K in keyof A
     return ords[i].compare(first[i], second[i])
   })
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const reverse = <A>(O: Ord<A>): Ord<A> => fromCompare((first, second) => O.compare(second, first))
 
 /* istanbul ignore next */
@@ -103,48 +124,60 @@ const contramap_: <A, B>(fa: Ord<A>, f: (b: B) => A) => Ord<B> = (fa, f) => pipe
  * If we have a way of comparing `lastName`s for ordering (`ordLastName: Ord<string>`) and we know how to go from `User
  * -> string`, using `contramap` we can do this
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { pipe } from 'fp-ts/function'
- *   import { contramap, Ord } from 'fp-ts/Ord'
- *   import * as RA from 'fp-ts/ReadonlyArray'
- *   import * as S from 'fp-ts/string'
  *
- *   interface User {
- *     readonly firstName: string
- *     readonly lastName: string
- *   }
+ * ```typescript
+ * import { pipe } from '@fp-tx/core/function'
+ * import { contramap, Ord } from '@fp-tx/core/Ord'
+ * import * as RA from '@fp-tx/core/ReadonlyArray'
+ * import * as S from '@fp-tx/core/string'
  *
- *   const ordLastName: Ord<string> = S.Ord
+ * interface User {
+ *   readonly firstName: string
+ *   readonly lastName: string
+ * }
  *
- *   const ordByLastName: Ord<User> = pipe(
- *     ordLastName,
- *     contramap(user => user.lastName),
- *   )
+ * const ordLastName: Ord<string> = S.Ord
  *
- *   assert.deepStrictEqual(
- *     RA.sort(ordByLastName)([
- *       { firstName: 'a', lastName: 'd' },
- *       { firstName: 'c', lastName: 'b' },
- *     ]),
- *     [
- *       { firstName: 'c', lastName: 'b' },
- *       { firstName: 'a', lastName: 'd' },
- *     ],
- *   )
+ * const ordByLastName: Ord<User> = pipe(
+ *   ordLastName,
+ *   contramap(user => user.lastName),
+ * )
+ *
+ * assert.deepStrictEqual(
+ *   RA.sort(ordByLastName)([
+ *     { firstName: 'a', lastName: 'd' },
+ *     { firstName: 'c', lastName: 'b' },
+ *   ]),
+ *   [
+ *     { firstName: 'c', lastName: 'b' },
+ *     { firstName: 'a', lastName: 'd' },
+ *   ],
+ * )
+ * ```
+ *
+ * @public
  */
 export const contramap: <A, B>(f: (b: B) => A) => (fa: Ord<A>) => Ord<B> = f => fa =>
   fromCompare((first, second) => fa.compare(f(first), f(second)))
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export const URI = 'Ord'
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export type URI = typeof URI
 
@@ -160,45 +193,52 @@ declare module './HKT' {
  * For example the following snippet builds an `Ord` for a type `User` which sorts by `created` date descending, and
  * **then** `lastName`
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import * as D from 'fp-ts/Date'
- *   import { pipe } from 'fp-ts/function'
- *   import { contramap, getSemigroup, Ord, reverse } from 'fp-ts/Ord'
- *   import * as RA from 'fp-ts/ReadonlyArray'
- *   import * as S from 'fp-ts/string'
  *
- *   interface User {
- *     readonly id: string
- *     readonly lastName: string
- *     readonly created: Date
- *   }
+ * ```typescript
+ * import * as D from '@fp-tx/core/Date'
+ * import { pipe } from '@fp-tx/core/function'
+ * import { contramap, getSemigroup, Ord, reverse } from '@fp-tx/core/Ord'
+ * import * as RA from '@fp-tx/core/ReadonlyArray'
+ * import * as S from '@fp-tx/core/string'
  *
- *   const ordByLastName: Ord<User> = pipe(
- *     S.Ord,
- *     contramap(user => user.lastName),
- *   )
+ * interface User {
+ *   readonly id: string
+ *   readonly lastName: string
+ *   readonly created: Date
+ * }
  *
- *   const ordByCreated: Ord<User> = pipe(
- *     D.Ord,
- *     contramap(user => user.created),
- *   )
+ * const ordByLastName: Ord<User> = pipe(
+ *   S.Ord,
+ *   contramap(user => user.lastName),
+ * )
  *
- *   const ordUserByCreatedDescThenLastName = getSemigroup<User>().concat(reverse(ordByCreated), ordByLastName)
+ * const ordByCreated: Ord<User> = pipe(
+ *   D.Ord,
+ *   contramap(user => user.created),
+ * )
  *
- *   assert.deepStrictEqual(
- *     RA.sort(ordUserByCreatedDescThenLastName)([
- *       { id: 'c', lastName: 'd', created: new Date(1973, 10, 30) },
- *       { id: 'a', lastName: 'b', created: new Date(1973, 10, 30) },
- *       { id: 'e', lastName: 'f', created: new Date(1980, 10, 30) },
- *     ]),
- *     [
- *       { id: 'e', lastName: 'f', created: new Date(1980, 10, 30) },
- *       { id: 'a', lastName: 'b', created: new Date(1973, 10, 30) },
- *       { id: 'c', lastName: 'd', created: new Date(1973, 10, 30) },
- *     ],
- *   )
+ * const ordUserByCreatedDescThenLastName = getSemigroup<User>().concat(reverse(ordByCreated), ordByLastName)
+ *
+ * assert.deepStrictEqual(
+ *   RA.sort(ordUserByCreatedDescThenLastName)([
+ *     { id: 'c', lastName: 'd', created: new Date(1973, 10, 30) },
+ *     { id: 'a', lastName: 'b', created: new Date(1973, 10, 30) },
+ *     { id: 'e', lastName: 'f', created: new Date(1980, 10, 30) },
+ *   ]),
+ *   [
+ *     { id: 'e', lastName: 'f', created: new Date(1980, 10, 30) },
+ *     { id: 'a', lastName: 'b', created: new Date(1973, 10, 30) },
+ *     { id: 'c', lastName: 'd', created: new Date(1973, 10, 30) },
+ *   ],
+ * )
+ * ```
+ *
+ * @public
  */
 export const getSemigroup = <A = never>(): Semigroup<Ord<A>> => ({
   concat: (first, second) =>
@@ -214,65 +254,72 @@ export const getSemigroup = <A = never>(): Semigroup<Ord<A>> => ({
  * - Its `concat(ord1, ord2)` operation will order first by `ord1`, and then by `ord2`
  * - Its `empty` value is an `Ord` that always considers compared elements equal
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { sort } from 'fp-ts/Array'
- *   import { contramap, reverse, getMonoid } from 'fp-ts/Ord'
- *   import * as S from 'fp-ts/string'
- *   import * as B from 'fp-ts/boolean'
- *   import { pipe } from 'fp-ts/function'
- *   import { concatAll } from 'fp-ts/Monoid'
- *   import * as N from 'fp-ts/number'
  *
- *   interface User {
- *     readonly id: number
- *     readonly name: string
- *     readonly age: number
- *     readonly rememberMe: boolean
- *   }
+ * ```typescript
+ * import { sort } from '@fp-tx/core/Array'
+ * import { contramap, reverse, getMonoid } from '@fp-tx/core/Ord'
+ * import * as S from '@fp-tx/core/string'
+ * import * as B from '@fp-tx/core/boolean'
+ * import { pipe } from '@fp-tx/core/function'
+ * import { concatAll } from '@fp-tx/core/Monoid'
+ * import * as N from '@fp-tx/core/number'
  *
- *   const byName = pipe(
- *     S.Ord,
- *     contramap((p: User) => p.name),
- *   )
+ * interface User {
+ *   readonly id: number
+ *   readonly name: string
+ *   readonly age: number
+ *   readonly rememberMe: boolean
+ * }
  *
- *   const byAge = pipe(
- *     N.Ord,
- *     contramap((p: User) => p.age),
- *   )
+ * const byName = pipe(
+ *   S.Ord,
+ *   contramap((p: User) => p.name),
+ * )
  *
- *   const byRememberMe = pipe(
- *     B.Ord,
- *     contramap((p: User) => p.rememberMe),
- *   )
+ * const byAge = pipe(
+ *   N.Ord,
+ *   contramap((p: User) => p.age),
+ * )
  *
- *   const M = getMonoid<User>()
+ * const byRememberMe = pipe(
+ *   B.Ord,
+ *   contramap((p: User) => p.rememberMe),
+ * )
  *
- *   const users: Array<User> = [
- *     { id: 1, name: 'Guido', age: 47, rememberMe: false },
- *     { id: 2, name: 'Guido', age: 46, rememberMe: true },
- *     { id: 3, name: 'Giulio', age: 44, rememberMe: false },
- *     { id: 4, name: 'Giulio', age: 44, rememberMe: true },
- *   ]
+ * const M = getMonoid<User>()
  *
- *   // sort by name, then by age, then by `rememberMe`
- *   const O1 = concatAll(M)([byName, byAge, byRememberMe])
- *   assert.deepStrictEqual(sort(O1)(users), [
- *     { id: 3, name: 'Giulio', age: 44, rememberMe: false },
- *     { id: 4, name: 'Giulio', age: 44, rememberMe: true },
- *     { id: 2, name: 'Guido', age: 46, rememberMe: true },
- *     { id: 1, name: 'Guido', age: 47, rememberMe: false },
- *   ])
+ * const users: Array<User> = [
+ *   { id: 1, name: 'Guido', age: 47, rememberMe: false },
+ *   { id: 2, name: 'Guido', age: 46, rememberMe: true },
+ *   { id: 3, name: 'Giulio', age: 44, rememberMe: false },
+ *   { id: 4, name: 'Giulio', age: 44, rememberMe: true },
+ * ]
  *
- *   // now `rememberMe = true` first, then by name, then by age
- *   const O2 = concatAll(M)([reverse(byRememberMe), byName, byAge])
- *   assert.deepStrictEqual(sort(O2)(users), [
- *     { id: 4, name: 'Giulio', age: 44, rememberMe: true },
- *     { id: 2, name: 'Guido', age: 46, rememberMe: true },
- *     { id: 3, name: 'Giulio', age: 44, rememberMe: false },
- *     { id: 1, name: 'Guido', age: 47, rememberMe: false },
- *   ])
+ * // sort by name, then by age, then by `rememberMe`
+ * const O1 = concatAll(M)([byName, byAge, byRememberMe])
+ * assert.deepStrictEqual(sort(O1)(users), [
+ *   { id: 3, name: 'Giulio', age: 44, rememberMe: false },
+ *   { id: 4, name: 'Giulio', age: 44, rememberMe: true },
+ *   { id: 2, name: 'Guido', age: 46, rememberMe: true },
+ *   { id: 1, name: 'Guido', age: 47, rememberMe: false },
+ * ])
+ *
+ * // now `rememberMe = true` first, then by name, then by age
+ * const O2 = concatAll(M)([reverse(byRememberMe), byName, byAge])
+ * assert.deepStrictEqual(sort(O2)(users), [
+ *   { id: 4, name: 'Giulio', age: 44, rememberMe: true },
+ *   { id: 2, name: 'Guido', age: 46, rememberMe: true },
+ *   { id: 3, name: 'Giulio', age: 44, rememberMe: false },
+ *   { id: 1, name: 'Guido', age: 47, rememberMe: false },
+ * ])
+ * ```
+ *
+ * @public
  */
 export const getMonoid = <A = never>(): Monoid<Ord<A>> => ({
   concat: getSemigroup<A>().concat,
@@ -280,8 +327,11 @@ export const getMonoid = <A = never>(): Monoid<Ord<A>> => ({
 })
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Contravariant: Contravariant1<URI> = {
   URI,
@@ -292,13 +342,21 @@ export const Contravariant: Contravariant1<URI> = {
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const trivial: Ord<unknown> = {
   equals: constTrue,
   compare: /*#__PURE__*/ constant(0),
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const equals =
   <A>(O: Ord<A>) =>
   (second: A) =>
@@ -309,7 +367,9 @@ export const equals =
 /**
  * Test whether one value is _strictly less than_ another
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const lt =
   <A>(O: Ord<A>) =>
@@ -320,7 +380,9 @@ export const lt =
 /**
  * Test whether one value is _strictly greater than_ another
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const gt =
   <A>(O: Ord<A>) =>
@@ -331,7 +393,9 @@ export const gt =
 /**
  * Test whether one value is _non-strictly less than_ another
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const leq =
   <A>(O: Ord<A>) =>
@@ -342,7 +406,9 @@ export const leq =
 /**
  * Test whether one value is _non-strictly greater than_ another
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const geq =
   <A>(O: Ord<A>) =>
@@ -353,7 +419,9 @@ export const geq =
 /**
  * Take the minimum of two values. If they are considered equal, the first argument is chosen
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const min =
   <A>(O: Ord<A>) =>
@@ -364,7 +432,9 @@ export const min =
 /**
  * Take the maximum of two values. If they are considered equal, the first argument is chosen
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const max =
   <A>(O: Ord<A>) =>
@@ -374,7 +444,9 @@ export const max =
 /**
  * Clamp a value between a minimum and a maximum
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const clamp = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => A) => {
   const minO = min(O)
@@ -385,7 +457,9 @@ export const clamp = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => A) => {
 /**
  * Test whether a value is between a minimum and a maximum (inclusive)
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const between = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => boolean) => {
   const ltO = lt(O)
@@ -400,9 +474,12 @@ export const between = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => boolean) =>
 /**
  * Use [`tuple`](#tuple) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const getTupleOrd: <T extends ReadonlyArray<Ord<any>>>(
   ...ords: T
@@ -411,18 +488,24 @@ export const getTupleOrd: <T extends ReadonlyArray<Ord<any>>>(
 /**
  * Use [`reverse`](#reverse) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const getDualOrd = reverse
 
 /**
  * Use [`Contravariant`](#contravariant) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const ord: Contravariant1<URI> = Contravariant
 
@@ -443,36 +526,48 @@ const strictOrd = {
 /**
  * Use [`Ord`](./boolean.ts.html#ord) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const ordBoolean: Ord<boolean> = strictOrd
 
 /**
  * Use [`Ord`](./string.ts.html#ord) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const ordString: Ord<string> = strictOrd
 
 /**
  * Use [`Ord`](./number.ts.html#ord) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const ordNumber: Ord<number> = strictOrd
 
 /**
  * Use [`Ord`](./Date.ts.html#ord) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const ordDate: Ord<Date> = /*#__PURE__*/ pipe(
   ordNumber,

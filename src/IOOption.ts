@@ -4,7 +4,9 @@
  * If you want to represent a synchronous computation that never fails, please see `IO`. If you want to represent a
  * synchronous computation that may fail, please see `IOEither`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type Alt1 } from './Alt'
 import { type Alternative1 } from './Alternative'
@@ -48,8 +50,11 @@ import { guard as guard_, type Zero1 } from './Zero'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface IOOption<A> extends IO<Option<A>> {}
 
@@ -58,14 +63,20 @@ export interface IOOption<A> extends IO<Option<A>> {}
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const some: <A>(a: A) => IOOption<A> = /*#__PURE__*/ OT.some(I.Pointed)
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export const fromPredicate: {
   <A, B extends A>(refinement: Refinement<A, B>): (a: A) => IOOption<B>
@@ -78,32 +89,47 @@ export const fromPredicate: {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
+ * @public
  */
 export const fromOption: <A>(fa: Option<A>) => IOOption<A> = I.of
 
 /**
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
+ * @public
  */
 export const fromEither: <A>(fa: Either<unknown, A>) => IOOption<A> = /*#__PURE__*/ OT.fromEither(I.Pointed)
 
 /**
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
+ * @public
  */
 export const fromIO: <A>(fa: IO<A>) => IOOption<A> = /*#__PURE__*/ OT.fromF(I.Functor)
 
 /**
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
+ * @public
  */
 export const fromIOEither: <A>(fa: IOEither<unknown, A>) => IOOption<A> = /*#__PURE__*/ I.map(O.fromEither)
 
 /**
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const match: <B, A>(onNone: () => B, onSome: (a: A) => B) => (ma: IOOption<A>) => IO<B> = /*#__PURE__*/ OT.match(
   I.Functor,
@@ -114,16 +140,22 @@ export const match: <B, A>(onNone: () => B, onSome: (a: A) => B) => (ma: IOOptio
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const matchW: <B, A, C>(onNone: () => B, onSome: (a: A) => C) => (ma: IOOption<A>) => IO<B | C> = match as any
 
 /**
  * The `E` suffix (short for **E**ffect) means that the handlers return an effect (`IO`).
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const matchE: <B, A>(onNone: () => IO<B>, onSome: (a: A) => IO<B>) => (ma: IOOption<A>) => IO<B> =
   /*#__PURE__*/ OT.matchE(I.Chain)
@@ -131,8 +163,11 @@ export const matchE: <B, A>(onNone: () => IO<B>, onSome: (a: A) => IO<B>) => (ma
 /**
  * Alias of [`matchE`](#matche).
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const fold = matchE
 
@@ -141,15 +176,21 @@ export const fold = matchE
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const matchEW: <B, C, A>(onNone: () => IO<B>, onSome: (a: A) => IO<C>) => (ma: IOOption<A>) => IO<B | C> =
   matchE as any
 
 /**
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
+ * @public
  */
 export const getOrElse: <A>(onNone: LazyArg<IO<A>>) => (fa: IOOption<A>) => IO<A> = /*#__PURE__*/ OT.getOrElse(I.Monad)
 
@@ -158,32 +199,47 @@ export const getOrElse: <A>(onNone: LazyArg<IO<A>>) => (fa: IOOption<A>) => IO<A
  *
  * The `W` suffix (short for **W**idening) means that the handler return type will be merged.
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
+ * @public
  */
 export const getOrElseW: <B>(onNone: LazyArg<IO<B>>) => <A>(ma: IOOption<A>) => IO<A | B> = getOrElse as any
 
 /**
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
+ * @public
  */
 export const toUndefined: <A>(ma: IOOption<A>) => IO<A | undefined> = I.map(O.toUndefined)
 
 /**
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
+ * @public
  */
 export const toNullable: <A>(ma: IOOption<A>) => IO<A | null> = I.map(O.toNullable)
 
 /**
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
+ * @public
  */
 export const fromNullable: <A>(a: A) => IOOption<NonNullable<A>> = /*#__PURE__*/ OT.fromNullable(I.Pointed)
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export const fromNullableK: <A extends ReadonlyArray<unknown>, B>(
   f: (...a: A) => B | null | undefined,
@@ -192,8 +248,11 @@ export const fromNullableK: <A extends ReadonlyArray<unknown>, B>(
 /**
  * Alias of `flatMapNullable`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainNullableK: <A, B>(
   f: (a: A) => B | null | undefined,
@@ -204,8 +263,11 @@ export const chainNullableK: <A, B>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export const fromOptionK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => Option<B>) => (...a: A) => IOOption<B> =
   /*#__PURE__*/ OT.fromOptionK(I.Pointed)
@@ -214,23 +276,36 @@ export const fromOptionK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => 
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const map: <A, B>(f: (a: A) => B) => (fa: IOOption<A>) => IOOption<B> = /*#__PURE__*/ OT.map(I.Functor)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const ap: <A>(fa: IOOption<A>) => <B>(fab: IOOption<(a: A) => B>) => IOOption<B> = /*#__PURE__*/ OT.ap(I.Apply)
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const of: <A>(a: A) => IOOption<A> = some
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatMap: {
   <A, B>(f: (a: A) => IOOption<B>): (ma: IOOption<A>) => IOOption<B>
@@ -238,14 +313,20 @@ export const flatMap: {
 } = /*#__PURE__*/ dual(2, OT.flatMap(I.Monad))
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatten: <A>(mma: IOOption<IOOption<A>>) => IOOption<A> = /*#__PURE__*/ flatMap(identity)
 
 /**
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
+ * @public
  */
 export const alt: <A>(second: LazyArg<IOOption<A>>) => (first: IOOption<A>) => IOOption<A> = /*#__PURE__*/ OT.alt(
   I.Monad,
@@ -256,38 +337,61 @@ export const alt: <A>(second: LazyArg<IOOption<A>>) => (first: IOOption<A>) => I
  *
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
+ * @public
  */
 export const altW: <B>(second: LazyArg<IOOption<B>>) => <A>(first: IOOption<A>) => IOOption<A | B> = alt as any
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const zero: <A>() => IOOption<A> = /*#__PURE__*/ OT.zero(I.Pointed)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const throwError: MonadThrow1<URI>['throwError'] = zero
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const none: IOOption<never> = /*#__PURE__*/ zero()
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const compact: Compactable1<URI>['compact'] = /*#__PURE__*/ compact_(I.Functor, O.Compactable)
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const separate: Compactable1<URI>['separate'] = /*#__PURE__*/ separate_(I.Functor, O.Compactable, O.Functor)
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const filter: {
   <A, B extends A>(refinement: Refinement<A, B>): (fb: IOOption<A>) => IOOption<B>
@@ -296,8 +400,11 @@ export const filter: {
 } = /*#__PURE__*/ filter_(I.Functor, O.Filterable)
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fga: IOOption<A>) => IOOption<B> = /*#__PURE__*/ filterMap_(
   I.Functor,
@@ -305,8 +412,11 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fga: IOOption<A>) => 
 )
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const partition: {
   <A, B extends A>(refinement: Refinement<A, B>): (fb: IOOption<A>) => Separated<IOOption<A>, IOOption<B>>
@@ -315,8 +425,11 @@ export const partition: {
 } = /*#__PURE__*/ partition_(I.Functor, O.Filterable)
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const partitionMap: <A, B, C>(
   f: (a: A) => Either<B, C>,
@@ -342,14 +455,20 @@ const _partition: Filterable1<URI>['partition'] = <A>(fa: IOOption<A>, predicate
 const _partitionMap: Filterable1<URI>['partitionMap'] = (fa, f) => pipe(fa, partitionMap(f))
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export const URI = 'IOOption'
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export type URI = typeof URI
 
@@ -360,8 +479,11 @@ declare module './HKT' {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Functor: Functor1<URI> = {
   URI,
@@ -371,8 +493,11 @@ export const Functor: Functor1<URI> = {
 /**
  * Maps the `Some` value of this `IOOption` to the specified constant value.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const as: {
   <A>(a: A): <_>(self: IOOption<_>) => IOOption<A>
@@ -382,20 +507,29 @@ export const as: {
 /**
  * Maps the `Some` value of this `IOOption` to the void constant value.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const asUnit: <_>(self: IOOption<_>) => IOOption<void> = asUnit_(Functor)
 
 /**
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Pointed: Pointed1<URI> = {
   URI,
@@ -403,8 +537,11 @@ export const Pointed: Pointed1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Apply: Apply1<URI> = {
   URI,
@@ -415,20 +552,27 @@ export const Apply: Apply1<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
 
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Applicative: Applicative1<URI> = {
   URI,
@@ -438,8 +582,11 @@ export const Applicative: Applicative1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Chain: chainable.Chain1<URI> = {
   URI,
@@ -449,8 +596,11 @@ export const Chain: chainable.Chain1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instance methods
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instance methods
+ * @public
  */
 export const chainRec: ChainRec1<URI>['chainRec'] =
   <A, B>(a: A, f: (a: A) => IOOption<Either<A, B>>) =>
@@ -474,8 +624,11 @@ export const chainRec: ChainRec1<URI>['chainRec'] =
 /**
  * ChainRec for `IOOption`
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const ChainRec: ChainRec1<URI> = {
   ...Chain,
@@ -483,8 +636,11 @@ export const ChainRec: ChainRec1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const FromEither: FromEither1<URI> = {
   URI,
@@ -492,8 +648,11 @@ export const FromEither: FromEither1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const FromIO: FromIO1<URI> = {
   URI,
@@ -504,8 +663,11 @@ export const FromIO: FromIO1<URI> = {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 1.0.0
- * @category Combinators
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Combinators
+ * @public
  */
 export const tap: {
   <A, _>(self: IOOption<A>, f: (a: A) => IOOption<_>): IOOption<A>
@@ -516,22 +678,29 @@ export const tap: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 1.0.0
- * @category Combinators
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Combinators
  * @example
- *   import { pipe } from 'fp-ts/function'
- *   import * as IOO from 'fp-ts/IOOption'
- *   import * as O from 'fp-ts/Option'
- *   import * as E from 'fp-ts/Either'
  *
- *   const compute = (value: number) =>
- *     pipe(
- *       IOO.of(value),
- *       IOO.tapEither(value => (value > 0 ? E.right('ok') : E.left('error'))),
- *     )
+ * ```typescript
+ * import { pipe } from '@fp-tx/core/function'
+ * import * as IOO from '@fp-tx/core/IOOption'
+ * import * as O from '@fp-tx/core/Option'
+ * import * as E from '@fp-tx/core/Either'
  *
- *   assert.deepStrictEqual(compute(1)(), O.of(1))
- *   assert.deepStrictEqual(compute(-1)(), O.none)
+ * const compute = (value: number) =>
+ *   pipe(
+ *     IOO.of(value),
+ *     IOO.tapEither(value => (value > 0 ? E.right('ok') : E.left('error'))),
+ *   )
+ *
+ * assert.deepStrictEqual(compute(1)(), O.of(1))
+ * assert.deepStrictEqual(compute(-1)(), O.none)
+ * ```
+ *
+ * @public
  */
 export const tapEither: {
   <A, E, _>(f: (a: A) => Either<E, _>): (self: IOOption<A>) => IOOption<A>
@@ -542,32 +711,39 @@ export const tapEither: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 1.0.0
- * @category Combinators
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Combinators
  * @example
- *   import { pipe } from 'fp-ts/function'
- *   import * as IOO from 'fp-ts/IOOption'
- *   import * as O from 'fp-ts/Option'
- *   import * as Console from 'fp-ts/Console'
  *
- *   // Will produce `Hello, fp-ts` to the stdout
- *   const effectA = pipe(
- *     IOO.of('fp-ts'),
- *     IOO.tapIO(value => Console.log(`Hello, ${value}`)),
- *   )
+ * ```typescript
+ * import { pipe } from '@fp-tx/core/function'
+ * import * as IOO from '@fp-tx/core/IOOption'
+ * import * as O from '@fp-tx/core/Option'
+ * import * as Console from '@fp-tx/core/Console'
  *
- *   // No output to the stdout
- *   const effectB = pipe(
- *     IOO.none as IOO.IOOption<string>,
- *     IOO.tapIO(value => Console.log(`Hello, ${value}`)),
- *   )
+ * // Will produce `Hello, fp-ts` to the stdout
+ * const effectA = pipe(
+ *   IOO.of('fp-ts'),
+ *   IOO.tapIO(value => Console.log(`Hello, ${value}`)),
+ * )
  *
- *   async function test() {
- *     assert.deepStrictEqual(effectA(), O.of('fp-ts'))
- *     assert.deepStrictEqual(effectB(), O.none)
- *   }
+ * // No output to the stdout
+ * const effectB = pipe(
+ *   IOO.none as IOO.IOOption<string>,
+ *   IOO.tapIO(value => Console.log(`Hello, ${value}`)),
+ * )
  *
- *   test()
+ * async function test() {
+ *   assert.deepStrictEqual(effectA(), O.of('fp-ts'))
+ *   assert.deepStrictEqual(effectB(), O.none)
+ * }
+ *
+ * test()
+ * ```
+ *
+ * @public
  */
 export const tapIO: {
   <A, _>(f: (a: A) => IO<_>): (self: IOOption<A>) => IOOption<A>
@@ -575,8 +751,11 @@ export const tapIO: {
 } = /*#__PURE__*/ dual(2, tapIO_(FromIO, Chain))
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Alt: Alt1<URI> = {
   URI,
@@ -585,8 +764,11 @@ export const Alt: Alt1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Zero: Zero1<URI> = {
   URI,
@@ -594,14 +776,20 @@ export const Zero: Zero1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const guard = /*#__PURE__*/ guard_(Zero, Pointed)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Alternative: Alternative1<URI> = {
   URI,
@@ -613,8 +801,11 @@ export const Alternative: Alternative1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Monad: Monad1<URI> = {
   URI,
@@ -625,8 +816,11 @@ export const Monad: Monad1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const MonadIO: MonadIO1<URI> = {
   URI,
@@ -638,8 +832,11 @@ export const MonadIO: MonadIO1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const MonadThrow: MonadThrow1<URI> = {
   ...Monad,
@@ -647,8 +844,11 @@ export const MonadThrow: MonadThrow1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Compactable: Compactable1<URI> = {
   URI,
@@ -657,8 +857,11 @@ export const Compactable: Compactable1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Filterable: Filterable1<URI> = {
   URI,
@@ -671,7 +874,7 @@ export const Filterable: Filterable1<URI> = {
   partitionMap: _partitionMap,
 }
 
-/** @internal */
+/** @internal @packageDocumentation */
 interface IOOptionTypeLambda extends _.TypeLambda {
   readonly type: IOOption<this['Target']>
 }
@@ -692,8 +895,11 @@ const _FromEither: _.FromEither<IOOptionTypeLambda> = {
 }
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatMapIO: {
   <A, B>(f: (a: A) => IO<B>): (self: IOOption<A>) => IOOption<B>
@@ -701,8 +907,11 @@ export const flatMapIO: {
 } = _.flatMapIO(_FromIO, _FlatMap)
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatMapOption: {
   <A, B>(f: (a: A) => Option<B>): (self: IOOption<A>) => IOOption<B>
@@ -713,8 +922,11 @@ export const flatMapOption: {
 )
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatMapEither: {
   <A, B, _>(f: (a: A) => Either<_, B>): (self: IOOption<A>) => IOOption<B>
@@ -722,8 +934,11 @@ export const flatMapEither: {
 } = /*#__PURE__*/ _.flatMapEither(_FromEither, _FlatMap)
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatMapNullable: {
   <A, B>(f: (a: A) => B | null | undefined): (self: IOOption<A>) => IOOption<B>
@@ -734,8 +949,11 @@ export const flatMapNullable: {
 )
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => I.IO<B>) => (...a: A) => IOOption<B> =
   /*#__PURE__*/ fromIOK_(FromIO)
@@ -743,22 +961,31 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => I.IO
 /**
  * Alias of `flatMapIO`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainIOK: <A, B>(f: (a: A) => I.IO<B>) => (first: IOOption<A>) => IOOption<B> = flatMapIO
 
 /**
  * Alias of `tapIO`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainFirstIOK: <A, B>(f: (a: A) => I.IO<B>) => (first: IOOption<A>) => IOOption<A> = tapIO
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
   f: (...a: A) => Either<E, B>,
@@ -767,24 +994,33 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 /**
  * Alias of `flatMapEither`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: IOOption<A>) => IOOption<B> = flatMapEither
 
 /**
  * Alias of `tapEither`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: IOOption<A>) => IOOption<A> = tapEither
 
 /**
  * Alias of `flatMapOption`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainOptionK: <A, B>(f: (a: A) => Option<B>) => (ma: IOOption<A>) => IOOption<B> = flatMapOption
 
@@ -793,14 +1029,20 @@ export const chainOptionK: <A, B>(f: (a: A) => Option<B>) => (ma: IOOption<A>) =
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const Do: IOOption<{}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
 
@@ -808,25 +1050,38 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @since 1.0.0
-   * @category Do notation
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Do notation
+   * @public
    */
   let_ as let,
 }
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const ApT: IOOption<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 
 interface IOOptionIterable<A> {
@@ -840,8 +1095,11 @@ const do_: <MA extends IOOptionIterable<any>, A>(
 
 export {
   /**
-   * @since 1.0.0
-   * @category Do notation
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Do notation
+   * @public
    */
   do_ as do,
 }
@@ -853,8 +1111,11 @@ export {
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndex = <A, B>(
   f: (index: number, a: A) => IOOption<B>,
@@ -864,8 +1125,11 @@ export const traverseReadonlyNonEmptyArrayWithIndex = <A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseReadonlyArrayWithIndex = <A, B>(
   f: (index: number, a: A) => IOOption<B>,
@@ -881,15 +1145,21 @@ export const traverseReadonlyArrayWithIndex = <A, B>(
 /**
  * Alias of `flatMap`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chain: <A, B>(f: (a: A) => IOOption<B>) => (ma: IOOption<A>) => IOOption<B> = flatMap
 
 /**
  * Alias of `tap`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainFirst: <A, B>(f: (a: A) => IOOption<B>) => (first: IOOption<A>) => IOOption<A> = tap

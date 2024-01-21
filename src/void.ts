@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import type * as M from './Monoid'
 import * as Se from './Semigroup'
 
@@ -7,14 +11,20 @@ import * as Se from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Semigroup: Se.Semigroup<void> = Se.constant<void>(undefined)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Monoid: M.Monoid<void> = {
   concat: Semigroup.concat,

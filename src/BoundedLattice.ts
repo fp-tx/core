@@ -5,7 +5,9 @@
  * - Absorption law for meet: `a ∧ (a ∨ b) <-> a`
  * - Absorption law for join: `a ∨ (a ∧ b) <-> a`
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type BoundedJoinSemilattice } from './BoundedJoinSemilattice'
 import { type BoundedMeetSemilattice } from './BoundedMeetSemilattice'
@@ -15,7 +17,10 @@ import { type BoundedMeetSemilattice } from './BoundedMeetSemilattice'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface BoundedLattice<A> extends BoundedJoinSemilattice<A>, BoundedMeetSemilattice<A> {}

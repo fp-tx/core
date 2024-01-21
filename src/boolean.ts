@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import type * as BA from './BooleanAlgebra'
 import type * as E from './Eq'
 import { type LazyArg } from './function'
@@ -13,8 +17,11 @@ import type * as S from './Show'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Refinements
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Refinements
+ * @public
  */
 export const isBoolean: Refinement<unknown, boolean> = (u: unknown): u is boolean => typeof u === 'boolean'
 
@@ -23,8 +30,11 @@ export const isBoolean: Refinement<unknown, boolean> = (u: unknown): u is boolea
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const matchW =
   <A, B>(onFalse: LazyArg<A>, onTrue: LazyArg<B>) =>
@@ -34,8 +44,11 @@ export const matchW =
 /**
  * Alias of [`matchW`](#matchw).
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const foldW = matchW
 
@@ -43,33 +56,43 @@ export const foldW = matchW
  * Defines the fold over a boolean value. Takes two thunks `onTrue`, `onFalse` and a `boolean` value. If `value` is
  * false, `onFalse()` is returned, otherwise `onTrue()`.
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
  * @example
- *   import { some, map } from 'fp-ts/Option'
- *   import { pipe } from 'fp-ts/function'
- *   import { match } from 'fp-ts/boolean'
  *
- *   assert.deepStrictEqual(
- *     pipe(
- *       some(true),
- *       map(
- *         match(
- *           () => 'false',
- *           () => 'true',
- *         ),
+ * ```typescript
+ * import { some, map } from '@fp-tx/core/Option'
+ * import { pipe } from '@fp-tx/core/function'
+ * import { match } from '@fp-tx/core/boolean'
+ *
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     some(true),
+ *     map(
+ *       match(
+ *         () => 'false',
+ *         () => 'true',
  *       ),
  *     ),
- *     some('true'),
- *   )
+ *   ),
+ *   some('true'),
+ * )
+ * ```
+ *
+ * @public
  */
 export const match: <A>(onFalse: LazyArg<A>, onTrue: LazyArg<A>) => (value: boolean) => A = foldW
 
 /**
  * Alias of [`match`](#match).
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const fold = match
 
@@ -78,16 +101,22 @@ export const fold = match
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Eq: E.Eq<boolean> = {
   equals: (first, second) => first === second,
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const BooleanAlgebra: BA.BooleanAlgebra<boolean> = {
   meet: (first, second) => first && second,
@@ -101,13 +130,20 @@ export const BooleanAlgebra: BA.BooleanAlgebra<boolean> = {
 /**
  * `boolean` semigroup under conjunction.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { SemigroupAll } from 'fp-ts/boolean'
  *
- *   assert.deepStrictEqual(SemigroupAll.concat(true, true), true)
- *   assert.deepStrictEqual(SemigroupAll.concat(true, false), false)
+ * ```typescript
+ * import { SemigroupAll } from '@fp-tx/core/boolean'
+ *
+ * assert.deepStrictEqual(SemigroupAll.concat(true, true), true)
+ * assert.deepStrictEqual(SemigroupAll.concat(true, false), false)
+ * ```
+ *
+ * @public
  */
 export const SemigroupAll: Semigroup<boolean> = {
   concat: (first, second) => first && second,
@@ -116,14 +152,21 @@ export const SemigroupAll: Semigroup<boolean> = {
 /**
  * `boolean` semigroup under disjunction.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { SemigroupAny } from 'fp-ts/boolean'
  *
- *   assert.deepStrictEqual(SemigroupAny.concat(true, true), true)
- *   assert.deepStrictEqual(SemigroupAny.concat(true, false), true)
- *   assert.deepStrictEqual(SemigroupAny.concat(false, false), false)
+ * ```typescript
+ * import { SemigroupAny } from '@fp-tx/core/boolean'
+ *
+ * assert.deepStrictEqual(SemigroupAny.concat(true, true), true)
+ * assert.deepStrictEqual(SemigroupAny.concat(true, false), true)
+ * assert.deepStrictEqual(SemigroupAny.concat(false, false), false)
+ * ```
+ *
+ * @public
  */
 export const SemigroupAny: Semigroup<boolean> = {
   concat: (first, second) => first || second,
@@ -134,13 +177,20 @@ export const SemigroupAny: Semigroup<boolean> = {
  *
  * The `empty` value is `true`.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { MonoidAll } from 'fp-ts/boolean'
  *
- *   assert.deepStrictEqual(MonoidAll.concat(true, true), true)
- *   assert.deepStrictEqual(MonoidAll.concat(true, false), false)
+ * ```typescript
+ * import { MonoidAll } from '@fp-tx/core/boolean'
+ *
+ * assert.deepStrictEqual(MonoidAll.concat(true, true), true)
+ * assert.deepStrictEqual(MonoidAll.concat(true, false), false)
+ * ```
+ *
+ * @public
  */
 export const MonoidAll: Monoid<boolean> = {
   concat: SemigroupAll.concat,
@@ -152,14 +202,21 @@ export const MonoidAll: Monoid<boolean> = {
  *
  * The `empty` value is `false`.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { MonoidAny } from 'fp-ts/boolean'
  *
- *   assert.deepStrictEqual(MonoidAny.concat(true, true), true)
- *   assert.deepStrictEqual(MonoidAny.concat(true, false), true)
- *   assert.deepStrictEqual(MonoidAny.concat(false, false), false)
+ * ```typescript
+ * import { MonoidAny } from '@fp-tx/core/boolean'
+ *
+ * assert.deepStrictEqual(MonoidAny.concat(true, true), true)
+ * assert.deepStrictEqual(MonoidAny.concat(true, false), true)
+ * assert.deepStrictEqual(MonoidAny.concat(false, false), false)
+ * ```
+ *
+ * @public
  */
 export const MonoidAny: Monoid<boolean> = {
   concat: SemigroupAny.concat,
@@ -167,8 +224,11 @@ export const MonoidAny: Monoid<boolean> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Ord: O.Ord<boolean> = {
   equals: Eq.equals,
@@ -179,8 +239,11 @@ export const Ord: O.Ord<boolean> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Show: S.Show<boolean> = {
   show: b => JSON.stringify(b),

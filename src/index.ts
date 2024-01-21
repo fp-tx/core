@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 
 import * as alt from './Alt'
 import * as alternative from './Alternative'
@@ -124,567 +128,944 @@ import * as zero from './Zero'
 
 export {
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   alt,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   alternative,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   applicative,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   apply,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   array,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   bifunctor,
-  /** @since 1.0.0 */
+  /**
+   * @remarks
+   * Added in 1.0.0
+   * @public
+   */
   boolean,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   booleanAlgebra,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   bounded,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   boundedDistributiveLattice,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   boundedJoinSemilattice,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   boundedLattice,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   boundedMeetSemilattice,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   category,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   chain,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   chainRec,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   choice,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   comonad,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   compactable,
-  /** @since 1.0.0 */
+  /**
+   * @remarks
+   * Added in 1.0.0
+   * @public
+   */
   console,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   const_ as const,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   contravariant,
-  /** @since 1.0.0 */
+  /**
+   * @remarks
+   * Added in 1.0.0
+   * @public
+   */
   date,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   distributiveLattice,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   either,
   /**
-   * @since 1.0.0
-   * @category Monad transformers
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Monad transformers
+   * @public
    */
   eitherT,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   endomorphism,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   eq,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   extend,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   field,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   filterable,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   filterableWithIndex,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   foldable,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   foldableWithIndex,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   fromEither,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   fromIO,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   fromReader,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   fromState,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   fromTask,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   fromThese,
-  /** @since 1.0.0 */
+  /**
+   * @remarks
+   * Added in 1.0.0
+   * @public
+   */
   function_ as function,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   functor,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   functorWithIndex,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   group,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   heytingAlgebra,
-  /** @since 1.0.0 */
+  /**
+   * @remarks
+   * Added in 1.0.0
+   * @public
+   */
   hkt,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   identity,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   invariant,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   io,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   ioEither,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   ioOption,
-  /** @since 1.0.0 */
+  /**
+   * @remarks
+   * Added in 1.0.0
+   * @public
+   */
   ioRef,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   joinSemilattice,
-  /** @since 1.0.0 */
+  /**
+   * @remarks
+   * Added in 1.0.0
+   * @public
+   */
   json,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   lattice,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   magma,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   map,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   meetSemilattice,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   monad,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   monadIO,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   monadTask,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   monadThrow,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   monoid,
-  /** @since 1.0.0 */
+  /**
+   * @remarks
+   * Added in 1.0.0
+   * @public
+   */
   naturalTransformation,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   nonEmptyArray,
-  /** @since 1.0.0 */
+  /**
+   * @remarks
+   * Added in 1.0.0
+   * @public
+   */
   number,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   option,
   /**
-   * @since 1.0.0
-   * @category Monad transformers
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Monad transformers
+   * @public
    */
   optionT,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   ord,
-  /** @since 1.0.0 */
+  /**
+   * @remarks
+   * Added in 1.0.0
+   * @public
+   */
   ordering,
-  /** @since 1.0.0 */
+  /**
+   * @remarks
+   * Added in 1.0.0
+   * @public
+   */
   pipeable,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   pointed,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   predicate,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   profunctor,
-  /** @since 1.0.0 */
+  /**
+   * @remarks
+   * Added in 1.0.0
+   * @public
+   */
   random,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   reader,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   readerEither,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   readerIO,
   /**
-   * @since 1.0.0
-   * @category Monad transformers
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Monad transformers
+   * @public
    */
   readerT,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   readerTask,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   readerTaskEither,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   readonlyArray,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   readonlyMap,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   readonlyNonEmptyArray,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   readonlyRecord,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   readonlySet,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   readonlyTuple,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   record,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   refinement,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   ring,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   semigroup,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   semigroupoid,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   semiring,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   separated,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   set,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   show,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   state,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   stateReaderTaskEither,
   /**
-   * @since 1.0.0
-   * @category Monad transformers
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Monad transformers
+   * @public
    */
   stateT,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   store,
-  /** @since 1.0.0 */
+  /**
+   * @remarks
+   * Added in 1.0.0
+   * @public
+   */
   string,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   strong,
-  /** @since 1.0.0 */
+  /**
+   * @remarks
+   * Added in 1.0.0
+   * @public
+   */
   struct,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   task,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   taskEither,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   taskOption,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   taskThese,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   these,
   /**
-   * @since 1.0.0
-   * @category Monad transformers
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Monad transformers
+   * @public
    */
   theseT,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   traced,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   traversable,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   traversableWithIndex,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   tree,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   tuple,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   unfoldable,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   validationT,
   /**
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Zone of death
    * @deprecated
-   * @since 1.0.0
-   * @category Zone of death
+   * @public
    */
   void_ as void,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   witherable,
   /**
-   * @since 1.0.0
-   * @category Data types
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Data types
+   * @public
    */
   writer,
   /**
-   * @since 1.0.0
-   * @category Monad transformers
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Monad transformers
+   * @public
    */
   writerT,
   /**
-   * @since 1.0.0
-   * @category Model
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Model
+   * @public
    */
   zero,
 }

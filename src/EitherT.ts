@@ -4,7 +4,9 @@
  * The `of` function yields a successful computation, while `chain` sequences two subcomputations, failing on the first
  * error.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import {
   type ApplicativeComposition12,
@@ -34,7 +36,11 @@ import { type Semigroup } from './Semigroup'
 // constructors
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function right<F extends URIS3>(F: Pointed3<F>): <A, R, FE, E = never>(a: A) => Kind3<F, R, FE, Either<E, A>>
 export function right<F extends URIS3, FE>(
   F: Pointed3C<F, FE>,
@@ -47,7 +53,11 @@ export function right<F>(F: Pointed<F>): <A, E = never>(a: A) => HKT<F, Either<E
   return flow(E.right, F.of)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function left<F extends URIS3>(F: Pointed3<F>): <E, R, FE, A = never>(e: E) => Kind3<F, R, FE, Either<E, A>>
 export function left<F extends URIS3, FE>(F: Pointed3C<F, FE>): <E, R, A = never>(e: E) => Kind3<F, R, FE, Either<E, A>>
 export function left<F extends URIS2>(F: Pointed2<F>): <E, FE, A = never>(e: E) => Kind2<F, FE, Either<E, A>>
@@ -58,7 +68,11 @@ export function left<F>(F: Pointed<F>): <E, A = never>(e: E) => HKT<F, Either<E,
   return flow(E.left, F.of)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function rightF<F extends URIS3>(
   F: Functor3<F>,
 ): <R, FE, A, E = never>(fa: Kind3<F, R, FE, A>) => Kind3<F, R, FE, Either<E, A>>
@@ -77,7 +91,11 @@ export function rightF<F>(F: Functor<F>): <A, E = never>(fa: HKT<F, A>) => HKT<F
   return fa => F.map(fa, E.right)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function leftF<F extends URIS3>(
   F: Functor3<F>,
 ): <R, FE, E, A = never>(fe: Kind3<F, R, FE, E>) => Kind3<F, R, FE, Either<E, A>>
@@ -96,7 +114,11 @@ export function leftF<F>(F: Functor<F>): <E, A = never>(fe: HKT<F, E>) => HKT<F,
   return fe => F.map(fe, E.left)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function fromNullable<F extends URIS3>(
   F: Pointed3<F>,
 ): <E>(e: E) => <A, S, R>(a: A) => Kind3<F, S, R, Either<E, NonNullable<A>>>
@@ -117,7 +139,11 @@ export function fromNullable<F>(F: Pointed<F>): <E>(e: E) => <A>(a: A) => HKT<F,
   return e => flow(E.fromNullable(e), F.of)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function fromNullableK<F extends URIS3>(
   F: Pointed3<F>,
 ): <E>(
@@ -174,7 +200,11 @@ export function fromNullableK<F>(
   }
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function chainNullableK<M extends URIS3>(
   M: Monad3<M>,
 ): <E>(
@@ -226,7 +256,11 @@ export function chainNullableK<M>(
   }
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function map<F extends URIS3>(
   F: Functor3<F>,
 ): <A, B>(f: (a: A) => B) => <R, FE, E>(fa: Kind3<F, R, FE, Either<E, A>>) => Kind3<F, R, FE, Either<E, B>>
@@ -247,7 +281,11 @@ export function map<F>(F: Functor<F>): <A, B>(f: (a: A) => B) => <E>(fa: HKT<F, 
   return map_(F, E.Functor)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function ap<F extends URIS3>(
   F: Apply3<F>,
 ): <R, FE, E, A>(
@@ -280,7 +318,11 @@ export function ap<F>(
   return ap_(F, E.Apply)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function chain<M extends URIS3>(
   M: Monad3<M>,
 ): <A, R, ME, E, B>(
@@ -331,7 +373,11 @@ export function flatMap<M>(
   return (ma, f) => M.chain(ma, e => (E.isLeft(e) ? M.of(e) : f(e.right)))
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function alt<M extends URIS3>(
   M: Monad3<M>,
 ): <R, ME, E, A>(
@@ -364,7 +410,11 @@ export function alt<M>(
   return second => first => M.chain(first, e => (E.isLeft(e) ? second() : M.of(e)))
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function bimap<F extends URIS3>(
   F: Functor3<F>,
 ): <E, G, A, B>(
@@ -415,7 +465,11 @@ export function mapBoth<F>(
   return (self, f, g) => F.map(self, E.bimap(f, g))
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function mapLeft<F extends URIS3>(
   F: Functor3<F>,
 ): <E, G>(f: (e: E) => G) => <R, FE, A>(self: Kind3<F, R, FE, Either<E, A>>) => Kind3<F, R, FE, Either<G, A>>
@@ -461,8 +515,11 @@ export function mapError<F>(
 }
 
 /**
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
+ * @public
  */
 export function altValidation<M extends URIS3, E>(
   M: Monad3<M>,
@@ -513,8 +570,11 @@ export function altValidation<M, E>(
 }
 
 /**
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export function match<F extends URIS3>(
   F: Functor3<F>,
@@ -543,7 +603,11 @@ export function match<F>(
   return (onLeft, onRight) => ma => F.map(ma, E.match(onLeft, onRight))
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function matchE<M extends URIS3>(
   M: Chain3<M>,
 ): <E, R, FE, B, A>(
@@ -580,7 +644,11 @@ export function matchE<M>(
   return (onLeft, onRight) => ma => M.chain(ma, E.match(onLeft, onRight))
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function getOrElse<M extends URIS3>(
   M: Monad3<M>,
 ): <E, R, ME, A>(onLeft: (e: E) => Kind3<M, R, ME, A>) => (ma: Kind3<M, R, ME, Either<E, A>>) => Kind3<M, R, ME, A>
@@ -609,7 +677,11 @@ export function getOrElse<M>(
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function orElse<M extends URIS3>(
   M: Monad3<M>,
 ): <E1, R, ME, E2, A>(
@@ -643,8 +715,11 @@ export function orElse<M>(
 }
 
 /**
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
+ * @public
  */
 export function orElseFirst<M extends URIS3>(
   M: Monad3<M>,
@@ -704,8 +779,11 @@ export function tapError<M>(
 }
 
 /**
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
+ * @public
  */
 export function orLeft<M extends URIS3>(
   M: Monad3<M>,
@@ -748,7 +826,11 @@ export function orLeft<M>(
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function swap<F extends URIS3>(
   F: Functor3<F>,
 ): <R, FE, E, A>(ma: Kind3<F, R, FE, Either<E, A>>) => Kind3<F, R, FE, Either<A, E>>
@@ -767,7 +849,11 @@ export function swap<F>(F: Functor<F>): <E, A>(ma: HKT<F, Either<E, A>>) => HKT<
   return ma => F.map(ma, E.swap)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function toUnion<F extends URIS3>(
   F: Functor3<F>,
 ): <R, FE, E, A>(fa: Kind3<F, R, FE, Either<E, A>>) => Kind3<F, R, FE, E | A>
@@ -787,16 +873,22 @@ export function toUnion<F>(F: Functor<F>): <E, A>(fa: HKT<F, Either<E, A>>) => H
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface EitherT<M, E, A> extends HKT<M, Either<E, A>> {}
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface EitherM<M> extends ApplicativeCompositionHKT2<M, URI> {
   readonly chain: <E, A, B>(ma: EitherT<M, E, A>, f: (a: A) => EitherT<M, E, B>) => EitherT<M, E, B>
@@ -813,16 +905,22 @@ export interface EitherM<M> extends ApplicativeCompositionHKT2<M, URI> {
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export type EitherT1<M extends URIS, E, A> = Kind<M, Either<E, A>>
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface EitherM1<M extends URIS> extends ApplicativeComposition12<M, URI> {
   readonly chain: <E, A, B>(ma: EitherT1<M, E, A>, f: (a: A) => EitherT1<M, E, B>) => EitherT1<M, E, B>
@@ -843,16 +941,22 @@ export interface EitherM1<M extends URIS> extends ApplicativeComposition12<M, UR
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export type EitherT2<M extends URIS2, R, E, A> = Kind2<M, R, Either<E, A>>
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface EitherM2<M extends URIS2> extends ApplicativeComposition22<M, URI> {
   readonly chain: <R, E, A, B>(ma: EitherT2<M, R, E, A>, f: (a: A) => EitherT2<M, R, E, B>) => EitherT2<M, R, E, B>
@@ -876,9 +980,12 @@ export interface EitherM2<M extends URIS2> extends ApplicativeComposition22<M, U
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export function getEitherM<M extends URIS2>(M: Monad2<M>): EitherM2<M>
 /** @deprecated */

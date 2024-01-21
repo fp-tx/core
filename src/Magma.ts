@@ -3,7 +3,9 @@
  *
  * See [Semigroup](https://gcanti.github.io/fp-ts/modules/Semigroup.ts.html) for some instances.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 
 import { type Endomorphism } from './Endomorphism'
@@ -14,8 +16,11 @@ import { type Predicate } from './Predicate'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Magma<A> {
   readonly concat: (x: A, y: A) => A
@@ -28,34 +33,52 @@ export interface Magma<A> {
 /**
  * The dual of a `Magma`, obtained by swapping the arguments of `concat`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { reverse, concatAll } from 'fp-ts/Magma'
- *   import * as N from 'fp-ts/number'
  *
- *   const subAll = concatAll(reverse(N.MagmaSub))(0)
+ * ```typescript
+ * import { reverse, concatAll } from '@fp-tx/core/Magma'
+ * import * as N from '@fp-tx/core/number'
  *
- *   assert.deepStrictEqual(subAll([1, 2, 3]), 2)
+ * const subAll = concatAll(reverse(N.MagmaSub))(0)
+ *
+ * assert.deepStrictEqual(subAll([1, 2, 3]), 2)
+ * ```
+ *
+ * @public
  */
 export const reverse = <A>(M: Magma<A>): Magma<A> => ({
   concat: (first, second) => M.concat(second, first),
 })
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const filterFirst =
   <A>(predicate: Predicate<A>) =>
   (M: Magma<A>): Magma<A> => ({
     concat: (first, second) => (predicate(first) ? M.concat(first, second) : second),
   })
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const filterSecond =
   <A>(predicate: Predicate<A>) =>
   (M: Magma<A>): Magma<A> => ({
     concat: (first, second) => (predicate(second) ? M.concat(first, second) : first),
   })
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const endo =
   <A>(f: Endomorphism<A>) =>
   (M: Magma<A>): Magma<A> => ({
@@ -71,14 +94,20 @@ export const endo =
  *
  * If `as` is empty, return the provided `startWith` value.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { concatAll } from 'fp-ts/Magma'
- *   import * as N from 'fp-ts/number'
  *
- *   const subAll = concatAll(N.MagmaSub)(0)
+ * ```typescript
+ * import { concatAll } from '@fp-tx/core/Magma'
+ * import * as N from '@fp-tx/core/number'
  *
- *   assert.deepStrictEqual(subAll([1, 2, 3]), -6)
+ * const subAll = concatAll(N.MagmaSub)(0)
+ *
+ * assert.deepStrictEqual(subAll([1, 2, 3]), -6)
+ * ```
+ *
+ * @public
  */
 export const concatAll =
   <A>(M: Magma<A>) =>

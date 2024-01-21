@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import { type Comonad2 } from './Comonad'
 import { type Endomorphism } from './Endomorphism'
 import { type Extend2 } from './Extend'
@@ -19,8 +23,11 @@ import { type HKT, type Kind, type Kind2, type Kind3, type URIS, type URIS2, typ
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Store<S, A> {
   readonly peek: (s: S) => A
@@ -30,7 +37,9 @@ export interface Store<S, A> {
 /**
  * Reposition the focus at the specified position
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function seek<S>(s: S): <A>(wa: Store<S, A>) => Store<S, A> {
   return wa => ({ peek: wa.peek, pos: s })
@@ -39,7 +48,9 @@ export function seek<S>(s: S): <A>(wa: Store<S, A>) => Store<S, A> {
 /**
  * Reposition the focus at the specified position, which depends on the current position
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function seeks<S>(f: Endomorphism<S>): <A>(wa: Store<S, A>) => Store<S, A> {
   return wa => ({ peek: wa.peek, pos: f(wa.pos) })
@@ -48,7 +59,9 @@ export function seeks<S>(f: Endomorphism<S>): <A>(wa: Store<S, A>) => Store<S, A
 /**
  * Extract a value from a position which depends on the current position
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function peeks<S>(f: Endomorphism<S>): <A>(wa: Store<S, A>) => A {
   return wa => wa.peek(f(wa.pos))
@@ -57,7 +70,9 @@ export function peeks<S>(f: Endomorphism<S>): <A>(wa: Store<S, A>) => A {
 /**
  * Extract a collection of values from positions which depend on the current position
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function experiment<F extends URIS3>(
   F: Functor3<F>,
@@ -84,27 +99,41 @@ const _map: Functor2<URI>['map'] = (fa, f) => pipe(fa, map(f))
 /* istanbul ignore next */
 const _extend: Extend2<URI>['extend'] = (wa, f) => pipe(wa, extend(f))
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const extend: <E, A, B>(f: (wa: Store<E, A>) => B) => (wa: Store<E, A>) => Store<E, B> = f => wa => ({
   peek: s => f({ peek: wa.peek, pos: s }),
   pos: wa.pos,
 })
 
 /**
- * @since 1.0.0
- * @category Extract
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Extract
+ * @public
  */
 export const extract: <E, A>(wa: Store<E, A>) => A = wa => wa.peek(wa.pos)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const duplicate: <E, A>(wa: Store<E, A>) => Store<E, Store<E, A>> = /*#__PURE__*/ extend(identity)
 
 /**
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: Store<E, A>) => Store<E, B> = f => fa => ({
   peek: s => f(fa.peek(s)),
@@ -112,14 +141,20 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: Store<E, A>) => Store<E, B> 
 })
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export const URI = 'Store'
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export type URI = typeof URI
 
@@ -130,8 +165,11 @@ declare module './HKT' {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Functor: Functor2<URI> = {
   URI,
@@ -139,14 +177,20 @@ export const Functor: Functor2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Comonad: Comonad2<URI> = {
   URI,
@@ -163,8 +207,11 @@ export const Comonad: Comonad2<URI> = {
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Comonad`
  * instance, pass `S.Comonad` instead of `S.store` (where `S` is from `import S from 'fp-ts/Store'`)
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const store: Comonad2<URI> = Comonad

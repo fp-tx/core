@@ -1,8 +1,4 @@
 /**
- * ```ts
- * type Either<E, A> = Left<E> | Right<A>
- * ```
- *
  * Represents a value of one of two possible types (a disjoint union).
  *
  * An instance of `Either` is either an instance of `Left` or `Right`.
@@ -11,53 +7,59 @@
  * `None` is replaced with a `Left` which can contain useful information. `Right` takes the place of `Some`. Convention
  * dictates that `Left` is used for failure and `Right` is used for success.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as E from 'fp-ts/Either'
- *   import { pipe } from 'fp-ts/function'
  *
- *   const double = (n: number): number => n * 2
+ * ```typescript
+ * import * as E from '@fp-tx/core/Either'
+ * import { pipe } from '@fp-tx/core/function'
  *
- *   export const imperative = (as: ReadonlyArray<number>): string => {
- *     const head = (as: ReadonlyArray<number>): number => {
- *       if (as.length === 0) {
- *         throw new Error('empty array')
- *       }
- *       return as[0]
+ * const double = (n: number): number => n * 2
+ *
+ * export const imperative = (as: ReadonlyArray<number>): string => {
+ *   const head = (as: ReadonlyArray<number>): number => {
+ *     if (as.length === 0) {
+ *       throw new Error('empty array')
  *     }
- *     const inverse = (n: number): number => {
- *       if (n === 0) {
- *         throw new Error('cannot divide by zero')
- *       }
- *       return 1 / n
- *     }
- *     try {
- *       return `Result is ${inverse(double(head(as)))}`
- *     } catch (err: any) {
- *       return `Error is ${err.message}`
- *     }
+ *     return as[0]
  *   }
- *
- *   export const functional = (as: ReadonlyArray<number>): string => {
- *     const head = <A>(as: ReadonlyArray<A>): E.Either<string, A> =>
- *       as.length === 0 ? E.left('empty array') : E.right(as[0])
- *     const inverse = (n: number): E.Either<string, number> =>
- *       n === 0 ? E.left('cannot divide by zero') : E.right(1 / n)
- *     return pipe(
- *       as,
- *       head,
- *       E.map(double),
- *       E.flatMap(inverse),
- *       E.match(
- *         err => `Error is ${err}`, // onLeft handler
- *         head => `Result is ${head}`, // onRight handler
- *       ),
- *     )
+ *   const inverse = (n: number): number => {
+ *     if (n === 0) {
+ *       throw new Error('cannot divide by zero')
+ *     }
+ *     return 1 / n
  *   }
+ *   try {
+ *     return `Result is ${inverse(double(head(as)))}`
+ *   } catch (err: any) {
+ *     return `Error is ${err.message}`
+ *   }
+ * }
  *
- *   assert.deepStrictEqual(imperative([1, 2, 3]), functional([1, 2, 3]))
- *   assert.deepStrictEqual(imperative([]), functional([]))
- *   assert.deepStrictEqual(imperative([0]), functional([0]))
+ * export const functional = (as: ReadonlyArray<number>): string => {
+ *   const head = <A>(as: ReadonlyArray<A>): E.Either<string, A> =>
+ *     as.length === 0 ? E.left('empty array') : E.right(as[0])
+ *   const inverse = (n: number): E.Either<string, number> =>
+ *     n === 0 ? E.left('cannot divide by zero') : E.right(1 / n)
+ *   return pipe(
+ *     as,
+ *     head,
+ *     E.map(double),
+ *     E.flatMap(inverse),
+ *     E.match(
+ *       err => `Error is ${err}`, // onLeft handler
+ *       head => `Result is ${head}`, // onRight handler
+ *     ),
+ *   )
+ * }
+ *
+ * assert.deepStrictEqual(imperative([1, 2, 3]), functional([1, 2, 3]))
+ * assert.deepStrictEqual(imperative([]), functional([]))
+ * assert.deepStrictEqual(imperative([0]), functional([0]))
+ * ```
+ *
+ * @packageDocumentation
  */
 import { type Alt2, type Alt2C } from './Alt'
 import {
@@ -113,8 +115,11 @@ import { wiltDefault, type Witherable2C, witherDefault } from './Witherable'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Left<E> {
   readonly _tag: 'Left'
@@ -122,8 +127,11 @@ export interface Left<E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Right<A> {
   readonly _tag: 'Right'
@@ -131,8 +139,11 @@ export interface Right<A> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export type Either<E, A> = Left<E> | Right<A>
 
@@ -144,8 +155,11 @@ export type Either<E, A> = Left<E> | Right<A>
  * Constructs a new `Either` holding a `Left` value. This usually represents a failure, due to the right-bias of this
  * structure.
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const left: <E = never, A = never>(e: E) => Either<E, A> = _.left
 
@@ -153,14 +167,20 @@ export const left: <E = never, A = never>(e: E) => Either<E, A> = _.left
  * Constructs a new `Either` holding a `Right` value. This usually represents a successful value due to the right bias
  * of this structure.
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const right: <E = never, A = never>(a: A) => Either<E, A> = _.right
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatMap: {
   <A, E2, B>(f: (a: A) => Either<E2, B>): <E1>(ma: Either<E1, A>) => Either<E1 | E2, B>
@@ -195,14 +215,20 @@ const _alt: Alt2<URI>['alt'] = (fa, that) => pipe(fa, alt(that))
 const _extend: Extend2<URI>['extend'] = (wa, f) => pipe(wa, extend(f))
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export const URI = 'Either'
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export type URI = typeof URI
 
@@ -213,16 +239,22 @@ declare module './HKT' {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getShow = <E, A>(SE: Show<E>, SA: Show<A>): Show<Either<E, A>> => ({
   show: ma => (isLeft(ma) ? `left(${SE.show(ma.left)})` : `right(${SA.show(ma.right)})`),
 })
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getEq = <E, A>(EL: Eq<E>, EA: Eq<A>): Eq<Either<E, A>> => ({
   equals: (x, y) =>
@@ -233,17 +265,24 @@ export const getEq = <E, A>(EL: Eq<E>, EA: Eq<A>): Eq<Either<E, A>> => ({
  * Semigroup returning the left-most non-`Left` value. If both operands are `Right`s then the inner values are
  * concatenated using the provided `Semigroup`
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { getSemigroup, left, right } from 'fp-ts/Either'
- *   import { SemigroupSum } from 'fp-ts/number'
  *
- *   const S = getSemigroup<string, number>(SemigroupSum)
- *   assert.deepStrictEqual(S.concat(left('a'), left('b')), left('a'))
- *   assert.deepStrictEqual(S.concat(left('a'), right(2)), right(2))
- *   assert.deepStrictEqual(S.concat(right(1), left('b')), right(1))
- *   assert.deepStrictEqual(S.concat(right(1), right(2)), right(3))
+ * ```typescript
+ * import { getSemigroup, left, right } from '@fp-tx/core/Either'
+ * import { SemigroupSum } from '@fp-tx/core/number'
+ *
+ * const S = getSemigroup<string, number>(SemigroupSum)
+ * assert.deepStrictEqual(S.concat(left('a'), left('b')), left('a'))
+ * assert.deepStrictEqual(S.concat(left('a'), right(2)), right(2))
+ * assert.deepStrictEqual(S.concat(right(1), left('b')), right(1))
+ * assert.deepStrictEqual(S.concat(right(1), right(2)), right(3))
+ * ```
+ *
+ * @public
  */
 export const getSemigroup = <E, A>(S: Semigroup<A>): Semigroup<Either<E, A>> => ({
   concat: (x, y) =>
@@ -255,8 +294,11 @@ export const getSemigroup = <E, A>(S: Semigroup<A>): Semigroup<Either<E, A>> => 
 /**
  * Builds a `Compactable` instance for `Either` given `Monoid` for the left side.
  *
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const getCompactable = <E>(M: Monoid<E>): Compactable2C<URI, E> => {
   const empty = left(M.empty)
@@ -277,8 +319,11 @@ export const getCompactable = <E>(M: Monoid<E>): Compactable2C<URI, E> => {
 /**
  * Builds a `Filterable` instance for `Either` given `Monoid` for the left side
  *
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const getFilterable = <E>(M: Monoid<E>): Filterable2C<URI, E> => {
   const empty = left(M.empty)
@@ -326,8 +371,11 @@ export const getFilterable = <E>(M: Monoid<E>): Filterable2C<URI, E> => {
 /**
  * Builds `Witherable` instance for `Either` given `Monoid` for the left side
  *
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const getWitherable = <E>(M: Monoid<E>): Witherable2C<URI, E> => {
   const F_ = getFilterable(M)
@@ -356,39 +404,46 @@ export const getWitherable = <E>(M: Monoid<E>): Witherable2C<URI, E> => {
  * The default [`Applicative`](#applicative) instance returns the first error, if you want to get all errors you need to
  * provide a way to concatenate them via a `Semigroup`.
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
  * @example
- *   import * as A from 'fp-ts/Apply'
- *   import * as E from 'fp-ts/Either'
- *   import { pipe } from 'fp-ts/function'
- *   import * as S from 'fp-ts/Semigroup'
- *   import * as string from 'fp-ts/string'
  *
- *   const parseString = (u: unknown): E.Either<string, string> =>
- *     typeof u === 'string' ? E.right(u) : E.left('not a string')
+ * ```typescript
+ * import * as A from '@fp-tx/core/Apply'
+ * import * as E from '@fp-tx/core/Either'
+ * import { pipe } from '@fp-tx/core/function'
+ * import * as S from '@fp-tx/core/Semigroup'
+ * import * as string from '@fp-tx/core/string'
  *
- *   const parseNumber = (u: unknown): E.Either<string, number> =>
- *     typeof u === 'number' ? E.right(u) : E.left('not a number')
+ * const parseString = (u: unknown): E.Either<string, string> =>
+ *   typeof u === 'string' ? E.right(u) : E.left('not a string')
  *
- *   interface Person {
- *     readonly name: string
- *     readonly age: number
- *   }
+ * const parseNumber = (u: unknown): E.Either<string, number> =>
+ *   typeof u === 'number' ? E.right(u) : E.left('not a number')
  *
- *   const parsePerson = (input: Record<string, unknown>): E.Either<string, Person> =>
- *     pipe(E.Do, E.apS('name', parseString(input.name)), E.apS('age', parseNumber(input.age)))
+ * interface Person {
+ *   readonly name: string
+ *   readonly age: number
+ * }
  *
- *   assert.deepStrictEqual(parsePerson({}), E.left('not a string')) // <= first error
+ * const parsePerson = (input: Record<string, unknown>): E.Either<string, Person> =>
+ *   pipe(E.Do, E.apS('name', parseString(input.name)), E.apS('age', parseNumber(input.age)))
  *
- *   const Applicative = E.getApplicativeValidation(pipe(string.Semigroup, S.intercalate(', ')))
+ * assert.deepStrictEqual(parsePerson({}), E.left('not a string')) // <= first error
  *
- *   const apS = A.apS(Applicative)
+ * const Applicative = E.getApplicativeValidation(pipe(string.Semigroup, S.intercalate(', ')))
  *
- *   const parsePersonAll = (input: Record<string, unknown>): E.Either<string, Person> =>
- *     pipe(E.Do, apS('name', parseString(input.name)), apS('age', parseNumber(input.age)))
+ * const apS = A.apS(Applicative)
  *
- *   assert.deepStrictEqual(parsePersonAll({}), E.left('not a string, not a number')) // <= all errors
+ * const parsePersonAll = (input: Record<string, unknown>): E.Either<string, Person> =>
+ *   pipe(E.Do, apS('name', parseString(input.name)), apS('age', parseNumber(input.age)))
+ *
+ * assert.deepStrictEqual(parsePersonAll({}), E.left('not a string, not a number')) // <= all errors
+ * ```
+ *
+ * @public
  */
 export const getApplicativeValidation = <E>(SE: Semigroup<E>): Applicative2C<URI, E> => ({
   URI,
@@ -407,34 +462,41 @@ export const getApplicativeValidation = <E>(SE: Semigroup<E>): Applicative2C<URI
  * The default [`Alt`](#alt) instance returns the last error, if you want to get all errors you need to provide a way to
  * concatenate them via a `Semigroup`.
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
  * @example
- *   import * as E from 'fp-ts/Either'
- *   import { pipe } from 'fp-ts/function'
- *   import * as S from 'fp-ts/Semigroup'
- *   import * as string from 'fp-ts/string'
  *
- *   const parseString = (u: unknown): E.Either<string, string> =>
- *     typeof u === 'string' ? E.right(u) : E.left('not a string')
+ * ```typescript
+ * import * as E from '@fp-tx/core/Either'
+ * import { pipe } from '@fp-tx/core/function'
+ * import * as S from '@fp-tx/core/Semigroup'
+ * import * as string from '@fp-tx/core/string'
  *
- *   const parseNumber = (u: unknown): E.Either<string, number> =>
- *     typeof u === 'number' ? E.right(u) : E.left('not a number')
+ * const parseString = (u: unknown): E.Either<string, string> =>
+ *   typeof u === 'string' ? E.right(u) : E.left('not a string')
  *
- *   const parse = (u: unknown): E.Either<string, string | number> =>
- *     pipe(
- *       parseString(u),
- *       E.alt<string, string | number>(() => parseNumber(u)),
- *     )
+ * const parseNumber = (u: unknown): E.Either<string, number> =>
+ *   typeof u === 'number' ? E.right(u) : E.left('not a number')
  *
- *   assert.deepStrictEqual(parse(true), E.left('not a number')) // <= last error
+ * const parse = (u: unknown): E.Either<string, string | number> =>
+ *   pipe(
+ *     parseString(u),
+ *     E.alt<string, string | number>(() => parseNumber(u)),
+ *   )
  *
- *   const Alt = E.getAltValidation(pipe(string.Semigroup, S.intercalate(', ')))
+ * assert.deepStrictEqual(parse(true), E.left('not a number')) // <= last error
  *
- *   const parseAll = (u: unknown): E.Either<string, string | number> =>
- *     Alt.alt<string | number>(parseString(u), () => parseNumber(u))
+ * const Alt = E.getAltValidation(pipe(string.Semigroup, S.intercalate(', ')))
  *
- *   assert.deepStrictEqual(parseAll(true), E.left('not a string, not a number')) // <= all errors
+ * const parseAll = (u: unknown): E.Either<string, string | number> =>
+ *   Alt.alt<string | number>(parseString(u), () => parseNumber(u))
+ *
+ * assert.deepStrictEqual(parseAll(true), E.left('not a string, not a number')) // <= all errors
+ * ```
+ *
+ * @public
  */
 export const getAltValidation = <E>(SE: Semigroup<E>): Alt2C<URI, E> => ({
   URI,
@@ -450,15 +512,21 @@ export const getAltValidation = <E>(SE: Semigroup<E>): Alt2C<URI, E> => ({
 })
 
 /**
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: Either<E, A>) => Either<E, B> = f => fa =>
   isLeft(fa) ? fa : right(f(fa.right))
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Functor: Functor2<URI> = {
   URI,
@@ -468,8 +536,11 @@ export const Functor: Functor2<URI> = {
 /**
  * Maps the `Right` value of this `Either` to the specified constant value.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const as: {
   <A>(a: A): <E, _>(self: Either<E, _>) => Either<E, A>
@@ -479,20 +550,29 @@ export const as: {
 /**
  * Maps the `Right` value of this `Either` to the void constant value.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const asUnit: <E, _>(self: Either<E, _>) => Either<E, void> = asUnit_(Functor)
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const of: <E = never, A = never>(a: A) => Either<E, A> = right
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Pointed: Pointed2<URI> = {
   URI,
@@ -504,7 +584,9 @@ export const Pointed: Pointed2<URI> = {
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const apW: <E2, A>(fa: Either<E2, A>) => <E1, B>(fab: Either<E1, (a: A) => B>) => Either<E1 | E2, B> =
   fa => fab =>
@@ -512,12 +594,19 @@ export const apW: <E2, A>(fa: Either<E2, A>) => <E1, B>(fab: Either<E1, (a: A) =
     : isLeft(fa) ? fa
     : right(fab.right(fa.right))
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const ap: <E, A>(fa: Either<E, A>) => <B>(fab: Either<E, (a: A) => B>) => Either<E, B> = apW
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Apply: Apply2<URI> = {
   URI,
@@ -526,8 +615,11 @@ export const Apply: Apply2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Applicative: Applicative2<URI> = {
   URI,
@@ -537,8 +629,11 @@ export const Applicative: Applicative2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Chain: chainable.Chain2<URI> = {
   URI,
@@ -548,8 +643,11 @@ export const Chain: chainable.Chain2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Monad: Monad2<URI> = {
   URI,
@@ -562,18 +660,25 @@ export const Monad: Monad2<URI> = {
 /**
  * Left-associative fold of a structure.
  *
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
  * @example
- *   import { pipe } from 'fp-ts/function'
- *   import * as E from 'fp-ts/Either'
  *
- *   const startWith = 'prefix'
- *   const concat = (a: string, b: string) => `${a}:${b}`
+ * ```typescript
+ * import { pipe } from '@fp-tx/core/function'
+ * import * as E from '@fp-tx/core/Either'
  *
- *   assert.deepStrictEqual(pipe(E.right('a'), E.reduce(startWith, concat)), 'prefix:a')
+ * const startWith = 'prefix'
+ * const concat = (a: string, b: string) => `${a}:${b}`
  *
- *   assert.deepStrictEqual(pipe(E.left('e'), E.reduce(startWith, concat)), 'prefix')
+ * assert.deepStrictEqual(pipe(E.right('a'), E.reduce(startWith, concat)), 'prefix:a')
+ *
+ * assert.deepStrictEqual(pipe(E.left('e'), E.reduce(startWith, concat)), 'prefix')
+ * ```
+ *
+ * @public
  */
 export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => <E>(fa: Either<E, A>) => B = (b, f) => fa =>
   isLeft(fa) ? b : f(b, fa.right)
@@ -581,18 +686,25 @@ export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => <E>(fa: Either<E, A>)
 /**
  * Map each element of the structure to a monoid, and combine the results.
  *
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
  * @example
- *   import { pipe } from 'fp-ts/function'
- *   import * as E from 'fp-ts/Either'
- *   import * as S from 'fp-ts/string'
  *
- *   const yell = (a: string) => `${a}!`
+ * ```typescript
+ * import { pipe } from '@fp-tx/core/function'
+ * import * as E from '@fp-tx/core/Either'
+ * import * as S from '@fp-tx/core/string'
  *
- *   assert.deepStrictEqual(pipe(E.right('a'), E.foldMap(S.Monoid)(yell)), 'a!')
+ * const yell = (a: string) => `${a}!`
  *
- *   assert.deepStrictEqual(pipe(E.left('e'), E.foldMap(S.Monoid)(yell)), S.Monoid.empty)
+ * assert.deepStrictEqual(pipe(E.right('a'), E.foldMap(S.Monoid)(yell)), 'a!')
+ *
+ * assert.deepStrictEqual(pipe(E.left('e'), E.foldMap(S.Monoid)(yell)), S.Monoid.empty)
+ * ```
+ *
+ * @public
  */
 export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => <E>(fa: Either<E, A>) => M = M => f => fa =>
   isLeft(fa) ? M.empty : f(fa.right)
@@ -600,25 +712,35 @@ export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => <E>(fa: Either
 /**
  * Right-associative fold of a structure.
  *
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
  * @example
- *   import { pipe } from 'fp-ts/function'
- *   import * as E from 'fp-ts/Either'
  *
- *   const startWith = 'postfix'
- *   const concat = (a: string, b: string) => `${a}:${b}`
+ * ```typescript
+ * import { pipe } from '@fp-tx/core/function'
+ * import * as E from '@fp-tx/core/Either'
  *
- *   assert.deepStrictEqual(pipe(E.right('a'), E.reduceRight(startWith, concat)), 'a:postfix')
+ * const startWith = 'postfix'
+ * const concat = (a: string, b: string) => `${a}:${b}`
  *
- *   assert.deepStrictEqual(pipe(E.left('e'), E.reduceRight(startWith, concat)), 'postfix')
+ * assert.deepStrictEqual(pipe(E.right('a'), E.reduceRight(startWith, concat)), 'a:postfix')
+ *
+ * assert.deepStrictEqual(pipe(E.left('e'), E.reduceRight(startWith, concat)), 'postfix')
+ * ```
+ *
+ * @public
  */
 export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => <E>(fa: Either<E, A>) => B = (b, f) => fa =>
   isLeft(fa) ? b : f(fa.right, b)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Foldable: Foldable2<URI> = {
   URI,
@@ -630,17 +752,24 @@ export const Foldable: Foldable2<URI> = {
 /**
  * Map each element of a structure to an action, evaluate these actions from left to right, and collect the results.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
  * @example
- *   import { pipe } from 'fp-ts/function'
- *   import * as RA from 'fp-ts/ReadonlyArray'
- *   import * as E from 'fp-ts/Either'
- *   import * as O from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(pipe(E.right(['a']), E.traverse(O.Applicative)(RA.head)), O.some(E.right('a')))
+ * ```typescript
+ * import { pipe } from '@fp-tx/core/function'
+ * import * as RA from '@fp-tx/core/ReadonlyArray'
+ * import * as E from '@fp-tx/core/Either'
+ * import * as O from '@fp-tx/core/Option'
  *
- *   assert.deepStrictEqual(pipe(E.right([]), E.traverse(O.Applicative)(RA.head)), O.none)
+ * assert.deepStrictEqual(pipe(E.right(['a']), E.traverse(O.Applicative)(RA.head)), O.some(E.right('a')))
+ *
+ * assert.deepStrictEqual(pipe(E.right([]), E.traverse(O.Applicative)(RA.head)), O.none)
+ * ```
+ *
+ * @public
  */
 export const traverse: PipeableTraverse2<URI> =
   <F>(F: ApplicativeHKT<F>) =>
@@ -651,16 +780,23 @@ export const traverse: PipeableTraverse2<URI> =
 /**
  * Evaluate each monadic action in the structure from left to right, and collect the results.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
  * @example
- *   import { pipe } from 'fp-ts/function'
- *   import * as E from 'fp-ts/Either'
- *   import * as O from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(pipe(E.right(O.some('a')), E.sequence(O.Applicative)), O.some(E.right('a')))
+ * ```typescript
+ * import { pipe } from '@fp-tx/core/function'
+ * import * as E from '@fp-tx/core/Either'
+ * import * as O from '@fp-tx/core/Option'
  *
- *   assert.deepStrictEqual(pipe(E.right(O.none), E.sequence(O.Applicative)), O.none)
+ * assert.deepStrictEqual(pipe(E.right(O.some('a')), E.sequence(O.Applicative)), O.some(E.right('a')))
+ *
+ * assert.deepStrictEqual(pipe(E.right(O.none), E.sequence(O.Applicative)), O.none)
+ * ```
+ *
+ * @public
  */
 export const sequence: Traversable2<URI>['sequence'] =
   <F>(F: ApplicativeHKT<F>) =>
@@ -669,8 +805,11 @@ export const sequence: Traversable2<URI>['sequence'] =
   }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Traversable: Traversable2<URI> = {
   URI,
@@ -685,8 +824,11 @@ export const Traversable: Traversable2<URI> = {
 /**
  * Map a pair of functions over the two type arguments of the bifunctor.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: Either<E, A>) => Either<G, B> =
   (f, g) => fa => (isLeft(fa) ? left(f(fa.left)) : right(g(fa.right)))
@@ -694,15 +836,21 @@ export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: Either<
 /**
  * Map a function over the first type argument of a bifunctor.
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
+ * @public
  */
 export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: Either<E, A>) => Either<G, A> = f => fa =>
   isLeft(fa) ? left(f(fa.left)) : fa
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Bifunctor: Bifunctor2<URI> = {
   URI,
@@ -715,8 +863,11 @@ export const Bifunctor: Bifunctor2<URI> = {
  *
  * The `W` suffix (short for **W**idening) means that the error and the return types will be merged.
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
+ * @public
  */
 export const altW: <E2, B>(that: LazyArg<Either<E2, B>>) => <E1, A>(fa: Either<E1, A>) => Either<E2, A | B> =
   that => fa => (isLeft(fa) ? that() : fa)
@@ -735,46 +886,56 @@ export const altW: <E2, B>(that: LazyArg<Either<E2, B>>) => <E1, A>(fa: Either<E
  * | right(1) | left(b)  | right(1)             |
  * | right(1) | right(2) | right(1)             |
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
  * @example
- *   import * as E from 'fp-ts/Either'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(
- *     pipe(
- *       E.left('a'),
- *       E.alt(() => E.left('b')),
- *     ),
- *     E.left('b'),
- *   )
- *   assert.deepStrictEqual(
- *     pipe(
- *       E.left('a'),
- *       E.alt(() => E.right(2)),
- *     ),
- *     E.right(2),
- *   )
- *   assert.deepStrictEqual(
- *     pipe(
- *       E.right(1),
- *       E.alt(() => E.left('b')),
- *     ),
+ * ```typescript
+ * import * as E from '@fp-tx/core/Either'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     E.left('a'),
+ *     E.alt(() => E.left('b')),
+ *   ),
+ *   E.left('b'),
+ * )
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     E.left('a'),
+ *     E.alt(() => E.right(2)),
+ *   ),
+ *   E.right(2),
+ * )
+ * assert.deepStrictEqual(
+ *   pipe(
  *     E.right(1),
- *   )
- *   assert.deepStrictEqual(
- *     pipe(
- *       E.right(1),
- *       E.alt(() => E.right(2)),
- *     ),
+ *     E.alt(() => E.left('b')),
+ *   ),
+ *   E.right(1),
+ * )
+ * assert.deepStrictEqual(
+ *   pipe(
  *     E.right(1),
- *   )
+ *     E.alt(() => E.right(2)),
+ *   ),
+ *   E.right(1),
+ * )
+ * ```
+ *
+ * @public
  */
 export const alt: <E, A>(that: LazyArg<Either<E, A>>) => (fa: Either<E, A>) => Either<E, A> = altW
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Alt: Alt2<URI> = {
   URI,
@@ -782,13 +943,20 @@ export const Alt: Alt2<URI> = {
   alt: _alt,
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const extend: <E, A, B>(f: (wa: Either<E, A>) => B) => (wa: Either<E, A>) => Either<E, B> = f => wa =>
   isLeft(wa) ? wa : right(f(wa))
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Extend: Extend2<URI> = {
   URI,
@@ -797,8 +965,11 @@ export const Extend: Extend2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instance Methods
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instance Methods
+ * @public
  */
 const chainRec: ChnRec.ChainRec2<URI>['chainRec'] = (a, f) =>
   ChnRec.tailRec(f(a), e =>
@@ -808,8 +979,11 @@ const chainRec: ChnRec.ChainRec2<URI>['chainRec'] = (a, f) =>
   )
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const ChainRec: ChnRec.ChainRec2<URI> = {
   URI,
@@ -819,12 +993,19 @@ export const ChainRec: ChnRec.ChainRec2<URI> = {
   chainRec,
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const throwError: MonadThrow2<URI>['throwError'] = left
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const MonadThrow: MonadThrow2<URI> = {
   URI,
@@ -836,8 +1017,11 @@ export const MonadThrow: MonadThrow2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const FromEither: FromEither2<URI> = {
   URI,
@@ -845,32 +1029,39 @@ export const FromEither: FromEither2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
  * @example
- *   import { fromPredicate, left, right } from 'fp-ts/Either'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(
- *     pipe(
- *       1,
- *       fromPredicate(
- *         n => n > 0,
- *         () => 'error',
- *       ),
+ * ```typescript
+ * import { fromPredicate, left, right } from '@fp-tx/core/Either'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     1,
+ *     fromPredicate(
+ *       n => n > 0,
+ *       () => 'error',
  *     ),
- *     right(1),
- *   )
- *   assert.deepStrictEqual(
- *     pipe(
- *       -1,
- *       fromPredicate(
- *         n => n > 0,
- *         () => 'error',
- *       ),
+ *   ),
+ *   right(1),
+ * )
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     -1,
+ *     fromPredicate(
+ *       n => n > 0,
+ *       () => 'error',
  *     ),
- *     left('error'),
- *   )
+ *   ),
+ *   left('error'),
+ * )
+ * ```
+ *
+ * @public
  */
 export const fromPredicate: {
   <A, B extends A, E>(refinement: Refinement<A, B>, onFalse: (a: A) => E): (a: A) => Either<E, B>
@@ -883,27 +1074,34 @@ export const fromPredicate: {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
  * @example
- *   import * as E from 'fp-ts/Either'
- *   import { pipe } from 'fp-ts/function'
- *   import * as O from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(
- *     pipe(
- *       O.some(1),
- *       E.fromOption(() => 'error'),
- *     ),
- *     E.right(1),
- *   )
- *   assert.deepStrictEqual(
- *     pipe(
- *       O.none,
- *       E.fromOption(() => 'error'),
- *     ),
- *     E.left('error'),
- *   )
+ * ```typescript
+ * import * as E from '@fp-tx/core/Either'
+ * import { pipe } from '@fp-tx/core/function'
+ * import * as O from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     O.some(1),
+ *     E.fromOption(() => 'error'),
+ *   ),
+ *   E.right(1),
+ * )
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     O.none,
+ *     E.fromOption(() => 'error'),
+ *   ),
+ *   E.left('error'),
+ * )
+ * ```
+ *
+ * @public
  */
 export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => Either<E, A> =
   /*#__PURE__*/ fromOption_(FromEither)
@@ -915,16 +1113,22 @@ export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => Either
 /**
  * Returns `true` if the either is an instance of `Left`, `false` otherwise.
  *
- * @since 1.0.0
- * @category Refinements
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Refinements
+ * @public
  */
 export const isLeft: <E>(ma: Either<E, unknown>) => ma is Left<E> = _.isLeft
 
 /**
  * Returns `true` if the either is an instance of `Right`, `false` otherwise.
  *
- * @since 1.0.0
- * @category Refinements
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Refinements
+ * @public
  */
 export const isRight: <A>(ma: Either<unknown, A>) => ma is Right<A> = _.isRight
 
@@ -933,8 +1137,11 @@ export const isRight: <A>(ma: Either<unknown, A>) => ma is Right<A> = _.isRight
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const matchW =
   <E, B, A, C>(onLeft: (e: E) => B, onRight: (a: A) => C) =>
@@ -944,8 +1151,11 @@ export const matchW =
 /**
  * Alias of [`matchW`](#matchw).
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const foldW = matchW
 
@@ -953,30 +1163,40 @@ export const foldW = matchW
  * Takes two functions and an `Either` value, if the value is a `Left` the inner value is applied to the first function,
  * if the value is a `Right` the inner value is applied to the second function.
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
  * @example
- *   import { match, left, right } from 'fp-ts/Either'
- *   import { pipe } from 'fp-ts/function'
  *
- *   function onLeft(errors: Array<string>): string {
- *     return `Errors: ${errors.join(', ')}`
- *   }
+ * ```typescript
+ * import { match, left, right } from '@fp-tx/core/Either'
+ * import { pipe } from '@fp-tx/core/function'
  *
- *   function onRight(value: number): string {
- *     return `Ok: ${value}`
- *   }
+ * function onLeft(errors: Array<string>): string {
+ *   return `Errors: ${errors.join(', ')}`
+ * }
  *
- *   assert.strictEqual(pipe(right(1), match(onLeft, onRight)), 'Ok: 1')
- *   assert.strictEqual(pipe(left(['error 1', 'error 2']), match(onLeft, onRight)), 'Errors: error 1, error 2')
+ * function onRight(value: number): string {
+ *   return `Ok: ${value}`
+ * }
+ *
+ * assert.strictEqual(pipe(right(1), match(onLeft, onRight)), 'Ok: 1')
+ * assert.strictEqual(pipe(left(['error 1', 'error 2']), match(onLeft, onRight)), 'Errors: error 1, error 2')
+ * ```
+ *
+ * @public
  */
 export const match: <E, A, B>(onLeft: (e: E) => B, onRight: (a: A) => B) => (ma: Either<E, A>) => B = matchW
 
 /**
  * Alias of [`match`](#match).
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const fold: <E, A, B>(onLeft: (e: E) => B, onRight: (a: A) => B) => (ma: Either<E, A>) => B = match
 
@@ -985,8 +1205,11 @@ export const fold: <E, A, B>(onLeft: (e: E) => B, onRight: (a: A) => B) => (ma: 
  *
  * The `W` suffix (short for **W**idening) means that the handler return type will be merged.
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
+ * @public
  */
 export const getOrElseW =
   <E, B>(onLeft: (e: E) => B) =>
@@ -996,26 +1219,33 @@ export const getOrElseW =
 /**
  * Returns the wrapped value if it's a `Right` or a default value if is a `Left`.
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
  * @example
- *   import { getOrElse, left, right } from 'fp-ts/Either'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(
- *     pipe(
- *       right(1),
- *       getOrElse(() => 0),
- *     ),
- *     1,
- *   )
- *   assert.deepStrictEqual(
- *     pipe(
- *       left('error'),
- *       getOrElse(() => 0),
- *     ),
- *     0,
- *   )
+ * ```typescript
+ * import { getOrElse, left, right } from '@fp-tx/core/Either'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     right(1),
+ *     getOrElse(() => 0),
+ *   ),
+ *   1,
+ * )
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     left('error'),
+ *     getOrElse(() => 0),
+ *   ),
+ *   0,
+ * )
+ * ```
+ *
+ * @public
  */
 export const getOrElse: <E, A>(onLeft: (e: E) => A) => (ma: Either<E, A>) => A = getOrElseW
 
@@ -1024,15 +1254,20 @@ export const getOrElse: <E, A>(onLeft: (e: E) => A) => (ma: Either<E, A>) => A =
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
 
@@ -1041,7 +1276,9 @@ export const apFirst = /*#__PURE__*/ apFirst_(Apply)
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const apFirstW: <E2, B>(second: Either<E2, B>) => <E1, A>(first: Either<E1, A>) => Either<E1 | E2, A> =
   apFirst as any
@@ -1049,7 +1286,9 @@ export const apFirstW: <E2, B>(second: Either<E2, B>) => <E1, A>(first: Either<E
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
@@ -1058,7 +1297,9 @@ export const apSecond = /*#__PURE__*/ apSecond_(Apply)
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const apSecondW: <E2, B>(second: Either<E2, B>) => <E1, A>(first: Either<E1, A>) => Either<E1 | E2, B> =
   apSecond as any
@@ -1067,8 +1308,11 @@ export const apSecondW: <E2, B>(second: Either<E2, B>) => <E1, A>(first: Either<
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 1.0.0
- * @category Combinators
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Combinators
+ * @public
  */
 export const tap: {
   <E1, A, E2, _>(self: Either<E1, A>, f: (a: A) => Either<E2, _>): Either<E1 | E2, A>
@@ -1080,8 +1324,11 @@ export const tap: {
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flattenW: <E1, E2, A>(mma: Either<E1, Either<E2, A>>) => Either<E1 | E2, A> =
   /*#__PURE__*/ flatMap(identity)
@@ -1090,25 +1337,39 @@ export const flattenW: <E1, E2, A>(mma: Either<E1, Either<E2, A>>) => Either<E1 
  * The `flatten` function is the conventional monad join operator. It is used to remove one level of monadic structure,
  * projecting its bound argument into the outer level.
  *
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
  * @example
- *   import * as E from 'fp-ts/Either'
  *
- *   assert.deepStrictEqual(E.flatten(E.right(E.right('a'))), E.right('a'))
- *   assert.deepStrictEqual(E.flatten(E.right(E.left('e'))), E.left('e'))
- *   assert.deepStrictEqual(E.flatten(E.left('e')), E.left('e'))
+ * ```typescript
+ * import * as E from '@fp-tx/core/Either'
+ *
+ * assert.deepStrictEqual(E.flatten(E.right(E.right('a'))), E.right('a'))
+ * assert.deepStrictEqual(E.flatten(E.right(E.left('e'))), E.left('e'))
+ * assert.deepStrictEqual(E.flatten(E.left('e')), E.left('e'))
+ * ```
+ *
+ * @public
  */
 export const flatten: <E, A>(mma: Either<E, Either<E, A>>) => Either<E, A> = flattenW
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const duplicate: <E, A>(ma: Either<E, A>) => Either<E, Either<E, A>> = /*#__PURE__*/ extend(identity)
 
 /**
  * Use `liftOption`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const fromOptionK: <E>(
   onNone: LazyArg<E>,
@@ -1118,8 +1379,11 @@ export const fromOptionK: <E>(
 /**
  * Use `flatMapOption`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainOptionK: <E>(
   onNone: LazyArg<E>,
@@ -1131,14 +1395,17 @@ export const chainOptionK: <E>(
 /**
  * Use `flatMapOption`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainOptionKW: <E2>(
   onNone: LazyArg<E2>,
 ) => <A, B>(f: (a: A) => Option<B>) => <E1>(ma: Either<E1, A>) => Either<E1 | E2, B> = /*#__PURE__*/ chainOptionK as any
 
-/** @internal */
+/** @internal @packageDocumentation */
 interface EitherTypeLambda extends _.TypeLambda {
   readonly type: Either<this['Out1'], this['Target']>
 }
@@ -1149,8 +1416,11 @@ const _FromEither: _.FromEither<EitherTypeLambda> = {
 }
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
   f: (...a: A) => B | null | undefined,
@@ -1158,8 +1428,11 @@ export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
 ) => (...a: A) => Either<E, NonNullable<B>> = /*#__PURE__*/ _.liftNullable(_FromEither)
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export const liftOption: <A extends ReadonlyArray<unknown>, B, E>(
   f: (...a: A) => Option<B>,
@@ -1172,8 +1445,11 @@ const _FlatMap: _.FlatMap<EitherTypeLambda> = {
 }
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatMapNullable: {
   <A, B, E2>(
@@ -1188,8 +1464,11 @@ export const flatMapNullable: {
 } = /*#__PURE__*/ _.flatMapNullable(_FromEither, _FlatMap)
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatMapOption: {
   <A, B, E2>(f: (a: A) => Option<B>, onNone: (a: A) => E2): <E1>(self: Either<E1, A>) => Either<E2 | E1, B>
@@ -1197,42 +1476,49 @@ export const flatMapOption: {
 } = /*#__PURE__*/ _.flatMapOption(_FromEither, _FlatMap)
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
  * @example
- *   import * as E from 'fp-ts/Either'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(
- *     pipe(
- *       E.right(1),
- *       E.filterOrElse(
- *         n => n > 0,
- *         () => 'error',
- *       ),
- *     ),
+ * ```typescript
+ * import * as E from '@fp-tx/core/Either'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(
+ *   pipe(
  *     E.right(1),
- *   )
- *   assert.deepStrictEqual(
- *     pipe(
- *       E.right(-1),
- *       E.filterOrElse(
- *         n => n > 0,
- *         () => 'error',
- *       ),
+ *     E.filterOrElse(
+ *       n => n > 0,
+ *       () => 'error',
  *     ),
- *     E.left('error'),
- *   )
- *   assert.deepStrictEqual(
- *     pipe(
- *       E.left('a'),
- *       E.filterOrElse(
- *         n => n > 0,
- *         () => 'error',
- *       ),
+ *   ),
+ *   E.right(1),
+ * )
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     E.right(-1),
+ *     E.filterOrElse(
+ *       n => n > 0,
+ *       () => 'error',
  *     ),
+ *   ),
+ *   E.left('error'),
+ * )
+ * assert.deepStrictEqual(
+ *   pipe(
  *     E.left('a'),
- *   )
+ *     E.filterOrElse(
+ *       n => n > 0,
+ *       () => 'error',
+ *     ),
+ *   ),
+ *   E.left('a'),
+ * )
+ * ```
+ *
+ * @public
  */
 export const filterOrElse: {
   <A, B extends A, E>(refinement: Refinement<A, B>, onFalse: (a: A) => E): (self: Either<E, A>) => Either<E, B>
@@ -1245,8 +1531,11 @@ export const filterOrElse: {
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const filterOrElseW: {
   <A, B extends A, E2>(
@@ -1260,7 +1549,9 @@ export const filterOrElseW: {
 /**
  * Returns a `Right` if is a `Left` (and vice versa).
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const swap = <E, A>(ma: Either<E, A>): Either<A, E> => (isLeft(ma) ? right(ma.left) : left(ma.right))
 
@@ -1269,8 +1560,11 @@ export const swap = <E, A>(ma: Either<E, A>): Either<A, E> => (isLeft(ma) ? righ
  *
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
+ * @public
  */
 export const orElseW =
   <E1, E2, B>(onLeft: (e: E1) => Either<E2, B>) =>
@@ -1280,8 +1574,11 @@ export const orElseW =
 /**
  * Useful for recovering from errors.
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
+ * @public
  */
 export const orElse: <E1, A, E2>(onLeft: (e: E1) => Either<E2, A>) => (ma: Either<E1, A>) => Either<E2, A> = orElseW
 
@@ -1289,15 +1586,22 @@ export const orElse: <E1, A, E2>(onLeft: (e: E1) => Either<E2, A>) => (ma: Eithe
  * Takes a default and a nullable value, if the value is not nully, turn it into a `Right`, if the value is nully use
  * the provided default as a `Left`.
  *
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
  * @example
- *   import { fromNullable, left, right } from 'fp-ts/Either'
  *
- *   const parse = fromNullable('nully')
+ * ```typescript
+ * import { fromNullable, left, right } from '@fp-tx/core/Either'
  *
- *   assert.deepStrictEqual(parse(1), right(1))
- *   assert.deepStrictEqual(parse(null), left('nully'))
+ * const parse = fromNullable('nully')
+ *
+ * assert.deepStrictEqual(parse(1), right(1))
+ * assert.deepStrictEqual(parse(null), left('nully'))
+ * ```
+ *
+ * @public
  */
 export const fromNullable =
   <E>(e: E) =>
@@ -1309,27 +1613,34 @@ export const fromNullable =
  *
  * See also [`tryCatchK`](#trycatchk).
  *
- * @since 1.0.0
- * @category Interop
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Interop
  * @example
- *   import * as E from 'fp-ts/Either'
  *
- *   const unsafeHead = <A>(as: ReadonlyArray<A>): A => {
- *     if (as.length > 0) {
- *       return as[0]
- *     } else {
- *       throw new Error('empty array')
- *     }
+ * ```typescript
+ * import * as E from '@fp-tx/core/Either'
+ *
+ * const unsafeHead = <A>(as: ReadonlyArray<A>): A => {
+ *   if (as.length > 0) {
+ *     return as[0]
+ *   } else {
+ *     throw new Error('empty array')
  *   }
+ * }
  *
- *   const head = <A>(as: ReadonlyArray<A>): E.Either<Error, A> =>
- *     E.tryCatch(
- *       () => unsafeHead(as),
- *       e => (e instanceof Error ? e : new Error('unknown error')),
- *     )
+ * const head = <A>(as: ReadonlyArray<A>): E.Either<Error, A> =>
+ *   E.tryCatch(
+ *     () => unsafeHead(as),
+ *     e => (e instanceof Error ? e : new Error('unknown error')),
+ *   )
  *
- *   assert.deepStrictEqual(head([]), E.left(new Error('empty array')))
- *   assert.deepStrictEqual(head([1, 2, 3]), E.right(1))
+ * assert.deepStrictEqual(head([]), E.left(new Error('empty array')))
+ * assert.deepStrictEqual(head([1, 2, 3]), E.right(1))
+ * ```
+ *
+ * @public
  */
 export const tryCatch = <E, A>(f: LazyArg<A>, onThrow: (e: unknown) => E): Either<E, A> => {
   try {
@@ -1342,8 +1653,11 @@ export const tryCatch = <E, A>(f: LazyArg<A>, onThrow: (e: unknown) => E): Eithe
 /**
  * Converts a function that may throw to one returning a `Either`.
  *
- * @since 1.0.0
- * @category Interop
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Interop
+ * @public
  */
 export const tryCatchK =
   <A extends ReadonlyArray<unknown>, B, E>(
@@ -1356,8 +1670,11 @@ export const tryCatchK =
 /**
  * Use `liftNullable`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const fromNullableK = <E>(
   e: E,
@@ -1371,8 +1688,11 @@ export const fromNullableK = <E>(
 /**
  * Use `flatMapNullable`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainNullableK = <E>(
   e: E,
@@ -1382,8 +1702,11 @@ export const chainNullableK = <E>(
 }
 
 /**
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
+ * @public
  */
 export const toUnion: <E, A>(fa: Either<E, A>) => E | A = /*#__PURE__*/ foldW(identity, identity)
 
@@ -1394,13 +1717,19 @@ export const toUnion: <E, A>(fa: Either<E, A>) => E | A = /*#__PURE__*/ foldW(id
 /**
  * Default value for the `onError` argument of `tryCatch`
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function toError(e: unknown): Error {
   return e instanceof Error ? e : new Error(String(e))
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function elem<A>(E: Eq<A>): {
   (a: A): <E>(ma: Either<E, A>) => boolean
   <E>(a: A, ma: Either<E, A>): boolean
@@ -1418,15 +1747,21 @@ export function elem<A>(E: Eq<A>): <E>(a: A, ma?: Either<E, A>) => boolean | ((m
 /**
  * Returns `false` if `Left` or returns the result of the application of the given predicate to the `Right` value.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { exists, left, right } from 'fp-ts/Either'
  *
- *   const gt2 = exists((n: number) => n > 2)
+ * ```typescript
+ * import { exists, left, right } from '@fp-tx/core/Either'
  *
- *   assert.strictEqual(gt2(left('a')), false)
- *   assert.strictEqual(gt2(right(1)), false)
- *   assert.strictEqual(gt2(right(3)), true)
+ * const gt2 = exists((n: number) => n > 2)
+ *
+ * assert.strictEqual(gt2(left('a')), false)
+ * assert.strictEqual(gt2(right(1)), false)
+ * assert.strictEqual(gt2(right(3)), true)
+ * ```
+ *
+ * @public
  */
 export const exists =
   <A>(predicate: Predicate<A>) =>
@@ -1438,14 +1773,20 @@ export const exists =
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const Do: Either<never, {}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
 
@@ -1453,23 +1794,32 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @since 1.0.0
-   * @category Do notation
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Do notation
+   * @public
    */
   let_ as let,
 }
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
 
 /**
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const bindW: <N extends string, A, E2, B>(
   name: Exclude<N, keyof A>,
@@ -1478,8 +1828,11 @@ export const bindW: <N extends string, A, E2, B>(
   bind as any
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
 
@@ -1488,8 +1841,11 @@ export const apS = /*#__PURE__*/ apS_(Apply)
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const apSW: <A, N extends string, E2, B>(
   name: Exclude<N, keyof A>,
@@ -1497,7 +1853,11 @@ export const apSW: <A, N extends string, E2, B>(
 ) => <E1>(fa: Either<E1, A>) => Either<E1 | E2, { readonly [K in keyof A | N]: K extends keyof A ? A[K] : B }> =
   apS as any
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const ApT: Either<never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 
 interface EitherIterable<E, A> {
@@ -1511,8 +1871,11 @@ const do_: <MA extends EitherIterable<any, any>, A>(
 
 export {
   /**
-   * @since 1.0.0
-   * @category Do notation
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Do notation
+   * @public
    */
   do_ as do,
 }
@@ -1524,8 +1887,11 @@ export {
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndex =
   <A, E, B>(f: (index: number, a: A) => Either<E, B>) =>
@@ -1548,8 +1914,11 @@ export const traverseReadonlyNonEmptyArrayWithIndex =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseReadonlyArrayWithIndex = <A, E, B>(
   f: (index: number, a: A) => Either<E, B>,
@@ -1561,8 +1930,11 @@ export const traverseReadonlyArrayWithIndex = <A, E, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseArrayWithIndex: <E, A, B>(
   f: (index: number, a: A) => Either<E, B>,
@@ -1571,8 +1943,11 @@ export const traverseArrayWithIndex: <E, A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseArray = <E, A, B>(
   f: (a: A) => Either<E, B>,
@@ -1581,8 +1956,11 @@ export const traverseArray = <E, A, B>(
 /**
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const sequenceArray: <E, A>(as: ReadonlyArray<Either<E, A>>) => Either<E, ReadonlyArray<A>> =
   /*#__PURE__*/ traverseArray(identity)
@@ -1594,32 +1972,44 @@ export const sequenceArray: <E, A>(as: ReadonlyArray<Either<E, A>>) => Either<E,
 /**
  * Alias of `flatMap`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Either<E1, A>) => Either<E2 | E1, B> = flatMap
 
 /**
  * Alias of `flatMap`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chain: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Either<E, A>) => Either<E, B> = flatMap
 
 /**
  * Alias of `tap`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainFirst: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Either<E, A>) => Either<E, A> = tap
 
 /**
  * Alias of `tap`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainFirstW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Either<E1, A>) => Either<E1 | E2, A> = tap
 
@@ -1630,18 +2020,24 @@ export const chainFirstW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Eit
 /**
  * Use [`Json`](./Json.ts.html) module instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export type Json = boolean | number | string | null | JsonArray | JsonRecord
 
 /**
  * Use [`Json`](./Json.ts.html) module instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface JsonRecord {
   readonly [key: string]: Json
@@ -1650,18 +2046,24 @@ export interface JsonRecord {
 /**
  * Use [`Json`](./Json.ts.html) module instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface JsonArray extends ReadonlyArray<Json> {}
 
 /**
  * Use [`parse`](./Json.ts.html#parse) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export function parseJSON<E>(s: string, onError: (reason: unknown) => E): Either<E, Json> {
   return tryCatch(() => JSON.parse(s), onError)
@@ -1670,9 +2072,12 @@ export function parseJSON<E>(s: string, onError: (reason: unknown) => E): Either
 /**
  * Use [`stringify`](./Json.ts.html#stringify) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const stringifyJSON = <E>(u: unknown, onError: (reason: unknown) => E): Either<E, string> =>
   tryCatch(() => {
@@ -1687,9 +2092,12 @@ export const stringifyJSON = <E>(u: unknown, onError: (reason: unknown) => E): E
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `E.Functor` instead of `E.either` (where `E` is from `import E from 'fp-ts/Either'`)
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const either: Monad2<URI> &
   Foldable2<URI> &
@@ -1723,9 +2131,12 @@ export const either: Monad2<URI> &
  * Semigroup returning the left-most `Left` value. If both operands are `Right`s then the inner values are concatenated
  * using the provided `Semigroup`
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<Either<E, A>> =
   /*#__PURE__*/ getApplySemigroup_(Apply)
@@ -1733,9 +2144,12 @@ export const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<Either<E, A
 /**
  * Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<Either<E, A>> =
   /*#__PURE__*/ getApplicativeMonoid(Applicative)
@@ -1743,9 +2157,12 @@ export const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<Either<E, A>> =
 /**
  * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const getValidationSemigroup = <E, A>(SE: Semigroup<E>, SA: Semigroup<A>): Semigroup<Either<E, A>> =>
   getApplySemigroup_(getApplicativeValidation(SE))(SA)
@@ -1753,9 +2170,12 @@ export const getValidationSemigroup = <E, A>(SE: Semigroup<E>, SA: Semigroup<A>)
 /**
  * Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export const getValidationMonoid = <E, A>(SE: Semigroup<E>, MA: Monoid<A>): Monoid<Either<E, A>> =>
   getApplicativeMonoid(getApplicativeValidation(SE))(MA)
@@ -1763,9 +2183,12 @@ export const getValidationMonoid = <E, A>(SE: Semigroup<E>, MA: Monoid<A>): Mono
 /**
  * Use [`getApplicativeValidation`](#getapplicativevalidation) and [`getAltValidation`](#getaltvalidation) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export function getValidation<E>(
   SE: Semigroup<E>,

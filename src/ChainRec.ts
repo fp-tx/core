@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C, type Chain4 } from './Chain'
 import * as E from './Either'
 import { constUndefined, tuple } from './function'
@@ -30,62 +34,87 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface ChainRec<F> extends Chain<F> {
   readonly chainRec: <A, B>(a: A, f: (a: A) => HKT<F, E.Either<A, B>>) => HKT<F, B>
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface ChainRec1<F extends URIS> extends Chain1<F> {
   readonly chainRec: <A, B>(a: A, f: (a: A) => Kind<F, E.Either<A, B>>) => Kind<F, B>
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface ChainRec2<F extends URIS2> extends Chain2<F> {
   readonly chainRec: <E, A, B>(a: A, f: (a: A) => Kind2<F, E, E.Either<A, B>>) => Kind2<F, E, B>
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface ChainRec2C<F extends URIS2, E> extends Chain2C<F, E> {
   readonly chainRec: <A, B>(a: A, f: (a: A) => Kind2<F, E, E.Either<A, B>>) => Kind2<F, E, B>
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface ChainRec3<F extends URIS3> extends Chain3<F> {
   readonly chainRec: <R, E, A, B>(a: A, f: (a: A) => Kind3<F, R, E, E.Either<A, B>>) => Kind3<F, R, E, B>
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface ChainRec3C<F extends URIS3, E> extends Chain3C<F, E> {
   readonly chainRec: <R, A, B>(a: A, f: (a: A) => Kind3<F, R, E, E.Either<A, B>>) => Kind3<F, R, E, B>
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface ChainRec4<F extends URIS4> extends Chain4<F> {
   readonly chainRec: <S, R, E, A, B>(a: A, f: (a: A) => Kind4<F, S, R, E, E.Either<A, B>>) => Kind4<F, S, R, E, B>
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const tailRec = <A, B>(startWith: A, f: (a: A) => E.Either<A, B>): B => {
   let ab = f(startWith)
   while (ab._tag === 'Left') {
@@ -95,8 +124,11 @@ export const tailRec = <A, B>(startWith: A, f: (a: A) => E.Either<A, B>): B => {
 }
 
 /**
- * @since 1.0.0
- * @category Utils
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Utils
+ * @public
  */
 export function forever<M extends URIS4>(
   M: ChainRec4<M>,
@@ -111,8 +143,11 @@ export function forever<M>(M: ChainRec<M>): <A, B>(ma: HKT<M, A>) => HKT<M, B> {
 }
 
 /**
- * @since 1.0.0
- * @category Utils
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Utils
+ * @public
  */
 export function whileSome<M extends URIS4, A>(
   M: ChainRec4<M>,
@@ -152,8 +187,11 @@ export function whileSome<M, A>(M: ChainRec<M>, Mn: Mn.Monoid<A>): (ma: HKT<M, O
 }
 
 /**
- * @since 1.0.0
- * @category Utils
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Utils
+ * @public
  */
 export function untilSome<M extends URIS4>(
   M: ChainRec4<M>,
@@ -172,8 +210,11 @@ export function untilSome<M>(M: ChainRec<M>): <A>(ma: HKT<M, O.Option<A>>) => HK
 }
 
 /**
- * @since 1.0.0
- * @category Utils
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Utils
+ * @public
  */
 export function chainRec2<M extends URIS4>(
   M: ChainRec4<M>,
@@ -200,8 +241,11 @@ export function chainRec2<M>(
 }
 
 /**
- * @since 1.0.0
- * @category Utils
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Utils
+ * @public
  */
 export function chainRec3<M extends URIS4>(
   M: ChainRec4<M>,
@@ -243,8 +287,11 @@ export function chainRec3<M>(
 }
 
 /**
- * @since 1.0.0
- * @category Utils
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Utils
+ * @public
  */
 export const tailRec2: <A, B, C>(a: A, b: B, f: (a: A, b: B) => E.Either<readonly [A, B], C>) => C = (ai, bi, f) => {
   let result = f(ai, bi)
@@ -256,8 +303,11 @@ export const tailRec2: <A, B, C>(a: A, b: B, f: (a: A, b: B) => E.Either<readonl
 }
 
 /**
- * @since 1.0.0
- * @category Utils
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Utils
+ * @public
  */
 export const tailRec3: <A, B, C, D>(a: A, b: B, c: C, f: (a: A, b: B, c: C) => E.Either<readonly [A, B, C], D>) => D = (
   ai,

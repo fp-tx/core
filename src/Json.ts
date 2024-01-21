@@ -1,54 +1,82 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import { type Either, tryCatch } from './Either'
 import { identity } from './function'
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export type Json = boolean | number | string | null | JsonArray | JsonRecord
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export interface JsonRecord {
   readonly [key: string]: Json
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export interface JsonArray extends ReadonlyArray<Json> {}
 
 /**
  * Converts a JavaScript Object Notation (JSON) string into a `Json` type.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as J from 'fp-ts/Json'
- *   import * as E from 'fp-ts/Either'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe('{"a":1}', J.parse), E.right({ a: 1 }))
- *   assert.deepStrictEqual(
- *     pipe('{"a":}', J.parse),
- *     E.left(new SyntaxError('Unexpected token } in JSON at position 5')),
- *   )
+ * ```typescript
+ * import * as J from '@fp-tx/core/Json'
+ * import * as E from '@fp-tx/core/Either'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe('{"a":1}', J.parse), E.right({ a: 1 }))
+ * assert.deepStrictEqual(
+ *   pipe('{"a":}', J.parse),
+ *   E.left(new SyntaxError('Unexpected token } in JSON at position 5')),
+ * )
+ * ```
+ *
+ * @public
  */
 export const parse = (s: string): Either<unknown, Json> => tryCatch(() => JSON.parse(s), identity)
 
 /**
  * Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as E from 'fp-ts/Either'
- *   import * as J from 'fp-ts/Json'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(J.stringify({ a: 1 }), E.right('{"a":1}'))
- *   const circular: any = { ref: null }
- *   circular.ref = circular
- *   assert.deepStrictEqual(
- *     pipe(
- *       J.stringify(circular),
- *       E.mapLeft(e => e instanceof Error && e.message.includes('Converting circular structure to JSON')),
- *     ),
- *     E.left(true),
- *   )
+ * ```typescript
+ * import * as E from '@fp-tx/core/Either'
+ * import * as J from '@fp-tx/core/Json'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(J.stringify({ a: 1 }), E.right('{"a":1}'))
+ * const circular: any = { ref: null }
+ * circular.ref = circular
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     J.stringify(circular),
+ *     E.mapLeft(e => e instanceof Error && e.message.includes('Converting circular structure to JSON')),
+ *   ),
+ *   E.left(true),
+ * )
+ * ```
+ *
+ * @public
  */
 export const stringify = <A>(a: A): Either<unknown, string> =>
   tryCatch(() => {

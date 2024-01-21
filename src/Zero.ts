@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import {
   type HKT,
   type Kind,
@@ -25,8 +29,11 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Zero<F> {
   readonly URI: F
@@ -34,8 +41,11 @@ export interface Zero<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Zero1<F extends URIS> {
   readonly URI: F
@@ -43,8 +53,11 @@ export interface Zero1<F extends URIS> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Zero2<F extends URIS2> {
   readonly URI: F
@@ -52,8 +65,11 @@ export interface Zero2<F extends URIS2> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Zero2C<F extends URIS2, E> {
   readonly URI: F
@@ -62,8 +78,11 @@ export interface Zero2C<F extends URIS2, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Zero3<F extends URIS3> {
   readonly URI: F
@@ -71,8 +90,11 @@ export interface Zero3<F extends URIS3> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Zero3C<F extends URIS3, E> {
   readonly URI: F
@@ -81,8 +103,11 @@ export interface Zero3C<F extends URIS3, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Zero4<F extends URIS4> {
   readonly URI: F
@@ -90,8 +115,11 @@ export interface Zero4<F extends URIS4> {
 }
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export function guard<F extends URIS4>(F: Zero4<F>, P: Pointed4<F>): <S, R, E>(b: boolean) => Kind4<F, S, R, E, void>
 export function guard<F extends URIS3>(F: Zero3<F>, P: Pointed3<F>): <R, E>(b: boolean) => Kind3<F, R, E, void>

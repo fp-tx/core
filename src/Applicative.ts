@@ -15,7 +15,9 @@
  *
  * Note. `Functor`'s `map` can be derived: `A.map(x, f) = A.ap(A.of(f), x)`
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import {
   ap,
@@ -70,44 +72,65 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Applicative<F> extends Apply<F>, Pointed<F> {}
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Applicative1<F extends URIS> extends Apply1<F>, Pointed1<F> {}
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Applicative2<F extends URIS2> extends Apply2<F>, Pointed2<F> {}
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Applicative2C<F extends URIS2, E> extends Apply2C<F, E>, Pointed2C<F, E> {}
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Applicative3<F extends URIS3> extends Apply3<F>, Pointed3<F> {}
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Applicative3C<F extends URIS3, E> extends Apply3C<F, E>, Pointed3C<F, E> {}
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Applicative4<F extends URIS4> extends Apply4<F>, Pointed4<F> {}
 
@@ -118,7 +141,9 @@ export interface Applicative4<F extends URIS4> extends Apply4<F>, Pointed4<F> {}
 /**
  * Lift a monoid into 'F', the inner values are concatenated using the provided `Monoid`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function getApplicativeMonoid<F extends URIS4>(
   F: Applicative4<F>,
@@ -150,9 +175,12 @@ export function getApplicativeMonoid<F>(F: Applicative<F>): <A>(M: Monoid<A>) =>
 // -------------------------------------------------------------------------------------
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface ApplicativeComposition<F, G> extends FunctorComposition<F, G> {
   readonly of: <A>(a: A) => HKT<F, HKT<G, A>>
@@ -160,9 +188,12 @@ export interface ApplicativeComposition<F, G> extends FunctorComposition<F, G> {
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface ApplicativeCompositionHKT1<F, G extends URIS> extends FunctorCompositionHKT1<F, G> {
   readonly of: <A>(a: A) => HKT<F, Kind<G, A>>
@@ -170,9 +201,12 @@ export interface ApplicativeCompositionHKT1<F, G extends URIS> extends FunctorCo
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface ApplicativeCompositionHKT2<F, G extends URIS2> extends FunctorCompositionHKT2<F, G> {
   readonly of: <E, A>(a: A) => HKT<F, Kind2<G, E, A>>
@@ -180,9 +214,12 @@ export interface ApplicativeCompositionHKT2<F, G extends URIS2> extends FunctorC
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface ApplicativeCompositionHKT2C<F, G extends URIS2, E> extends FunctorCompositionHKT2C<F, G, E> {
   readonly of: <A>(a: A) => HKT<F, Kind2<G, E, A>>
@@ -190,9 +227,12 @@ export interface ApplicativeCompositionHKT2C<F, G extends URIS2, E> extends Func
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface ApplicativeComposition11<F extends URIS, G extends URIS> extends FunctorComposition11<F, G> {
   readonly of: <A>(a: A) => Kind<F, Kind<G, A>>
@@ -200,9 +240,12 @@ export interface ApplicativeComposition11<F extends URIS, G extends URIS> extend
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface ApplicativeComposition12<F extends URIS, G extends URIS2> extends FunctorComposition12<F, G> {
   readonly of: <E, A>(a: A) => Kind<F, Kind2<G, E, A>>
@@ -213,9 +256,12 @@ export interface ApplicativeComposition12<F extends URIS, G extends URIS2> exten
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface ApplicativeComposition12C<F extends URIS, G extends URIS2, E> extends FunctorComposition12C<F, G, E> {
   readonly of: <A>(a: A) => Kind<F, Kind2<G, E, A>>
@@ -223,9 +269,12 @@ export interface ApplicativeComposition12C<F extends URIS, G extends URIS2, E> e
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface ApplicativeComposition21<F extends URIS2, G extends URIS> extends FunctorComposition21<F, G> {
   readonly of: <E, A>(a: A) => Kind2<F, E, Kind<G, A>>
@@ -236,9 +285,12 @@ export interface ApplicativeComposition21<F extends URIS2, G extends URIS> exten
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface ApplicativeComposition2C1<F extends URIS2, G extends URIS, E> extends FunctorComposition2C1<F, G, E> {
   readonly of: <A>(a: A) => Kind2<F, E, Kind<G, A>>
@@ -246,9 +298,12 @@ export interface ApplicativeComposition2C1<F extends URIS2, G extends URIS, E> e
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface ApplicativeComposition22<F extends URIS2, G extends URIS2> extends FunctorComposition22<F, G> {
   readonly of: <FE, GE, A>(a: A) => Kind2<F, FE, Kind2<G, GE, A>>
@@ -259,9 +314,12 @@ export interface ApplicativeComposition22<F extends URIS2, G extends URIS2> exte
 }
 
 /**
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export interface ApplicativeComposition22C<F extends URIS2, G extends URIS2, E> extends FunctorComposition22C<F, G, E> {
   readonly of: <FE, A>(a: A) => Kind2<F, FE, Kind2<G, E, A>>
@@ -274,9 +332,12 @@ export interface ApplicativeComposition22C<F extends URIS2, G extends URIS2, E> 
 /**
  * Use [`ap`](./Apply.ts.html#ap) instead.
  *
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Zone of death
  * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @public
  */
 export function getApplicativeComposition<F extends URIS2, G extends URIS2, E>(
   F: Applicative2<F>,

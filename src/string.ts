@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import type * as E from './Eq'
 import type * as M from './Monoid'
 import type * as O from './Ord'
@@ -12,13 +16,20 @@ import type * as Sh from './Show'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import * as S from 'fp-ts/string'
  *
- *   assert.deepStrictEqual(S.Eq.equals('a', 'a'), true)
- *   assert.deepStrictEqual(S.Eq.equals('a', 'b'), false)
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ *
+ * assert.deepStrictEqual(S.Eq.equals('a', 'a'), true)
+ * assert.deepStrictEqual(S.Eq.equals('a', 'b'), false)
+ * ```
+ *
+ * @public
  */
 export const Eq: E.Eq<string> = {
   equals: (first, second) => first === second,
@@ -27,12 +38,19 @@ export const Eq: E.Eq<string> = {
 /**
  * `string` semigroup under concatenation.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import * as S from 'fp-ts/string'
  *
- *   assert.deepStrictEqual(S.Semigroup.concat('a', 'b'), 'ab')
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ *
+ * assert.deepStrictEqual(S.Semigroup.concat('a', 'b'), 'ab')
+ * ```
+ *
+ * @public
  */
 export const Semigroup: S.Semigroup<string> = {
   concat: (first, second) => first + second,
@@ -41,7 +59,9 @@ export const Semigroup: S.Semigroup<string> = {
 /**
  * An empty `string`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const empty = ''
 
@@ -50,13 +70,20 @@ export const empty = ''
  *
  * The `empty` value is `''`.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import * as S from 'fp-ts/string'
  *
- *   assert.deepStrictEqual(S.Monoid.concat('a', 'b'), 'ab')
- *   assert.deepStrictEqual(S.Monoid.concat('a', S.Monoid.empty), 'a')
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ *
+ * assert.deepStrictEqual(S.Monoid.concat('a', 'b'), 'ab')
+ * assert.deepStrictEqual(S.Monoid.concat('a', S.Monoid.empty), 'a')
+ * ```
+ *
+ * @public
  */
 export const Monoid: M.Monoid<string> = {
   concat: Semigroup.concat,
@@ -64,14 +91,21 @@ export const Monoid: M.Monoid<string> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import * as S from 'fp-ts/string'
  *
- *   assert.deepStrictEqual(S.Ord.compare('a', 'a'), 0)
- *   assert.deepStrictEqual(S.Ord.compare('a', 'b'), -1)
- *   assert.deepStrictEqual(S.Ord.compare('b', 'a'), 1)
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ *
+ * assert.deepStrictEqual(S.Ord.compare('a', 'a'), 0)
+ * assert.deepStrictEqual(S.Ord.compare('a', 'b'), -1)
+ * assert.deepStrictEqual(S.Ord.compare('b', 'a'), 1)
+ * ```
+ *
+ * @public
  */
 export const Ord: O.Ord<string> = {
   equals: Eq.equals,
@@ -82,12 +116,19 @@ export const Ord: O.Ord<string> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import * as S from 'fp-ts/string'
  *
- *   assert.deepStrictEqual(S.Show.show('a'), '"a"')
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ *
+ * assert.deepStrictEqual(S.Show.show('a'), '"a"')
+ * ```
+ *
+ * @public
  */
 export const Show: Sh.Show<string> = {
   show: s => JSON.stringify(s),
@@ -98,13 +139,20 @@ export const Show: Sh.Show<string> = {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Refinements
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Refinements
  * @example
- *   import * as S from 'fp-ts/string'
  *
- *   assert.deepStrictEqual(S.isString('a'), true)
- *   assert.deepStrictEqual(S.isString(1), false)
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ *
+ * assert.deepStrictEqual(S.isString('a'), true)
+ * assert.deepStrictEqual(S.isString(1), false)
+ * ```
+ *
+ * @public
  */
 export const isString: Refinement<unknown, string> = (u: unknown): u is string => typeof u === 'string'
 
@@ -113,32 +161,50 @@ export const isString: Refinement<unknown, string> = (u: unknown): u is string =
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as S from 'fp-ts/string'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe('a', S.toUpperCase), 'A')
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe('a', S.toUpperCase), 'A')
+ * ```
+ *
+ * @public
  */
 export const toUpperCase = (s: string): string => s.toUpperCase()
 
 /**
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as S from 'fp-ts/string'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe('A', S.toLowerCase), 'a')
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe('A', S.toLowerCase), 'a')
+ * ```
+ *
+ * @public
  */
 export const toLowerCase = (s: string): string => s.toLowerCase()
 
 /**
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as S from 'fp-ts/string'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe('abc', S.replace('b', 'd')), 'adc')
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe('abc', S.replace('b', 'd')), 'adc')
+ * ```
+ *
+ * @public
  */
 export const replace =
   (searchValue: string | RegExp, replaceValue: string) =>
@@ -146,42 +212,66 @@ export const replace =
     s.replace(searchValue, replaceValue)
 
 /**
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as S from 'fp-ts/string'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe(' a ', S.trim), 'a')
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe(' a ', S.trim), 'a')
+ * ```
+ *
+ * @public
  */
 export const trim = (s: string): string => s.trim()
 
 /**
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as S from 'fp-ts/string'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe(' a ', S.trimLeft), 'a ')
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe(' a ', S.trimLeft), 'a ')
+ * ```
+ *
+ * @public
  */
 export const trimLeft = (s: string): string => s.trimLeft()
 
 /**
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as S from 'fp-ts/string'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe(' a ', S.trimRight), ' a')
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe(' a ', S.trimRight), ' a')
+ * ```
+ *
+ * @public
  */
 export const trimRight = (s: string): string => s.trimRight()
 
 /**
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as S from 'fp-ts/string'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe('abcd', S.slice(1, 3)), 'bc')
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe('abcd', S.slice(1, 3)), 'bc')
+ * ```
+ *
+ * @public
  */
 export const slice =
   (start: number, end: number) =>
@@ -195,36 +285,54 @@ export const slice =
 /**
  * Test whether a `string` is empty.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as S from 'fp-ts/string'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe('', S.isEmpty), true)
- *   assert.deepStrictEqual(pipe('a', S.isEmpty), false)
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe('', S.isEmpty), true)
+ * assert.deepStrictEqual(pipe('a', S.isEmpty), false)
+ * ```
+ *
+ * @public
  */
 export const isEmpty = (s: string): boolean => s.length === 0
 
 /**
  * Calculate the number of characters in a `string`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as S from 'fp-ts/string'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe('abc', S.size), 3)
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe('abc', S.size), 3)
+ * ```
+ *
+ * @public
  */
 export const size = (s: string): number => s.length
 
 /**
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as S from 'fp-ts/string'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe('abc', S.split('')), ['a', 'b', 'c'])
- *   assert.deepStrictEqual(pipe('', S.split('')), [''])
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe('abc', S.split('')), ['a', 'b', 'c'])
+ * assert.deepStrictEqual(pipe('', S.split('')), [''])
+ * ```
+ *
+ * @public
  */
 export const split =
   (separator: string | RegExp) =>
@@ -234,13 +342,19 @@ export const split =
   }
 
 /**
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as S from 'fp-ts/string'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe('abc', S.includes('b')), true)
- *   assert.deepStrictEqual(pipe('abc', S.includes('d')), false)
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe('abc', S.includes('b')), true)
+ * assert.deepStrictEqual(pipe('abc', S.includes('d')), false)
+ * ```
+ *
+ * @public
  */
 export const includes =
   (searchString: string, position?: number) =>
@@ -248,13 +362,19 @@ export const includes =
     s.includes(searchString, position)
 
 /**
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as S from 'fp-ts/string'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe('abc', S.startsWith('a')), true)
- *   assert.deepStrictEqual(pipe('bc', S.startsWith('a')), false)
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe('abc', S.startsWith('a')), true)
+ * assert.deepStrictEqual(pipe('bc', S.startsWith('a')), false)
+ * ```
+ *
+ * @public
  */
 export const startsWith =
   (searchString: string, position?: number) =>
@@ -262,13 +382,19 @@ export const startsWith =
     s.startsWith(searchString, position)
 
 /**
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as S from 'fp-ts/string'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe('abc', S.endsWith('c')), true)
- *   assert.deepStrictEqual(pipe('ab', S.endsWith('c')), false)
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe('abc', S.endsWith('c')), true)
+ * assert.deepStrictEqual(pipe('ab', S.endsWith('c')), false)
+ * ```
+ *
+ * @public
  */
 export const endsWith =
   (searchString: string, position?: number) =>

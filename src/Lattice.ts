@@ -4,7 +4,9 @@
  * - Absorbtion law for meet: `a ∧ (a ∨ b) <-> a`
  * - Absorbtion law for join: `a ∨ (a ∧ b) <-> a`
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type JoinSemilattice } from './JoinSemilattice'
 import { type MeetSemilattice } from './MeetSemilattice'
@@ -14,7 +16,10 @@ import { type MeetSemilattice } from './MeetSemilattice'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Lattice<A> extends JoinSemilattice<A>, MeetSemilattice<A> {}

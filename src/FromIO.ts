@@ -1,7 +1,9 @@
 /**
  * Lift a computation from the `IO` monad
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import {
   type Chain,
@@ -32,8 +34,11 @@ import { type IO } from './IO'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromIO<F> {
   readonly URI: F
@@ -41,8 +46,11 @@ export interface FromIO<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromIO1<F extends URIS> {
   readonly URI: F
@@ -50,8 +58,11 @@ export interface FromIO1<F extends URIS> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromIO2<F extends URIS2> {
   readonly URI: F
@@ -59,8 +70,11 @@ export interface FromIO2<F extends URIS2> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromIO2C<F extends URIS2, E> {
   readonly URI: F
@@ -69,8 +83,11 @@ export interface FromIO2C<F extends URIS2, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromIO3<F extends URIS3> {
   readonly URI: F
@@ -78,8 +95,11 @@ export interface FromIO3<F extends URIS3> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromIO3C<F extends URIS3, E> {
   readonly URI: F
@@ -88,8 +108,11 @@ export interface FromIO3C<F extends URIS3, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromIO4<F extends URIS4> {
   readonly URI: F
@@ -100,7 +123,11 @@ export interface FromIO4<F extends URIS4> {
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function fromIOK<F extends URIS4>(
   F: FromIO4<F>,
 ): <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => IO<B>) => <S, R, E>(...a: A) => Kind4<F, S, R, E, B>
@@ -128,7 +155,11 @@ export function fromIOK<F>(
   return f => flow(f, F.fromIO)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function chainIOK<M extends URIS4>(
   F: FromIO4<M>,
   M: Chain4<M>,
@@ -161,7 +192,11 @@ export function chainIOK<M>(F: FromIO<M>, M: Chain<M>): <A, B>(f: (a: A) => IO<B
   }
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function chainFirstIOK<M extends URIS4>(
   F: FromIO4<M>,
   M: Chain4<M>,
