@@ -25,7 +25,9 @@
  *
  * Adapted from https://github.com/purescript/purescript-profunctor/blob/master/src/Data/Profunctor/Strong.purs
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type Category, type Category2, type Category3, type Category4 } from './Category'
 import { identity } from './function'
@@ -37,8 +39,11 @@ import { type Profunctor, type Profunctor2, type Profunctor3, type Profunctor4 }
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Strong<F> extends Profunctor<F> {
   readonly first: <A, B, C>(pab: HKT2<F, A, B>) => HKT2<F, [A, C], [B, C]>
@@ -46,8 +51,11 @@ export interface Strong<F> extends Profunctor<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Strong2<F extends URIS2> extends Profunctor2<F> {
   readonly first: <A, B, C>(pab: Kind2<F, A, B>) => Kind2<F, [A, C], [B, C]>
@@ -55,8 +63,11 @@ export interface Strong2<F extends URIS2> extends Profunctor2<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Strong3<F extends URIS3> extends Profunctor3<F> {
   readonly first: <R, A, B, C>(pab: Kind3<F, R, A, B>) => Kind3<F, R, [A, C], [B, C]>
@@ -64,8 +75,11 @@ export interface Strong3<F extends URIS3> extends Profunctor3<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Strong4<F extends URIS4> extends Profunctor4<F> {
   readonly first: <S, R, A, B, C>(pab: Kind4<F, S, R, A, B>) => Kind4<F, S, R, [A, C], [B, C]>
@@ -84,7 +98,9 @@ export interface Strong4<F extends URIS4> extends Profunctor4<F> {
  * We take two functions, `f` and `g`, and we transform them into a single function which takes a tuple and maps `f`
  * over the first element and `g` over the second. Just like `bi-map` would do for the `bi-functor` instance of tuple.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function split<F extends URIS4>(
   S: Strong4<F>,
@@ -126,7 +142,9 @@ export function split<F>(
  * takes one parameter and returns a tuple of the results of running `f` and `g` on the parameter, respectively. This
  * allows us to run two parallel computations on the same input and return both results in a tuple.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function fanOut<F extends URIS4>(
   S: Strong4<F>,
@@ -163,22 +181,23 @@ export function fanOut<F>(
 /**
  * Use [`split`](#split) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export function splitStrong<F extends URIS4>(
   F: Category4<F> & Strong4<F>,
 ): <S, R, A, B, C, D>(pab: Kind4<F, S, R, A, B>, pcd: Kind4<F, S, R, C, D>) => Kind4<F, S, R, [A, C], [B, D]>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function splitStrong<F extends URIS3>(
   F: Category3<F> & Strong3<F>,
 ): <R, A, B, C, D>(pab: Kind3<F, R, A, B>, pcd: Kind3<F, R, C, D>) => Kind3<F, R, [A, C], [B, D]>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function splitStrong<F extends URIS2>(
   F: Category2<F> & Strong2<F>,
 ): <A, B, C, D>(pab: Kind2<F, A, B>, pcd: Kind2<F, C, D>) => Kind2<F, [A, C], [B, D]>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function splitStrong<F>(
   F: Category<F> & Strong<F>,
 ): <A, B, C, D>(pab: HKT2<F, A, B>, pcd: HKT2<F, C, D>) => HKT2<F, [A, C], [B, D]>
@@ -191,22 +210,23 @@ export function splitStrong<F>(
 /**
  * Use [`fanOut`](#fanout) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export function fanout<F extends URIS4>(
   F: Category4<F> & Strong4<F>,
 ): <S, R, A, B, C>(pab: Kind4<F, S, R, A, B>, pac: Kind4<F, S, R, A, C>) => Kind4<F, S, R, A, [B, C]>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function fanout<F extends URIS3>(
   F: Category3<F> & Strong3<F>,
 ): <R, A, B, C>(pab: Kind3<F, R, A, B>, pac: Kind3<F, R, A, C>) => Kind3<F, R, A, [B, C]>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function fanout<F extends URIS2>(
   F: Category2<F> & Strong2<F>,
 ): <A, B, C>(pab: Kind2<F, A, B>, pac: Kind2<F, A, C>) => Kind2<F, A, [B, C]>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function fanout<F>(
   F: Category<F> & Strong<F>,
 ): <A, B, C>(pab: HKT2<F, A, B>, pac: HKT2<F, A, C>) => HKT2<F, A, [B, C]>

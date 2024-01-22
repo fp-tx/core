@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import type * as E from './Eq'
 import { pipe } from './function'
 import { type IO } from './IO'
@@ -10,44 +14,63 @@ import * as O from './Ord'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Eq: E.Eq<Date> = {
   equals: (first, second) => first.valueOf() === second.valueOf(),
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const eqDate: E.Eq<Date> = {
   equals: (x, y) => x.getDate() === y.getDate(),
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const eqMonth: E.Eq<Date> = {
   equals: (x, y) => x.getMonth() === y.getMonth(),
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const eqYear: E.Eq<Date> = {
   equals: (x, y) => x.getFullYear() === y.getFullYear(),
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { Ord } from 'fp-ts/Date'
  *
- *   assert.deepStrictEqual(Ord.compare(new Date(1, 1, 2020), new Date(1, 1, 2021)), -1)
+ * ```typescript
+ * import { Ord } from '@fp-tx/core/Date'
+ *
+ * assert.deepStrictEqual(Ord.compare(new Date(1, 1, 2020), new Date(1, 1, 2021)), -1)
+ * ```
+ *
+ * @public
  */
 export const Ord: O.Ord<Date> = /*#__PURE__*/ pipe(
   N.Ord,
@@ -61,14 +84,19 @@ export const Ord: O.Ord<Date> = /*#__PURE__*/ pipe(
 /**
  * Returns the current `Date`
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const create: IO<Date> = () => new Date()
 
 /**
  * Returns the number of milliseconds elapsed since January 1, 1970, 00:00:00 UTC
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const now: IO<number> = () => new Date().getTime()

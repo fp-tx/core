@@ -1,7 +1,9 @@
 /**
  * This class identifies data structures which can be _unfolded_, generalizing `unfold` on arrays.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import {
   type HKT,
@@ -21,8 +23,11 @@ import { type Option } from './Option'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Unfoldable<F> {
   readonly URI: F
@@ -30,8 +35,11 @@ export interface Unfoldable<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Unfoldable1<F extends URIS> {
   readonly URI: F
@@ -39,8 +47,11 @@ export interface Unfoldable1<F extends URIS> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Unfoldable2<F extends URIS2> {
   readonly URI: F
@@ -48,8 +59,11 @@ export interface Unfoldable2<F extends URIS2> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Unfoldable2C<F extends URIS2, E> {
   readonly URI: F
@@ -58,8 +72,11 @@ export interface Unfoldable2C<F extends URIS2, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Unfoldable3<F extends URIS3> {
   readonly URI: F
@@ -67,8 +84,11 @@ export interface Unfoldable3<F extends URIS3> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Unfoldable3C<F extends URIS3, E> {
   readonly URI: F
@@ -77,8 +97,11 @@ export interface Unfoldable3C<F extends URIS3, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Unfoldable4<F extends URIS4> {
   readonly URI: F

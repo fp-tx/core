@@ -7,7 +7,9 @@
  * 2. Symmetry: `E.equals(a, b) === E.equals(b, a)`
  * 3. Transitivity: if `E.equals(a, b) === true` and `E.equals(b, c) === true`, then `E.equals(a, c) === true`
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type Contravariant1 } from './Contravariant'
 import { pipe } from './function'
@@ -20,8 +22,11 @@ import { type Semigroup } from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Eq<A> {
   readonly equals: (x: A, y: A) => boolean
@@ -32,8 +37,11 @@ export interface Eq<A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const fromEquals = <A>(equals: Eq<A>['equals']): Eq<A> => ({
   equals: (x, y) => x === y || equals(x, y),
@@ -43,7 +51,11 @@ export const fromEquals = <A>(equals: Eq<A>['equals']): Eq<A> => ({
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const struct = <A>(eqs: { [K in keyof A]: Eq<A[K]> }): Eq<{ readonly [K in keyof A]: A[K] }> =>
   fromEquals((first, second) => {
     for (const key in eqs) {
@@ -57,18 +69,24 @@ export const struct = <A>(eqs: { [K in keyof A]: Eq<A[K]> }): Eq<{ readonly [K i
 /**
  * Given a tuple of `Eq`s returns a `Eq` for the tuple
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { tuple } from 'fp-ts/Eq'
- *   import * as S from 'fp-ts/string'
- *   import * as N from 'fp-ts/number'
- *   import * as B from 'fp-ts/boolean'
  *
- *   const E = tuple(S.Eq, N.Eq, B.Eq)
- *   assert.strictEqual(E.equals(['a', 1, true], ['a', 1, true]), true)
- *   assert.strictEqual(E.equals(['a', 1, true], ['b', 1, true]), false)
- *   assert.strictEqual(E.equals(['a', 1, true], ['a', 2, true]), false)
- *   assert.strictEqual(E.equals(['a', 1, true], ['a', 1, false]), false)
+ * ```typescript
+ * import { tuple } from '@fp-tx/core/Eq'
+ * import * as S from '@fp-tx/core/string'
+ * import * as N from '@fp-tx/core/number'
+ * import * as B from '@fp-tx/core/boolean'
+ *
+ * const E = tuple(S.Eq, N.Eq, B.Eq)
+ * assert.strictEqual(E.equals(['a', 1, true], ['a', 1, true]), true)
+ * assert.strictEqual(E.equals(['a', 1, true], ['b', 1, true]), false)
+ * assert.strictEqual(E.equals(['a', 1, true], ['a', 2, true]), false)
+ * assert.strictEqual(E.equals(['a', 1, true], ['a', 1, false]), false)
+ * ```
+ *
+ * @public
  */
 export const tuple = <A extends ReadonlyArray<unknown>>(...eqs: { [K in keyof A]: Eq<A[K]> }): Eq<Readonly<A>> =>
   fromEquals((first, second) => eqs.every((E, i) => E.equals(first[i], second[i])))
@@ -88,54 +106,66 @@ const contramap_: <A, B>(fa: Eq<A>, f: (b: B) => A) => Eq<B> = (fa, f) => pipe(f
  * If we have a way of comparing `UUID`s for equality (`eqUUID: Eq<UUID>`) and we know how to go from `User -> UUID`,
  * using `contramap` we can do this
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { contramap, Eq } from 'fp-ts/Eq'
- *   import { pipe } from 'fp-ts/function'
- *   import * as S from 'fp-ts/string'
  *
- *   type UUID = string
+ * ```typescript
+ * import { contramap, Eq } from '@fp-tx/core/Eq'
+ * import { pipe } from '@fp-tx/core/function'
+ * import * as S from '@fp-tx/core/string'
  *
- *   interface User {
- *     readonly key: UUID
- *     readonly firstName: string
- *     readonly lastName: string
- *   }
+ * type UUID = string
  *
- *   const eqUUID: Eq<UUID> = S.Eq
+ * interface User {
+ *   readonly key: UUID
+ *   readonly firstName: string
+ *   readonly lastName: string
+ * }
  *
- *   const eqUserByKey: Eq<User> = pipe(
- *     eqUUID,
- *     contramap(user => user.key),
- *   )
+ * const eqUUID: Eq<UUID> = S.Eq
  *
- *   assert.deepStrictEqual(
- *     eqUserByKey.equals(
- *       { key: 'k1', firstName: 'a1', lastName: 'b1' },
- *       { key: 'k2', firstName: 'a1', lastName: 'b1' },
- *     ),
- *     false,
- *   )
- *   assert.deepStrictEqual(
- *     eqUserByKey.equals(
- *       { key: 'k1', firstName: 'a1', lastName: 'b1' },
- *       { key: 'k1', firstName: 'a2', lastName: 'b1' },
- *     ),
- *     true,
- *   )
+ * const eqUserByKey: Eq<User> = pipe(
+ *   eqUUID,
+ *   contramap(user => user.key),
+ * )
+ *
+ * assert.deepStrictEqual(
+ *   eqUserByKey.equals(
+ *     { key: 'k1', firstName: 'a1', lastName: 'b1' },
+ *     { key: 'k2', firstName: 'a1', lastName: 'b1' },
+ *   ),
+ *   false,
+ * )
+ * assert.deepStrictEqual(
+ *   eqUserByKey.equals(
+ *     { key: 'k1', firstName: 'a1', lastName: 'b1' },
+ *     { key: 'k1', firstName: 'a2', lastName: 'b1' },
+ *   ),
+ *   true,
+ * )
+ * ```
+ *
+ * @public
  */
 export const contramap: <A, B>(f: (b: B) => A) => (fa: Eq<A>) => Eq<B> = f => fa =>
   fromEquals((x, y) => fa.equals(f(x), f(y)))
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export const URI = 'Eq'
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export type URI = typeof URI
 
@@ -146,8 +176,11 @@ declare module './HKT' {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const eqStrict: Eq<unknown> = {
   equals: (a, b) => a === b,
@@ -158,16 +191,22 @@ const empty: Eq<unknown> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getSemigroup = <A>(): Semigroup<Eq<A>> => ({
   concat: (x, y) => fromEquals((a, b) => x.equals(a, b) && y.equals(a, b)),
 })
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getMonoid = <A>(): Monoid<Eq<A>> => ({
   concat: getSemigroup<A>().concat,
@@ -175,8 +214,11 @@ export const getMonoid = <A>(): Monoid<Eq<A>> => ({
 })
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Contravariant: Contravariant1<URI> = {
   URI,
@@ -190,9 +232,10 @@ export const Contravariant: Contravariant1<URI> = {
 /**
  * Use [`tuple`](#tuple) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getTupleEq: <T extends ReadonlyArray<Eq<any>>>(
   ...eqs: T
@@ -201,18 +244,20 @@ export const getTupleEq: <T extends ReadonlyArray<Eq<any>>>(
 /**
  * Use [`struct`](#struct) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getStructEq: <O extends ReadonlyRecord<string, any>>(eqs: { [K in keyof O]: Eq<O[K]> }) => Eq<O> = struct
 
 /**
  * Use [`eqStrict`](#eqstrict) instead
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const strictEqual: <A>(a: A, b: A) => boolean = eqStrict.equals
 
@@ -220,45 +265,50 @@ export const strictEqual: <A>(a: A, b: A) => boolean = eqStrict.equals
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Contravariant`
  * instance, pass `E.Contravariant` instead of `E.eq` (where `E` is from `import E from 'fp-ts/Eq'`)
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const eq: Contravariant1<URI> = Contravariant
 
 /**
  * Use [`Eq`](./boolean.ts.html#eq) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const eqBoolean: Eq<boolean> = eqStrict
 
 /**
  * Use [`Eq`](./string.ts.html#eq) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const eqString: Eq<string> = eqStrict
 
 /**
  * Use [`Eq`](./number.ts.html#eq) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const eqNumber: Eq<number> = eqStrict
 
 /**
  * Use [`Eq`](./Date.ts.html#eq) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const eqDate: Eq<Date> = {
   equals: (first, second) => first.valueOf() === second.valueOf(),

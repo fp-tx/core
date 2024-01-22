@@ -1,7 +1,9 @@
 /**
  * Lift a computation from the `Reader` monad.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type Chain, type Chain2, type Chain3, type Chain3C, type Chain4, tap } from './Chain'
 import { flow } from './function'
@@ -14,8 +16,11 @@ import { type Reader } from './Reader'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromReader<F> {
   readonly URI: F
@@ -23,8 +28,11 @@ export interface FromReader<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromReader2<F extends URIS2> {
   readonly URI: F
@@ -32,8 +40,11 @@ export interface FromReader2<F extends URIS2> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromReader3<F extends URIS3> {
   readonly URI: F
@@ -41,8 +52,11 @@ export interface FromReader3<F extends URIS3> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromReader3C<F extends URIS3, E> {
   readonly URI: F
@@ -51,8 +65,11 @@ export interface FromReader3C<F extends URIS3, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromReader4<F extends URIS4> {
   readonly URI: F
@@ -64,8 +81,11 @@ export interface FromReader4<F extends URIS4> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export function ask<F extends URIS4>(F: FromReader4<F>): <S, R, E>() => Kind4<F, S, R, E, R>
 export function ask<F extends URIS3>(F: FromReader3<F>): <R, E>() => Kind3<F, R, E, R>
@@ -77,8 +97,11 @@ export function ask<F>(F: FromReader<F>): <R>() => HKT2<F, R, R> {
 }
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export function asks<F extends URIS4>(F: FromReader4<F>): <R, A, S, E>(f: (r: R) => A) => Kind4<F, S, R, E, A>
 export function asks<F extends URIS3>(F: FromReader3<F>): <R, A, E>(f: (r: R) => A) => Kind3<F, R, E, A>
@@ -93,7 +116,11 @@ export function asks<F>(F: FromReader<F>): <R, A>(f: (r: R) => A) => HKT2<F, R, 
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function fromReaderK<F extends URIS4>(
   F: FromReader4<F>,
 ): <A extends ReadonlyArray<unknown>, R, B>(f: (...a: A) => Reader<R, B>) => <S, E>(...a: A) => Kind4<F, S, R, E, B>
@@ -115,7 +142,11 @@ export function fromReaderK<F>(
   return f => flow(f, F.fromReader)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function chainReaderK<M extends URIS4>(
   F: FromReader4<M>,
   M: Chain4<M>,
@@ -144,7 +175,11 @@ export function chainReaderK<M extends URIS2>(
   return f => ma => M.chain(ma, fromReaderKF(f))
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function chainFirstReaderK<M extends URIS4>(
   F: FromReader4<M>,
   M: Chain4<M>,

@@ -1,7 +1,9 @@
 /**
  * Lift a computation from the `State` monad.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type Chain, type Chain2, type Chain3, type Chain4 } from './Chain'
 import { type Endomorphism } from './Endomorphism'
@@ -15,8 +17,11 @@ import { type State } from './State'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromState<F> {
   readonly URI: F
@@ -24,8 +29,11 @@ export interface FromState<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromState2<F extends URIS2> {
   readonly URI: F
@@ -33,8 +41,11 @@ export interface FromState2<F extends URIS2> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromState3<F extends URIS3> {
   readonly URI: F
@@ -42,8 +53,11 @@ export interface FromState3<F extends URIS3> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromState3C<F extends URIS3, E> {
   readonly URI: F
@@ -52,8 +66,11 @@ export interface FromState3C<F extends URIS3, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromState4<F extends URIS4> {
   readonly URI: F
@@ -65,8 +82,11 @@ export interface FromState4<F extends URIS4> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export function get<F extends URIS4>(F: FromState4<F>): <S, R, E>() => Kind4<F, S, R, E, S>
 export function get<F extends URIS3>(F: FromState3<F>): <S, E>() => Kind3<F, S, E, S>
@@ -78,8 +98,11 @@ export function get<F>(F: FromState<F>): <S>() => HKT2<F, S, S> {
 }
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export function put<F extends URIS4>(F: FromState4<F>): <S, R, E>(s: S) => Kind4<F, S, R, E, void>
 export function put<F extends URIS3>(F: FromState3<F>): <S, E>(s: S) => Kind3<F, S, E, void>
@@ -91,8 +114,11 @@ export function put<F>(F: FromState<F>): <S>(s: S) => HKT2<F, S, void> {
 }
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export function modify<F extends URIS4>(F: FromState4<F>): <S, R, E>(f: Endomorphism<S>) => Kind4<F, S, R, E, void>
 export function modify<F extends URIS3>(F: FromState3<F>): <S, E>(f: Endomorphism<S>) => Kind3<F, S, E, void>
@@ -104,8 +130,11 @@ export function modify<F>(F: FromState<F>): <S>(f: Endomorphism<S>) => HKT2<F, S
 }
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export function gets<F extends URIS4>(F: FromState4<F>): <S, R, E, A>(f: (s: S) => A) => Kind4<F, S, R, E, A>
 export function gets<F extends URIS3>(F: FromState3<F>): <S, E, A>(f: (s: S) => A) => Kind3<F, S, E, A>
@@ -120,7 +149,11 @@ export function gets<F>(F: FromState<F>): <S, A>(f: (s: S) => A) => HKT2<F, S, A
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function fromStateK<F extends URIS4>(
   F: FromState4<F>,
 ): <A extends ReadonlyArray<unknown>, S, B>(f: (...a: A) => State<S, B>) => <R, E>(...a: A) => Kind4<F, S, R, E, B>
@@ -142,7 +175,11 @@ export function fromStateK<F>(
   return f => flow(f, F.fromState)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function chainStateK<M extends URIS4>(
   F: FromState4<M>,
   M: Chain4<M>,

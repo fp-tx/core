@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, type URIS4 } from './HKT'
 
 // -------------------------------------------------------------------------------------
@@ -6,8 +10,11 @@ import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, 
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Bifunctor<F> {
   readonly URI: F
@@ -16,8 +23,11 @@ export interface Bifunctor<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Bifunctor2<F extends URIS2> {
   readonly URI: F
@@ -26,8 +36,11 @@ export interface Bifunctor2<F extends URIS2> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Bifunctor2C<F extends URIS2, E> {
   readonly URI: F
@@ -37,8 +50,11 @@ export interface Bifunctor2C<F extends URIS2, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Bifunctor3<F extends URIS3> {
   readonly URI: F
@@ -47,8 +63,11 @@ export interface Bifunctor3<F extends URIS3> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Bifunctor3C<F extends URIS3, E> {
   readonly URI: F
@@ -58,8 +77,11 @@ export interface Bifunctor3C<F extends URIS3, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Bifunctor4<F extends URIS4> {
   readonly URI: F

@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import * as _ from './internal'
 import { type Semigroup } from './Semigroup'
 
@@ -9,18 +13,25 @@ import { type Semigroup } from './Semigroup'
 /**
  * Return a semigroup which works like `Object.assign`.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { getAssignSemigroup } from 'fp-ts/struct'
  *
- *   interface Person {
- *     readonly name: string
- *     readonly age: number
- *   }
+ * ```typescript
+ * import { getAssignSemigroup } from '@fp-tx/core/struct'
  *
- *   const S = getAssignSemigroup<Person>()
- *   assert.deepStrictEqual(S.concat({ name: 'name', age: 23 }, { name: 'name', age: 24 }), { name: 'name', age: 24 })
+ * interface Person {
+ *   readonly name: string
+ *   readonly age: number
+ * }
+ *
+ * const S = getAssignSemigroup<Person>()
+ * assert.deepStrictEqual(S.concat({ name: 'name', age: 23 }, { name: 'name', age: 24 }), { name: 'name', age: 24 })
+ * ```
+ *
+ * @public
  */
 export const getAssignSemigroup = <A extends object = never>(): Semigroup<A> => ({
   concat: (first, second) => Object.assign({}, first, second),
@@ -33,21 +44,27 @@ export const getAssignSemigroup = <A extends object = never>(): Semigroup<A> => 
 /**
  * Creates a new object by recursively evolving a shallow copy of `a`, according to the `transformation` functions.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { pipe } from 'fp-ts/function'
- *   import { evolve } from 'fp-ts/struct'
  *
- *   assert.deepStrictEqual(
- *     pipe(
- *       { a: 'a', b: 1 },
- *       evolve({
- *         a: a => a.length,
- *         b: b => b * 2,
- *       }),
- *     ),
- *     { a: 1, b: 2 },
- *   )
+ * ```typescript
+ * import { pipe } from '@fp-tx/core/function'
+ * import { evolve } from '@fp-tx/core/struct'
+ *
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     { a: 'a', b: 1 },
+ *     evolve({
+ *       a: a => a.length,
+ *       b: b => b * 2,
+ *     }),
+ *   ),
+ *   { a: 1, b: 2 },
+ * )
+ * ```
+ *
+ * @public
  */
 export const evolve =
   <A, F extends { [K in keyof A]: (a: A[K]) => unknown }>(transformations: F) =>

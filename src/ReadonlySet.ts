@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import { type Either } from './Either'
 import { type Eq, fromEquals } from './Eq'
 import { identity } from './function'
@@ -13,8 +17,11 @@ import { type Separated, separated } from './Separated'
 import { type Show } from './Show'
 
 /**
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
+ * @public
  */
 export const fromSet = <A>(s: Set<A>): ReadonlySet<A> => new Set(s)
 
@@ -25,16 +32,22 @@ export const fromSet = <A>(s: Set<A>): ReadonlySet<A> => new Set(s)
 /**
  * Create a set with one element
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const singleton = <A>(a: A): ReadonlySet<A> => new Set([a])
 
 /**
  * Create a `ReadonlySet` from a `ReadonlyArray`
  *
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
+ * @public
  */
 export const fromReadonlyArray =
   <A>(E: Eq<A>) =>
@@ -52,8 +65,11 @@ export const fromReadonlyArray =
   }
 
 /**
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
+ * @public
  */
 export function toSet<A>(s: ReadonlySet<A>): Set<A> {
   return new Set(s)
@@ -67,7 +83,9 @@ interface Next<A> {
 /**
  * Projects a Set through a function
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function map<B>(E: Eq<B>): <A>(f: (x: A) => B) => (set: ReadonlySet<A>) => ReadonlySet<B> {
   const elemE = elem(E)
@@ -83,7 +101,11 @@ export function map<B>(E: Eq<B>): <A>(f: (x: A) => B) => (set: ReadonlySet<A>) =
   }
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function chain<B>(E: Eq<B>): <A>(f: (x: A) => ReadonlySet<B>) => (set: ReadonlySet<A>) => ReadonlySet<B> {
   const elemE = elem(E)
   return f => set => {
@@ -99,7 +121,11 @@ export function chain<B>(E: Eq<B>): <A>(f: (x: A) => ReadonlySet<B>) => (set: Re
   }
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function filter<A, B extends A>(refinement: Refinement<A, B>): (set: ReadonlySet<A>) => ReadonlySet<B>
 export function filter<A>(predicate: Predicate<A>): <B extends A>(set: ReadonlySet<B>) => ReadonlySet<B>
 export function filter<A>(predicate: Predicate<A>): (set: ReadonlySet<A>) => ReadonlySet<A>
@@ -118,7 +144,11 @@ export function filter<A>(predicate: Predicate<A>): (set: ReadonlySet<A>) => Rea
   }
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function partition<A, B extends A>(
   refinement: Refinement<A, B>,
 ): (set: ReadonlySet<A>) => Separated<ReadonlySet<A>, ReadonlySet<B>>
@@ -152,7 +182,9 @@ export function partition<A>(
 /**
  * Form the union of two sets
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function union<A>(E: Eq<A>): {
   (that: ReadonlySet<A>): (me: ReadonlySet<A>) => ReadonlySet<A>
@@ -187,7 +219,9 @@ export function union<A>(
 /**
  * The set of elements which are in both the first and second set
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function intersection<A>(E: Eq<A>): {
   (that: ReadonlySet<A>): (me: ReadonlySet<A>) => ReadonlySet<A>
@@ -215,7 +249,11 @@ export function intersection<A>(
   }
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function partitionMap<B, C>(
   EB: Eq<B>,
   EC: Eq<C>,
@@ -251,13 +289,19 @@ export function partitionMap<B, C>(
 /**
  * Form the set difference (`x` - `y`)
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { difference } from 'fp-ts/ReadonlySet'
- *   import * as N from 'fp-ts/number'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe(new Set([1, 2]), difference(N.Eq)(new Set([1, 3]))), new Set([2]))
+ * ```typescript
+ * import { difference } from '@fp-tx/core/ReadonlySet'
+ * import * as N from '@fp-tx/core/number'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe(new Set([1, 2]), difference(N.Eq)(new Set([1, 3]))), new Set([2]))
+ * ```
+ *
+ * @public
  */
 export function difference<A>(E: Eq<A>): {
   (that: ReadonlySet<A>): (me: ReadonlySet<A>) => ReadonlySet<A>
@@ -276,21 +320,32 @@ export function difference<A>(
   }
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function reduce<A>(O: Ord<A>): <B>(b: B, f: (b: B, a: A) => B) => (fa: ReadonlySet<A>) => B {
   const toReadonlyArrayO = toReadonlyArray(O)
   return (b, f) => fa => toReadonlyArrayO(fa).reduce(f, b)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function foldMap<A, M>(O: Ord<A>, M: Monoid<M>): (f: (a: A) => M) => (fa: ReadonlySet<A>) => M {
   const toReadonlyArrayO = toReadonlyArray(O)
   return f => fa => toReadonlyArrayO(fa).reduce((b, a) => M.concat(b, f(a)), M.empty)
 }
 
 /**
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
+ * @public
  */
 export const reduceRight = <A>(O: Ord<A>): (<B>(b: B, f: (a: A, b: B) => B) => (fa: ReadonlySet<A>) => B) => {
   const toReadonlyArrayO = toReadonlyArray(O)
@@ -300,7 +355,9 @@ export const reduceRight = <A>(O: Ord<A>): (<B>(b: B, f: (a: A, b: B) => B) => (
 /**
  * Insert a value into a set
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function insert<A>(E: Eq<A>): (a: A) => (set: ReadonlySet<A>) => ReadonlySet<A> {
   const elemE = elem(E)
@@ -318,7 +375,9 @@ export function insert<A>(E: Eq<A>): (a: A) => (set: ReadonlySet<A>) => Readonly
 /**
  * Delete a value from a set
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const remove =
   <A>(E: Eq<A>) =>
@@ -329,7 +388,9 @@ export const remove =
 /**
  * Checks an element is a member of a set; If yes, removes the value from the set If no, inserts the value to the set
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const toggle = <A>(E: Eq<A>): ((a: A) => (set: ReadonlySet<A>) => ReadonlySet<A>) => {
   const elemE = elem(E)
@@ -338,10 +399,18 @@ export const toggle = <A>(E: Eq<A>): ((a: A) => (set: ReadonlySet<A>) => Readonl
   return a => set => (elemE(a, set) ? removeE : insertE)(a)(set)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const compact = <A>(E: Eq<A>): ((fa: ReadonlySet<Option<A>>) => ReadonlySet<A>) => filterMap(E)(identity)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function separate<E, A>(
   EE: Eq<E>,
   EA: Eq<A>,
@@ -369,7 +438,11 @@ export function separate<E, A>(
   }
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function filterMap<B>(E: Eq<B>): <A>(f: (a: A) => Option<B>) => (fa: ReadonlySet<A>) => ReadonlySet<B> {
   const elemE = elem(E)
   return f => fa => {
@@ -388,24 +461,36 @@ export function filterMap<B>(E: Eq<B>): <A>(f: (a: A) => Option<B>) => (fa: Read
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const empty: ReadonlySet<never> = new Set()
 
 /**
  * Test whether a `ReadonlySet` is empty.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const isEmpty = <A>(set: ReadonlySet<A>): boolean => set.size === 0
 
 /**
  * Calculate the number of elements in a `ReadonlySet`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const size = <A>(set: ReadonlySet<A>): number => set.size
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const some =
   <A>(predicate: Predicate<A>) =>
   (set: ReadonlySet<A>): boolean => {
@@ -418,7 +503,11 @@ export const some =
     return found
   }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function every<A, B extends A>(refinement: Refinement<A, B>): Refinement<ReadonlySet<A>, ReadonlySet<B>>
 export function every<A>(predicate: Predicate<A>): Predicate<ReadonlySet<A>>
 export function every<A>(predicate: Predicate<A>): Predicate<ReadonlySet<A>> {
@@ -429,7 +518,9 @@ export function every<A>(predicate: Predicate<A>): Predicate<ReadonlySet<A>> {
 /**
  * `true` if and only if every element in the first set is an element of the second set
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function isSubset<A>(E: Eq<A>): {
   (that: ReadonlySet<A>): (me: ReadonlySet<A>) => boolean
@@ -452,7 +543,9 @@ export function isSubset<A>(
 /**
  * Test if a value is a member of a set
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function elem<A>(E: Eq<A>): {
   (a: A): (set: ReadonlySet<A>) => boolean
@@ -477,8 +570,11 @@ export function elem<A>(E: Eq<A>): (a: A, set?: ReadonlySet<A>) => boolean | ((s
 /**
  * Get a sorted `ReadonlyArray` of the values contained in a `ReadonlySet`.
  *
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
+ * @public
  */
 export const toReadonlyArray =
   <A>(O: Ord<A>) =>
@@ -489,14 +585,20 @@ export const toReadonlyArray =
   }
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export const URI = 'ReadonlySet'
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export type URI = typeof URI
 
@@ -507,8 +609,11 @@ declare module './HKT' {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export function getShow<A>(S: Show<A>): Show<ReadonlySet<A>> {
   return {
@@ -523,8 +628,11 @@ export function getShow<A>(S: Show<A>): Show<ReadonlySet<A>> {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export function getEq<A>(E: Eq<A>): Eq<ReadonlySet<A>> {
   const subsetE = isSubset(E)
@@ -532,16 +640,22 @@ export function getEq<A>(E: Eq<A>): Eq<ReadonlySet<A>> {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<ReadonlySet<A>> => ({
   concat: union(E),
 })
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getUnionMonoid = <A>(E: Eq<A>): Monoid<ReadonlySet<A>> => ({
   concat: getUnionSemigroup(E).concat,
@@ -549,16 +663,22 @@ export const getUnionMonoid = <A>(E: Eq<A>): Monoid<ReadonlySet<A>> => ({
 })
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<ReadonlySet<A>> => ({
   concat: intersection(E),
 })
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getDifferenceMagma = <A>(E: Eq<A>): Magma<ReadonlySet<A>> => ({
   concat: difference(E),
@@ -571,8 +691,9 @@ export const getDifferenceMagma = <A>(E: Eq<A>): Magma<ReadonlySet<A>> => ({
 /**
  * Use [`fromReadonlyArray`](#fromreadonlyarray) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const fromArray: <A>(E: Eq<A>) => (as: ReadonlyArray<A>) => ReadonlySet<A> = fromReadonlyArray

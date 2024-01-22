@@ -9,7 +9,9 @@
  * 1. Identity: `F.mapWithIndex(fa, (_i, a) => a) <-> fa`
  * 2. Composition: `F.mapWithIndex(fa, (_i, a) => bc(ab(a))) <-> F.mapWithIndex(F.mapWithIndex(fa, ab), bc)`
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { pipe } from './function'
 import {
@@ -47,56 +49,77 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FunctorWithIndex<F, I> extends Functor<F> {
   readonly mapWithIndex: <A, B>(fa: HKT<F, A>, f: (i: I, a: A) => B) => HKT<F, B>
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FunctorWithIndex1<F extends URIS, I> extends Functor1<F> {
   readonly mapWithIndex: <A, B>(fa: Kind<F, A>, f: (i: I, a: A) => B) => Kind<F, B>
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FunctorWithIndex2<F extends URIS2, I> extends Functor2<F> {
   readonly mapWithIndex: <E, A, B>(fa: Kind2<F, E, A>, f: (i: I, a: A) => B) => Kind2<F, E, B>
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FunctorWithIndex2C<F extends URIS2, I, E> extends Functor2C<F, E> {
   readonly mapWithIndex: <A, B>(fa: Kind2<F, E, A>, f: (i: I, a: A) => B) => Kind2<F, E, B>
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FunctorWithIndex3<F extends URIS3, I> extends Functor3<F> {
   readonly mapWithIndex: <R, E, A, B>(fa: Kind3<F, R, E, A>, f: (i: I, a: A) => B) => Kind3<F, R, E, B>
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FunctorWithIndex3C<F extends URIS3, I, E> extends Functor3C<F, E> {
   readonly mapWithIndex: <R, A, B>(fa: Kind3<F, R, E, A>, f: (i: I, a: A) => B) => Kind3<F, R, E, B>
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FunctorWithIndex4<F extends URIS4, I> extends Functor4<F> {
   readonly mapWithIndex: <S, R, E, A, B>(fa: Kind4<F, S, R, E, A>, f: (i: I, a: A) => B) => Kind4<F, S, R, E, B>
@@ -109,7 +132,9 @@ export interface FunctorWithIndex4<F extends URIS4, I> extends Functor4<F> {
 /**
  * `mapWithIndex` composition.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function mapWithIndex<F extends URIS, I, G extends URIS, J>(
   F: FunctorWithIndex1<F, I>,
@@ -131,18 +156,20 @@ export function mapWithIndex<F, I, G, J>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FunctorWithIndexComposition<F, FI, G, GI> extends FunctorComposition<F, G> {
   readonly mapWithIndex: <A, B>(fga: HKT<F, HKT<G, A>>, f: (i: [FI, GI], a: A) => B) => HKT<F, HKT<G, B>>
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FunctorWithIndexComposition11<F extends URIS, FI, G extends URIS, GI>
   extends FunctorComposition11<F, G> {
@@ -150,9 +177,10 @@ export interface FunctorWithIndexComposition11<F extends URIS, FI, G extends URI
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FunctorWithIndexComposition12<F extends URIS, FI, G extends URIS2, GI>
   extends FunctorComposition12<F, G> {
@@ -160,9 +188,10 @@ export interface FunctorWithIndexComposition12<F extends URIS, FI, G extends URI
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FunctorWithIndexComposition12C<F extends URIS, FI, G extends URIS2, GI, E>
   extends FunctorComposition12C<F, G, E> {
@@ -170,9 +199,10 @@ export interface FunctorWithIndexComposition12C<F extends URIS, FI, G extends UR
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FunctorWithIndexComposition21<F extends URIS2, FI, G extends URIS, GI>
   extends FunctorComposition21<F, G> {
@@ -180,9 +210,10 @@ export interface FunctorWithIndexComposition21<F extends URIS2, FI, G extends UR
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FunctorWithIndexComposition2C1<F extends URIS2, FI, G extends URIS, GI, E>
   extends FunctorComposition2C1<F, G, E> {
@@ -190,9 +221,10 @@ export interface FunctorWithIndexComposition2C1<F extends URIS2, FI, G extends U
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FunctorWithIndexComposition22<F extends URIS2, FI, G extends URIS2, GI>
   extends FunctorComposition22<F, G> {
@@ -203,9 +235,10 @@ export interface FunctorWithIndexComposition22<F extends URIS2, FI, G extends UR
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FunctorWithIndexComposition22C<F extends URIS2, FI, G extends URIS2, GI, E>
   extends FunctorComposition22C<F, G, E> {
@@ -218,50 +251,51 @@ export interface FunctorWithIndexComposition22C<F extends URIS2, FI, G extends U
 /**
  * Use [`mapWithIndex`](#mapwithindex) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export function getFunctorWithIndexComposition<F extends URIS2, FI, G extends URIS2, GI, E>(
   F: FunctorWithIndex2<F, FI>,
   G: FunctorWithIndex2C<G, FI, E>,
 ): FunctorWithIndexComposition22C<F, FI, G, GI, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorWithIndexComposition<F extends URIS2, FI, G extends URIS2, GI>(
   F: FunctorWithIndex2<F, FI>,
   G: FunctorWithIndex2<G, FI>,
 ): FunctorWithIndexComposition22<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorWithIndexComposition<F extends URIS2, FI, G extends URIS, GI, E>(
   F: FunctorWithIndex2C<F, FI, E>,
   G: FunctorWithIndex1<G, GI>,
 ): FunctorWithIndexComposition2C1<F, FI, G, GI, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorWithIndexComposition<F extends URIS2, FI, G extends URIS, GI>(
   F: FunctorWithIndex2<F, FI>,
   G: FunctorWithIndex1<G, GI>,
 ): FunctorWithIndexComposition21<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorWithIndexComposition<F extends URIS, FI, G extends URIS2, GI, E>(
   F: FunctorWithIndex1<F, FI>,
   G: FunctorWithIndex2C<G, GI, E>,
 ): FunctorWithIndexComposition12C<F, FI, G, GI, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorWithIndexComposition<F extends URIS, FI, G extends URIS2, GI>(
   F: FunctorWithIndex1<F, FI>,
   G: FunctorWithIndex2<G, GI>,
 ): FunctorWithIndexComposition12<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorWithIndexComposition<F extends URIS, FI, G extends URIS, GI>(
   F: FunctorWithIndex1<F, FI>,
   G: FunctorWithIndex1<G, GI>,
 ): FunctorWithIndexComposition11<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorWithIndexComposition<F, FI, G, GI>(
   F: FunctorWithIndex<F, FI>,
   G: FunctorWithIndex<G, GI>,
 ): FunctorWithIndexComposition<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorWithIndexComposition<F, FI, G, GI>(
   F: FunctorWithIndex<F, FI>,
   G: FunctorWithIndex<G, GI>,

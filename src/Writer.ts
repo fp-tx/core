@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import { type Applicative2C } from './Applicative'
 import { type Apply2C } from './Apply'
 import { type Chain2C } from './Chain'
@@ -14,8 +18,11 @@ import { type Semigroup } from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Writer<W, A> {
   (): [A, W]
@@ -28,8 +35,11 @@ export interface Writer<W, A> {
 /**
  * Appends a value to the accumulator
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const tell: <W>(w: W) => Writer<W, void> = w => () => [undefined, w]
 
@@ -40,7 +50,9 @@ export const tell: <W>(w: W) => Writer<W, void> = w => () => [undefined, w]
 /**
  * Modifies the result to include the changes to the accumulator
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const listen: <W, A>(fa: Writer<W, A>) => Writer<W, [A, W]> = fa => () => {
   const [a, w] = fa()
@@ -50,7 +62,9 @@ export const listen: <W, A>(fa: Writer<W, A>) => Writer<W, [A, W]> = fa => () =>
 /**
  * Applies the returned function to the accumulator
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const pass: <W, A>(fa: Writer<W, [A, (w: W) => W]>) => Writer<W, A> = fa => () => {
   const [[a, f], w] = fa()
@@ -60,7 +74,9 @@ export const pass: <W, A>(fa: Writer<W, [A, (w: W) => W]>) => Writer<W, A> = fa 
 /**
  * Projects a value from modifications made to the accumulator during an action
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const listens: <W, B>(f: (w: W) => B) => <A>(fa: Writer<W, A>) => Writer<W, [A, B]> = f => fa => () => {
   const [a, w] = fa()
@@ -70,7 +86,9 @@ export const listens: <W, B>(f: (w: W) => B) => <A>(fa: Writer<W, A>) => Writer<
 /**
  * Modify the final accumulator value by applying a function
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const censor: <W>(f: (w: W) => W) => <A>(fa: Writer<W, A>) => Writer<W, A> = f => fa => () => {
   const [a, w] = fa()
@@ -84,8 +102,11 @@ const _map: Functor2<URI>['map'] = (fa, f) => pipe(fa, map(f))
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: Writer<E, A>) => Writer<E, B> = f => fa => () => {
   const [a, w] = fa()
@@ -93,14 +114,20 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: Writer<E, A>) => Writer<E, B
 }
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export const URI = 'Writer'
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export type URI = typeof URI
 
@@ -111,8 +138,11 @@ declare module './HKT' {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getPointed = <W>(M: Monoid<W>): Pointed2C<URI, W> => ({
   URI,
@@ -121,8 +151,11 @@ export const getPointed = <W>(M: Monoid<W>): Pointed2C<URI, W> => ({
 })
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getApply = <W>(S: Semigroup<W>): Apply2C<URI, W> => ({
   URI,
@@ -136,8 +169,11 @@ export const getApply = <W>(S: Semigroup<W>): Apply2C<URI, W> => ({
 })
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getApplicative = <W>(M: Monoid<W>): Applicative2C<URI, W> => {
   const A = getApply(M)
@@ -152,8 +188,11 @@ export const getApplicative = <W>(M: Monoid<W>): Applicative2C<URI, W> => {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export function getChain<W>(S: Semigroup<W>): Chain2C<URI, W> {
   const A = getApply(S)
@@ -171,8 +210,11 @@ export function getChain<W>(S: Semigroup<W>): Chain2C<URI, W> {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export function getMonad<W>(M: Monoid<W>): Monad2C<URI, W> {
   const A = getApplicative(M)
@@ -188,8 +230,11 @@ export function getMonad<W>(M: Monoid<W>): Monad2C<URI, W> {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Functor: Functor2<URI> = {
   URI,
@@ -197,8 +242,11 @@ export const Functor: Functor2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
@@ -206,10 +254,18 @@ export const flap = /*#__PURE__*/ flap_(Functor)
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const evaluate: <W, A>(fa: Writer<W, A>) => A = fa => fa()[0]
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const execute: <W, A>(fa: Writer<W, A>) => W = fa => fa()[1]
 
 // -------------------------------------------------------------------------------------
@@ -219,26 +275,29 @@ export const execute: <W, A>(fa: Writer<W, A>) => W = fa => fa()[1]
 /**
  * Use [`evaluate`](#evaluate) instead
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const evalWriter: <W, A>(fa: Writer<W, A>) => A = fa => fa()[0]
 
 /**
  * Use [`execute`](#execute) instead
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const execWriter: <W, A>(fa: Writer<W, A>) => W = fa => fa()[1]
 
 /**
  * Use [`Functor`](#functor) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const writer: Functor2<URI> = Functor

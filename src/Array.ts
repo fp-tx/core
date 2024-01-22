@@ -3,7 +3,9 @@
  *
  * In functional jargon, this module provides a monadic interface over Typescript's Array<T>.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type Alt1 } from './Alt'
 import { type Alternative1 } from './Alternative'
@@ -59,26 +61,40 @@ import { guard as guard_, type Zero1 } from './Zero'
 /**
  * Test whether an array is empty
  *
- * @since 1.0.0
- * @category Refinements
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Refinements
  * @example
- *   import { isEmpty } from 'fp-ts/Array'
  *
- *   assert.strictEqual(isEmpty([]), true)
- *   assert.strictEqual(isEmpty(['a']), false)
+ * ```typescript
+ * import { isEmpty } from '@fp-tx/core/Array'
+ *
+ * assert.strictEqual(isEmpty([]), true)
+ * assert.strictEqual(isEmpty(['a']), false)
+ * ```
+ *
+ * @public
  */
 export const isEmpty = <A>(as: Array<A>): as is [] => as.length === 0
 
 /**
  * Test whether an array is non empty narrowing down the type to `NonEmptyArray<A>`
  *
- * @since 1.0.0
- * @category Refinements
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Refinements
  * @example
- *   import { isNonEmpty } from 'fp-ts/Array'
  *
- *   assert.strictEqual(isNonEmpty([]), false)
- *   assert.strictEqual(isNonEmpty(['a']), true)
+ * ```typescript
+ * import { isNonEmpty } from '@fp-tx/core/Array'
+ *
+ * assert.strictEqual(isNonEmpty([]), false)
+ * assert.strictEqual(isNonEmpty(['a']), true)
+ * ```
+ *
+ * @public
  */
 export const isNonEmpty: <A>(as: Array<A>) => as is NonEmptyArray<A> = NEA.isNonEmpty
 
@@ -89,48 +105,72 @@ export const isNonEmpty: <A>(as: Array<A>) => as is NonEmptyArray<A> = NEA.isNon
 /**
  * Prepend an element to the front of a `Array`, creating a new `NonEmptyArray`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { prepend } from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe([2, 3, 4], prepend(1)), [1, 2, 3, 4])
+ * ```typescript
+ * import { prepend } from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe([2, 3, 4], prepend(1)), [1, 2, 3, 4])
+ * ```
+ *
+ * @public
  */
 export const prepend: <A>(head: A) => (tail: Array<A>) => NEA.NonEmptyArray<A> = NEA.prepend
 
 /**
  * Less strict version of [`prepend`](#prepend).
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { prependW } from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe([2, 3, 4], prependW('a')), ['a', 2, 3, 4])
+ * ```typescript
+ * import { prependW } from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe([2, 3, 4], prependW('a')), ['a', 2, 3, 4])
+ * ```
+ *
+ * @public
  */
 export const prependW: <A, B>(head: B) => (tail: Array<A>) => NEA.NonEmptyArray<A | B> = NEA.prependW
 
 /**
  * Append an element to the end of a `Array`, creating a new `NonEmptyArray`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { append } from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe([1, 2, 3], append(4)), [1, 2, 3, 4])
+ * ```typescript
+ * import { append } from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe([1, 2, 3], append(4)), [1, 2, 3, 4])
+ * ```
+ *
+ * @public
  */
 export const append: <A>(end: A) => (init: Array<A>) => NEA.NonEmptyArray<A> = NEA.append
 
 /**
  * Less strict version of [`append`](#append).
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { appendW } from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe([1, 2, 3], appendW('d')), [1, 2, 3, 'd'])
+ * ```typescript
+ * import { appendW } from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe([1, 2, 3], appendW('d')), [1, 2, 3, 'd'])
+ * ```
+ *
+ * @public
  */
 export const appendW: <A, B>(end: B) => (init: Array<A>) => NEA.NonEmptyArray<A | B> = NEA.appendW
 
@@ -139,15 +179,22 @@ export const appendW: <A, B>(end: B) => (init: Array<A>) => NEA.NonEmptyArray<A 
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
  * @example
- *   import { makeBy } from 'fp-ts/Array'
  *
- *   const double = (i: number): number => i * 2
- *   assert.deepStrictEqual(makeBy(5, double), [0, 2, 4, 6, 8])
- *   assert.deepStrictEqual(makeBy(-3, double), [])
- *   assert.deepStrictEqual(makeBy(4.32164, double), [0, 2, 4, 6])
+ * ```typescript
+ * import { makeBy } from '@fp-tx/core/Array'
+ *
+ * const double = (i: number): number => i * 2
+ * assert.deepStrictEqual(makeBy(5, double), [0, 2, 4, 6, 8])
+ * assert.deepStrictEqual(makeBy(-3, double), [])
+ * assert.deepStrictEqual(makeBy(4.32164, double), [0, 2, 4, 6])
+ * ```
+ *
+ * @public
  */
 export const makeBy = <A>(n: number, f: (i: number) => A): Array<A> => (n <= 0 ? [] : NEA.makeBy(f)(n))
 
@@ -156,44 +203,58 @@ export const makeBy = <A>(n: number, f: (i: number) => A): Array<A> => (n <= 0 ?
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
  * @example
- *   import { replicate } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(replicate(3, 'a'), ['a', 'a', 'a'])
- *   assert.deepStrictEqual(replicate(-3, 'a'), [])
- *   assert.deepStrictEqual(replicate(2.985647, 'a'), ['a', 'a'])
+ * ```typescript
+ * import { replicate } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(replicate(3, 'a'), ['a', 'a', 'a'])
+ * assert.deepStrictEqual(replicate(-3, 'a'), [])
+ * assert.deepStrictEqual(replicate(2.985647, 'a'), ['a', 'a'])
+ * ```
+ *
+ * @public
  */
 export const replicate = <A>(n: number, a: A): Array<A> => makeBy(n, () => a)
 
 /**
  * Create an array with one element, if the element satisfies the predicate, otherwise it returns an empty array.
  *
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
  * @example
- *   import { fromPredicate } from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
- *   import { isString } from 'fp-ts/string'
  *
- *   assert.deepStrictEqual(pipe('a', fromPredicate(isString)), ['a'])
- *   assert.deepStrictEqual(pipe(7, fromPredicate(isString)), [])
+ * ```typescript
+ * import { fromPredicate } from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ * import { isString } from '@fp-tx/core/string'
  *
- *   assert.deepStrictEqual(
- *     pipe(
- *       7,
- *       fromPredicate(x => x > 0),
- *     ),
- *     [7],
- *   )
- *   assert.deepStrictEqual(
- *     pipe(
- *       -3,
- *       fromPredicate(x => x > 0),
- *     ),
- *     [],
- *   )
+ * assert.deepStrictEqual(pipe('a', fromPredicate(isString)), ['a'])
+ * assert.deepStrictEqual(pipe(7, fromPredicate(isString)), [])
+ *
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     7,
+ *     fromPredicate(x => x > 0),
+ *   ),
+ *   [7],
+ * )
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     -3,
+ *     fromPredicate(x => x > 0),
+ *   ),
+ *   [],
+ * )
+ * ```
+ *
+ * @public
  */
 export function fromPredicate<A, B extends A>(refinement: Refinement<A, B>): (a: A) => Array<B>
 export function fromPredicate<A>(predicate: Predicate<A>): <B extends A>(b: B) => Array<B>
@@ -210,15 +271,22 @@ export function fromPredicate<A>(predicate: Predicate<A>): (a: A) => Array<A> {
  * Create an array from an `Option`. The resulting array will contain the content of the `Option` if it is `Some` and it
  * will be empty if the `Option` is `None`.
  *
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
  * @example
- *   import { fromOption } from 'fp-ts/Array'
- *   import { option } from 'fp-ts'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe(option.some('a'), fromOption), ['a'])
- *   assert.deepStrictEqual(pipe(option.none, fromOption), [])
+ * ```typescript
+ * import { fromOption } from '@fp-tx/core/Array'
+ * import { option } from 'fp-ts'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe(option.some('a'), fromOption), ['a'])
+ * assert.deepStrictEqual(pipe(option.none, fromOption), [])
+ * ```
+ *
+ * @public
  */
 export const fromOption: <A>(fa: Option<A>) => Array<A> = ma => (_.isNone(ma) ? [] : [ma.value])
 
@@ -226,15 +294,22 @@ export const fromOption: <A>(fa: Option<A>) => Array<A> = ma => (_.isNone(ma) ? 
  * Create an array from an `Either`. The resulting array will contain the content of the `Either` if it is `Right` and
  * it will be empty if the `Either` is `Left`.
  *
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
  * @example
- *   import { fromEither } from 'fp-ts/Array'
- *   import { either } from 'fp-ts'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe(either.right('r'), fromEither), ['r'])
- *   assert.deepStrictEqual(pipe(either.left('l'), fromEither), [])
+ * ```typescript
+ * import { fromEither } from '@fp-tx/core/Array'
+ * import { either } from 'fp-ts'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe(either.right('r'), fromEither), ['r'])
+ * assert.deepStrictEqual(pipe(either.left('l'), fromEither), [])
+ * ```
+ *
+ * @public
  */
 export const fromEither: <A>(fa: Either<unknown, A>) => Array<A> = e => (_.isLeft(e) ? [] : [e.right])
 
@@ -243,18 +318,25 @@ export const fromEither: <A>(fa: Either<unknown, A>) => Array<A> = e => (_.isLef
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
  * @example
- *   import { matchW } from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
  *
- *   const matcherW = matchW(
- *     () => 'No elements',
- *     as => as.length,
- *   )
- *   assert.deepStrictEqual(pipe([1, 2, 3, 4], matcherW), 4)
- *   assert.deepStrictEqual(pipe([], matcherW), 'No elements')
+ * ```typescript
+ * import { matchW } from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * const matcherW = matchW(
+ *   () => 'No elements',
+ *   as => as.length,
+ * )
+ * assert.deepStrictEqual(pipe([1, 2, 3, 4], matcherW), 4)
+ * assert.deepStrictEqual(pipe([], matcherW), 'No elements')
+ * ```
+ *
+ * @public
  */
 export const matchW =
   <B, A, C>(onEmpty: LazyArg<B>, onNonEmpty: (as: NonEmptyArray<A>) => C) =>
@@ -265,18 +347,25 @@ export const matchW =
  * Takes an array, if the array is empty it returns the result of `onEmpty`, otherwise it passes the array to
  * `onNonEmpty` and returns the result.
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
  * @example
- *   import { match } from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
  *
- *   const matcher = match(
- *     () => 'No elements',
- *     as => `Found ${as.length} element(s)`,
- *   )
- *   assert.deepStrictEqual(pipe([1, 2, 3, 4], matcher), 'Found 4 element(s)')
- *   assert.deepStrictEqual(pipe([], matcher), 'No elements')
+ * ```typescript
+ * import { match } from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * const matcher = match(
+ *   () => 'No elements',
+ *   as => `Found ${as.length} element(s)`,
+ * )
+ * assert.deepStrictEqual(pipe([1, 2, 3, 4], matcher), 'Found 4 element(s)')
+ * assert.deepStrictEqual(pipe([], matcher), 'No elements')
+ * ```
+ *
+ * @public
  */
 export const match: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (as: NonEmptyArray<A>) => B) => (as: Array<A>) => B = matchW
 
@@ -284,17 +373,24 @@ export const match: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (as: NonEmptyArray<A
  * Less strict version of [`matchLeft`](#matchleft). It will work when `onEmpty` and `onNonEmpty` have different return
  * types.
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
  * @example
- *   import { matchLeftW } from 'fp-ts/Array'
  *
- *   const f = matchLeftW(
- *     () => 0,
- *     (head: string, tail: string[]) => `Found "${head}" followed by ${tail.length} elements`,
- *   )
- *   assert.strictEqual(f(['a', 'b', 'c']), 'Found "a" followed by 2 elements')
- *   assert.strictEqual(f([]), 0)
+ * ```typescript
+ * import { matchLeftW } from '@fp-tx/core/Array'
+ *
+ * const f = matchLeftW(
+ *   () => 0,
+ *   (head: string, tail: string[]) => `Found "${head}" followed by ${tail.length} elements`,
+ * )
+ * assert.strictEqual(f(['a', 'b', 'c']), 'Found "a" followed by 2 elements')
+ * assert.strictEqual(f([]), 0)
+ * ```
+ *
+ * @public
  */
 export const matchLeftW =
   <B, A, C>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: Array<A>) => C) =>
@@ -305,16 +401,23 @@ export const matchLeftW =
  * Takes an array, if the array is empty it returns the result of `onEmpty`, otherwise it passes the array to
  * `onNonEmpty` broken into its first element and remaining elements.
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
  * @example
- *   import { matchLeft } from 'fp-ts/Array'
  *
- *   const len: <A>(as: Array<A>) => number = matchLeft(
- *     () => 0,
- *     (_, tail) => 1 + len(tail),
- *   )
- *   assert.strictEqual(len([1, 2, 3]), 3)
+ * ```typescript
+ * import { matchLeft } from '@fp-tx/core/Array'
+ *
+ * const len: <A>(as: Array<A>) => number = matchLeft(
+ *   () => 0,
+ *   (_, tail) => 1 + len(tail),
+ * )
+ * assert.strictEqual(len([1, 2, 3]), 3)
+ * ```
+ *
+ * @public
  */
 export const matchLeft: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: Array<A>) => B) => (as: Array<A>) => B =
   matchLeftW
@@ -322,8 +425,11 @@ export const matchLeft: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: 
 /**
  * Alias of [`matchLeft`](#matchleft).
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const foldLeft: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: Array<A>) => B) => (as: Array<A>) => B =
   matchLeft
@@ -332,17 +438,24 @@ export const foldLeft: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: A
  * Less strict version of [`matchRight`](#matchright). It will work when `onEmpty` and `onNonEmpty` have different
  * return types.
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
  * @example
- *   import { matchRightW } from 'fp-ts/Array'
  *
- *   const f = matchRightW(
- *     () => 0,
- *     (head: string[], tail: string) => `Found ${head.length} elements folllowed by "${tail}"`,
- *   )
- *   assert.strictEqual(f(['a', 'b', 'c']), 'Found 2 elements folllowed by "c"')
- *   assert.strictEqual(f([]), 0)
+ * ```typescript
+ * import { matchRightW } from '@fp-tx/core/Array'
+ *
+ * const f = matchRightW(
+ *   () => 0,
+ *   (head: string[], tail: string) => `Found ${head.length} elements folllowed by "${tail}"`,
+ * )
+ * assert.strictEqual(f(['a', 'b', 'c']), 'Found 2 elements folllowed by "c"')
+ * assert.strictEqual(f([]), 0)
+ * ```
+ *
+ * @public
  */
 export const matchRightW =
   <B, A, C>(onEmpty: LazyArg<B>, onNonEmpty: (init: Array<A>, last: A) => C) =>
@@ -353,16 +466,23 @@ export const matchRightW =
  * Takes an array, if the array is empty it returns the result of `onEmpty`, otherwise it passes the array to
  * `onNonEmpty` broken into its initial elements and the last element.
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
  * @example
- *   import { matchRight } from 'fp-ts/Array'
  *
- *   const len: <A>(as: Array<A>) => number = matchRight(
- *     () => 0,
- *     (head, _) => 1 + len(head),
- *   )
- *   assert.strictEqual(len([1, 2, 3]), 3)
+ * ```typescript
+ * import { matchRight } from '@fp-tx/core/Array'
+ *
+ * const len: <A>(as: Array<A>) => number = matchRight(
+ *   () => 0,
+ *   (head, _) => 1 + len(head),
+ * )
+ * assert.strictEqual(len([1, 2, 3]), 3)
+ * ```
+ *
+ * @public
  */
 export const matchRight: <B, A>(
   onEmpty: LazyArg<B>,
@@ -372,8 +492,11 @@ export const matchRight: <B, A>(
 /**
  * Alias of [`matchRight`](#matchright).
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const foldRight: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (init: Array<A>, last: A) => B) => (as: Array<A>) => B =
   matchRight
@@ -385,14 +508,21 @@ export const foldRight: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (init: Array<A>,
 /**
  * Same as [`chain`](#chain), but passing also the index to the iterating function.
  *
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
  * @example
- *   import { chainWithIndex, replicate } from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
  *
- *   const f = (index: number, x: string) => replicate(2, `${x}${index}`)
- *   assert.deepStrictEqual(pipe(['a', 'b', 'c'], chainWithIndex(f)), ['a0', 'a0', 'b1', 'b1', 'c2', 'c2'])
+ * ```typescript
+ * import { chainWithIndex, replicate } from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * const f = (index: number, x: string) => replicate(2, `${x}${index}`)
+ * assert.deepStrictEqual(pipe(['a', 'b', 'c'], chainWithIndex(f)), ['a0', 'a0', 'b1', 'b1', 'c2', 'c2'])
+ * ```
+ *
+ * @public
  */
 export const chainWithIndex =
   <A, B>(f: (i: number, a: A) => Array<B>) =>
@@ -407,11 +537,17 @@ export const chainWithIndex =
 /**
  * Same as `reduce` but it carries over the intermediate steps
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { scanLeft } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(scanLeft(10, (b, a: number) => b - a)([1, 2, 3]), [10, 9, 7, 4])
+ * ```typescript
+ * import { scanLeft } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(scanLeft(10, (b, a: number) => b - a)([1, 2, 3]), [10, 9, 7, 4])
+ * ```
+ *
+ * @public
  */
 export const scanLeft =
   <A, B>(b: B, f: (b: B, a: A) => B) =>
@@ -428,11 +564,17 @@ export const scanLeft =
 /**
  * Fold an array from the right, keeping all intermediate results instead of only the final result
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { scanRight } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(scanRight(10, (a: number, b) => b - a)([1, 2, 3]), [4, 5, 7, 10])
+ * ```typescript
+ * import { scanRight } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(scanRight(10, (a: number, b) => b - a)([1, 2, 3]), [4, 5, 7, 10])
+ * ```
+ *
+ * @public
  */
 export const scanRight =
   <A, B>(b: B, f: (a: A, b: B) => B) =>
@@ -449,24 +591,36 @@ export const scanRight =
 /**
  * Calculate the number of elements in a `Array`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { size } from 'fp-ts/Array'
  *
- *   assert.strictEqual(size(['a', 'b', 'c']), 3)
+ * ```typescript
+ * import { size } from '@fp-tx/core/Array'
+ *
+ * assert.strictEqual(size(['a', 'b', 'c']), 3)
+ * ```
+ *
+ * @public
  */
 export const size = <A>(as: Array<A>): number => as.length
 
 /**
  * Test whether an array contains a particular index
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { isOutOfBound } from 'fp-ts/Array'
  *
- *   assert.strictEqual(isOutOfBound(1, ['a', 'b', 'c']), false)
- *   assert.strictEqual(isOutOfBound(-1, ['a', 'b', 'c']), true)
- *   assert.strictEqual(isOutOfBound(3, ['a', 'b', 'c']), true)
+ * ```typescript
+ * import { isOutOfBound } from '@fp-tx/core/Array'
+ *
+ * assert.strictEqual(isOutOfBound(1, ['a', 'b', 'c']), false)
+ * assert.strictEqual(isOutOfBound(-1, ['a', 'b', 'c']), true)
+ * assert.strictEqual(isOutOfBound(3, ['a', 'b', 'c']), true)
+ * ```
+ *
+ * @public
  */
 export const isOutOfBound: <A>(i: number, as: Array<A>) => boolean = NEA.isOutOfBound
 
@@ -475,14 +629,20 @@ export const isOutOfBound: <A>(i: number, as: Array<A>) => boolean = NEA.isOutOf
  * This function provides a safe way to read a value at a particular index from an array. It returns a `none` if the
  * index is out of bounds, and a `some` of the element if the index is valid.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { lookup } from 'fp-ts/Array'
- *   import { some, none } from 'fp-ts/Option'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe([1, 2, 3], lookup(1)), some(2))
- *   assert.deepStrictEqual(pipe([1, 2, 3], lookup(3)), none)
+ * ```typescript
+ * import { lookup } from '@fp-tx/core/Array'
+ * import { some, none } from '@fp-tx/core/Option'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe([1, 2, 3], lookup(1)), some(2))
+ * assert.deepStrictEqual(pipe([1, 2, 3], lookup(3)), none)
+ * ```
+ *
+ * @public
  */
 export const lookup: {
   (i: number): <A>(as: Array<A>) => Option<A>
@@ -492,52 +652,76 @@ export const lookup: {
 /**
  * Get the first element in an array, or `None` if the array is empty
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { head } from 'fp-ts/Array'
- *   import { some, none } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(head([1, 2, 3]), some(1))
- *   assert.deepStrictEqual(head([]), none)
+ * ```typescript
+ * import { head } from '@fp-tx/core/Array'
+ * import { some, none } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(head([1, 2, 3]), some(1))
+ * assert.deepStrictEqual(head([]), none)
+ * ```
+ *
+ * @public
  */
 export const head: <A>(as: Array<A>) => Option<A> = RA.head
 
 /**
  * Get the last element in an array, or `None` if the array is empty
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { last } from 'fp-ts/Array'
- *   import { some, none } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(last([1, 2, 3]), some(3))
- *   assert.deepStrictEqual(last([]), none)
+ * ```typescript
+ * import { last } from '@fp-tx/core/Array'
+ * import { some, none } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(last([1, 2, 3]), some(3))
+ * assert.deepStrictEqual(last([]), none)
+ * ```
+ *
+ * @public
  */
 export const last: <A>(as: Array<A>) => Option<A> = RA.last
 
 /**
  * Get all but the first element of an array, creating a new array, or `None` if the array is empty
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { tail } from 'fp-ts/Array'
- *   import { some, none } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(tail([1, 2, 3]), some([2, 3]))
- *   assert.deepStrictEqual(tail([]), none)
+ * ```typescript
+ * import { tail } from '@fp-tx/core/Array'
+ * import { some, none } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(tail([1, 2, 3]), some([2, 3]))
+ * assert.deepStrictEqual(tail([]), none)
+ * ```
+ *
+ * @public
  */
 export const tail = <A>(as: Array<A>): Option<Array<A>> => (isNonEmpty(as) ? _.some(NEA.tail(as)) : _.none)
 
 /**
  * Get all but the last element of an array, creating a new array, or `None` if the array is empty
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { init } from 'fp-ts/Array'
- *   import { some, none } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(init([1, 2, 3]), some([1, 2]))
- *   assert.deepStrictEqual(init([]), none)
+ * ```typescript
+ * import { init } from '@fp-tx/core/Array'
+ * import { some, none } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(init([1, 2, 3]), some([1, 2]))
+ * assert.deepStrictEqual(init([]), none)
+ * ```
+ *
+ * @public
  */
 export const init = <A>(as: Array<A>): Option<Array<A>> => (isNonEmpty(as) ? _.some(NEA.init(as)) : _.none)
 
@@ -546,14 +730,20 @@ export const init = <A>(as: Array<A>): Option<Array<A>> => (isNonEmpty(as) ? _.s
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { takeLeft } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(takeLeft(2)([1, 2, 3, 4, 5]), [1, 2])
- *   assert.deepStrictEqual(takeLeft(7)([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5])
- *   assert.deepStrictEqual(takeLeft(0)([1, 2, 3, 4, 5]), [])
- *   assert.deepStrictEqual(takeLeft(-1)([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5])
+ * ```typescript
+ * import { takeLeft } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(takeLeft(2)([1, 2, 3, 4, 5]), [1, 2])
+ * assert.deepStrictEqual(takeLeft(7)([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5])
+ * assert.deepStrictEqual(takeLeft(0)([1, 2, 3, 4, 5]), [])
+ * assert.deepStrictEqual(takeLeft(-1)([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5])
+ * ```
+ *
+ * @public
  */
 export const takeLeft =
   (n: number) =>
@@ -565,14 +755,20 @@ export const takeLeft =
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { takeRight } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(takeRight(2)([1, 2, 3, 4, 5]), [4, 5])
- *   assert.deepStrictEqual(takeRight(7)([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5])
- *   assert.deepStrictEqual(takeRight(0)([1, 2, 3, 4, 5]), [])
- *   assert.deepStrictEqual(takeRight(-1)([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5])
+ * ```typescript
+ * import { takeRight } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(takeRight(2)([1, 2, 3, 4, 5]), [4, 5])
+ * assert.deepStrictEqual(takeRight(7)([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5])
+ * assert.deepStrictEqual(takeRight(0)([1, 2, 3, 4, 5]), [])
+ * assert.deepStrictEqual(takeRight(-1)([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5])
+ * ```
+ *
+ * @public
  */
 export const takeRight =
   (n: number) =>
@@ -584,11 +780,17 @@ export const takeRight =
 /**
  * Calculate the longest initial subarray for which all element satisfy the specified predicate, creating a new array
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { takeLeftWhile } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(takeLeftWhile((n: number) => n % 2 === 0)([2, 4, 3, 6]), [2, 4])
+ * ```typescript
+ * import { takeLeftWhile } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(takeLeftWhile((n: number) => n % 2 === 0)([2, 4, 3, 6]), [2, 4])
+ * ```
+ *
+ * @public
  */
 export function takeLeftWhile<A, B extends A>(refinement: Refinement<A, B>): (as: Array<A>) => Array<B>
 export function takeLeftWhile<A>(predicate: Predicate<A>): <B extends A>(bs: Array<B>) => Array<B>
@@ -620,7 +822,9 @@ const spanLeftIndex = <A>(as: Array<A>, predicate: Predicate<A>): number => {
 /**
  * Type returned by [`spanLeft`](#spanLeft) composed of an `init` array and a `rest` array.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export interface Spanned<I, R> {
   init: Array<I>
@@ -633,14 +837,20 @@ export interface Spanned<I, R> {
  * 1. The longest initial subarray for which all elements satisfy the specified predicate
  * 2. The remaining elements
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { spanLeft } from 'fp-ts/Array'
  *
- *   const isOdd = (n: number) => n % 2 === 1
- *   assert.deepStrictEqual(spanLeft(isOdd)([1, 3, 2, 4, 5]), { init: [1, 3], rest: [2, 4, 5] })
- *   assert.deepStrictEqual(spanLeft(isOdd)([0, 2, 4, 5]), { init: [], rest: [0, 2, 4, 5] })
- *   assert.deepStrictEqual(spanLeft(isOdd)([1, 3, 5]), { init: [1, 3, 5], rest: [] })
+ * ```typescript
+ * import { spanLeft } from '@fp-tx/core/Array'
+ *
+ * const isOdd = (n: number) => n % 2 === 1
+ * assert.deepStrictEqual(spanLeft(isOdd)([1, 3, 2, 4, 5]), { init: [1, 3], rest: [2, 4, 5] })
+ * assert.deepStrictEqual(spanLeft(isOdd)([0, 2, 4, 5]), { init: [], rest: [0, 2, 4, 5] })
+ * assert.deepStrictEqual(spanLeft(isOdd)([1, 3, 5]), { init: [1, 3, 5], rest: [] })
+ * ```
+ *
+ * @public
  */
 export function spanLeft<A, B extends A>(refinement: Refinement<A, B>): (as: Array<A>) => Spanned<B, A>
 export function spanLeft<A>(predicate: Predicate<A>): <B extends A>(bs: Array<B>) => Spanned<B, B>
@@ -657,14 +867,20 @@ export function spanLeft<A>(predicate: Predicate<A>): (as: Array<A>) => Spanned<
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { dropLeft } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(dropLeft(2)([1, 2, 3]), [3])
- *   assert.deepStrictEqual(dropLeft(5)([1, 2, 3]), [])
- *   assert.deepStrictEqual(dropLeft(0)([1, 2, 3]), [1, 2, 3])
- *   assert.deepStrictEqual(dropLeft(-2)([1, 2, 3]), [1, 2, 3])
+ * ```typescript
+ * import { dropLeft } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(dropLeft(2)([1, 2, 3]), [3])
+ * assert.deepStrictEqual(dropLeft(5)([1, 2, 3]), [])
+ * assert.deepStrictEqual(dropLeft(0)([1, 2, 3]), [1, 2, 3])
+ * assert.deepStrictEqual(dropLeft(-2)([1, 2, 3]), [1, 2, 3])
+ * ```
+ *
+ * @public
  */
 export const dropLeft =
   (n: number) =>
@@ -678,14 +894,20 @@ export const dropLeft =
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { dropRight } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(dropRight(2)([1, 2, 3]), [1])
- *   assert.deepStrictEqual(dropRight(5)([1, 2, 3]), [])
- *   assert.deepStrictEqual(dropRight(0)([1, 2, 3]), [1, 2, 3])
- *   assert.deepStrictEqual(dropRight(-2)([1, 2, 3]), [1, 2, 3])
+ * ```typescript
+ * import { dropRight } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(dropRight(2)([1, 2, 3]), [1])
+ * assert.deepStrictEqual(dropRight(5)([1, 2, 3]), [])
+ * assert.deepStrictEqual(dropRight(0)([1, 2, 3]), [1, 2, 3])
+ * assert.deepStrictEqual(dropRight(-2)([1, 2, 3]), [1, 2, 3])
+ * ```
+ *
+ * @public
  */
 export const dropRight =
   (n: number) =>
@@ -698,11 +920,17 @@ export const dropRight =
  * Creates a new `Array` which is a copy of the input dropping the longest initial subarray for which all element
  * satisfy the specified predicate.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { dropLeftWhile } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(dropLeftWhile((n: number) => n % 2 === 1)([1, 3, 2, 4, 5]), [2, 4, 5])
+ * ```typescript
+ * import { dropLeftWhile } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(dropLeftWhile((n: number) => n % 2 === 1)([1, 3, 2, 4, 5]), [2, 4, 5])
+ * ```
+ *
+ * @public
  */
 export function dropLeftWhile<A, B extends A>(refinement: Refinement<A, B>): (as: Array<A>) => Array<B>
 export function dropLeftWhile<A>(predicate: Predicate<A>): <B extends A>(bs: Array<B>) => Array<B>
@@ -716,13 +944,19 @@ export function dropLeftWhile<A>(predicate: Predicate<A>): (as: Array<A>) => Arr
  * element satisfies the predicate. Similar to [`findFirst`](#findFirst) but returning the index instead of the
  * element.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { findIndex } from 'fp-ts/Array'
- *   import { some, none } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(findIndex((n: number) => n === 2)([1, 2, 3]), some(1))
- *   assert.deepStrictEqual(findIndex((n: number) => n === 2)([]), none)
+ * ```typescript
+ * import { findIndex } from '@fp-tx/core/Array'
+ * import { some, none } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(findIndex((n: number) => n === 2)([1, 2, 3]), some(1))
+ * assert.deepStrictEqual(findIndex((n: number) => n === 2)([]), none)
+ * ```
+ *
+ * @public
  */
 export const findIndex: <A>(predicate: Predicate<A>) => (as: Array<A>) => Option<number> = RA.findIndex
 
@@ -730,23 +964,29 @@ export const findIndex: <A>(predicate: Predicate<A>) => (as: Array<A>) => Option
  * Find the first element which satisfies a predicate (or a refinement) function. It returns an `Option` containing the
  * element or `None` if not found.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { findFirst } from 'fp-ts/Array'
- *   import { some } from 'fp-ts/Option'
  *
- *   type X = {
- *     readonly a: number
- *     readonly b: number
- *   }
+ * ```typescript
+ * import { findFirst } from '@fp-tx/core/Array'
+ * import { some } from '@fp-tx/core/Option'
  *
- *   assert.deepStrictEqual(
- *     findFirst((x: X) => x.a === 1)([
- *       { a: 1, b: 1 },
- *       { a: 1, b: 2 },
- *     ]),
- *     some({ a: 1, b: 1 }),
- *   )
+ * type X = {
+ *   readonly a: number
+ *   readonly b: number
+ * }
+ *
+ * assert.deepStrictEqual(
+ *   findFirst((x: X) => x.a === 1)([
+ *     { a: 1, b: 1 },
+ *     { a: 1, b: 2 },
+ *   ]),
+ *   some({ a: 1, b: 1 }),
+ * )
+ * ```
+ *
+ * @public
  */
 export function findFirst<A, B extends A>(refinement: Refinement<A, B>): (as: Array<A>) => Option<B>
 export function findFirst<A>(predicate: Predicate<A>): <B extends A>(bs: Array<B>) => Option<B>
@@ -759,26 +999,32 @@ export function findFirst<A>(predicate: Predicate<A>): (as: Array<A>) => Option<
  * Given a selector function which takes an element and returns an option, this function applies the selector to each
  * element of the array and returns the first `Some` result. Otherwise it returns `None`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { findFirstMap } from 'fp-ts/Array'
- *   import { some, none } from 'fp-ts/Option'
  *
- *   interface Person {
- *     readonly name: string
- *     readonly age: number
- *   }
+ * ```typescript
+ * import { findFirstMap } from '@fp-tx/core/Array'
+ * import { some, none } from '@fp-tx/core/Option'
  *
- *   const persons: Array<Person> = [
- *     { name: 'John', age: 16 },
- *     { name: 'Mary', age: 45 },
- *     { name: 'Joey', age: 28 },
- *   ]
+ * interface Person {
+ *   readonly name: string
+ *   readonly age: number
+ * }
  *
- *   const nameOfPersonAbove18 = (p: Person) => (p.age <= 18 ? none : some(p.name))
- *   const nameOfPersonAbove70 = (p: Person) => (p.age <= 70 ? none : some(p.name))
- *   assert.deepStrictEqual(findFirstMap(nameOfPersonAbove18)(persons), some('Mary'))
- *   assert.deepStrictEqual(findFirstMap(nameOfPersonAbove70)(persons), none)
+ * const persons: Array<Person> = [
+ *   { name: 'John', age: 16 },
+ *   { name: 'Mary', age: 45 },
+ *   { name: 'Joey', age: 28 },
+ * ]
+ *
+ * const nameOfPersonAbove18 = (p: Person) => (p.age <= 18 ? none : some(p.name))
+ * const nameOfPersonAbove70 = (p: Person) => (p.age <= 70 ? none : some(p.name))
+ * assert.deepStrictEqual(findFirstMap(nameOfPersonAbove18)(persons), some('Mary'))
+ * assert.deepStrictEqual(findFirstMap(nameOfPersonAbove70)(persons), none)
+ * ```
+ *
+ * @public
  */
 export const findFirstMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<A>) => Option<B> = RA.findFirstMap
 
@@ -786,23 +1032,29 @@ export const findFirstMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<A>) => O
  * Find the last element which satisfies a predicate function. It returns an `Option` containing the element or `None`
  * if not found.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { findLast } from 'fp-ts/Array'
- *   import { some } from 'fp-ts/Option'
  *
- *   type X = {
- *     readonly a: number
- *     readonly b: number
- *   }
+ * ```typescript
+ * import { findLast } from '@fp-tx/core/Array'
+ * import { some } from '@fp-tx/core/Option'
  *
- *   assert.deepStrictEqual(
- *     findLast((x: X) => x.a === 1)([
- *       { a: 1, b: 1 },
- *       { a: 1, b: 2 },
- *     ]),
- *     some({ a: 1, b: 2 }),
- *   )
+ * type X = {
+ *   readonly a: number
+ *   readonly b: number
+ * }
+ *
+ * assert.deepStrictEqual(
+ *   findLast((x: X) => x.a === 1)([
+ *     { a: 1, b: 1 },
+ *     { a: 1, b: 2 },
+ *   ]),
+ *   some({ a: 1, b: 2 }),
+ * )
+ * ```
+ *
+ * @public
  */
 export function findLast<A, B extends A>(refinement: Refinement<A, B>): (as: Array<A>) => Option<B>
 export function findLast<A>(predicate: Predicate<A>): <B extends A>(bs: Array<B>) => Option<B>
@@ -815,26 +1067,32 @@ export function findLast<A>(predicate: Predicate<A>): (as: Array<A>) => Option<A
  * Given a selector function which takes an element and returns an option, this function applies the selector to each
  * element of the array starting from the end and returns the last `Some` result. Otherwise it returns `None`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { findLastMap } from 'fp-ts/Array'
- *   import { some, none } from 'fp-ts/Option'
  *
- *   interface Person {
- *     readonly name: string
- *     readonly age: number
- *   }
+ * ```typescript
+ * import { findLastMap } from '@fp-tx/core/Array'
+ * import { some, none } from '@fp-tx/core/Option'
  *
- *   const persons: Array<Person> = [
- *     { name: 'John', age: 16 },
- *     { name: 'Mary', age: 45 },
- *     { name: 'Joey', age: 28 },
- *   ]
+ * interface Person {
+ *   readonly name: string
+ *   readonly age: number
+ * }
  *
- *   const nameOfPersonAbove18 = (p: Person) => (p.age <= 18 ? none : some(p.name))
- *   const nameOfPersonAbove70 = (p: Person) => (p.age <= 70 ? none : some(p.name))
- *   assert.deepStrictEqual(findLastMap(nameOfPersonAbove18)(persons), some('Joey'))
- *   assert.deepStrictEqual(findLastMap(nameOfPersonAbove70)(persons), none)
+ * const persons: Array<Person> = [
+ *   { name: 'John', age: 16 },
+ *   { name: 'Mary', age: 45 },
+ *   { name: 'Joey', age: 28 },
+ * ]
+ *
+ * const nameOfPersonAbove18 = (p: Person) => (p.age <= 18 ? none : some(p.name))
+ * const nameOfPersonAbove70 = (p: Person) => (p.age <= 70 ? none : some(p.name))
+ * assert.deepStrictEqual(findLastMap(nameOfPersonAbove18)(persons), some('Joey'))
+ * assert.deepStrictEqual(findLastMap(nameOfPersonAbove70)(persons), none)
+ * ```
+ *
+ * @public
  */
 export const findLastMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<A>) => Option<B> = RA.findLastMap
 
@@ -842,40 +1100,54 @@ export const findLastMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<A>) => Op
  * Returns the index of the last element of the list which matches the predicate. It returns an `Option` containing the
  * index or `None` if not found.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { findLastIndex } from 'fp-ts/Array'
- *   import { some, none } from 'fp-ts/Option'
  *
- *   interface X {
- *     readonly a: number
- *     readonly b: number
- *   }
- *   const xs: Array<X> = [
- *     { a: 1, b: 0 },
- *     { a: 1, b: 1 },
- *   ]
- *   assert.deepStrictEqual(findLastIndex((x: { readonly a: number }) => x.a === 1)(xs), some(1))
- *   assert.deepStrictEqual(findLastIndex((x: { readonly a: number }) => x.a === 4)(xs), none)
+ * ```typescript
+ * import { findLastIndex } from '@fp-tx/core/Array'
+ * import { some, none } from '@fp-tx/core/Option'
+ *
+ * interface X {
+ *   readonly a: number
+ *   readonly b: number
+ * }
+ * const xs: Array<X> = [
+ *   { a: 1, b: 0 },
+ *   { a: 1, b: 1 },
+ * ]
+ * assert.deepStrictEqual(findLastIndex((x: { readonly a: number }) => x.a === 1)(xs), some(1))
+ * assert.deepStrictEqual(findLastIndex((x: { readonly a: number }) => x.a === 4)(xs), none)
+ * ```
+ *
+ * @public
  */
 export const findLastIndex: <A>(predicate: Predicate<A>) => (as: Array<A>) => Option<number> = RA.findLastIndex
 
 /**
  * This function takes an array and makes a new array containing the same elements.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const copy = <A>(as: Array<A>): Array<A> => as.slice()
 
 /**
  * Insert an element at the specified index, creating a new array, or returning `None` if the index is out of bounds.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { insertAt } from 'fp-ts/Array'
- *   import { some } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(insertAt(2, 5)([1, 2, 3, 4]), some([1, 2, 5, 3, 4]))
+ * ```typescript
+ * import { insertAt } from '@fp-tx/core/Array'
+ * import { some } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(insertAt(2, 5)([1, 2, 3, 4]), some([1, 2, 5, 3, 4]))
+ * ```
+ *
+ * @public
  */
 export const insertAt =
   <A>(i: number, a: A) =>
@@ -885,26 +1157,38 @@ export const insertAt =
 /**
  * Change the element at the specified index, creating a new array, or returning `None` if the index is out of bounds.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { updateAt } from 'fp-ts/Array'
- *   import { some, none } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(updateAt(1, 1)([1, 2, 3]), some([1, 1, 3]))
- *   assert.deepStrictEqual(updateAt(1, 1)([]), none)
+ * ```typescript
+ * import { updateAt } from '@fp-tx/core/Array'
+ * import { some, none } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(updateAt(1, 1)([1, 2, 3]), some([1, 1, 3]))
+ * assert.deepStrictEqual(updateAt(1, 1)([]), none)
+ * ```
+ *
+ * @public
  */
 export const updateAt = <A>(i: number, a: A): ((as: Array<A>) => Option<Array<A>>) => modifyAt(i, () => a)
 
 /**
  * Delete the element at the specified index, creating a new array, or returning `None` if the index is out of bounds.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { deleteAt } from 'fp-ts/Array'
- *   import { some, none } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(deleteAt(0)([1, 2, 3]), some([2, 3]))
- *   assert.deepStrictEqual(deleteAt(1)([]), none)
+ * ```typescript
+ * import { deleteAt } from '@fp-tx/core/Array'
+ * import { some, none } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(deleteAt(0)([1, 2, 3]), some([2, 3]))
+ * assert.deepStrictEqual(deleteAt(1)([]), none)
+ * ```
+ *
+ * @public
  */
 export const deleteAt =
   (i: number) =>
@@ -915,14 +1199,20 @@ export const deleteAt =
  * Apply a function to the element at the specified index, creating a new array, or returning `None` if the index is out
  * of bounds.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { modifyAt } from 'fp-ts/Array'
- *   import { some, none } from 'fp-ts/Option'
  *
- *   const double = (x: number): number => x * 2
- *   assert.deepStrictEqual(modifyAt(1, double)([1, 2, 3]), some([1, 4, 3]))
- *   assert.deepStrictEqual(modifyAt(1, double)([]), none)
+ * ```typescript
+ * import { modifyAt } from '@fp-tx/core/Array'
+ * import { some, none } from '@fp-tx/core/Option'
+ *
+ * const double = (x: number): number => x * 2
+ * assert.deepStrictEqual(modifyAt(1, double)([1, 2, 3]), some([1, 4, 3]))
+ * assert.deepStrictEqual(modifyAt(1, double)([]), none)
+ * ```
+ *
+ * @public
  */
 export const modifyAt =
   <A>(i: number, f: (a: A) => A) =>
@@ -932,11 +1222,17 @@ export const modifyAt =
 /**
  * Reverse an array, creating a new array
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { reverse } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(reverse([1, 2, 3]), [3, 2, 1])
+ * ```typescript
+ * import { reverse } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(reverse([1, 2, 3]), [3, 2, 1])
+ * ```
+ *
+ * @public
  */
 export const reverse = <A>(as: Array<A>): Array<A> => (isEmpty(as) ? [] : as.slice().reverse())
 
@@ -944,12 +1240,18 @@ export const reverse = <A>(as: Array<A>): Array<A> => (isEmpty(as) ? [] : as.sli
  * Takes an `Array` of `Either` and produces a new `Array` containing the values of all the `Right` elements in the same
  * order.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { rights } from 'fp-ts/Array'
- *   import { right, left } from 'fp-ts/Either'
  *
- *   assert.deepStrictEqual(rights([right(1), left('foo'), right(2)]), [1, 2])
+ * ```typescript
+ * import { rights } from '@fp-tx/core/Array'
+ * import { right, left } from '@fp-tx/core/Either'
+ *
+ * assert.deepStrictEqual(rights([right(1), left('foo'), right(2)]), [1, 2])
+ * ```
+ *
+ * @public
  */
 export const rights = <E, A>(as: Array<Either<E, A>>): Array<A> => {
   const r: Array<A> = []
@@ -966,12 +1268,18 @@ export const rights = <E, A>(as: Array<Either<E, A>>): Array<A> => {
  * Takes an `Array` of `Either` and produces a new `Array` containing the values of all the `Left` elements in the same
  * order.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { lefts } from 'fp-ts/Array'
- *   import { left, right } from 'fp-ts/Either'
  *
- *   assert.deepStrictEqual(lefts([right(1), left('foo'), right(2)]), ['foo'])
+ * ```typescript
+ * import { lefts } from '@fp-tx/core/Array'
+ * import { left, right } from '@fp-tx/core/Either'
+ *
+ * assert.deepStrictEqual(lefts([right(1), left('foo'), right(2)]), ['foo'])
+ * ```
+ *
+ * @public
  */
 export const lefts = <E, A>(as: Array<Either<E, A>>): Array<E> => {
   const r: Array<E> = []
@@ -987,12 +1295,18 @@ export const lefts = <E, A>(as: Array<Either<E, A>>): Array<E> => {
 /**
  * Sort the elements of an array in increasing order, creating a new array
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { sort } from 'fp-ts/Array'
- *   import * as N from 'fp-ts/number'
  *
- *   assert.deepStrictEqual(sort(N.Ord)([3, 2, 1]), [1, 2, 3])
+ * ```typescript
+ * import { sort } from '@fp-tx/core/Array'
+ * import * as N from '@fp-tx/core/number'
+ *
+ * assert.deepStrictEqual(sort(N.Ord)([3, 2, 1]), [1, 2, 3])
+ * ```
+ *
+ * @public
  */
 export const sort =
   <B>(O: Ord<B>) =>
@@ -1003,14 +1317,20 @@ export const sort =
  * Apply a function to pairs of elements at the same index in two arrays, collecting the results in a new array. If one
  * input array is short, excess elements of the longer array are discarded.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { zipWith } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(
- *     zipWith([1, 2, 3], ['a', 'b', 'c', 'd'], (n, s) => s + n),
- *     ['a1', 'b2', 'c3'],
- *   )
+ * ```typescript
+ * import { zipWith } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(
+ *   zipWith([1, 2, 3], ['a', 'b', 'c', 'd'], (n, s) => s + n),
+ *   ['a1', 'b2', 'c3'],
+ * )
+ * ```
+ *
+ * @public
  */
 export const zipWith = <A, B, C>(fa: Array<A>, fb: Array<B>, f: (a: A, b: B) => C): Array<C> => {
   const fc: Array<C> = []
@@ -1026,16 +1346,22 @@ export const zipWith = <A, B, C>(fa: Array<A>, fb: Array<B>, f: (a: A, b: B) => 
  * Takes two arrays and returns an array of corresponding pairs. If one input array is short, excess elements of the
  * longer array are discarded
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { zip } from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe([1, 2, 3], zip(['a', 'b', 'c', 'd'])), [
- *     [1, 'a'],
- *     [2, 'b'],
- *     [3, 'c'],
- *   ])
+ * ```typescript
+ * import { zip } from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe([1, 2, 3], zip(['a', 'b', 'c', 'd'])), [
+ *   [1, 'a'],
+ *   [2, 'b'],
+ *   [3, 'c'],
+ * ])
+ * ```
+ *
+ * @public
  */
 export function zip<B>(bs: Array<B>): <A>(as: Array<A>) => Array<[A, B]>
 export function zip<A, B>(as: Array<A>, bs: Array<B>): Array<[A, B]>
@@ -1049,21 +1375,27 @@ export function zip<A, B>(as: Array<A>, bs?: Array<B>): Array<[A, B]> | ((bs: Ar
 /**
  * The function is reverse of `zip`. Takes an array of pairs and return two corresponding arrays
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { unzip } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(
- *     unzip([
- *       [1, 'a'],
- *       [2, 'b'],
- *       [3, 'c'],
- *     ]),
- *     [
- *       [1, 2, 3],
- *       ['a', 'b', 'c'],
- *     ],
- *   )
+ * ```typescript
+ * import { unzip } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(
+ *   unzip([
+ *     [1, 'a'],
+ *     [2, 'b'],
+ *     [3, 'c'],
+ *   ]),
+ *   [
+ *     [1, 2, 3],
+ *     ['a', 'b', 'c'],
+ *   ],
+ * )
+ * ```
+ *
+ * @public
  */
 export const unzip = <A, B>(as: Array<[A, B]>): [Array<A>, Array<B>] => {
   const fa: Array<A> = []
@@ -1078,11 +1410,17 @@ export const unzip = <A, B>(as: Array<[A, B]>): [Array<A>, Array<B>] => {
 /**
  * Creates a new `Array`, prepending an element to every member of the input `Array`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { prependAll } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(prependAll(9)([1, 2, 3, 4]), [9, 1, 9, 2, 9, 3, 9, 4])
+ * ```typescript
+ * import { prependAll } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(prependAll(9)([1, 2, 3, 4]), [9, 1, 9, 2, 9, 3, 9, 4])
+ * ```
+ *
+ * @public
  */
 export const prependAll = <A>(middle: A): ((as: Array<A>) => Array<A>) => {
   const f = NEA.prependAll(middle)
@@ -1092,11 +1430,17 @@ export const prependAll = <A>(middle: A): ((as: Array<A>) => Array<A>) => {
 /**
  * Creates a new `Array` placing an element in between members of the input `Array`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { intersperse } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(intersperse(9)([1, 2, 3, 4]), [1, 9, 2, 9, 3, 9, 4])
+ * ```typescript
+ * import { intersperse } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(intersperse(9)([1, 2, 3, 4]), [1, 9, 2, 9, 3, 9, 4])
+ * ```
+ *
+ * @public
  */
 export const intersperse = <A>(middle: A): ((as: Array<A>) => Array<A>) => {
   const f = NEA.intersperse(middle)
@@ -1106,11 +1450,17 @@ export const intersperse = <A>(middle: A): ((as: Array<A>) => Array<A>) => {
 /**
  * Creates a new `Array` rotating the input `Array` by `n` steps.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { rotate } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(rotate(2)([1, 2, 3, 4, 5]), [4, 5, 1, 2, 3])
+ * ```typescript
+ * import { rotate } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(rotate(2)([1, 2, 3, 4, 5]), [4, 5, 1, 2, 3])
+ * ```
+ *
+ * @public
  */
 export const rotate = (n: number): (<A>(as: Array<A>) => Array<A>) => {
   const f = NEA.rotate(n)
@@ -1122,14 +1472,20 @@ export const rotate = (n: number): (<A>(as: Array<A>) => Array<A>) => {
  * Test if a value is a member of an `Array`. Takes a `Eq<A>` as a single argument which returns the function to use to
  * search for a value of type `A` in an `Array<A>`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { elem } from 'fp-ts/Array'
- *   import * as N from 'fp-ts/number'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.strictEqual(pipe([1, 2, 3], elem(N.Eq)(2)), true)
- *   assert.strictEqual(pipe([1, 2, 3], elem(N.Eq)(0)), false)
+ * ```typescript
+ * import { elem } from '@fp-tx/core/Array'
+ * import * as N from '@fp-tx/core/number'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.strictEqual(pipe([1, 2, 3], elem(N.Eq)(2)), true)
+ * assert.strictEqual(pipe([1, 2, 3], elem(N.Eq)(0)), false)
+ * ```
+ *
+ * @public
  */
 export const elem: <A>(E: Eq<A>) => {
   (a: A): (as: Array<A>) => boolean
@@ -1139,12 +1495,18 @@ export const elem: <A>(E: Eq<A>) => {
 /**
  * Creates a new `Array` removing duplicate elements, keeping the first occurrence of an element, based on a `Eq<A>`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { uniq } from 'fp-ts/Array'
- *   import * as N from 'fp-ts/number'
  *
- *   assert.deepStrictEqual(uniq(N.Eq)([1, 2, 1]), [1, 2])
+ * ```typescript
+ * import { uniq } from '@fp-tx/core/Array'
+ * import * as N from '@fp-tx/core/number'
+ *
+ * assert.deepStrictEqual(uniq(N.Eq)([1, 2, 1]), [1, 2])
+ * ```
+ *
+ * @public
  */
 export const uniq = <A>(E: Eq<A>): ((as: Array<A>) => Array<A>) => {
   const f = NEA.uniq(E)
@@ -1155,41 +1517,47 @@ export const uniq = <A>(E: Eq<A>): ((as: Array<A>) => Array<A>) => {
  * Sort the elements of an array in increasing order, where elements are compared using first `ords[0]`, then `ords[1]`,
  * etc...
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { sortBy } from 'fp-ts/Array'
- *   import { contramap } from 'fp-ts/Ord'
- *   import * as S from 'fp-ts/string'
- *   import * as N from 'fp-ts/number'
- *   import { pipe } from 'fp-ts/function'
  *
- *   interface Person {
- *     readonly name: string
- *     readonly age: number
- *   }
- *   const byName = pipe(
- *     S.Ord,
- *     contramap((p: Person) => p.name),
- *   )
- *   const byAge = pipe(
- *     N.Ord,
- *     contramap((p: Person) => p.age),
- *   )
+ * ```typescript
+ * import { sortBy } from '@fp-tx/core/Array'
+ * import { contramap } from '@fp-tx/core/Ord'
+ * import * as S from '@fp-tx/core/string'
+ * import * as N from '@fp-tx/core/number'
+ * import { pipe } from '@fp-tx/core/function'
  *
- *   const sortByNameByAge = sortBy([byName, byAge])
+ * interface Person {
+ *   readonly name: string
+ *   readonly age: number
+ * }
+ * const byName = pipe(
+ *   S.Ord,
+ *   contramap((p: Person) => p.name),
+ * )
+ * const byAge = pipe(
+ *   N.Ord,
+ *   contramap((p: Person) => p.age),
+ * )
  *
- *   const persons = [
- *     { name: 'a', age: 1 },
- *     { name: 'b', age: 3 },
- *     { name: 'c', age: 2 },
- *     { name: 'b', age: 2 },
- *   ]
- *   assert.deepStrictEqual(sortByNameByAge(persons), [
- *     { name: 'a', age: 1 },
- *     { name: 'b', age: 2 },
- *     { name: 'b', age: 3 },
- *     { name: 'c', age: 2 },
- *   ])
+ * const sortByNameByAge = sortBy([byName, byAge])
+ *
+ * const persons = [
+ *   { name: 'a', age: 1 },
+ *   { name: 'b', age: 3 },
+ *   { name: 'c', age: 2 },
+ *   { name: 'b', age: 2 },
+ * ]
+ * assert.deepStrictEqual(sortByNameByAge(persons), [
+ *   { name: 'a', age: 1 },
+ *   { name: 'b', age: 2 },
+ *   { name: 'b', age: 3 },
+ *   { name: 'c', age: 2 },
+ * ])
+ * ```
+ *
+ * @public
  */
 export const sortBy = <B>(ords: Array<Ord<B>>): (<A extends B>(as: Array<A>) => Array<A>) => {
   const f = NEA.sortBy(ords)
@@ -1201,23 +1569,29 @@ export const sortBy = <B>(ords: Array<Ord<B>>): (<A extends B>(as: Array<A>) => 
  * array. Typically chop is called with some function that will consume an initial prefix of the array and produce a
  * value and the rest of the array.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { Eq } from 'fp-ts/Eq'
- *   import * as A from 'fp-ts/Array'
- *   import * as N from 'fp-ts/number'
- *   import { pipe } from 'fp-ts/function'
  *
- *   const group = <A>(S: Eq<A>): ((as: Array<A>) => Array<Array<A>>) => {
- *     return A.chop(as => {
- *       const { init, rest } = pipe(
- *         as,
- *         A.spanLeft((a: A) => S.equals(a, as[0])),
- *       )
- *       return [init, rest]
- *     })
- *   }
- *   assert.deepStrictEqual(group(N.Eq)([1, 1, 2, 3, 3, 4]), [[1, 1], [2], [3, 3], [4]])
+ * ```typescript
+ * import { Eq } from '@fp-tx/core/Eq'
+ * import * as A from '@fp-tx/core/Array'
+ * import * as N from '@fp-tx/core/number'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * const group = <A>(S: Eq<A>): ((as: Array<A>) => Array<Array<A>>) => {
+ *   return A.chop(as => {
+ *     const { init, rest } = pipe(
+ *       as,
+ *       A.spanLeft((a: A) => S.equals(a, as[0])),
+ *     )
+ *     return [init, rest]
+ *   })
+ * }
+ * assert.deepStrictEqual(group(N.Eq)([1, 1, 2, 3, 3, 4]), [[1, 1], [2], [3, 3], [4]])
+ * ```
+ *
+ * @public
  */
 export const chop = <A, B>(f: (as: NonEmptyArray<A>) => [B, Array<A>]): ((as: Array<A>) => Array<B>) => {
   const g = NEA.chop(f)
@@ -1227,14 +1601,20 @@ export const chop = <A, B>(f: (as: NonEmptyArray<A>) => [B, Array<A>]): ((as: Ar
 /**
  * Splits an `Array` into two pieces, the first piece has max `n` elements.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { splitAt } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(splitAt(2)([1, 2, 3, 4, 5]), [
- *     [1, 2],
- *     [3, 4, 5],
- *   ])
+ * ```typescript
+ * import { splitAt } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(splitAt(2)([1, 2, 3, 4, 5]), [
+ *   [1, 2],
+ *   [3, 4, 5],
+ * ])
+ * ```
+ *
+ * @public
  */
 export const splitAt =
   (n: number) =>
@@ -1248,17 +1628,19 @@ export const splitAt =
  * the array. Note that `chunksOf(n)([])` is `[]`, not `[[]]`. This is intentional, and is consistent with a recursive
  * definition of `chunksOf`; it satisfies the property that
  *
- * ```ts
- * chunksOf(n)(xs).concat(chunksOf(n)(ys)) == chunksOf(n)(xs.concat(ys)))
- * ```
- *
  * Whenever `n` evenly divides the length of `xs`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { chunksOf } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(chunksOf(2)([1, 2, 3, 4, 5]), [[1, 2], [3, 4], [5]])
+ * ```typescript
+ * import { chunksOf } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(chunksOf(2)([1, 2, 3, 4, 5]), [[1, 2], [3, 4], [5]])
+ * ```
+ *
+ * @public
  */
 export const chunksOf = (n: number): (<A>(as: Array<A>) => Array<NonEmptyArray<A>>) => {
   const f = NEA.chunksOf(n)
@@ -1266,8 +1648,11 @@ export const chunksOf = (n: number): (<A>(as: Array<A>) => Array<NonEmptyArray<A
 }
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export const fromOptionK =
   <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => Option<B>) =>
@@ -1277,29 +1662,33 @@ export const fromOptionK =
 /**
  * `Array` comprehension.
  *
- *     [ f(x, y, ...) | x ← xs, y ← ys, ..., g(x, y, ...) ]
- *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { comprehension } from 'fp-ts/Array'
- *   import { tuple } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(
- *     comprehension(
- *       [
- *         [1, 2, 3],
- *         ['a', 'b'],
- *       ],
- *       tuple,
- *       (a, b) => (a + b.length) % 2 === 0,
- *     ),
+ * ```typescript
+ * import { comprehension } from '@fp-tx/core/Array'
+ * import { tuple } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(
+ *   comprehension(
  *     [
- *       [1, 'a'],
- *       [1, 'b'],
- *       [3, 'a'],
- *       [3, 'b'],
+ *       [1, 2, 3],
+ *       ['a', 'b'],
  *     ],
- *   )
+ *     tuple,
+ *     (a, b) => (a + b.length) % 2 === 0,
+ *   ),
+ *   [
+ *     [1, 'a'],
+ *     [1, 'b'],
+ *     [3, 'a'],
+ *     [3, 'b'],
+ *   ],
+ * )
+ * ```
+ *
+ * @public
  */
 export function comprehension<A, B, C, D, R>(
   input: [Array<A>, Array<B>, Array<C>, Array<D>],
@@ -1329,7 +1718,11 @@ export function comprehension<A, R>(
   return go([], input)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const concatW =
   <B>(second: Array<B>) =>
   <A>(first: Array<A>): Array<A | B> =>
@@ -1337,20 +1730,30 @@ export const concatW =
     : isEmpty(second) ? copy(first)
     : (first as Array<A | B>).concat(second)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const concat: <A>(second: Array<A>) => (first: Array<A>) => Array<A> = concatW
 
 // TODO: remove non-curried overloading in v3
 /**
  * Creates an array of unique values, in order, from all given arrays using a `Eq` for equality comparisons
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { union } from 'fp-ts/Array'
- *   import * as N from 'fp-ts/number'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe([1, 2], union(N.Eq)([2, 3])), [1, 2, 3])
+ * ```typescript
+ * import { union } from '@fp-tx/core/Array'
+ * import * as N from '@fp-tx/core/number'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe([1, 2], union(N.Eq)([2, 3])), [1, 2, 3])
+ * ```
+ *
+ * @public
  */
 export function union<A>(E: Eq<A>): {
   (xs: Array<A>): (ys: Array<A>) => Array<A>
@@ -1376,13 +1779,19 @@ export function union<A>(E: Eq<A>): (xs: Array<A>, ys?: Array<A>) => Array<A> | 
  * Creates an array of unique values that are included in all given arrays using a `Eq` for equality comparisons. The
  * order and references of result values are determined by the first array.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { intersection } from 'fp-ts/Array'
- *   import * as N from 'fp-ts/number'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe([1, 2], intersection(N.Eq)([2, 3])), [2])
+ * ```typescript
+ * import { intersection } from '@fp-tx/core/Array'
+ * import * as N from '@fp-tx/core/number'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe([1, 2], intersection(N.Eq)([2, 3])), [2])
+ * ```
+ *
+ * @public
  */
 export function intersection<A>(E: Eq<A>): {
   (xs: Array<A>): (ys: Array<A>) => Array<A>
@@ -1404,13 +1813,19 @@ export function intersection<A>(E: Eq<A>): (xs: Array<A>, ys?: Array<A>) => Arra
  * Creates an array of array values not included in the other given array using a `Eq` for equality comparisons. The
  * order and references of result values are determined by the first array.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { difference } from 'fp-ts/Array'
- *   import * as N from 'fp-ts/number'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(pipe([1, 2], difference(N.Eq)([2, 3])), [1])
+ * ```typescript
+ * import { difference } from '@fp-tx/core/Array'
+ * import * as N from '@fp-tx/core/number'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(pipe([1, 2], difference(N.Eq)([2, 3])), [1])
+ * ```
+ *
+ * @public
  */
 export function difference<A>(E: Eq<A>): {
   (xs: Array<A>): (ys: Array<A>) => Array<A>
@@ -1504,19 +1919,28 @@ const _chainRecBreadthFirst: ChainRec1<URI>['chainRec'] = RA._chainRecBreadthFir
  * Given an element of the base type, `of` builds an `Array` containing just that element of the base type (this is
  * useful for building a `Monad`).
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
  * @example
- *   import { of } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(of('a'), ['a'])
+ * ```typescript
+ * import { of } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(of('a'), ['a'])
+ * ```
+ *
+ * @public
  */
 export const of: <A>(a: A) => Array<A> = NEA.of
 
 /**
  * Makes an empty `Array`, useful for building a [`Monoid`](#Monoid)
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const zero: <A>() => Array<A> = () => []
 
@@ -1524,49 +1948,62 @@ export const zero: <A>() => Array<A> = () => []
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: Array<A>) => Array<B>`. In practice it applies
  * the base function to each element of the array and collects the results in a new array.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
  * @example
- *   import { map } from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
  *
- *   const f = (n: number) => n * 2
- *   assert.deepStrictEqual(pipe([1, 2, 3], map(f)), [2, 4, 6])
+ * ```typescript
+ * import { map } from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * const f = (n: number) => n * 2
+ * assert.deepStrictEqual(pipe([1, 2, 3], map(f)), [2, 4, 6])
+ * ```
+ *
+ * @public
  */
 export const map: <A, B>(f: (a: A) => B) => (fa: Array<A>) => Array<B> = f => fa => fa.map(a => f(a))
 
 /**
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { ap, map, of } from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
  *
- *   // a curried function with 3 input parameteres
- *   const f = (s1: string) => (n: number) => (s2: string) => s1 + n + s2
+ * ```typescript
+ * import { ap, map, of } from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
  *
- *   // let's use `ap` to iterate `f` over an array for each input parameter
- *   assert.deepStrictEqual(pipe(['a', 'b'], map(f), ap([1, 2]), ap(['😀', '😫', '😎'])), [
- *     'a1😀',
- *     'a1😫',
- *     'a1😎',
- *     'a2😀',
- *     'a2😫',
- *     'a2😎',
- *     'b1😀',
- *     'b1😫',
- *     'b1😎',
- *     'b2😀',
- *     'b2😫',
- *     'b2😎',
- *   ])
+ * // a curried function with 3 input parameteres
+ * const f = (s1: string) => (n: number) => (s2: string) => s1 + n + s2
  *
- *   // given Array implements the Applicative interface with the `of` method,
- *   // we can write exactly the same thing in a more symmetric way
- *   // using `of` on `f` and `ap` on each array in input
- *   assert.deepStrictEqual(
- *     pipe(of(f), ap(['a', 'b']), ap([1, 2]), ap(['😀', '😫', '😎'])),
- *     pipe(['a', 'b'], map(f), ap([1, 2]), ap(['😀', '😫', '😎'])),
- *   )
+ * // let's use `ap` to iterate `f` over an array for each input parameter
+ * assert.deepStrictEqual(pipe(['a', 'b'], map(f), ap([1, 2]), ap(['😀', '😫', '😎'])), [
+ *   'a1😀',
+ *   'a1😫',
+ *   'a1😎',
+ *   'a2😀',
+ *   'a2😫',
+ *   'a2😎',
+ *   'b1😀',
+ *   'b1😫',
+ *   'b1😎',
+ *   'b2😀',
+ *   'b2😫',
+ *   'b2😎',
+ * ])
+ *
+ * // given Array implements the Applicative interface with the `of` method,
+ * // we can write exactly the same thing in a more symmetric way
+ * // using `of` on `f` and `ap` on each array in input
+ * assert.deepStrictEqual(
+ *   pipe(of(f), ap(['a', 'b']), ap([1, 2]), ap(['😀', '😫', '😎'])),
+ *   pipe(['a', 'b'], map(f), ap([1, 2]), ap(['😀', '😫', '😎'])),
+ * )
+ * ```
+ *
+ * @public
  */
 export const ap: <A>(fa: Array<A>) => <B>(fab: Array<(a: A) => B>) => Array<B> = fa => flatMap(f => pipe(fa, map(f)))
 
@@ -1577,15 +2014,22 @@ export const ap: <A>(fa: Array<A>) => <B>(fab: Array<(a: A) => B>) => Array<B> =
  * a new function which applies `f` to each element of the input array (like [`map`](#map)) and, instead of returning an
  * array of arrays, concatenates the results into a single array (like [`flatten`](#flatten)).
  *
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
  * @example
- *   import { flatMap, map, replicate } from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
  *
- *   const f = (n: number) => replicate(n, `${n}`)
- *   assert.deepStrictEqual(pipe([1, 2, 3], map(f)), [['1'], ['2', '2'], ['3', '3', '3']])
- *   assert.deepStrictEqual(pipe([1, 2, 3], flatMap(f)), ['1', '2', '2', '3', '3', '3'])
+ * ```typescript
+ * import { flatMap, map, replicate } from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * const f = (n: number) => replicate(n, `${n}`)
+ * assert.deepStrictEqual(pipe([1, 2, 3], map(f)), [['1'], ['2', '2'], ['3', '3', '3']])
+ * assert.deepStrictEqual(pipe([1, 2, 3], flatMap(f)), ['1', '2', '2', '3', '3', '3'])
+ * ```
+ *
+ * @public
  */
 export const flatMap: {
   <A, B>(f: (a: A, i: number) => Array<B>): (ma: Array<A>) => Array<B>
@@ -1603,26 +2047,40 @@ export const flatMap: {
  * Takes an array of arrays of `A` and flattens them into an array of `A` by concatenating the elements of each array in
  * order.
  *
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
  * @example
- *   import { flatten } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(flatten([['a'], ['b', 'c'], ['d', 'e', 'f']]), ['a', 'b', 'c', 'd', 'e', 'f'])
+ * ```typescript
+ * import { flatten } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(flatten([['a'], ['b', 'c'], ['d', 'e', 'f']]), ['a', 'b', 'c', 'd', 'e', 'f'])
+ * ```
+ *
+ * @public
  */
 export const flatten: <A>(mma: Array<Array<A>>) => Array<A> = /*#__PURE__*/ flatMap(identity)
 
 /**
  * Same as [`map`](#map), but the iterating function takes both the index and the value of the element.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
  * @example
- *   import { mapWithIndex } from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
  *
- *   const f = (i: number, s: string) => `${s} - ${i}`
- *   assert.deepStrictEqual(pipe(['a', 'b', 'c'], mapWithIndex(f)), ['a - 0', 'b - 1', 'c - 2'])
+ * ```typescript
+ * import { mapWithIndex } from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * const f = (i: number, s: string) => `${s} - ${i}`
+ * assert.deepStrictEqual(pipe(['a', 'b', 'c'], mapWithIndex(f)), ['a - 0', 'b - 1', 'c - 2'])
+ * ```
+ *
+ * @public
  */
 export const mapWithIndex: <A, B>(f: (i: number, a: A) => B) => (fa: Array<A>) => Array<B> = f => fa =>
   fa.map((a, i) => f(i, a))
@@ -1633,15 +2091,22 @@ export const mapWithIndex: <A, B>(f: (i: number, a: A) => B) => (fa: Array<A>) =
  *
  * Same as [`filterMap`](#filterMap), but with an iterating function which takes also the index as input.
  *
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
  * @example
- *   import { filterMapWithIndex } from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
- *   import { option } from 'fp-ts'
  *
- *   const f = (i: number, s: string) => (i % 2 === 1 ? option.some(s.toUpperCase()) : option.none)
- *   assert.deepStrictEqual(pipe(['a', 'no', 'neither', 'b'], filterMapWithIndex(f)), ['NO', 'B'])
+ * ```typescript
+ * import { filterMapWithIndex } from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ * import { option } from 'fp-ts'
+ *
+ * const f = (i: number, s: string) => (i % 2 === 1 ? option.some(s.toUpperCase()) : option.none)
+ * assert.deepStrictEqual(pipe(['a', 'no', 'neither', 'b'], filterMapWithIndex(f)), ['NO', 'B'])
+ * ```
+ *
+ * @public
  */
 export const filterMapWithIndex =
   <A, B>(f: (i: number, a: A) => Option<B>) =>
@@ -1660,15 +2125,22 @@ export const filterMapWithIndex =
  * Maps an array with an iterating function that returns an `Option` and it keeps only the `Some` values discarding the
  * `None`s.
  *
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
  * @example
- *   import { filterMap } from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
- *   import { option } from 'fp-ts'
  *
- *   const f = (s: string) => (s.length === 1 ? option.some(s.toUpperCase()) : option.none)
- *   assert.deepStrictEqual(pipe(['a', 'no', 'neither', 'b'], filterMap(f)), ['A', 'B'])
+ * ```typescript
+ * import { filterMap } from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ * import { option } from 'fp-ts'
+ *
+ * const f = (s: string) => (s.length === 1 ? option.some(s.toUpperCase()) : option.none)
+ * assert.deepStrictEqual(pipe(['a', 'no', 'neither', 'b'], filterMap(f)), ['A', 'B'])
+ * ```
+ *
+ * @public
  */
 export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Array<A>) => Array<B> = f =>
   filterMapWithIndex((_, a) => f(a))
@@ -1677,13 +2149,20 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Array<A>) => Arra
  * Compact an array of `Option`s discarding the `None` values and keeping the `Some` values. It returns a new array
  * containing the values of the `Some` options.
  *
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
  * @example
- *   import { compact } from 'fp-ts/Array'
- *   import { option } from 'fp-ts'
  *
- *   assert.deepStrictEqual(compact([option.some('a'), option.none, option.some('b')]), ['a', 'b'])
+ * ```typescript
+ * import { compact } from '@fp-tx/core/Array'
+ * import { option } from 'fp-ts'
+ *
+ * assert.deepStrictEqual(compact([option.some('a'), option.none, option.some('b')]), ['a', 'b'])
+ * ```
+ *
+ * @public
  */
 export const compact: <A>(fa: Array<Option<A>>) => Array<A> = /*#__PURE__*/ filterMap(identity)
 
@@ -1691,16 +2170,23 @@ export const compact: <A>(fa: Array<Option<A>>) => Array<A> = /*#__PURE__*/ filt
  * Separate an array of `Either`s into `Left`s and `Right`s, creating two new arrays: one containing all the left values
  * and one containing all the right values.
  *
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
  * @example
- *   import { separate } from 'fp-ts/Array'
- *   import { either } from 'fp-ts'
  *
- *   assert.deepStrictEqual(separate([either.right('r1'), either.left('l1'), either.right('r2')]), {
- *     left: ['l1'],
- *     right: ['r1', 'r2'],
- *   })
+ * ```typescript
+ * import { separate } from '@fp-tx/core/Array'
+ * import { either } from 'fp-ts'
+ *
+ * assert.deepStrictEqual(separate([either.right('r1'), either.left('l1'), either.right('r2')]), {
+ *   left: ['l1'],
+ *   right: ['r1', 'r2'],
+ * })
+ * ```
+ *
+ * @public
  */
 export const separate = <A, B>(fa: Array<Either<A, B>>): Separated<Array<A>, Array<B>> => {
   const left: Array<A> = []
@@ -1719,14 +2205,21 @@ export const separate = <A, B>(fa: Array<Either<A, B>>): Separated<Array<A>, Arr
  * Given an iterating function that is a `Predicate` or a `Refinement`, `filter` creates a new `Array` containing the
  * elements of the original `Array` for which the iterating function is `true`.
  *
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
  * @example
- *   import { filter } from 'fp-ts/Array'
- *   import { isString } from 'fp-ts/string'
  *
- *   assert.deepStrictEqual(filter(isString)(['a', 1, {}, 'b', 5]), ['a', 'b'])
- *   assert.deepStrictEqual(filter((x: number) => x > 0)([-3, 1, -2, 5]), [1, 5])
+ * ```typescript
+ * import { filter } from '@fp-tx/core/Array'
+ * import { isString } from '@fp-tx/core/string'
+ *
+ * assert.deepStrictEqual(filter(isString)(['a', 1, {}, 'b', 5]), ['a', 'b'])
+ * assert.deepStrictEqual(filter((x: number) => x > 0)([-3, 1, -2, 5]), [1, 5])
+ * ```
+ *
+ * @public
  */
 export const filter: {
   <A, B extends A>(refinement: Refinement<A, B>): (as: Array<A>) => Array<B>
@@ -1742,14 +2235,21 @@ export const filter: {
  * containing the elements of the original `Array` for which the iterating function is `true`, `left` containing the
  * elements for which it is false.
  *
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
  * @example
- *   import { partition } from 'fp-ts/Array'
- *   import { isString } from 'fp-ts/string'
  *
- *   assert.deepStrictEqual(partition(isString)(['a', 1, {}, 'b', 5]), { left: [1, {}, 5], right: ['a', 'b'] })
- *   assert.deepStrictEqual(partition((x: number) => x > 0)([-3, 1, -2, 5]), { left: [-3, -2], right: [1, 5] })
+ * ```typescript
+ * import { partition } from '@fp-tx/core/Array'
+ * import { isString } from '@fp-tx/core/string'
+ *
+ * assert.deepStrictEqual(partition(isString)(['a', 1, {}, 'b', 5]), { left: [1, {}, 5], right: ['a', 'b'] })
+ * assert.deepStrictEqual(partition((x: number) => x > 0)([-3, 1, -2, 5]), { left: [-3, -2], right: [1, 5] })
+ * ```
+ *
+ * @public
  */
 export const partition: {
   <A, B extends A>(refinement: Refinement<A, B>): (as: Array<A>) => Separated<Array<A>, Array<B>>
@@ -1761,15 +2261,22 @@ export const partition: {
 /**
  * Same as [`partition`](#partition), but passing also the index to the iterating function.
  *
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
  * @example
- *   import { partitionWithIndex } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(partitionWithIndex((index, x: number) => index < 3 && x > 0)([-2, 5, 6, 7]), {
- *     left: [-2, 7],
- *     right: [5, 6],
- *   })
+ * ```typescript
+ * import { partitionWithIndex } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(partitionWithIndex((index, x: number) => index < 3 && x > 0)([-2, 5, 6, 7]), {
+ *   left: [-2, 7],
+ *   right: [5, 6],
+ * })
+ * ```
+ *
+ * @public
  */
 export const partitionWithIndex: {
   <A, B extends A>(
@@ -1798,17 +2305,24 @@ export const partitionWithIndex: {
  * and it creates two `Array`s: `right` containing the values of `Right` results, `left` containing the values of `Left`
  * results.
  *
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
  * @example
- *   import { partitionMap } from 'fp-ts/Array'
- *   import { Either, left, right } from 'fp-ts/Either'
  *
- *   const upperIfString = <B>(x: B): Either<B, string> => (typeof x === 'string' ? right(x.toUpperCase()) : left(x))
- *   assert.deepStrictEqual(partitionMap(upperIfString)([-2, 'hello', 6, 7, 'world']), {
- *     left: [-2, 6, 7],
- *     right: ['HELLO', 'WORLD'],
- *   })
+ * ```typescript
+ * import { partitionMap } from '@fp-tx/core/Array'
+ * import { Either, left, right } from '@fp-tx/core/Either'
+ *
+ * const upperIfString = <B>(x: B): Either<B, string> => (typeof x === 'string' ? right(x.toUpperCase()) : left(x))
+ * assert.deepStrictEqual(partitionMap(upperIfString)([-2, 'hello', 6, 7, 'world']), {
+ *   left: [-2, 6, 7],
+ *   right: ['HELLO', 'WORLD'],
+ * })
+ * ```
+ *
+ * @public
  */
 export const partitionMap: <A, B, C>(
   f: (a: A) => Either<B, C>,
@@ -1817,18 +2331,25 @@ export const partitionMap: <A, B, C>(
 /**
  * Same as [`partitionMap`](#partitionMap), but passing also the index to the iterating function.
  *
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
  * @example
- *   import { partitionMapWithIndex } from 'fp-ts/Array'
- *   import { Either, left, right } from 'fp-ts/Either'
  *
- *   const upperIfStringBefore3 = <B>(index: number, x: B): Either<B, string> =>
- *     index < 3 && typeof x === 'string' ? right(x.toUpperCase()) : left(x)
- *   assert.deepStrictEqual(partitionMapWithIndex(upperIfStringBefore3)([-2, 'hello', 6, 7, 'world']), {
- *     left: [-2, 6, 7, 'world'],
- *     right: ['HELLO'],
- *   })
+ * ```typescript
+ * import { partitionMapWithIndex } from '@fp-tx/core/Array'
+ * import { Either, left, right } from '@fp-tx/core/Either'
+ *
+ * const upperIfStringBefore3 = <B>(index: number, x: B): Either<B, string> =>
+ *   index < 3 && typeof x === 'string' ? right(x.toUpperCase()) : left(x)
+ * assert.deepStrictEqual(partitionMapWithIndex(upperIfStringBefore3)([-2, 'hello', 6, 7, 'world']), {
+ *   left: [-2, 6, 7, 'world'],
+ *   right: ['HELLO'],
+ * })
+ * ```
+ *
+ * @public
  */
 export const partitionMapWithIndex =
   <A, B, C>(f: (i: number, a: A) => Either<B, C>) =>
@@ -1851,19 +2372,26 @@ export const partitionMapWithIndex =
  *
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
  * @example
- *   import * as A from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(
- *     pipe(
- *       [1, 2, 3],
- *       A.altW(() => ['a', 'b']),
- *     ),
- *     [1, 2, 3, 'a', 'b'],
- *   )
+ * ```typescript
+ * import * as A from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     [1, 2, 3],
+ *     A.altW(() => ['a', 'b']),
+ *   ),
+ *   [1, 2, 3, 'a', 'b'],
+ * )
+ * ```
+ *
+ * @public
  */
 export const altW =
   <B>(that: LazyArg<Array<B>>) =>
@@ -1876,32 +2404,46 @@ export const altW =
  *
  * In case of `Array` concatenates the inputs into a single array.
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
  * @example
- *   import * as A from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(
- *     pipe(
- *       [1, 2, 3],
- *       A.alt(() => [4, 5]),
- *     ),
- *     [1, 2, 3, 4, 5],
- *   )
+ * ```typescript
+ * import * as A from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     [1, 2, 3],
+ *     A.alt(() => [4, 5]),
+ *   ),
+ *   [1, 2, 3, 4, 5],
+ * )
+ * ```
+ *
+ * @public
  */
 export const alt: <A>(that: LazyArg<Array<A>>) => (fa: Array<A>) => Array<A> = altW
 
 /**
  * Same as [`filter`](#filter), but passing also the index to the iterating function.
  *
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
  * @example
- *   import { filterWithIndex } from 'fp-ts/Array'
  *
- *   const f = (index: number, x: number) => x > 0 && index <= 2
- *   assert.deepStrictEqual(filterWithIndex(f)([-3, 1, -2, 5]), [1])
+ * ```typescript
+ * import { filterWithIndex } from '@fp-tx/core/Array'
+ *
+ * const f = (index: number, x: number) => x > 0 && index <= 2
+ * assert.deepStrictEqual(filterWithIndex(f)([-3, 1, -2, 5]), [1])
+ * ```
+ *
+ * @public
  */
 export const filterWithIndex: {
   <A, B extends A>(refinementWithIndex: RefinementWithIndex<number, A, B>): (as: Array<A>) => Array<B>
@@ -1917,12 +2459,18 @@ export const filterWithIndex: {
  * iterating function applied to the whole input `Array`, then to the input `Array` without the first element, then to
  * the input `Array` without the first two elements, etc.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { extend } from 'fp-ts/Array'
  *
- *   const f = (a: string[]) => a.join(',')
- *   assert.deepStrictEqual(extend(f)(['a', 'b', 'c']), ['a,b,c', 'b,c', 'c'])
+ * ```typescript
+ * import { extend } from '@fp-tx/core/Array'
+ *
+ * const f = (a: string[]) => a.join(',')
+ * assert.deepStrictEqual(extend(f)(['a', 'b', 'c']), ['a,b,c', 'b,c', 'c'])
+ * ```
+ *
+ * @public
  */
 export const extend: <A, B>(f: (as: Array<A>) => B) => (as: Array<A>) => Array<B> = f => wa =>
   wa.map((_, i) => f(wa.slice(i)))
@@ -1931,11 +2479,17 @@ export const extend: <A, B>(f: (as: Array<A>) => B) => (as: Array<A>) => Array<B
  * `duplicate` returns an array containing the whole input `Array`, then to the input `Array` dropping the first
  * element, then to the input `Array` dropping the first two elements, etc.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { duplicate } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(duplicate(['a', 'b', 'c']), [['a', 'b', 'c'], ['b', 'c'], ['c']])
+ * ```typescript
+ * import { duplicate } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(duplicate(['a', 'b', 'c']), [['a', 'b', 'c'], ['b', 'c'], ['c']])
+ * ```
+ *
+ * @public
  */
 export const duplicate: <A>(wa: Array<A>) => Array<Array<A>> = /*#__PURE__*/ extend(identity)
 
@@ -1943,28 +2497,42 @@ export const duplicate: <A>(wa: Array<A>) => Array<Array<A>> = /*#__PURE__*/ ext
  * Map and fold an `Array`. Map the `Array` passing each value to the iterating function. Then fold the results using
  * the provided `Monoid`.
  *
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
  * @example
- *   import { foldMap } from 'fp-ts/Array'
  *
- *   const monoid = { concat: (a: string, b: string) => a + b, empty: '' }
- *   const f = (s: string) => s.toUpperCase()
- *   assert.deepStrictEqual(foldMap(monoid)(f)(['a', 'b', 'c']), 'ABC')
+ * ```typescript
+ * import { foldMap } from '@fp-tx/core/Array'
+ *
+ * const monoid = { concat: (a: string, b: string) => a + b, empty: '' }
+ * const f = (s: string) => s.toUpperCase()
+ * assert.deepStrictEqual(foldMap(monoid)(f)(['a', 'b', 'c']), 'ABC')
+ * ```
+ *
+ * @public
  */
 export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: Array<A>) => M = RA.foldMap
 
 /**
  * Same as [`foldMap`](#foldMap) but passing also the index to the iterating function.
  *
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
  * @example
- *   import { foldMapWithIndex } from 'fp-ts/Array'
  *
- *   const monoid = { concat: (a: string, b: string) => a + b, empty: '' }
- *   const f = (index: number, s: string) => `${s.toUpperCase()}(${index})`
- *   assert.deepStrictEqual(foldMapWithIndex(monoid)(f)(['a', 'b', 'c']), 'A(0)B(1)C(2)')
+ * ```typescript
+ * import { foldMapWithIndex } from '@fp-tx/core/Array'
+ *
+ * const monoid = { concat: (a: string, b: string) => a + b, empty: '' }
+ * const f = (index: number, s: string) => `${s.toUpperCase()}(${index})`
+ * assert.deepStrictEqual(foldMapWithIndex(monoid)(f)(['a', 'b', 'c']), 'A(0)B(1)C(2)')
+ * ```
+ *
+ * @public
  */
 export const foldMapWithIndex: <M>(M: Monoid<M>) => <A>(f: (i: number, a: A) => M) => (fa: Array<A>) => M =
   RA.foldMapWithIndex
@@ -1978,26 +2546,40 @@ export const foldMapWithIndex: <M>(M: Monoid<M>) => <A>(f: (i: number, a: A) => 
  * The first time that the iterating function is called there is no "return value of the previous calculation", the
  * initial value is used in its place.
  *
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
  * @example
- *   import { reduce } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(reduce(5, (acc: number, cur: number) => acc * cur)([2, 3]), 5 * 2 * 3)
+ * ```typescript
+ * import { reduce } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(reduce(5, (acc: number, cur: number) => acc * cur)([2, 3]), 5 * 2 * 3)
+ * ```
+ *
+ * @public
  */
 export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => (fa: Array<A>) => B = RA.reduce
 
 /**
  * Same as [`reduce`](#reduce) but passing also the index to the iterating function.
  *
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
  * @example
- *   import { reduceWithIndex } from 'fp-ts/Array'
  *
- *   const f = (index: number, acc: string, cur: unknown) =>
- *     acc + (typeof cur === 'string' ? cur.toUpperCase() + index : '')
- *   assert.deepStrictEqual(reduceWithIndex('', f)([2, 'a', 'b', null]), 'A1B2')
+ * ```typescript
+ * import { reduceWithIndex } from '@fp-tx/core/Array'
+ *
+ * const f = (index: number, acc: string, cur: unknown) =>
+ *   acc + (typeof cur === 'string' ? cur.toUpperCase() + index : '')
+ * assert.deepStrictEqual(reduceWithIndex('', f)([2, 'a', 'b', null]), 'A1B2')
+ * ```
+ *
+ * @public
  */
 export const reduceWithIndex: <A, B>(b: B, f: (i: number, b: B, a: A) => B) => (fa: Array<A>) => B = RA.reduceWithIndex
 
@@ -2006,26 +2588,40 @@ export const reduceWithIndex: <A, B>(b: B, f: (i: number, b: B, a: A) => B) => (
  *
  * _Note_: the iterating function in this case takes the accumulator as the last argument.
  *
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
  * @example
- *   import { reduceRight } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(reduceRight('', (cur: string, acc: string) => acc + cur)(['a', 'b', 'c']), 'cba')
+ * ```typescript
+ * import { reduceRight } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(reduceRight('', (cur: string, acc: string) => acc + cur)(['a', 'b', 'c']), 'cba')
+ * ```
+ *
+ * @public
  */
 export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => (fa: Array<A>) => B = RA.reduceRight
 
 /**
  * Same as [`reduceRight`](#reduceRight) but passing also the index to the iterating function.
  *
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
  * @example
- *   import { reduceRightWithIndex } from 'fp-ts/Array'
  *
- *   const f = (index: number, cur: unknown, acc: string) =>
- *     acc + (typeof cur === 'string' ? cur.toUpperCase() + index : '')
- *   assert.deepStrictEqual(reduceRightWithIndex('', f)([2, 'a', 'b', null]), 'B2A1')
+ * ```typescript
+ * import { reduceRightWithIndex } from '@fp-tx/core/Array'
+ *
+ * const f = (index: number, cur: unknown, acc: string) =>
+ *   acc + (typeof cur === 'string' ? cur.toUpperCase() + index : '')
+ * assert.deepStrictEqual(reduceRightWithIndex('', f)([2, 'a', 'b', null]), 'B2A1')
+ * ```
+ *
+ * @public
  */
 export const reduceRightWithIndex: <A, B>(b: B, f: (i: number, a: A, b: B) => B) => (fa: Array<A>) => B =
   RA.reduceRightWithIndex
@@ -2039,15 +2635,22 @@ export const reduceRightWithIndex: <A, B>(b: B, f: (i: number, a: A, b: B) => B)
  * a result an `Either<Error,Array<B>>` i.e. an `Array<B>` if all the results are `B`, or an `Error` if some of the
  * results are `Error`s.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
  * @example
- *   import { traverse } from 'fp-ts/Array'
- *   import { Applicative, left, right } from 'fp-ts/Either'
  *
- *   const f = (x: unknown) => (typeof x === 'string' ? right(x.toUpperCase()) : left(new Error('not a string')))
- *   assert.deepStrictEqual(traverse(Applicative)(f)(['a', 'b']), right(['A', 'B']))
- *   assert.deepStrictEqual(traverse(Applicative)(f)(['a', 5]), left(new Error('not a string')))
+ * ```typescript
+ * import { traverse } from '@fp-tx/core/Array'
+ * import { Applicative, left, right } from '@fp-tx/core/Either'
+ *
+ * const f = (x: unknown) => (typeof x === 'string' ? right(x.toUpperCase()) : left(new Error('not a string')))
+ * assert.deepStrictEqual(traverse(Applicative)(f)(['a', 'b']), right(['A', 'B']))
+ * assert.deepStrictEqual(traverse(Applicative)(f)(['a', 5]), left(new Error('not a string')))
+ * ```
+ *
+ * @public
  */
 export const traverse: PipeableTraverse1<URI> = <F>(
   F: ApplicativeHKT<F>,
@@ -2058,24 +2661,32 @@ export const traverse: PipeableTraverse1<URI> = <F>(
 
 /**
  * `sequence` takes an `Array` where elements are `HKT<A>` (higher kinded type) and, using an applicative of that `HKT`,
- * returns an `HKT` of `Array<A>`. E.g. it can turn an `Array<Either<Error, string>>` into an `Either<Error,
- * Array<string>>`.
+ * returns an `HKT` of `Array<A>`.
+ *
+ * E.g. it can turn an `Array<Either<Error, string>>` into an `Either<Error, Array<string>>`.
  *
  * `sequence` requires an `Applicative` of the `HKT` you are targeting, e.g. to turn an `Array<Either<E, A>>` into an
  * `Either<E, Array<A>>`, it needs an `Applicative` for `Either`, to to turn an `Array<Option<A>>` into an
  * `Option<Array<A>>`, it needs an `Applicative` for `Option`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
  * @example
- *   import { sequence } from 'fp-ts/Array'
- *   import { Applicative, left, right } from 'fp-ts/Either'
  *
- *   assert.deepStrictEqual(sequence(Applicative)([right('a'), right('b')]), right(['a', 'b']))
- *   assert.deepStrictEqual(
- *     sequence(Applicative)([right('a'), left(new Error('not a string'))]),
- *     left(new Error('not a string')),
- *   )
+ * ```typescript
+ * import { sequence } from '@fp-tx/core/Array'
+ * import { Applicative, left, right } from '@fp-tx/core/Either'
+ *
+ * assert.deepStrictEqual(sequence(Applicative)([right('a'), right('b')]), right(['a', 'b']))
+ * assert.deepStrictEqual(
+ *   sequence(Applicative)([right('a'), left(new Error('not a string'))]),
+ *   left(new Error('not a string')),
+ * )
+ * ```
+ *
+ * @public
  */
 export const sequence: Traversable1<URI>['sequence'] =
   <F>(F: ApplicativeHKT<F>) =>
@@ -2091,16 +2702,23 @@ export const sequence: Traversable1<URI>['sequence'] =
 /**
  * Same as [`traverse`](#traverse) but passing also the index to the iterating function.
  *
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
  * @example
- *   import { traverseWithIndex } from 'fp-ts/Array'
- *   import { Applicative, left, right } from 'fp-ts/Either'
  *
- *   const f = (index: number, x: unknown) =>
- *     typeof x === 'string' ? right(x.toUpperCase() + index) : left(new Error('not a string'))
- *   assert.deepStrictEqual(traverseWithIndex(Applicative)(f)(['a', 'b']), right(['A0', 'B1']))
- *   assert.deepStrictEqual(traverseWithIndex(Applicative)(f)(['a', 5]), left(new Error('not a string')))
+ * ```typescript
+ * import { traverseWithIndex } from '@fp-tx/core/Array'
+ * import { Applicative, left, right } from '@fp-tx/core/Either'
+ *
+ * const f = (index: number, x: unknown) =>
+ *   typeof x === 'string' ? right(x.toUpperCase() + index) : left(new Error('not a string'))
+ * assert.deepStrictEqual(traverseWithIndex(Applicative)(f)(['a', 'b']), right(['A0', 'B1']))
+ * assert.deepStrictEqual(traverseWithIndex(Applicative)(f)(['a', 5]), left(new Error('not a string')))
+ * ```
+ *
+ * @public
  */
 export const traverseWithIndex: PipeableTraverseWithIndex1<URI, number> =
   <F>(F: ApplicativeHKT<F>) =>
@@ -2113,8 +2731,11 @@ export const traverseWithIndex: PipeableTraverseWithIndex1<URI, number> =
     )
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const wither: PipeableWither1<URI> = <F>(
   F: ApplicativeHKT<F>,
@@ -2124,8 +2745,11 @@ export const wither: PipeableWither1<URI> = <F>(
 }
 
 /**
- * @since 1.0.0
- * @category Filtering
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Filtering
+ * @public
  */
 export const wilt: PipeableWilt1<URI> = <F>(
   F: ApplicativeHKT<F>,
@@ -2139,18 +2763,24 @@ export const wilt: PipeableWilt1<URI> = <F>(
  * following iteration. `unfold` applies `f` to the initial value `b` and then recursively to the second element of the
  * tuple contained in the returned `option` of the previous calculation until `f` returns `Option.none`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { unfold } from 'fp-ts/Array'
- *   import { option } from 'fp-ts'
  *
- *   const f = (n: number) => {
- *     if (n <= 0) return option.none
- *     const returnValue = n * 2
- *     const inputForNextRound = n - 1
- *     return option.some([returnValue, inputForNextRound] as const)
- *   }
- *   assert.deepStrictEqual(unfold(5, f), [10, 8, 6, 4, 2])
+ * ```typescript
+ * import { unfold } from '@fp-tx/core/Array'
+ * import { option } from 'fp-ts'
+ *
+ * const f = (n: number) => {
+ *   if (n <= 0) return option.none
+ *   const returnValue = n * 2
+ *   const inputForNextRound = n - 1
+ *   return option.some([returnValue, inputForNextRound] as const)
+ * }
+ * assert.deepStrictEqual(unfold(5, f), [10, 8, 6, 4, 2])
+ * ```
+ *
+ * @public
  */
 export const unfold = <A, B>(b: B, f: (b: B) => Option<readonly [A, B]>): Array<A> => {
   const out: Array<A> = []
@@ -2170,14 +2800,20 @@ export const unfold = <A, B>(b: B, f: (b: B) => Option<readonly [A, B]>): Array<
 }
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export const URI = 'Array'
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export type URI = typeof URI
 
@@ -2190,26 +2826,40 @@ declare module './HKT' {
 /**
  * `getShow` makes a `Show` for an `Array<A>` from a `Show` for an `A`.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { getShow } from 'fp-ts/Array'
  *
- *   const numShow = { show: (n: number) => (n >= 0 ? `${n}` : `(${-n})`) }
- *   assert.deepStrictEqual(getShow(numShow).show([-2, -1, 0, 1]), '[(2), (1), 0, 1]')
+ * ```typescript
+ * import { getShow } from '@fp-tx/core/Array'
+ *
+ * const numShow = { show: (n: number) => (n >= 0 ? `${n}` : `(${-n})`) }
+ * assert.deepStrictEqual(getShow(numShow).show([-2, -1, 0, 1]), '[(2), (1), 0, 1]')
+ * ```
+ *
+ * @public
  */
 export const getShow: <A>(S: Show<A>) => Show<Array<A>> = RA.getShow
 
 /**
  * Get a `Semigroup` based on the concatenation of `Array`s. See also [`getMonoid`](#getMonoid).
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { getSemigroup } from 'fp-ts/Array'
  *
- *   const S = getSemigroup<number>()
- *   assert.deepStrictEqual(S.concat([1, 2], [2, 3]), [1, 2, 2, 3])
+ * ```typescript
+ * import { getSemigroup } from '@fp-tx/core/Array'
+ *
+ * const S = getSemigroup<number>()
+ * assert.deepStrictEqual(S.concat([1, 2], [2, 3]), [1, 2, 2, 3])
+ * ```
+ *
+ * @public
  */
 export const getSemigroup = <A = never>(): Semigroup<Array<A>> => ({
   concat: (first, second) => first.concat(second),
@@ -2218,13 +2868,20 @@ export const getSemigroup = <A = never>(): Semigroup<Array<A>> => ({
 /**
  * Returns a `Monoid` for `Array<A>` based on the concatenation of `Array`s.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { getMonoid } from 'fp-ts/Array'
  *
- *   const M = getMonoid<number>()
- *   assert.deepStrictEqual(M.concat([1, 2], [3, 4]), [1, 2, 3, 4])
+ * ```typescript
+ * import { getMonoid } from '@fp-tx/core/Array'
+ *
+ * const M = getMonoid<number>()
+ * assert.deepStrictEqual(M.concat([1, 2], [3, 4]), [1, 2, 3, 4])
+ * ```
+ *
+ * @public
  */
 export const getMonoid = <A = never>(): Monoid<Array<A>> => ({
   concat: getSemigroup<A>().concat,
@@ -2236,15 +2893,22 @@ export const getMonoid = <A = never>(): Monoid<Array<A>> => ({
  * arrays as equal if all elements of both arrays are compared equal pairwise with the given `E`. In case of arrays of
  * different lengths, the result is non equality.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import * as S from 'fp-ts/string'
- *   import { getEq } from 'fp-ts/Array'
  *
- *   const E = getEq(S.Eq)
- *   assert.strictEqual(E.equals(['a', 'b'], ['a', 'b']), true)
- *   assert.strictEqual(E.equals(['a'], []), false)
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ * import { getEq } from '@fp-tx/core/Array'
+ *
+ * const E = getEq(S.Eq)
+ * assert.strictEqual(E.equals(['a', 'b'], ['a', 'b']), true)
+ * assert.strictEqual(E.equals(['a'], []), false)
+ * ```
+ *
+ * @public
  */
 export const getEq: <A>(E: Eq<A>) => Eq<Array<A>> = RA.getEq
 
@@ -2254,16 +2918,23 @@ export const getEq: <A>(E: Eq<A>) => Eq<Array<A>> = RA.getEq
  * case of equality over all the pairwise elements; the longest array is considered the greatest, if both arrays have
  * the same length, the result is equality.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { getOrd } from 'fp-ts/Array'
- *   import * as S from 'fp-ts/string'
  *
- *   const O = getOrd(S.Ord)
- *   assert.strictEqual(O.compare(['b'], ['a']), 1)
- *   assert.strictEqual(O.compare(['a'], ['a']), 0)
- *   assert.strictEqual(O.compare(['a'], ['b']), -1)
+ * ```typescript
+ * import { getOrd } from '@fp-tx/core/Array'
+ * import * as S from '@fp-tx/core/string'
+ *
+ * const O = getOrd(S.Ord)
+ * assert.strictEqual(O.compare(['b'], ['a']), 1)
+ * assert.strictEqual(O.compare(['a'], ['a']), 0)
+ * assert.strictEqual(O.compare(['a'], ['b']), -1)
+ * ```
+ *
+ * @public
  */
 export const getOrd: <A>(O: Ord<A>) => Ord<Array<A>> = RA.getOrd
 
@@ -2271,14 +2942,21 @@ export const getOrd: <A>(O: Ord<A>) => Ord<Array<A>> = RA.getOrd
  * Get a `Semigroup` based on the union of the elements of `Array`s. Elements which equal according to the provided `Eq`
  * are included only once in the result. See also [`getUnionMonoid`](#getUnionMonoid).
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { getUnionSemigroup } from 'fp-ts/Array'
- *   import { Eq } from 'fp-ts/number'
  *
- *   const S = getUnionSemigroup<number>(Eq)
- *   assert.deepStrictEqual(S.concat([1, 2], [2, 3]), [1, 2, 3])
+ * ```typescript
+ * import { getUnionSemigroup } from '@fp-tx/core/Array'
+ * import { Eq } from '@fp-tx/core/number'
+ *
+ * const S = getUnionSemigroup<number>(Eq)
+ * assert.deepStrictEqual(S.concat([1, 2], [2, 3]), [1, 2, 3])
+ * ```
+ *
+ * @public
  */
 export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<Array<A>> => {
   const unionE = union(E)
@@ -2291,15 +2969,22 @@ export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<Array<A>> => {
  * Get a `Monoid` based on the union of the elements of `Array`s. Elements which equal according to the provided `Eq`
  * are included only once in the result.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { getUnionMonoid } from 'fp-ts/Array'
- *   import { Eq } from 'fp-ts/number'
  *
- *   const M = getUnionMonoid<number>(Eq)
- *   assert.deepStrictEqual(M.concat([1, 2], [2, 3]), [1, 2, 3])
- *   assert.deepStrictEqual(M.empty, [])
+ * ```typescript
+ * import { getUnionMonoid } from '@fp-tx/core/Array'
+ * import { Eq } from '@fp-tx/core/number'
+ *
+ * const M = getUnionMonoid<number>(Eq)
+ * assert.deepStrictEqual(M.concat([1, 2], [2, 3]), [1, 2, 3])
+ * assert.deepStrictEqual(M.empty, [])
+ * ```
+ *
+ * @public
  */
 export const getUnionMonoid = <A>(E: Eq<A>): Monoid<Array<A>> => ({
   concat: getUnionSemigroup(E).concat,
@@ -2310,14 +2995,21 @@ export const getUnionMonoid = <A>(E: Eq<A>): Monoid<Array<A>> => ({
  * Get a `Semigroup` based on the intersection of the elements of `Array`s. Only elements present in the two arrays
  * which are equal according to the provided `Eq` are included in the result.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { getIntersectionSemigroup } from 'fp-ts/Array'
- *   import { Eq } from 'fp-ts/number'
  *
- *   const S = getIntersectionSemigroup<number>(Eq)
- *   assert.deepStrictEqual(S.concat([1, 2], [2, 3]), [2])
+ * ```typescript
+ * import { getIntersectionSemigroup } from '@fp-tx/core/Array'
+ * import { Eq } from '@fp-tx/core/number'
+ *
+ * const S = getIntersectionSemigroup<number>(Eq)
+ * assert.deepStrictEqual(S.concat([1, 2], [2, 3]), [2])
+ * ```
+ *
+ * @public
  */
 export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<Array<A>> => {
   const intersectionE = intersection(E)
@@ -2331,14 +3023,21 @@ export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<Array<A>> => {
  * the result contains all the elements of the first array for which their is no equal element in the second array
  * according to the `Eq` provided.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import { getDifferenceMagma } from 'fp-ts/Array'
- *   import { Eq } from 'fp-ts/number'
  *
- *   const S = getDifferenceMagma<number>(Eq)
- *   assert.deepStrictEqual(S.concat([1, 2], [2, 3]), [1])
+ * ```typescript
+ * import { getDifferenceMagma } from '@fp-tx/core/Array'
+ * import { Eq } from '@fp-tx/core/number'
+ *
+ * const S = getDifferenceMagma<number>(Eq)
+ * assert.deepStrictEqual(S.concat([1, 2], [2, 3]), [1])
+ * ```
+ *
+ * @public
  */
 export const getDifferenceMagma = <A>(E: Eq<A>): Magma<Array<A>> => {
   const differenceE = difference(E)
@@ -2348,8 +3047,11 @@ export const getDifferenceMagma = <A>(E: Eq<A>): Magma<Array<A>> => {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Functor: Functor1<URI> = {
   URI,
@@ -2360,23 +3062,33 @@ export const Functor: Functor1<URI> = {
  * Given an input an `Array` of functions, `flap` returns an `Array` containing the results of applying each function to
  * the given input.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
  * @example
- *   import { flap } from 'fp-ts/Array'
  *
- *   const funs = [
- *     (n: number) => `Double: ${n * 2}`,
- *     (n: number) => `Triple: ${n * 3}`,
- *     (n: number) => `Square: ${n * n}`,
- *   ]
- *   assert.deepStrictEqual(flap(4)(funs), ['Double: 8', 'Triple: 12', 'Square: 16'])
+ * ```typescript
+ * import { flap } from '@fp-tx/core/Array'
+ *
+ * const funs = [
+ *   (n: number) => `Double: ${n * 2}`,
+ *   (n: number) => `Triple: ${n * 3}`,
+ *   (n: number) => `Square: ${n * n}`,
+ * ]
+ * assert.deepStrictEqual(flap(4)(funs), ['Double: 8', 'Triple: 12', 'Square: 16'])
+ * ```
+ *
+ * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Pointed: Pointed1<URI> = {
   URI,
@@ -2384,8 +3096,11 @@ export const Pointed: Pointed1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const FunctorWithIndex: FunctorWithIndex1<URI, number> = {
   URI,
@@ -2394,8 +3109,11 @@ export const FunctorWithIndex: FunctorWithIndex1<URI, number> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Apply: Apply1<URI> = {
   URI,
@@ -2406,20 +3124,27 @@ export const Apply: Apply1<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
 
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Applicative: Applicative1<URI> = {
   URI,
@@ -2429,8 +3154,11 @@ export const Applicative: Applicative1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Chain: Chain1<URI> = {
   URI,
@@ -2443,33 +3171,43 @@ export const Chain: Chain1<URI> = {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
  * @example
- *   import * as A from 'fp-ts/Array'
- *   import { pipe } from 'fp-ts/function'
  *
- *   assert.deepStrictEqual(
- *     pipe(
- *       [1, 2, 3],
- *       A.chainFirst(() => ['a', 'b']),
- *     ),
- *     [1, 1, 2, 2, 3, 3],
- *   )
- *   assert.deepStrictEqual(
- *     pipe(
- *       [1, 2, 3],
- *       A.chainFirst(() => []),
- *     ),
- *     [],
- *   )
+ * ```typescript
+ * import * as A from '@fp-tx/core/Array'
+ * import { pipe } from '@fp-tx/core/function'
+ *
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     [1, 2, 3],
+ *     A.chainFirst(() => ['a', 'b']),
+ *   ),
+ *   [1, 1, 2, 2, 3, 3],
+ * )
+ * assert.deepStrictEqual(
+ *   pipe(
+ *     [1, 2, 3],
+ *     A.chainFirst(() => []),
+ *   ),
+ *   [],
+ * )
+ * ```
+ *
+ * @public
  */
 export const chainFirst: <A, B>(f: (a: A) => Array<B>) => (first: Array<A>) => Array<A> =
   /*#__PURE__*/ chainFirst_(Chain)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Monad: Monad1<URI> = {
   URI,
@@ -2480,8 +3218,11 @@ export const Monad: Monad1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Unfoldable: Unfoldable1<URI> = {
   URI,
@@ -2489,8 +3230,11 @@ export const Unfoldable: Unfoldable1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Alt: Alt1<URI> = {
   URI,
@@ -2499,8 +3243,11 @@ export const Alt: Alt1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Zero: Zero1<URI> = {
   URI,
@@ -2508,14 +3255,20 @@ export const Zero: Zero1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const guard = /*#__PURE__*/ guard_(Zero, Pointed)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Alternative: Alternative1<URI> = {
   URI,
@@ -2527,8 +3280,11 @@ export const Alternative: Alternative1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Extend: Extend1<URI> = {
   URI,
@@ -2537,8 +3293,11 @@ export const Extend: Extend1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Compactable: Compactable1<URI> = {
   URI,
@@ -2547,8 +3306,11 @@ export const Compactable: Compactable1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Filterable: Filterable1<URI> = {
   URI,
@@ -2562,8 +3324,11 @@ export const Filterable: Filterable1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const FilterableWithIndex: FilterableWithIndex1<URI, number> = {
   URI,
@@ -2582,8 +3347,11 @@ export const FilterableWithIndex: FilterableWithIndex1<URI, number> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Foldable: Foldable1<URI> = {
   URI,
@@ -2593,8 +3361,11 @@ export const Foldable: Foldable1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const FoldableWithIndex: FoldableWithIndex1<URI, number> = {
   URI,
@@ -2607,8 +3378,11 @@ export const FoldableWithIndex: FoldableWithIndex1<URI, number> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Traversable: Traversable1<URI> = {
   URI,
@@ -2621,8 +3395,11 @@ export const Traversable: Traversable1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const TraversableWithIndex: TraversableWithIndex1<URI, number> = {
   URI,
@@ -2643,8 +3420,11 @@ const _wither: Witherable1<URI>['wither'] = /*#__PURE__*/ witherDefault(Traversa
 const _wilt: Witherable1<URI>['wilt'] = /*#__PURE__*/ wiltDefault(Traversable, Compactable)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Witherable: Witherable1<URI> = {
   URI,
@@ -2665,15 +3445,21 @@ export const Witherable: Witherable1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const chainRecDepthFirst: <A, B>(f: (a: A) => Array<Either<A, B>>) => (a: A) => Array<B> =
   RA.chainRecDepthFirst as any
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const ChainRecDepthFirst: ChainRec1<URI> = {
   URI,
@@ -2684,15 +3470,21 @@ export const ChainRecDepthFirst: ChainRec1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const chainRecBreadthFirst: <A, B>(f: (a: A) => Array<Either<A, B>>) => (a: A) => Array<B> =
   RA.chainRecBreadthFirst as any
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const ChainRecBreadthFirst: ChainRec1<URI> = {
   URI,
@@ -2705,13 +3497,18 @@ export const ChainRecBreadthFirst: ChainRec1<URI> = {
 /**
  * Filter values inside a context.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const filterE = /*#__PURE__*/ filterE_(Witherable)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const FromEither: FromEither1<URI> = {
   URI,
@@ -2719,8 +3516,11 @@ export const FromEither: FromEither1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
   f: (...a: A) => Either<E, B>,
@@ -2731,21 +3531,30 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Unsafe
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Unsafe
+ * @public
  */
 export const unsafeInsertAt: <A>(i: number, a: A, as: Array<A>) => NonEmptyArray<A> = NEA.unsafeInsertAt
 
 /**
- * @since 1.0.0
- * @category Unsafe
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Unsafe
+ * @public
  */
 export const unsafeUpdateAt = <A>(i: number, a: A, as: Array<A>): Array<A> =>
   isNonEmpty(as) ? NEA.unsafeUpdateAt(i, a, as) : []
 
 /**
- * @since 1.0.0
- * @category Unsafe
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Unsafe
+ * @public
  */
 export const unsafeDeleteAt = <A>(i: number, as: Array<A>): Array<A> => {
   const xs = as.slice()
@@ -2760,12 +3569,18 @@ export const unsafeDeleteAt = <A>(i: number, as: Array<A>): Array<A> => {
 /**
  * `every` tells if the provided predicate holds true for every element in the `Array`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { every } from 'fp-ts/Array'
  *
- *   assert.equal(every((x: number) => x >= 0)([1, 2, 3]), true)
- *   assert.equal(every((x: number) => x >= 0)([-1, 2, 3]), false)
+ * ```typescript
+ * import { every } from '@fp-tx/core/Array'
+ *
+ * assert.equal(every((x: number) => x >= 0)([1, 2, 3]), true)
+ * assert.equal(every((x: number) => x >= 0)([-1, 2, 3]), false)
+ * ```
+ *
+ * @public
  */
 export const every: {
   <A, B extends A>(refinement: Refinement<A, B>): Refinement<Array<A>, Array<B>>
@@ -2775,12 +3590,18 @@ export const every: {
 /**
  * `some` tells if the provided predicate holds true at least for one element in the `Array`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { some } from 'fp-ts/Array'
  *
- *   assert.equal(some((x: number) => x >= 0)([1, 2, 3]), true)
- *   assert.equal(some((x: number) => x >= 10)([1, 2, 3]), false)
+ * ```typescript
+ * import { some } from '@fp-tx/core/Array'
+ *
+ * assert.equal(some((x: number) => x >= 0)([1, 2, 3]), true)
+ * assert.equal(some((x: number) => x >= 10)([1, 2, 3]), false)
+ * ```
+ *
+ * @public
  */
 export const some =
   <A>(predicate: Predicate<A>) =>
@@ -2790,19 +3611,27 @@ export const some =
 /**
  * Alias of [`some`](#some)
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const exists: <A>(predicate: Predicate<A>) => (as: Array<A>) => as is NEA.NonEmptyArray<A> = some
 
 /**
  * Places an element in between members of an `Array`, then folds the results using the provided `Monoid`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import * as S from 'fp-ts/string'
- *   import { intercalate } from 'fp-ts/Array'
  *
- *   assert.deepStrictEqual(intercalate(S.Monoid)('-')(['a', 'b', 'c']), 'a-b-c')
+ * ```typescript
+ * import * as S from '@fp-tx/core/string'
+ * import { intercalate } from '@fp-tx/core/Array'
+ *
+ * assert.deepStrictEqual(intercalate(S.Monoid)('-')(['a', 'b', 'c']), 'a-b-c')
+ * ```
+ *
+ * @public
  */
 export const intercalate: <A>(M: Monoid<A>) => (middle: A) => (as: Array<A>) => A = RA.intercalate
 
@@ -2811,14 +3640,20 @@ export const intercalate: <A>(M: Monoid<A>) => (middle: A) => (as: Array<A>) => 
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const Do: Array<{}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
 
@@ -2826,21 +3661,30 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @since 1.0.0
-   * @category Do notation
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Do notation
+   * @public
    */
   let_ as let,
 }
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const bind = /*#__PURE__*/ bind_(Chain)
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
 
@@ -2851,8 +3695,11 @@ export const apS = /*#__PURE__*/ apS_(Apply)
 /**
  * Alias of `flatMap`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chain: <A, B>(f: (a: A) => Array<B>) => (ma: Array<A>) => Array<B> = flatMap
 
@@ -2863,45 +3710,50 @@ export const chain: <A, B>(f: (a: A) => Array<B>) => (ma: Array<A>) => Array<B> 
 /**
  * Use `NonEmptyArray` module instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const range = NEA.range
 
 /**
  * Use a new `[]` instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const empty: Array<never> = []
 
 /**
  * Use `prepend` instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const cons = NEA.cons
 
 /**
  * Use `append` instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const snoc = NEA.snoc
 
 /**
  * Use `prependAll` instead
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const prependToAll = prependAll
 
@@ -2909,9 +3761,10 @@ export const prependToAll = prependAll
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `A.Functor` instead of `A.array` (where `A` is from `import A from 'fp-ts/Array'`)
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const array: FunctorWithIndex1<URI, number> &
   Monad1<URI> &

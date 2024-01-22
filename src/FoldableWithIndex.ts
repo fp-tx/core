@@ -7,7 +7,9 @@
  * reduceRight(fa, b, f) = reduceRightWithIndex(fa, b, (_, a, b) => f(a, b))
  * ```
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import {
   type Foldable,
@@ -46,8 +48,11 @@ import { type Monoid } from './Monoid'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FoldableWithIndex<F, I> extends Foldable<F> {
   readonly reduceWithIndex: <A, B>(fa: HKT<F, A>, b: B, f: (i: I, b: B, a: A) => B) => B
@@ -56,8 +61,11 @@ export interface FoldableWithIndex<F, I> extends Foldable<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FoldableWithIndex1<F extends URIS, I> extends Foldable1<F> {
   readonly reduceWithIndex: <A, B>(fa: Kind<F, A>, b: B, f: (i: I, b: B, a: A) => B) => B
@@ -66,8 +74,11 @@ export interface FoldableWithIndex1<F extends URIS, I> extends Foldable1<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FoldableWithIndex2<F extends URIS2, I> extends Foldable2<F> {
   readonly reduceWithIndex: <E, A, B>(fa: Kind2<F, E, A>, b: B, f: (i: I, b: B, a: A) => B) => B
@@ -76,8 +87,11 @@ export interface FoldableWithIndex2<F extends URIS2, I> extends Foldable2<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FoldableWithIndex2C<F extends URIS2, I, E> extends Foldable2C<F, E> {
   readonly reduceWithIndex: <A, B>(fa: Kind2<F, E, A>, b: B, f: (i: I, b: B, a: A) => B) => B
@@ -86,8 +100,11 @@ export interface FoldableWithIndex2C<F extends URIS2, I, E> extends Foldable2C<F
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FoldableWithIndex3<F extends URIS3, I> extends Foldable3<F> {
   readonly reduceWithIndex: <R, E, A, B>(fa: Kind3<F, R, E, A>, b: B, f: (i: I, b: B, a: A) => B) => B
@@ -96,8 +113,11 @@ export interface FoldableWithIndex3<F extends URIS3, I> extends Foldable3<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FoldableWithIndex3C<F extends URIS3, I, E> extends Foldable3C<F, E> {
   readonly reduceWithIndex: <R, A, B>(fa: Kind3<F, R, E, A>, b: B, f: (i: I, b: B, a: A) => B) => B
@@ -106,8 +126,11 @@ export interface FoldableWithIndex3C<F extends URIS3, I, E> extends Foldable3C<F
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FoldableWithIndex4<F extends URIS4, I> extends Foldable4<F> {
   readonly reduceWithIndex: <S, R, E, A, B>(fa: Kind4<F, S, R, E, A>, b: B, f: (i: I, b: B, a: A) => B) => B
@@ -122,7 +145,9 @@ export interface FoldableWithIndex4<F extends URIS4, I> extends Foldable4<F> {
 /**
  * `reduceWithIndex` composition.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function reduceWithIndex<F extends URIS, I, G extends URIS, J>(
   F: FoldableWithIndex1<F, I>,
@@ -143,7 +168,9 @@ export function reduceWithIndex<F, I, G, J>(
 /**
  * `foldMapWithIndex` composition.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function foldMapWithIndex<F extends URIS, I, G extends URIS, J>(
   F: FoldableWithIndex1<F, I>,
@@ -167,7 +194,9 @@ export function foldMapWithIndex<F, I, G, J>(
 /**
  * `reduceRightWithIndex` composition.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function reduceRightWithIndex<F extends URIS, I, G extends URIS, J>(
   F: FoldableWithIndex1<F, I>,
@@ -190,9 +219,10 @@ export function reduceRightWithIndex<F, I, G, J>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FoldableWithIndexComposition<F, FI, G, GI> extends FoldableComposition<F, G> {
   readonly reduceWithIndex: <A, B>(fga: HKT<F, HKT<G, A>>, b: B, f: (i: [FI, GI], b: B, a: A) => B) => B
@@ -201,9 +231,10 @@ export interface FoldableWithIndexComposition<F, FI, G, GI> extends FoldableComp
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FoldableWithIndexComposition11<F extends URIS, FI, G extends URIS, GI>
   extends FoldableComposition11<F, G> {
@@ -213,9 +244,10 @@ export interface FoldableWithIndexComposition11<F extends URIS, FI, G extends UR
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FoldableWithIndexComposition12<F extends URIS, FI, G extends URIS2, GI>
   extends FoldableComposition12<F, G> {
@@ -225,9 +257,10 @@ export interface FoldableWithIndexComposition12<F extends URIS, FI, G extends UR
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FoldableWithIndexComposition12C<F extends URIS, FI, G extends URIS2, GI, E>
   extends FoldableComposition12C<F, G, E> {
@@ -237,9 +270,10 @@ export interface FoldableWithIndexComposition12C<F extends URIS, FI, G extends U
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FoldableWithIndexComposition21<F extends URIS2, FI, G extends URIS, GI>
   extends FoldableComposition21<F, G> {
@@ -251,9 +285,10 @@ export interface FoldableWithIndexComposition21<F extends URIS2, FI, G extends U
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FoldableWithIndexComposition2C1<F extends URIS2, FI, G extends URIS, GI, FE>
   extends FoldableComposition2C1<F, G, FE> {
@@ -263,9 +298,10 @@ export interface FoldableWithIndexComposition2C1<F extends URIS2, FI, G extends 
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FoldableWithIndexComposition22<F extends URIS2, FI, G extends URIS2, GI>
   extends FoldableComposition22<F, G> {
@@ -285,9 +321,10 @@ export interface FoldableWithIndexComposition22<F extends URIS2, FI, G extends U
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface FoldableWithIndexComposition22C<F extends URIS2, FI, G extends URIS2, GI, E>
   extends FoldableComposition22C<F, G, E> {
@@ -311,50 +348,51 @@ export interface FoldableWithIndexComposition22C<F extends URIS2, FI, G extends 
  *
  * Instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export function getFoldableWithIndexComposition<F extends URIS2, FI, G extends URIS2, GI, E>(
   F: FoldableWithIndex2<F, FI>,
   G: FoldableWithIndex2C<G, GI, E>,
 ): FoldableWithIndexComposition22C<F, FI, G, GI, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F extends URIS2, FI, G extends URIS2, GI>(
   F: FoldableWithIndex2<F, FI>,
   G: FoldableWithIndex2<G, GI>,
 ): FoldableWithIndexComposition22<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F extends URIS2, FI, G extends URIS, GI, E>(
   F: FoldableWithIndex2C<F, FI, E>,
   G: FoldableWithIndex1<G, GI>,
 ): FoldableWithIndexComposition2C1<F, FI, G, GI, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F extends URIS2, FI, G extends URIS, GI>(
   F: FoldableWithIndex2<F, FI>,
   G: FoldableWithIndex1<G, GI>,
 ): FoldableWithIndexComposition21<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F extends URIS, FI, G extends URIS2, GI>(
   F: FoldableWithIndex1<F, FI>,
   G: FoldableWithIndex2<G, GI>,
 ): FoldableWithIndexComposition12<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F extends URIS, FI, G extends URIS2, GI>(
   F: FoldableWithIndex1<F, FI>,
   G: FoldableWithIndex2<G, GI>,
 ): FoldableWithIndexComposition12<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F extends URIS, FI, G extends URIS, GI>(
   F: FoldableWithIndex1<F, FI>,
   G: FoldableWithIndex1<G, GI>,
 ): FoldableWithIndexComposition11<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F, FI, G, GI>(
   F: FoldableWithIndex<F, FI>,
   G: FoldableWithIndex<G, GI>,
 ): FoldableWithIndexComposition<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F, FI, G, GI>(
   F: FoldableWithIndex<F, FI>,
   G: FoldableWithIndex<G, GI>,

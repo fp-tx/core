@@ -3,7 +3,9 @@
  *
  * The `of` function ignores the environment, while `chain` passes the inherited environment to both subcomputations.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type Apply, type Apply1, type Apply2, type Apply2C, type Apply3, type Apply3C, type Apply4 } from './Apply'
 import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C, type Chain4 } from './Chain'
@@ -48,7 +50,11 @@ import {
 } from './Pointed'
 import { type Reader } from './Reader'
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function of<F extends URIS4>(F: Pointed4<F>): <A, R, S, FR, FE>(a: A) => Reader<R, Kind4<F, S, FR, FE, A>>
 export function of<F extends URIS3>(F: Pointed3<F>): <A, R, FR, FE>(a: A) => Reader<R, Kind3<F, FR, FE, A>>
 export function of<F extends URIS3, FE>(F: Pointed3C<F, FE>): <A, R, FR>(a: A) => Reader<R, Kind3<F, FR, FE, A>>
@@ -60,7 +66,11 @@ export function of<F>(F: Pointed<F>): <A, R>(a: A) => Reader<R, HKT<F, A>> {
   return a => () => F.of(a)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function map<F extends URIS4>(
   F: Functor4<F>,
 ): <A, B>(f: (a: A) => B) => <R, S, FR, FE>(fa: Reader<R, Kind4<F, S, FR, FE, A>>) => Reader<R, Kind4<F, S, FR, FE, B>>
@@ -84,7 +94,11 @@ export function map<F>(F: Functor<F>): <A, B>(f: (a: A) => B) => <R>(fa: Reader<
   return f => fa => r => F.map(fa(r), f)
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function ap<F extends URIS4>(
   F: Apply4<F>,
 ): <R, S, FR, FE, A>(
@@ -122,7 +136,11 @@ export function ap<F>(
   return fa => fab => r => F.ap(fab(r), fa(r))
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function chain<M extends URIS4>(
   M: Chain4<M>,
 ): <A, R, S, FR, FE, B>(
@@ -174,7 +192,11 @@ export function flatMap<M>(
   return (ma, f) => r => M.chain(ma(r), a => f(a)(r))
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function fromReader<F extends URIS4>(
   F: Pointed4<F>,
 ): <R, A, S, FR, FE>(ma: Reader<R, A>) => Reader<R, Kind4<F, S, FR, FE, A>>
@@ -195,8 +217,11 @@ export function fromReader<F>(F: Pointed<F>): <R, A>(ma: Reader<R, A>) => Reader
 }
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export function fromNaturalTransformation<F extends URIS2, G extends URIS4>(
   nt: NaturalTransformation24S<F, G>,
@@ -227,18 +252,20 @@ export function fromNaturalTransformation<F, G>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface ReaderT<M, R, A> {
   (r: R): HKT<M, A>
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface ReaderM<M> {
   readonly map: <R, A, B>(ma: ReaderT<M, R, A>, f: (a: A) => B) => ReaderT<M, R, B>
@@ -253,18 +280,20 @@ export interface ReaderM<M> {
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface ReaderT1<M extends URIS, R, A> {
   (r: R): Kind<M, A>
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface ReaderM1<M extends URIS> {
   readonly map: <R, A, B>(ma: ReaderT1<M, R, A>, f: (a: A) => B) => ReaderT1<M, R, B>
@@ -279,18 +308,20 @@ export interface ReaderM1<M extends URIS> {
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface ReaderT2<M extends URIS2, R, E, A> {
   (r: R): Kind2<M, E, A>
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface ReaderM2<M extends URIS2> {
   readonly map: <R, E, A, B>(ma: ReaderT2<M, R, E, A>, f: (a: A) => B) => ReaderT2<M, R, E, B>
@@ -305,9 +336,10 @@ export interface ReaderM2<M extends URIS2> {
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface ReaderM2C<M extends URIS2, E> {
   readonly map: <R, A, B>(ma: ReaderT2<M, R, E, A>, f: (a: A) => B) => ReaderT2<M, R, E, B>
@@ -322,18 +354,20 @@ export interface ReaderM2C<M extends URIS2, E> {
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface ReaderT3<M extends URIS3, R, U, E, A> {
   (r: R): Kind3<M, U, E, A>
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface ReaderM3<M extends URIS3> {
   readonly map: <R, U, E, A, B>(ma: ReaderT3<M, R, U, E, A>, f: (a: A) => B) => ReaderT3<M, R, U, E, B>
@@ -354,20 +388,21 @@ export interface ReaderM3<M extends URIS3> {
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export function getReaderM<M extends URIS3>(M: Monad3<M>): ReaderM3<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getReaderM<M extends URIS2>(M: Monad2<M>): ReaderM2<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getReaderM<M extends URIS2, E>(M: Monad2C<M, E>): ReaderM2C<M, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getReaderM<M extends URIS>(M: Monad1<M>): ReaderM1<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getReaderM<M>(M: Monad<M>): ReaderM<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 /* istanbul ignore next */
 export function getReaderM<M>(M: Monad<M>): ReaderM<M> {
   const _ap = ap(M)

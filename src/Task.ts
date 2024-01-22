@@ -8,7 +8,9 @@
  * `Task<A>` represents an asynchronous computation that yields a value of type `A` and **never fails**. If you want to
  * represent an asynchronous computation that may fail, please see `TaskEither`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type Applicative1, getApplicativeMonoid } from './Applicative'
 import {
@@ -41,8 +43,11 @@ import { type Semigroup } from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Task<A> {
   (): Promise<A>
@@ -53,8 +58,11 @@ export interface Task<A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
+ * @public
  */
 export const fromIO: <A>(fa: IO<A>) => Task<A> = ma => () => Promise.resolve().then(ma)
 
@@ -65,27 +73,33 @@ export const fromIO: <A>(fa: IO<A>) => Task<A> = ma => () => Promise.resolve().t
 /**
  * Creates a task that will complete after a time delay
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { sequenceT } from 'fp-ts/Apply'
- *   import * as T from 'fp-ts/Task'
- *   import { takeRight } from 'fp-ts/Array'
  *
- *   async function test() {
- *     const log: Array<string> = []
- *     const append = (message: string): T.Task<void> =>
- *       T.fromIO(() => {
- *         log.push(message)
- *       })
- *     const fa = append('a')
- *     const fb = T.delay(20)(append('b'))
- *     const fc = T.delay(10)(append('c'))
- *     const fd = append('d')
- *     await sequenceT(T.ApplyPar)(fa, fb, fc, fd)()
- *     assert.deepStrictEqual(takeRight(2)(log), ['c', 'b'])
- *   }
+ * ```typescript
+ * import { sequenceT } from '@fp-tx/core/Apply'
+ * import * as T from '@fp-tx/core/Task'
+ * import { takeRight } from '@fp-tx/core/Array'
  *
- *   test()
+ * async function test() {
+ *   const log: Array<string> = []
+ *   const append = (message: string): T.Task<void> =>
+ *     T.fromIO(() => {
+ *       log.push(message)
+ *     })
+ *   const fa = append('a')
+ *   const fb = T.delay(20)(append('b'))
+ *   const fc = T.delay(10)(append('c'))
+ *   const fd = append('d')
+ *   await sequenceT(T.ApplyPar)(fa, fb, fc, fd)()
+ *   assert.deepStrictEqual(takeRight(2)(log), ['c', 'b'])
+ * }
+ *
+ * test()
+ * ```
+ *
+ * @public
  */
 export function delay(millis: number): <A>(ma: Task<A>) => Task<A> {
   return ma => () =>
@@ -104,25 +118,38 @@ const _apSeq: Apply1<URI>['ap'] = (fab, fa) => flatMap(fab, f => pipe(fa, map(f)
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const map: <A, B>(f: (a: A) => B) => (fa: Task<A>) => Task<B> = f => fa => () =>
   Promise.resolve().then(fa).then(f)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const ap: <A>(fa: Task<A>) => <B>(fab: Task<(a: A) => B>) => Task<B> = fa => fab => () =>
   Promise.all([Promise.resolve().then(fab), Promise.resolve().then(fa)]).then(([f, a]) => f(a))
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const of: <A>(a: A) => Task<A> = a => () => Promise.resolve(a)
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatMap: {
   <A, B>(f: (a: A) => Task<B>): (ma: Task<A>) => Task<B>
@@ -137,20 +164,29 @@ export const flatMap: {
 )
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatten: <A>(mma: Task<Task<A>>) => Task<A> = /*#__PURE__*/ flatMap(identity)
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export const URI = 'Task'
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export type URI = typeof URI
 
@@ -165,19 +201,26 @@ declare module './HKT' {
  *
  * Note: uses `Promise.race` internally.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import * as T from 'fp-ts/Task'
  *
- *   async function test() {
- *     const S = T.getRaceMonoid<string>()
- *     const fa = T.delay(20)(T.of('a'))
- *     const fb = T.delay(10)(T.of('b'))
- *     assert.deepStrictEqual(await S.concat(fa, fb)(), 'b')
- *   }
+ * ```typescript
+ * import * as T from '@fp-tx/core/Task'
  *
- *   test()
+ * async function test() {
+ *   const S = T.getRaceMonoid<string>()
+ *   const fa = T.delay(20)(T.of('a'))
+ *   const fb = T.delay(10)(T.of('b'))
+ *   assert.deepStrictEqual(await S.concat(fa, fb)(), 'b')
+ * }
+ *
+ * test()
+ * ```
+ *
+ * @public
  */
 export function getRaceMonoid<A = never>(): Monoid<Task<A>> {
   return {
@@ -187,8 +230,11 @@ export function getRaceMonoid<A = never>(): Monoid<Task<A>> {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Functor: Functor1<URI> = {
   URI,
@@ -198,8 +244,11 @@ export const Functor: Functor1<URI> = {
 /**
  * Maps the value to the specified constant value.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const as: {
   <A>(a: A): <_>(self: Task<_>) => Task<A>
@@ -209,20 +258,29 @@ export const as: {
 /**
  * Maps the value to the void constant value.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const asUnit: <_>(self: Task<_>) => Task<void> = asUnit_(Functor)
 
 /**
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Pointed: Pointed1<URI> = {
   URI,
@@ -232,8 +290,11 @@ export const Pointed: Pointed1<URI> = {
 /**
  * Runs computations in parallel.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const ApplyPar: Apply1<URI> = {
   URI,
@@ -244,22 +305,29 @@ export const ApplyPar: Apply1<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const apFirst = /*#__PURE__*/ apFirst_(ApplyPar)
 
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
 
 /**
  * Runs computations in parallel.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const ApplicativePar: Applicative1<URI> = {
   URI,
@@ -271,8 +339,11 @@ export const ApplicativePar: Applicative1<URI> = {
 /**
  * Runs computations sequentially.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const ApplySeq: Apply1<URI> = {
   URI,
@@ -283,8 +354,11 @@ export const ApplySeq: Apply1<URI> = {
 /**
  * Runs computations sequentially.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const ApplicativeSeq: Applicative1<URI> = {
   URI,
@@ -294,8 +368,11 @@ export const ApplicativeSeq: Applicative1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Chain: chainable.Chain1<URI> = {
   URI,
@@ -305,8 +382,11 @@ export const Chain: chainable.Chain1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instance methods
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instance methods
+ * @public
  */
 export const chainRec: ChainRec1<URI>['chainRec'] = (a, f) => async () => {
   let current = await f(a)()
@@ -319,8 +399,11 @@ export const chainRec: ChainRec1<URI>['chainRec'] = (a, f) => async () => {
 /**
  * ChainRec for `Task`
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const ChainRec: ChainRec1<URI> = {
   ...Chain,
@@ -328,8 +411,11 @@ export const ChainRec: ChainRec1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Monad: Monad1<URI> = {
   URI,
@@ -340,8 +426,11 @@ export const Monad: Monad1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const MonadIO: MonadIO1<URI> = {
   URI,
@@ -353,15 +442,19 @@ export const MonadIO: MonadIO1<URI> = {
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const fromTask: <A>(fa: Task<A>) => Task<A> = identity
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const MonadTask: MonadTask1<URI> = {
   URI,
@@ -374,15 +467,18 @@ export const MonadTask: MonadTask1<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const FromIO: FromIO1<URI> = {
   URI,
   fromIO,
 }
 
-/** @internal */
+/** @internal @packageDocumentation */
 interface TaskTypeLambda extends _.TypeLambda {
   readonly type: Task<this['Target']>
 }
@@ -398,8 +494,11 @@ const _FromIO: _.FromIO<TaskTypeLambda> = {
 }
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatMapIO: {
   <A, B>(f: (a: A) => IO<B>): (self: Task<A>) => Task<B>
@@ -410,8 +509,11 @@ export const flatMapIO: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 1.0.0
- * @category Combinators
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Combinators
+ * @public
  */
 export const tap: {
   <A, _>(self: Task<A>, f: (a: A) => Task<_>): Task<A>
@@ -422,24 +524,31 @@ export const tap: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 1.0.0
- * @category Combinators
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Combinators
  * @example
- *   import { pipe } from 'fp-ts/function'
- *   import * as T from 'fp-ts/Task'
- *   import * as Console from 'fp-ts/Console'
  *
- *   // Will produce `Hello, fp-ts` to the stdout
- *   const effect = pipe(
- *     T.of('fp-ts'),
- *     T.tapIO(value => Console.log(`Hello, ${value}`)),
- *   )
+ * ```typescript
+ * import { pipe } from '@fp-tx/core/function'
+ * import * as T from '@fp-tx/core/Task'
+ * import * as Console from '@fp-tx/core/Console'
  *
- *   async function test() {
- *     assert.deepStrictEqual(await effect(), 'fp-ts')
- *   }
+ * // Will produce `Hello, fp-ts` to the stdout
+ * const effect = pipe(
+ *   T.of('fp-ts'),
+ *   T.tapIO(value => Console.log(`Hello, ${value}`)),
+ * )
  *
- *   test()
+ * async function test() {
+ *   assert.deepStrictEqual(await effect(), 'fp-ts')
+ * }
+ *
+ * test()
+ * ```
+ *
+ * @public
  */
 export const tapIO: {
   <A, _>(f: (a: A) => IO<_>): (self: Task<A>) => Task<A>
@@ -447,8 +556,11 @@ export const tapIO: {
 } = /*#__PURE__*/ dual(2, tapIO_(FromIO, Chain))
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => IO<B>) => (...a: A) => Task<B> =
   /*#__PURE__*/ fromIOK_(FromIO)
@@ -456,22 +568,31 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => IO<B
 /**
  * Alias of `flatMapIO`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainIOK: <A, B>(f: (a: A) => IO<B>) => (first: Task<A>) => Task<B> = flatMapIO
 
 /**
  * Alias of `tapIO`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => (first: Task<A>) => Task<A> = tapIO
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const FromTask: FromTask1<URI> = {
   URI,
@@ -486,7 +607,9 @@ export const FromTask: FromTask1<URI> = {
 /**
  * A `Task` that never completes.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const never: Task<never> = () => new Promise(_ => undefined)
 
@@ -495,14 +618,20 @@ export const never: Task<never> = () => new Promise(_ => undefined)
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const Do: Task<{}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
 
@@ -510,15 +639,21 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @since 1.0.0
-   * @category Do notation
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Do notation
+   * @public
    */
   let_ as let,
 }
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
 
@@ -533,19 +668,29 @@ const do_: <MA extends TaskIterable<any>, A>(
 
 export {
   /**
-   * @since 1.0.0
-   * @category Do notation
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Do notation
+   * @public
    */
   do_ as do,
 }
 
 /**
- * @since 1.0.0
- * @category Do notation
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Do notation
+ * @public
  */
 export const apS = /*#__PURE__*/ apS_(ApplyPar)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const ApT: Task<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 
 // -------------------------------------------------------------------------------------
@@ -555,8 +700,11 @@ export const ApT: Task<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(ApplicativePar)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndex =
   <A, B>(f: (index: number, a: A) => Task<B>) =>
@@ -567,8 +715,11 @@ export const traverseReadonlyNonEmptyArrayWithIndex =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativePar)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseReadonlyArrayWithIndex = <A, B>(
   f: (index: number, a: A) => Task<B>,
@@ -580,8 +731,11 @@ export const traverseReadonlyArrayWithIndex = <A, B>(
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndexSeq =
   <A, B>(f: (index: number, a: A) => Task<B>) =>
@@ -605,8 +759,11 @@ export const traverseReadonlyNonEmptyArrayWithIndexSeq =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseReadonlyArrayWithIndexSeq = <A, B>(
   f: (index: number, a: A) => Task<B>,
@@ -618,8 +775,11 @@ export const traverseReadonlyArrayWithIndexSeq = <A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseArrayWithIndex: <A, B>(
   f: (index: number, a: A) => Task<B>,
@@ -628,8 +788,11 @@ export const traverseArrayWithIndex: <A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseArray = <A, B>(f: (a: A) => Task<B>): ((as: ReadonlyArray<A>) => Task<ReadonlyArray<B>>) =>
   traverseReadonlyArrayWithIndex((_, a) => f(a))
@@ -637,8 +800,11 @@ export const traverseArray = <A, B>(f: (a: A) => Task<B>): ((as: ReadonlyArray<A
 /**
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const sequenceArray: <A>(arr: ReadonlyArray<Task<A>>) => Task<ReadonlyArray<A>> =
   /*#__PURE__*/ traverseArray(identity)
@@ -646,8 +812,11 @@ export const sequenceArray: <A>(arr: ReadonlyArray<Task<A>>) => Task<ReadonlyArr
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseSeqArrayWithIndex: <A, B>(
   f: (index: number, a: A) => Task<B>,
@@ -656,8 +825,11 @@ export const traverseSeqArrayWithIndex: <A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverse(ApplicativeSeq)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseSeqArray = <A, B>(f: (a: A) => Task<B>): ((as: ReadonlyArray<A>) => Task<ReadonlyArray<B>>) =>
   traverseReadonlyArrayWithIndexSeq((_, a) => f(a))
@@ -665,8 +837,11 @@ export const traverseSeqArray = <A, B>(f: (a: A) => Task<B>): ((as: ReadonlyArra
 /**
  * Equivalent to `ReadonlyArray#sequence(ApplicativeSeq)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const sequenceSeqArray: <A>(arr: ReadonlyArray<Task<A>>) => Task<ReadonlyArray<A>> =
   /*#__PURE__*/ traverseSeqArray(identity)
@@ -678,16 +853,22 @@ export const sequenceSeqArray: <A>(arr: ReadonlyArray<Task<A>>) => Task<Readonly
 /**
  * Alias of `flatMap`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chain: <A, B>(f: (a: A) => Task<B>) => (ma: Task<A>) => Task<B> = flatMap
 
 /**
  * Alias of `tap`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainFirst: <A, B>(f: (a: A) => Task<B>) => (first: Task<A>) => Task<A> = tap
 
@@ -699,9 +880,10 @@ export const chainFirst: <A, B>(f: (a: A) => Task<B>) => (first: Task<A>) => Tas
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `T.Functor` instead of `T.task` (where `T` is from `import T from 'fp-ts/Task'`)
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const task: Monad1<URI> & MonadTask1<URI> = {
   URI,
@@ -717,9 +899,10 @@ export const task: Monad1<URI> & MonadTask1<URI> = {
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `T.Functor` instead of `T.taskSeq` (where `T` is from `import T from 'fp-ts/Task'`)
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const taskSeq: Monad1<URI> & MonadTask1<URI> = {
   URI,
@@ -734,9 +917,10 @@ export const taskSeq: Monad1<URI> & MonadTask1<URI> = {
 /**
  * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getSemigroup: <A>(S: Semigroup<A>) => Semigroup<Task<A>> = /*#__PURE__*/ getApplySemigroup_(ApplySeq)
 
@@ -745,8 +929,9 @@ export const getSemigroup: <A>(S: Semigroup<A>) => Semigroup<Task<A>> = /*#__PUR
  *
  * Lift a monoid into 'Task', the inner values are concatenated using the provided `Monoid`.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getMonoid: <A>(M: Monoid<A>) => Monoid<Task<A>> = /*#__PURE__*/ getApplicativeMonoid(ApplicativeSeq)

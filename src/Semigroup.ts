@@ -9,14 +9,10 @@
  *
  * Associativity means the following equality must hold for any choice of `x`, `y`, and `z`.
  *
- * ```ts
- * concat(x, concat(y, z)) = concat(concat(x, y), z)
- * ```
- *
  * A common example of a semigroup is the type `string` with the operation `+`.
  *
  * ```ts
- * import { Semigroup } from 'fp-ts/Semigroup'
+ * import { Semigroup } from '@fp-tx/core/Semigroup'
  *
  * const semigroupString: Semigroup<string> = {
  *   concat: (x, y) => x + y,
@@ -35,7 +31,9 @@
  *
  * _Adapted from https://typelevel.org/cats_
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { getSemigroup, identity } from './function'
 import * as _ from './internal'
@@ -50,8 +48,11 @@ import { type ReadonlyRecord } from './ReadonlyRecord'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Semigroup<A> extends Magma<A> {}
 
@@ -62,15 +63,22 @@ export interface Semigroup<A> extends Magma<A> {}
 /**
  * Get a semigroup where `concat` will return the minimum, based on the provided order.
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
  * @example
- *   import * as N from 'fp-ts/number'
- *   import * as S from 'fp-ts/Semigroup'
  *
- *   const S1 = S.min(N.Ord)
+ * ```typescript
+ * import * as N from '@fp-tx/core/number'
+ * import * as S from '@fp-tx/core/Semigroup'
  *
- *   assert.deepStrictEqual(S1.concat(1, 2), 1)
+ * const S1 = S.min(N.Ord)
+ *
+ * assert.deepStrictEqual(S1.concat(1, 2), 1)
+ * ```
+ *
+ * @public
  */
 export const min = <A>(O: Ord<A>): Semigroup<A> => ({
   concat: Or.min(O),
@@ -79,23 +87,33 @@ export const min = <A>(O: Ord<A>): Semigroup<A> => ({
 /**
  * Get a semigroup where `concat` will return the maximum, based on the provided order.
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
  * @example
- *   import * as N from 'fp-ts/number'
- *   import * as S from 'fp-ts/Semigroup'
  *
- *   const S1 = S.max(N.Ord)
+ * ```typescript
+ * import * as N from '@fp-tx/core/number'
+ * import * as S from '@fp-tx/core/Semigroup'
  *
- *   assert.deepStrictEqual(S1.concat(1, 2), 2)
+ * const S1 = S.max(N.Ord)
+ *
+ * assert.deepStrictEqual(S1.concat(1, 2), 2)
+ * ```
+ *
+ * @public
  */
 export const max = <A>(O: Ord<A>): Semigroup<A> => ({
   concat: Or.max(O),
 })
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const constant = <A>(a: A): Semigroup<A> => ({
   concat: () => a,
@@ -108,34 +126,46 @@ export const constant = <A>(a: A): Semigroup<A> => ({
 /**
  * The dual of a `Semigroup`, obtained by swapping the arguments of `concat`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { reverse } from 'fp-ts/Semigroup'
- *   import * as S from 'fp-ts/string'
  *
- *   assert.deepStrictEqual(reverse(S.Semigroup).concat('a', 'b'), 'ba')
+ * ```typescript
+ * import { reverse } from '@fp-tx/core/Semigroup'
+ * import * as S from '@fp-tx/core/string'
+ *
+ * assert.deepStrictEqual(reverse(S.Semigroup).concat('a', 'b'), 'ba')
+ * ```
+ *
+ * @public
  */
 export const reverse: <A>(S: Semigroup<A>) => Semigroup<A> = M.reverse
 
 /**
  * Given a struct of semigroups returns a semigroup for the struct.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { struct } from 'fp-ts/Semigroup'
- *   import * as N from 'fp-ts/number'
  *
- *   interface Point {
- *     readonly x: number
- *     readonly y: number
- *   }
+ * ```typescript
+ * import { struct } from '@fp-tx/core/Semigroup'
+ * import * as N from '@fp-tx/core/number'
  *
- *   const S = struct<Point>({
- *     x: N.SemigroupSum,
- *     y: N.SemigroupSum,
- *   })
+ * interface Point {
+ *   readonly x: number
+ *   readonly y: number
+ * }
  *
- *   assert.deepStrictEqual(S.concat({ x: 1, y: 2 }, { x: 3, y: 4 }), { x: 4, y: 6 })
+ * const S = struct<Point>({
+ *   x: N.SemigroupSum,
+ *   y: N.SemigroupSum,
+ * })
+ *
+ * assert.deepStrictEqual(S.concat({ x: 1, y: 2 }, { x: 3, y: 4 }), { x: 4, y: 6 })
+ * ```
+ *
+ * @public
  */
 export const struct = <A>(semigroups: { [K in keyof A]: Semigroup<A[K]> }): Semigroup<{
   readonly [K in keyof A]: A[K]
@@ -154,18 +184,24 @@ export const struct = <A>(semigroups: { [K in keyof A]: Semigroup<A[K]> }): Semi
 /**
  * Given a tuple of semigroups returns a semigroup for the tuple.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { tuple } from 'fp-ts/Semigroup'
- *   import * as B from 'fp-ts/boolean'
- *   import * as N from 'fp-ts/number'
- *   import * as S from 'fp-ts/string'
  *
- *   const S1 = tuple(S.Semigroup, N.SemigroupSum)
- *   assert.deepStrictEqual(S1.concat(['a', 1], ['b', 2]), ['ab', 3])
+ * ```typescript
+ * import { tuple } from '@fp-tx/core/Semigroup'
+ * import * as B from '@fp-tx/core/boolean'
+ * import * as N from '@fp-tx/core/number'
+ * import * as S from '@fp-tx/core/string'
  *
- *   const S2 = tuple(S.Semigroup, N.SemigroupSum, B.SemigroupAll)
- *   assert.deepStrictEqual(S2.concat(['a', 1, true], ['b', 2, false]), ['ab', 3, false])
+ * const S1 = tuple(S.Semigroup, N.SemigroupSum)
+ * assert.deepStrictEqual(S1.concat(['a', 1], ['b', 2]), ['ab', 3])
+ *
+ * const S2 = tuple(S.Semigroup, N.SemigroupSum, B.SemigroupAll)
+ * assert.deepStrictEqual(S2.concat(['a', 1, true], ['b', 2, false]), ['ab', 3, false])
+ * ```
+ *
+ * @public
  */
 export const tuple = <A extends ReadonlyArray<unknown>>(
   ...semigroups: { [K in keyof A]: Semigroup<A[K]> }
@@ -176,15 +212,21 @@ export const tuple = <A extends ReadonlyArray<unknown>>(
 /**
  * Between each pair of elements insert `middle`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { intercalate } from 'fp-ts/Semigroup'
- *   import * as S from 'fp-ts/string'
- *   import { pipe } from 'fp-ts/function'
  *
- *   const S1 = pipe(S.Semigroup, intercalate(' + '))
+ * ```typescript
+ * import { intercalate } from '@fp-tx/core/Semigroup'
+ * import * as S from '@fp-tx/core/string'
+ * import { pipe } from '@fp-tx/core/function'
  *
- *   assert.strictEqual(S1.concat('a', 'b'), 'a + b')
+ * const S1 = pipe(S.Semigroup, intercalate(' + '))
+ *
+ * assert.strictEqual(S1.concat('a', 'b'), 'a + b')
+ * ```
+ *
+ * @public
  */
 export const intercalate =
   <A>(middle: A) =>
@@ -199,24 +241,38 @@ export const intercalate =
 /**
  * Always return the first argument.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import * as S from 'fp-ts/Semigroup'
  *
- *   assert.deepStrictEqual(S.first<number>().concat(1, 2), 1)
+ * ```typescript
+ * import * as S from '@fp-tx/core/Semigroup'
+ *
+ * assert.deepStrictEqual(S.first<number>().concat(1, 2), 1)
+ * ```
+ *
+ * @public
  */
 export const first = <A = never>(): Semigroup<A> => ({ concat: identity })
 
 /**
  * Always return the last argument.
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
  * @example
- *   import * as S from 'fp-ts/Semigroup'
  *
- *   assert.deepStrictEqual(S.last<number>().concat(1, 2), 2)
+ * ```typescript
+ * import * as S from '@fp-tx/core/Semigroup'
+ *
+ * assert.deepStrictEqual(S.last<number>().concat(1, 2), 2)
+ * ```
+ *
+ * @public
  */
 export const last = <A = never>(): Semigroup<A> => ({ concat: (_, y) => y })
 
@@ -229,15 +285,21 @@ export const last = <A = never>(): Semigroup<A> => ({ concat: (_, y) => y })
  *
  * If `as` is empty, return the provided `startWith` value.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
  * @example
- *   import { concatAll } from 'fp-ts/Semigroup'
- *   import * as N from 'fp-ts/number'
  *
- *   const sum = concatAll(N.SemigroupSum)(0)
+ * ```typescript
+ * import { concatAll } from '@fp-tx/core/Semigroup'
+ * import * as N from '@fp-tx/core/number'
  *
- *   assert.deepStrictEqual(sum([1, 2, 3]), 6)
- *   assert.deepStrictEqual(sum([]), 0)
+ * const sum = concatAll(N.SemigroupSum)(0)
+ *
+ * assert.deepStrictEqual(sum([1, 2, 3]), 6)
+ * assert.deepStrictEqual(sum([]), 0)
+ * ```
+ *
+ * @public
  */
 export const concatAll: <A>(S: Semigroup<A>) => (startWith: A) => (as: ReadonlyArray<A>) => A = M.concatAll
 
@@ -248,18 +310,20 @@ export const concatAll: <A>(S: Semigroup<A>) => (startWith: A) => (as: ReadonlyA
 /**
  * Use `void` module instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const semigroupVoid: Semigroup<void> = constant<void>(undefined)
 
 /**
  * Use [`getAssignSemigroup`](./struct.ts.html#getAssignSemigroup) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getObjectSemigroup = <A extends object = never>(): Semigroup<A> => ({
   concat: (first, second) => Object.assign({}, first, second),
@@ -268,27 +332,30 @@ export const getObjectSemigroup = <A extends object = never>(): Semigroup<A> => 
 /**
  * Use [`last`](#last) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getLastSemigroup = last
 
 /**
  * Use [`first`](#first) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getFirstSemigroup = first
 
 /**
  * Use [`tuple`](#tuple) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getTupleSemigroup: <T extends ReadonlyArray<Semigroup<any>>>(
   ...semigroups: T
@@ -297,9 +364,10 @@ export const getTupleSemigroup: <T extends ReadonlyArray<Semigroup<any>>>(
 /**
  * Use [`struct`](#struct) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getStructSemigroup: <O extends ReadonlyRecord<string, any>>(semigroups: {
   [K in keyof O]: Semigroup<O[K]>
@@ -308,45 +376,50 @@ export const getStructSemigroup: <O extends ReadonlyRecord<string, any>>(semigro
 /**
  * Use [`reverse`](#reverse) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getDualSemigroup = reverse
 
 /**
  * Use [`max`](#max) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getJoinSemigroup = max
 
 /**
  * Use [`min`](#min) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getMeetSemigroup = min
 
 /**
  * Use [`intercalate`](#intercalate) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getIntercalateSemigroup = intercalate
 
 /**
  * Use [`concatAll`](#concatall) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export function fold<A>(S: Semigroup<A>): {
   (startWith: A): (as: ReadonlyArray<A>) => A
@@ -360,9 +433,10 @@ export function fold<A>(S: Semigroup<A>): (startWith: A, as?: ReadonlyArray<A>) 
 /**
  * Use [`SemigroupAll`](./boolean.ts.html#SemigroupAll) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const semigroupAll: Semigroup<boolean> = {
   concat: (x, y) => x && y,
@@ -371,9 +445,10 @@ export const semigroupAll: Semigroup<boolean> = {
 /**
  * Use [`SemigroupAny`](./boolean.ts.html#SemigroupAny) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const semigroupAny: Semigroup<boolean> = {
   concat: (x, y) => x || y,
@@ -382,18 +457,20 @@ export const semigroupAny: Semigroup<boolean> = {
 /**
  * Use [`getSemigroup`](./function.ts.html#getSemigroup) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getFunctionSemigroup: <S>(S: Semigroup<S>) => <A = never>() => Semigroup<(a: A) => S> = getSemigroup
 
 /**
  * Use [`Semigroup`](./string.ts.html#Semigroup) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const semigroupString: Semigroup<string> = {
   concat: (x, y) => x + y,
@@ -402,9 +479,10 @@ export const semigroupString: Semigroup<string> = {
 /**
  * Use [`SemigroupSum`](./number.ts.html#SemigroupSum) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const semigroupSum: Semigroup<number> = {
   concat: (x, y) => x + y,
@@ -413,9 +491,10 @@ export const semigroupSum: Semigroup<number> = {
 /**
  * Use [`SemigroupProduct`](./number.ts.html#SemigroupProduct) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const semigroupProduct: Semigroup<number> = {
   concat: (x, y) => x * y,

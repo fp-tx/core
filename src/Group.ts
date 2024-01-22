@@ -3,7 +3,9 @@
  *
  * - Inverse: `concat(inverse(a), a) <-> empty = concat(a, inverse(a))`
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type Monoid } from './Monoid'
 
@@ -12,8 +14,11 @@ import { type Monoid } from './Monoid'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Group<A> extends Monoid<A> {
   readonly inverse: (a: A) => A

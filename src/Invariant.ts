@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import {
   type HKT,
   type Kind,
@@ -16,8 +20,11 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Invariant<F> {
   readonly URI: F
@@ -25,8 +32,11 @@ export interface Invariant<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Invariant1<F extends URIS> {
   readonly URI: F
@@ -34,8 +44,11 @@ export interface Invariant1<F extends URIS> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Invariant2<F extends URIS2> {
   readonly URI: F
@@ -43,8 +56,11 @@ export interface Invariant2<F extends URIS2> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Invariant2C<F extends URIS2, E> {
   readonly URI: F
@@ -53,8 +69,11 @@ export interface Invariant2C<F extends URIS2, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Invariant3<F extends URIS3> {
   readonly URI: F
@@ -62,8 +81,11 @@ export interface Invariant3<F extends URIS3> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Invariant3C<F extends URIS3, E> {
   readonly URI: F
@@ -72,8 +94,11 @@ export interface Invariant3C<F extends URIS3, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Invariant4<F extends URIS4> {
   readonly URI: F

@@ -6,7 +6,9 @@
  *
  * Adapted from https://github.com/LiamGoodacre/purescript-filterable/blob/master/src/Data/Compactable.purs
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type Either } from './Either'
 import { pipe } from './function'
@@ -48,8 +50,11 @@ import * as S from './Separated'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Compactable<F> {
   readonly URI: F
@@ -60,8 +65,11 @@ export interface Compactable<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Compactable1<F extends URIS> {
   readonly URI: F
@@ -70,8 +78,11 @@ export interface Compactable1<F extends URIS> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Compactable2<F extends URIS2> {
   readonly URI: F
@@ -80,8 +91,11 @@ export interface Compactable2<F extends URIS2> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Compactable2C<F extends URIS2, E> {
   readonly URI: F
@@ -91,8 +105,11 @@ export interface Compactable2C<F extends URIS2, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Compactable3<F extends URIS3> {
   readonly URI: F
@@ -101,8 +118,11 @@ export interface Compactable3<F extends URIS3> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Compactable3C<F extends URIS3, E> {
   readonly URI: F
@@ -112,8 +132,11 @@ export interface Compactable3C<F extends URIS3, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Compactable4<F extends URIS4> {
   readonly URI: F
@@ -130,7 +153,9 @@ export interface Compactable4<F extends URIS4> {
 /**
  * `compact` composition.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function compact<F extends URIS2, G extends URIS2, E>(
   F: Functor2<F>,
@@ -155,7 +180,9 @@ export function compact<F, G>(
 /**
  * `separate` composition.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function separate<F extends URIS2, G extends URIS2, E>(
   F: Functor2<F>,
@@ -194,9 +221,10 @@ export function separate<F, G>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface CompactableComposition<F, G> extends FunctorComposition<F, G> {
   readonly compact: <A>(fga: HKT<F, HKT<G, Option<A>>>) => HKT<F, HKT<G, A>>
@@ -204,9 +232,10 @@ export interface CompactableComposition<F, G> extends FunctorComposition<F, G> {
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface CompactableComposition11<F extends URIS, G extends URIS> extends FunctorComposition11<F, G> {
   readonly compact: <A>(fga: Kind<F, Kind<G, Option<A>>>) => Kind<F, Kind<G, A>>
@@ -214,9 +243,10 @@ export interface CompactableComposition11<F extends URIS, G extends URIS> extend
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface CompactableComposition12<F extends URIS, G extends URIS2> extends FunctorComposition12<F, G> {
   readonly compact: <E, A>(fga: Kind<F, Kind2<G, E, Option<A>>>) => Kind<F, Kind2<G, E, A>>
@@ -226,9 +256,10 @@ export interface CompactableComposition12<F extends URIS, G extends URIS2> exten
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface CompactableComposition12C<F extends URIS, G extends URIS2, E> extends FunctorComposition12C<F, G, E> {
   readonly compact: <A>(fga: Kind<F, Kind2<G, E, Option<A>>>) => Kind<F, Kind2<G, E, A>>
@@ -238,9 +269,10 @@ export interface CompactableComposition12C<F extends URIS, G extends URIS2, E> e
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface CompactableComposition21<F extends URIS2, G extends URIS> extends FunctorComposition21<F, G> {
   readonly compact: <FE, A>(fga: Kind2<F, FE, Kind<G, Option<A>>>) => Kind2<F, FE, Kind<G, A>>
@@ -250,9 +282,10 @@ export interface CompactableComposition21<F extends URIS2, G extends URIS> exten
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface CompactableComposition2C1<F extends URIS2, G extends URIS, E> extends FunctorComposition2C1<F, G, E> {
   readonly compact: <A>(fga: Kind2<F, E, Kind<G, Option<A>>>) => Kind2<F, E, Kind<G, A>>
@@ -262,9 +295,10 @@ export interface CompactableComposition2C1<F extends URIS2, G extends URIS, E> e
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface CompactableComposition22<F extends URIS2, G extends URIS2> extends FunctorComposition22<F, G> {
   readonly compact: <FE, GE, A>(fga: Kind2<F, FE, Kind2<G, GE, Option<A>>>) => Kind2<F, FE, Kind2<G, GE, A>>
@@ -274,9 +308,10 @@ export interface CompactableComposition22<F extends URIS2, G extends URIS2> exte
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface CompactableComposition22C<F extends URIS2, G extends URIS2, E> extends FunctorComposition22C<F, G, E> {
   readonly compact: <FE, A>(fga: Kind2<F, FE, Kind2<G, E, Option<A>>>) => Kind2<F, FE, Kind2<G, E, A>>
@@ -286,9 +321,10 @@ export interface CompactableComposition22C<F extends URIS2, G extends URIS2, E> 
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface CompactableComposition23<F extends URIS2, G extends URIS3> extends FunctorComposition23<F, G> {
   readonly compact: <R, FE, GE, A>(fga: Kind2<F, FE, Kind3<G, R, GE, Option<A>>>) => Kind2<F, FE, Kind3<G, R, GE, A>>
@@ -298,9 +334,10 @@ export interface CompactableComposition23<F extends URIS2, G extends URIS3> exte
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface CompactableComposition23C<F extends URIS2, G extends URIS3, E> extends FunctorComposition23C<F, G, E> {
   readonly compact: <FE, R, A>(fga: Kind2<F, FE, Kind3<G, R, E, Option<A>>>) => Kind2<F, FE, Kind3<G, R, E, A>>
@@ -312,55 +349,56 @@ export interface CompactableComposition23C<F extends URIS2, G extends URIS3, E> 
 /**
  * Use [`compact`](#compact) and [`separate`](#separate) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export function getCompactableComposition<F extends URIS2, G extends URIS3, E>(
   F: Functor2<F>,
   G: Compactable3C<G, E> & Functor3C<G, E>,
 ): CompactableComposition23C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F extends URIS2, G extends URIS2, E>(
   F: Functor2<F>,
   G: Compactable2C<G, E> & Functor2C<G, E>,
 ): CompactableComposition22C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F extends URIS2, G extends URIS2>(
   F: Functor2<F>,
   G: Compactable2<G> & Functor2<G>,
 ): CompactableComposition22<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F extends URIS2, G extends URIS, E>(
   F: Functor2C<F, E>,
   G: Compactable1<G> & Functor1<G>,
 ): CompactableComposition2C1<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F extends URIS2, G extends URIS>(
   F: Functor2<F>,
   G: Compactable1<G> & Functor1<G>,
 ): CompactableComposition21<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F extends URIS, G extends URIS2, E>(
   F: Functor1<F>,
   G: Compactable2C<G, E> & Functor2C<G, E>,
 ): CompactableComposition12<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F extends URIS, G extends URIS2>(
   F: Functor1<F>,
   G: Compactable2<G> & Functor2<G>,
 ): CompactableComposition12<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F extends URIS, G extends URIS>(
   F: Functor1<F>,
   G: Compactable1<G> & Functor1<G>,
 ): CompactableComposition11<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F, G>(
   F: Functor<F>,
   G: Compactable<G> & Functor<G>,
 ): CompactableComposition<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F, G>(
   F: Functor<F>,
   G: Compactable<G> & Functor<G>,
@@ -376,8 +414,10 @@ export function getCompactableComposition<F, G>(
 /**
  * Use [`Separated`](./Separated.ts.html#separated) instead.
  *
- * @deprecated
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Use `Separated` instead
+ * @public
  */
 export interface Separated<A, B> {
   readonly left: A

@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import { type Applicative2 } from './Applicative'
 import { apFirst as apFirst_, type Apply2, apS as apS_, apSecond as apSecond_ } from './Apply'
 import * as chainable from './Chain'
@@ -18,8 +22,11 @@ import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface State<S, A> {
   (s: S): [A, S]
@@ -32,32 +39,44 @@ export interface State<S, A> {
 /**
  * Get the current state
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const get: <S>() => State<S, S> = () => s => [s, s]
 
 /**
  * Set the state
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const put: <S>(s: S) => State<S, void> = s => () => [undefined, s]
 
 /**
  * Modify the state by applying a function to the current state
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const modify: <S>(f: (s: S) => S) => State<S, void> = f => s => [undefined, f(s)]
 
 /**
  * Get a value which depends on the current state
  *
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const gets: <S, A>(f: (s: S) => A) => State<S, A> = f => s => [f(s), s]
 
@@ -70,15 +89,22 @@ const _ap: Monad2<URI>['ap'] = (fab, fa) => pipe(fab, ap(fa))
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: State<E, A>) => State<E, B> = f => fa => s1 => {
   const [a, s2] = fa(s1)
   return [f(a), s2]
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const ap: <E, A>(fa: State<E, A>) => <B>(fab: State<E, (a: A) => B>) => State<E, B> = fa => fab => s1 => {
   const [f, s2] = fab(s1)
   const [a, s3] = fa(s2)
@@ -86,14 +112,20 @@ export const ap: <E, A>(fa: State<E, A>) => <B>(fab: State<E, (a: A) => B>) => S
 }
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const of: <S, A>(a: A) => State<S, A> = a => s => [a, s]
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatMap: {
   <A, S, B>(f: (a: A) => State<S, B>): (ma: State<S, A>) => State<S, B>
@@ -108,20 +140,29 @@ export const flatMap: {
 )
 
 /**
- * @since 1.0.0
- * @category Sequencing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Sequencing
+ * @public
  */
 export const flatten: <E, A>(mma: State<E, State<E, A>>) => State<E, A> = /*#__PURE__*/ flatMap(identity)
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export const URI = 'State'
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export type URI = typeof URI
 
@@ -132,8 +173,11 @@ declare module './HKT' {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Functor: Functor2<URI> = {
   URI,
@@ -141,14 +185,20 @@ export const Functor: Functor2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Pointed: Pointed2<URI> = {
   URI,
@@ -156,8 +206,11 @@ export const Pointed: Pointed2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Apply: Apply2<URI> = {
   URI,
@@ -168,20 +221,27 @@ export const Apply: Apply2<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
 
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Applicative: Applicative2<URI> = {
   URI,
@@ -191,8 +251,11 @@ export const Applicative: Applicative2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Chain: chainable.Chain2<URI> = {
   URI,
@@ -202,8 +265,11 @@ export const Chain: chainable.Chain2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instance methods
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instance methods
+ * @public
  */
 export const chainRec: ChainRec2<URI>['chainRec'] = (a, f) => initialState => {
   let [current, state] = f(a)(initialState)
@@ -217,8 +283,11 @@ export const chainRec: ChainRec2<URI>['chainRec'] = (a, f) => initialState => {
 /**
  * ChainRec for `State`
  *
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const ChainRec: ChainRec2<URI> = {
   ...Chain,
@@ -226,8 +295,11 @@ export const ChainRec: ChainRec2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Monad: Monad2<URI> = {
   URI,
@@ -241,8 +313,11 @@ export const Monad: Monad2<URI> = {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @since 1.0.0
- * @category Combinators
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Combinators
+ * @public
  */
 export const tap: {
   <S, A, _>(self: State<S, A>, f: (a: A) => State<S, _>): State<S, A>
@@ -250,8 +325,11 @@ export const tap: {
 } = /*#__PURE__*/ dual(2, chainable.tap(Chain))
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const FromState: FromState2<URI> = {
   URI,
@@ -265,7 +343,9 @@ export const FromState: FromState2<URI> = {
 /**
  * Run a computation in the `State` monad, discarding the final state
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const evaluate =
   <S>(s: S) =>
@@ -275,7 +355,9 @@ export const evaluate =
 /**
  * Run a computation in the `State` monad discarding the result
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export const execute =
   <S>(s: S) =>
@@ -286,17 +368,29 @@ export const execute =
 // do notation
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
 
 const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
-  /** @since 1.0.0 */
+  /**
+   * @remarks
+   * Added in 1.0.0
+   * @public
+   */
   let_ as let,
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
 
 interface StateIterable<S, A> {
@@ -310,8 +404,11 @@ const do_: <MA extends StateIterable<any, any>, A>(
 
 export {
   /**
-   * @since 1.0.0
-   * @category Do notation
+   * @remarks
+   * Added in 1.0.0
+   * @remarks
+   * Category: Do notation
+   * @public
    */
   do_ as do,
 }
@@ -320,7 +417,11 @@ export {
 // pipeable sequence S
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const apS = /*#__PURE__*/ apS_(Apply)
 
 // -------------------------------------------------------------------------------------
@@ -330,8 +431,11 @@ export const apS = /*#__PURE__*/ apS_(Apply)
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndex =
   <A, S, B>(f: (index: number, a: A) => State<S, B>) =>
@@ -351,8 +455,11 @@ export const traverseReadonlyNonEmptyArrayWithIndex =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseReadonlyArrayWithIndex = <A, S, B>(
   f: (index: number, a: A) => State<S, B>,
@@ -364,8 +471,11 @@ export const traverseReadonlyArrayWithIndex = <A, S, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseArrayWithIndex: <A, S, B>(
   f: (index: number, a: A) => State<S, B>,
@@ -374,8 +484,11 @@ export const traverseArrayWithIndex: <A, S, B>(
 /**
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseArray = <A, S, B>(
   f: (a: A) => State<S, B>,
@@ -384,8 +497,11 @@ export const traverseArray = <A, S, B>(
 /**
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const sequenceArray: <S, A>(arr: ReadonlyArray<State<S, A>>) => State<S, ReadonlyArray<A>> =
   /*#__PURE__*/ traverseArray(identity)
@@ -397,16 +513,22 @@ export const sequenceArray: <S, A>(arr: ReadonlyArray<State<S, A>>) => State<S, 
 /**
  * Alias of `flatMap`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chain: <S, A, B>(f: (a: A) => State<S, B>) => (ma: State<S, A>) => State<S, B> = flatMap
 
 /**
  * Alias of `tap`.
  *
- * @since 1.0.0
- * @category Legacy
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Legacy
+ * @public
  */
 export const chainFirst: <S, A, B>(f: (a: A) => State<S, B>) => (ma: State<S, A>) => State<S, A> = tap
 
@@ -417,18 +539,20 @@ export const chainFirst: <S, A, B>(f: (a: A) => State<S, B>) => (ma: State<S, A>
 /**
  * Use [`evaluate`](#evaluate) instead
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const evalState: <S, A>(ma: State<S, A>, s: S) => A = (ma, s) => ma(s)[0]
 
 /**
  * Use [`execute`](#execute) instead
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const execState: <S, A>(ma: State<S, A>, s: S) => S = (ma, s) => ma(s)[1]
 
@@ -436,8 +560,9 @@ export const execState: <S, A>(ma: State<S, A>, s: S) => S = (ma, s) => ma(s)[1]
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `S.Functor` instead of `S.state` (where `S` is from `import S from 'fp-ts/State'`)
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const state: Monad2<URI> = Monad

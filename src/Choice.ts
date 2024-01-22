@@ -22,7 +22,9 @@
  *
  * Adapted from https://github.com/purescript/purescript-profunctor/blob/master/src/Data/Profunctor/Choice.purs
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type Category, type Category2, type Category3, type Category4 } from './Category'
 import { type Either } from './Either'
@@ -35,8 +37,11 @@ import { type Profunctor, type Profunctor2, type Profunctor3, type Profunctor4 }
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Choice<F> extends Profunctor<F> {
   readonly left: <A, B, C>(pab: HKT2<F, A, B>) => HKT2<F, Either<A, C>, Either<B, C>>
@@ -44,8 +49,11 @@ export interface Choice<F> extends Profunctor<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Choice2<F extends URIS2> extends Profunctor2<F> {
   readonly left: <A, B, C>(pab: Kind2<F, A, B>) => Kind2<F, Either<A, C>, Either<B, C>>
@@ -53,8 +61,11 @@ export interface Choice2<F extends URIS2> extends Profunctor2<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Choice3<F extends URIS3> extends Profunctor3<F> {
   readonly left: <R, A, B, C>(pab: Kind3<F, R, A, B>) => Kind3<F, R, Either<A, C>, Either<B, C>>
@@ -62,8 +73,11 @@ export interface Choice3<F extends URIS3> extends Profunctor3<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Choice4<F extends URIS4> extends Profunctor4<F> {
   readonly left: <S, R, A, B, C>(pab: Kind4<F, S, R, A, B>) => Kind4<F, S, R, Either<A, C>, Either<B, C>>
@@ -82,7 +96,9 @@ export interface Choice4<F extends URIS4> extends Profunctor4<F> {
  * We take two functions, `f` and `g`, and we transform them into a single function which takes an `Either`and maps `f`
  * over the left side and `g` over the right side. Just like `bimap` would do for the `Bifunctor` instance of `Either`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function split<P extends URIS4>(
   P: Choice4<P>,
@@ -128,7 +144,9 @@ export function split<P>(
  * `Right`. This allows us to bundle two different computations which both have the same result type into one function
  * which will run the appropriate computation based on the parameter supplied in the `Either` value.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @public
  */
 export function fanIn<P extends URIS4>(
   P: Choice4<P>,
@@ -165,18 +183,19 @@ export function fanIn<P>(
 /**
  * Use [`split`](#split) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export function splitChoice<F extends URIS3>(
   F: Category3<F> & Choice3<F>,
 ): <R, A, B, C, D>(pab: Kind3<F, R, A, B>, pcd: Kind3<F, R, C, D>) => Kind3<F, R, Either<A, C>, Either<B, D>>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function splitChoice<F extends URIS2>(
   F: Category2<F> & Choice2<F>,
 ): <A, B, C, D>(pab: Kind2<F, A, B>, pcd: Kind2<F, C, D>) => Kind2<F, Either<A, C>, Either<B, D>>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function splitChoice<F>(
   F: Category<F> & Choice<F>,
 ): <A, B, C, D>(pab: HKT2<F, A, B>, pcd: HKT2<F, C, D>) => HKT2<F, Either<A, C>, Either<B, D>>
@@ -189,17 +208,19 @@ export function splitChoice<F>(
 /**
  * Use [`fanIn`](#fanIn) instead.
  *
- * @deprecated
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Use `fanIn` instead
+ * @public
  */
 export function fanin<F extends URIS3>(
   F: Category3<F> & Choice3<F>,
 ): <R, A, B, C>(pac: Kind3<F, R, A, C>, pbc: Kind3<F, R, B, C>) => Kind3<F, R, Either<A, B>, C>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function fanin<F extends URIS2>(
   F: Category2<F> & Choice2<F>,
 ): <A, B, C>(pac: Kind2<F, A, C>, pbc: Kind2<F, B, C>) => Kind2<F, Either<A, B>, C>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function fanin<F>(
   F: Category<F> & Choice<F>,
 ): <A, B, C>(pac: HKT2<F, A, C>, pbc: HKT2<F, B, C>) => HKT2<F, Either<A, B>, C>

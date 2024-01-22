@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import {
   type ApplicativeComposition12C,
   type ApplicativeComposition22C,
@@ -18,16 +22,18 @@ import { type Semigroup } from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export interface ValidationT<M, E, A> extends HKT<M, Either<E, A>> {}
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 
 export interface ValidationM<M, E> extends ApplicativeCompositionHKT2C<M, E.URI, E> {
@@ -37,16 +43,18 @@ export interface ValidationM<M, E> extends ApplicativeCompositionHKT2C<M, E.URI,
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export type ValidationT1<M extends URIS, E, A> = Kind<M, Either<E, A>>
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 
 export interface ValidationM1<M extends URIS, E> extends ApplicativeComposition12C<M, E.URI, E> {
@@ -56,16 +64,18 @@ export interface ValidationM1<M extends URIS, E> extends ApplicativeComposition1
 }
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export type ValidationT2<M extends URIS2, R, E, A> = Kind2<M, R, Either<E, A>>
 
 /**
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 
 export interface ValidationM2<M extends URIS2, E> extends ApplicativeComposition22C<M, E.URI, E> {
@@ -84,19 +94,20 @@ export interface ValidationM2<M extends URIS2, E> extends ApplicativeComposition
 /**
  * Use `EitherT` instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 
 export function getValidationM<E, M extends URIS2>(S: Semigroup<E>, M: Monad2<M>): ValidationM2<M, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 
 export function getValidationM<E, M extends URIS>(S: Semigroup<E>, M: Monad1<M>): ValidationM1<M, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 
 export function getValidationM<E, M>(S: Semigroup<E>, M: Monad<M>): ValidationM<M, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 
 export function getValidationM<E, M>(S: Semigroup<E>, M: Monad<M>): ValidationM<M, E> {
   const A = getApplicativeComposition(M, E.getApplicativeValidation(S))

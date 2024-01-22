@@ -1,7 +1,9 @@
 /**
  * A `BoundedDistributiveLattice` is a lattice that is both bounded and distributive
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type BoundedLattice } from './BoundedLattice'
 import { type DistributiveLattice, getMinMaxDistributiveLattice } from './DistributiveLattice'
@@ -12,8 +14,11 @@ import { type Ord } from './Ord'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface BoundedDistributiveLattice<A> extends BoundedLattice<A>, DistributiveLattice<A> {}
 
@@ -22,8 +27,11 @@ export interface BoundedDistributiveLattice<A> extends BoundedLattice<A>, Distri
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export function getMinMaxBoundedDistributiveLattice<A>(O: Ord<A>): (min: A, max: A) => BoundedDistributiveLattice<A> {
   const L = getMinMaxDistributiveLattice(O)

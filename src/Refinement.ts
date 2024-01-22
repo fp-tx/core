@@ -1,4 +1,8 @@
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
+ */
 import { type Either } from './Either'
 import * as _ from './internal'
 import { type Option } from './Option'
@@ -7,7 +11,11 @@ import { type Option } from './Option'
 // model
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export interface Refinement<A, B extends A> {
   (a: A): a is B
 }
@@ -20,24 +28,33 @@ export interface Refinement<A, B extends A> {
  * Returns a `Refinement` from a `Option` returning function. This function ensures that a `Refinement` definition is
  * type-safe.
  *
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export const fromOptionK = <A, B extends A>(getOption: (a: A) => Option<B>): Refinement<A, B> => {
   return (a: A): a is B => _.isSome(getOption(a))
 }
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export const fromEitherK = <A, B extends A>(getEither: (a: A) => Either<unknown, B>): Refinement<A, B> => {
   return (a: A): a is B => _.isRight(getEither(a))
 }
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const id = <A>(): Refinement<A, A> => {
   return (_): _ is A => true
@@ -47,32 +64,52 @@ export const id = <A>(): Refinement<A, A> => {
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const not =
   <A, B extends A>(refinement: Refinement<A, B>): Refinement<A, Exclude<A, B>> =>
   (a): a is Exclude<A, B> =>
     !refinement(a)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const or =
   <A, C extends A>(second: Refinement<A, C>) =>
   <B extends A>(first: Refinement<A, B>): Refinement<A, B | C> =>
   (a): a is B | C =>
     first(a) || second(a)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const and =
   <A, C extends A>(second: Refinement<A, C>) =>
   <B extends A>(first: Refinement<A, B>): Refinement<A, B & C> =>
   (a): a is B & C =>
     first(a) && second(a)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const zero = <A, B extends A>(): Refinement<A, B> => {
   return (_): _ is B => false
 }
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const compose =
   <A, B extends A, C extends B>(bc: Refinement<B, C>) =>
   (ab: Refinement<A, B>): Refinement<A, C> => {

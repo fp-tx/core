@@ -4,7 +4,9 @@
  * While not required, it is recommended that for any expression `x`, the string `show(x)` be executable TypeScript code
  * which evaluates to the same value as the expression `x`.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import * as _ from './internal'
 import { type ReadonlyRecord } from './ReadonlyRecord'
@@ -14,8 +16,11 @@ import { type ReadonlyRecord } from './ReadonlyRecord'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Show<A> {
   readonly show: (a: A) => string
@@ -25,7 +30,11 @@ export interface Show<A> {
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const struct = <A>(shows: { [K in keyof A]: Show<A[K]> }): Show<{ readonly [K in keyof A]: A[K] }> => ({
   show: a => {
     let s = '{'
@@ -42,7 +51,11 @@ export const struct = <A>(shows: { [K in keyof A]: Show<A[K]> }): Show<{ readonl
   },
 })
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const tuple = <A extends ReadonlyArray<unknown>>(
   ...shows: { [K in keyof A]: Show<A[K]> }
 ): Show<Readonly<A>> => ({
@@ -56,9 +69,10 @@ export const tuple = <A extends ReadonlyArray<unknown>>(
 /**
  * Use [`tuple`](#tuple) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getTupleShow: <T extends ReadonlyArray<Show<any>>>(
   ...shows: T
@@ -67,9 +81,10 @@ export const getTupleShow: <T extends ReadonlyArray<Show<any>>>(
 /**
  * Use [`struct`](#struct) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const getStructShow: <O extends ReadonlyRecord<string, any>>(shows: { [K in keyof O]: Show<O[K]> }) => Show<O> =
   struct
@@ -77,9 +92,10 @@ export const getStructShow: <O extends ReadonlyRecord<string, any>>(shows: { [K 
 /**
  * Use [`Show`](./boolean.ts.html#show) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const showBoolean: Show<boolean> = {
   show: a => JSON.stringify(a),
@@ -88,9 +104,10 @@ export const showBoolean: Show<boolean> = {
 /**
  * Use [`Show`](./string.ts.html#show) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const showString: Show<string> = {
   show: a => JSON.stringify(a),
@@ -99,9 +116,10 @@ export const showString: Show<string> = {
 /**
  * Use [`Show`](./number.ts.html#show) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const showNumber: Show<number> = {
   show: a => JSON.stringify(a),

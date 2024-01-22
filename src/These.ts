@@ -17,7 +17,9 @@
  *
  * Adapted from https://github.com/purescript-contrib/purescript-these
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { type Applicative, type Applicative2C } from './Applicative'
 import { type Apply2C } from './Apply'
@@ -55,8 +57,11 @@ import { type PipeableTraverse2, type Traversable2 } from './Traversable'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface Both<E, A> {
   readonly _tag: 'Both'
@@ -65,8 +70,11 @@ export interface Both<E, A> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export type These<E, A> = Either<E, A> | Both<E, A>
 
@@ -77,24 +85,33 @@ export type These<E, A> = Either<E, A> | Both<E, A>
 /**
  * Returns `true` if the these is an instance of `Left`, `false` otherwise
  *
- * @since 1.0.0
- * @category Refinements
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Refinements
+ * @public
  */
 export const isLeft = <E>(fa: These<E, unknown>): fa is Left<E> => fa._tag === 'Left'
 
 /**
  * Returns `true` if the these is an instance of `Right`, `false` otherwise
  *
- * @since 1.0.0
- * @category Refinements
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Refinements
+ * @public
  */
 export const isRight = <A>(fa: These<unknown, A>): fa is Right<A> => fa._tag === 'Right'
 
 /**
  * Returns `true` if the these is an instance of `Both`, `false` otherwise
  *
- * @since 1.0.0
- * @category Refinements
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Refinements
+ * @public
  */
 export function isBoth<E, A>(fa: These<E, A>): fa is Both<E, A> {
   return fa._tag === 'Both'
@@ -105,24 +122,33 @@ export function isBoth<E, A>(fa: These<E, A>): fa is Both<E, A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export function left<E = never, A = never>(left: E): These<E, A> {
   return { _tag: 'Left', left }
 }
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export function right<E = never, A = never>(right: A): These<E, A> {
   return { _tag: 'Right', right }
 }
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export function both<E, A>(left: E, right: A): These<E, A> {
   return { _tag: 'Both', left, right }
@@ -133,8 +159,11 @@ export function both<E, A>(left: E, right: A): These<E, A> {
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const matchW =
   <E, B, A, C, D>(onLeft: (e: E) => B, onRight: (a: A) => C, onBoth: (e: E, a: A) => D) =>
@@ -152,14 +181,20 @@ export const matchW =
 /**
  * Alias of [`matchW`](#matchw).
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const foldW = matchW
 
 /**
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const match: <E, A, B>(
   onLeft: (e: E) => B,
@@ -170,17 +205,27 @@ export const match: <E, A, B>(
 /**
  * Alias of [`match`](#match).
  *
- * @since 1.0.0
- * @category Pattern matching
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Pattern matching
+ * @public
  */
 export const fold = match
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const swap: <E, A>(fa: These<E, A>) => These<A, E> = match(right, left, (e, a) => both(a, e))
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export function getShow<E, A>(SE: Show<E>, SA: Show<A>): Show<These<E, A>> {
   return {
@@ -193,8 +238,11 @@ export function getShow<E, A>(SE: Show<E>, SA: Show<A>): Show<These<E, A>> {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export function getEq<E, A>(EE: Eq<E>, EA: Eq<A>): Eq<These<E, A>> {
   return fromEquals((x, y) =>
@@ -205,8 +253,11 @@ export function getEq<E, A>(EE: Eq<E>, EA: Eq<A>): Eq<These<E, A>> {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export function getSemigroup<E, A>(SE: Semigroup<E>, SA: Semigroup<A>): Semigroup<These<E, A>> {
   return {
@@ -226,8 +277,11 @@ export function getSemigroup<E, A>(SE: Semigroup<E>, SA: Semigroup<A>): Semigrou
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const getApply = <E>(S: Semigroup<E>): Apply2C<URI, E> => ({
   URI,
@@ -248,8 +302,11 @@ export const getApply = <E>(S: Semigroup<E>): Apply2C<URI, E> => ({
 })
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export function getApplicative<E>(S: Semigroup<E>): Applicative2C<URI, E> {
   const A = getApply(S)
@@ -263,8 +320,11 @@ export function getApplicative<E>(S: Semigroup<E>): Applicative2C<URI, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export function getChain<E>(S: Semigroup<E>): Chain2C<URI, E> {
   const A = getApply(S)
@@ -294,8 +354,11 @@ export function getChain<E>(S: Semigroup<E>): Chain2C<URI, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export function getMonad<E>(S: Semigroup<E>): Monad2C<URI, E> & MonadThrow2C<URI, E> {
   const C = getChain(S)
@@ -313,15 +376,22 @@ export function getMonad<E>(S: Semigroup<E>): Monad2C<URI, E> & MonadThrow2C<URI
 /**
  * Returns an `E` value if possible
  *
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
  * @example
- *   import { getLeft, left, right, both } from 'fp-ts/These'
- *   import { none, some } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(getLeft(left('a')), some('a'))
- *   assert.deepStrictEqual(getLeft(right(1)), none)
- *   assert.deepStrictEqual(getLeft(both('a', 1)), some('a'))
+ * ```typescript
+ * import { getLeft, left, right, both } from '@fp-tx/core/These'
+ * import { none, some } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(getLeft(left('a')), some('a'))
+ * assert.deepStrictEqual(getLeft(right(1)), none)
+ * assert.deepStrictEqual(getLeft(both('a', 1)), some('a'))
+ * ```
+ *
+ * @public
  */
 export function getLeft<E, A>(fa: These<E, A>): Option<E> {
   return (
@@ -334,15 +404,22 @@ export function getLeft<E, A>(fa: These<E, A>): Option<E> {
 /**
  * Returns an `A` value if possible
  *
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
  * @example
- *   import { getRight, left, right, both } from 'fp-ts/These'
- *   import { none, some } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(getRight(left('a')), none)
- *   assert.deepStrictEqual(getRight(right(1)), some(1))
- *   assert.deepStrictEqual(getRight(both('a', 1)), some(1))
+ * ```typescript
+ * import { getRight, left, right, both } from '@fp-tx/core/These'
+ * import { none, some } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(getRight(left('a')), none)
+ * assert.deepStrictEqual(getRight(right(1)), some(1))
+ * assert.deepStrictEqual(getRight(both('a', 1)), some(1))
+ * ```
+ *
+ * @public
  */
 export function getRight<E, A>(fa: These<E, A>): Option<A> {
   return (
@@ -354,14 +431,21 @@ export function getRight<E, A>(fa: These<E, A>): Option<A> {
 
 // TODO: make lazy in v3
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
  * @example
- *   import { leftOrBoth, left, both } from 'fp-ts/These'
- *   import { none, some } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(leftOrBoth('a')(none), left('a'))
- *   assert.deepStrictEqual(leftOrBoth('a')(some(1)), both('a', 1))
+ * ```typescript
+ * import { leftOrBoth, left, both } from '@fp-tx/core/These'
+ * import { none, some } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(leftOrBoth('a')(none), left('a'))
+ * assert.deepStrictEqual(leftOrBoth('a')(some(1)), both('a', 1))
+ * ```
+ *
+ * @public
  */
 export function leftOrBoth<E>(e: E): <A>(ma: Option<A>) => These<E, A> {
   return ma => (_.isNone(ma) ? left(e) : both(e, ma.value))
@@ -369,14 +453,21 @@ export function leftOrBoth<E>(e: E): <A>(ma: Option<A>) => These<E, A> {
 
 // TODO: make lazy in v3
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
  * @example
- *   import { rightOrBoth, right, both } from 'fp-ts/These'
- *   import { none, some } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(rightOrBoth(1)(none), right(1))
- *   assert.deepStrictEqual(rightOrBoth(1)(some('a')), both('a', 1))
+ * ```typescript
+ * import { rightOrBoth, right, both } from '@fp-tx/core/These'
+ * import { none, some } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(rightOrBoth(1)(none), right(1))
+ * assert.deepStrictEqual(rightOrBoth(1)(some('a')), both('a', 1))
+ * ```
+ *
+ * @public
  */
 export function rightOrBoth<A>(a: A): <E>(me: Option<E>) => These<E, A> {
   return me => (_.isNone(me) ? right(a) : both(me.value, a))
@@ -385,15 +476,22 @@ export function rightOrBoth<A>(a: A): <E>(me: Option<E>) => These<E, A> {
 /**
  * Returns the `E` value if and only if the value is constructed with `Left`
  *
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
  * @example
- *   import { getLeftOnly, left, right, both } from 'fp-ts/These'
- *   import { none, some } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(getLeftOnly(left('a')), some('a'))
- *   assert.deepStrictEqual(getLeftOnly(right(1)), none)
- *   assert.deepStrictEqual(getLeftOnly(both('a', 1)), none)
+ * ```typescript
+ * import { getLeftOnly, left, right, both } from '@fp-tx/core/These'
+ * import { none, some } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(getLeftOnly(left('a')), some('a'))
+ * assert.deepStrictEqual(getLeftOnly(right(1)), none)
+ * assert.deepStrictEqual(getLeftOnly(both('a', 1)), none)
+ * ```
+ *
+ * @public
  */
 export function getLeftOnly<E, A>(fa: These<E, A>): Option<E> {
   return isLeft(fa) ? _.some(fa.left) : _.none
@@ -402,15 +500,22 @@ export function getLeftOnly<E, A>(fa: These<E, A>): Option<E> {
 /**
  * Returns the `A` value if and only if the value is constructed with `Right`
  *
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
  * @example
- *   import { getRightOnly, left, right, both } from 'fp-ts/These'
- *   import { none, some } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(getRightOnly(left('a')), none)
- *   assert.deepStrictEqual(getRightOnly(right(1)), some(1))
- *   assert.deepStrictEqual(getRightOnly(both('a', 1)), none)
+ * ```typescript
+ * import { getRightOnly, left, right, both } from '@fp-tx/core/These'
+ * import { none, some } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(getRightOnly(left('a')), none)
+ * assert.deepStrictEqual(getRightOnly(right(1)), some(1))
+ * assert.deepStrictEqual(getRightOnly(both('a', 1)), none)
+ * ```
+ *
+ * @public
  */
 export function getRightOnly<E, A>(fa: These<E, A>): Option<A> {
   return isRight(fa) ? _.some(fa.right) : _.none
@@ -419,16 +524,23 @@ export function getRightOnly<E, A>(fa: These<E, A>): Option<A> {
 /**
  * Takes a pair of `Option`s and attempts to create a `These` from them
  *
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
  * @example
- *   import { fromOptions, left, right, both } from 'fp-ts/These'
- *   import { none, some } from 'fp-ts/Option'
  *
- *   assert.deepStrictEqual(fromOptions(none, none), none)
- *   assert.deepStrictEqual(fromOptions(some('a'), none), some(left('a')))
- *   assert.deepStrictEqual(fromOptions(none, some(1)), some(right(1)))
- *   assert.deepStrictEqual(fromOptions(some('a'), some(1)), some(both('a', 1)))
+ * ```typescript
+ * import { fromOptions, left, right, both } from '@fp-tx/core/These'
+ * import { none, some } from '@fp-tx/core/Option'
+ *
+ * assert.deepStrictEqual(fromOptions(none, none), none)
+ * assert.deepStrictEqual(fromOptions(some('a'), none), some(left('a')))
+ * assert.deepStrictEqual(fromOptions(none, some(1)), some(right(1)))
+ * assert.deepStrictEqual(fromOptions(some('a'), some(1)), some(both('a', 1)))
+ * ```
+ *
+ * @public
  */
 export const fromOptions = <E, A>(fe: Option<E>, fa: Option<A>): Option<These<E, A>> =>
   _.isNone(fe) ?
@@ -463,8 +575,11 @@ const _traverse = <F>(
 /**
  * Map a pair of functions over the two type arguments of the bifunctor.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: These<E, A>) => These<G, B> = (f, g) => fa =>
   isLeft(fa) ? left(f(fa.left))
@@ -474,8 +589,11 @@ export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: These<E
 /**
  * Map a function over the first type argument of a bifunctor.
  *
- * @since 1.0.0
- * @category Error handling
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Error handling
+ * @public
  */
 export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: These<E, A>) => These<G, A> = f => fa =>
   isLeft(fa) ? left(f(fa.left))
@@ -486,8 +604,11 @@ export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: These<E, A>) => These<G,
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: These<E, A>) => These<E, B> = f => fa =>
   isLeft(fa) ? fa
@@ -495,29 +616,41 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: These<E, A>) => These<E, B> 
   : both(fa.left, f(fa.right))
 
 /**
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
+ * @public
  */
 export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => <E>(fa: These<E, A>) => B = (b, f) => fa =>
   isLeft(fa) ? b : f(b, fa.right)
 
 /**
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
+ * @public
  */
 export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => <E>(fa: These<E, A>) => M = M => f => fa =>
   isLeft(fa) ? M.empty : f(fa.right)
 
 /**
- * @since 1.0.0
- * @category Folding
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Folding
+ * @public
  */
 export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => <E>(fa: These<E, A>) => B = (b, f) => fa =>
   isLeft(fa) ? b : f(fa.right, b)
 
 /**
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverse: PipeableTraverse2<URI> =
   <F>(F: Applicative<F>): (<A, B>(f: (a: A) => HKT<F, B>) => <E>(ta: These<E, A>) => HKT<F, These<E, B>>) =>
@@ -528,8 +661,11 @@ export const traverse: PipeableTraverse2<URI> =
     : F.map(f(ta.right), b => both(ta.left, b))
 
 /**
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const sequence: Traversable2<URI>['sequence'] =
   <F>(F: Applicative<F>) =>
@@ -542,20 +678,29 @@ export const sequence: Traversable2<URI>['sequence'] =
   }
 
 /**
- * @since 1.0.0
- * @category Constructors
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Constructors
+ * @public
  */
 export const of: <E = never, A = never>(right: A) => These<E, A> = right
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export const URI = 'These'
 
 /**
- * @since 1.0.0
- * @category Type lambdas
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Type lambdas
+ * @public
  */
 export type URI = typeof URI
 
@@ -566,8 +711,11 @@ declare module './HKT' {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Functor: Functor2<URI> = {
   URI,
@@ -575,14 +723,20 @@ export const Functor: Functor2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Mapping
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Mapping
+ * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Pointed: Pointed2<URI> = {
   URI,
@@ -590,8 +744,11 @@ export const Pointed: Pointed2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Bifunctor: Bifunctor2<URI> = {
   URI,
@@ -600,8 +757,11 @@ export const Bifunctor: Bifunctor2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const FromThese: FromThese2<URI> = {
   URI,
@@ -609,8 +769,11 @@ export const FromThese: FromThese2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Foldable: Foldable2<URI> = {
   URI,
@@ -620,8 +783,11 @@ export const Foldable: Foldable2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const Traversable: Traversable2<URI> = {
   URI,
@@ -634,8 +800,11 @@ export const Traversable: Traversable2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Instances
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Instances
+ * @public
  */
 export const FromEither: FromEither2<URI> = {
   URI,
@@ -643,8 +812,11 @@ export const FromEither: FromEither2<URI> = {
 }
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export const fromPredicate: {
   <A, B extends A, E>(refinement: Refinement<A, B>, onFalse: (a: A) => E): (a: A) => These<E, B>
@@ -653,15 +825,21 @@ export const fromPredicate: {
 } = /*#__PURE__*/ fromPredicate_(FromEither)
 
 /**
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
+ * @public
  */
 export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => These<E, A> =
   /*#__PURE__*/ fromOption_(FromEither)
 
 /**
- * @since 1.0.0
- * @category Lifting
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Lifting
+ * @public
  */
 export const fromOptionK: <E>(
   onNone: LazyArg<E>,
@@ -672,46 +850,61 @@ export const fromOptionK: <E>(
 // utils
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const elem =
   <A>(E: Eq<A>) =>
   (a: A) =>
   <E>(ma: These<E, A>): boolean =>
     isLeft(ma) ? false : E.equals(a, ma.right)
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const exists =
   <A>(predicate: Predicate<A>) =>
   (ma: These<unknown, A>): boolean =>
     isLeft(ma) ? false : predicate(ma.right)
 
 /**
- * @since 1.0.0
- * @category Conversions
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Conversions
  * @example
- *   import { toTuple2, left, right, both } from 'fp-ts/These'
  *
- *   assert.deepStrictEqual(
- *     toTuple2(
- *       () => 'a',
- *       () => 1,
- *     )(left('b')),
- *     ['b', 1],
- *   )
- *   assert.deepStrictEqual(
- *     toTuple2(
- *       () => 'a',
- *       () => 1,
- *     )(right(2)),
- *     ['a', 2],
- *   )
- *   assert.deepStrictEqual(
- *     toTuple2(
- *       () => 'a',
- *       () => 1,
- *     )(both('b', 2)),
- *     ['b', 2],
- *   )
+ * ```typescript
+ * import { toTuple2, left, right, both } from '@fp-tx/core/These'
+ *
+ * assert.deepStrictEqual(
+ *   toTuple2(
+ *     () => 'a',
+ *     () => 1,
+ *   )(left('b')),
+ *   ['b', 1],
+ * )
+ * assert.deepStrictEqual(
+ *   toTuple2(
+ *     () => 'a',
+ *     () => 1,
+ *   )(right(2)),
+ *   ['a', 2],
+ * )
+ * assert.deepStrictEqual(
+ *   toTuple2(
+ *     () => 'a',
+ *     () => 1,
+ *   )(both('b', 2)),
+ *   ['b', 2],
+ * )
+ * ```
+ *
+ * @public
  */
 export const toTuple2 =
   <E, A>(e: LazyArg<E>, a: LazyArg<A>) =>
@@ -727,9 +920,10 @@ export const toTuple2 =
 /**
  * Use [`toTuple2`](#totuple2) instead.
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const toTuple = <E, A>(e: E, a: A): ((fa: These<E, A>) => [E, A]) =>
   toTuple2(
@@ -737,7 +931,11 @@ export const toTuple = <E, A>(e: E, a: A): ((fa: These<E, A>) => [E, A]) =>
     () => a,
   ) as any
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export const ApT: These<never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 
 // -------------------------------------------------------------------------------------
@@ -747,8 +945,11 @@ export const ApT: These<never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyAr
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(getApplicative(S))`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndex =
   <E>(S: Semigroup<E>) =>
@@ -779,8 +980,11 @@ export const traverseReadonlyNonEmptyArrayWithIndex =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(getApplicative(S))`.
  *
- * @since 1.0.0
- * @category Traversing
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Traversing
+ * @public
  */
 export const traverseReadonlyArrayWithIndex =
   <E>(S: Semigroup<E>) =>
@@ -797,9 +1001,10 @@ export const traverseReadonlyArrayWithIndex =
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `T.Functor` instead of `T.these` (where `T` is from `import T from 'fp-ts/These'`)
  *
- * @deprecated
- * @since 1.0.0
- * @category Zone of death
+ * @remarks
+ * Added in 1.0.0
+ * @deprecated Zone of Death
+ * @public
  */
 export const these: Functor2<URI> & Bifunctor2<URI> & Foldable2<URI> & Traversable2<URI> = {
   URI,

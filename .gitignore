@@ -7,3 +7,6 @@ coverage
 docs/examples
 */**/.DS_Store
 .eslintcache
+docs/**/*
+lib/**/*
+temp/**/*

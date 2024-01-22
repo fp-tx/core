@@ -1,7 +1,9 @@
 /**
  * The `FromThese` type class represents those data types which support errors and warnings.
  *
- * @since 1.0.0
+ * @remarks
+ * Added in 1.0.0
+ * @packageDocumentation
  */
 import { flow } from './function'
 import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, type URIS4 } from './HKT'
@@ -12,8 +14,11 @@ import { type These } from './These'
 // -------------------------------------------------------------------------------------
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromThese<F> {
   readonly URI: F
@@ -21,8 +26,11 @@ export interface FromThese<F> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromThese2<F extends URIS2> {
   readonly URI: F
@@ -30,8 +38,11 @@ export interface FromThese2<F extends URIS2> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromThese2C<F extends URIS2, E> {
   readonly URI: F
@@ -40,8 +51,11 @@ export interface FromThese2C<F extends URIS2, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromThese3<F extends URIS3> {
   readonly URI: F
@@ -49,8 +63,11 @@ export interface FromThese3<F extends URIS3> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromThese3C<F extends URIS3, E> {
   readonly URI: F
@@ -59,8 +76,11 @@ export interface FromThese3C<F extends URIS3, E> {
 }
 
 /**
- * @since 1.0.0
- * @category Model
+ * @remarks
+ * Added in 1.0.0
+ * @remarks
+ * Category: Model
+ * @public
  */
 export interface FromThese4<F extends URIS4> {
   readonly URI: F
@@ -71,7 +91,11 @@ export interface FromThese4<F extends URIS4> {
 // combinators
 // -------------------------------------------------------------------------------------
 
-/** @since 1.0.0 */
+/**
+ * @remarks
+ * Added in 1.0.0
+ * @public
+ */
 export function fromTheseK<F extends URIS4>(
   F: FromThese4<F>,
 ): <A extends ReadonlyArray<unknown>, E, B>(f: (...a: A) => These<E, B>) => <S, R>(...a: A) => Kind4<F, S, R, E, B>
