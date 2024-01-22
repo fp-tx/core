@@ -687,9 +687,7 @@ export const traverseReadonlyArrayWithIndexSeq =
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const functorTaskThese: Functor2<URI> = {
@@ -702,9 +700,7 @@ export const functorTaskThese: Functor2<URI> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const bifunctorTaskThese: Bifunctor2<URI> = {
@@ -718,9 +714,7 @@ export const bifunctorTaskThese: Bifunctor2<URI> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const toTuple = <E, A>(e: E, a: A): ((fa: TaskThese<E, A>) => Task<[E, A]>) =>
@@ -735,9 +729,7 @@ export const toTuple = <E, A>(e: E, a: A): ((fa: TaskThese<E, A>) => Task<[E, A]
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const taskThese: Functor2<URI> & Bifunctor2<URI> = {
@@ -752,9 +744,7 @@ export const taskThese: Functor2<URI> & Bifunctor2<URI> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getSemigroup = <E, A>(SE: Semigroup<E>, SA: Semigroup<A>): Semigroup<TaskThese<E, A>> =>

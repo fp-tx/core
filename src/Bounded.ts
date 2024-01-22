@@ -71,9 +71,7 @@ export const reverse = <A>(B: Bounded<A>): Bounded<A> => {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const boundedNumber: Bounded<number> = {

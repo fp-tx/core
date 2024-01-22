@@ -221,9 +221,7 @@ export function reduceRightWithIndex<F, I, G, J>(
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableWithIndexComposition<F, FI, G, GI> extends FoldableComposition<F, G> {
@@ -235,9 +233,7 @@ export interface FoldableWithIndexComposition<F, FI, G, GI> extends FoldableComp
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableWithIndexComposition11<F extends URIS, FI, G extends URIS, GI>
@@ -250,9 +246,7 @@ export interface FoldableWithIndexComposition11<F extends URIS, FI, G extends UR
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableWithIndexComposition12<F extends URIS, FI, G extends URIS2, GI>
@@ -265,9 +259,7 @@ export interface FoldableWithIndexComposition12<F extends URIS, FI, G extends UR
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableWithIndexComposition12C<F extends URIS, FI, G extends URIS2, GI, E>
@@ -280,9 +272,7 @@ export interface FoldableWithIndexComposition12C<F extends URIS, FI, G extends U
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableWithIndexComposition21<F extends URIS2, FI, G extends URIS, GI>
@@ -297,9 +287,7 @@ export interface FoldableWithIndexComposition21<F extends URIS2, FI, G extends U
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableWithIndexComposition2C1<F extends URIS2, FI, G extends URIS, GI, FE>
@@ -312,9 +300,7 @@ export interface FoldableWithIndexComposition2C1<F extends URIS2, FI, G extends 
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableWithIndexComposition22<F extends URIS2, FI, G extends URIS2, GI>
@@ -337,9 +323,7 @@ export interface FoldableWithIndexComposition22<F extends URIS2, FI, G extends U
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableWithIndexComposition22C<F extends URIS2, FI, G extends URIS2, GI, E>
@@ -366,51 +350,49 @@ export interface FoldableWithIndexComposition22C<F extends URIS2, FI, G extends 
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function getFoldableWithIndexComposition<F extends URIS2, FI, G extends URIS2, GI, E>(
   F: FoldableWithIndex2<F, FI>,
   G: FoldableWithIndex2C<G, GI, E>,
 ): FoldableWithIndexComposition22C<F, FI, G, GI, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F extends URIS2, FI, G extends URIS2, GI>(
   F: FoldableWithIndex2<F, FI>,
   G: FoldableWithIndex2<G, GI>,
 ): FoldableWithIndexComposition22<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F extends URIS2, FI, G extends URIS, GI, E>(
   F: FoldableWithIndex2C<F, FI, E>,
   G: FoldableWithIndex1<G, GI>,
 ): FoldableWithIndexComposition2C1<F, FI, G, GI, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F extends URIS2, FI, G extends URIS, GI>(
   F: FoldableWithIndex2<F, FI>,
   G: FoldableWithIndex1<G, GI>,
 ): FoldableWithIndexComposition21<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F extends URIS, FI, G extends URIS2, GI>(
   F: FoldableWithIndex1<F, FI>,
   G: FoldableWithIndex2<G, GI>,
 ): FoldableWithIndexComposition12<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F extends URIS, FI, G extends URIS2, GI>(
   F: FoldableWithIndex1<F, FI>,
   G: FoldableWithIndex2<G, GI>,
 ): FoldableWithIndexComposition12<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F extends URIS, FI, G extends URIS, GI>(
   F: FoldableWithIndex1<F, FI>,
   G: FoldableWithIndex1<G, GI>,
 ): FoldableWithIndexComposition11<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F, FI, G, GI>(
   F: FoldableWithIndex<F, FI>,
   G: FoldableWithIndex<G, GI>,
 ): FoldableWithIndexComposition<F, FI, G, GI>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableWithIndexComposition<F, FI, G, GI>(
   F: FoldableWithIndex<F, FI>,
   G: FoldableWithIndex<G, GI>,

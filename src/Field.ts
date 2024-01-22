@@ -64,9 +64,7 @@ export function lcm<A>(E: Eq<A>, F: Field<A>): (x: A, y: A) => A {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const fieldNumber: Field<number> = {

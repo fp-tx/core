@@ -403,9 +403,9 @@ export function concatW<B>(second: ReadonlyArray<B>): <A>(first: ReadonlyNonEmpt
  */
 export function concat<A>(second: ReadonlyNonEmptyArray<A>): (first: ReadonlyArray<A>) => ReadonlyNonEmptyArray<A>
 export function concat<A>(second: ReadonlyArray<A>): (first: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArray<A>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function concat<A>(first: ReadonlyArray<A>, second: ReadonlyNonEmptyArray<A>): ReadonlyNonEmptyArray<A>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function concat<A>(first: ReadonlyNonEmptyArray<A>, second: ReadonlyArray<A>): ReadonlyNonEmptyArray<A>
 export function concat<A>(
   x: ReadonlyArray<A>,
@@ -1620,9 +1620,7 @@ export const chain: <A, B>(
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function groupSort<B>(O: Ord<B>): {
@@ -1640,9 +1638,7 @@ export function groupSort<A>(O: Ord<A>): (as: ReadonlyArray<A>) => ReadonlyArray
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function filter<A, B extends A>(
@@ -1661,9 +1657,7 @@ export function filter<A>(predicate: Predicate<A>): (as: ReadonlyNonEmptyArray<A
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const filterWithIndex =
@@ -1676,9 +1670,7 @@ export const filterWithIndex =
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const uncons: <A>(as: ReadonlyNonEmptyArray<A>) => readonly [A, ReadonlyArray<A>] = unprepend
@@ -1688,9 +1680,7 @@ export const uncons: <A>(as: ReadonlyNonEmptyArray<A>) => readonly [A, ReadonlyA
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const unsnoc: <A>(as: ReadonlyNonEmptyArray<A>) => readonly [ReadonlyArray<A>, A] = unappend
@@ -1700,13 +1690,11 @@ export const unsnoc: <A>(as: ReadonlyNonEmptyArray<A>) => readonly [ReadonlyArra
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function cons<A>(head: A): (tail: ReadonlyArray<A>) => ReadonlyNonEmptyArray<A>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function cons<A>(head: A, tail: ReadonlyArray<A>): ReadonlyNonEmptyArray<A>
 export function cons<A>(
   head: A,
@@ -1720,9 +1708,7 @@ export function cons<A>(
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const snoc = <A>(init: ReadonlyArray<A>, end: A): ReadonlyNonEmptyArray<A> => pipe(init, concat([end]))
@@ -1732,9 +1718,7 @@ export const snoc = <A>(init: ReadonlyArray<A>, end: A): ReadonlyNonEmptyArray<A
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const insertAt =
@@ -1747,9 +1731,7 @@ export const insertAt =
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const prependToAll = prependAll
@@ -1759,23 +1741,18 @@ export const prependToAll = prependAll
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const fold = concatAll
 
 /**
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
- * instance, pass `RNEA.Functor` instead of `RNEA.readonlyNonEmptyArray` (where `RNEA` is from `import RNEA from
- * 'fp-ts/ReadonlyNonEmptyArray'`)
+ * instance, pass `RNEA.Functor` instead of `RNEA.readonlyNonEmptyArray`
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const readonlyNonEmptyArray: Monad1<URI> &

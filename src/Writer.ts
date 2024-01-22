@@ -277,9 +277,7 @@ export const execute: <W, A>(fa: Writer<W, A>) => W = fa => fa()[1]
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const evalWriter: <W, A>(fa: Writer<W, A>) => A = fa => fa()[0]
@@ -289,9 +287,7 @@ export const evalWriter: <W, A>(fa: Writer<W, A>) => A = fa => fa()[0]
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const execWriter: <W, A>(fa: Writer<W, A>) => W = fa => fa()[1]
@@ -301,9 +297,7 @@ export const execWriter: <W, A>(fa: Writer<W, A>) => W = fa => fa()[1]
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const writer: Functor2<URI> = Functor

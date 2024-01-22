@@ -223,9 +223,7 @@ export function separate<F, G>(
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface CompactableComposition<F, G> extends FunctorComposition<F, G> {
@@ -236,9 +234,7 @@ export interface CompactableComposition<F, G> extends FunctorComposition<F, G> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface CompactableComposition11<F extends URIS, G extends URIS> extends FunctorComposition11<F, G> {
@@ -249,9 +245,7 @@ export interface CompactableComposition11<F extends URIS, G extends URIS> extend
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface CompactableComposition12<F extends URIS, G extends URIS2> extends FunctorComposition12<F, G> {
@@ -264,9 +258,7 @@ export interface CompactableComposition12<F extends URIS, G extends URIS2> exten
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface CompactableComposition12C<F extends URIS, G extends URIS2, E> extends FunctorComposition12C<F, G, E> {
@@ -279,9 +271,7 @@ export interface CompactableComposition12C<F extends URIS, G extends URIS2, E> e
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface CompactableComposition21<F extends URIS2, G extends URIS> extends FunctorComposition21<F, G> {
@@ -294,9 +284,7 @@ export interface CompactableComposition21<F extends URIS2, G extends URIS> exten
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface CompactableComposition2C1<F extends URIS2, G extends URIS, E> extends FunctorComposition2C1<F, G, E> {
@@ -309,9 +297,7 @@ export interface CompactableComposition2C1<F extends URIS2, G extends URIS, E> e
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface CompactableComposition22<F extends URIS2, G extends URIS2> extends FunctorComposition22<F, G> {
@@ -324,9 +310,7 @@ export interface CompactableComposition22<F extends URIS2, G extends URIS2> exte
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface CompactableComposition22C<F extends URIS2, G extends URIS2, E> extends FunctorComposition22C<F, G, E> {
@@ -339,9 +323,7 @@ export interface CompactableComposition22C<F extends URIS2, G extends URIS2, E> 
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface CompactableComposition23<F extends URIS2, G extends URIS3> extends FunctorComposition23<F, G> {
@@ -354,9 +336,7 @@ export interface CompactableComposition23<F extends URIS2, G extends URIS3> exte
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface CompactableComposition23C<F extends URIS2, G extends URIS3, E> extends FunctorComposition23C<F, G, E> {
@@ -371,56 +351,54 @@ export interface CompactableComposition23C<F extends URIS2, G extends URIS3, E> 
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function getCompactableComposition<F extends URIS2, G extends URIS3, E>(
   F: Functor2<F>,
   G: Compactable3C<G, E> & Functor3C<G, E>,
 ): CompactableComposition23C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F extends URIS2, G extends URIS2, E>(
   F: Functor2<F>,
   G: Compactable2C<G, E> & Functor2C<G, E>,
 ): CompactableComposition22C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F extends URIS2, G extends URIS2>(
   F: Functor2<F>,
   G: Compactable2<G> & Functor2<G>,
 ): CompactableComposition22<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F extends URIS2, G extends URIS, E>(
   F: Functor2C<F, E>,
   G: Compactable1<G> & Functor1<G>,
 ): CompactableComposition2C1<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F extends URIS2, G extends URIS>(
   F: Functor2<F>,
   G: Compactable1<G> & Functor1<G>,
 ): CompactableComposition21<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F extends URIS, G extends URIS2, E>(
   F: Functor1<F>,
   G: Compactable2C<G, E> & Functor2C<G, E>,
 ): CompactableComposition12<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F extends URIS, G extends URIS2>(
   F: Functor1<F>,
   G: Compactable2<G> & Functor2<G>,
 ): CompactableComposition12<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F extends URIS, G extends URIS>(
   F: Functor1<F>,
   G: Compactable1<G> & Functor1<G>,
 ): CompactableComposition11<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F, G>(
   F: Functor<F>,
   G: Compactable<G> & Functor<G>,
 ): CompactableComposition<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getCompactableComposition<F, G>(
   F: Functor<F>,
   G: Compactable<G> & Functor<G>,
@@ -438,7 +416,7 @@ export function getCompactableComposition<F, G>(
  *
  * @remarks
  * Added in 1.0.0
- * @deprecated
+ * @deprecated Use `Separated` instead
  * @public
  */
 export interface Separated<A, B> {

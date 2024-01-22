@@ -875,9 +875,7 @@ export function toUnion<F>(F: Functor<F>): <E, A>(fa: HKT<F, Either<E, A>>) => H
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface EitherT<M, E, A> extends HKT<M, Either<E, A>> {}
@@ -885,9 +883,7 @@ export interface EitherT<M, E, A> extends HKT<M, Either<E, A>> {}
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface EitherM<M> extends ApplicativeCompositionHKT2<M, URI> {
@@ -907,9 +903,7 @@ export interface EitherM<M> extends ApplicativeCompositionHKT2<M, URI> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export type EitherT1<M extends URIS, E, A> = Kind<M, Either<E, A>>
@@ -917,9 +911,7 @@ export type EitherT1<M extends URIS, E, A> = Kind<M, Either<E, A>>
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface EitherM1<M extends URIS> extends ApplicativeComposition12<M, URI> {
@@ -943,9 +935,7 @@ export interface EitherM1<M extends URIS> extends ApplicativeComposition12<M, UR
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export type EitherT2<M extends URIS2, R, E, A> = Kind2<M, R, Either<E, A>>
@@ -953,9 +943,7 @@ export type EitherT2<M extends URIS2, R, E, A> = Kind2<M, R, Either<E, A>>
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface EitherM2<M extends URIS2> extends ApplicativeComposition22<M, URI> {
@@ -982,17 +970,15 @@ export interface EitherM2<M extends URIS2> extends ApplicativeComposition22<M, U
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function getEitherM<M extends URIS2>(M: Monad2<M>): EitherM2<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getEitherM<M extends URIS>(M: Monad1<M>): EitherM1<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getEitherM<M>(M: Monad<M>): EitherM<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 /* istanbul ignore next */
 export function getEitherM<M>(M: Monad<M>): EitherM<M> {
   const _ap = ap(M)

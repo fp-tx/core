@@ -541,9 +541,7 @@ export const chainFirst: <S, A, B>(f: (a: A) => State<S, B>) => (ma: State<S, A>
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const evalState: <S, A>(ma: State<S, A>, s: S) => A = (ma, s) => ma(s)[0]
@@ -553,9 +551,7 @@ export const evalState: <S, A>(ma: State<S, A>, s: S) => A = (ma, s) => ma(s)[0]
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const execState: <S, A>(ma: State<S, A>, s: S) => S = (ma, s) => ma(s)[1]
@@ -566,9 +562,7 @@ export const execState: <S, A>(ma: State<S, A>, s: S) => S = (ma, s) => ma(s)[1]
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const state: Monad2<URI> = Monad

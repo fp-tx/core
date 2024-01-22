@@ -2786,14 +2786,11 @@ export const orElseFirstW: <E1, R2, E2, B>(
 
 /**
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
- * instance, pass `RTE.Functor` instead of `RTE.readerTaskEither` (where `RTE` is from `import RTE from
- * 'fp-ts/ReaderTaskEither'`)
+ * instance, pass `RTE.Functor` instead of `RTE.readerTaskEither`
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const readerTaskEither: Monad3<URI> & Bifunctor3<URI> & Alt3<URI> & MonadTask3<URI> & MonadThrow3<URI> = {
@@ -2812,14 +2809,11 @@ export const readerTaskEither: Monad3<URI> & Bifunctor3<URI> & Alt3<URI> & Monad
 
 /**
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
- * instance, pass `RTE.Functor` instead of `RTE.readerTaskEitherSeq` (where `RTE` is from `import RTE from
- * 'fp-ts/ReaderTaskEither'`)
+ * instance, pass `RTE.Functor` instead of `RTE.readerTaskEitherSeq`
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 
@@ -2845,9 +2839,7 @@ export const readerTaskEitherSeq: typeof readerTaskEither = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getApplySemigroup: <R, E, A>(S: Semigroup<A>) => Semigroup<ReaderTaskEither<R, E, A>> =
@@ -2858,9 +2850,7 @@ export const getApplySemigroup: <R, E, A>(S: Semigroup<A>) => Semigroup<ReaderTa
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getApplyMonoid: <R, E, A>(M: Monoid<A>) => Monoid<ReaderTaskEither<R, E, A>> =
@@ -2871,9 +2861,7 @@ export const getApplyMonoid: <R, E, A>(M: Monoid<A>) => Monoid<ReaderTaskEither<
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getSemigroup = <R, E, A>(S: Semigroup<A>): Semigroup<ReaderTaskEither<R, E, A>> =>
@@ -2887,7 +2875,8 @@ export const getSemigroup = <R, E, A>(S: Semigroup<A>): Semigroup<ReaderTaskEith
  * Added in 1.0.0
  * @remarks
  * Category: Instances
- * @deprecated
+ * @deprecated Use [`getApplicativeReaderTaskValidation`](#getapplicativereadertaskvalidation) and
+ *   [`getAltReaderTaskValidation`](#getaltreadertaskvalidation) instead.
  * @public
  */
 export function getReaderTaskValidation<E>(
@@ -2914,9 +2903,7 @@ export function getReaderTaskValidation<E>(
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 /* istanbul ignore next */

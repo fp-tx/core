@@ -302,9 +302,7 @@ export {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FunctorComposition<F, G> {
@@ -314,9 +312,7 @@ export interface FunctorComposition<F, G> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FunctorCompositionHKT1<F, G extends URIS> {
@@ -326,9 +322,7 @@ export interface FunctorCompositionHKT1<F, G extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FunctorCompositionHKT2<F, G extends URIS2> {
@@ -338,9 +332,7 @@ export interface FunctorCompositionHKT2<F, G extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FunctorCompositionHKT2C<F, G extends URIS2, E> {
@@ -350,9 +342,7 @@ export interface FunctorCompositionHKT2C<F, G extends URIS2, E> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FunctorComposition11<F extends URIS, G extends URIS> {
@@ -362,9 +352,7 @@ export interface FunctorComposition11<F extends URIS, G extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FunctorComposition12<F extends URIS, G extends URIS2> {
@@ -374,9 +362,7 @@ export interface FunctorComposition12<F extends URIS, G extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FunctorComposition12C<F extends URIS, G extends URIS2, E> {
@@ -386,9 +372,7 @@ export interface FunctorComposition12C<F extends URIS, G extends URIS2, E> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FunctorComposition21<F extends URIS2, G extends URIS> {
@@ -398,9 +382,7 @@ export interface FunctorComposition21<F extends URIS2, G extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FunctorComposition2C1<F extends URIS2, G extends URIS, E> {
@@ -410,9 +392,7 @@ export interface FunctorComposition2C1<F extends URIS2, G extends URIS, E> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FunctorComposition22<F extends URIS2, G extends URIS2> {
@@ -422,9 +402,7 @@ export interface FunctorComposition22<F extends URIS2, G extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FunctorComposition22C<F extends URIS2, G extends URIS2, E> {
@@ -434,9 +412,7 @@ export interface FunctorComposition22C<F extends URIS2, G extends URIS2, E> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FunctorComposition23<F extends URIS2, G extends URIS3> {
@@ -446,9 +422,7 @@ export interface FunctorComposition23<F extends URIS2, G extends URIS3> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FunctorComposition23C<F extends URIS2, G extends URIS3, E> {
@@ -460,53 +434,51 @@ export interface FunctorComposition23C<F extends URIS2, G extends URIS3, E> {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function getFunctorComposition<F extends URIS2, G extends URIS3, E>(
   F: Functor2<F>,
   G: Functor3C<G, E>,
 ): FunctorComposition23C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorComposition<F extends URIS2, G extends URIS2, E>(
   F: Functor2<F>,
   G: Functor2C<G, E>,
 ): FunctorComposition22C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorComposition<F extends URIS2, G extends URIS2>(
   F: Functor2<F>,
   G: Functor2<G>,
 ): FunctorComposition22<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorComposition<F extends URIS2, G extends URIS, E>(
   F: Functor2C<F, E>,
   G: Functor1<G>,
 ): FunctorComposition2C1<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorComposition<F extends URIS2, G extends URIS>(
   F: Functor2<F>,
   G: Functor1<G>,
 ): FunctorComposition21<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorComposition<F extends URIS, G extends URIS2, E>(
   F: Functor1<F>,
   G: Functor2C<G, E>,
 ): FunctorComposition12C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorComposition<F extends URIS, G extends URIS2>(
   F: Functor1<F>,
   G: Functor2<G>,
 ): FunctorComposition12<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorComposition<F extends URIS, G extends URIS>(
   F: Functor1<F>,
   G: Functor1<G>,
 ): FunctorComposition11<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorComposition<F, G>(F: Functor<F>, G: Functor<G>): FunctorComposition<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFunctorComposition<F, G>(F: Functor<F>, G: Functor<G>): FunctorComposition<F, G> {
   const _map = map(F, G)
   return {

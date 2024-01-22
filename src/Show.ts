@@ -71,9 +71,7 @@ export const tuple = <A extends ReadonlyArray<unknown>>(
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getTupleShow: <T extends ReadonlyArray<Show<any>>>(
@@ -85,9 +83,7 @@ export const getTupleShow: <T extends ReadonlyArray<Show<any>>>(
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getStructShow: <O extends ReadonlyRecord<string, any>>(shows: { [K in keyof O]: Show<O[K]> }) => Show<O> =
@@ -98,9 +94,7 @@ export const getStructShow: <O extends ReadonlyRecord<string, any>>(shows: { [K 
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const showBoolean: Show<boolean> = {
@@ -112,9 +106,7 @@ export const showBoolean: Show<boolean> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const showString: Show<string> = {
@@ -126,9 +118,7 @@ export const showString: Show<string> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const showNumber: Show<number> = {

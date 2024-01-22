@@ -183,23 +183,21 @@ export function fanOut<F>(
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function splitStrong<F extends URIS4>(
   F: Category4<F> & Strong4<F>,
 ): <S, R, A, B, C, D>(pab: Kind4<F, S, R, A, B>, pcd: Kind4<F, S, R, C, D>) => Kind4<F, S, R, [A, C], [B, D]>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function splitStrong<F extends URIS3>(
   F: Category3<F> & Strong3<F>,
 ): <R, A, B, C, D>(pab: Kind3<F, R, A, B>, pcd: Kind3<F, R, C, D>) => Kind3<F, R, [A, C], [B, D]>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function splitStrong<F extends URIS2>(
   F: Category2<F> & Strong2<F>,
 ): <A, B, C, D>(pab: Kind2<F, A, B>, pcd: Kind2<F, C, D>) => Kind2<F, [A, C], [B, D]>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function splitStrong<F>(
   F: Category<F> & Strong<F>,
 ): <A, B, C, D>(pab: HKT2<F, A, B>, pcd: HKT2<F, C, D>) => HKT2<F, [A, C], [B, D]>
@@ -214,23 +212,21 @@ export function splitStrong<F>(
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function fanout<F extends URIS4>(
   F: Category4<F> & Strong4<F>,
 ): <S, R, A, B, C>(pab: Kind4<F, S, R, A, B>, pac: Kind4<F, S, R, A, C>) => Kind4<F, S, R, A, [B, C]>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function fanout<F extends URIS3>(
   F: Category3<F> & Strong3<F>,
 ): <R, A, B, C>(pab: Kind3<F, R, A, B>, pac: Kind3<F, R, A, C>) => Kind3<F, R, A, [B, C]>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function fanout<F extends URIS2>(
   F: Category2<F> & Strong2<F>,
 ): <A, B, C>(pab: Kind2<F, A, B>, pac: Kind2<F, A, C>) => Kind2<F, A, [B, C]>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function fanout<F>(
   F: Category<F> & Strong<F>,
 ): <A, B, C>(pab: HKT2<F, A, B>, pac: HKT2<F, A, C>) => HKT2<F, A, [B, C]>

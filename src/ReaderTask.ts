@@ -1226,9 +1226,7 @@ export const chainFirstW: <R2, A, B>(
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const sequenceSeqArray: <R, A>(arr: ReadonlyArray<ReaderTask<R, A>>) => ReaderTask<R, ReadonlyArray<A>> =
@@ -1240,9 +1238,7 @@ export const sequenceSeqArray: <R, A>(arr: ReadonlyArray<ReaderTask<R, A>>) => R
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const readerTask: MonadTask2<URI> = {
@@ -1261,9 +1257,7 @@ export const readerTask: MonadTask2<URI> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 
@@ -1282,9 +1276,7 @@ export const readerTaskSeq: typeof readerTask = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getSemigroup: <R, A>(S: Semigroup<A>) => Semigroup<ReaderTask<R, A>> =
@@ -1295,9 +1287,7 @@ export const getSemigroup: <R, A>(S: Semigroup<A>) => Semigroup<ReaderTask<R, A>
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getMonoid: <R, A>(M: Monoid<A>) => Monoid<ReaderTask<R, A>> =
@@ -1306,9 +1296,7 @@ export const getMonoid: <R, A>(M: Monoid<A>) => Monoid<ReaderTask<R, A>> =
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 /* istanbul ignore next */

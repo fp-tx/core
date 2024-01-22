@@ -2014,14 +2014,11 @@ export const chainFirstW: <S, R2, E2, A, B>(
 
 /**
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
- * instance, pass `SRTE.Functor` instead of `SRTE.stateReaderTaskEither` (where `SRTE` is from `import SRTE from
- * 'fp-ts/StateReaderTaskEither'`)
+ * instance, pass `SRTE.Functor` instead of `SRTE.stateReaderTaskEither`
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const stateReaderTaskEither: Monad4<URI> & Bifunctor4<URI> & Alt4<URI> & MonadTask4<URI> & MonadThrow4<URI> = {
@@ -2040,14 +2037,11 @@ export const stateReaderTaskEither: Monad4<URI> & Bifunctor4<URI> & Alt4<URI> & 
 
 /**
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
- * instance, pass `SRTE.Functor` instead of `SRTE.stateReaderTaskEitherSeq` (where `SRTE` is from `import SRTE from
- * 'fp-ts/StateReaderTaskEither'`)
+ * instance, pass `SRTE.Functor` instead of `SRTE.stateReaderTaskEitherSeq`
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 
@@ -2070,9 +2064,7 @@ export const stateReaderTaskEitherSeq: typeof stateReaderTaskEither = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 /* istanbul ignore next */
@@ -2090,9 +2082,7 @@ export const evalState: <S, R, E, A>(ma: StateReaderTaskEither<S, R, E, A>, s: S
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 /* istanbul ignore next */
@@ -2108,9 +2098,7 @@ export const execState: <S, R, E, A>(ma: StateReaderTaskEither<S, R, E, A>, s: S
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 /* istanbul ignore next */

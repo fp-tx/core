@@ -1032,7 +1032,7 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Zone of death
-   * @deprecated
+   * @deprecated Use applicative validation instead
    * @public
    */
   void_ as void,

@@ -255,7 +255,7 @@ export const constVoid: LazyArg<void> = constUndefined
  * @public
  */
 export function flip<A, B, C>(f: (a: A) => (b: B) => C): (b: B) => (a: A) => C
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function flip<A, B, C>(f: (a: A, b: B) => C): (b: B, a: A) => C
 export function flip(f: Function): Function {
   return (...args: Array<any>) => {
@@ -790,9 +790,7 @@ export const SK = <A, B>(_: A, b: B): B => b
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface Refinement<A, B extends A> {
@@ -804,9 +802,7 @@ export interface Refinement<A, B extends A> {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface Predicate<A> {
@@ -818,9 +814,7 @@ export interface Predicate<A> {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function not<A>(predicate: Predicate<A>): Predicate<A> {
@@ -832,9 +826,7 @@ export function not<A>(predicate: Predicate<A>): Predicate<A> {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface Endomorphism<A> {
@@ -846,9 +838,7 @@ export interface Endomorphism<A> {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => ({

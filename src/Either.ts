@@ -879,12 +879,12 @@ export const altW: <E2, B>(that: LazyArg<Either<E2, B>>) => <E1, A>(fa: Either<E
  * In case of `Either` returns the left-most non-`Left` value (or the right-most `Left` value if both values are
  * `Left`).
  *
- * | x        | y        | pipe(x, alt(() => y) |
- * | -------- | -------- | -------------------- |
- * | left(a)  | left(b)  | left(b)              |
- * | left(a)  | right(2) | right(2)             |
- * | right(1) | left(b)  | right(1)             |
- * | right(1) | right(2) | right(1)             |
+ * | x          | y          | `pipe(x, alt(() => y)` |
+ * | ---------- | ---------- | ---------------------- |
+ * | `left(a)`  | `left(b)`  | `left(b)`              |
+ * | `left(a)`  | `right(2)` | `right(2)`             |
+ * | `right(1)` | `left(b)`  | `right(1)`             |
+ * | `right(1)` | `right(2)` | `right(1)`             |
  *
  * @remarks
  * Added in 1.0.0
@@ -2022,9 +2022,7 @@ export const chainFirstW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Eit
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export type Json = boolean | number | string | null | JsonArray | JsonRecord
@@ -2034,9 +2032,7 @@ export type Json = boolean | number | string | null | JsonArray | JsonRecord
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface JsonRecord {
@@ -2048,9 +2044,7 @@ export interface JsonRecord {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface JsonArray extends ReadonlyArray<Json> {}
@@ -2060,9 +2054,7 @@ export interface JsonArray extends ReadonlyArray<Json> {}
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function parseJSON<E>(s: string, onError: (reason: unknown) => E): Either<E, Json> {
@@ -2074,9 +2066,7 @@ export function parseJSON<E>(s: string, onError: (reason: unknown) => E): Either
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const stringifyJSON = <E>(u: unknown, onError: (reason: unknown) => E): Either<E, string> =>
@@ -2094,9 +2084,7 @@ export const stringifyJSON = <E>(u: unknown, onError: (reason: unknown) => E): E
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const either: Monad2<URI> &
@@ -2133,9 +2121,7 @@ export const either: Monad2<URI> &
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<Either<E, A>> =
@@ -2146,9 +2132,7 @@ export const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<Either<E, A
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<Either<E, A>> =
@@ -2159,9 +2143,7 @@ export const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<Either<E, A>> =
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getValidationSemigroup = <E, A>(SE: Semigroup<E>, SA: Semigroup<A>): Semigroup<Either<E, A>> =>
@@ -2172,9 +2154,7 @@ export const getValidationSemigroup = <E, A>(SE: Semigroup<E>, SA: Semigroup<A>)
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getValidationMonoid = <E, A>(SE: Semigroup<E>, MA: Monoid<A>): Monoid<Either<E, A>> =>
@@ -2185,9 +2165,7 @@ export const getValidationMonoid = <E, A>(SE: Semigroup<E>, MA: Monoid<A>): Mono
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function getValidation<E>(

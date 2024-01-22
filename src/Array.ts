@@ -2661,8 +2661,9 @@ export const traverse: PipeableTraverse1<URI> = <F>(
 
 /**
  * `sequence` takes an `Array` where elements are `HKT<A>` (higher kinded type) and, using an applicative of that `HKT`,
- * returns an `HKT` of `Array<A>`. E.g. it can turn an `Array<Either<Error, string>>` into an `Either<Error,
- * Array<string>>`.
+ * returns an `HKT` of `Array<A>`.
+ *
+ * E.g. it can turn an `Array<Either<Error, string>>` into an `Either<Error, Array<string>>`.
  *
  * `sequence` requires an `Applicative` of the `HKT` you are targeting, e.g. to turn an `Array<Either<E, A>>` into an
  * `Either<E, Array<A>>`, it needs an `Applicative` for `Either`, to to turn an `Array<Option<A>>` into an
@@ -3711,9 +3712,7 @@ export const chain: <A, B>(f: (a: A) => Array<B>) => (ma: Array<A>) => Array<B> 
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const range = NEA.range
@@ -3723,9 +3722,7 @@ export const range = NEA.range
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const empty: Array<never> = []
@@ -3735,9 +3732,7 @@ export const empty: Array<never> = []
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const cons = NEA.cons
@@ -3747,9 +3742,7 @@ export const cons = NEA.cons
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const snoc = NEA.snoc
@@ -3759,9 +3752,7 @@ export const snoc = NEA.snoc
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const prependToAll = prependAll
@@ -3772,9 +3763,7 @@ export const prependToAll = prependAll
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const array: FunctorWithIndex1<URI, number> &

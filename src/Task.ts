@@ -444,9 +444,7 @@ export const MonadIO: MonadIO1<URI> = {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const fromTask: <A>(fa: Task<A>) => Task<A> = identity
@@ -884,9 +882,7 @@ export const chainFirst: <A, B>(f: (a: A) => Task<B>) => (first: Task<A>) => Tas
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const task: Monad1<URI> & MonadTask1<URI> = {
@@ -905,9 +901,7 @@ export const task: Monad1<URI> & MonadTask1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const taskSeq: Monad1<URI> & MonadTask1<URI> = {
@@ -925,9 +919,7 @@ export const taskSeq: Monad1<URI> & MonadTask1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getSemigroup: <A>(S: Semigroup<A>) => Semigroup<Task<A>> = /*#__PURE__*/ getApplySemigroup_(ApplySeq)
@@ -939,9 +931,7 @@ export const getSemigroup: <A>(S: Semigroup<A>) => Semigroup<Task<A>> = /*#__PUR
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getMonoid: <A>(M: Monoid<A>) => Monoid<Task<A>> = /*#__PURE__*/ getApplicativeMonoid(ApplicativeSeq)

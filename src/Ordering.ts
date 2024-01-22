@@ -122,9 +122,7 @@ export const sign = (n: number): Ordering =>
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const invert = reverse
@@ -134,9 +132,7 @@ export const invert = reverse
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const semigroupOrdering: S.Semigroup<Ordering> = Semigroup
@@ -146,9 +142,7 @@ export const semigroupOrdering: S.Semigroup<Ordering> = Semigroup
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const eqOrdering: E.Eq<Ordering> = Eq
@@ -158,9 +152,7 @@ export const eqOrdering: E.Eq<Ordering> = Eq
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const monoidOrdering: M.Monoid<Ordering> = Monoid

@@ -54,9 +54,7 @@ export interface Semiring<A> {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getFunctionSemiring: <A, B>(S: Semiring<B>) => Semiring<(a: A) => B> = getSemiring

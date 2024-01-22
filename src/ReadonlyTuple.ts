@@ -469,14 +469,11 @@ export const Traversable: Traversable2<URI> = {
 
 /**
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
- * instance, pass `RT.Functor` instead of `RT.readonlyTuple` (where `RT` is from `import RT from
- * 'fp-ts/ReadonlyTuple'`)
+ * instance, pass `RT.Functor` instead of `RT.readonlyTuple`
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const readonlyTuple: Semigroupoid2<URI> & Bifunctor2<URI> & Comonad2<URI> & Foldable2<URI> & Traversable2<URI> =

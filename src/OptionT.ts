@@ -650,9 +650,7 @@ export function alt<M>(
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface OptionT<M, A> extends HKT<M, Option<A>> {}
@@ -660,9 +658,7 @@ export interface OptionT<M, A> extends HKT<M, Option<A>> {}
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface OptionM<M> extends ApplicativeCompositionHKT1<M, O.URI> {
@@ -677,9 +673,7 @@ export interface OptionM<M> extends ApplicativeCompositionHKT1<M, O.URI> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export type OptionT1<M extends URIS, A> = Kind<M, Option<A>>
@@ -687,9 +681,7 @@ export type OptionT1<M extends URIS, A> = Kind<M, Option<A>>
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface OptionM1<M extends URIS> extends ApplicativeComposition11<M, O.URI> {
@@ -704,9 +696,7 @@ export interface OptionM1<M extends URIS> extends ApplicativeComposition11<M, O.
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export type OptionT2<M extends URIS2, E, A> = Kind2<M, E, Option<A>>
@@ -714,9 +704,7 @@ export type OptionT2<M extends URIS2, E, A> = Kind2<M, E, Option<A>>
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface OptionM2<M extends URIS2> extends ApplicativeComposition21<M, O.URI> {
@@ -735,9 +723,7 @@ export interface OptionM2<M extends URIS2> extends ApplicativeComposition21<M, O
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface OptionM2C<M extends URIS2, E> extends ApplicativeComposition2C1<M, O.URI, E> {
@@ -756,19 +742,17 @@ export interface OptionM2C<M extends URIS2, E> extends ApplicativeComposition2C1
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function getOptionM<M extends URIS2>(M: Monad2<M>): OptionM2<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getOptionM<M extends URIS2, E>(M: Monad2C<M, E>): OptionM2C<M, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getOptionM<M extends URIS>(M: Monad1<M>): OptionM1<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getOptionM<M>(M: Monad<M>): OptionM<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getOptionM<M>(M: Monad<M>): OptionM<M> {
   const apM = ap(M)
   const mapM = map(M)

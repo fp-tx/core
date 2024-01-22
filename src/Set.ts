@@ -570,9 +570,7 @@ export const toArray =
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const subset: <A>(E: Eq<A>) => {

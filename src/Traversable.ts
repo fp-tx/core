@@ -588,9 +588,7 @@ export interface PipeableTraverse2<T extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface TraversableComposition<F, G> extends FoldableComposition<F, G>, FunctorComposition<F, G> {
@@ -603,9 +601,7 @@ export interface TraversableComposition<F, G> extends FoldableComposition<F, G>,
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface TraverseComposition11<F extends URIS, G extends URIS> {
@@ -627,9 +623,7 @@ export interface TraverseComposition11<F extends URIS, G extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface SequenceComposition11<F extends URIS, G extends URIS> {
@@ -649,9 +643,7 @@ export interface SequenceComposition11<F extends URIS, G extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface TraversableComposition11<F extends URIS, G extends URIS>
@@ -671,18 +663,16 @@ export interface TraversableComposition11<F extends URIS, G extends URIS>
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function getTraversableComposition<F extends URIS, G extends URIS>(
   F: Traversable1<F>,
   G: Traversable1<G>,
 ): TraversableComposition11<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getTraversableComposition<F, G>(F: Traversable<F>, G: Traversable<G>): TraversableComposition<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getTraversableComposition<F, G>(F: Traversable<F>, G: Traversable<G>): TraversableComposition<F, G> {
   const map = getFunctorComposition(F, G).map
   const FC = getFoldableComposition(F, G)

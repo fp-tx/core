@@ -238,9 +238,7 @@ export const concatAll = <A>(M: Monoid<A>): ((as: ReadonlyArray<A>) => A) => Se.
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const monoidVoid: Monoid<void> = {
@@ -253,9 +251,7 @@ export const monoidVoid: Monoid<void> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getTupleMonoid: <T extends ReadonlyArray<Monoid<any>>>(
@@ -267,9 +263,7 @@ export const getTupleMonoid: <T extends ReadonlyArray<Monoid<any>>>(
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getStructMonoid: <O extends ReadonlyRecord<string, any>>(monoids: {
@@ -281,9 +275,7 @@ export const getStructMonoid: <O extends ReadonlyRecord<string, any>>(monoids: {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getDualMonoid = reverse
@@ -293,9 +285,7 @@ export const getDualMonoid = reverse
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getJoinMonoid = max
@@ -305,9 +295,7 @@ export const getJoinMonoid = max
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getMeetMonoid = min
@@ -317,9 +305,7 @@ export const getMeetMonoid = min
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const fold = concatAll
@@ -329,9 +315,7 @@ export const fold = concatAll
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const monoidAll: Monoid<boolean> = {
@@ -344,9 +328,7 @@ export const monoidAll: Monoid<boolean> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const monoidAny: Monoid<boolean> = {
@@ -359,9 +341,7 @@ export const monoidAny: Monoid<boolean> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getFunctionMonoid: <M>(M: Monoid<M>) => <A = never>() => Monoid<(a: A) => M> = getFM
@@ -373,9 +353,7 @@ export const getFunctionMonoid: <M>(M: Monoid<M>) => <A = never>() => Monoid<(a:
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => reverse(getEM())
@@ -385,9 +363,7 @@ export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => r
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const monoidString: Monoid<string> = {
@@ -400,9 +376,7 @@ export const monoidString: Monoid<string> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const monoidSum: Monoid<number> = {
@@ -415,9 +389,7 @@ export const monoidSum: Monoid<number> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const monoidProduct: Monoid<number> = {

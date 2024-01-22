@@ -234,9 +234,7 @@ export const Contravariant: Contravariant1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getTupleEq: <T extends ReadonlyArray<Eq<any>>>(
@@ -248,9 +246,7 @@ export const getTupleEq: <T extends ReadonlyArray<Eq<any>>>(
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getStructEq: <O extends ReadonlyRecord<string, any>>(eqs: { [K in keyof O]: Eq<O[K]> }) => Eq<O> = struct
@@ -260,9 +256,7 @@ export const getStructEq: <O extends ReadonlyRecord<string, any>>(eqs: { [K in k
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const strictEqual: <A>(a: A, b: A) => boolean = eqStrict.equals
@@ -273,9 +267,7 @@ export const strictEqual: <A>(a: A, b: A) => boolean = eqStrict.equals
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const eq: Contravariant1<URI> = Contravariant
@@ -285,9 +277,7 @@ export const eq: Contravariant1<URI> = Contravariant
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const eqBoolean: Eq<boolean> = eqStrict
@@ -297,9 +287,7 @@ export const eqBoolean: Eq<boolean> = eqStrict
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const eqString: Eq<string> = eqStrict
@@ -309,9 +297,7 @@ export const eqString: Eq<string> = eqStrict
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const eqNumber: Eq<number> = eqStrict
@@ -321,9 +307,7 @@ export const eqNumber: Eq<number> = eqStrict
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const eqDate: Eq<Date> = {

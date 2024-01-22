@@ -162,9 +162,7 @@ export const flap = /*#__PURE__*/ flap_(Functor)
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const traced: Functor2<URI> = Functor

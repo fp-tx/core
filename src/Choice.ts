@@ -185,19 +185,17 @@ export function fanIn<P>(
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function splitChoice<F extends URIS3>(
   F: Category3<F> & Choice3<F>,
 ): <R, A, B, C, D>(pab: Kind3<F, R, A, B>, pcd: Kind3<F, R, C, D>) => Kind3<F, R, Either<A, C>, Either<B, D>>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function splitChoice<F extends URIS2>(
   F: Category2<F> & Choice2<F>,
 ): <A, B, C, D>(pab: Kind2<F, A, B>, pcd: Kind2<F, C, D>) => Kind2<F, Either<A, C>, Either<B, D>>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function splitChoice<F>(
   F: Category<F> & Choice<F>,
 ): <A, B, C, D>(pab: HKT2<F, A, B>, pcd: HKT2<F, C, D>) => HKT2<F, Either<A, C>, Either<B, D>>
@@ -212,17 +210,17 @@ export function splitChoice<F>(
  *
  * @remarks
  * Added in 1.0.0
- * @deprecated
+ * @deprecated Use `fanIn` instead
  * @public
  */
 export function fanin<F extends URIS3>(
   F: Category3<F> & Choice3<F>,
 ): <R, A, B, C>(pac: Kind3<F, R, A, C>, pbc: Kind3<F, R, B, C>) => Kind3<F, R, Either<A, B>, C>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function fanin<F extends URIS2>(
   F: Category2<F> & Choice2<F>,
 ): <A, B, C>(pac: Kind2<F, A, C>, pbc: Kind2<F, B, C>) => Kind2<F, Either<A, B>, C>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function fanin<F>(
   F: Category<F> & Choice<F>,
 ): <A, B, C>(pac: HKT2<F, A, C>, pbc: HKT2<F, B, C>) => HKT2<F, Either<A, B>, C>

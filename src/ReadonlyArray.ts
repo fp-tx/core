@@ -3266,9 +3266,7 @@ export const chain: <A, B>(f: (a: A) => ReadonlyArray<B>) => (ma: ReadonlyArray<
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const range = RNEA.range
@@ -3278,9 +3276,7 @@ export const range = RNEA.range
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const cons = RNEA.cons
@@ -3290,9 +3286,7 @@ export const cons = RNEA.cons
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const snoc = RNEA.snoc
@@ -3302,23 +3296,18 @@ export const snoc = RNEA.snoc
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const prependToAll = prependAll
 
 /**
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
- * instance, pass `RA.Functor` instead of `RA.readonlyArray` (where `RA` is from `import RA from
- * 'fp-ts/ReadonlyArray'`)
+ * instance, pass `RA.Functor` instead of `RA.readonlyArray`
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const readonlyArray: FunctorWithIndex1<URI, number> &

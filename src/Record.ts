@@ -139,7 +139,7 @@ export function collect(O: Ord<string>): <K extends string, A, B>(f: (k: K, a: A
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @deprecated
+ * @deprecated Use the overload constrained by `Ord` instead.
  */
 export function collect<K extends string, A, B>(f: (k: K, a: A) => B): (r: Record<K, A>) => Array<B>
 export function collect<A, B>(
@@ -475,7 +475,7 @@ export function reduceWithIndex(
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @deprecated
+ * @deprecated Use the overload constrained by `Ord` instead.
  */
 export function reduceWithIndex<K extends string, A, B>(b: B, f: (k: K, b: B, a: A) => B): (fa: Record<K, A>) => B
 export function reduceWithIndex<A, B>(
@@ -511,7 +511,7 @@ export function foldMapWithIndex(
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @deprecated
+ * @deprecated Use the overload constrained by `Ord` instead.
  */
 export function foldMapWithIndex<M>(
   M: Monoid<M>,
@@ -552,7 +552,7 @@ export function reduceRightWithIndex(
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @deprecated
+ * @deprecated Use the overload constrained by `Ord` instead.
  */
 export function reduceRightWithIndex<K extends string, A, B>(b: B, f: (k: K, a: A, b: B) => B): (fa: Record<K, A>) => B
 export function reduceRightWithIndex<A, B>(
@@ -1341,7 +1341,7 @@ export function reduce(O: Ord<string>): <A, B>(b: B, f: (b: B, a: A) => B) => (f
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @deprecated
+ * @deprecated Use the overload constrained by `Ord` instead.
  */
 export function reduce<A, B>(b: B, f: (b: B, a: A) => B): (fa: Record<string, A>) => B
 export function reduce<A, B>(
@@ -1377,7 +1377,7 @@ export function foldMap(O: Ord<string>): <M>(M: Monoid<M>) => <A>(f: (a: A) => M
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @deprecated
+ * @deprecated Use the overload constrained by `Ord` instead.
  */
 export function foldMap<M>(M: Monoid<M>): <A>(f: (a: A) => M) => (fa: Record<string, A>) => M
 export function foldMap<M>(
@@ -1416,7 +1416,7 @@ export function reduceRight(O: Ord<string>): <A, B>(b: B, f: (a: A, b: B) => B) 
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @deprecated
+ * @deprecated Use the overload constrained by `Ord` instead.
  */
 export function reduceRight<A, B>(b: B, f: (a: A, b: B) => B): (fa: Record<string, A>) => B
 export function reduceRight<A, B>(
@@ -1527,9 +1527,7 @@ export function getShow(O: Ord<string>): <A>(S: Show<A>) => Show<Record<string, 
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  */
 export function getShow<A>(S: Show<A>): Show<Record<string, A>>
 export function getShow<A>(
@@ -1918,9 +1916,7 @@ export const getDifferenceMagma = <A>(): Magma<Record<string, A>> => ({
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const Foldable: Foldable1<URI> = {
@@ -1935,9 +1931,7 @@ export const Foldable: Foldable1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const FoldableWithIndex: FoldableWithIndex1<URI, string> = {
@@ -1955,9 +1949,7 @@ export const FoldableWithIndex: FoldableWithIndex1<URI, string> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const Traversable: Traversable1<URI> = {
@@ -1975,9 +1967,7 @@ export const Traversable: Traversable1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const TraversableWithIndex: TraversableWithIndex1<URI, string> = {
@@ -2003,9 +1993,7 @@ const _wilt = /*#__PURE__*/ wiltDefault(Traversable, Compactable)
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const Witherable: Witherable1<URI> = {
@@ -2031,9 +2019,7 @@ export const Witherable: Witherable1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const empty: Record<string, never> = {}
@@ -2043,9 +2029,7 @@ export const empty: Record<string, never> = {}
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const insertAt: <A>(k: string, a: A) => (r: Record<string, A>) => Record<string, A> = upsertAt
@@ -2055,9 +2039,7 @@ export const insertAt: <A>(k: string, a: A) => (r: Record<string, A>) => Record<
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const hasOwnProperty: <K extends string>(k: string, r: Record<K, unknown>) => k is K = RR.hasOwnProperty
@@ -2068,9 +2050,7 @@ export const hasOwnProperty: <K extends string>(k: string, r: Record<K, unknown>
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const record: FunctorWithIndex1<URI, string> &

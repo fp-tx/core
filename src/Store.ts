@@ -209,9 +209,7 @@ export const Comonad: Comonad2<URI> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const store: Comonad2<URI> = Comonad

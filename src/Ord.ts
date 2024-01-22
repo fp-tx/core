@@ -118,12 +118,6 @@ const contramap_: <A, B>(fa: Ord<A>, f: (b: B) => A) => Ord<B> = (fa, f) => pipe
  * We can do so with a function from `User -> X` where `X` is some value that we know how to compare for ordering
  * (meaning we have an `Ord<X>`)
  *
- * For example, given the following `User` type, there are lots of possible choices for `X`, but let's say we want to
- * sort a list of users by `lastName`.
- *
- * If we have a way of comparing `lastName`s for ordering (`ordLastName: Ord<string>`) and we know how to go from `User
- * -> string`, using `contramap` we can do this
- *
  * @remarks
  * Added in 1.0.0
  * @example
@@ -476,9 +470,7 @@ export const between = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => boolean) =>
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getTupleOrd: <T extends ReadonlyArray<Ord<any>>>(
@@ -490,9 +482,7 @@ export const getTupleOrd: <T extends ReadonlyArray<Ord<any>>>(
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getDualOrd = reverse
@@ -502,9 +492,7 @@ export const getDualOrd = reverse
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const ord: Contravariant1<URI> = Contravariant
@@ -528,9 +516,7 @@ const strictOrd = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const ordBoolean: Ord<boolean> = strictOrd
@@ -540,9 +526,7 @@ export const ordBoolean: Ord<boolean> = strictOrd
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const ordString: Ord<string> = strictOrd
@@ -552,9 +536,7 @@ export const ordString: Ord<string> = strictOrd
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const ordNumber: Ord<number> = strictOrd
@@ -564,9 +546,7 @@ export const ordNumber: Ord<number> = strictOrd
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const ordDate: Ord<Date> = /*#__PURE__*/ pipe(

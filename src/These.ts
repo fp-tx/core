@@ -922,9 +922,7 @@ export const toTuple2 =
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const toTuple = <E, A>(e: E, a: A): ((fa: These<E, A>) => [E, A]) =>
@@ -1005,9 +1003,7 @@ export const traverseReadonlyArrayWithIndex =
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const these: Functor2<URI> & Bifunctor2<URI> & Foldable2<URI> & Traversable2<URI> = {

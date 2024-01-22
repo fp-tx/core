@@ -77,9 +77,7 @@ export const booleanAlgebraVoid: BooleanAlgebra<void> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getDualBooleanAlgebra = reverse
@@ -89,9 +87,7 @@ export const getDualBooleanAlgebra = reverse
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const booleanAlgebraBoolean: BooleanAlgebra<boolean> = {
@@ -108,9 +104,7 @@ export const booleanAlgebraBoolean: BooleanAlgebra<boolean> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getFunctionBooleanAlgebra: <B>(B: BooleanAlgebra<B>) => <A = never>() => BooleanAlgebra<(a: A) => B> =

@@ -403,36 +403,34 @@ export function traverse_<M, F>(
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function foldM<M extends URIS3, F extends URIS>(
   M: Monad3<M>,
   F: Foldable1<F>,
 ): <R, E, A, B>(fa: Kind<F, A>, b: B, f: (b: B, a: A) => Kind3<M, R, E, B>) => Kind3<M, R, E, B>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function foldM<M extends URIS3, F extends URIS, E>(
   M: Monad3C<M, E>,
   F: Foldable1<F>,
 ): <R, A, B>(fa: Kind<F, A>, b: B, f: (b: B, a: A) => Kind3<M, R, E, B>) => Kind3<M, R, E, B>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function foldM<M extends URIS2, F extends URIS>(
   M: Monad2<M>,
   F: Foldable1<F>,
 ): <E, A, B>(fa: Kind<F, A>, b: B, f: (b: B, a: A) => Kind2<M, E, B>) => Kind2<M, E, B>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function foldM<M extends URIS2, F extends URIS, E>(
   M: Monad2C<M, E>,
   F: Foldable1<F>,
 ): <A, B>(fa: Kind<F, A>, b: B, f: (b: B, a: A) => Kind2<M, E, B>) => Kind2<M, E, B>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function foldM<M extends URIS, F extends URIS>(
   M: Monad1<M>,
   F: Foldable1<F>,
 ): <A, B>(fa: Kind<F, A>, b: B, f: (b: B, a: A) => Kind<M, B>) => Kind<M, B>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function foldM<M, F>(
   M: Monad<M>,
   F: Foldable<F>,
@@ -449,9 +447,7 @@ export function foldM<M, F>(
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const toArray = toReadonlyArray
@@ -459,9 +455,7 @@ export const toArray = toReadonlyArray
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableComposition<F, G> {
@@ -473,9 +467,7 @@ export interface FoldableComposition<F, G> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableComposition11<F extends URIS, G extends URIS> {
@@ -487,9 +479,7 @@ export interface FoldableComposition11<F extends URIS, G extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableComposition12<F extends URIS, G extends URIS2> {
@@ -501,9 +491,7 @@ export interface FoldableComposition12<F extends URIS, G extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableComposition12C<F extends URIS, G extends URIS2, E> {
@@ -515,9 +503,7 @@ export interface FoldableComposition12C<F extends URIS, G extends URIS2, E> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableComposition21<F extends URIS2, G extends URIS> {
@@ -529,9 +515,7 @@ export interface FoldableComposition21<F extends URIS2, G extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableComposition2C1<F extends URIS2, G extends URIS, E> {
@@ -543,9 +527,7 @@ export interface FoldableComposition2C1<F extends URIS2, G extends URIS, E> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableComposition22<F extends URIS2, G extends URIS2> {
@@ -557,9 +539,7 @@ export interface FoldableComposition22<F extends URIS2, G extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FoldableComposition22C<F extends URIS2, G extends URIS2, E> {
@@ -579,48 +559,46 @@ export interface FoldableComposition22C<F extends URIS2, G extends URIS2, E> {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function getFoldableComposition<F extends URIS2, G extends URIS2, E>(
   F: Foldable2<F>,
   G: Foldable2C<G, E>,
 ): FoldableComposition22C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableComposition<F extends URIS2, G extends URIS2>(
   F: Foldable2<F>,
   G: Foldable2<G>,
 ): FoldableComposition22<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableComposition<F extends URIS2, G extends URIS, E>(
   F: Foldable2C<F, E>,
   G: Foldable1<G>,
 ): FoldableComposition2C1<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableComposition<F extends URIS2, G extends URIS>(
   F: Foldable2<F>,
   G: Foldable1<G>,
 ): FoldableComposition21<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableComposition<F extends URIS, G extends URIS2, E>(
   F: Foldable1<F>,
   G: Foldable2C<G, E>,
 ): FoldableComposition12C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableComposition<F extends URIS, G extends URIS2>(
   F: Foldable1<F>,
   G: Foldable2<G>,
 ): FoldableComposition12<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableComposition<F extends URIS, G extends URIS>(
   F: Foldable1<F>,
   G: Foldable1<G>,
 ): FoldableComposition11<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableComposition<F, G>(F: Foldable<F>, G: Foldable<G>): FoldableComposition<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFoldableComposition<F, G>(F: Foldable<F>, G: Foldable<G>): FoldableComposition<F, G> {
   const _reduce = reduce(F, G)
   const _foldMap = foldMap(F, G)

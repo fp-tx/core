@@ -829,9 +829,7 @@ export const chainFirstW: <R2, A, B>(f: (a: A) => Reader<R2, B>) => <R1>(ma: Rea
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const reader: Monad2<URI> & Profunctor2<URI> & Category2<URI> & Strong2<URI> & Choice2<URI> = {
@@ -854,9 +852,7 @@ export const reader: Monad2<URI> & Profunctor2<URI> & Category2<URI> & Strong2<U
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getSemigroup: <R, A>(S: Semigroup<A>) => Semigroup<Reader<R, A>> = /*#__PURE__*/ getApplySemigroup(Apply)
@@ -866,9 +862,7 @@ export const getSemigroup: <R, A>(S: Semigroup<A>) => Semigroup<Reader<R, A>> = 
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getMonoid: <R, A>(M: Monoid<A>) => Monoid<Reader<R, A>> = /*#__PURE__*/ getApplicativeMonoid(Applicative)

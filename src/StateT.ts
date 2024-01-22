@@ -256,9 +256,7 @@ export function execute<F>(F: Functor<F>): <S>(s: S) => <A>(ma: StateT<F, S, A>)
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface StateM<M> {
@@ -279,9 +277,7 @@ export interface StateM<M> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface StateM1<M extends URIS> {
@@ -302,9 +298,7 @@ export interface StateM1<M extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface StateM2<M extends URIS2> {
@@ -325,9 +319,7 @@ export interface StateM2<M extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface StateM2C<M extends URIS2, E> {
@@ -348,9 +340,7 @@ export interface StateM2C<M extends URIS2, E> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface StateM3<M extends URIS3> {
@@ -377,9 +367,7 @@ export interface StateM3<M extends URIS3> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface StateM3C<M extends URIS3, E> {
@@ -403,23 +391,21 @@ export interface StateM3C<M extends URIS3, E> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function getStateM<M extends URIS3>(M: Monad3<M>): StateM3<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getStateM<M extends URIS3, E>(M: Monad3C<M, E>): StateM3C<M, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getStateM<M extends URIS2>(M: Monad2<M>): StateM2<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getStateM<M extends URIS2, E>(M: Monad2C<M, E>): StateM2C<M, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getStateM<M extends URIS>(M: Monad1<M>): StateM1<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getStateM<M>(M: Monad<M>): StateM<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 /* istanbul ignore next */
 export function getStateM<M>(M: Monad<M>): StateM<M> {
   const _ap = ap(M)

@@ -306,9 +306,7 @@ export const Bifunctor: Bifunctor2<URI> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const const_: Functor2<URI> & Contravariant2<URI> & Bifunctor2<URI> = {

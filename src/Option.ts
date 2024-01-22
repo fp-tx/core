@@ -1771,9 +1771,7 @@ export const chainFirst: <A, B>(f: (a: A) => Option<B>) => (first: Option<A>) =>
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function getRefinement<A, B extends A>(getOption: (a: A) => Option<B>): Refinement<A, B> {
@@ -1785,9 +1783,7 @@ export function getRefinement<A, B extends A>(getOption: (a: A) => Option<B>): R
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const mapNullable = chainNullableK
@@ -1798,9 +1794,7 @@ export const mapNullable = chainNullableK
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const option: Monad1<URI> &
@@ -1838,9 +1832,7 @@ export const option: Monad1<URI> &
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getApplySemigroup: <A>(S: Semigroup<A>) => Semigroup<Option<A>> = /*#__PURE__*/ getApplySemigroup_(Apply)
@@ -1850,9 +1842,7 @@ export const getApplySemigroup: <A>(S: Semigroup<A>) => Semigroup<Option<A>> = /
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getApplyMonoid: <A>(M: Monoid<A>) => Monoid<Option<A>> = /*#__PURE__*/ getApplicativeMonoid(Applicative)
@@ -1880,9 +1870,7 @@ export const getApplyMonoid: <A>(M: Monoid<A>) => Monoid<Option<A>> = /*#__PURE_
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @example
  *
  * ```typescript
@@ -1922,9 +1910,7 @@ export const getFirstMonoid = <A = never>(): Monoid<Option<A>> => getMonoid(firs
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @example
  *
  * ```typescript

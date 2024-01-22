@@ -88,9 +88,7 @@ export const negate =
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getTupleRing: <T extends ReadonlyArray<Ring<any>>>(
@@ -102,9 +100,7 @@ export const getTupleRing: <T extends ReadonlyArray<Ring<any>>>(
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getFunctionRing: <A, B>(R: Ring<B>) => Ring<(a: A) => B> = getRing

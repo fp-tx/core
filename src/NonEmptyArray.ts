@@ -387,9 +387,9 @@ export function concatW<B>(second: Array<B>): <A>(first: NonEmptyArray<A>) => Ar
  */
 export function concat<A>(second: NonEmptyArray<A>): (first: Array<A>) => NonEmptyArray<A>
 export function concat<A>(second: Array<A>): (first: NonEmptyArray<A>) => NonEmptyArray<A>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function concat<A>(first: Array<A>, second: NonEmptyArray<A>): NonEmptyArray<A>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function concat<A>(first: NonEmptyArray<A>, second: Array<A>): NonEmptyArray<A>
 export function concat<A>(x: Array<A>, y?: Array<A>): Array<A> | ((y: NonEmptyArray<A>) => Array<A>) {
   return y ? x.concat(y) : y => y.concat(x)
@@ -1548,9 +1548,7 @@ export const chain: <A, B>(f: (a: A) => NonEmptyArray<B>) => (ma: NonEmptyArray<
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function groupSort<B>(O: Ord<B>): {
@@ -1568,9 +1566,7 @@ export function groupSort<A>(O: Ord<A>): (as: Array<A>) => Array<NonEmptyArray<A
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function filter<A, B extends A>(refinement: Refinement<A, B>): (as: NonEmptyArray<A>) => Option<NonEmptyArray<B>>
@@ -1585,9 +1581,7 @@ export function filter<A>(predicate: Predicate<A>): (as: NonEmptyArray<A>) => Op
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const filterWithIndex =
@@ -1600,9 +1594,7 @@ export const filterWithIndex =
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const uncons: <A>(as: NonEmptyArray<A>) => [A, Array<A>] = unprepend
@@ -1612,9 +1604,7 @@ export const uncons: <A>(as: NonEmptyArray<A>) => [A, Array<A>] = unprepend
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const unsnoc: <A>(as: NonEmptyArray<A>) => [Array<A>, A] = unappend
@@ -1624,13 +1614,11 @@ export const unsnoc: <A>(as: NonEmptyArray<A>) => [Array<A>, A] = unappend
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function cons<A>(head: A): (tail: Array<A>) => NonEmptyArray<A>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function cons<A>(head: A, tail: Array<A>): NonEmptyArray<A>
 export function cons<A>(head: A, tail?: Array<A>): NonEmptyArray<A> | ((tail: Array<A>) => NonEmptyArray<A>) {
   return tail === undefined ? prepend(head) : pipe(tail, prepend(head))
@@ -1641,9 +1629,7 @@ export function cons<A>(head: A, tail?: Array<A>): NonEmptyArray<A> | ((tail: Ar
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const snoc = <A>(init: Array<A>, end: A): NonEmptyArray<A> => pipe(init, append(end))
@@ -1653,9 +1639,7 @@ export const snoc = <A>(init: Array<A>, end: A): NonEmptyArray<A> => pipe(init, 
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const prependToAll = prependAll
@@ -1665,23 +1649,20 @@ export const prependToAll = prependAll
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const fold: <A>(S: Semigroup<A>) => (fa: NonEmptyArray<A>) => A = RNEA.concatAll
 
 /**
- * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
- * instance, pass `NEA.Functor` instead of `NEA.nonEmptyArray` (where `NEA` is from `import NEA from
- * 'fp-ts/NonEmptyArray'`)
+ * This instance is deprecated, use small, specific instances instead.
+ *
+ * For example if a function needs a `Functor` instance, pass `NEA.Functor` instead of `NEA.nonEmptyArray` (where `NEA`
+ * is from `import NEA from 'fp-ts/NonEmptyArray'`)
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const nonEmptyArray: Monad1<URI> &

@@ -312,9 +312,7 @@ export const concatAll: <A>(S: Semigroup<A>) => (startWith: A) => (as: ReadonlyA
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const semigroupVoid: Semigroup<void> = constant<void>(undefined)
@@ -324,9 +322,7 @@ export const semigroupVoid: Semigroup<void> = constant<void>(undefined)
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getObjectSemigroup = <A extends object = never>(): Semigroup<A> => ({
@@ -338,9 +334,7 @@ export const getObjectSemigroup = <A extends object = never>(): Semigroup<A> => 
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getLastSemigroup = last
@@ -350,9 +344,7 @@ export const getLastSemigroup = last
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getFirstSemigroup = first
@@ -362,9 +354,7 @@ export const getFirstSemigroup = first
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getTupleSemigroup: <T extends ReadonlyArray<Semigroup<any>>>(
@@ -376,9 +366,7 @@ export const getTupleSemigroup: <T extends ReadonlyArray<Semigroup<any>>>(
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getStructSemigroup: <O extends ReadonlyRecord<string, any>>(semigroups: {
@@ -390,9 +378,7 @@ export const getStructSemigroup: <O extends ReadonlyRecord<string, any>>(semigro
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getDualSemigroup = reverse
@@ -402,9 +388,7 @@ export const getDualSemigroup = reverse
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getJoinSemigroup = max
@@ -414,9 +398,7 @@ export const getJoinSemigroup = max
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getMeetSemigroup = min
@@ -426,9 +408,7 @@ export const getMeetSemigroup = min
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getIntercalateSemigroup = intercalate
@@ -438,9 +418,7 @@ export const getIntercalateSemigroup = intercalate
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function fold<A>(S: Semigroup<A>): {
@@ -457,9 +435,7 @@ export function fold<A>(S: Semigroup<A>): (startWith: A, as?: ReadonlyArray<A>) 
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const semigroupAll: Semigroup<boolean> = {
@@ -471,9 +447,7 @@ export const semigroupAll: Semigroup<boolean> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const semigroupAny: Semigroup<boolean> = {
@@ -485,9 +459,7 @@ export const semigroupAny: Semigroup<boolean> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const getFunctionSemigroup: <S>(S: Semigroup<S>) => <A = never>() => Semigroup<(a: A) => S> = getSemigroup
@@ -497,9 +469,7 @@ export const getFunctionSemigroup: <S>(S: Semigroup<S>) => <A = never>() => Semi
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const semigroupString: Semigroup<string> = {
@@ -511,9 +481,7 @@ export const semigroupString: Semigroup<string> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const semigroupSum: Semigroup<number> = {
@@ -525,9 +493,7 @@ export const semigroupSum: Semigroup<number> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const semigroupProduct: Semigroup<number> = {

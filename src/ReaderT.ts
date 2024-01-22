@@ -254,9 +254,7 @@ export function fromNaturalTransformation<F, G>(
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ReaderT<M, R, A> {
@@ -266,9 +264,7 @@ export interface ReaderT<M, R, A> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ReaderM<M> {
@@ -286,9 +282,7 @@ export interface ReaderM<M> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ReaderT1<M extends URIS, R, A> {
@@ -298,9 +292,7 @@ export interface ReaderT1<M extends URIS, R, A> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ReaderM1<M extends URIS> {
@@ -318,9 +310,7 @@ export interface ReaderM1<M extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ReaderT2<M extends URIS2, R, E, A> {
@@ -330,9 +320,7 @@ export interface ReaderT2<M extends URIS2, R, E, A> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ReaderM2<M extends URIS2> {
@@ -350,9 +338,7 @@ export interface ReaderM2<M extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ReaderM2C<M extends URIS2, E> {
@@ -370,9 +356,7 @@ export interface ReaderM2C<M extends URIS2, E> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ReaderT3<M extends URIS3, R, U, E, A> {
@@ -382,9 +366,7 @@ export interface ReaderT3<M extends URIS3, R, U, E, A> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ReaderM3<M extends URIS3> {
@@ -408,21 +390,19 @@ export interface ReaderM3<M extends URIS3> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function getReaderM<M extends URIS3>(M: Monad3<M>): ReaderM3<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getReaderM<M extends URIS2>(M: Monad2<M>): ReaderM2<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getReaderM<M extends URIS2, E>(M: Monad2C<M, E>): ReaderM2C<M, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getReaderM<M extends URIS>(M: Monad1<M>): ReaderM1<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getReaderM<M>(M: Monad<M>): ReaderM<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 /* istanbul ignore next */
 export function getReaderM<M>(M: Monad<M>): ReaderM<M> {
   const _ap = ap(M)

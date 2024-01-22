@@ -535,9 +535,7 @@ export function partitionMap<F, G>(
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FilterableComposition<F, G> extends FunctorComposition<F, G>, CompactableComposition<F, G> {
@@ -556,9 +554,7 @@ export interface FilterableComposition<F, G> extends FunctorComposition<F, G>, C
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FilterableComposition11<F extends URIS, G extends URIS>
@@ -579,9 +575,7 @@ export interface FilterableComposition11<F extends URIS, G extends URIS>
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FilterableComposition12<F extends URIS, G extends URIS2>
@@ -602,9 +596,7 @@ export interface FilterableComposition12<F extends URIS, G extends URIS2>
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FilterableComposition12C<F extends URIS, G extends URIS2, E>
@@ -625,9 +617,7 @@ export interface FilterableComposition12C<F extends URIS, G extends URIS2, E>
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FilterableComposition21<F extends URIS2, G extends URIS>
@@ -648,9 +638,7 @@ export interface FilterableComposition21<F extends URIS2, G extends URIS>
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FilterableComposition2C1<F extends URIS2, G extends URIS, E>
@@ -671,9 +659,7 @@ export interface FilterableComposition2C1<F extends URIS2, G extends URIS, E>
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FilterableComposition22<F extends URIS2, G extends URIS2>
@@ -700,9 +686,7 @@ export interface FilterableComposition22<F extends URIS2, G extends URIS2>
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FilterableComposition22C<F extends URIS2, G extends URIS2, E>
@@ -726,9 +710,7 @@ export interface FilterableComposition22C<F extends URIS2, G extends URIS2, E>
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface FilterableComposition23C<F extends URIS2, G extends URIS3, E>
@@ -764,53 +746,51 @@ export interface FilterableComposition23C<F extends URIS2, G extends URIS3, E>
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function getFilterableComposition<F extends URIS2, G extends URIS3, E>(
   F: Functor2<F>,
   G: Filterable3C<G, E>,
 ): FilterableComposition23C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFilterableComposition<F extends URIS2, G extends URIS2, E>(
   F: Functor2<F>,
   G: Filterable2C<G, E>,
 ): FilterableComposition22C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFilterableComposition<F extends URIS2, G extends URIS2>(
   F: Functor2<F>,
   G: Filterable2<G>,
 ): FilterableComposition22<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFilterableComposition<F extends URIS2, G extends URIS, E>(
   F: Functor2C<F, E>,
   G: Filterable1<G>,
 ): FilterableComposition2C1<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFilterableComposition<F extends URIS2, G extends URIS>(
   F: Functor2<F>,
   G: Filterable1<G>,
 ): FilterableComposition21<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFilterableComposition<F extends URIS, G extends URIS2, E>(
   F: Functor1<F>,
   G: Filterable2C<G, E>,
 ): FilterableComposition12C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFilterableComposition<F extends URIS, G extends URIS2>(
   F: Functor1<F>,
   G: Filterable2<G>,
 ): FilterableComposition12<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFilterableComposition<F extends URIS, G extends URIS>(
   F: Functor1<F>,
   G: Filterable1<G>,
 ): FilterableComposition11<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFilterableComposition<F, G>(F: Functor<F>, G: Filterable<G>): FilterableComposition<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getFilterableComposition<F, G>(F: Functor<F>, G: Filterable<G>): FilterableComposition<F, G> {
   const map = getFunctorComposition(F, G).map
   const _compact = compact(F, G)

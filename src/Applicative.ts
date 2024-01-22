@@ -177,9 +177,7 @@ export function getApplicativeMonoid<F>(F: Applicative<F>): <A>(M: Monoid<A>) =>
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ApplicativeComposition<F, G> extends FunctorComposition<F, G> {
@@ -190,9 +188,7 @@ export interface ApplicativeComposition<F, G> extends FunctorComposition<F, G> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ApplicativeCompositionHKT1<F, G extends URIS> extends FunctorCompositionHKT1<F, G> {
@@ -203,9 +199,7 @@ export interface ApplicativeCompositionHKT1<F, G extends URIS> extends FunctorCo
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ApplicativeCompositionHKT2<F, G extends URIS2> extends FunctorCompositionHKT2<F, G> {
@@ -216,9 +210,7 @@ export interface ApplicativeCompositionHKT2<F, G extends URIS2> extends FunctorC
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ApplicativeCompositionHKT2C<F, G extends URIS2, E> extends FunctorCompositionHKT2C<F, G, E> {
@@ -229,9 +221,7 @@ export interface ApplicativeCompositionHKT2C<F, G extends URIS2, E> extends Func
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ApplicativeComposition11<F extends URIS, G extends URIS> extends FunctorComposition11<F, G> {
@@ -242,9 +232,7 @@ export interface ApplicativeComposition11<F extends URIS, G extends URIS> extend
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ApplicativeComposition12<F extends URIS, G extends URIS2> extends FunctorComposition12<F, G> {
@@ -258,9 +246,7 @@ export interface ApplicativeComposition12<F extends URIS, G extends URIS2> exten
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ApplicativeComposition12C<F extends URIS, G extends URIS2, E> extends FunctorComposition12C<F, G, E> {
@@ -271,9 +257,7 @@ export interface ApplicativeComposition12C<F extends URIS, G extends URIS2, E> e
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ApplicativeComposition21<F extends URIS2, G extends URIS> extends FunctorComposition21<F, G> {
@@ -287,9 +271,7 @@ export interface ApplicativeComposition21<F extends URIS2, G extends URIS> exten
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ApplicativeComposition2C1<F extends URIS2, G extends URIS, E> extends FunctorComposition2C1<F, G, E> {
@@ -300,9 +282,7 @@ export interface ApplicativeComposition2C1<F extends URIS2, G extends URIS, E> e
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ApplicativeComposition22<F extends URIS2, G extends URIS2> extends FunctorComposition22<F, G> {
@@ -316,9 +296,7 @@ export interface ApplicativeComposition22<F extends URIS2, G extends URIS2> exte
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface ApplicativeComposition22C<F extends URIS2, G extends URIS2, E> extends FunctorComposition22C<F, G, E> {
@@ -334,63 +312,61 @@ export interface ApplicativeComposition22C<F extends URIS2, G extends URIS2, E> 
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function getApplicativeComposition<F extends URIS2, G extends URIS2, E>(
   F: Applicative2<F>,
   G: Applicative2C<G, E>,
 ): ApplicativeComposition22C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getApplicativeComposition<F extends URIS2, G extends URIS2>(
   F: Applicative2<F>,
   G: Applicative2<G>,
 ): ApplicativeComposition22<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getApplicativeComposition<F extends URIS2, G extends URIS2, E>(
   F: Applicative2<F>,
   G: Applicative2C<G, E>,
 ): ApplicativeComposition22C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getApplicativeComposition<F extends URIS2, G extends URIS>(
   F: Applicative2<F>,
   G: Applicative1<G>,
 ): ApplicativeComposition21<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getApplicativeComposition<F extends URIS, G extends URIS2>(
   F: Applicative1<F>,
   G: Applicative2<G>,
 ): ApplicativeComposition12<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getApplicativeComposition<F extends URIS, G extends URIS2, E>(
   F: Applicative1<F>,
   G: Applicative2C<G, E>,
 ): ApplicativeComposition12C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getApplicativeComposition<F extends URIS, G extends URIS>(
   F: Applicative1<F>,
   G: Applicative1<G>,
 ): ApplicativeComposition11<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getApplicativeComposition<F, G extends URIS2>(
   F: Applicative<F>,
   G: Applicative2<G>,
 ): ApplicativeCompositionHKT2<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getApplicativeComposition<F, G extends URIS2, E>(
   F: Applicative<F>,
   G: Applicative2C<G, E>,
 ): ApplicativeCompositionHKT2C<F, G, E>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getApplicativeComposition<F, G extends URIS>(
   F: Applicative<F>,
   G: Applicative1<G>,
 ): ApplicativeCompositionHKT1<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getApplicativeComposition<F, G>(F: Applicative<F>, G: Applicative<G>): ApplicativeComposition<F, G>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getApplicativeComposition<F, G>(F: Applicative<F>, G: Applicative<G>): ApplicativeComposition<F, G> {
   const map = getFunctorComposition(F, G).map
   const _ap = ap(F, G)

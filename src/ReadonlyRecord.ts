@@ -187,7 +187,7 @@ export function collect(
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @deprecated
+ * @deprecated Use the overload constrained by `Ord` instead.
  */
 export function collect<K extends string, A, B>(f: (k: K, a: A) => B): (r: ReadonlyRecord<K, A>) => ReadonlyArray<B>
 export function collect<A, B>(
@@ -599,7 +599,7 @@ export function reduceWithIndex(
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @deprecated
+ * @deprecated Use the overload constrained by `Ord` instead.
  */
 export function reduceWithIndex<K extends string, A, B>(
   b: B,
@@ -653,7 +653,7 @@ export function foldMapWithIndex(
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @deprecated
+ * @deprecated Use the overload constrained by `Ord` instead.
  */
 export function foldMapWithIndex<M>(
   M: Monoid<M>,
@@ -709,7 +709,7 @@ export function reduceRightWithIndex(
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @deprecated
+ * @deprecated Use the overload constrained by `Ord` instead.
  */
 export function reduceRightWithIndex<K extends string, A, B>(
   b: B,
@@ -845,8 +845,10 @@ export function traverse<F>(
 
 /**
  * `ReadonlyRecord` sequencing, i.e., take a `ReadonlyRecord` in which elements are monads and return a monad of a
- * `ReadonlyRecord` of the base types. The following example for instance shows sequencing a `ReadonlyRecord<string,
- * Option<number>>` into an `Option<ReadonlyRecord<string, number>>`.
+ * `ReadonlyRecord` of the base types.
+ *
+ * The following example for instance shows sequencing a `ReadonlyRecord<string, Option<number>>` into an
+ * `Option<ReadonlyRecord<string, number>>`.
  *
  * `sequence` in `ReadonlyRecord` is equivalent to `sequenceS` in `Apply.ts`.
  *
@@ -1787,7 +1789,7 @@ export function reduce(O: Ord<string>): <A, B>(b: B, f: (b: B, a: A) => B) => (f
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @deprecated
+ * @deprecated Use the overload constrained by `Ord` instead.
  */
 export function reduce<A, B>(b: B, f: (b: B, a: A) => B): (fa: ReadonlyRecord<string, A>) => B
 export function reduce<A, B>(
@@ -1829,7 +1831,7 @@ export function foldMap(
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @deprecated
+ * @deprecated Use the overload constrained by `Ord` instead.
  */
 export function foldMap<M>(M: Monoid<M>): <A>(f: (a: A) => M) => (fa: ReadonlyRecord<string, A>) => M
 export function foldMap<M>(
@@ -1875,7 +1877,7 @@ export function reduceRight(O: Ord<string>): <A, B>(b: B, f: (a: A, b: B) => B) 
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @deprecated
+ * @deprecated Use the overload constrained by `Ord` instead.
  */
 export function reduceRight<A, B>(b: B, f: (a: A, b: B) => B): (fa: ReadonlyRecord<string, A>) => B
 export function reduceRight<A, B>(
@@ -2016,9 +2018,7 @@ export function getShow(O: Ord<string>): <A>(S: Show<A>) => Show<ReadonlyRecord<
 /**
  * Use the overload constrained by `Ord` instead.
  *
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  */
 export function getShow<A>(S: Show<A>): Show<ReadonlyRecord<string, A>>
 export function getShow<A>(
@@ -2442,9 +2442,7 @@ export const getDifferenceMagma = <A>(): Magma<ReadonlyRecord<string, A>> => ({
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const Foldable: Foldable1<URI> = {
@@ -2459,9 +2457,7 @@ export const Foldable: Foldable1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const FoldableWithIndex: FoldableWithIndex1<URI, string> = {
@@ -2479,9 +2475,7 @@ export const FoldableWithIndex: FoldableWithIndex1<URI, string> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const Traversable: Traversable1<URI> = {
@@ -2499,9 +2493,7 @@ export const Traversable: Traversable1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const TraversableWithIndex: TraversableWithIndex1<URI, string> = {
@@ -2527,9 +2519,7 @@ const _wilt = /*#__PURE__*/ wiltDefault(Traversable, Compactable)
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const Witherable: Witherable1<URI> = {
@@ -2555,9 +2545,7 @@ export const Witherable: Witherable1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const insertAt: <A>(k: string, a: A) => (r: ReadonlyRecord<string, A>) => ReadonlyRecord<string, A> = upsertAt
@@ -2567,9 +2555,7 @@ export const insertAt: <A>(k: string, a: A) => (r: ReadonlyRecord<string, A>) =>
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function hasOwnProperty<K extends string>(k: string, r: ReadonlyRecord<K, unknown>): k is K
@@ -2579,14 +2565,11 @@ export function hasOwnProperty<K extends string>(this: any, k: string, r?: Reado
 
 /**
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
- * instance, pass `RR.Functor` instead of `RR.readonlyRecord` (where `RR` is from `import RR from
- * 'fp-ts/ReadonlyRecord'`)
+ * instance, pass `RR.Functor` instead of `RR.readonlyRecord`
  *
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export const readonlyRecord: FunctorWithIndex1<URI, string> &

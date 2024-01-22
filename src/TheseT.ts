@@ -469,9 +469,7 @@ export function toTuple2<F>(
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface TheseT<M, E, A> extends HKT<M, These<E, A>> {}
@@ -479,9 +477,7 @@ export interface TheseT<M, E, A> extends HKT<M, These<E, A>> {}
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface TheseM<M> {
@@ -513,9 +509,7 @@ export interface TheseM<M> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export type TheseT1<M extends URIS, E, A> = Kind<M, These<E, A>>
@@ -523,9 +517,7 @@ export type TheseT1<M extends URIS, E, A> = Kind<M, These<E, A>>
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface TheseM1<M extends URIS> {
@@ -557,9 +549,7 @@ export interface TheseM1<M extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export type TheseT2<M extends URIS2, R, E, A> = Kind2<M, R, These<E, A>>
@@ -567,9 +557,7 @@ export type TheseT2<M extends URIS2, R, E, A> = Kind2<M, R, These<E, A>>
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export interface TheseM2<M extends URIS2> {
@@ -601,17 +589,15 @@ export interface TheseM2<M extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
- * @remarks
- * Category: Zone of death
- * @deprecated
+ * @deprecated Zone of Death
  * @public
  */
 export function getTheseM<M extends URIS2>(M: Monad2<M>): TheseM2<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getTheseM<M extends URIS>(M: Monad1<M>): TheseM1<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 export function getTheseM<M>(M: Monad<M>): TheseM<M>
-/** @deprecated */
+/** @deprecated Zone of Death */
 /* istanbul ignore next */
 export function getTheseM<M>(M: Monad<M>): TheseM<M> {
   const _map = map(M)
