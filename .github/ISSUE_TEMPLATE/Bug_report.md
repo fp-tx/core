@@ -1,15 +1,15 @@
 ---
 name: "\U0001F41B Bug report"
-about: Create a report to help make fp-ts better
+about: Let's make @fp-tx/core bug free!
 ---
 
-## 🐛 Bug report
+# 🐛 Bug report
 
-### Current Behavior
+## Current Behavior
 
 <!-- If applicable, add screenshots to help explain your problem. -->
 
-### Expected behavior
+## Expected behavior
 
 <!-- A clear and concise description of what you expected to happen. -->
 
