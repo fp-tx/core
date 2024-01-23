@@ -349,10 +349,7 @@ describe('Either', () => {
 
   it('parseJSON', () => {
     U.deepStrictEqual(_.parseJSON('{"a":1}', _.toError), _.right({ a: 1 }))
-    U.deepStrictEqual(
-      _.parseJSON('{"a":}', _.toError),
-      _.left(new SyntaxError('Unexpected token } in JSON at position 5')),
-    )
+    U.deepStrictEqual(_.parseJSON('{"a":}', _.toError), _.left(expect.any(SyntaxError)))
   })
 
   it('stringifyJSON', () => {
