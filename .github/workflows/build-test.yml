@@ -1,0 +1,52 @@
+name: Check, Test, Build
+on:
+  push:
+    branches:
+      - main
+      - $default-branch
+  pull_request:
+    branches:
+      - main
+      - $default-branch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          - 16.x
+          - 18.x
+          - 20.x
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+
+      - name: Check Commits
+        if: github.event_name == 'pull_request'
+        run: npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
+
+      - name: Check Formatting
+        run: pnpm run prettier:check
+
+      - name: Lint Changes
+        run: pnpm run lint
+
+      - name: Check Types
+        run: pnpm run typecheck
+
+      - name: Run Tests
+        run: pnpm run test:ci
+
+      - name: Run Build
+        run: pnpm run prerelease
