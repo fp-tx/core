@@ -55,6 +55,9 @@
   "bugs": {
     "url": "https://github.com/fp-tx/core/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://fp-tx.org",
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.13.1",
