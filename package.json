@@ -1,6 +1,6 @@
 {
   "name": "@fp-tx/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A function programming library for TypeScript, inspired by PureScript and Haskell",
   "sideEffects": false,
   "exports": {
