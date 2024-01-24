@@ -27,15 +27,15 @@ jobs:
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
 
-      # - name: Bump Package Version
-      #   id: bumping-version
-      #   uses: jpb06/bump-package@latest
-      #   with:
-      #     major-keywords: BUMP MAJOR VERSION
-      #     minor-keywords: feat,BREAKING CHANGE
-      #     patch-keywords: build,chore,ci,docs,fix,perf,refactor,revert,style,test
+      - name: Bump Package Version
+        id: bumping-version
+        uses: jpb06/bump-package@latest
+        with:
+          major-keywords: BUMP MAJOR VERSION
+          minor-keywords: feat,BREAKING CHANGE
+          patch-keywords: build,chore,ci,docs,fix,perf,refactor,revert,style,test
       - name: Publish Main Version
-        # if: steps.bumping-version.outputs.bump-performed == 'true'
-        run: pnpm run prerelease
-        # env:
-        #   NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        if: steps.bumping-version.outputs.bump-performed == 'true'
+        run: pnpm run release:main
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
