@@ -2,10 +2,13 @@ import { makeConfig } from '@fp-tx/build-tools'
 
 const config = makeConfig(
   {
-    getEntrypoints: srcFiles => srcFiles.map(file => file.name),
+    buildMode: {
+      type: 'Multi',
+      entrypointGlobs: ['./src/!(internal).ts'],
+    },
   },
   {
-    tsconfig: './tsconfig.build.json',
+    splitting: true,
   },
 )
 

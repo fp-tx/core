@@ -339,7 +339,12 @@ function do_<M>(P: Pointed<M>, M: ChainRec<M>): DoFunction<M> {
       if (state.done) {
         return P.of(E.right(state.value))
       }
-      return M.map(state.value.value, a => E.left(iterator.next(a)))
+      return M.map(
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore -- Shouldn't be an error
+        state.value.value,
+        a => E.left(iterator.next(a)),
+      )
     }
     return M.chainRec(state, go)
   }
