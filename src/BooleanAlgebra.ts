@@ -24,6 +24,8 @@ import { type HeytingAlgebra } from './HeytingAlgebra'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface BooleanAlgebra<A> extends HeytingAlgebra<A> {}
@@ -37,6 +39,8 @@ export interface BooleanAlgebra<A> extends HeytingAlgebra<A> {}
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reverse = <A>(B: BooleanAlgebra<A>): BooleanAlgebra<A> => ({
@@ -57,6 +61,8 @@ export const reverse = <A>(B: BooleanAlgebra<A>): BooleanAlgebra<A> => ({
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const booleanAlgebraVoid: BooleanAlgebra<void> = {
@@ -77,6 +83,8 @@ export const booleanAlgebraVoid: BooleanAlgebra<void> = {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -87,6 +95,8 @@ export const getDualBooleanAlgebra = reverse
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -104,6 +114,8 @@ export const booleanAlgebraBoolean: BooleanAlgebra<boolean> = {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

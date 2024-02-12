@@ -34,6 +34,8 @@ import {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Chain<F> extends Apply<F> {
@@ -45,6 +47,8 @@ export interface Chain<F> extends Apply<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Chain1<F extends URIS> extends Apply1<F> {
@@ -56,6 +60,8 @@ export interface Chain1<F extends URIS> extends Apply1<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Chain2<F extends URIS2> extends Apply2<F> {
@@ -67,6 +73,8 @@ export interface Chain2<F extends URIS2> extends Apply2<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Chain2C<F extends URIS2, E> extends Apply2C<F, E> {
@@ -78,6 +86,8 @@ export interface Chain2C<F extends URIS2, E> extends Apply2C<F, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Chain3<F extends URIS3> extends Apply3<F> {
@@ -89,6 +99,8 @@ export interface Chain3<F extends URIS3> extends Apply3<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Chain3C<F extends URIS3, E> extends Apply3C<F, E> {
@@ -100,6 +112,8 @@ export interface Chain3C<F extends URIS3, E> extends Apply3C<F, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Chain4<F extends URIS4> extends Apply4<F> {
@@ -113,6 +127,8 @@ export interface Chain4<F extends URIS4> extends Apply4<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function chainFirst<M extends URIS4>(
@@ -170,6 +186,8 @@ export function tap<M>(M: Chain<M>): <A, _>(first: HKT<M, A>, f: (a: A) => HKT<M
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function bind<M extends URIS4>(

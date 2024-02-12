@@ -18,6 +18,8 @@ import { type These } from './These'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FromThese<F> {
@@ -30,6 +32,8 @@ export interface FromThese<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FromThese2<F extends URIS2> {
@@ -42,6 +46,8 @@ export interface FromThese2<F extends URIS2> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FromThese2C<F extends URIS2, E> {
@@ -55,6 +61,8 @@ export interface FromThese2C<F extends URIS2, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FromThese3<F extends URIS3> {
@@ -67,6 +75,8 @@ export interface FromThese3<F extends URIS3> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FromThese3C<F extends URIS3, E> {
@@ -80,6 +90,8 @@ export interface FromThese3C<F extends URIS3, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FromThese4<F extends URIS4> {
@@ -94,6 +106,8 @@ export interface FromThese4<F extends URIS4> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function fromTheseK<F extends URIS4>(

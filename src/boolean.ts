@@ -21,6 +21,8 @@ import type * as S from './Show'
  * Added in 1.0.0
  * @remarks
  * Category: Refinements
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const isBoolean: Refinement<unknown, boolean> = (u: unknown): u is boolean => typeof u === 'boolean'
@@ -34,6 +36,8 @@ export const isBoolean: Refinement<unknown, boolean> = (u: unknown): u is boolea
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const matchW =
@@ -48,6 +52,8 @@ export const matchW =
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const foldW = matchW
@@ -60,6 +66,8 @@ export const foldW = matchW
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -92,6 +100,8 @@ export const match: <A>(onFalse: LazyArg<A>, onTrue: LazyArg<A>) => (value: bool
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fold = match
@@ -105,6 +115,8 @@ export const fold = match
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Eq: E.Eq<boolean> = {
@@ -116,6 +128,8 @@ export const Eq: E.Eq<boolean> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const BooleanAlgebra: BA.BooleanAlgebra<boolean> = {
@@ -134,6 +148,8 @@ export const BooleanAlgebra: BA.BooleanAlgebra<boolean> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -156,6 +172,8 @@ export const SemigroupAll: Semigroup<boolean> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -181,6 +199,8 @@ export const SemigroupAny: Semigroup<boolean> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -206,6 +226,8 @@ export const MonoidAll: Monoid<boolean> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -228,6 +250,8 @@ export const MonoidAny: Monoid<boolean> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Ord: O.Ord<boolean> = {
@@ -243,6 +267,8 @@ export const Ord: O.Ord<boolean> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Show: S.Show<boolean> = {

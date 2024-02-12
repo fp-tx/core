@@ -15,6 +15,8 @@ import { type HKT, type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, ty
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Profunctor<F> {
@@ -28,6 +30,8 @@ export interface Profunctor<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Profunctor2<F extends URIS2> extends Functor2<F> {
@@ -39,6 +43,8 @@ export interface Profunctor2<F extends URIS2> extends Functor2<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Profunctor2C<F extends URIS2, E> extends Functor2C<F, E> {
@@ -50,6 +56,8 @@ export interface Profunctor2C<F extends URIS2, E> extends Functor2C<F, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Profunctor3<F extends URIS3> extends Functor3<F> {
@@ -61,6 +69,8 @@ export interface Profunctor3<F extends URIS3> extends Functor3<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Profunctor3C<F extends URIS3, E> extends Functor3C<F, E> {
@@ -72,6 +82,8 @@ export interface Profunctor3C<F extends URIS3, E> extends Functor3C<F, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Profunctor4<F extends URIS4> extends Functor4<F> {

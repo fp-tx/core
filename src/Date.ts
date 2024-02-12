@@ -18,6 +18,8 @@ import * as O from './Ord'
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Eq: E.Eq<Date> = {
@@ -29,6 +31,8 @@ export const Eq: E.Eq<Date> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const eqDate: E.Eq<Date> = {
@@ -40,6 +44,8 @@ export const eqDate: E.Eq<Date> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const eqMonth: E.Eq<Date> = {
@@ -51,6 +57,8 @@ export const eqMonth: E.Eq<Date> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const eqYear: E.Eq<Date> = {
@@ -62,6 +70,8 @@ export const eqYear: E.Eq<Date> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -88,6 +98,8 @@ export const Ord: O.Ord<Date> = /*#__PURE__*/ pipe(
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const create: IO<Date> = () => new Date()
@@ -97,6 +109,8 @@ export const create: IO<Date> = () => new Date()
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const now: IO<number> = () => new Date().getTime()

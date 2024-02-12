@@ -14,6 +14,8 @@ import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, 
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Bifunctor<F> {
@@ -27,6 +29,8 @@ export interface Bifunctor<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Bifunctor2<F extends URIS2> {
@@ -40,6 +44,8 @@ export interface Bifunctor2<F extends URIS2> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Bifunctor2C<F extends URIS2, E> {
@@ -54,6 +60,8 @@ export interface Bifunctor2C<F extends URIS2, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Bifunctor3<F extends URIS3> {
@@ -67,6 +75,8 @@ export interface Bifunctor3<F extends URIS3> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Bifunctor3C<F extends URIS3, E> {
@@ -81,6 +91,8 @@ export interface Bifunctor3C<F extends URIS3, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Bifunctor4<F extends URIS4> {

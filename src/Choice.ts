@@ -41,6 +41,8 @@ import { type Profunctor, type Profunctor2, type Profunctor3, type Profunctor4 }
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Choice<F> extends Profunctor<F> {
@@ -53,6 +55,8 @@ export interface Choice<F> extends Profunctor<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Choice2<F extends URIS2> extends Profunctor2<F> {
@@ -65,6 +69,8 @@ export interface Choice2<F extends URIS2> extends Profunctor2<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Choice3<F extends URIS3> extends Profunctor3<F> {
@@ -77,6 +83,8 @@ export interface Choice3<F extends URIS3> extends Profunctor3<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Choice4<F extends URIS4> extends Profunctor4<F> {
@@ -98,6 +106,8 @@ export interface Choice4<F extends URIS4> extends Profunctor4<F> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function split<P extends URIS4>(
@@ -146,6 +156,8 @@ export function split<P>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function fanIn<P extends URIS4>(
@@ -185,6 +197,8 @@ export function fanIn<P>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -210,6 +224,8 @@ export function splitChoice<F>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Use `fanIn` instead
  * @public
  */

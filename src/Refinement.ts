@@ -14,6 +14,8 @@ import { type Option } from './Option'
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Refinement<A, B extends A> {
@@ -32,6 +34,8 @@ export interface Refinement<A, B extends A> {
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromOptionK = <A, B extends A>(getOption: (a: A) => Option<B>): Refinement<A, B> => {
@@ -43,6 +47,8 @@ export const fromOptionK = <A, B extends A>(getOption: (a: A) => Option<B>): Ref
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromEitherK = <A, B extends A>(getEither: (a: A) => Either<unknown, B>): Refinement<A, B> => {
@@ -54,6 +60,8 @@ export const fromEitherK = <A, B extends A>(getEither: (a: A) => Either<unknown,
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const id = <A>(): Refinement<A, A> => {
@@ -67,6 +75,8 @@ export const id = <A>(): Refinement<A, A> => {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const not =
@@ -77,6 +87,8 @@ export const not =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const or =
@@ -88,6 +100,8 @@ export const or =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const and =
@@ -99,6 +113,8 @@ export const and =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const zero = <A, B extends A>(): Refinement<A, B> => {
@@ -108,6 +124,8 @@ export const zero = <A, B extends A>(): Refinement<A, B> => {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const compose =

@@ -43,6 +43,8 @@ import { type Separated } from './Separated'
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type RefinementWithIndex<I, A, B extends A> = (i: I, a: A) => a is B
@@ -50,6 +52,8 @@ export type RefinementWithIndex<I, A, B extends A> = (i: I, a: A) => a is B
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type PredicateWithIndex<I, A> = (i: I, a: A) => boolean
@@ -57,6 +61,8 @@ export type PredicateWithIndex<I, A> = (i: I, a: A) => boolean
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FilterWithIndex<F, I> {
@@ -67,6 +73,8 @@ export interface FilterWithIndex<F, I> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface PartitionWithIndex<F, I> {
@@ -79,6 +87,8 @@ export interface PartitionWithIndex<F, I> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FilterableWithIndex<F, I> extends FunctorWithIndex<F, I>, Filterable<F> {
@@ -94,6 +104,8 @@ export interface FilterableWithIndex<F, I> extends FunctorWithIndex<F, I>, Filte
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FilterWithIndex1<F extends URIS, I> {
@@ -104,6 +116,8 @@ export interface FilterWithIndex1<F extends URIS, I> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface PartitionWithIndex1<F extends URIS, I> {
@@ -116,6 +130,8 @@ export interface PartitionWithIndex1<F extends URIS, I> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FilterableWithIndex1<F extends URIS, I> extends FunctorWithIndex1<F, I>, Filterable1<F> {
@@ -131,6 +147,8 @@ export interface FilterableWithIndex1<F extends URIS, I> extends FunctorWithInde
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FilterWithIndex2<F extends URIS2, I> {
@@ -141,6 +159,8 @@ export interface FilterWithIndex2<F extends URIS2, I> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface PartitionWithIndex2<F extends URIS2, I> {
@@ -156,6 +176,8 @@ export interface PartitionWithIndex2<F extends URIS2, I> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FilterableWithIndex2<F extends URIS2, I> extends FunctorWithIndex2<F, I>, Filterable2<F> {
@@ -171,6 +193,8 @@ export interface FilterableWithIndex2<F extends URIS2, I> extends FunctorWithInd
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FilterWithIndex2C<F extends URIS2, I, E> {
@@ -181,6 +205,8 @@ export interface FilterWithIndex2C<F extends URIS2, I, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface PartitionWithIndex2C<F extends URIS2, I, E> {
@@ -196,6 +222,8 @@ export interface PartitionWithIndex2C<F extends URIS2, I, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FilterableWithIndex2C<F extends URIS2, I, E> extends FunctorWithIndex2C<F, I, E>, Filterable2C<F, E> {
@@ -211,6 +239,8 @@ export interface FilterableWithIndex2C<F extends URIS2, I, E> extends FunctorWit
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FilterWithIndex3<F extends URIS3, I> {
@@ -221,6 +251,8 @@ export interface FilterWithIndex3<F extends URIS3, I> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FilterWithIndex3C<F extends URIS3, I, E> {
@@ -233,6 +265,8 @@ export interface FilterWithIndex3C<F extends URIS3, I, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FilterableWithIndex3C<F extends URIS3, I, E> extends FunctorWithIndex3C<F, I, E>, Filterable3C<F, E> {
@@ -248,6 +282,8 @@ export interface FilterableWithIndex3C<F extends URIS3, I, E> extends FunctorWit
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface PartitionWithIndex3<F extends URIS3, I> {
@@ -264,6 +300,8 @@ export interface PartitionWithIndex3<F extends URIS3, I> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface PartitionWithIndex3C<F extends URIS3, I, E> {
@@ -282,6 +320,8 @@ export interface PartitionWithIndex3C<F extends URIS3, I, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FilterableWithIndex3<F extends URIS3, I> extends FunctorWithIndex3<F, I>, Filterable3<F> {
@@ -297,6 +337,8 @@ export interface FilterableWithIndex3<F extends URIS3, I> extends FunctorWithInd
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FilterWithIndex4<F extends URIS4, I> {
@@ -310,6 +352,8 @@ export interface FilterWithIndex4<F extends URIS4, I> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface PartitionWithIndex4<F extends URIS4, I> {
@@ -328,6 +372,8 @@ export interface PartitionWithIndex4<F extends URIS4, I> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FilterableWithIndex4<F extends URIS4, I> extends FunctorWithIndex4<F, I>, Filterable4<F> {

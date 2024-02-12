@@ -1,6 +1,8 @@
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 
@@ -15,6 +17,8 @@ import { type Semigroup } from './Semigroup'
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Endomorphism<A> {
@@ -26,6 +30,8 @@ export interface Endomorphism<A> {
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const URI = 'Endomorphism'
@@ -35,6 +41,8 @@ export const URI = 'Endomorphism'
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type URI = typeof URI
@@ -52,6 +60,8 @@ declare module './HKT' {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getSemigroup = <A = never>(): Semigroup<Endomorphism<A>> => ({
@@ -65,6 +75,8 @@ export const getSemigroup = <A = never>(): Semigroup<Endomorphism<A>> => ({
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getMonoid = <A = never>(): Monoid<Endomorphism<A>> => ({

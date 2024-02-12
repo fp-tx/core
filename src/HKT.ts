@@ -4,6 +4,8 @@
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 
@@ -12,6 +14,8 @@
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface HKT<URI, A> {
@@ -24,6 +28,8 @@ export interface HKT<URI, A> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface HKT2<URI, E, A> extends HKT<URI, A> {
@@ -35,6 +41,8 @@ export interface HKT2<URI, E, A> extends HKT<URI, A> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface HKT3<URI, R, E, A> extends HKT2<URI, E, A> {
@@ -46,6 +54,8 @@ export interface HKT3<URI, R, E, A> extends HKT2<URI, E, A> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface HKT4<URI, S, R, E, A> extends HKT3<URI, R, E, A> {
@@ -61,6 +71,8 @@ export interface HKT4<URI, S, R, E, A> extends HKT3<URI, R, E, A> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -71,6 +83,8 @@ export interface URItoKind<A> {}
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -81,6 +95,8 @@ export interface URItoKind2<E, A> {}
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -91,6 +107,8 @@ export interface URItoKind3<R, E, A> {}
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -105,6 +123,8 @@ export interface URItoKind4<S, R, E, A> {}
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type URIS = keyof URItoKind<any>
@@ -114,6 +134,8 @@ export type URIS = keyof URItoKind<any>
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type URIS2 = keyof URItoKind2<any, any>
@@ -123,6 +145,8 @@ export type URIS2 = keyof URItoKind2<any, any>
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type URIS3 = keyof URItoKind3<any, any, any>
@@ -132,6 +156,8 @@ export type URIS3 = keyof URItoKind3<any, any, any>
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type URIS4 = keyof URItoKind4<any, any, any, any>
@@ -145,6 +171,8 @@ export type URIS4 = keyof URItoKind4<any, any, any, any>
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type Kind<URI extends URIS, A> = URI extends URIS ? URItoKind<A>[URI] : any
@@ -154,6 +182,8 @@ export type Kind<URI extends URIS, A> = URI extends URIS ? URItoKind<A>[URI] : a
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type Kind2<URI extends URIS2, E, A> = URI extends URIS2 ? URItoKind2<E, A>[URI] : any
@@ -163,6 +193,8 @@ export type Kind2<URI extends URIS2, E, A> = URI extends URIS2 ? URItoKind2<E, A
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type Kind3<URI extends URIS3, R, E, A> = URI extends URIS3 ? URItoKind3<R, E, A>[URI] : any
@@ -172,6 +204,8 @@ export type Kind3<URI extends URIS3, R, E, A> = URI extends URIS3 ? URItoKind3<R
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type Kind4<URI extends URIS4, S, R, E, A> = URI extends URIS4 ? URItoKind4<S, R, E, A>[URI] : any

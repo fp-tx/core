@@ -33,6 +33,8 @@ import {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Extend<W> extends Functor<W> {
@@ -44,6 +46,8 @@ export interface Extend<W> extends Functor<W> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Extend1<W extends URIS> extends Functor1<W> {
@@ -55,6 +59,8 @@ export interface Extend1<W extends URIS> extends Functor1<W> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Extend2<W extends URIS2> extends Functor2<W> {
@@ -66,6 +72,8 @@ export interface Extend2<W extends URIS2> extends Functor2<W> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Extend2C<W extends URIS2, E> extends Functor2C<W, E> {
@@ -77,6 +85,8 @@ export interface Extend2C<W extends URIS2, E> extends Functor2C<W, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Extend3<W extends URIS3> extends Functor3<W> {
@@ -88,6 +98,8 @@ export interface Extend3<W extends URIS3> extends Functor3<W> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Extend3C<W extends URIS3, E> extends Functor3C<W, E> {
@@ -99,6 +111,8 @@ export interface Extend3C<W extends URIS3, E> extends Functor3C<W, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Extend4<W extends URIS4> extends Functor4<W> {

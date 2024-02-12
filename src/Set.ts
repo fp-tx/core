@@ -22,6 +22,8 @@ import { type Show } from './Show'
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getShow: <A>(S: Show<A>) => Show<Set<A>> = RS.getShow
@@ -31,6 +33,8 @@ export const getShow: <A>(S: Show<A>) => Show<Set<A>> = RS.getShow
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getEq: <A>(E: Eq<A>) => Eq<Set<A>> = RS.getEq
@@ -41,6 +45,8 @@ export const getEq: <A>(E: Eq<A>) => Eq<Set<A>> = RS.getEq
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function map<B>(E: Eq<B>): <A>(f: (x: A) => B) => (set: Set<A>) => Set<B> {
@@ -62,6 +68,8 @@ export function map<B>(E: Eq<B>): <A>(f: (x: A) => B) => (set: Set<A>) => Set<B>
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function chain<B>(E: Eq<B>): <A>(f: (x: A) => Set<B>) => (set: Set<A>) => Set<B> {
@@ -87,6 +95,8 @@ interface Next<A> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function filter<A, B extends A>(refinement: Refinement<A, B>): (set: Set<A>) => Set<B>
@@ -110,6 +120,8 @@ export function filter<A>(predicate: Predicate<A>): (set: Set<A>) => Set<A> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function partition<A, B extends A>(refinement: Refinement<A, B>): (set: Set<A>) => Separated<Set<A>, Set<B>>
@@ -139,6 +151,8 @@ export function partition<A>(predicate: Predicate<A>): (set: Set<A>) => Separate
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function union<A>(E: Eq<A>): {
@@ -174,6 +188,8 @@ export function union<A>(E: Eq<A>): (me: Set<A>, that?: Set<A>) => Set<A> | ((me
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function intersection<A>(E: Eq<A>): {
@@ -203,6 +219,8 @@ export function intersection<A>(E: Eq<A>): (me: Set<A>, that?: Set<A>) => Set<A>
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function partitionMap<B, C>(
@@ -242,6 +260,8 @@ export function partitionMap<B, C>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -274,6 +294,8 @@ export function difference<A>(E: Eq<A>): (me: Set<A>, that?: Set<A>) => Set<A> |
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<Set<A>> => ({
@@ -285,6 +307,8 @@ export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<Set<A>> => ({
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getUnionMonoid = <A>(E: Eq<A>): Monoid<Set<A>> => ({
@@ -297,6 +321,8 @@ export const getUnionMonoid = <A>(E: Eq<A>): Monoid<Set<A>> => ({
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<Set<A>> => ({
@@ -308,6 +334,8 @@ export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<Set<A>> => ({
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getDifferenceMagma = <A>(E: Eq<A>): Magma<Set<A>> => ({
@@ -319,6 +347,8 @@ export const getDifferenceMagma = <A>(E: Eq<A>): Magma<Set<A>> => ({
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reduce: <A>(O: Ord<A>) => <B>(b: B, f: (b: B, a: A) => B) => (fa: Set<A>) => B = RS.reduce
@@ -328,6 +358,8 @@ export const reduce: <A>(O: Ord<A>) => <B>(b: B, f: (b: B, a: A) => B) => (fa: S
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const foldMap: <A, M>(O: Ord<A>, M: Monoid<M>) => (f: (a: A) => M) => (fa: Set<A>) => M = RS.foldMap
@@ -337,6 +369,8 @@ export const foldMap: <A, M>(O: Ord<A>, M: Monoid<M>) => (f: (a: A) => M) => (fa
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reduceRight: <A>(O: Ord<A>) => <B>(b: B, f: (a: A, b: B) => B) => (fa: Set<A>) => B = RS.reduceRight
@@ -348,6 +382,8 @@ export const reduceRight: <A>(O: Ord<A>) => <B>(b: B, f: (a: A, b: B) => B) => (
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const singleton = <A>(a: A): Set<A> => new Set([a])
@@ -357,6 +393,8 @@ export const singleton = <A>(a: A): Set<A> => new Set([a])
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function insert<A>(E: Eq<A>): (a: A) => (set: Set<A>) => Set<A> {
@@ -377,6 +415,8 @@ export function insert<A>(E: Eq<A>): (a: A) => (set: Set<A>) => Set<A> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const remove =
@@ -390,6 +430,8 @@ export const remove =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const toggle = <A>(E: Eq<A>): ((a: A) => (set: Set<A>) => Set<A>) => {
@@ -406,6 +448,8 @@ export const toggle = <A>(E: Eq<A>): ((a: A) => (set: Set<A>) => Set<A>) => {
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromArray =
@@ -426,6 +470,8 @@ export const fromArray =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const compact = <A>(E: Eq<A>): ((fa: Set<Option<A>>) => Set<A>) => filterMap(E)(identity)
@@ -433,6 +479,8 @@ export const compact = <A>(E: Eq<A>): ((fa: Set<Option<A>>) => Set<A>) => filter
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function separate<E, A>(EE: Eq<E>, EA: Eq<A>): (fa: Set<Either<E, A>>) => Separated<Set<E>, Set<A>> {
@@ -462,6 +510,8 @@ export function separate<E, A>(EE: Eq<E>, EA: Eq<A>): (fa: Set<Either<E, A>>) =>
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function filterMap<B>(E: Eq<B>): <A>(f: (a: A) => Option<B>) => (fa: Set<A>) => Set<B> {
@@ -485,6 +535,8 @@ export function filterMap<B>(E: Eq<B>): <A>(f: (a: A) => Option<B>) => (fa: Set<
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const empty: Set<never> = new Set()
@@ -494,6 +546,8 @@ export const empty: Set<never> = new Set()
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const isEmpty = <A>(set: Set<A>): boolean => set.size === 0
@@ -503,6 +557,8 @@ export const isEmpty = <A>(set: Set<A>): boolean => set.size === 0
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const size = <A>(set: Set<A>): number => set.size
@@ -510,6 +566,8 @@ export const size = <A>(set: Set<A>): number => set.size
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const some: <A>(predicate: Predicate<A>) => (set: Set<A>) => boolean = RS.some
@@ -517,6 +575,8 @@ export const some: <A>(predicate: Predicate<A>) => (set: Set<A>) => boolean = RS
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const every: {
@@ -527,6 +587,8 @@ export const every: {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const isSubset: <A>(E: Eq<A>) => (that: Set<A>) => (me: Set<A>) => boolean = RS.isSubset
@@ -537,6 +599,8 @@ export const isSubset: <A>(E: Eq<A>) => (that: Set<A>) => (me: Set<A>) => boolea
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const elem: <A>(E: Eq<A>) => {
@@ -551,6 +615,8 @@ export const elem: <A>(E: Eq<A>) => {
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const toArray =
@@ -570,6 +636,8 @@ export const toArray =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

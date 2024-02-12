@@ -22,6 +22,8 @@ import type * as S from './Show'
  * Added in 1.0.0
  * @remarks
  * Category: Refinements
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const isNumber: Refinement<unknown, number> = (u: unknown): u is number => typeof u === 'number'
@@ -35,6 +37,8 @@ export const isNumber: Refinement<unknown, number> = (u: unknown): u is number =
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Eq: E.Eq<number> = {
@@ -46,6 +50,8 @@ export const Eq: E.Eq<number> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Ord: O.Ord<number> = {
@@ -61,6 +67,8 @@ export const Ord: O.Ord<number> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Bounded: B.Bounded<number> = {
@@ -75,6 +83,8 @@ export const Bounded: B.Bounded<number> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Show: S.Show<number> = {
@@ -86,6 +96,8 @@ export const Show: S.Show<number> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const MagmaSub: Magma<number> = {
@@ -99,6 +111,8 @@ export const MagmaSub: Magma<number> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -120,6 +134,8 @@ export const SemigroupSum: Semigroup<number> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -143,6 +159,8 @@ export const SemigroupProduct: Semigroup<number> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -167,6 +185,8 @@ export const MonoidSum: Monoid<number> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -187,6 +207,8 @@ export const MonoidProduct: Monoid<number> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Field: F.Field<number> = {

@@ -23,6 +23,8 @@ import { type Semiring } from './Semiring'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Ring<A> extends Semiring<A> {
@@ -38,6 +40,8 @@ export interface Ring<A> extends Semiring<A> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -72,6 +76,8 @@ export const tuple = <A extends ReadonlyArray<unknown>>(...rings: { [K in keyof 
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const negate =
@@ -88,6 +94,8 @@ export const negate =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -100,6 +108,8 @@ export const getTupleRing: <T extends ReadonlyArray<Ring<any>>>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

@@ -15,6 +15,8 @@ import { type Semigroupoid, type Semigroupoid2, type Semigroupoid3, type Semigro
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Category<F> extends Semigroupoid<F> {
@@ -26,6 +28,8 @@ export interface Category<F> extends Semigroupoid<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Category2<F extends URIS2> extends Semigroupoid2<F> {
@@ -37,6 +41,8 @@ export interface Category2<F extends URIS2> extends Semigroupoid2<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Category3<F extends URIS3> extends Semigroupoid3<F> {
@@ -48,6 +54,8 @@ export interface Category3<F extends URIS3> extends Semigroupoid3<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Category4<F extends URIS4> extends Semigroupoid4<F> {

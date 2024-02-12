@@ -28,6 +28,8 @@ import { type PipeableTraverse2, type Traversable2 } from './Traversable'
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function fst<A, E>(ea: readonly [A, E]): A {
@@ -37,6 +39,8 @@ export function fst<A, E>(ea: readonly [A, E]): A {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function snd<A, E>(ea: readonly [A, E]): E {
@@ -46,6 +50,8 @@ export function snd<A, E>(ea: readonly [A, E]): E {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const swap = <A, E>(ea: readonly [A, E]): readonly [E, A] => [snd(ea), fst(ea)]
@@ -55,6 +61,8 @@ export const swap = <A, E>(ea: readonly [A, E]): readonly [E, A] => [snd(ea), fs
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getApply<S>(S: Semigroup<S>): Apply2C<URI, S> {
@@ -77,6 +85,8 @@ const of =
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getApplicative<M>(M: Monoid<M>): Applicative2C<URI, M> {
@@ -95,6 +105,8 @@ export function getApplicative<M>(M: Monoid<M>): Applicative2C<URI, M> {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getChain<S>(S: Semigroup<S>): Chain2C<URI, S> {
@@ -116,6 +128,8 @@ export function getChain<S>(S: Semigroup<S>): Chain2C<URI, S> {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getMonad<M>(M: Monoid<M>): Monad2C<URI, M> {
@@ -135,6 +149,8 @@ export function getMonad<M>(M: Monoid<M>): Monad2C<URI, M> {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getChainRec<M>(M: Monoid<M>): ChainRec2C<URI, M> {
@@ -195,6 +211,8 @@ const _traverse = <F>(
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const bimap: <E, G, A, B>(
@@ -211,6 +229,8 @@ export const bimap: <E, G, A, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const mapFst: <A, B>(f: (a: A) => B) => <E>(fa: readonly [A, E]) => readonly [B, E] = f => fa => [
@@ -227,6 +247,8 @@ export const mapFst: <A, B>(f: (a: A) => B) => <E>(fa: readonly [A, E]) => reado
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const mapSnd: <E, G>(f: (e: E) => G) => <A>(fa: readonly [A, E]) => readonly [A, G] = f => fa => [
@@ -237,6 +259,8 @@ export const mapSnd: <E, G>(f: (e: E) => G) => <A>(fa: readonly [A, E]) => reado
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const compose: <A, B>(ab: readonly [B, A]) => <C>(bc: readonly [C, B]) => readonly [C, A] = ab => bc => [
@@ -247,6 +271,8 @@ export const compose: <A, B>(ab: readonly [B, A]) => <C>(bc: readonly [C, B]) =>
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const extend: <E, A, B>(f: (wa: readonly [A, E]) => B) => (wa: readonly [A, E]) => readonly [B, E] = f => wa => [
@@ -259,6 +285,8 @@ export const extend: <E, A, B>(f: (wa: readonly [A, E]) => B) => (wa: readonly [
  * Added in 1.0.0
  * @remarks
  * Category: Extract
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const extract: <E, A>(wa: readonly [A, E]) => A = fst
@@ -266,6 +294,8 @@ export const extract: <E, A>(wa: readonly [A, E]) => A = fst
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const duplicate: <E, A>(wa: readonly [A, E]) => readonly [readonly [A, E], E] = /*#__PURE__*/ extend(identity)
@@ -275,6 +305,8 @@ export const duplicate: <E, A>(wa: readonly [A, E]) => readonly [readonly [A, E]
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => <E>(fa: readonly [A, E]) => B = (b, f) => fa => f(b, fst(fa))
@@ -284,6 +316,8 @@ export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => <E>(fa: readonly [A, 
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => <E>(fa: readonly [A, E]) => M = () => {
@@ -295,6 +329,8 @@ export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => <E>(fa: readon
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => <E>(fa: readonly [A, E]) => B = (b, f) => fa =>
@@ -305,6 +341,8 @@ export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => <E>(fa: readonly
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverse: PipeableTraverse2<URI> = <F>(
@@ -318,6 +356,8 @@ export const traverse: PipeableTraverse2<URI> = <F>(
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const sequence: Traversable2<URI>['sequence'] =
@@ -331,6 +371,8 @@ export const sequence: Traversable2<URI>['sequence'] =
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const URI = 'ReadonlyTuple'
@@ -340,6 +382,8 @@ export const URI = 'ReadonlyTuple'
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type URI = typeof URI
@@ -355,6 +399,8 @@ declare module './HKT' {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Functor: Functor2<URI> = {
@@ -367,6 +413,8 @@ export const Functor: Functor2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
@@ -378,6 +426,8 @@ export const flap = /*#__PURE__*/ flap_(Functor)
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: readonly [A, E]) => readonly [B, E] = mapFst
@@ -389,6 +439,8 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: readonly [A, E]) => readonly
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: readonly [A, E]) => readonly [A, G] = mapSnd
@@ -398,6 +450,8 @@ export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: readonly [A, E]) => read
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Bifunctor: Bifunctor2<URI> = {
@@ -411,6 +465,8 @@ export const Bifunctor: Bifunctor2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Semigroupoid: Semigroupoid2<URI> = {
@@ -423,6 +479,8 @@ export const Semigroupoid: Semigroupoid2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Comonad: Comonad2<URI> = {
@@ -437,6 +495,8 @@ export const Comonad: Comonad2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Foldable: Foldable2<URI> = {
@@ -451,6 +511,8 @@ export const Foldable: Foldable2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Traversable: Traversable2<URI> = {
@@ -473,6 +535,8 @@ export const Traversable: Traversable2<URI> = {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

@@ -73,6 +73,8 @@ import { type Semigroup } from './Semigroup'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Apply<F> extends Functor<F> {
@@ -84,6 +86,8 @@ export interface Apply<F> extends Functor<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Apply1<F extends URIS> extends Functor1<F> {
@@ -95,6 +99,8 @@ export interface Apply1<F extends URIS> extends Functor1<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Apply2<F extends URIS2> extends Functor2<F> {
@@ -106,6 +112,8 @@ export interface Apply2<F extends URIS2> extends Functor2<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Apply2C<F extends URIS2, E> extends Functor2C<F, E> {
@@ -117,6 +125,8 @@ export interface Apply2C<F extends URIS2, E> extends Functor2C<F, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Apply3<F extends URIS3> extends Functor3<F> {
@@ -128,6 +138,8 @@ export interface Apply3<F extends URIS3> extends Functor3<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Apply3C<F extends URIS3, E> extends Functor3C<F, E> {
@@ -139,6 +151,8 @@ export interface Apply3C<F extends URIS3, E> extends Functor3C<F, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Apply4<F extends URIS4> extends Functor4<F> {
@@ -154,6 +168,8 @@ export interface Apply4<F extends URIS4> extends Functor4<F> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function ap<F extends URIS4, G extends URIS4>(
@@ -409,6 +425,8 @@ export function ap<F, G>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function apFirst<F extends URIS4>(
@@ -439,6 +457,8 @@ export function apFirst<F>(A: Apply<F>): <B>(second: HKT<F, B>) => <A>(first: HK
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function apSecond<F extends URIS4>(
@@ -470,6 +490,8 @@ export function apSecond<F>(A: Apply<F>): <B>(second: HKT<F, B>) => <A>(first: H
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function apS<F extends URIS4>(
@@ -537,6 +559,8 @@ export function apS<F>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getApplySemigroup<F extends URIS4>(
@@ -596,6 +620,8 @@ function getTupleConstructor(len: number): (a: unknown) => any {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -703,6 +729,8 @@ function getRecordConstructor(keys: ReadonlyArray<string>) {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript

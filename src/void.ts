@@ -15,6 +15,8 @@ import * as Se from './Semigroup'
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Semigroup: Se.Semigroup<void> = Se.constant<void>(undefined)
@@ -24,6 +26,8 @@ export const Semigroup: Se.Semigroup<void> = Se.constant<void>(undefined)
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Monoid: M.Monoid<void> = {

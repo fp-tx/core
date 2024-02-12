@@ -13,6 +13,8 @@ import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const random: IO<number> = () => Math.random()
@@ -24,6 +26,8 @@ export const random: IO<number> = () => Math.random()
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function randomInt(low: number, high: number): IO<number> {
@@ -39,6 +43,8 @@ export function randomInt(low: number, high: number): IO<number> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function randomRange(min: number, max: number): IO<number> {
@@ -53,6 +59,8 @@ export function randomRange(min: number, max: number): IO<number> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const randomBool: IO<boolean> = /*#__PURE__*/ pipe(
@@ -65,6 +73,8 @@ export const randomBool: IO<boolean> = /*#__PURE__*/ pipe(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const randomElem = <A>(as: ReadonlyNonEmptyArray<A>): IO<A> =>

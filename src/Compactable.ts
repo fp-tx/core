@@ -54,6 +54,8 @@ import * as S from './Separated'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Compactable<F> {
@@ -69,6 +71,8 @@ export interface Compactable<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Compactable1<F extends URIS> {
@@ -82,6 +86,8 @@ export interface Compactable1<F extends URIS> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Compactable2<F extends URIS2> {
@@ -95,6 +101,8 @@ export interface Compactable2<F extends URIS2> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Compactable2C<F extends URIS2, E> {
@@ -109,6 +117,8 @@ export interface Compactable2C<F extends URIS2, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Compactable3<F extends URIS3> {
@@ -122,6 +132,8 @@ export interface Compactable3<F extends URIS3> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Compactable3C<F extends URIS3, E> {
@@ -136,6 +148,8 @@ export interface Compactable3C<F extends URIS3, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Compactable4<F extends URIS4> {
@@ -155,6 +169,8 @@ export interface Compactable4<F extends URIS4> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function compact<F extends URIS2, G extends URIS2, E>(
@@ -182,6 +198,8 @@ export function compact<F, G>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function separate<F extends URIS2, G extends URIS2, E>(
@@ -223,6 +241,8 @@ export function separate<F, G>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -234,6 +254,8 @@ export interface CompactableComposition<F, G> extends FunctorComposition<F, G> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -245,6 +267,8 @@ export interface CompactableComposition11<F extends URIS, G extends URIS> extend
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -258,6 +282,8 @@ export interface CompactableComposition12<F extends URIS, G extends URIS2> exten
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -271,6 +297,8 @@ export interface CompactableComposition12C<F extends URIS, G extends URIS2, E> e
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -284,6 +312,8 @@ export interface CompactableComposition21<F extends URIS2, G extends URIS> exten
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -297,6 +327,8 @@ export interface CompactableComposition2C1<F extends URIS2, G extends URIS, E> e
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -310,6 +342,8 @@ export interface CompactableComposition22<F extends URIS2, G extends URIS2> exte
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -323,6 +357,8 @@ export interface CompactableComposition22C<F extends URIS2, G extends URIS2, E> 
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -336,6 +372,8 @@ export interface CompactableComposition23<F extends URIS2, G extends URIS3> exte
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -351,6 +389,8 @@ export interface CompactableComposition23C<F extends URIS2, G extends URIS3, E> 
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -416,6 +456,8 @@ export function getCompactableComposition<F, G>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Use `Separated` instead
  * @public
  */

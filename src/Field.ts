@@ -17,6 +17,8 @@ import { type Ring } from './Ring'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Field<A> extends Ring<A> {
@@ -34,6 +36,8 @@ export interface Field<A> extends Ring<A> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function gcd<A>(E: Eq<A>, field: Field<A>): (x: A, y: A) => A {
@@ -47,6 +51,8 @@ export function gcd<A>(E: Eq<A>, field: Field<A>): (x: A, y: A) => A {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function lcm<A>(E: Eq<A>, F: Field<A>): (x: A, y: A) => A {
@@ -64,6 +70,8 @@ export function lcm<A>(E: Eq<A>, F: Field<A>): (x: A, y: A) => A {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
