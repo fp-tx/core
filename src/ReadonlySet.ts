@@ -21,6 +21,8 @@ import { type Show } from './Show'
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromSet = <A>(s: Set<A>): ReadonlySet<A> => new Set(s)
@@ -36,6 +38,8 @@ export const fromSet = <A>(s: Set<A>): ReadonlySet<A> => new Set(s)
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const singleton = <A>(a: A): ReadonlySet<A> => new Set([a])
@@ -47,6 +51,8 @@ export const singleton = <A>(a: A): ReadonlySet<A> => new Set([a])
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromReadonlyArray =
@@ -69,6 +75,8 @@ export const fromReadonlyArray =
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function toSet<A>(s: ReadonlySet<A>): Set<A> {
@@ -85,6 +93,8 @@ interface Next<A> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function map<B>(E: Eq<B>): <A>(f: (x: A) => B) => (set: ReadonlySet<A>) => ReadonlySet<B> {
@@ -104,6 +114,8 @@ export function map<B>(E: Eq<B>): <A>(f: (x: A) => B) => (set: ReadonlySet<A>) =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function chain<B>(E: Eq<B>): <A>(f: (x: A) => ReadonlySet<B>) => (set: ReadonlySet<A>) => ReadonlySet<B> {
@@ -124,6 +136,8 @@ export function chain<B>(E: Eq<B>): <A>(f: (x: A) => ReadonlySet<B>) => (set: Re
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function filter<A, B extends A>(refinement: Refinement<A, B>): (set: ReadonlySet<A>) => ReadonlySet<B>
@@ -147,6 +161,8 @@ export function filter<A>(predicate: Predicate<A>): (set: ReadonlySet<A>) => Rea
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function partition<A, B extends A>(
@@ -184,6 +200,8 @@ export function partition<A>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function union<A>(E: Eq<A>): {
@@ -221,6 +239,8 @@ export function union<A>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function intersection<A>(E: Eq<A>): {
@@ -252,6 +272,8 @@ export function intersection<A>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function partitionMap<B, C>(
@@ -291,6 +313,8 @@ export function partitionMap<B, C>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -323,6 +347,8 @@ export function difference<A>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function reduce<A>(O: Ord<A>): <B>(b: B, f: (b: B, a: A) => B) => (fa: ReadonlySet<A>) => B {
@@ -333,6 +359,8 @@ export function reduce<A>(O: Ord<A>): <B>(b: B, f: (b: B, a: A) => B) => (fa: Re
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function foldMap<A, M>(O: Ord<A>, M: Monoid<M>): (f: (a: A) => M) => (fa: ReadonlySet<A>) => M {
@@ -345,6 +373,8 @@ export function foldMap<A, M>(O: Ord<A>, M: Monoid<M>): (f: (a: A) => M) => (fa:
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reduceRight = <A>(O: Ord<A>): (<B>(b: B, f: (a: A, b: B) => B) => (fa: ReadonlySet<A>) => B) => {
@@ -357,6 +387,8 @@ export const reduceRight = <A>(O: Ord<A>): (<B>(b: B, f: (a: A, b: B) => B) => (
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function insert<A>(E: Eq<A>): (a: A) => (set: ReadonlySet<A>) => ReadonlySet<A> {
@@ -377,6 +409,8 @@ export function insert<A>(E: Eq<A>): (a: A) => (set: ReadonlySet<A>) => Readonly
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const remove =
@@ -390,6 +424,8 @@ export const remove =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const toggle = <A>(E: Eq<A>): ((a: A) => (set: ReadonlySet<A>) => ReadonlySet<A>) => {
@@ -402,6 +438,8 @@ export const toggle = <A>(E: Eq<A>): ((a: A) => (set: ReadonlySet<A>) => Readonl
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const compact = <A>(E: Eq<A>): ((fa: ReadonlySet<Option<A>>) => ReadonlySet<A>) => filterMap(E)(identity)
@@ -409,6 +447,8 @@ export const compact = <A>(E: Eq<A>): ((fa: ReadonlySet<Option<A>>) => ReadonlyS
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function separate<E, A>(
@@ -441,6 +481,8 @@ export function separate<E, A>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function filterMap<B>(E: Eq<B>): <A>(f: (a: A) => Option<B>) => (fa: ReadonlySet<A>) => ReadonlySet<B> {
@@ -464,6 +506,8 @@ export function filterMap<B>(E: Eq<B>): <A>(f: (a: A) => Option<B>) => (fa: Read
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const empty: ReadonlySet<never> = new Set()
@@ -473,6 +517,8 @@ export const empty: ReadonlySet<never> = new Set()
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const isEmpty = <A>(set: ReadonlySet<A>): boolean => set.size === 0
@@ -482,6 +528,8 @@ export const isEmpty = <A>(set: ReadonlySet<A>): boolean => set.size === 0
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const size = <A>(set: ReadonlySet<A>): number => set.size
@@ -489,6 +537,8 @@ export const size = <A>(set: ReadonlySet<A>): number => set.size
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const some =
@@ -506,6 +556,8 @@ export const some =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function every<A, B extends A>(refinement: Refinement<A, B>): Refinement<ReadonlySet<A>, ReadonlySet<B>>
@@ -520,6 +572,8 @@ export function every<A>(predicate: Predicate<A>): Predicate<ReadonlySet<A>> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function isSubset<A>(E: Eq<A>): {
@@ -545,6 +599,8 @@ export function isSubset<A>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function elem<A>(E: Eq<A>): {
@@ -574,6 +630,8 @@ export function elem<A>(E: Eq<A>): (a: A, set?: ReadonlySet<A>) => boolean | ((s
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const toReadonlyArray =
@@ -589,6 +647,8 @@ export const toReadonlyArray =
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const URI = 'ReadonlySet'
@@ -598,6 +658,8 @@ export const URI = 'ReadonlySet'
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type URI = typeof URI
@@ -613,6 +675,8 @@ declare module './HKT' {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getShow<A>(S: Show<A>): Show<ReadonlySet<A>> {
@@ -632,6 +696,8 @@ export function getShow<A>(S: Show<A>): Show<ReadonlySet<A>> {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getEq<A>(E: Eq<A>): Eq<ReadonlySet<A>> {
@@ -644,6 +710,8 @@ export function getEq<A>(E: Eq<A>): Eq<ReadonlySet<A>> {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<ReadonlySet<A>> => ({
@@ -655,6 +723,8 @@ export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<ReadonlySet<A>> => ({
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getUnionMonoid = <A>(E: Eq<A>): Monoid<ReadonlySet<A>> => ({
@@ -667,6 +737,8 @@ export const getUnionMonoid = <A>(E: Eq<A>): Monoid<ReadonlySet<A>> => ({
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<ReadonlySet<A>> => ({
@@ -678,6 +750,8 @@ export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<ReadonlySet<A>>
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getDifferenceMagma = <A>(E: Eq<A>): Magma<ReadonlySet<A>> => ({
@@ -693,6 +767,8 @@ export const getDifferenceMagma = <A>(E: Eq<A>): Magma<ReadonlySet<A>> => ({
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

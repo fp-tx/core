@@ -54,6 +54,8 @@ import { guard as guard_, type Zero1 } from './Zero'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface IOOption<A> extends IO<Option<A>> {}
@@ -67,6 +69,8 @@ export interface IOOption<A> extends IO<Option<A>> {}
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const some: <A>(a: A) => IOOption<A> = /*#__PURE__*/ OT.some(I.Pointed)
@@ -76,6 +80,8 @@ export const some: <A>(a: A) => IOOption<A> = /*#__PURE__*/ OT.some(I.Pointed)
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromPredicate: {
@@ -93,6 +99,8 @@ export const fromPredicate: {
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromOption: <A>(fa: Option<A>) => IOOption<A> = I.of
@@ -102,6 +110,8 @@ export const fromOption: <A>(fa: Option<A>) => IOOption<A> = I.of
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromEither: <A>(fa: Either<unknown, A>) => IOOption<A> = /*#__PURE__*/ OT.fromEither(I.Pointed)
@@ -111,6 +121,8 @@ export const fromEither: <A>(fa: Either<unknown, A>) => IOOption<A> = /*#__PURE_
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromIO: <A>(fa: IO<A>) => IOOption<A> = /*#__PURE__*/ OT.fromF(I.Functor)
@@ -120,6 +132,8 @@ export const fromIO: <A>(fa: IO<A>) => IOOption<A> = /*#__PURE__*/ OT.fromF(I.Fu
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromIOEither: <A>(fa: IOEither<unknown, A>) => IOOption<A> = /*#__PURE__*/ I.map(O.fromEither)
@@ -129,6 +143,8 @@ export const fromIOEither: <A>(fa: IOEither<unknown, A>) => IOOption<A> = /*#__P
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const match: <B, A>(onNone: () => B, onSome: (a: A) => B) => (ma: IOOption<A>) => IO<B> = /*#__PURE__*/ OT.match(
@@ -144,6 +160,8 @@ export const match: <B, A>(onNone: () => B, onSome: (a: A) => B) => (ma: IOOptio
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const matchW: <B, A, C>(onNone: () => B, onSome: (a: A) => C) => (ma: IOOption<A>) => IO<B | C> = match as any
@@ -155,6 +173,8 @@ export const matchW: <B, A, C>(onNone: () => B, onSome: (a: A) => C) => (ma: IOO
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const matchE: <B, A>(onNone: () => IO<B>, onSome: (a: A) => IO<B>) => (ma: IOOption<A>) => IO<B> =
@@ -167,6 +187,8 @@ export const matchE: <B, A>(onNone: () => IO<B>, onSome: (a: A) => IO<B>) => (ma
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fold = matchE
@@ -180,6 +202,8 @@ export const fold = matchE
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const matchEW: <B, C, A>(onNone: () => IO<B>, onSome: (a: A) => IO<C>) => (ma: IOOption<A>) => IO<B | C> =
@@ -190,6 +214,8 @@ export const matchEW: <B, C, A>(onNone: () => IO<B>, onSome: (a: A) => IO<C>) =>
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getOrElse: <A>(onNone: LazyArg<IO<A>>) => (fa: IOOption<A>) => IO<A> = /*#__PURE__*/ OT.getOrElse(I.Monad)
@@ -203,6 +229,8 @@ export const getOrElse: <A>(onNone: LazyArg<IO<A>>) => (fa: IOOption<A>) => IO<A
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getOrElseW: <B>(onNone: LazyArg<IO<B>>) => <A>(ma: IOOption<A>) => IO<A | B> = getOrElse as any
@@ -212,6 +240,8 @@ export const getOrElseW: <B>(onNone: LazyArg<IO<B>>) => <A>(ma: IOOption<A>) => 
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const toUndefined: <A>(ma: IOOption<A>) => IO<A | undefined> = I.map(O.toUndefined)
@@ -221,6 +251,8 @@ export const toUndefined: <A>(ma: IOOption<A>) => IO<A | undefined> = I.map(O.to
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const toNullable: <A>(ma: IOOption<A>) => IO<A | null> = I.map(O.toNullable)
@@ -230,6 +262,8 @@ export const toNullable: <A>(ma: IOOption<A>) => IO<A | null> = I.map(O.toNullab
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromNullable: <A>(a: A) => IOOption<NonNullable<A>> = /*#__PURE__*/ OT.fromNullable(I.Pointed)
@@ -239,6 +273,8 @@ export const fromNullable: <A>(a: A) => IOOption<NonNullable<A>> = /*#__PURE__*/
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromNullableK: <A extends ReadonlyArray<unknown>, B>(
@@ -252,6 +288,8 @@ export const fromNullableK: <A extends ReadonlyArray<unknown>, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainNullableK: <A, B>(
@@ -267,6 +305,8 @@ export const chainNullableK: <A, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromOptionK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => Option<B>) => (...a: A) => IOOption<B> =
@@ -280,6 +320,8 @@ export const fromOptionK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => 
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const map: <A, B>(f: (a: A) => B) => (fa: IOOption<A>) => IOOption<B> = /*#__PURE__*/ OT.map(I.Functor)
@@ -287,6 +329,8 @@ export const map: <A, B>(f: (a: A) => B) => (fa: IOOption<A>) => IOOption<B> = /
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const ap: <A>(fa: IOOption<A>) => <B>(fab: IOOption<(a: A) => B>) => IOOption<B> = /*#__PURE__*/ OT.ap(I.Apply)
@@ -296,6 +340,8 @@ export const ap: <A>(fa: IOOption<A>) => <B>(fab: IOOption<(a: A) => B>) => IOOp
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const of: <A>(a: A) => IOOption<A> = some
@@ -305,6 +351,8 @@ export const of: <A>(a: A) => IOOption<A> = some
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatMap: {
@@ -317,6 +365,8 @@ export const flatMap: {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatten: <A>(mma: IOOption<IOOption<A>>) => IOOption<A> = /*#__PURE__*/ flatMap(identity)
@@ -326,6 +376,8 @@ export const flatten: <A>(mma: IOOption<IOOption<A>>) => IOOption<A> = /*#__PURE
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const alt: <A>(second: LazyArg<IOOption<A>>) => (first: IOOption<A>) => IOOption<A> = /*#__PURE__*/ OT.alt(
@@ -341,6 +393,8 @@ export const alt: <A>(second: LazyArg<IOOption<A>>) => (first: IOOption<A>) => I
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const altW: <B>(second: LazyArg<IOOption<B>>) => <A>(first: IOOption<A>) => IOOption<A | B> = alt as any
@@ -348,6 +402,8 @@ export const altW: <B>(second: LazyArg<IOOption<B>>) => <A>(first: IOOption<A>) 
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const zero: <A>() => IOOption<A> = /*#__PURE__*/ OT.zero(I.Pointed)
@@ -355,6 +411,8 @@ export const zero: <A>() => IOOption<A> = /*#__PURE__*/ OT.zero(I.Pointed)
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const throwError: MonadThrow1<URI>['throwError'] = zero
@@ -364,6 +422,8 @@ export const throwError: MonadThrow1<URI>['throwError'] = zero
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const none: IOOption<never> = /*#__PURE__*/ zero()
@@ -373,6 +433,8 @@ export const none: IOOption<never> = /*#__PURE__*/ zero()
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const compact: Compactable1<URI>['compact'] = /*#__PURE__*/ compact_(I.Functor, O.Compactable)
@@ -382,6 +444,8 @@ export const compact: Compactable1<URI>['compact'] = /*#__PURE__*/ compact_(I.Fu
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const separate: Compactable1<URI>['separate'] = /*#__PURE__*/ separate_(I.Functor, O.Compactable, O.Functor)
@@ -391,6 +455,8 @@ export const separate: Compactable1<URI>['separate'] = /*#__PURE__*/ separate_(I
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const filter: {
@@ -404,6 +470,8 @@ export const filter: {
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fga: IOOption<A>) => IOOption<B> = /*#__PURE__*/ filterMap_(
@@ -416,6 +484,8 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fga: IOOption<A>) => 
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const partition: {
@@ -429,6 +499,8 @@ export const partition: {
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const partitionMap: <A, B, C>(
@@ -459,6 +531,8 @@ const _partitionMap: Filterable1<URI>['partitionMap'] = (fa, f) => pipe(fa, part
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const URI = 'IOOption'
@@ -468,6 +542,8 @@ export const URI = 'IOOption'
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type URI = typeof URI
@@ -483,6 +559,8 @@ declare module './HKT' {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Functor: Functor1<URI> = {
@@ -497,6 +575,8 @@ export const Functor: Functor1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const as: {
@@ -511,6 +591,8 @@ export const as: {
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const asUnit: <_>(self: IOOption<_>) => IOOption<void> = asUnit_(Functor)
@@ -520,6 +602,8 @@ export const asUnit: <_>(self: IOOption<_>) => IOOption<void> = asUnit_(Functor)
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
@@ -529,6 +613,8 @@ export const flap = /*#__PURE__*/ flap_(Functor)
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Pointed: Pointed1<URI> = {
@@ -541,6 +627,8 @@ export const Pointed: Pointed1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Apply: Apply1<URI> = {
@@ -554,6 +642,8 @@ export const Apply: Apply1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
@@ -563,6 +653,8 @@ export const apFirst = /*#__PURE__*/ apFirst_(Apply)
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
@@ -572,6 +664,8 @@ export const apSecond = /*#__PURE__*/ apSecond_(Apply)
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Applicative: Applicative1<URI> = {
@@ -586,6 +680,8 @@ export const Applicative: Applicative1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Chain: chainable.Chain1<URI> = {
@@ -600,6 +696,8 @@ export const Chain: chainable.Chain1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instance methods
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainRec: ChainRec1<URI>['chainRec'] =
@@ -628,6 +726,8 @@ export const chainRec: ChainRec1<URI>['chainRec'] =
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const ChainRec: ChainRec1<URI> = {
@@ -640,6 +740,8 @@ export const ChainRec: ChainRec1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const FromEither: FromEither1<URI> = {
@@ -652,6 +754,8 @@ export const FromEither: FromEither1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const FromIO: FromIO1<URI> = {
@@ -667,6 +771,8 @@ export const FromIO: FromIO1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Combinators
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const tap: {
@@ -682,6 +788,8 @@ export const tap: {
  * Added in 1.0.0
  * @remarks
  * Category: Combinators
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -715,6 +823,8 @@ export const tapEither: {
  * Added in 1.0.0
  * @remarks
  * Category: Combinators
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -755,6 +865,8 @@ export const tapIO: {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Alt: Alt1<URI> = {
@@ -768,6 +880,8 @@ export const Alt: Alt1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Zero: Zero1<URI> = {
@@ -780,6 +894,8 @@ export const Zero: Zero1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const guard = /*#__PURE__*/ guard_(Zero, Pointed)
@@ -789,6 +905,8 @@ export const guard = /*#__PURE__*/ guard_(Zero, Pointed)
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Alternative: Alternative1<URI> = {
@@ -805,6 +923,8 @@ export const Alternative: Alternative1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Monad: Monad1<URI> = {
@@ -820,6 +940,8 @@ export const Monad: Monad1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const MonadIO: MonadIO1<URI> = {
@@ -836,6 +958,8 @@ export const MonadIO: MonadIO1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const MonadThrow: MonadThrow1<URI> = {
@@ -848,6 +972,8 @@ export const MonadThrow: MonadThrow1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Compactable: Compactable1<URI> = {
@@ -861,6 +987,8 @@ export const Compactable: Compactable1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Filterable: Filterable1<URI> = {
@@ -899,6 +1027,8 @@ const _FromEither: _.FromEither<IOOptionTypeLambda> = {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatMapIO: {
@@ -911,6 +1041,8 @@ export const flatMapIO: {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatMapOption: {
@@ -926,6 +1058,8 @@ export const flatMapOption: {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatMapEither: {
@@ -938,6 +1072,8 @@ export const flatMapEither: {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatMapNullable: {
@@ -953,6 +1089,8 @@ export const flatMapNullable: {
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => I.IO<B>) => (...a: A) => IOOption<B> =
@@ -965,6 +1103,8 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => I.IO
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainIOK: <A, B>(f: (a: A) => I.IO<B>) => (first: IOOption<A>) => IOOption<B> = flatMapIO
@@ -976,6 +1116,8 @@ export const chainIOK: <A, B>(f: (a: A) => I.IO<B>) => (first: IOOption<A>) => I
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainFirstIOK: <A, B>(f: (a: A) => I.IO<B>) => (first: IOOption<A>) => IOOption<A> = tapIO
@@ -985,6 +1127,8 @@ export const chainFirstIOK: <A, B>(f: (a: A) => I.IO<B>) => (first: IOOption<A>)
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
@@ -998,6 +1142,8 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: IOOption<A>) => IOOption<B> = flatMapEither
@@ -1009,6 +1155,8 @@ export const chainEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: IOOption
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: IOOption<A>) => IOOption<A> = tapEither
@@ -1020,6 +1168,8 @@ export const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: IOO
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainOptionK: <A, B>(f: (a: A) => Option<B>) => (ma: IOOption<A>) => IOOption<B> = flatMapOption
@@ -1033,6 +1183,8 @@ export const chainOptionK: <A, B>(f: (a: A) => Option<B>) => (ma: IOOption<A>) =
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Do: IOOption<{}> = /*#__PURE__*/ of(_.emptyRecord)
@@ -1042,6 +1194,8 @@ export const Do: IOOption<{}> = /*#__PURE__*/ of(_.emptyRecord)
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
@@ -1054,6 +1208,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Do notation
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   let_ as let,
@@ -1064,6 +1220,8 @@ export {
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
@@ -1073,6 +1231,8 @@ export const bind = /*#__PURE__*/ chainable.bind(Chain)
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
@@ -1080,6 +1240,8 @@ export const apS = /*#__PURE__*/ apS_(Apply)
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const ApT: IOOption<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
@@ -1115,6 +1277,8 @@ export {
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndex = <A, B>(
@@ -1129,6 +1293,8 @@ export const traverseReadonlyNonEmptyArrayWithIndex = <A, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverseReadonlyArrayWithIndex = <A, B>(
@@ -1149,6 +1315,8 @@ export const traverseReadonlyArrayWithIndex = <A, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chain: <A, B>(f: (a: A) => IOOption<B>) => (ma: IOOption<A>) => IOOption<B> = flatMap
@@ -1160,6 +1328,8 @@ export const chain: <A, B>(f: (a: A) => IOOption<B>) => (ma: IOOption<A>) => IOO
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainFirst: <A, B>(f: (a: A) => IOOption<B>) => (first: IOOption<A>) => IOOption<A> = tap

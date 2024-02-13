@@ -3,6 +3,8 @@
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 
@@ -18,6 +20,8 @@ import { type Predicate } from './Predicate'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Magma<A> {
@@ -33,6 +37,8 @@ export interface Magma<A> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -53,6 +59,8 @@ export const reverse = <A>(M: Magma<A>): Magma<A> => ({
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const filterFirst =
@@ -64,6 +72,8 @@ export const filterFirst =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const filterSecond =
@@ -75,6 +85,8 @@ export const filterSecond =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const endo =
@@ -94,6 +106,8 @@ export const endo =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript

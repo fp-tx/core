@@ -76,6 +76,8 @@ import {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Applicative<F> extends Apply<F>, Pointed<F> {}
@@ -85,6 +87,8 @@ export interface Applicative<F> extends Apply<F>, Pointed<F> {}
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Applicative1<F extends URIS> extends Apply1<F>, Pointed1<F> {}
@@ -94,6 +98,8 @@ export interface Applicative1<F extends URIS> extends Apply1<F>, Pointed1<F> {}
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Applicative2<F extends URIS2> extends Apply2<F>, Pointed2<F> {}
@@ -103,6 +109,8 @@ export interface Applicative2<F extends URIS2> extends Apply2<F>, Pointed2<F> {}
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Applicative2C<F extends URIS2, E> extends Apply2C<F, E>, Pointed2C<F, E> {}
@@ -112,6 +120,8 @@ export interface Applicative2C<F extends URIS2, E> extends Apply2C<F, E>, Pointe
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Applicative3<F extends URIS3> extends Apply3<F>, Pointed3<F> {}
@@ -121,6 +131,8 @@ export interface Applicative3<F extends URIS3> extends Apply3<F>, Pointed3<F> {}
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Applicative3C<F extends URIS3, E> extends Apply3C<F, E>, Pointed3C<F, E> {}
@@ -130,6 +142,8 @@ export interface Applicative3C<F extends URIS3, E> extends Apply3C<F, E>, Pointe
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Applicative4<F extends URIS4> extends Apply4<F>, Pointed4<F> {}
@@ -143,6 +157,8 @@ export interface Applicative4<F extends URIS4> extends Apply4<F>, Pointed4<F> {}
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getApplicativeMonoid<F extends URIS4>(
@@ -177,6 +193,8 @@ export function getApplicativeMonoid<F>(F: Applicative<F>): <A>(M: Monoid<A>) =>
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -188,6 +206,8 @@ export interface ApplicativeComposition<F, G> extends FunctorComposition<F, G> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -199,6 +219,8 @@ export interface ApplicativeCompositionHKT1<F, G extends URIS> extends FunctorCo
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -210,6 +232,8 @@ export interface ApplicativeCompositionHKT2<F, G extends URIS2> extends FunctorC
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -221,6 +245,8 @@ export interface ApplicativeCompositionHKT2C<F, G extends URIS2, E> extends Func
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -232,6 +258,8 @@ export interface ApplicativeComposition11<F extends URIS, G extends URIS> extend
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -246,6 +274,8 @@ export interface ApplicativeComposition12<F extends URIS, G extends URIS2> exten
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -257,6 +287,8 @@ export interface ApplicativeComposition12C<F extends URIS, G extends URIS2, E> e
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -271,6 +303,8 @@ export interface ApplicativeComposition21<F extends URIS2, G extends URIS> exten
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -282,6 +316,8 @@ export interface ApplicativeComposition2C1<F extends URIS2, G extends URIS, E> e
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -296,6 +332,8 @@ export interface ApplicativeComposition22<F extends URIS2, G extends URIS2> exte
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -312,6 +350,8 @@ export interface ApplicativeComposition22C<F extends URIS2, G extends URIS2, E> 
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

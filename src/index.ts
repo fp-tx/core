@@ -1,6 +1,8 @@
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 
@@ -132,6 +134,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   alt,
@@ -140,6 +144,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   alternative,
@@ -148,6 +154,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   applicative,
@@ -156,6 +164,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   apply,
@@ -164,6 +174,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   array,
@@ -172,12 +184,16 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   bifunctor,
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   boolean,
@@ -186,6 +202,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   booleanAlgebra,
@@ -194,6 +212,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   bounded,
@@ -202,6 +222,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   boundedDistributiveLattice,
@@ -210,6 +232,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   boundedJoinSemilattice,
@@ -218,6 +242,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   boundedLattice,
@@ -226,6 +252,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   boundedMeetSemilattice,
@@ -234,6 +262,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   category,
@@ -242,6 +272,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   chain,
@@ -250,6 +282,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   chainRec,
@@ -258,6 +292,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   choice,
@@ -266,6 +302,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   comonad,
@@ -274,12 +312,16 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   compactable,
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   console,
@@ -288,6 +330,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   const_ as const,
@@ -296,12 +340,16 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   contravariant,
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   date,
@@ -310,6 +358,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   distributiveLattice,
@@ -318,6 +368,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   either,
@@ -326,6 +378,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Monad transformers
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   eitherT,
@@ -334,6 +388,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   endomorphism,
@@ -342,6 +398,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   eq,
@@ -350,6 +408,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   extend,
@@ -358,6 +418,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   field,
@@ -366,6 +428,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   filterable,
@@ -374,6 +438,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   filterableWithIndex,
@@ -382,6 +448,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   foldable,
@@ -390,6 +458,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   foldableWithIndex,
@@ -398,6 +468,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   fromEither,
@@ -406,6 +478,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   fromIO,
@@ -414,6 +488,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   fromReader,
@@ -422,6 +498,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   fromState,
@@ -430,6 +508,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   fromTask,
@@ -438,12 +518,16 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   fromThese,
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   function_ as function,
@@ -452,6 +536,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   functor,
@@ -460,6 +546,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   functorWithIndex,
@@ -468,6 +556,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   group,
@@ -476,12 +566,16 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   heytingAlgebra,
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   hkt,
@@ -490,6 +584,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   identity,
@@ -498,6 +594,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   invariant,
@@ -506,6 +604,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   io,
@@ -514,6 +614,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   ioEither,
@@ -522,12 +624,16 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   ioOption,
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   ioRef,
@@ -536,12 +642,16 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   joinSemilattice,
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   json,
@@ -550,6 +660,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   lattice,
@@ -558,6 +670,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   magma,
@@ -566,6 +680,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   map,
@@ -574,6 +690,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   meetSemilattice,
@@ -582,6 +700,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   monad,
@@ -590,6 +710,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   monadIO,
@@ -598,6 +720,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   monadTask,
@@ -606,6 +730,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   monadThrow,
@@ -614,12 +740,16 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   monoid,
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   naturalTransformation,
@@ -628,12 +758,16 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   nonEmptyArray,
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   number,
@@ -642,6 +776,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   option,
@@ -650,6 +786,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Monad transformers
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   optionT,
@@ -658,18 +796,24 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   ord,
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   ordering,
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   pipeable,
@@ -678,6 +822,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   pointed,
@@ -686,6 +832,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   predicate,
@@ -694,12 +842,16 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   profunctor,
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   random,
@@ -708,6 +860,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   reader,
@@ -716,6 +870,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   readerEither,
@@ -724,6 +880,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   readerIO,
@@ -732,6 +890,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Monad transformers
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   readerT,
@@ -740,6 +900,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   readerTask,
@@ -748,6 +910,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   readerTaskEither,
@@ -756,6 +920,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   readonlyArray,
@@ -764,6 +930,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   readonlyMap,
@@ -772,6 +940,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   readonlyNonEmptyArray,
@@ -780,6 +950,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   readonlyRecord,
@@ -788,6 +960,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   readonlySet,
@@ -796,6 +970,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   readonlyTuple,
@@ -804,6 +980,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   record,
@@ -812,6 +990,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   refinement,
@@ -820,6 +1000,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   ring,
@@ -828,6 +1010,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   semigroup,
@@ -836,6 +1020,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   semigroupoid,
@@ -844,6 +1030,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   semiring,
@@ -852,6 +1040,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   separated,
@@ -860,6 +1050,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   set,
@@ -868,6 +1060,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   show,
@@ -876,6 +1070,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   state,
@@ -884,6 +1080,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   stateReaderTaskEither,
@@ -892,6 +1090,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Monad transformers
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   stateT,
@@ -900,12 +1100,16 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   store,
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   string,
@@ -914,12 +1118,16 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   strong,
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   struct,
@@ -928,6 +1136,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   task,
@@ -936,6 +1146,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   taskEither,
@@ -944,6 +1156,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   taskOption,
@@ -952,6 +1166,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   taskThese,
@@ -960,6 +1176,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   these,
@@ -968,6 +1186,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Monad transformers
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   theseT,
@@ -976,6 +1196,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   traced,
@@ -984,6 +1206,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   traversable,
@@ -992,6 +1216,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   traversableWithIndex,
@@ -1000,6 +1226,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   tree,
@@ -1008,6 +1236,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   tuple,
@@ -1016,6 +1246,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   unfoldable,
@@ -1024,6 +1256,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   validationT,
@@ -1032,6 +1266,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Zone of death
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @deprecated Use applicative validation instead
    * @public
    */
@@ -1041,6 +1277,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   witherable,
@@ -1049,6 +1287,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Data types
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   writer,
@@ -1057,6 +1297,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Monad transformers
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   writerT,
@@ -1065,6 +1307,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Model
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   zero,

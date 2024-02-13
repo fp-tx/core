@@ -3,6 +3,8 @@
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 
@@ -43,6 +45,8 @@ import { type Refinement } from './Refinement'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FromEither<F> {
@@ -55,6 +59,8 @@ export interface FromEither<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FromEither1<F extends URIS> {
@@ -67,6 +73,8 @@ export interface FromEither1<F extends URIS> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FromEither2<F extends URIS2> {
@@ -79,6 +87,8 @@ export interface FromEither2<F extends URIS2> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FromEither2C<F extends URIS2, E> {
@@ -92,6 +102,8 @@ export interface FromEither2C<F extends URIS2, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FromEither3<F extends URIS3> {
@@ -104,6 +116,8 @@ export interface FromEither3<F extends URIS3> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FromEither3C<F extends URIS3, E> {
@@ -117,6 +131,8 @@ export interface FromEither3C<F extends URIS3, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FromEither4<F extends URIS4> {
@@ -133,6 +149,8 @@ export interface FromEither4<F extends URIS4> {
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function fromOption<F extends URIS4>(
@@ -160,6 +178,8 @@ export function fromOption<F>(F: FromEither<F>): <E>(onNone: LazyArg<E>) => <A>(
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function fromPredicate<F extends URIS4>(
@@ -219,6 +239,8 @@ export function fromPredicate<F>(F: FromEither<F>): {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function fromOptionK<F extends URIS4>(
@@ -266,6 +288,8 @@ export function fromOptionK<F>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function chainOptionK<F extends URIS4>(
@@ -306,6 +330,8 @@ export function chainOptionK<F extends URIS2>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function fromEitherK<F extends URIS4>(
@@ -338,6 +364,8 @@ export function fromEitherK<F>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function chainEitherK<M extends URIS4>(
@@ -379,6 +407,8 @@ export function chainEitherK<M extends URIS2>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function chainFirstEitherK<M extends URIS4>(
@@ -420,6 +450,8 @@ export function chainFirstEitherK<M extends URIS2>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function filterOrElse<M extends URIS4>(

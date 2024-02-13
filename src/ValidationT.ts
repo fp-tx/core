@@ -24,6 +24,8 @@ import { type Semigroup } from './Semigroup'
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -32,6 +34,8 @@ export interface ValidationT<M, E, A> extends HKT<M, Either<E, A>> {}
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -45,6 +49,8 @@ export interface ValidationM<M, E> extends ApplicativeCompositionHKT2C<M, E.URI,
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -53,6 +59,8 @@ export type ValidationT1<M extends URIS, E, A> = Kind<M, Either<E, A>>
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -66,6 +74,8 @@ export interface ValidationM1<M extends URIS, E> extends ApplicativeComposition1
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -74,6 +84,8 @@ export type ValidationT2<M extends URIS2, R, E, A> = Kind2<M, R, Either<E, A>>
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -96,6 +108,8 @@ export interface ValidationM2<M extends URIS2, E> extends ApplicativeComposition
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

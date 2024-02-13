@@ -44,6 +44,8 @@ import { type Traversable, type Traversable1, type Traversable2, type Traversabl
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface TraversableWithIndex<T, I> extends FunctorWithIndex<T, I>, FoldableWithIndex<T, I>, Traversable<T> {
@@ -53,6 +55,8 @@ export interface TraversableWithIndex<T, I> extends FunctorWithIndex<T, I>, Fold
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface TraversableWithIndex1<T extends URIS, I>
@@ -65,6 +69,8 @@ export interface TraversableWithIndex1<T extends URIS, I>
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface TraversableWithIndex2<T extends URIS2, I>
@@ -77,6 +83,8 @@ export interface TraversableWithIndex2<T extends URIS2, I>
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface TraversableWithIndex2C<T extends URIS2, I, E>
@@ -89,6 +97,8 @@ export interface TraversableWithIndex2C<T extends URIS2, I, E>
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface TraverseWithIndex<T, I> {
@@ -111,6 +121,8 @@ export interface TraverseWithIndex<T, I> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface TraverseWithIndex1<T extends URIS, I> {
@@ -133,6 +145,8 @@ export interface TraverseWithIndex1<T extends URIS, I> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface TraverseWithIndex2<T extends URIS2, I> {
@@ -154,6 +168,8 @@ export interface TraverseWithIndex2<T extends URIS2, I> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface TraverseWithIndex2C<T extends URIS2, I, E> {
@@ -182,6 +198,8 @@ export interface TraverseWithIndex2C<T extends URIS2, I, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface PipeableTraverseWithIndex1<T extends URIS, I> {
@@ -204,6 +222,8 @@ export interface PipeableTraverseWithIndex1<T extends URIS, I> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface PipeableTraverseWithIndex2<T extends URIS2, I> {

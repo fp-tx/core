@@ -27,6 +27,8 @@ import { type Option } from './Option'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Unfoldable<F> {
@@ -39,6 +41,8 @@ export interface Unfoldable<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Unfoldable1<F extends URIS> {
@@ -51,6 +55,8 @@ export interface Unfoldable1<F extends URIS> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Unfoldable2<F extends URIS2> {
@@ -63,6 +69,8 @@ export interface Unfoldable2<F extends URIS2> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Unfoldable2C<F extends URIS2, E> {
@@ -76,6 +84,8 @@ export interface Unfoldable2C<F extends URIS2, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Unfoldable3<F extends URIS3> {
@@ -88,6 +98,8 @@ export interface Unfoldable3<F extends URIS3> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Unfoldable3C<F extends URIS3, E> {
@@ -101,6 +113,8 @@ export interface Unfoldable3C<F extends URIS3, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Unfoldable4<F extends URIS4> {

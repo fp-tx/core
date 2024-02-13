@@ -20,6 +20,8 @@ import { max, min, type Ord } from './Ord'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface DistributiveLattice<A> extends Lattice<A> {}
@@ -33,6 +35,8 @@ export interface DistributiveLattice<A> extends Lattice<A> {}
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getMinMaxDistributiveLattice<A>(O: Ord<A>): DistributiveLattice<A> {

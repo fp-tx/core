@@ -34,6 +34,8 @@ import { type Monoid } from './Monoid'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Foldable<F> {
@@ -48,6 +50,8 @@ export interface Foldable<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Foldable1<F extends URIS> {
@@ -62,6 +66,8 @@ export interface Foldable1<F extends URIS> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Foldable2<F extends URIS2> {
@@ -76,6 +82,8 @@ export interface Foldable2<F extends URIS2> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Foldable2C<F extends URIS2, E> {
@@ -91,6 +99,8 @@ export interface Foldable2C<F extends URIS2, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Foldable3<F extends URIS3> {
@@ -105,6 +115,8 @@ export interface Foldable3<F extends URIS3> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Foldable3C<F extends URIS3, E> {
@@ -120,6 +132,8 @@ export interface Foldable3C<F extends URIS3, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Foldable4<F extends URIS4> {
@@ -138,6 +152,8 @@ export interface Foldable4<F extends URIS4> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function reduce<F extends URIS, G extends URIS>(
@@ -160,6 +176,8 @@ export function reduce<F, G>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function foldMap<F extends URIS, G extends URIS>(
@@ -186,6 +204,8 @@ export function foldMap<F, G>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function reduceRight<F extends URIS, G extends URIS>(
@@ -214,6 +234,8 @@ export function reduceRight<F, G>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -272,6 +294,8 @@ export function reduceM<M, F>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -313,6 +337,8 @@ export function intercalate<M, F>(M: Monoid<M>, F: Foldable<F>): (middle: M, fm:
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -350,6 +376,8 @@ export function toReadonlyArray<F>(F: Foldable<F>): <A>(fa: HKT<F, A>) => Readon
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -403,6 +431,8 @@ export function traverse_<M, F>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -447,6 +477,8 @@ export function foldM<M, F>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -455,6 +487,8 @@ export const toArray = toReadonlyArray
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -467,6 +501,8 @@ export interface FoldableComposition<F, G> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -479,6 +515,8 @@ export interface FoldableComposition11<F extends URIS, G extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -491,6 +529,8 @@ export interface FoldableComposition12<F extends URIS, G extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -503,6 +543,8 @@ export interface FoldableComposition12C<F extends URIS, G extends URIS2, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -515,6 +557,8 @@ export interface FoldableComposition21<F extends URIS2, G extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -527,6 +571,8 @@ export interface FoldableComposition2C1<F extends URIS2, G extends URIS, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -539,6 +585,8 @@ export interface FoldableComposition22<F extends URIS2, G extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -559,6 +607,8 @@ export interface FoldableComposition22C<F extends URIS2, G extends URIS2, E> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

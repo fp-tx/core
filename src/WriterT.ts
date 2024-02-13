@@ -14,6 +14,8 @@ import { type Monoid } from './Monoid'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface WriterT<M, W, A> {
@@ -23,6 +25,8 @@ export interface WriterT<M, W, A> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface WriterM<M> {
@@ -48,6 +52,8 @@ export interface WriterM<M> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface WriterT1<M extends URIS, W, A> {
@@ -57,6 +63,8 @@ export interface WriterT1<M extends URIS, W, A> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface WriterM1<M extends URIS> {
@@ -82,6 +90,8 @@ export interface WriterM1<M extends URIS> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface WriterT2<M extends URIS2, E, W, A> {
@@ -91,6 +101,8 @@ export interface WriterT2<M extends URIS2, E, W, A> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface WriterM2<M extends URIS2> {
@@ -114,6 +126,8 @@ export interface WriterM2<M extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface WriterM2C<M extends URIS2, E> {
@@ -137,6 +151,8 @@ export interface WriterM2C<M extends URIS2, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface WriterT3<M extends URIS3, R, E, W, A> {
@@ -146,6 +162,8 @@ export interface WriterT3<M extends URIS3, R, E, W, A> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface WriterM3<M extends URIS3> {
@@ -175,6 +193,8 @@ export interface WriterM3<M extends URIS3> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getWriterM<M extends URIS3>(M: Monad3<M>): WriterM3<M>

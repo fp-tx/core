@@ -36,6 +36,8 @@ import { wiltDefault, type Witherable2C, witherDefault } from './Witherable'
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromMap = <K, A>(m: Map<K, A>): ReadonlyMap<K, A> => new Map(m)
@@ -45,6 +47,8 @@ export const fromMap = <K, A>(m: Map<K, A>): ReadonlyMap<K, A> => new Map(m)
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function toMap<K, A>(m: ReadonlyMap<K, A>): Map<K, A> {
@@ -56,6 +60,8 @@ export function toMap<K, A>(m: ReadonlyMap<K, A>): Map<K, A> {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getShow<K, A>(SK: Show<K>, SA: Show<A>): Show<ReadonlyMap<K, A>> {
@@ -75,6 +81,8 @@ export function getShow<K, A>(SK: Show<K>, SA: Show<A>): Show<ReadonlyMap<K, A>>
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const size = <K, A>(m: ReadonlyMap<K, A>): number => m.size
@@ -84,6 +92,8 @@ export const size = <K, A>(m: ReadonlyMap<K, A>): number => m.size
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const isEmpty = <K, A>(m: ReadonlyMap<K, A>): boolean => m.size === 0
@@ -94,6 +104,8 @@ export const isEmpty = <K, A>(m: ReadonlyMap<K, A>): boolean => m.size === 0
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function member<K>(E: Eq<K>): {
@@ -122,6 +134,8 @@ interface Next<A> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function elem<A>(E: Eq<A>): {
@@ -151,6 +165,8 @@ export function elem<A>(E: Eq<A>): <K>(a: A, m?: ReadonlyMap<K, A>) => boolean |
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const keys =
@@ -163,6 +179,8 @@ export const keys =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const values =
@@ -173,6 +191,8 @@ export const values =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function collect<K>(O: Ord<K>): <A, B>(f: (k: K, a: A) => B) => (m: ReadonlyMap<K, A>) => ReadonlyArray<B> {
@@ -195,6 +215,8 @@ export function collect<K>(O: Ord<K>): <A, B>(f: (k: K, a: A) => B) => (m: Reado
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const toReadonlyArray = <K>(O: Ord<K>): (<A>(m: ReadonlyMap<K, A>) => ReadonlyArray<readonly [K, A]>) =>
@@ -207,6 +229,8 @@ export const toReadonlyArray = <K>(O: Ord<K>): (<A>(m: ReadonlyMap<K, A>) => Rea
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function toUnfoldable<K, F extends URIS>(
@@ -231,6 +255,8 @@ export function toUnfoldable<K, F>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const upsertAt = <K>(E: Eq<K>): (<A>(k: K, a: A) => (m: ReadonlyMap<K, A>) => ReadonlyMap<K, A>) => {
@@ -258,6 +284,8 @@ export const upsertAt = <K>(E: Eq<K>): (<A>(k: K, a: A) => (m: ReadonlyMap<K, A>
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const deleteAt = <K>(E: Eq<K>): ((k: K) => <A>(m: ReadonlyMap<K, A>) => ReadonlyMap<K, A>) => {
@@ -276,6 +304,8 @@ export const deleteAt = <K>(E: Eq<K>): ((k: K) => <A>(m: ReadonlyMap<K, A>) => R
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const updateAt = <K>(E: Eq<K>): (<A>(k: K, a: A) => (m: ReadonlyMap<K, A>) => Option<ReadonlyMap<K, A>>) => {
@@ -286,6 +316,8 @@ export const updateAt = <K>(E: Eq<K>): (<A>(k: K, a: A) => (m: ReadonlyMap<K, A>
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const modifyAt = <K>(
@@ -313,6 +345,8 @@ export const modifyAt = <K>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function pop<K>(E: Eq<K>): (k: K) => <A>(m: ReadonlyMap<K, A>) => Option<readonly [A, ReadonlyMap<K, A>]> {
@@ -334,6 +368,8 @@ export function pop<K>(E: Eq<K>): (k: K) => <A>(m: ReadonlyMap<K, A>) => Option<
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function lookupWithKey<K>(E: Eq<K>): {
@@ -366,6 +402,8 @@ export function lookupWithKey<K>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function lookup<K>(E: Eq<K>): {
@@ -394,6 +432,8 @@ export function lookup<K>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function isSubmap<K, A>(
@@ -429,6 +469,8 @@ export function isSubmap<K, A>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const empty: ReadonlyMap<never, never> =
@@ -440,6 +482,8 @@ export const empty: ReadonlyMap<never, never> =
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getEq<K, A>(SK: Eq<K>, SA: Eq<A>): Eq<ReadonlyMap<K, A>> {
@@ -454,6 +498,8 @@ export function getEq<K, A>(SK: Eq<K>, SA: Eq<A>): Eq<ReadonlyMap<K, A>> {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getMonoid<K, A>(SK: Eq<K>, SA: Semigroup<A>): Monoid<ReadonlyMap<K, A>> {
@@ -491,6 +537,8 @@ export function getMonoid<K, A>(SK: Eq<K>, SA: Semigroup<A>): Monoid<ReadonlyMap
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const singleton = <K, A>(k: K, a: A): ReadonlyMap<K, A> => new Map([[k, a]])
@@ -503,6 +551,8 @@ export const singleton = <K, A>(k: K, a: A): ReadonlyMap<K, A> => new Map([[k, a
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function fromFoldable<F extends URIS3, K, A>(
@@ -558,6 +608,8 @@ const _mapWithIndex = <K, A, B>(fa: ReadonlyMap<K, A>, f: (k: K, a: A) => B): Re
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const partitionMapWithIndex =
@@ -582,6 +634,8 @@ export const partitionMapWithIndex =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function partitionWithIndex<K, A, B extends A>(
@@ -616,6 +670,8 @@ export function partitionWithIndex<K, A>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const filterMapWithIndex =
@@ -637,6 +693,8 @@ export const filterMapWithIndex =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function filterWithIndex<K, A, B extends A>(
@@ -684,6 +742,8 @@ const _partitionMapWithIndex = <K, A, B, C>(fa: ReadonlyMap<K, A>, f: (k: K, a: 
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const compact = <K, A>(fa: ReadonlyMap<K, Option<A>>): ReadonlyMap<K, A> => {
@@ -704,6 +764,8 @@ export const compact = <K, A>(fa: ReadonlyMap<K, Option<A>>): ReadonlyMap<K, A> 
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const filter: {
@@ -720,6 +782,8 @@ export const filter: {
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const filterMap: <A, B>(f: (a: A) => Option<B>) => <K>(fa: ReadonlyMap<K, A>) => ReadonlyMap<K, B> = f => fa =>
@@ -733,6 +797,8 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => <K>(fa: ReadonlyMap<K,
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const map: <A, B>(f: (a: A) => B) => <K>(fa: ReadonlyMap<K, A>) => ReadonlyMap<K, B> = f => fa => _map(fa, f)
@@ -742,6 +808,8 @@ export const map: <A, B>(f: (a: A) => B) => <K>(fa: ReadonlyMap<K, A>) => Readon
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const mapWithIndex: <K, A, B>(f: (k: K, a: A) => B) => (fa: ReadonlyMap<K, A>) => ReadonlyMap<K, B> = f => fa =>
@@ -752,6 +820,8 @@ export const mapWithIndex: <K, A, B>(f: (k: K, a: A) => B) => (fa: ReadonlyMap<K
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const partition: {
@@ -772,6 +842,8 @@ export const partition: {
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const partitionMap: <A, B, C>(
@@ -783,6 +855,8 @@ export const partitionMap: <A, B, C>(
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const separate = <K, A, B>(
@@ -808,6 +882,8 @@ export const separate = <K, A, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const URI = 'ReadonlyMap'
@@ -817,6 +893,8 @@ export const URI = 'ReadonlyMap'
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type URI = typeof URI
@@ -832,6 +910,8 @@ declare module './HKT' {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getUnionSemigroup = <K, A>(E: Eq<K>, S: Semigroup<A>): Semigroup<ReadonlyMap<K, A>> => {
@@ -846,6 +926,8 @@ export const getUnionSemigroup = <K, A>(E: Eq<K>, S: Semigroup<A>): Semigroup<Re
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getUnionMonoid = <K, A>(E: Eq<K>, S: Semigroup<A>): Monoid<ReadonlyMap<K, A>> => ({
@@ -858,6 +940,8 @@ export const getUnionMonoid = <K, A>(E: Eq<K>, S: Semigroup<A>): Monoid<Readonly
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getIntersectionSemigroup = <K, A>(E: Eq<K>, S: Semigroup<A>): Semigroup<ReadonlyMap<K, A>> => {
@@ -872,6 +956,8 @@ export const getIntersectionSemigroup = <K, A>(E: Eq<K>, S: Semigroup<A>): Semig
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getDifferenceMagma =
@@ -888,6 +974,8 @@ export const getDifferenceMagma =
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getFilterableWithIndex<K = never>(): FilterableWithIndex2C<URI, K, K> {
@@ -914,6 +1002,8 @@ export function getFilterableWithIndex<K = never>(): FilterableWithIndex2C<URI, 
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Functor: Functor2<URI> = {
@@ -926,6 +1016,8 @@ export const Functor: Functor2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
@@ -935,6 +1027,8 @@ export const flap = /*#__PURE__*/ flap_(Functor)
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getFunctorWithIndex = <K = never>(): FunctorWithIndex2C<URI, K, K> => ({
@@ -949,6 +1043,8 @@ export const getFunctorWithIndex = <K = never>(): FunctorWithIndex2C<URI, K, K> 
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Compactable: Compactable2<URI> = {
@@ -962,6 +1058,8 @@ export const Compactable: Compactable2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Filterable: Filterable2<URI> = {
@@ -980,6 +1078,8 @@ export const Filterable: Filterable2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reduce = <K>(O: Ord<K>): (<B, A>(b: B, f: (b: B, a: A) => B) => (m: ReadonlyMap<K, A>) => B) => {
@@ -992,6 +1092,8 @@ export const reduce = <K>(O: Ord<K>): (<B, A>(b: B, f: (b: B, a: A) => B) => (m:
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const foldMap = <K>(O: Ord<K>): (<M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (m: ReadonlyMap<K, A>) => M) => {
@@ -1007,6 +1109,8 @@ export const foldMap = <K>(O: Ord<K>): (<M>(M: Monoid<M>) => <A>(f: (a: A) => M)
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reduceRight = <K>(O: Ord<K>): (<B, A>(b: B, f: (a: A, b: B) => B) => (m: ReadonlyMap<K, A>) => B) => {
@@ -1019,6 +1123,8 @@ export const reduceRight = <K>(O: Ord<K>): (<B, A>(b: B, f: (a: A, b: B) => B) =
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getFoldable = <K>(O: Ord<K>): Foldable2C<URI, K> => {
@@ -1042,6 +1148,8 @@ export const getFoldable = <K>(O: Ord<K>): Foldable2C<URI, K> => {
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reduceWithIndex = <K>(
@@ -1062,6 +1170,8 @@ export const reduceWithIndex = <K>(
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const foldMapWithIndex = <K>(
@@ -1082,6 +1192,8 @@ export const foldMapWithIndex = <K>(
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reduceRightWithIndex = <K>(
@@ -1105,6 +1217,8 @@ export const reduceRightWithIndex = <K>(
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getFoldableWithIndex = <K>(O: Ord<K>): FoldableWithIndex2C<URI, K, K> => {
@@ -1132,6 +1246,8 @@ export const getFoldableWithIndex = <K>(O: Ord<K>): FoldableWithIndex2C<URI, K, 
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getTraversable = <K>(O: Ord<K>): Traversable2C<URI, K> => {
@@ -1154,6 +1270,8 @@ export const getTraversable = <K>(O: Ord<K>): Traversable2C<URI, K> => {
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getTraversableWithIndex = <K>(O: Ord<K>): TraversableWithIndex2C<URI, K, K> => {
@@ -1210,6 +1328,8 @@ export const getTraversableWithIndex = <K>(O: Ord<K>): TraversableWithIndex2C<UR
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getWitherable<K>(O: Ord<K>): Witherable2C<URI, K> & TraversableWithIndex2C<URI, K, K> {
@@ -1246,6 +1366,8 @@ export function getWitherable<K>(O: Ord<K>): Witherable2C<URI, K> & TraversableW
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const union = <K, A>(
@@ -1287,6 +1409,8 @@ export const union = <K, A>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const intersection = <K, A>(
@@ -1315,6 +1439,8 @@ export const intersection = <K, A>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const difference = <K>(
@@ -1358,6 +1484,8 @@ export const difference = <K>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1369,6 +1497,8 @@ export const insertAt: <K>(E: Eq<K>) => <A>(k: K, a: A) => (m: ReadonlyMap<K, A>
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

@@ -43,6 +43,8 @@ import { type Profunctor, type Profunctor2, type Profunctor3, type Profunctor4 }
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Strong<F> extends Profunctor<F> {
@@ -55,6 +57,8 @@ export interface Strong<F> extends Profunctor<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Strong2<F extends URIS2> extends Profunctor2<F> {
@@ -67,6 +71,8 @@ export interface Strong2<F extends URIS2> extends Profunctor2<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Strong3<F extends URIS3> extends Profunctor3<F> {
@@ -79,6 +85,8 @@ export interface Strong3<F extends URIS3> extends Profunctor3<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Strong4<F extends URIS4> extends Profunctor4<F> {
@@ -100,6 +108,8 @@ export interface Strong4<F extends URIS4> extends Profunctor4<F> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function split<F extends URIS4>(
@@ -144,6 +154,8 @@ export function split<F>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function fanOut<F extends URIS4>(
@@ -183,6 +195,8 @@ export function fanOut<F>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -212,6 +226,8 @@ export function splitStrong<F>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

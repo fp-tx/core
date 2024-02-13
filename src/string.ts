@@ -20,6 +20,8 @@ import type * as Sh from './Show'
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -42,6 +44,8 @@ export const Eq: E.Eq<string> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -61,6 +65,8 @@ export const Semigroup: S.Semigroup<string> = {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const empty = ''
@@ -74,6 +80,8 @@ export const empty = ''
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -95,6 +103,8 @@ export const Monoid: M.Monoid<string> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -120,6 +130,8 @@ export const Ord: O.Ord<string> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -143,6 +155,8 @@ export const Show: Sh.Show<string> = {
  * Added in 1.0.0
  * @remarks
  * Category: Refinements
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -163,6 +177,8 @@ export const isString: Refinement<unknown, string> = (u: unknown): u is string =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -179,6 +195,8 @@ export const toUpperCase = (s: string): string => s.toUpperCase()
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -195,6 +213,8 @@ export const toLowerCase = (s: string): string => s.toLowerCase()
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -214,6 +234,8 @@ export const replace =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -230,6 +252,8 @@ export const trim = (s: string): string => s.trim()
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -246,6 +270,8 @@ export const trimLeft = (s: string): string => s.trimLeft()
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -262,6 +288,8 @@ export const trimRight = (s: string): string => s.trimRight()
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -287,6 +315,8 @@ export const slice =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -306,6 +336,8 @@ export const isEmpty = (s: string): boolean => s.length === 0
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -322,6 +354,8 @@ export const size = (s: string): number => s.length
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -344,6 +378,8 @@ export const split =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -364,6 +400,8 @@ export const includes =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -384,6 +422,8 @@ export const startsWith =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript

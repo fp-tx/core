@@ -10,6 +10,8 @@
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 
@@ -28,6 +30,8 @@ import { flap as flap_, type Functor2 } from './Functor'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Separated<E, A> {
@@ -44,6 +48,8 @@ export interface Separated<E, A> {
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const separated = <E, A>(left: E, right: A): Separated<E, A> => ({ left, right })
@@ -60,6 +66,8 @@ const _bimap: Bifunctor2<URI>['bimap'] = (fa, g, f) => pipe(fa, bimap(g, f))
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const map =
@@ -74,6 +82,8 @@ export const map =
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const mapLeft =
@@ -88,6 +98,8 @@ export const mapLeft =
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const bimap =
@@ -100,6 +112,8 @@ export const bimap =
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const URI = 'Separated'
@@ -109,6 +123,8 @@ export const URI = 'Separated'
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type URI = typeof URI
@@ -124,6 +140,8 @@ declare module './HKT' {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Bifunctor: Bifunctor2<URI> = {
@@ -137,6 +155,8 @@ export const Bifunctor: Bifunctor2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Functor: Functor2<URI> = {
@@ -149,6 +169,8 @@ export const Functor: Functor2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
@@ -160,6 +182,8 @@ export const flap = /*#__PURE__*/ flap_(Functor)
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const left = <E, A>(s: Separated<E, A>): E => s.left
@@ -167,6 +191,8 @@ export const left = <E, A>(s: Separated<E, A>): E => s.left
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const right = <E, A>(s: Separated<E, A>): A => s.right

@@ -43,6 +43,8 @@ import {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Alt<F> extends Functor<F> {
@@ -54,6 +56,8 @@ export interface Alt<F> extends Functor<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Alt1<F extends URIS> extends Functor1<F> {
@@ -65,6 +69,8 @@ export interface Alt1<F extends URIS> extends Functor1<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Alt2<F extends URIS2> extends Functor2<F> {
@@ -76,6 +82,8 @@ export interface Alt2<F extends URIS2> extends Functor2<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Alt2C<F extends URIS2, E> extends Functor2C<F, E> {
@@ -87,6 +95,8 @@ export interface Alt2C<F extends URIS2, E> extends Functor2C<F, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Alt3<F extends URIS3> extends Functor3<F> {
@@ -98,6 +108,8 @@ export interface Alt3<F extends URIS3> extends Functor3<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Alt3C<F extends URIS3, E> extends Functor3C<F, E> {
@@ -109,6 +121,8 @@ export interface Alt3C<F extends URIS3, E> extends Functor3C<F, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Alt4<F extends URIS4> extends Functor4<F> {
@@ -122,6 +136,8 @@ export interface Alt4<F extends URIS4> extends Functor4<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function altAll<F extends URIS4>(

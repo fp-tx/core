@@ -172,6 +172,8 @@ import { type Separated } from './Separated'
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function map<F extends URIS4>(
@@ -202,6 +204,8 @@ export function map<F>(F: Functor<F>): <A, B>(f: (a: A) => B) => (fa: HKT<F, A>)
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function contramap<F extends URIS4>(
@@ -234,6 +238,8 @@ export function contramap<F>(F: Contravariant<F>): <A, B>(f: (b: B) => A) => (fa
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function mapWithIndex<F extends URIS4, I>(
@@ -270,6 +276,8 @@ export function mapWithIndex<F, I>(
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function ap<F extends URIS4>(
@@ -300,6 +308,8 @@ export function ap<F>(F: Apply<F>): <A>(fa: HKT<F, A>) => <B>(fab: HKT<F, (a: A)
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function chain<F extends URIS4>(
@@ -330,6 +340,8 @@ export function chain<F>(F: Chain<F>): <A, B>(f: (a: A) => HKT<F, B>) => (fa: HK
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function bimap<F extends URIS4>(
@@ -363,6 +375,8 @@ export function bimap<F>(
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function mapLeft<F extends URIS4>(
@@ -392,6 +406,8 @@ export function mapLeft<F>(F: Bifunctor<F>): <E, G>(f: (e: E) => G) => <A>(fea: 
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function extend<F extends URIS4>(
@@ -424,6 +440,8 @@ export function extend<F>(F: Extend<F>): <A, B>(f: (wa: HKT<F, A>) => B) => (wa:
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function reduce<F extends URIS4>(
@@ -454,6 +472,8 @@ export function reduce<F>(F: Foldable<F>): <A, B>(b: B, f: (b: B, a: A) => B) =>
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function foldMap<F extends URIS4>(
@@ -489,6 +509,8 @@ export function foldMap<F>(F: Foldable<F>): <M>(M: Monoid<M>) => <A>(f: (a: A) =
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function reduceRight<F extends URIS4>(
@@ -521,6 +543,8 @@ export function reduceRight<F>(F: Foldable<F>): <A, B>(b: B, f: (a: A, b: B) => 
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function reduceWithIndex<F extends URIS4, I>(
@@ -557,6 +581,8 @@ export function reduceWithIndex<F, I>(
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function foldMapWithIndex<F extends URIS4, I>(
@@ -596,6 +622,8 @@ export function foldMapWithIndex<F, I>(
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function reduceRightWithIndex<F extends URIS4, I>(
@@ -632,6 +660,8 @@ export function reduceRightWithIndex<F, I>(
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function alt<F extends URIS4>(
@@ -662,6 +692,8 @@ export function alt<F>(F: Alt<F>): <A>(that: LazyArg<HKT<F, A>>) => (fa: HKT<F, 
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function filter<F extends URIS4>(
@@ -715,6 +747,8 @@ export function filter<F>(F: Filterable<F>): <A>(predicate: Predicate<A>) => (fa
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function filterMap<F extends URIS4>(
@@ -747,6 +781,8 @@ export function filterMap<F>(F: Filterable<F>): <A, B>(f: (a: A) => Option<B>) =
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function partition<F extends URIS4>(
@@ -810,6 +846,8 @@ export function partition<F>(
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function partitionMap<F extends URIS4>(
@@ -850,6 +888,8 @@ export function partitionMap<F>(
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function filterWithIndex<F extends URIS4, I>(
@@ -909,6 +949,8 @@ export function filterWithIndex<F, I>(
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function filterMapWithIndex<F extends URIS4, I>(
@@ -945,6 +987,8 @@ export function filterMapWithIndex<F, I>(
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function partitionWithIndex<F extends URIS4, I>(
@@ -1018,6 +1062,8 @@ export function partitionWithIndex<F, I>(
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function partitionMapWithIndex<F extends URIS4, I>(
@@ -1060,6 +1106,8 @@ export function partitionMapWithIndex<F, I>(
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function promap<F extends URIS4>(
@@ -1093,6 +1141,8 @@ export function promap<F>(
  * Added in 1.0.0
  * @remarks
  * Category: Pipeable helper
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function compose<F extends URIS4>(
@@ -1122,6 +1172,8 @@ export function compose<F>(F: Semigroupoid<F>): <E, A>(ea: HKT2<F, E, A>) => <B>
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1132,6 +1184,8 @@ export interface PipeableFunctor<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1142,6 +1196,8 @@ export interface PipeableFunctor1<F extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1152,6 +1208,8 @@ export interface PipeableFunctor2<F extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1162,6 +1220,8 @@ export interface PipeableFunctor2C<F extends URIS2, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1172,6 +1232,8 @@ export interface PipeableFunctor3<F extends URIS3> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1182,6 +1244,8 @@ export interface PipeableFunctor3C<F extends URIS3, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1192,6 +1256,8 @@ export interface PipeableFunctor4<F extends URIS4> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1202,6 +1268,8 @@ export interface PipeableContravariant<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1212,6 +1280,8 @@ export interface PipeableContravariant1<F extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1222,6 +1292,8 @@ export interface PipeableContravariant2<F extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1232,6 +1304,8 @@ export interface PipeableContravariant2C<F extends URIS2, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1242,6 +1316,8 @@ export interface PipeableContravariant3<F extends URIS3> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1252,6 +1328,8 @@ export interface PipeableContravariant3C<F extends URIS3, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1262,6 +1340,8 @@ export interface PipeableContravariant4<F extends URIS4> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1272,6 +1352,8 @@ export interface PipeableFunctorWithIndex<F, I> extends PipeableFunctor<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1282,6 +1364,8 @@ export interface PipeableFunctorWithIndex1<F extends URIS, I> extends PipeableFu
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1292,6 +1376,8 @@ export interface PipeableFunctorWithIndex2<F extends URIS2, I> extends PipeableF
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1302,6 +1388,8 @@ export interface PipeableFunctorWithIndex2C<F extends URIS2, I, E> extends Pipea
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1312,6 +1400,8 @@ export interface PipeableFunctorWithIndex3<F extends URIS3, I> extends PipeableF
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1322,6 +1412,8 @@ export interface PipeableFunctorWithIndex3C<F extends URIS3, I, E> extends Pipea
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1332,6 +1424,8 @@ export interface PipeableFunctorWithIndex4<F extends URIS4, I> extends PipeableF
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1344,6 +1438,8 @@ export interface PipeableApply<F> extends PipeableFunctor<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1356,6 +1452,8 @@ export interface PipeableApply1<F extends URIS> extends PipeableFunctor1<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1368,6 +1466,8 @@ export interface PipeableApply2<F extends URIS2> extends PipeableFunctor2<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1380,6 +1480,8 @@ export interface PipeableApply2C<F extends URIS2, E> extends PipeableFunctor2C<F
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1392,6 +1494,8 @@ export interface PipeableApply3<F extends URIS3> extends PipeableFunctor3<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1404,6 +1508,8 @@ export interface PipeableApply3C<F extends URIS3, E> extends PipeableFunctor3C<F
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1418,6 +1524,8 @@ export interface PipeableApply4<F extends URIS4> extends PipeableFunctor4<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1430,6 +1538,8 @@ export interface PipeableChain<F> extends PipeableApply<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1442,6 +1552,8 @@ export interface PipeableChain1<F extends URIS> extends PipeableApply1<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1454,6 +1566,8 @@ export interface PipeableChain2<F extends URIS2> extends PipeableApply2<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1466,6 +1580,8 @@ export interface PipeableChain2C<F extends URIS2, E> extends PipeableApply2C<F, 
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1478,6 +1594,8 @@ export interface PipeableChain3<F extends URIS3> extends PipeableApply3<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1490,6 +1608,8 @@ export interface PipeableChain3C<F extends URIS3, E> extends PipeableApply3C<F, 
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1506,6 +1626,8 @@ export interface PipeableChain4<F extends URIS4> extends PipeableApply4<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1517,6 +1639,8 @@ export interface PipeableExtend<F> extends PipeableFunctor<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1528,6 +1652,8 @@ export interface PipeableExtend1<F extends URIS> extends PipeableFunctor1<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1539,6 +1665,8 @@ export interface PipeableExtend2<F extends URIS2> extends PipeableFunctor2<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1550,6 +1678,8 @@ export interface PipeableExtend2C<F extends URIS2, E> extends PipeableFunctor2C<
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1561,6 +1691,8 @@ export interface PipeableExtend3<F extends URIS3> extends PipeableFunctor3<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1572,6 +1704,8 @@ export interface PipeableExtend3C<F extends URIS3, E> extends PipeableFunctor3C<
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1585,6 +1719,8 @@ export interface PipeableExtend4<F extends URIS4> extends PipeableFunctor4<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1596,6 +1732,8 @@ export interface PipeableBifunctor<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1607,6 +1745,8 @@ export interface PipeableBifunctor2<F extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1618,6 +1758,8 @@ export interface PipeableBifunctor3<F extends URIS3> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1629,6 +1771,8 @@ export interface PipeableBifunctor3C<F extends URIS3, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1643,6 +1787,8 @@ export interface PipeableBifunctor4<F extends URIS4> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1655,6 +1801,8 @@ export interface PipeableFoldable<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1667,6 +1815,8 @@ export interface PipeableFoldable1<F extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1679,6 +1829,8 @@ export interface PipeableFoldable2<F extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1691,6 +1843,8 @@ export interface PipeableFoldable2C<F extends URIS2, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1703,6 +1857,8 @@ export interface PipeableFoldable3<F extends URIS3> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1715,6 +1871,8 @@ export interface PipeableFoldable3C<F extends URIS3, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1727,6 +1885,8 @@ export interface PipeableFoldable4<F extends URIS4> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1739,6 +1899,8 @@ export interface PipeableFoldableWithIndex<F, I> extends PipeableFoldable<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1751,6 +1913,8 @@ export interface PipeableFoldableWithIndex1<F extends URIS, I> extends PipeableF
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1763,6 +1927,8 @@ export interface PipeableFoldableWithIndex2<F extends URIS2, I> extends Pipeable
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1775,6 +1941,8 @@ export interface PipeableFoldableWithIndex2C<F extends URIS2, I, E> extends Pipe
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1787,6 +1955,8 @@ export interface PipeableFoldableWithIndex3<F extends URIS3, I> extends Pipeable
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1799,6 +1969,8 @@ export interface PipeableFoldableWithIndex3C<F extends URIS3, I, E> extends Pipe
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1811,6 +1983,8 @@ export interface PipeableFoldableWithIndex4<F extends URIS4, I> extends Pipeable
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1821,6 +1995,8 @@ export interface PipeableAlt<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1831,6 +2007,8 @@ export interface PipeableAlt1<F extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1841,6 +2019,8 @@ export interface PipeableAlt2<F extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1851,6 +2031,8 @@ export interface PipeableAlt2C<F extends URIS2, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1861,6 +2043,8 @@ export interface PipeableAlt3<F extends URIS3> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1871,6 +2055,8 @@ export interface PipeableAlt3C<F extends URIS3, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1881,6 +2067,8 @@ export interface PipeableAlt4<F extends URIS4> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1892,6 +2080,8 @@ export interface PipeableCompactable<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1903,6 +2093,8 @@ export interface PipeableCompactable1<F extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1914,6 +2106,8 @@ export interface PipeableCompactable2<F extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1925,6 +2119,8 @@ export interface PipeableCompactable2C<F extends URIS2, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1936,6 +2132,8 @@ export interface PipeableCompactable3<F extends URIS3> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1947,6 +2145,8 @@ export interface PipeableCompactable3C<F extends URIS3, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1960,6 +2160,8 @@ export interface PipeableCompactable4<F extends URIS4> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1979,6 +2181,8 @@ export interface PipeableFilterable<F> extends PipeableCompactable<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1998,6 +2202,8 @@ export interface PipeableFilterable1<F extends URIS> extends PipeableCompactable
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2019,6 +2225,8 @@ export interface PipeableFilterable2<F extends URIS2> extends PipeableCompactabl
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2040,6 +2248,8 @@ export interface PipeableFilterable2C<F extends URIS2, E> extends PipeableCompac
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2063,6 +2273,8 @@ export interface PipeableFilterable3<F extends URIS3> extends PipeableCompactabl
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2086,6 +2298,8 @@ export interface PipeableFilterable3C<F extends URIS3, E> extends PipeableCompac
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2111,6 +2325,8 @@ export interface PipeableFilterable4<F extends URIS4> extends PipeableCompactabl
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2134,6 +2350,8 @@ export interface PipeableFilterableWithIndex<F, I> extends PipeableFilterable<F>
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2157,6 +2375,8 @@ export interface PipeableFilterableWithIndex1<F extends URIS, I> extends Pipeabl
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2182,6 +2402,8 @@ export interface PipeableFilterableWithIndex2<F extends URIS2, I> extends Pipeab
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2205,6 +2427,8 @@ export interface PipeableFilterableWithIndex2C<F extends URIS2, I, E> extends Pi
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2234,6 +2458,8 @@ export interface PipeableFilterableWithIndex3<F extends URIS3, I> extends Pipeab
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2259,6 +2485,8 @@ export interface PipeableFilterableWithIndex3C<F extends URIS3, I, E> extends Pi
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2288,6 +2516,8 @@ export interface PipeableFilterableWithIndex4<F extends URIS4, I> extends Pipeab
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2298,6 +2528,8 @@ export interface PipeableProfunctor<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2308,6 +2540,8 @@ export interface PipeableProfunctor2<F extends URIS2> extends PipeableFunctor2<F
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2318,6 +2552,8 @@ export interface PipeableProfunctor2C<F extends URIS2, E> extends PipeableFuncto
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2328,6 +2564,8 @@ export interface PipeableProfunctor3<F extends URIS3> extends PipeableFunctor3<F
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2338,6 +2576,8 @@ export interface PipeableProfunctor3C<F extends URIS3, E> extends PipeableFuncto
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2351,6 +2591,8 @@ export interface PipeableProfunctor4<F extends URIS4> extends PipeableFunctor4<F
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2361,6 +2603,8 @@ export interface PipeableSemigroupoid<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2371,6 +2615,8 @@ export interface PipeableSemigroupoid2<F extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2381,6 +2627,8 @@ export interface PipeableSemigroupoid2C<F extends URIS2, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2391,6 +2639,8 @@ export interface PipeableSemigroupoid3<F extends URIS3> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2401,6 +2651,8 @@ export interface PipeableSemigroupoid3C<F extends URIS3, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2411,6 +2663,8 @@ export interface PipeableSemigroupoid4<F extends URIS4> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2430,6 +2684,8 @@ export interface PipeableMonadThrow<F> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2449,6 +2705,8 @@ export interface PipeableMonadThrow1<F extends URIS> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2468,6 +2726,8 @@ export interface PipeableMonadThrow2<F extends URIS2> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2487,6 +2747,8 @@ export interface PipeableMonadThrow2C<F extends URIS2, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2509,6 +2771,8 @@ export interface PipeableMonadThrow3<F extends URIS3> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2531,6 +2795,8 @@ export interface PipeableMonadThrow3C<F extends URIS3, E> {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2571,6 +2837,8 @@ const isMonadThrow = <F>(I: any): I is MonadThrow<F> => typeof I.throwError === 
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2814,6 +3082,8 @@ export function pipeable<F, I>(I: { readonly URI: F } & I): Record<string, unkno
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Use `pipe` from `function` module instead. instead.
  * @public
  */

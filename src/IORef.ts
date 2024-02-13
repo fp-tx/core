@@ -12,6 +12,8 @@ import { type IO } from './IO'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -27,6 +29,8 @@ export class IORef<A> {
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   readonly read: IO<A>
@@ -38,6 +42,8 @@ export class IORef<A> {
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   write(a: A): IO<void> {
@@ -48,6 +54,8 @@ export class IORef<A> {
   /**
    * @remarks
    * Added in 1.0.0
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   modify(f: (a: A) => A): IO<void> {
@@ -62,6 +70,8 @@ export class IORef<A> {
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function newIORef<A>(a: A): IO<IORef<A>> {

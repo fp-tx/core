@@ -52,6 +52,8 @@ import { type Monoid } from './Monoid'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FoldableWithIndex<F, I> extends Foldable<F> {
@@ -65,6 +67,8 @@ export interface FoldableWithIndex<F, I> extends Foldable<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FoldableWithIndex1<F extends URIS, I> extends Foldable1<F> {
@@ -78,6 +82,8 @@ export interface FoldableWithIndex1<F extends URIS, I> extends Foldable1<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FoldableWithIndex2<F extends URIS2, I> extends Foldable2<F> {
@@ -91,6 +97,8 @@ export interface FoldableWithIndex2<F extends URIS2, I> extends Foldable2<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FoldableWithIndex2C<F extends URIS2, I, E> extends Foldable2C<F, E> {
@@ -104,6 +112,8 @@ export interface FoldableWithIndex2C<F extends URIS2, I, E> extends Foldable2C<F
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FoldableWithIndex3<F extends URIS3, I> extends Foldable3<F> {
@@ -117,6 +127,8 @@ export interface FoldableWithIndex3<F extends URIS3, I> extends Foldable3<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FoldableWithIndex3C<F extends URIS3, I, E> extends Foldable3C<F, E> {
@@ -130,6 +142,8 @@ export interface FoldableWithIndex3C<F extends URIS3, I, E> extends Foldable3C<F
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface FoldableWithIndex4<F extends URIS4, I> extends Foldable4<F> {
@@ -147,6 +161,8 @@ export interface FoldableWithIndex4<F extends URIS4, I> extends Foldable4<F> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function reduceWithIndex<F extends URIS, I, G extends URIS, J>(
@@ -170,6 +186,8 @@ export function reduceWithIndex<F, I, G, J>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function foldMapWithIndex<F extends URIS, I, G extends URIS, J>(
@@ -196,6 +214,8 @@ export function foldMapWithIndex<F, I, G, J>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function reduceRightWithIndex<F extends URIS, I, G extends URIS, J>(
@@ -221,6 +241,8 @@ export function reduceRightWithIndex<F, I, G, J>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -233,6 +255,8 @@ export interface FoldableWithIndexComposition<F, FI, G, GI> extends FoldableComp
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -246,6 +270,8 @@ export interface FoldableWithIndexComposition11<F extends URIS, FI, G extends UR
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -259,6 +285,8 @@ export interface FoldableWithIndexComposition12<F extends URIS, FI, G extends UR
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -272,6 +300,8 @@ export interface FoldableWithIndexComposition12C<F extends URIS, FI, G extends U
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -287,6 +317,8 @@ export interface FoldableWithIndexComposition21<F extends URIS2, FI, G extends U
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -300,6 +332,8 @@ export interface FoldableWithIndexComposition2C1<F extends URIS2, FI, G extends 
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -323,6 +357,8 @@ export interface FoldableWithIndexComposition22<F extends URIS2, FI, G extends U
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -350,6 +386,8 @@ export interface FoldableWithIndexComposition22C<F extends URIS2, FI, G extends 
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

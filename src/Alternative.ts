@@ -52,6 +52,8 @@ import { type Zero, type Zero1, type Zero2, type Zero2C, type Zero3, type Zero3C
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Alternative<F> extends Applicative<F>, Alt<F>, Zero<F> {}
@@ -61,6 +63,8 @@ export interface Alternative<F> extends Applicative<F>, Alt<F>, Zero<F> {}
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Alternative1<F extends URIS> extends Applicative1<F>, Alt1<F>, Zero1<F> {}
@@ -70,6 +74,8 @@ export interface Alternative1<F extends URIS> extends Applicative1<F>, Alt1<F>, 
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Alternative2<F extends URIS2> extends Applicative2<F>, Alt2<F>, Zero2<F> {}
@@ -79,6 +85,8 @@ export interface Alternative2<F extends URIS2> extends Applicative2<F>, Alt2<F>,
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Alternative2C<F extends URIS2, E> extends Applicative2C<F, E>, Alt2C<F, E>, Zero2C<F, E> {}
@@ -88,6 +96,8 @@ export interface Alternative2C<F extends URIS2, E> extends Applicative2C<F, E>, 
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Alternative3<F extends URIS3> extends Applicative3<F>, Alt3<F>, Zero3<F> {}
@@ -97,6 +107,8 @@ export interface Alternative3<F extends URIS3> extends Applicative3<F>, Alt3<F>,
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Alternative3C<F extends URIS3, E> extends Applicative3C<F, E>, Alt3C<F, E>, Zero3C<F, E> {}
@@ -106,6 +118,8 @@ export interface Alternative3C<F extends URIS3, E> extends Applicative3C<F, E>, 
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Alternative4<F extends URIS4> extends Applicative4<F>, Alt4<F>, Zero4<F> {}
@@ -117,6 +131,8 @@ export interface Alternative4<F extends URIS4> extends Applicative4<F>, Alt4<F>,
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function altAll<F extends URIS4>(
@@ -143,6 +159,8 @@ export function altAll<F>(F: Alternative<F>): <A>(as: ReadonlyArray<HKT<F, A>>) 
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getAlternativeMonoid<F extends URIS4>(

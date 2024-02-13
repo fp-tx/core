@@ -17,6 +17,8 @@ import { type Semigroup } from './Semigroup'
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -46,6 +48,8 @@ export const getAssignSemigroup = <A extends object = never>(): Semigroup<A> => 
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript

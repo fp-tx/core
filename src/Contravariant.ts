@@ -24,6 +24,8 @@ import {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Contravariant<F> {
@@ -36,6 +38,8 @@ export interface Contravariant<F> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Contravariant1<F extends URIS> {
@@ -48,6 +52,8 @@ export interface Contravariant1<F extends URIS> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Contravariant2<F extends URIS2> {
@@ -60,6 +66,8 @@ export interface Contravariant2<F extends URIS2> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Contravariant2C<F extends URIS2, E> {
@@ -73,6 +81,8 @@ export interface Contravariant2C<F extends URIS2, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Contravariant3<F extends URIS3> {
@@ -85,6 +95,8 @@ export interface Contravariant3<F extends URIS3> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Contravariant3C<F extends URIS3, E> {
@@ -98,6 +110,8 @@ export interface Contravariant3C<F extends URIS3, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Contravariant4<F extends URIS4> {

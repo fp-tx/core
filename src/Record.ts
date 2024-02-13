@@ -64,6 +64,8 @@ import { type PipeableWilt1, type PipeableWither1, wiltDefault, type Witherable1
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -81,6 +83,8 @@ export const size: <A>(r: Record<string, A>) => number = RR.size
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -104,6 +108,8 @@ const keys_ =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -122,6 +128,8 @@ export const keys: <K extends string>(r: Record<K, unknown>) => Array<K> = /*#__
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -168,6 +176,8 @@ export function collect<A, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -197,6 +207,8 @@ export const toArray: <K extends string, A>(r: Record<K, A>) => Array<[K, A]> = 
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -232,6 +244,8 @@ export function toUnfoldable<F>(U: Unfoldable<F>): <A>(r: Record<string, A>) => 
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -252,6 +266,8 @@ export const upsertAt: <A>(k: string, a: A) => (r: Record<string, A>) => Record<
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -270,6 +286,8 @@ export const has: <K extends string>(k: string, r: Record<K, unknown>) => k is K
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -300,6 +318,8 @@ export function deleteAt(k: string): <A>(r: Record<string, A>) => Record<string,
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -317,6 +337,8 @@ export const updateAt = <A>(k: string, a: A): (<K extends string>(r: Record<K, A
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -342,6 +364,8 @@ export const modifyAt =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -368,6 +392,8 @@ export function pop(k: string): <A>(r: Record<string, A>) => Option<[A, Record<s
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -399,6 +425,8 @@ export const isSubrecord: <A>(E: Eq<A>) => {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * @public
@@ -413,6 +441,8 @@ export const lookup: {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -434,6 +464,8 @@ export const mapWithIndex: <K extends string, A, B>(f: (k: K, a: A) => B) => (fa
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -453,6 +485,8 @@ export const map: <A, B>(f: (a: A) => B) => <K extends string>(fa: Record<K, A>)
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -490,6 +524,8 @@ export function reduceWithIndex<A, B>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -530,6 +566,8 @@ export function foldMapWithIndex<M>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -566,6 +604,8 @@ export function reduceRightWithIndex<A, B>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -581,6 +621,8 @@ export const singleton: <A>(k: string, a: A) => Record<string, A> = RR.singleton
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function traverseWithIndex<F extends URIS4>(
@@ -619,6 +661,8 @@ export function traverseWithIndex<F>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function traverse<F extends URIS4>(
@@ -659,6 +703,8 @@ export function traverse<F>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -704,6 +750,8 @@ export function sequence<F>(F: Applicative<F>): <A>(ta: Record<string, HKT<F, A>
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const wither: PipeableWither1<URI> = <F>(
@@ -718,6 +766,8 @@ export const wither: PipeableWither1<URI> = <F>(
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const wilt: PipeableWilt1<URI> = <F>(
@@ -735,6 +785,8 @@ export const wilt: PipeableWilt1<URI> = <F>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -765,6 +817,8 @@ export const partitionMapWithIndex: <K extends string, A, B, C>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -807,6 +861,8 @@ export function partitionWithIndex<A>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -831,6 +887,8 @@ export const filterMapWithIndex: <K extends string, A, B>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -867,6 +925,8 @@ export function filterWithIndex<A>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function fromFoldable<F extends URIS3, A>(
@@ -893,6 +953,8 @@ export function fromFoldable<F, A>(M: Magma<A>, F: FoldableHKT<F>): (fka: HKT<F,
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -915,6 +977,8 @@ export const toEntries = toArray
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -942,6 +1006,8 @@ export const fromEntries = <A>(fa: Array<[string, A]>): Record<string, A> => fro
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1005,6 +1071,8 @@ export function fromFoldableMap<F, B>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1026,6 +1094,8 @@ export const every: {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1045,6 +1115,8 @@ export const some: <A>(predicate: (a: A) => boolean) => (r: Record<string, A>) =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1068,6 +1140,8 @@ export const elem: <A>(E: Eq<A>) => {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1103,6 +1177,8 @@ export const union = <A>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1133,6 +1209,8 @@ export const intersection =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1208,6 +1286,8 @@ const _traverseWithIndex =
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1235,6 +1315,8 @@ export const filter: {
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1259,6 +1341,8 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Record<string, A>
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1293,6 +1377,8 @@ export const partition: {
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1325,6 +1411,8 @@ export const partitionMap: <A, B, C>(
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1358,6 +1446,8 @@ export function reduce<A, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1396,6 +1486,8 @@ export function foldMap<M>(
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1432,6 +1524,8 @@ export function reduceRight<A, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1455,6 +1549,8 @@ export const compact: <A>(fa: Record<string, Option<A>>) => Record<string, A> = 
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1482,6 +1578,8 @@ export const separate: <A, B>(fa: Record<string, Either<A, B>>) => Separated<Rec
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const URI = 'Record'
@@ -1491,6 +1589,8 @@ export const URI = 'Record'
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type URI = typeof URI
@@ -1509,6 +1609,8 @@ declare module './HKT' {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1543,6 +1645,8 @@ export function getShow<A>(
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1567,6 +1671,8 @@ export const getEq: <K extends string, A>(E: Eq<A>) => Eq<Record<K, A>> = RR.get
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1590,6 +1696,8 @@ export const getMonoid: <K extends string, A>(S: Semigroup<A>) => Monoid<Record<
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Functor: Functor1<URI> = {
@@ -1604,6 +1712,8 @@ export const Functor: Functor1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1625,6 +1735,8 @@ export const flap = /*#__PURE__*/ flap_(Functor)
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const FunctorWithIndex: FunctorWithIndex1<URI, string> = {
@@ -1640,6 +1752,8 @@ export const FunctorWithIndex: FunctorWithIndex1<URI, string> = {
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getFoldable = (O: Ord<string>): Foldable1<URI> => ({
@@ -1657,6 +1771,8 @@ export const getFoldable = (O: Ord<string>): Foldable1<URI> => ({
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getFoldableWithIndex = (O: Ord<string>): FoldableWithIndex1<URI, string> => ({
@@ -1674,6 +1790,8 @@ export const getFoldableWithIndex = (O: Ord<string>): FoldableWithIndex1<URI, st
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Compactable: Compactable1<URI> = {
@@ -1687,6 +1805,8 @@ export const Compactable: Compactable1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Filterable: Filterable1<URI> = {
@@ -1705,6 +1825,8 @@ export const Filterable: Filterable1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const FilterableWithIndex: FilterableWithIndex1<URI, string> = {
@@ -1730,6 +1852,8 @@ export const FilterableWithIndex: FilterableWithIndex1<URI, string> = {
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getTraversable = (O: Ord<string>): Traversable1<URI> => ({
@@ -1750,6 +1874,8 @@ export const getTraversable = (O: Ord<string>): Traversable1<URI> => ({
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getTraversableWithIndex = (O: Ord<string>): TraversableWithIndex1<URI, string> => ({
@@ -1772,6 +1898,8 @@ export const getTraversableWithIndex = (O: Ord<string>): TraversableWithIndex1<U
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getWitherable = (O: Ord<string>): Witherable1<URI> => {
@@ -1803,6 +1931,8 @@ export const getWitherable = (O: Ord<string>): Witherable1<URI> => {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1832,6 +1962,8 @@ export const getUnionSemigroup = <A>(S: Semigroup<A>): Semigroup<Record<string, 
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1861,6 +1993,8 @@ export const getUnionMonoid = <A>(S: Semigroup<A>): Monoid<Record<string, A>> =>
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1888,6 +2022,8 @@ export const getIntersectionSemigroup = <A>(S: Semigroup<A>): Semigroup<Record<s
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1916,6 +2052,8 @@ export const getDifferenceMagma = <A>(): Magma<Record<string, A>> => ({
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1931,6 +2069,8 @@ export const Foldable: Foldable1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1949,6 +2089,8 @@ export const FoldableWithIndex: FoldableWithIndex1<URI, string> = {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1967,6 +2109,8 @@ export const Traversable: Traversable1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1993,6 +2137,8 @@ const _wilt = /*#__PURE__*/ wiltDefault(Traversable, Compactable)
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2019,6 +2165,8 @@ export const Witherable: Witherable1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2029,6 +2177,8 @@ export const empty: Record<string, never> = {}
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2039,6 +2189,8 @@ export const insertAt: <A>(k: string, a: A) => (r: Record<string, A>) => Record<
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2050,6 +2202,8 @@ export const hasOwnProperty: <K extends string>(k: string, r: Record<K, unknown>
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

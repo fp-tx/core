@@ -65,6 +65,8 @@ import { guard as guard_, type Zero1 } from './Zero'
  * Added in 1.0.0
  * @remarks
  * Category: Refinements
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -85,6 +87,8 @@ export const isEmpty = <A>(as: Array<A>): as is [] => as.length === 0
  * Added in 1.0.0
  * @remarks
  * Category: Refinements
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -107,6 +111,8 @@ export const isNonEmpty: <A>(as: Array<A>) => as is NonEmptyArray<A> = NEA.isNon
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -125,6 +131,8 @@ export const prepend: <A>(head: A) => (tail: Array<A>) => NEA.NonEmptyArray<A> =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -143,6 +151,8 @@ export const prependW: <A, B>(head: B) => (tail: Array<A>) => NEA.NonEmptyArray<
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -161,6 +171,8 @@ export const append: <A>(end: A) => (init: Array<A>) => NEA.NonEmptyArray<A> = N
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -183,6 +195,8 @@ export const appendW: <A, B>(end: B) => (init: Array<A>) => NEA.NonEmptyArray<A 
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -207,6 +221,8 @@ export const makeBy = <A>(n: number, f: (i: number) => A): Array<A> => (n <= 0 ?
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -228,6 +244,8 @@ export const replicate = <A>(n: number, a: A): Array<A> => makeBy(n, () => a)
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -275,6 +293,8 @@ export function fromPredicate<A>(predicate: Predicate<A>): (a: A) => Array<A> {
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -298,6 +318,8 @@ export const fromOption: <A>(fa: Option<A>) => Array<A> = ma => (_.isNone(ma) ? 
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -322,6 +344,8 @@ export const fromEither: <A>(fa: Either<unknown, A>) => Array<A> = e => (_.isLef
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -351,6 +375,8 @@ export const matchW =
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -377,6 +403,8 @@ export const match: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (as: NonEmptyArray<A
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -405,6 +433,8 @@ export const matchLeftW =
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -429,6 +459,8 @@ export const matchLeft: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: 
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const foldLeft: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: Array<A>) => B) => (as: Array<A>) => B =
@@ -442,6 +474,8 @@ export const foldLeft: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: A
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -470,6 +504,8 @@ export const matchRightW =
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -496,6 +532,8 @@ export const matchRight: <B, A>(
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const foldRight: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (init: Array<A>, last: A) => B) => (as: Array<A>) => B =
@@ -512,6 +550,8 @@ export const foldRight: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (init: Array<A>,
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -539,6 +579,8 @@ export const chainWithIndex =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -566,6 +608,8 @@ export const scanLeft =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -593,6 +637,8 @@ export const scanRight =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -610,6 +656,8 @@ export const size = <A>(as: Array<A>): number => as.length
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -631,6 +679,8 @@ export const isOutOfBound: <A>(i: number, as: Array<A>) => boolean = NEA.isOutOf
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -654,6 +704,8 @@ export const lookup: {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -673,6 +725,8 @@ export const head: <A>(as: Array<A>) => Option<A> = RA.head
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -692,6 +746,8 @@ export const last: <A>(as: Array<A>) => Option<A> = RA.last
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -711,6 +767,8 @@ export const tail = <A>(as: Array<A>): Option<Array<A>> => (isNonEmpty(as) ? _.s
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -732,6 +790,8 @@ export const init = <A>(as: Array<A>): Option<Array<A>> => (isNonEmpty(as) ? _.s
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -757,6 +817,8 @@ export const takeLeft =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -782,6 +844,8 @@ export const takeRight =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -824,6 +888,8 @@ const spanLeftIndex = <A>(as: Array<A>, predicate: Predicate<A>): number => {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Spanned<I, R> {
@@ -839,6 +905,8 @@ export interface Spanned<I, R> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -869,6 +937,8 @@ export function spanLeft<A>(predicate: Predicate<A>): (as: Array<A>) => Spanned<
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -896,6 +966,8 @@ export const dropLeft =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -922,6 +994,8 @@ export const dropRight =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -946,6 +1020,8 @@ export function dropLeftWhile<A>(predicate: Predicate<A>): (as: Array<A>) => Arr
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -966,6 +1042,8 @@ export const findIndex: <A>(predicate: Predicate<A>) => (as: Array<A>) => Option
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1001,6 +1079,8 @@ export function findFirst<A>(predicate: Predicate<A>): (as: Array<A>) => Option<
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1034,6 +1114,8 @@ export const findFirstMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<A>) => O
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1069,6 +1151,8 @@ export function findLast<A>(predicate: Predicate<A>): (as: Array<A>) => Option<A
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1102,6 +1186,8 @@ export const findLastMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<A>) => Op
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1129,6 +1215,8 @@ export const findLastIndex: <A>(predicate: Predicate<A>) => (as: Array<A>) => Op
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const copy = <A>(as: Array<A>): Array<A> => as.slice()
@@ -1138,6 +1226,8 @@ export const copy = <A>(as: Array<A>): Array<A> => as.slice()
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1159,6 +1249,8 @@ export const insertAt =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1178,6 +1270,8 @@ export const updateAt = <A>(i: number, a: A): ((as: Array<A>) => Option<Array<A>
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1201,6 +1295,8 @@ export const deleteAt =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1224,6 +1320,8 @@ export const modifyAt =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1242,6 +1340,8 @@ export const reverse = <A>(as: Array<A>): Array<A> => (isEmpty(as) ? [] : as.sli
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1270,6 +1370,8 @@ export const rights = <E, A>(as: Array<Either<E, A>>): Array<A> => {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1297,6 +1399,8 @@ export const lefts = <E, A>(as: Array<Either<E, A>>): Array<E> => {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1319,6 +1423,8 @@ export const sort =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1348,6 +1454,8 @@ export const zipWith = <A, B, C>(fa: Array<A>, fb: Array<B>, f: (a: A, b: B) => 
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1377,6 +1485,8 @@ export function zip<A, B>(as: Array<A>, bs?: Array<B>): Array<[A, B]> | ((bs: Ar
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1412,6 +1522,8 @@ export const unzip = <A, B>(as: Array<[A, B]>): [Array<A>, Array<B>] => {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1432,6 +1544,8 @@ export const prependAll = <A>(middle: A): ((as: Array<A>) => Array<A>) => {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1452,6 +1566,8 @@ export const intersperse = <A>(middle: A): ((as: Array<A>) => Array<A>) => {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1474,6 +1590,8 @@ export const rotate = (n: number): (<A>(as: Array<A>) => Array<A>) => {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1497,6 +1615,8 @@ export const elem: <A>(E: Eq<A>) => {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1519,6 +1639,8 @@ export const uniq = <A>(E: Eq<A>): ((as: Array<A>) => Array<A>) => {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1571,6 +1693,8 @@ export const sortBy = <B>(ords: Array<Ord<B>>): (<A extends B>(as: Array<A>) => 
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1603,6 +1727,8 @@ export const chop = <A, B>(f: (as: NonEmptyArray<A>) => [B, Array<A>]): ((as: Ar
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1632,6 +1758,8 @@ export const splitAt =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1652,6 +1780,8 @@ export const chunksOf = (n: number): (<A>(as: Array<A>) => Array<NonEmptyArray<A
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromOptionK =
@@ -1664,6 +1794,8 @@ export const fromOptionK =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1721,6 +1853,8 @@ export function comprehension<A, R>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const concatW =
@@ -1733,6 +1867,8 @@ export const concatW =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const concat: <A>(second: Array<A>) => (first: Array<A>) => Array<A> = concatW
@@ -1743,6 +1879,8 @@ export const concat: <A>(second: Array<A>) => (first: Array<A>) => Array<A> = co
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1781,6 +1919,8 @@ export function union<A>(E: Eq<A>): (xs: Array<A>, ys?: Array<A>) => Array<A> | 
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1815,6 +1955,8 @@ export function intersection<A>(E: Eq<A>): (xs: Array<A>, ys?: Array<A>) => Arra
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1923,6 +2065,8 @@ const _chainRecBreadthFirst: ChainRec1<URI>['chainRec'] = RA._chainRecBreadthFir
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1940,6 +2084,8 @@ export const of: <A>(a: A) => Array<A> = NEA.of
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const zero: <A>() => Array<A> = () => []
@@ -1952,6 +2098,8 @@ export const zero: <A>() => Array<A> = () => []
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1969,6 +2117,8 @@ export const map: <A, B>(f: (a: A) => B) => (fa: Array<A>) => Array<B> = f => fa
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2018,6 +2168,8 @@ export const ap: <A>(fa: Array<A>) => <B>(fab: Array<(a: A) => B>) => Array<B> =
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2051,6 +2203,8 @@ export const flatMap: {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2070,6 +2224,8 @@ export const flatten: <A>(mma: Array<Array<A>>) => Array<A> = /*#__PURE__*/ flat
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2095,6 +2251,8 @@ export const mapWithIndex: <A, B>(f: (i: number, a: A) => B) => (fa: Array<A>) =
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2129,6 +2287,8 @@ export const filterMapWithIndex =
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2153,6 +2313,8 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Array<A>) => Arra
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2174,6 +2336,8 @@ export const compact: <A>(fa: Array<Option<A>>) => Array<A> = /*#__PURE__*/ filt
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2209,6 +2373,8 @@ export const separate = <A, B>(fa: Array<Either<A, B>>): Separated<Array<A>, Arr
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2239,6 +2405,8 @@ export const filter: {
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2265,6 +2433,8 @@ export const partition: {
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2309,6 +2479,8 @@ export const partitionWithIndex: {
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2335,6 +2507,8 @@ export const partitionMap: <A, B, C>(
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2376,6 +2550,8 @@ export const partitionMapWithIndex =
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2408,6 +2584,8 @@ export const altW =
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2434,6 +2612,8 @@ export const alt: <A>(that: LazyArg<Array<A>>) => (fa: Array<A>) => Array<A> = a
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2461,6 +2641,8 @@ export const filterWithIndex: {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2481,6 +2663,8 @@ export const extend: <A, B>(f: (as: Array<A>) => B) => (as: Array<A>) => Array<B
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2501,6 +2685,8 @@ export const duplicate: <A>(wa: Array<A>) => Array<Array<A>> = /*#__PURE__*/ ext
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2522,6 +2708,8 @@ export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: Array<A>)
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2550,6 +2738,8 @@ export const foldMapWithIndex: <M>(M: Monoid<M>) => <A>(f: (i: number, a: A) => 
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2569,6 +2759,8 @@ export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => (fa: Array<A>) => B =
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2592,6 +2784,8 @@ export const reduceWithIndex: <A, B>(b: B, f: (i: number, b: B, a: A) => B) => (
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2611,6 +2805,8 @@ export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => (fa: Array<A>) =
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2639,6 +2835,8 @@ export const reduceRightWithIndex: <A, B>(b: B, f: (i: number, a: A, b: B) => B)
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2673,6 +2871,8 @@ export const traverse: PipeableTraverse1<URI> = <F>(
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2706,6 +2906,8 @@ export const sequence: Traversable1<URI>['sequence'] =
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2735,6 +2937,8 @@ export const traverseWithIndex: PipeableTraverseWithIndex1<URI, number> =
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const wither: PipeableWither1<URI> = <F>(
@@ -2749,6 +2953,8 @@ export const wither: PipeableWither1<URI> = <F>(
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const wilt: PipeableWilt1<URI> = <F>(
@@ -2765,6 +2971,8 @@ export const wilt: PipeableWilt1<URI> = <F>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2804,6 +3012,8 @@ export const unfold = <A, B>(b: B, f: (b: B) => Option<readonly [A, B]>): Array<
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const URI = 'Array'
@@ -2813,6 +3023,8 @@ export const URI = 'Array'
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type URI = typeof URI
@@ -2830,6 +3042,8 @@ declare module './HKT' {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2850,6 +3064,8 @@ export const getShow: <A>(S: Show<A>) => Show<Array<A>> = RA.getShow
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2872,6 +3088,8 @@ export const getSemigroup = <A = never>(): Semigroup<Array<A>> => ({
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2897,6 +3115,8 @@ export const getMonoid = <A = never>(): Monoid<Array<A>> => ({
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2922,6 +3142,8 @@ export const getEq: <A>(E: Eq<A>) => Eq<Array<A>> = RA.getEq
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2946,6 +3168,8 @@ export const getOrd: <A>(O: Ord<A>) => Ord<Array<A>> = RA.getOrd
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2973,6 +3197,8 @@ export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<Array<A>> => {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2999,6 +3225,8 @@ export const getUnionMonoid = <A>(E: Eq<A>): Monoid<Array<A>> => ({
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3027,6 +3255,8 @@ export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<Array<A>> => {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3051,6 +3281,8 @@ export const getDifferenceMagma = <A>(E: Eq<A>): Magma<Array<A>> => {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Functor: Functor1<URI> = {
@@ -3066,6 +3298,8 @@ export const Functor: Functor1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3088,6 +3322,8 @@ export const flap = /*#__PURE__*/ flap_(Functor)
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Pointed: Pointed1<URI> = {
@@ -3100,6 +3336,8 @@ export const Pointed: Pointed1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const FunctorWithIndex: FunctorWithIndex1<URI, number> = {
@@ -3113,6 +3351,8 @@ export const FunctorWithIndex: FunctorWithIndex1<URI, number> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Apply: Apply1<URI> = {
@@ -3126,6 +3366,8 @@ export const Apply: Apply1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
@@ -3135,6 +3377,8 @@ export const apFirst = /*#__PURE__*/ apFirst_(Apply)
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
@@ -3144,6 +3388,8 @@ export const apSecond = /*#__PURE__*/ apSecond_(Apply)
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Applicative: Applicative1<URI> = {
@@ -3158,6 +3404,8 @@ export const Applicative: Applicative1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Chain: Chain1<URI> = {
@@ -3175,6 +3423,8 @@ export const Chain: Chain1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3207,6 +3457,8 @@ export const chainFirst: <A, B>(f: (a: A) => Array<B>) => (first: Array<A>) => A
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Monad: Monad1<URI> = {
@@ -3222,6 +3474,8 @@ export const Monad: Monad1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Unfoldable: Unfoldable1<URI> = {
@@ -3234,6 +3488,8 @@ export const Unfoldable: Unfoldable1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Alt: Alt1<URI> = {
@@ -3247,6 +3503,8 @@ export const Alt: Alt1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Zero: Zero1<URI> = {
@@ -3259,6 +3517,8 @@ export const Zero: Zero1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const guard = /*#__PURE__*/ guard_(Zero, Pointed)
@@ -3268,6 +3528,8 @@ export const guard = /*#__PURE__*/ guard_(Zero, Pointed)
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Alternative: Alternative1<URI> = {
@@ -3284,6 +3546,8 @@ export const Alternative: Alternative1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Extend: Extend1<URI> = {
@@ -3297,6 +3561,8 @@ export const Extend: Extend1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Compactable: Compactable1<URI> = {
@@ -3310,6 +3576,8 @@ export const Compactable: Compactable1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Filterable: Filterable1<URI> = {
@@ -3328,6 +3596,8 @@ export const Filterable: Filterable1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const FilterableWithIndex: FilterableWithIndex1<URI, number> = {
@@ -3351,6 +3621,8 @@ export const FilterableWithIndex: FilterableWithIndex1<URI, number> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Foldable: Foldable1<URI> = {
@@ -3365,6 +3637,8 @@ export const Foldable: Foldable1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const FoldableWithIndex: FoldableWithIndex1<URI, number> = {
@@ -3382,6 +3656,8 @@ export const FoldableWithIndex: FoldableWithIndex1<URI, number> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Traversable: Traversable1<URI> = {
@@ -3399,6 +3675,8 @@ export const Traversable: Traversable1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const TraversableWithIndex: TraversableWithIndex1<URI, number> = {
@@ -3424,6 +3702,8 @@ const _wilt: Witherable1<URI>['wilt'] = /*#__PURE__*/ wiltDefault(Traversable, C
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Witherable: Witherable1<URI> = {
@@ -3449,6 +3729,8 @@ export const Witherable: Witherable1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainRecDepthFirst: <A, B>(f: (a: A) => Array<Either<A, B>>) => (a: A) => Array<B> =
@@ -3459,6 +3741,8 @@ export const chainRecDepthFirst: <A, B>(f: (a: A) => Array<Either<A, B>>) => (a:
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const ChainRecDepthFirst: ChainRec1<URI> = {
@@ -3474,6 +3758,8 @@ export const ChainRecDepthFirst: ChainRec1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainRecBreadthFirst: <A, B>(f: (a: A) => Array<Either<A, B>>) => (a: A) => Array<B> =
@@ -3484,6 +3770,8 @@ export const chainRecBreadthFirst: <A, B>(f: (a: A) => Array<Either<A, B>>) => (
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const ChainRecBreadthFirst: ChainRec1<URI> = {
@@ -3499,6 +3787,8 @@ export const ChainRecBreadthFirst: ChainRec1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const filterE = /*#__PURE__*/ filterE_(Witherable)
@@ -3508,6 +3798,8 @@ export const filterE = /*#__PURE__*/ filterE_(Witherable)
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const FromEither: FromEither1<URI> = {
@@ -3520,6 +3812,8 @@ export const FromEither: FromEither1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
@@ -3535,6 +3829,8 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Unsafe
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const unsafeInsertAt: <A>(i: number, a: A, as: Array<A>) => NonEmptyArray<A> = NEA.unsafeInsertAt
@@ -3544,6 +3840,8 @@ export const unsafeInsertAt: <A>(i: number, a: A, as: Array<A>) => NonEmptyArray
  * Added in 1.0.0
  * @remarks
  * Category: Unsafe
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const unsafeUpdateAt = <A>(i: number, a: A, as: Array<A>): Array<A> =>
@@ -3554,6 +3852,8 @@ export const unsafeUpdateAt = <A>(i: number, a: A, as: Array<A>): Array<A> =>
  * Added in 1.0.0
  * @remarks
  * Category: Unsafe
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const unsafeDeleteAt = <A>(i: number, as: Array<A>): Array<A> => {
@@ -3571,6 +3871,8 @@ export const unsafeDeleteAt = <A>(i: number, as: Array<A>): Array<A> => {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3592,6 +3894,8 @@ export const every: {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3613,6 +3917,8 @@ export const some =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const exists: <A>(predicate: Predicate<A>) => (as: Array<A>) => as is NEA.NonEmptyArray<A> = some
@@ -3622,6 +3928,8 @@ export const exists: <A>(predicate: Predicate<A>) => (as: Array<A>) => as is NEA
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3644,6 +3952,8 @@ export const intercalate: <A>(M: Monoid<A>) => (middle: A) => (as: Array<A>) => 
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Do: Array<{}> = /*#__PURE__*/ of(_.emptyRecord)
@@ -3653,6 +3963,8 @@ export const Do: Array<{}> = /*#__PURE__*/ of(_.emptyRecord)
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
@@ -3665,6 +3977,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Do notation
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   let_ as let,
@@ -3675,6 +3989,8 @@ export {
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const bind = /*#__PURE__*/ bind_(Chain)
@@ -3684,6 +4000,8 @@ export const bind = /*#__PURE__*/ bind_(Chain)
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
@@ -3699,6 +4017,8 @@ export const apS = /*#__PURE__*/ apS_(Apply)
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chain: <A, B>(f: (a: A) => Array<B>) => (ma: Array<A>) => Array<B> = flatMap
@@ -3712,6 +4032,8 @@ export const chain: <A, B>(f: (a: A) => Array<B>) => (ma: Array<A>) => Array<B> 
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -3722,6 +4044,8 @@ export const range = NEA.range
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -3732,6 +4056,8 @@ export const empty: Array<never> = []
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -3742,6 +4068,8 @@ export const cons = NEA.cons
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -3752,6 +4080,8 @@ export const snoc = NEA.snoc
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -3763,6 +4093,8 @@ export const prependToAll = prependAll
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

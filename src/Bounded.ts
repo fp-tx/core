@@ -21,6 +21,8 @@ import { type Ord } from './Ord'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Bounded<A> extends Ord<A> {
@@ -39,6 +41,8 @@ export interface Bounded<A> extends Ord<A> {
  * Added in 1.0.0
  * @remarks
  * Category: Utils
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const clamp = <A>(B: Bounded<A>): ((a: A) => A) => O.clamp(B)(B.bottom, B.top)
@@ -50,6 +54,8 @@ export const clamp = <A>(B: Bounded<A>): ((a: A) => A) => O.clamp(B)(B.bottom, B
  * Added in 1.0.0
  * @remarks
  * Category: Utils
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reverse = <A>(B: Bounded<A>): Bounded<A> => {
@@ -71,6 +77,8 @@ export const reverse = <A>(B: Bounded<A>): Bounded<A> => {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

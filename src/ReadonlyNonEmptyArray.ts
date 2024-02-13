@@ -52,6 +52,8 @@ import { type PipeableTraverseWithIndex1, type TraversableWithIndex1 } from './T
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type ReadonlyNonEmptyArray<A> = ReadonlyArray<A> & {
@@ -114,6 +116,8 @@ export const unsafeUpdateAt = <A>(i: number, a: A, as: ReadonlyNonEmptyArray<A>)
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -147,6 +151,8 @@ export const uniq =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -203,6 +209,8 @@ export const sortBy = <B>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const union = <A>(
@@ -217,6 +225,8 @@ export const union = <A>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -255,6 +265,8 @@ export const rotate =
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromReadonlyArray = <A>(as: ReadonlyArray<A>): Option<ReadonlyNonEmptyArray<A>> =>
@@ -269,6 +281,8 @@ export const fromReadonlyArray = <A>(as: ReadonlyArray<A>): Option<ReadonlyNonEm
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -301,6 +315,8 @@ export const makeBy =
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -321,6 +337,8 @@ export const replicate = <A>(a: A): ((n: number) => ReadonlyNonEmptyArray<A>) =>
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -339,6 +357,8 @@ export const range = (start: number, end: number): ReadonlyNonEmptyArray<number>
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -356,6 +376,8 @@ export const unprepend = <A>(as: ReadonlyNonEmptyArray<A>): readonly [A, Readonl
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -373,6 +395,8 @@ export const unappend = <A>(as: ReadonlyNonEmptyArray<A>): readonly [ReadonlyArr
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromArray = <A>(as: Array<A>): Option<ReadonlyNonEmptyArray<A>> => fromReadonlyArray(as.slice())
@@ -384,6 +408,8 @@ export const fromArray = <A>(as: Array<A>): Option<ReadonlyNonEmptyArray<A>> => 
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function concatW<B>(
@@ -399,6 +425,8 @@ export function concatW<B>(second: ReadonlyArray<B>): <A>(first: ReadonlyNonEmpt
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function concat<A>(second: ReadonlyNonEmptyArray<A>): (first: ReadonlyArray<A>) => ReadonlyNonEmptyArray<A>
@@ -417,6 +445,8 @@ export function concat<A>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reverse = <A>(as: ReadonlyNonEmptyArray<A>): ReadonlyNonEmptyArray<A> =>
@@ -427,6 +457,8 @@ export const reverse = <A>(as: ReadonlyNonEmptyArray<A>): ReadonlyNonEmptyArray<
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -472,6 +504,8 @@ export function group<A>(E: Eq<A>): (as: ReadonlyArray<A>) => ReadonlyArray<Read
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -503,6 +537,8 @@ export const groupBy =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const sort =
@@ -513,6 +549,8 @@ export const sort =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const updateAt = <A>(i: number, a: A): ((as: ReadonlyNonEmptyArray<A>) => Option<ReadonlyNonEmptyArray<A>>) =>
@@ -521,6 +559,8 @@ export const updateAt = <A>(i: number, a: A): ((as: ReadonlyNonEmptyArray<A>) =>
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const modifyAt =
@@ -531,6 +571,8 @@ export const modifyAt =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const zipWith = <A, B, C>(
@@ -549,6 +591,8 @@ export const zipWith = <A, B, C>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function zip<B>(
@@ -571,6 +615,8 @@ export function zip<A, B>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const unzip = <A, B>(
@@ -590,6 +636,8 @@ export const unzip = <A, B>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -615,6 +663,8 @@ export const prependAll =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -637,6 +687,8 @@ export const intersperse =
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainWithIndex =
@@ -657,6 +709,8 @@ export const chainWithIndex =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chop =
@@ -678,6 +732,8 @@ export const chop =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const splitAt =
@@ -693,6 +749,8 @@ export const splitAt =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chunksOf = (
@@ -747,6 +805,8 @@ const _traverseWithIndex: TraversableWithIndex1<URI, number>['traverseWithIndex'
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const of: <A>(a: A) => ReadonlyNonEmptyArray<A> = _.singleton
@@ -760,6 +820,8 @@ export const of: <A>(a: A) => ReadonlyNonEmptyArray<A> = _.singleton
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -792,6 +854,8 @@ export const altW =
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -816,6 +880,8 @@ export const alt: <A>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const ap = <A>(
@@ -827,6 +893,8 @@ export const ap = <A>(
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -859,6 +927,8 @@ export const flatMap: {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const extend =
@@ -876,6 +946,8 @@ export const extend =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const duplicate: <A>(ma: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArray<ReadonlyNonEmptyArray<A>> =
@@ -886,6 +958,8 @@ export const duplicate: <A>(ma: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArr
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatten: <A>(mma: ReadonlyNonEmptyArray<ReadonlyNonEmptyArray<A>>) => ReadonlyNonEmptyArray<A> =
@@ -899,6 +973,8 @@ export const flatten: <A>(mma: ReadonlyNonEmptyArray<ReadonlyNonEmptyArray<A>>) 
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const map = <A, B>(f: (a: A) => B): ((as: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArray<B>) =>
@@ -909,6 +985,8 @@ export const map = <A, B>(f: (a: A) => B): ((as: ReadonlyNonEmptyArray<A>) => Re
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const mapWithIndex =
@@ -926,6 +1004,8 @@ export const mapWithIndex =
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reduce = <A, B>(b: B, f: (b: B, a: A) => B): ((as: ReadonlyNonEmptyArray<A>) => B) =>
@@ -938,6 +1018,8 @@ export const reduce = <A, B>(b: B, f: (b: B, a: A) => B): ((as: ReadonlyNonEmpty
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const foldMap =
@@ -951,6 +1033,8 @@ export const foldMap =
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reduceRight = <A, B>(b: B, f: (a: A, b: B) => B): ((as: ReadonlyNonEmptyArray<A>) => B) =>
@@ -961,6 +1045,8 @@ export const reduceRight = <A, B>(b: B, f: (a: A, b: B) => B): ((as: ReadonlyNon
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reduceWithIndex =
@@ -975,6 +1061,8 @@ export const reduceWithIndex =
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const foldMapWithIndex =
@@ -988,6 +1076,8 @@ export const foldMapWithIndex =
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reduceRightWithIndex =
@@ -1000,6 +1090,8 @@ export const reduceRightWithIndex =
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverse: PipeableTraverse1<URI> = <F>(
@@ -1014,6 +1106,8 @@ export const traverse: PipeableTraverse1<URI> = <F>(
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const sequence: Traversable1<URI>['sequence'] = <F>(
@@ -1025,6 +1119,8 @@ export const sequence: Traversable1<URI>['sequence'] = <F>(
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverseWithIndex: PipeableTraverseWithIndex1<URI, number> =
@@ -1046,6 +1142,8 @@ export const traverseWithIndex: PipeableTraverseWithIndex1<URI, number> =
  * Added in 1.0.0
  * @remarks
  * Category: Comonad
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const extract: Comonad1<URI>['extract'] = _.head
@@ -1055,6 +1153,8 @@ export const extract: Comonad1<URI>['extract'] = _.head
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const URI = 'ReadonlyNonEmptyArray'
@@ -1064,6 +1164,8 @@ export const URI = 'ReadonlyNonEmptyArray'
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type URI = typeof URI
@@ -1079,6 +1181,8 @@ declare module './HKT' {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getShow = <A>(S: Show<A>): Show<ReadonlyNonEmptyArray<A>> => ({
@@ -1092,6 +1196,8 @@ export const getShow = <A>(S: Show<A>): Show<ReadonlyNonEmptyArray<A>> => ({
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getSemigroup = <A = never>(): Semigroup<ReadonlyNonEmptyArray<A>> => ({
@@ -1103,6 +1209,8 @@ export const getSemigroup = <A = never>(): Semigroup<ReadonlyNonEmptyArray<A>> =
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1122,6 +1230,8 @@ export const getEq = <A>(E: Eq<A>): Eq<ReadonlyNonEmptyArray<A>> =>
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<ReadonlyNonEmptyArray<A>> => {
@@ -1136,6 +1246,8 @@ export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<ReadonlyNonEmptyArray<
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Functor: Functor1<URI> = {
@@ -1148,6 +1260,8 @@ export const Functor: Functor1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
@@ -1157,6 +1271,8 @@ export const flap = /*#__PURE__*/ flap_(Functor)
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Pointed: Pointed1<URI> = {
@@ -1169,6 +1285,8 @@ export const Pointed: Pointed1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const FunctorWithIndex: FunctorWithIndex1<URI, number> = {
@@ -1182,6 +1300,8 @@ export const FunctorWithIndex: FunctorWithIndex1<URI, number> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Apply: Apply1<URI> = {
@@ -1195,6 +1315,8 @@ export const Apply: Apply1<URI> = {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
@@ -1204,6 +1326,8 @@ export const apFirst = /*#__PURE__*/ apFirst_(Apply)
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
@@ -1213,6 +1337,8 @@ export const apSecond = /*#__PURE__*/ apSecond_(Apply)
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Applicative: Applicative1<URI> = {
@@ -1227,6 +1353,8 @@ export const Applicative: Applicative1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Chain: Chain1<URI> = {
@@ -1244,6 +1372,8 @@ export const Chain: Chain1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1270,6 +1400,8 @@ export const chainFirst: <A, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Monad: Monad1<URI> = {
@@ -1285,6 +1417,8 @@ export const Monad: Monad1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Foldable: Foldable1<URI> = {
@@ -1299,6 +1433,8 @@ export const Foldable: Foldable1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const FoldableWithIndex: FoldableWithIndex1<URI, number> = {
@@ -1316,6 +1452,8 @@ export const FoldableWithIndex: FoldableWithIndex1<URI, number> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Traversable: Traversable1<URI> = {
@@ -1333,6 +1471,8 @@ export const Traversable: Traversable1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const TraversableWithIndex: TraversableWithIndex1<URI, number> = {
@@ -1355,6 +1495,8 @@ export const TraversableWithIndex: TraversableWithIndex1<URI, number> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Alt: Alt1<URI> = {
@@ -1368,6 +1510,8 @@ export const Alt: Alt1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Comonad: Comonad1<URI> = {
@@ -1386,6 +1530,8 @@ export const Comonad: Comonad1<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Do: ReadonlyNonEmptyArray<{}> = /*#__PURE__*/ of(_.emptyRecord)
@@ -1395,6 +1541,8 @@ export const Do: ReadonlyNonEmptyArray<{}> = /*#__PURE__*/ of(_.emptyRecord)
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
@@ -1407,6 +1555,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Do notation
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   let_ as let,
@@ -1417,6 +1567,8 @@ export {
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const bind = /*#__PURE__*/ bind_(Chain)
@@ -1426,6 +1578,8 @@ export const bind = /*#__PURE__*/ bind_(Chain)
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
@@ -1437,6 +1591,8 @@ export const apS = /*#__PURE__*/ apS_(Apply)
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const head: <A>(as: ReadonlyNonEmptyArray<A>) => A = extract
@@ -1444,6 +1600,8 @@ export const head: <A>(as: ReadonlyNonEmptyArray<A>) => A = extract
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const tail: <A>(as: ReadonlyNonEmptyArray<A>) => ReadonlyArray<A> = _.tail
@@ -1451,6 +1609,8 @@ export const tail: <A>(as: ReadonlyNonEmptyArray<A>) => ReadonlyArray<A> = _.tai
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const last = <A>(as: ReadonlyNonEmptyArray<A>): A => as[as.length - 1]
@@ -1460,6 +1620,8 @@ export const last = <A>(as: ReadonlyNonEmptyArray<A>): A => as[as.length - 1]
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1476,6 +1638,8 @@ export const init = <A>(as: ReadonlyNonEmptyArray<A>): ReadonlyArray<A> => as.sl
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const min = <A>(O: Ord<A>): ((as: ReadonlyNonEmptyArray<A>) => A) => {
@@ -1486,6 +1650,8 @@ export const min = <A>(O: Ord<A>): ((as: ReadonlyNonEmptyArray<A>) => A) => {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const max = <A>(O: Ord<A>): ((as: ReadonlyNonEmptyArray<A>) => A) => {
@@ -1496,6 +1662,8 @@ export const max = <A>(O: Ord<A>): ((as: ReadonlyNonEmptyArray<A>) => A) => {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const concatAll =
@@ -1510,6 +1678,8 @@ export const concatAll =
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const matchLeft =
@@ -1524,6 +1694,8 @@ export const matchLeft =
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const matchRight =
@@ -1536,6 +1708,8 @@ export const matchRight =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const modifyHead =
@@ -1547,6 +1721,8 @@ export const modifyHead =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const updateHead = <A>(a: A): ((as: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArray<A>) => modifyHead(() => a)
@@ -1556,6 +1732,8 @@ export const updateHead = <A>(a: A): ((as: ReadonlyNonEmptyArray<A>) => Readonly
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const modifyLast =
@@ -1568,6 +1746,8 @@ export const modifyLast =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const updateLast = <A>(a: A): ((as: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArray<A>) => modifyLast(() => a)
@@ -1578,6 +1758,8 @@ export const updateLast = <A>(a: A): ((as: ReadonlyNonEmptyArray<A>) => Readonly
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1605,6 +1787,8 @@ export const intercalate = <A>(S: Semigroup<A>): ((middle: A) => (as: ReadonlyNo
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chain: <A, B>(
@@ -1620,6 +1804,8 @@ export const chain: <A, B>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1638,6 +1824,8 @@ export function groupSort<A>(O: Ord<A>): (as: ReadonlyArray<A>) => ReadonlyArray
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1657,6 +1845,8 @@ export function filter<A>(predicate: Predicate<A>): (as: ReadonlyNonEmptyArray<A
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1670,6 +1860,8 @@ export const filterWithIndex =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1680,6 +1872,8 @@ export const uncons: <A>(as: ReadonlyNonEmptyArray<A>) => readonly [A, ReadonlyA
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1690,6 +1884,8 @@ export const unsnoc: <A>(as: ReadonlyNonEmptyArray<A>) => readonly [ReadonlyArra
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1708,6 +1904,8 @@ export function cons<A>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1718,6 +1916,8 @@ export const snoc = <A>(init: ReadonlyArray<A>, end: A): ReadonlyNonEmptyArray<A
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1731,6 +1931,8 @@ export const insertAt =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1741,6 +1943,8 @@ export const prependToAll = prependAll
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -1752,6 +1956,8 @@ export const fold = concatAll
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

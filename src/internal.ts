@@ -285,6 +285,8 @@ export const flatMapReader = <F extends TypeLambda>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type UnionToIntersection<Union> =

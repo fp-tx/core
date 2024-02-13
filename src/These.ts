@@ -61,6 +61,8 @@ import { type PipeableTraverse2, type Traversable2 } from './Traversable'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface Both<E, A> {
@@ -74,6 +76,8 @@ export interface Both<E, A> {
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type These<E, A> = Either<E, A> | Both<E, A>
@@ -89,6 +93,8 @@ export type These<E, A> = Either<E, A> | Both<E, A>
  * Added in 1.0.0
  * @remarks
  * Category: Refinements
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const isLeft = <E>(fa: These<E, unknown>): fa is Left<E> => fa._tag === 'Left'
@@ -100,6 +106,8 @@ export const isLeft = <E>(fa: These<E, unknown>): fa is Left<E> => fa._tag === '
  * Added in 1.0.0
  * @remarks
  * Category: Refinements
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const isRight = <A>(fa: These<unknown, A>): fa is Right<A> => fa._tag === 'Right'
@@ -111,6 +119,8 @@ export const isRight = <A>(fa: These<unknown, A>): fa is Right<A> => fa._tag ===
  * Added in 1.0.0
  * @remarks
  * Category: Refinements
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function isBoth<E, A>(fa: These<E, A>): fa is Both<E, A> {
@@ -126,6 +136,8 @@ export function isBoth<E, A>(fa: These<E, A>): fa is Both<E, A> {
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function left<E = never, A = never>(left: E): These<E, A> {
@@ -137,6 +149,8 @@ export function left<E = never, A = never>(left: E): These<E, A> {
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function right<E = never, A = never>(right: A): These<E, A> {
@@ -148,6 +162,8 @@ export function right<E = never, A = never>(right: A): These<E, A> {
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function both<E, A>(left: E, right: A): These<E, A> {
@@ -163,6 +179,8 @@ export function both<E, A>(left: E, right: A): These<E, A> {
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const matchW =
@@ -185,6 +203,8 @@ export const matchW =
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const foldW = matchW
@@ -194,6 +214,8 @@ export const foldW = matchW
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const match: <E, A, B>(
@@ -209,6 +231,8 @@ export const match: <E, A, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fold = match
@@ -216,6 +240,8 @@ export const fold = match
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const swap: <E, A>(fa: These<E, A>) => These<A, E> = match(right, left, (e, a) => both(a, e))
@@ -225,6 +251,8 @@ export const swap: <E, A>(fa: These<E, A>) => These<A, E> = match(right, left, (
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getShow<E, A>(SE: Show<E>, SA: Show<A>): Show<These<E, A>> {
@@ -242,6 +270,8 @@ export function getShow<E, A>(SE: Show<E>, SA: Show<A>): Show<These<E, A>> {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getEq<E, A>(EE: Eq<E>, EA: Eq<A>): Eq<These<E, A>> {
@@ -257,6 +287,8 @@ export function getEq<E, A>(EE: Eq<E>, EA: Eq<A>): Eq<These<E, A>> {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getSemigroup<E, A>(SE: Semigroup<E>, SA: Semigroup<A>): Semigroup<These<E, A>> {
@@ -281,6 +313,8 @@ export function getSemigroup<E, A>(SE: Semigroup<E>, SA: Semigroup<A>): Semigrou
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getApply = <E>(S: Semigroup<E>): Apply2C<URI, E> => ({
@@ -306,6 +340,8 @@ export const getApply = <E>(S: Semigroup<E>): Apply2C<URI, E> => ({
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getApplicative<E>(S: Semigroup<E>): Applicative2C<URI, E> {
@@ -324,6 +360,8 @@ export function getApplicative<E>(S: Semigroup<E>): Applicative2C<URI, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getChain<E>(S: Semigroup<E>): Chain2C<URI, E> {
@@ -358,6 +396,8 @@ export function getChain<E>(S: Semigroup<E>): Chain2C<URI, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getMonad<E>(S: Semigroup<E>): Monad2C<URI, E> & MonadThrow2C<URI, E> {
@@ -380,6 +420,8 @@ export function getMonad<E>(S: Semigroup<E>): Monad2C<URI, E> & MonadThrow2C<URI
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -408,6 +450,8 @@ export function getLeft<E, A>(fa: These<E, A>): Option<E> {
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -435,6 +479,8 @@ export function getRight<E, A>(fa: These<E, A>): Option<A> {
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -457,6 +503,8 @@ export function leftOrBoth<E>(e: E): <A>(ma: Option<A>) => These<E, A> {
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -480,6 +528,8 @@ export function rightOrBoth<A>(a: A): <E>(me: Option<E>) => These<E, A> {
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -504,6 +554,8 @@ export function getLeftOnly<E, A>(fa: These<E, A>): Option<E> {
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -528,6 +580,8 @@ export function getRightOnly<E, A>(fa: These<E, A>): Option<A> {
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -579,6 +633,8 @@ const _traverse = <F>(
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: These<E, A>) => These<G, B> = (f, g) => fa =>
@@ -593,6 +649,8 @@ export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: These<E
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: These<E, A>) => These<G, A> = f => fa =>
@@ -608,6 +666,8 @@ export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: These<E, A>) => These<G,
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: These<E, A>) => These<E, B> = f => fa =>
@@ -620,6 +680,8 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: These<E, A>) => These<E, B> 
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => <E>(fa: These<E, A>) => B = (b, f) => fa =>
@@ -630,6 +692,8 @@ export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => <E>(fa: These<E, A>) 
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => <E>(fa: These<E, A>) => M = M => f => fa =>
@@ -640,6 +704,8 @@ export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => <E>(fa: These<
  * Added in 1.0.0
  * @remarks
  * Category: Folding
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => <E>(fa: These<E, A>) => B = (b, f) => fa =>
@@ -650,6 +716,8 @@ export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => <E>(fa: These<E,
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverse: PipeableTraverse2<URI> =
@@ -665,6 +733,8 @@ export const traverse: PipeableTraverse2<URI> =
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const sequence: Traversable2<URI>['sequence'] =
@@ -682,6 +752,8 @@ export const sequence: Traversable2<URI>['sequence'] =
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const of: <E = never, A = never>(right: A) => These<E, A> = right
@@ -691,6 +763,8 @@ export const of: <E = never, A = never>(right: A) => These<E, A> = right
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const URI = 'These'
@@ -700,6 +774,8 @@ export const URI = 'These'
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type URI = typeof URI
@@ -715,6 +791,8 @@ declare module './HKT' {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Functor: Functor2<URI> = {
@@ -727,6 +805,8 @@ export const Functor: Functor2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
@@ -736,6 +816,8 @@ export const flap = /*#__PURE__*/ flap_(Functor)
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Pointed: Pointed2<URI> = {
@@ -748,6 +830,8 @@ export const Pointed: Pointed2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Bifunctor: Bifunctor2<URI> = {
@@ -761,6 +845,8 @@ export const Bifunctor: Bifunctor2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const FromThese: FromThese2<URI> = {
@@ -773,6 +859,8 @@ export const FromThese: FromThese2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Foldable: Foldable2<URI> = {
@@ -787,6 +875,8 @@ export const Foldable: Foldable2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Traversable: Traversable2<URI> = {
@@ -804,6 +894,8 @@ export const Traversable: Traversable2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const FromEither: FromEither2<URI> = {
@@ -816,6 +908,8 @@ export const FromEither: FromEither2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromPredicate: {
@@ -829,6 +923,8 @@ export const fromPredicate: {
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => These<E, A> =
@@ -839,6 +935,8 @@ export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => These<
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromOptionK: <E>(
@@ -853,6 +951,8 @@ export const fromOptionK: <E>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const elem =
@@ -864,6 +964,8 @@ export const elem =
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const exists =
@@ -876,6 +978,8 @@ export const exists =
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -922,6 +1026,8 @@ export const toTuple2 =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -934,6 +1040,8 @@ export const toTuple = <E, A>(e: E, a: A): ((fa: These<E, A>) => [E, A]) =>
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const ApT: These<never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
@@ -949,6 +1057,8 @@ export const ApT: These<never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyAr
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndex =
@@ -984,6 +1094,8 @@ export const traverseReadonlyNonEmptyArrayWithIndex =
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverseReadonlyArrayWithIndex =
@@ -1003,6 +1115,8 @@ export const traverseReadonlyArrayWithIndex =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

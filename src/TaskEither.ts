@@ -70,6 +70,8 @@ import { type TaskOption } from './TaskOption'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface TaskEither<E, A> extends Task<Either<E, A>> {}
@@ -83,6 +85,8 @@ export interface TaskEither<E, A> extends Task<Either<E, A>> {}
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const left: <E = never, A = never>(e: E) => TaskEither<E, A> = /*#__PURE__*/ ET.left(T.Pointed)
@@ -92,6 +96,8 @@ export const left: <E = never, A = never>(e: E) => TaskEither<E, A> = /*#__PURE_
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const right: <E = never, A = never>(a: A) => TaskEither<E, A> = /*#__PURE__*/ ET.right(T.Pointed)
@@ -101,6 +107,8 @@ export const right: <E = never, A = never>(a: A) => TaskEither<E, A> = /*#__PURE
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const rightTask: <E = never, A = never>(ma: Task<A>) => TaskEither<E, A> = /*#__PURE__*/ ET.rightF(T.Functor)
@@ -110,6 +118,8 @@ export const rightTask: <E = never, A = never>(ma: Task<A>) => TaskEither<E, A> 
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const leftTask: <E = never, A = never>(me: Task<E>) => TaskEither<E, A> = /*#__PURE__*/ ET.leftF(T.Functor)
@@ -119,6 +129,8 @@ export const leftTask: <E = never, A = never>(me: Task<E>) => TaskEither<E, A> =
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const rightIO: <E = never, A = never>(ma: IO<A>) => TaskEither<E, A> = /*#__PURE__*/ flow(T.fromIO, rightTask)
@@ -128,6 +140,8 @@ export const rightIO: <E = never, A = never>(ma: IO<A>) => TaskEither<E, A> = /*
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const leftIO: <E = never, A = never>(me: IO<E>) => TaskEither<E, A> = /*#__PURE__*/ flow(T.fromIO, leftTask)
@@ -141,6 +155,8 @@ export const leftIO: <E = never, A = never>(me: IO<E>) => TaskEither<E, A> = /*#
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromIO: <A, E = never>(fa: IO<A>) => TaskEither<E, A> = rightIO
@@ -150,6 +166,8 @@ export const fromIO: <A, E = never>(fa: IO<A>) => TaskEither<E, A> = rightIO
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromTask: <A, E = never>(fa: Task<A>) => TaskEither<E, A> = rightTask
@@ -159,6 +177,8 @@ export const fromTask: <A, E = never>(fa: Task<A>) => TaskEither<E, A> = rightTa
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromEither: <E, A>(fa: Either<E, A>) => TaskEither<E, A> = T.of
@@ -168,6 +188,8 @@ export const fromEither: <E, A>(fa: Either<E, A>) => TaskEither<E, A> = T.of
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromIOEither: <E, A>(fa: IOEither<E, A>) => TaskEither<E, A> = T.fromIO
@@ -177,6 +199,8 @@ export const fromIOEither: <E, A>(fa: IOEither<E, A>) => TaskEither<E, A> = T.fr
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromTaskOption: <E>(onNone: LazyArg<E>) => <A>(fa: TaskOption<A>) => TaskEither<E, A> = onNone =>
@@ -187,6 +211,8 @@ export const fromTaskOption: <E>(onNone: LazyArg<E>) => <A>(fa: TaskOption<A>) =
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const match: <E, B, A>(onLeft: (e: E) => B, onRight: (a: A) => B) => (ma: TaskEither<E, A>) => Task<B> =
@@ -201,6 +227,8 @@ export const match: <E, B, A>(onLeft: (e: E) => B, onRight: (a: A) => B) => (ma:
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const matchW: <E, B, A, C>(onLeft: (e: E) => B, onRight: (a: A) => C) => (ma: TaskEither<E, A>) => Task<B | C> =
@@ -213,6 +241,8 @@ export const matchW: <E, B, A, C>(onLeft: (e: E) => B, onRight: (a: A) => C) => 
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const matchE: <E, A, B>(
@@ -227,6 +257,8 @@ export const matchE: <E, A, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fold = matchE
@@ -240,6 +272,8 @@ export const fold = matchE
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const matchEW: <E, B, A, C>(
@@ -254,6 +288,8 @@ export const matchEW: <E, B, A, C>(
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const foldW = matchEW
@@ -263,6 +299,8 @@ export const foldW = matchEW
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getOrElse: <E, A>(onLeft: (e: E) => Task<A>) => (ma: TaskEither<E, A>) => Task<A> =
@@ -277,6 +315,8 @@ export const getOrElse: <E, A>(onLeft: (e: E) => Task<A>) => (ma: TaskEither<E, 
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getOrElseW: <E, B>(onLeft: (e: E) => Task<B>) => <A>(ma: TaskEither<E, A>) => Task<A | B> =
@@ -291,6 +331,8 @@ export const getOrElseW: <E, B>(onLeft: (e: E) => Task<B>) => <A>(ma: TaskEither
  * Added in 1.0.0
  * @remarks
  * Category: Interop
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -324,6 +366,8 @@ export const tryCatch =
  * Added in 1.0.0
  * @remarks
  * Category: Interop
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const tryCatchK =
@@ -339,6 +383,8 @@ export const tryCatchK =
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const toUnion: <E, A>(fa: TaskEither<E, A>) => Task<E | A> = /*#__PURE__*/ ET.toUnion(T.Functor)
@@ -348,6 +394,8 @@ export const toUnion: <E, A>(fa: TaskEither<E, A>) => Task<E | A> = /*#__PURE__*
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromNullable: <E>(e: E) => <A>(a: A) => TaskEither<E, NonNullable<A>> = /*#__PURE__*/ ET.fromNullable(
@@ -361,6 +409,8 @@ export const fromNullable: <E>(e: E) => <A>(a: A) => TaskEither<E, NonNullable<A
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromNullableK: <E>(
@@ -376,6 +426,8 @@ export const fromNullableK: <E>(
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainNullableK: <E>(
@@ -396,6 +448,8 @@ export const chainNullableK: <E>(
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -426,6 +480,8 @@ export const orElse: <E1, A, E2>(onLeft: (e: E1) => TaskEither<E2, A>) => (ma: T
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const orElseW: <E1, E2, B>(
@@ -439,6 +495,8 @@ export const orElseW: <E1, E2, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const tapError: {
@@ -451,6 +509,8 @@ export const tapError: {
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const orElseFirstIOK: <E, B>(
@@ -462,6 +522,8 @@ export const orElseFirstIOK: <E, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const orElseFirstTaskK: <E, B>(
@@ -473,6 +535,8 @@ export const orElseFirstTaskK: <E, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const orLeft: <E1, E2>(onLeft: (e: E1) => Task<E2>) => <A>(fa: TaskEither<E1, A>) => TaskEither<E2, A> =
@@ -481,6 +545,8 @@ export const orLeft: <E1, E2>(onLeft: (e: E1) => Task<E2>) => <A>(fa: TaskEither
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const swap: <E, A>(ma: TaskEither<E, A>) => TaskEither<A, E> = /*#__PURE__*/ ET.swap(T.Functor)
@@ -490,6 +556,8 @@ export const swap: <E, A>(ma: TaskEither<E, A>) => TaskEither<A, E> = /*#__PURE_
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromTaskOptionK = <E>(
@@ -508,6 +576,8 @@ export const fromTaskOptionK = <E>(
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainTaskOptionKW =
@@ -523,6 +593,8 @@ export const chainTaskOptionKW =
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainTaskOptionK: <E>(
@@ -534,6 +606,8 @@ export const chainTaskOptionK: <E>(
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromIOEitherK = <E, A extends ReadonlyArray<unknown>, B>(
@@ -554,6 +628,8 @@ const _alt: Alt2<URI>['alt'] = (fa, that) => pipe(fa, alt(that))
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: TaskEither<E, A>) => TaskEither<E, B> = /*#__PURE__*/ ET.map(
@@ -568,6 +644,8 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: TaskEither<E, A>) => TaskEit
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -599,6 +677,8 @@ export const mapBoth: {
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: TaskEither<E, A>) => TaskEither<G, B> = mapBoth
@@ -610,6 +690,8 @@ export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: TaskEit
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -640,6 +722,8 @@ export const mapError: {
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: TaskEither<E, A>) => TaskEither<G, A> = mapError
@@ -647,6 +731,8 @@ export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: TaskEither<E, A>) => Tas
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const ap: <E, A>(fa: TaskEither<E, A>) => <B>(fab: TaskEither<E, (a: A) => B>) => TaskEither<E, B> =
@@ -659,6 +745,8 @@ export const ap: <E, A>(fa: TaskEither<E, A>) => <B>(fab: TaskEither<E, (a: A) =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apW: <E2, A>(
@@ -670,6 +758,8 @@ export const apW: <E2, A>(
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatMap: {
@@ -686,6 +776,8 @@ export const flatMap: {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flattenW: <E1, E2, A>(mma: TaskEither<E1, TaskEither<E2, A>>) => TaskEither<E1 | E2, A> =
@@ -696,6 +788,8 @@ export const flattenW: <E1, E2, A>(mma: TaskEither<E1, TaskEither<E2, A>>) => Ta
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatten: <E, A>(mma: TaskEither<E, TaskEither<E, A>>) => TaskEither<E, A> = flattenW
@@ -712,6 +806,8 @@ export const flatten: <E, A>(mma: TaskEither<E, TaskEither<E, A>>) => TaskEither
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -760,6 +856,8 @@ export const alt: <E, A>(that: LazyArg<TaskEither<E, A>>) => (fa: TaskEither<E, 
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const altW: <E2, B>(
@@ -771,6 +869,8 @@ export const altW: <E2, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Constructors
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const of: <E = never, A = never>(a: A) => TaskEither<E, A> = right
@@ -778,6 +878,8 @@ export const of: <E = never, A = never>(a: A) => TaskEither<E, A> = right
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const throwError: MonadThrow2<URI>['throwError'] = left
@@ -787,6 +889,8 @@ export const throwError: MonadThrow2<URI>['throwError'] = left
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const URI = 'TaskEither'
@@ -796,6 +900,8 @@ export const URI = 'TaskEither'
  * Added in 1.0.0
  * @remarks
  * Category: Type lambdas
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type URI = typeof URI
@@ -814,6 +920,8 @@ declare module './HKT' {
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -883,6 +991,8 @@ export function getApplicativeTaskValidation<E>(A: Apply1<T.URI>, S: Semigroup<E
  * Added in 1.0.0
  * @remarks
  * Category: Error handling
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getAltTaskValidation<E>(S: Semigroup<E>): Alt2C<URI, E> {
@@ -900,6 +1010,8 @@ export function getAltTaskValidation<E>(S: Semigroup<E>): Alt2C<URI, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const getCompactable = <E>(M: Monoid<E>): Compactable2C<URI, E> => {
@@ -917,6 +1029,8 @@ export const getCompactable = <E>(M: Monoid<E>): Compactable2C<URI, E> => {
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export function getFilterable<E>(M: Monoid<E>): Filterable2C<URI, E> {
@@ -945,6 +1059,8 @@ export function getFilterable<E>(M: Monoid<E>): Filterable2C<URI, E> {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Functor: Functor2<URI> = {
@@ -959,6 +1075,8 @@ export const Functor: Functor2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const as: {
@@ -973,6 +1091,8 @@ export const as: {
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const asUnit: <E, _>(self: TaskEither<E, _>) => TaskEither<E, void> = asUnit_(Functor)
@@ -982,6 +1102,8 @@ export const asUnit: <E, _>(self: TaskEither<E, _>) => TaskEither<E, void> = asU
  * Added in 1.0.0
  * @remarks
  * Category: Mapping
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
@@ -991,6 +1113,8 @@ export const flap = /*#__PURE__*/ flap_(Functor)
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Pointed: Pointed2<URI> = {
@@ -1005,6 +1129,8 @@ export const Pointed: Pointed2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const ApplyPar: Apply2<URI> = {
@@ -1018,6 +1144,8 @@ export const ApplyPar: Apply2<URI> = {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apFirst = /*#__PURE__*/ apFirst_(ApplyPar)
@@ -1029,6 +1157,8 @@ export const apFirst = /*#__PURE__*/ apFirst_(ApplyPar)
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apFirstW: <E2, B>(
@@ -1040,6 +1170,8 @@ export const apFirstW: <E2, B>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
@@ -1051,6 +1183,8 @@ export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apSecondW: <E2, B>(
@@ -1064,6 +1198,8 @@ export const apSecondW: <E2, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const ApplicativePar: Applicative2<URI> = {
@@ -1080,6 +1216,8 @@ export const ApplicativePar: Applicative2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const ApplySeq: Apply2<URI> = {
@@ -1095,6 +1233,8 @@ export const ApplySeq: Apply2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const ApplicativeSeq: Applicative2<URI> = {
@@ -1109,6 +1249,8 @@ export const ApplicativeSeq: Applicative2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Chain: chainable.Chain2<URI> = {
@@ -1123,6 +1265,8 @@ export const Chain: chainable.Chain2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instance methods
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainRec: ChainRec2<URI>['chainRec'] =
@@ -1151,6 +1295,8 @@ export const chainRec: ChainRec2<URI>['chainRec'] =
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const ChainRec: ChainRec2<URI> = {
@@ -1163,6 +1309,8 @@ export const ChainRec: ChainRec2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Monad: Monad2<URI> = {
@@ -1178,6 +1326,8 @@ export const Monad: Monad2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const MonadIO: MonadIO2<URI> = {
@@ -1194,6 +1344,8 @@ export const MonadIO: MonadIO2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const MonadTask: MonadTask2<URI> = {
@@ -1211,6 +1363,8 @@ export const MonadTask: MonadTask2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const MonadThrow: MonadThrow2<URI> = {
@@ -1227,6 +1381,8 @@ export const MonadThrow: MonadThrow2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const FromEither: FromEither2<URI> = {
@@ -1239,6 +1395,8 @@ export const FromEither: FromEither2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const FromIO: FromIO2<URI> = {
@@ -1251,6 +1409,8 @@ export const FromIO: FromIO2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const FromTask: FromTask2<URI> = {
@@ -1267,6 +1427,8 @@ export const FromTask: FromTask2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Combinators
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const tap: {
@@ -1282,6 +1444,8 @@ export const tap: {
  * Added in 1.0.0
  * @remarks
  * Category: Combinators
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1318,6 +1482,8 @@ export const tapEither: {
  * Added in 1.0.0
  * @remarks
  * Category: Combinators
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1358,6 +1524,8 @@ export const tapIO: {
  * Added in 1.0.0
  * @remarks
  * Category: Combinators
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1386,6 +1554,8 @@ export const tapTask: {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Bifunctor: Bifunctor2<URI> = {
@@ -1399,6 +1569,8 @@ export const Bifunctor: Bifunctor2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Alt: Alt2<URI> = {
@@ -1412,6 +1584,8 @@ export const Alt: Alt2<URI> = {
  * Added in 1.0.0
  * @remarks
  * Category: Conversions
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => TaskEither<E, A> =
@@ -1424,6 +1598,8 @@ export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => TaskEi
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromOptionK: <E>(
@@ -1438,6 +1614,8 @@ export const fromOptionK: <E>(
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainOptionK: <E>(
@@ -1454,6 +1632,8 @@ export const chainOptionK: <E>(
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainOptionKW: <E2>(
@@ -1476,6 +1656,8 @@ const _FromEither: _.FromEither<TaskEitherTypeLambda> = {
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
@@ -1488,6 +1670,8 @@ export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const liftOption: <A extends ReadonlyArray<unknown>, B, E>(
@@ -1515,6 +1699,8 @@ const _FromTask: _.FromTask<TaskEitherTypeLambda> = {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatMapNullable: {
@@ -1534,6 +1720,8 @@ export const flatMapNullable: {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatMapOption: {
@@ -1546,6 +1734,8 @@ export const flatMapOption: {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatMapEither: {
@@ -1558,6 +1748,8 @@ export const flatMapEither: {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatMapIO: {
@@ -1570,6 +1762,8 @@ export const flatMapIO: {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatMapTask: {
@@ -1582,6 +1776,8 @@ export const flatMapTask: {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatMapIOEither: {
@@ -1598,6 +1794,8 @@ export const flatMapIOEither: {
  * Added in 1.0.0
  * @remarks
  * Category: Sequencing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const flatMapTaskOption: {
@@ -1616,6 +1814,8 @@ export const flatMapTaskOption: {
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainEitherK: <E, A, B>(f: (a: A) => E.Either<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> =
@@ -1628,6 +1828,8 @@ export const chainEitherK: <E, A, B>(f: (a: A) => E.Either<E, B>) => (ma: TaskEi
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainEitherKW: <E2, A, B>(
@@ -1641,6 +1843,8 @@ export const chainEitherKW: <E2, A, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainFirstEitherK: <A, E, B>(f: (a: A) => E.Either<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, A> =
@@ -1657,6 +1861,8 @@ export const chainFirstEitherK: <A, E, B>(f: (a: A) => E.Either<E, B>) => (ma: T
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainFirstEitherKW: <A, E2, B>(
@@ -1668,6 +1874,8 @@ export const chainFirstEitherKW: <A, E2, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromPredicate: {
@@ -1681,6 +1889,8 @@ export const fromPredicate: {
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const filterOrElse: {
@@ -1698,6 +1908,8 @@ export const filterOrElse: {
  * Added in 1.0.0
  * @remarks
  * Category: Filtering
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const filterOrElseW: {
@@ -1717,6 +1929,8 @@ export const filterOrElseW: {
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
@@ -1728,6 +1942,8 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
@@ -1741,6 +1957,8 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, B> = flatMapIO
@@ -1752,6 +1970,8 @@ export const chainIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: TaskEither<E, A>
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, A> = tapIO
@@ -1761,6 +1981,8 @@ export const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: TaskEither<
  * Added in 1.0.0
  * @remarks
  * Category: Lifting
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
@@ -1774,6 +1996,8 @@ export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, B> =
@@ -1786,6 +2010,8 @@ export const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(first: TaskEither
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, A> =
@@ -1802,6 +2028,8 @@ export const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(first: TaskE
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainIOEitherKW: <E2, A, B>(
@@ -1815,6 +2043,8 @@ export const chainIOEitherKW: <E2, A, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainIOEitherK: <E, A, B>(f: (a: A) => IOEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> =
@@ -1845,6 +2075,8 @@ export const chainIOEitherK: <E, A, B>(f: (a: A) => IOEither<E, B>) => (ma: Task
  * Added in 1.0.0
  * @remarks
  * Category: Interop
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1893,6 +2125,8 @@ export function taskify<L, R>(f: Function): () => TaskEither<L, R> {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const bracket = <E, A, B>(
@@ -1908,6 +2142,8 @@ export const bracket = <E, A, B>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const bracketW: <E1, A, E2, B, E3>(
@@ -1926,6 +2162,8 @@ export const bracketW: <E1, A, E2, B, E3>(
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Do: TaskEither<never, {}> = /*#__PURE__*/ of(_.emptyRecord)
@@ -1935,6 +2173,8 @@ export const Do: TaskEither<never, {}> = /*#__PURE__*/ of(_.emptyRecord)
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
@@ -1947,6 +2187,8 @@ export {
    * Added in 1.0.0
    * @remarks
    * Category: Do notation
+   * @remarks
+   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
    * @public
    */
   let_ as let,
@@ -1957,6 +2199,8 @@ export {
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
@@ -1968,6 +2212,8 @@ export const bind = /*#__PURE__*/ chainable.bind(Chain)
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const bindW: <N extends string, A, E2, B>(
@@ -2001,6 +2247,8 @@ export {
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apS = /*#__PURE__*/ apS_(ApplyPar)
@@ -2014,6 +2262,8 @@ export const apS = /*#__PURE__*/ apS_(ApplyPar)
  * Added in 1.0.0
  * @remarks
  * Category: Do notation
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const apSW: <A, N extends string, E2, B>(
@@ -2025,6 +2275,8 @@ export const apSW: <A, N extends string, E2, B>(
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const ApT: TaskEither<never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
@@ -2040,6 +2292,8 @@ export const ApT: TaskEither<never, readonly []> = /*#__PURE__*/ of(_.emptyReado
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndex = <A, E, B>(
@@ -2054,6 +2308,8 @@ export const traverseReadonlyNonEmptyArrayWithIndex = <A, E, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverseReadonlyArrayWithIndex = <A, E, B>(
@@ -2070,6 +2326,8 @@ export const traverseReadonlyArrayWithIndex = <A, E, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndexSeq =
@@ -2099,6 +2357,8 @@ export const traverseReadonlyNonEmptyArrayWithIndexSeq =
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverseReadonlyArrayWithIndexSeq = <A, E, B>(
@@ -2115,6 +2375,8 @@ export const traverseReadonlyArrayWithIndexSeq = <A, E, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverseArrayWithIndex: <A, B, E>(
@@ -2128,6 +2390,8 @@ export const traverseArrayWithIndex: <A, B, E>(
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverseArray = <A, B, E>(
@@ -2141,6 +2405,8 @@ export const traverseArray = <A, B, E>(
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const sequenceArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A>>) => TaskEither<E, ReadonlyArray<A>> =
@@ -2153,6 +2419,8 @@ export const sequenceArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A>>) => Task
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverseSeqArrayWithIndex: <A, B, E>(
@@ -2166,6 +2434,8 @@ export const traverseSeqArrayWithIndex: <A, B, E>(
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const traverseSeqArray = <A, B, E>(
@@ -2179,6 +2449,8 @@ export const traverseSeqArray = <A, B, E>(
  * Added in 1.0.0
  * @remarks
  * Category: Traversing
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const sequenceSeqArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A>>) => TaskEither<E, ReadonlyArray<A>> =
@@ -2195,6 +2467,8 @@ export const sequenceSeqArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A>>) => T
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chain: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> = flatMap
@@ -2206,6 +2480,8 @@ export const chain: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEither<
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainW: <E2, A, B>(
@@ -2219,6 +2495,8 @@ export const chainW: <E2, A, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainFirst: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, A> = tap
@@ -2230,6 +2508,8 @@ export const chainFirst: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEi
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const chainFirstW: <E2, A, B>(
@@ -2243,6 +2523,8 @@ export const chainFirstW: <E2, A, B>(
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const orElseFirst: <E, B>(onLeft: (e: E) => TaskEither<E, B>) => <A>(ma: TaskEither<E, A>) => TaskEither<E, A> =
@@ -2255,6 +2537,8 @@ export const orElseFirst: <E, B>(onLeft: (e: E) => TaskEither<E, B>) => <A>(ma: 
  * Added in 1.0.0
  * @remarks
  * Category: Legacy
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const orElseFirstW: <E1, E2, B>(
@@ -2271,6 +2555,8 @@ export const orElseFirstW: <E1, E2, B>(
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2294,6 +2580,8 @@ export const taskEither: Monad2<URI> & Bifunctor2<URI> & Alt2<URI> & MonadTask2<
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2317,6 +2605,8 @@ export const taskEitherSeq: typeof taskEither = {
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2328,6 +2618,8 @@ export const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<TaskEither<
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2339,6 +2631,8 @@ export const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<TaskEither<E, A>> =
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -2351,6 +2645,8 @@ export const getSemigroup = <E, A>(S: Semigroup<A>): Semigroup<TaskEither<E, A>>
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */

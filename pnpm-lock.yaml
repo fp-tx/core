@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 devDependencies:
   '@arethetypeswrong/cli':
-    specifier: ^0.13.1
-    version: 0.13.1
+    specifier: ^0.13.7
+    version: 0.13.7
   '@commitlint/cli':
     specifier: ^18.5.0
     version: 18.5.0(@types/node@20.9.3)(typescript@5.2.2)
@@ -11,8 +11,8 @@ devDependencies:
     specifier: ^18.5.0
     version: 18.5.0
   '@fp-tx/build-tools':
-    specifier: ^0.1.3
-    version: 0.1.3(fast-check@3.1.3)(tsup@8.0.0)
+    specifier: ^0.2.0
+    version: 0.2.0(fast-check@3.1.3)(tsup@8.0.0)
   '@microsoft/api-documenter':
     specifier: ^7.23.17
     version: 7.23.17(@types/node@20.9.3)
@@ -67,6 +67,9 @@ devDependencies:
   fast-check:
     specifier: ^3.1.3
     version: 3.1.3
+  glob:
+    specifier: ^10.3.10
+    version: 10.3.10
   husky:
     specifier: ^8.0.3
     version: 8.0.3
@@ -82,6 +85,9 @@ devDependencies:
   prettier-plugin-jsdoc:
     specifier: ^1.1.1
     version: 1.1.1(prettier@3.1.0)
+  terser:
+    specifier: ^5.27.0
+    version: 5.27.0
   tsc-files:
     specifier: ^1.1.4
     version: 1.1.4(typescript@5.2.2)
@@ -95,7 +101,7 @@ devDependencies:
     specifier: ^4.10.0
     version: 4.10.0
   typescript:
-    specifier: ^5.2.0
+    specifier: ^5.2.2
     version: 5.2.2
 
 packages:
@@ -117,12 +123,12 @@ packages:
     resolution: {integrity: sha512-Jh15/qVmrLGhkKJBdXlK1+9tY4lZruYjsgkDFj08ZmDiWVBLJcqkok7Z0/R0In+i1rScBpJlSvrTS2Lm41Pbnw==}
     dev: true
 
-  /@arethetypeswrong/cli@0.13.1:
-    resolution: {integrity: sha512-nmaSMnVb1iHvJIJ4UmrNMRwtxxjnuOL2IELTuYLP4QatnebrGmqeRWOzbsuwh9OT48LX4fxp+wnJMGdrUf/nvw==}
+  /@arethetypeswrong/cli@0.13.7:
+    resolution: {integrity: sha512-zVoNiFfHH4bCHpdE2hZFgR0TNwYCvO8O+JmVL4dHvQfGE6LhsCGG4EnTVEd+7Z2nBBFiCXcCmEQCIiKTAs83bQ==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
-      '@arethetypeswrong/core': 0.13.0
+      '@arethetypeswrong/core': 0.13.6
       chalk: 4.1.2
       cli-table3: 0.6.3
       commander: 10.0.1
@@ -131,14 +137,15 @@ packages:
       semver: 7.5.4
     dev: true
 
-  /@arethetypeswrong/core@0.13.0:
-    resolution: {integrity: sha512-dEDo+Vq/Kt12ZZJANuUDKWZzogswcmndcY293LVgswKv69YXq9jMR8HjVTDGhwnlGJ8fAiJC+XYhg/wfTwAFCA==}
+  /@arethetypeswrong/core@0.13.6:
+    resolution: {integrity: sha512-e3CHQUK1aIIk8VOUavXPu3aVie3ZpxSGQHQoeBabzy81T4xWfQDrc68CqFmfGIEr8Apug47Yq+pYkCG2lsS10w==}
     engines: {node: '>=18'}
     dependencies:
       '@andrewbranch/untar.js': 1.0.3
       fflate: 0.7.4
       semver: 7.5.4
-      typescript: 5.2.2
+      ts-expose-internals-conditionally: 1.0.0-empty.0
+      typescript: 5.3.3
       validate-npm-package-name: 5.0.0
     dev: true
 
@@ -1075,15 +1082,19 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fp-tx/build-tools@0.1.3(fast-check@3.1.3)(tsup@8.0.0):
-    resolution: {integrity: sha512-FdmF2wVWZ8qgzCcWlFxlk2P7LbNqVxjPIGtffJL7SS2Wg1XlNEJr8np2aQVMl5dS0odORYLj8elmYv6idLjjiA==}
+  /@fp-tx/build-tools@0.2.0(fast-check@3.1.3)(tsup@8.0.0):
+    resolution: {integrity: sha512-hj5DhElzB3K6gvQKS3vdcuupQmtGQzpt2j/f51phimXoBgPapIX0cHyD4n370AEm5/Gzd8JGUkH0HEGtFs+GPQ==}
+    engines: {node: '>=16.0.0'}
     peerDependencies:
       tsup: ^8.0.0
     dependencies:
+      '@ts-morph/common': 0.22.0
       colorette: 2.0.20
+      esbuild-plugin-file-path-extensions: 1.0.0
       fp-ts: 2.16.1
       glob: 10.3.10
-      schemata-ts: 2.2.0(fast-check@3.1.3)
+      schemata-ts: 2.2.3(fast-check@3.1.3)
+      ts-morph: 21.0.1
       tsup: 8.0.0(@microsoft/api-extractor@7.39.1)(@swc/core@1.3.96)(typescript@5.2.2)
       type-fest: 4.10.0
     transitivePeerDependencies:
@@ -1387,6 +1398,13 @@ packages:
   /@jridgewell/set-array@1.1.2:
     resolution: {integrity: sha512-xnkseuNADM0gt2bs+BvhO0p78Mk762YnZdsuzFV018NoG1Sj1SCQvpSqa7XUaTam5vAGasABV9qXASMKnFMwMw==}
     engines: {node: '>=6.0.0'}
+    dev: true
+
+  /@jridgewell/source-map@0.3.5:
+    resolution: {integrity: sha512-UTYAUj/wviwdsMfzoSJspJxbkH5o1snzwX0//0ENX1u/55kkZZkcTZP6u9bwKGkv+dkk9at4m1Cpt0uY80kcpQ==}
+    dependencies:
+      '@jridgewell/gen-mapping': 0.3.3
+      '@jridgewell/trace-mapping': 0.3.20
     dev: true
 
   /@jridgewell/sourcemap-codec@1.4.15:
@@ -1778,6 +1796,15 @@ packages:
 
   /@swc/types@0.1.5:
     resolution: {integrity: sha512-myfUej5naTBWnqOCc/MdVOLVjXUXtIA+NpDrDBKJtLLg2shUjBu3cZmB/85RyitKc55+lUUyl7oRfLOvkr2hsw==}
+    dev: true
+
+  /@ts-morph/common@0.22.0:
+    resolution: {integrity: sha512-HqNBuV/oIlMKdkLshXd1zKBqNQCsuPEsgQOkfFQ/eUKjRlwndXW1AjN9LVkBEIukm00gGXSRmfkl0Wv5VXLnlw==}
+    dependencies:
+      fast-glob: 3.3.2
+      minimatch: 9.0.3
+      mkdirp: 3.0.1
+      path-browserify: 1.0.1
     dev: true
 
   /@types/argparse@1.0.38:
@@ -2551,6 +2578,10 @@ packages:
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
     dev: true
 
+  /code-block-writer@12.0.0:
+    resolution: {integrity: sha512-q4dMFMlXtKR3XNBHyMHt/3pwYNA69EDk00lloMOaaUMKPUXBw6lpXtbu3MMVG6/uOihGnRDOlkyqsONEUj60+w==}
+    dev: true
+
   /collect-v8-coverage@1.0.2:
     resolution: {integrity: sha512-lHl4d5/ONEbLlJvaJNtsF/Lz+WvB07u2ycqTYbdrq7UypDXailES4valYb2eWiJFxZlVmpGekfqoxQhzyFdT4Q==}
     dev: true
@@ -2593,6 +2624,10 @@ packages:
   /commander@11.1.0:
     resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
     engines: {node: '>=16'}
+    dev: true
+
+  /commander@2.20.3:
+    resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
     dev: true
 
   /commander@4.1.1:
@@ -2940,6 +2975,11 @@ packages:
       is-callable: 1.2.7
       is-date-object: 1.0.5
       is-symbol: 1.0.4
+    dev: true
+
+  /esbuild-plugin-file-path-extensions@1.0.0:
+    resolution: {integrity: sha512-v5LpSkml+CbsC0+xAaETEGDECdvKp1wKkD4aXMdI4zLjXP0EYfK4GjGhphumt4N+kjR3A8Q+DIkpgxX1XTqO4Q==}
+    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: true
 
   /esbuild@0.18.20:
@@ -4993,6 +5033,12 @@ packages:
     engines: {node: '>=16 || 14 >=14.17'}
     dev: true
 
+  /mkdirp@3.0.1:
+    resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dev: true
+
   /ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
@@ -5196,6 +5242,10 @@ packages:
       error-ex: 1.3.2
       json-parse-even-better-errors: 2.3.1
       lines-and-columns: 1.2.4
+    dev: true
+
+  /path-browserify@1.0.1:
+    resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==}
     dev: true
 
   /path-exists@4.0.0:
@@ -5539,8 +5589,8 @@ packages:
       is-regex: 1.1.4
     dev: true
 
-  /schemata-ts@2.2.0(fast-check@3.1.3):
-    resolution: {integrity: sha512-cPG5JgEpAqwkZFznk+2P4fNY6+sYFAxDEroN+/Ncd+aqa29CMGzsLswUViD5MmQRmQselkbzB9jwRN2IIunhtg==}
+  /schemata-ts@2.2.3(fast-check@3.1.3):
+    resolution: {integrity: sha512-P4twbIJV+uL3yTURFNay76JZZQR+AS2DxsShmmFhi+g3R5WNstnIk7aVtdQu/FdIg4ysraAMB2nVzEaX+p+jyA==}
     peerDependencies:
       fast-check: ^3.1.4
     dependencies:
@@ -5866,6 +5916,17 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
+  /terser@5.27.0:
+    resolution: {integrity: sha512-bi1HRwVRskAjheeYl291n3JC4GgO/Ty4z1nVs5AAsmonJulGxpSektecnNedrwK9C7vpvVtcX3cw00VSLt7U2A==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      '@jridgewell/source-map': 0.3.5
+      acorn: 8.11.2
+      commander: 2.20.3
+      source-map-support: 0.5.21
+    dev: true
+
   /test-exclude@6.0.0:
     resolution: {integrity: sha512-cAGWPIyOHU6zlmg88jwm7VRyXnMN7iV68OGAbYDk/Mh/xC/pzVPlQtY6ngoIH/5/tciuhGfvESU8GrHrcxD56w==}
     engines: {node: '>=8'}
@@ -5948,8 +6009,19 @@ packages:
       typescript: 5.2.2
     dev: true
 
+  /ts-expose-internals-conditionally@1.0.0-empty.0:
+    resolution: {integrity: sha512-F8m9NOF6ZhdOClDVdlM8gj3fDCav4ZIFSs/EI3ksQbAAXVSCN/Jh5OCJDDZWBuBy9psFc6jULGDlPwjMYMhJDw==}
+    dev: true
+
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
+    dev: true
+
+  /ts-morph@21.0.1:
+    resolution: {integrity: sha512-dbDtVdEAncKctzrVZ+Nr7kHpHkv+0JDJb2MjjpBaj8bFeCkePU9rHfMklmhuLFnpeq/EJZk2IhStY6NzqgjOkg==}
+    dependencies:
+      '@ts-morph/common': 0.22.0
+      code-block-writer: 12.0.0
     dev: true
 
   /tsc-files@1.1.4(typescript@5.2.2):

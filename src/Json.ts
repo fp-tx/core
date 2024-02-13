@@ -9,6 +9,8 @@ import { identity } from './function'
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type Json = boolean | number | string | null | JsonArray | JsonRecord
@@ -16,6 +18,8 @@ export type Json = boolean | number | string | null | JsonArray | JsonRecord
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface JsonRecord {
@@ -25,6 +29,8 @@ export interface JsonRecord {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export interface JsonArray extends ReadonlyArray<Json> {}
@@ -34,6 +40,8 @@ export interface JsonArray extends ReadonlyArray<Json> {}
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -57,6 +65,8 @@ export const parse = (s: string): Either<unknown, Json> => tryCatch(() => JSON.p
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript

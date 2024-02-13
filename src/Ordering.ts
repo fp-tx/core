@@ -16,6 +16,8 @@ import type * as S from './Semigroup'
  * Added in 1.0.0
  * @remarks
  * Category: Model
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export type Ordering = -1 | 0 | 1
@@ -29,6 +31,8 @@ export type Ordering = -1 | 0 | 1
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const matchW =
@@ -43,6 +47,8 @@ export const matchW =
  * Added in 1.0.0
  * @remarks
  * Category: Pattern matching
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const match: <A>(onLessThan: () => A, onEqual: () => A, onGreaterThan: () => A) => (o: Ordering) => A = matchW
@@ -54,6 +60,8 @@ export const match: <A>(onLessThan: () => A, onEqual: () => A, onGreaterThan: ()
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const reverse = (o: Ordering): Ordering =>
@@ -70,6 +78,8 @@ export const reverse = (o: Ordering): Ordering =>
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Eq: E.Eq<Ordering> = {
@@ -81,6 +91,8 @@ export const Eq: E.Eq<Ordering> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Semigroup: S.Semigroup<Ordering> = {
@@ -92,6 +104,8 @@ export const Semigroup: S.Semigroup<Ordering> = {
  * Added in 1.0.0
  * @remarks
  * Category: Instances
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const Monoid: M.Monoid<Ordering> = {
@@ -106,6 +120,8 @@ export const Monoid: M.Monoid<Ordering> = {
 /**
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @public
  */
 export const sign = (n: number): Ordering =>
@@ -122,6 +138,8 @@ export const sign = (n: number): Ordering =>
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -132,6 +150,8 @@ export const invert = reverse
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -142,6 +162,8 @@ export const semigroupOrdering: S.Semigroup<Ordering> = Semigroup
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
@@ -152,6 +174,8 @@ export const eqOrdering: E.Eq<Ordering> = Eq
  *
  * @remarks
  * Added in 1.0.0
+ * @remarks
+ * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
  * @public
  */
