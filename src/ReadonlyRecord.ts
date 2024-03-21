@@ -2,8 +2,8 @@
  * The `ReadonlyRecord.ts` module enables dealing in a functional way with Typescript's `Readonly<Record<K, T>>` type.
  * That is similar to the `Record.ts` module, but for a record with all properties declared as `readonly`.
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 1.0.0}
  * @packageDocumentation
  */
 import {
@@ -57,12 +57,10 @@ import { type PipeableWilt1, type PipeableWither1, wiltDefault, type Witherable1
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export type ReadonlyRecord<K extends string, T> = Readonly<Record<K, T>>
@@ -70,12 +68,6 @@ export type ReadonlyRecord<K extends string, T> = Readonly<Record<K, T>>
 /**
  * Builds a `ReadonlyRecord` by copying a `Record`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -87,6 +79,10 @@ export type ReadonlyRecord<K extends string, T> = Readonly<Record<K, T>>
  * // `y.a = 5` gives compiler error
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromRecord = <K extends string, A>(r: Record<K, A>): ReadonlyRecord<K, A> => Object.assign({}, r)
@@ -94,12 +90,6 @@ export const fromRecord = <K extends string, A>(r: Record<K, A>): ReadonlyRecord
 /**
  * Builds a mutable `Record` from a `ReadonlyRecord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -111,6 +101,10 @@ export const fromRecord = <K extends string, A>(r: Record<K, A>): ReadonlyRecord
  * y.a = 5 // it's ok, y is mutable
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const toRecord = <K extends string, A>(r: ReadonlyRecord<K, A>): Record<K, A> => Object.assign({}, r)
@@ -118,10 +112,6 @@ export const toRecord = <K extends string, A>(r: ReadonlyRecord<K, A>): Record<K
 /**
  * Calculate the number of key/value pairs in a `ReadonlyRecord`,
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -130,6 +120,9 @@ export const toRecord = <K extends string, A>(r: ReadonlyRecord<K, A>): Record<K
  * assert.deepStrictEqual(size({ a: true, b: 2, c: 'three' }), 3)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const size = <A>(r: ReadonlyRecord<string, A>): number => Object.keys(r).length
@@ -137,10 +130,6 @@ export const size = <A>(r: ReadonlyRecord<string, A>): number => Object.keys(r).
 /**
  * Test whether a `ReadonlyRecord` is empty.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -150,6 +139,9 @@ export const size = <A>(r: ReadonlyRecord<string, A>): number => Object.keys(r).
  * assert.deepStrictEqual(isEmpty({ a: 3 }), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const isEmpty = <A>(r: ReadonlyRecord<string, A>): boolean => {
@@ -167,10 +159,9 @@ const keys_ =
     (Object.keys(r) as any).sort(O.compare)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const keys: <K extends string>(r: ReadonlyRecord<K, unknown>) => ReadonlyArray<K> = /*#__PURE__*/ keys_(S.Ord)
@@ -178,10 +169,6 @@ export const keys: <K extends string>(r: ReadonlyRecord<K, unknown>) => Readonly
 /**
  * Map a `ReadonlyRecord` into an `ReadonlyArray`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -193,6 +180,9 @@ export const keys: <K extends string>(r: ReadonlyRecord<K, unknown>) => Readonly
  * assert.deepStrictEqual(collect(Ord)(f)(x), ['A-foo', 'B-false', 'C-3'])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function collect(
@@ -226,12 +216,6 @@ export function collect<A, B>(
 /**
  * Get a sorted `ReadonlyArray` of the key/value pairs contained in a `ReadonlyRecord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -245,6 +229,10 @@ export function collect<A, B>(
  * ])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const toReadonlyArray: <K extends string, A>(r: ReadonlyRecord<K, A>) => ReadonlyArray<readonly [K, A]> =
@@ -257,12 +245,6 @@ export const toReadonlyArray: <K extends string, A>(r: ReadonlyRecord<K, A>) => 
  * instance of `U`, providing an iterating function that iterates over each key/value pair in the record sorted
  * alphabetically by key.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -279,6 +261,10 @@ export const toReadonlyArray: <K extends string, A>(r: ReadonlyRecord<K, A>) => 
  * ])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function toUnfoldable<F extends URIS>(
@@ -298,10 +284,6 @@ export function toUnfoldable<F>(U: Unfoldable<F>): <A>(r: ReadonlyRecord<string,
 /**
  * Insert or replace a key/value pair in a `ReadonlyRecord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -311,6 +293,9 @@ export function toUnfoldable<F>(U: Unfoldable<F>): <A>(r: ReadonlyRecord<string,
  * assert.deepStrictEqual(upsertAt('c', 5)({ a: 1, b: 2 }), { a: 1, b: 2, c: 5 })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const upsertAt =
@@ -329,10 +314,6 @@ export const upsertAt =
  *
  * Note. This function is not pipeable because is a `Refinement`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -342,6 +323,9 @@ export const upsertAt =
  * assert.deepStrictEqual(has('c', { a: 1, b: 2 }), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const has = <K extends string>(k: string, r: ReadonlyRecord<K, unknown>): k is K => _.has.call(r, k)
@@ -349,10 +333,6 @@ export const has = <K extends string>(k: string, r: ReadonlyRecord<K, unknown>):
 /**
  * Delete a key and value from a `ReadonlyRecord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -362,6 +342,9 @@ export const has = <K extends string>(k: string, r: ReadonlyRecord<K, unknown>):
  * assert.deepStrictEqual(deleteAt('c')({ a: 1, b: 2 }), { a: 1, b: 2 })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function deleteAt<K extends string>(
@@ -381,10 +364,6 @@ export function deleteAt(k: string): <A>(r: ReadonlyRecord<string, A>) => Readon
 /**
  * Replace a key/value pair in a `ReadonlyRecord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -392,6 +371,9 @@ export function deleteAt(k: string): <A>(r: ReadonlyRecord<string, A>) => Readon
  *
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const updateAt =
@@ -411,10 +393,6 @@ export const updateAt =
 /**
  * Applies a mapping function to one specific key/value pair in a `ReadonlyRecord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -422,6 +400,9 @@ export const updateAt =
  *
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const modifyAt =
@@ -442,10 +423,6 @@ export const modifyAt =
 /**
  * Delete a key and value from a `ReadonlyRecord`, returning the value as well as the subsequent `ReadonlyRecord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -453,6 +430,9 @@ export const modifyAt =
  *
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function pop<K extends string>(
@@ -472,10 +452,6 @@ export function pop(k: string): <A>(r: ReadonlyRecord<string, A>) => Option<read
 /**
  * Test whether one `ReadonlyRecord` contains all of the keys and values contained in another `ReadonlyRecord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -494,6 +470,9 @@ export function pop(k: string): <A>(r: ReadonlyRecord<string, A>) => Option<read
  * assert.deepStrictEqual(isSubrecord(string.Eq)({ a: 'foo', b: 'bar' })({ a: 'foo', b: 'bar', c: 'baz' }), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function isSubrecord<A>(E: Eq<A>): {
@@ -524,12 +503,11 @@ export function isSubrecord<A>(
 /**
  * Lookup the value for a key in a `ReadonlyRecord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function lookup(k: string): <A>(r: ReadonlyRecord<string, A>) => Option<A>
@@ -545,10 +523,9 @@ export function lookup<A>(
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const empty: ReadonlyRecord<string, never> = {}
@@ -556,10 +533,6 @@ export const empty: ReadonlyRecord<string, never> = {}
 /**
  * Map a `ReadonlyRecord` passing the keys to the iterating function.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -569,6 +542,9 @@ export const empty: ReadonlyRecord<string, never> = {}
  * assert.deepStrictEqual(mapWithIndex(f)({ a: 3, b: 5 }), { a: 'A-3', b: 'B-5' })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function mapWithIndex<K extends string, A, B>(
@@ -591,10 +567,6 @@ export function mapWithIndex<A, B>(
 /**
  * Map a `ReadonlyRecord` passing the values to the iterating function.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -604,6 +576,9 @@ export function mapWithIndex<A, B>(
  * assert.deepStrictEqual(map(f)({ a: 3, b: 5 }), { a: '-3-', b: '-5-' })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function map<A, B>(f: (a: A) => B): <K extends string>(fa: ReadonlyRecord<K, A>) => ReadonlyRecord<K, B>
@@ -615,10 +590,6 @@ export function map<A, B>(f: (a: A) => B): (fa: ReadonlyRecord<string, A>) => Re
  * Reduces a `ReadonlyRecord` passing each key/value pair to the iterating function. Entries are processed in the order,
  * sorted by key according to the given `Ord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -633,6 +604,9 @@ export function map<A, B>(f: (a: A) => B): (fa: ReadonlyRecord<string, A>) => Re
  * ])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function reduceWithIndex(
@@ -672,10 +646,6 @@ export function reduceWithIndex<A, B>(
  * Map and fold a `ReadonlyRecord`. Map the `ReadonlyRecord` passing each key/value pair to the iterating function. Then
  * fold the results using the provided `Monoid`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -689,6 +659,9 @@ export function reduceWithIndex<A, B>(
  * assert.deepStrictEqual(foldMapWithIndex(Ord)(m)(f)(x), 'a-1 -> b-2 -> c-3')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function foldMapWithIndex(
@@ -729,10 +702,6 @@ export function foldMapWithIndex<M>(
  * Same as `reduceWithIndex`, but reduce starting from the right (i.e. in reverse order, from the last to the first
  * entry according to the given `Ord`).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -747,6 +716,9 @@ export function foldMapWithIndex<M>(
  * ])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function reduceRightWithIndex(
@@ -785,12 +757,6 @@ export function reduceRightWithIndex<A, B>(
 /**
  * Create a `ReadonlyRecord` with one key/value pair.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -799,15 +765,18 @@ export function reduceRightWithIndex<A, B>(
  * assert.deepStrictEqual(singleton('a', 1), { a: 1 })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const singleton = <A>(k: string, a: A): ReadonlyRecord<string, A> => ({ [k]: a })
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function traverseWithIndex<F extends URIS4>(
@@ -851,10 +820,9 @@ export function traverseWithIndex<F>(
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function traverse<F extends URIS4>(
@@ -904,10 +872,6 @@ export function traverse<F>(
  *
  * `sequence` in `ReadonlyRecord` is equivalent to `sequenceS` in `Apply.ts`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -926,6 +890,9 @@ export function traverse<F>(
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function sequence<F extends URIS3>(
@@ -953,12 +920,10 @@ export function sequence<F>(
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const wither: PipeableWither1<URI> = <F>(
@@ -969,12 +934,10 @@ export const wither: PipeableWither1<URI> = <F>(
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const wilt: PipeableWilt1<URI> = <F>(
@@ -990,10 +953,6 @@ export const wilt: PipeableWilt1<URI> = <F>(
  * Maps a `ReadonlyRecord` with a function returning an `Either` and partitions the resulting `ReadonlyRecord` into
  * `Left`s and `Right`s.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1013,6 +972,9 @@ export const wilt: PipeableWilt1<URI> = <F>(
  * })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function partitionMapWithIndex<K extends string, A, B, C>(
@@ -1044,10 +1006,6 @@ export function partitionMapWithIndex<A, B, C>(
 /**
  * Partition a `ReadonlyRecord` into two parts according to a predicate that takes a key and a value.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1067,6 +1025,9 @@ export function partitionMapWithIndex<A, B, C>(
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function partitionWithIndex<K extends string, A, B extends A>(
@@ -1102,10 +1063,6 @@ export function partitionWithIndex<A>(
  * Maps a `ReadonlyRecord` with an iterating function that takes key and value and returns an `Option`, keeping only the
  * `Some` values and discarding `None`s.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1119,6 +1076,9 @@ export function partitionWithIndex<A>(
  * })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function filterMapWithIndex<K extends string, A, B>(
@@ -1144,10 +1104,6 @@ export function filterMapWithIndex<A, B>(
 /**
  * Produce a new `ReadonlyRecord` keeping only the entries that satisfy a predicate taking key and value as input.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1161,6 +1117,9 @@ export function filterMapWithIndex<A, B>(
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function filterWithIndex<K extends string, A, B extends A>(
@@ -1196,10 +1155,9 @@ export function filterWithIndex<A>(
  * Create a `ReadonlyRecord` from a foldable collection of key/value pairs, using the specified `Magma` to combine
  * values for duplicate keys.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function fromFoldable<F extends URIS3, A>(
@@ -1232,10 +1190,6 @@ export function fromFoldable<F, A>(
  * - Map to key/value pairs
  * - Combine values for duplicate keys.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1271,6 +1225,9 @@ export function fromFoldable<F, A>(
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function fromFoldableMap<F extends URIS3, B>(
@@ -1305,12 +1262,6 @@ export function fromFoldableMap<F, B>(
 /**
  * Alias of [`toReadonlyArray`](#toreadonlyarray).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1322,6 +1273,10 @@ export function fromFoldableMap<F, B>(
  * ])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const toEntries = toReadonlyArray
@@ -1329,12 +1284,6 @@ export const toEntries = toReadonlyArray
 /**
  * Converts a `ReadonlyArray` of `[key, value]` tuples into a `ReadonlyRecord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1350,6 +1299,10 @@ export const toEntries = toReadonlyArray
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromEntries = <A>(fa: ReadonlyArray<readonly [string, A]>): ReadonlyRecord<string, A> => {
@@ -1363,10 +1316,6 @@ export const fromEntries = <A>(fa: ReadonlyArray<readonly [string, A]>): Readonl
 /**
  * Test if every value in a `ReadonlyRecord` satisfies the predicate.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1376,6 +1325,9 @@ export const fromEntries = <A>(fa: ReadonlyArray<readonly [string, A]>): Readonl
  * assert.deepStrictEqual(every((n: number) => n >= 0)({ a: 1, b: -1 }), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function every<A, B extends A>(
@@ -1396,10 +1348,6 @@ export function every<A>(predicate: Predicate<A>): Predicate<ReadonlyRecord<stri
 /**
  * Test if at least one value in a `ReadonlyRecord` satisfies the predicate.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1409,6 +1357,9 @@ export function every<A>(predicate: Predicate<A>): Predicate<ReadonlyRecord<stri
  * assert.deepStrictEqual(some((n: number) => n >= 0)({ a: -1, b: -2 }), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function some<A>(predicate: (a: A) => boolean): (r: ReadonlyRecord<string, A>) => boolean {
@@ -1426,10 +1377,6 @@ export function some<A>(predicate: (a: A) => boolean): (r: ReadonlyRecord<string
 /**
  * Given an `Eq` checks if a `ReadonlyRecord` contains an entry with value equal to a provided value.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1440,6 +1387,9 @@ export function some<A>(predicate: (a: A) => boolean): (r: ReadonlyRecord<string
  * assert.deepStrictEqual(elem(number.Eq)(-7, { foo: 123, bar: 234 }), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function elem<A>(E: Eq<A>): {
@@ -1467,10 +1417,6 @@ export function elem<A>(
  * Union of two `ReadonlyRecord`s. Takes two `ReadonlyRecord`s and produces a `ReadonlyRecord` combining all the entries
  * of the two inputs. It uses the `concat` function of the provided `Magma` to combine the elements with the same key.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1483,6 +1429,9 @@ export function elem<A>(
  * assert.deepStrictEqual(union(m2)({ a: 3, c: 3 })({ a: 1, b: 2 }), { a: 1, b: 2, c: 3 })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const union =
@@ -1516,10 +1465,6 @@ export const union =
  * entries of the two inputswith the same key. It uses the `concat` function of the provided `Magma` to combine the
  * elements.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1532,6 +1477,9 @@ export const union =
  * assert.deepStrictEqual(intersection(m2)({ a: 3, c: 3 })({ a: 1, b: 2 }), { a: 1 })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const intersection =
@@ -1554,10 +1502,6 @@ export const intersection =
  * Difference between two `ReadonlyRecord`s. Takes two `ReadonlyRecord`s and produces a `ReadonlyRecord` composed by the
  * entries of the two inputs, removing the entries with the same key in both inputs.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1568,6 +1512,9 @@ export const intersection =
  * assert.deepStrictEqual(difference({ a: 3, c: 3 })({ a: 1, b: 2 }), { b: 2, c: 3 })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const difference =
@@ -1727,12 +1674,6 @@ const _traverseWithIndex =
  * Given a `Predicate`, it produces a new `ReadonlyRecord` keeping only the entries with a value that satisfies the
  * provided predicate.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1744,6 +1685,10 @@ const _traverseWithIndex =
  * })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const filter: {
@@ -1757,12 +1702,6 @@ export const filter: {
  * Maps a `ReadonlyRecord` with an iterating function that returns an `Option` and it keeps only the `Some` values
  * discarding the `None`s.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1776,6 +1715,10 @@ export const filter: {
  * })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const filterMap: <A, B>(
@@ -1785,12 +1728,6 @@ export const filterMap: <A, B>(
 /**
  * Partition a `ReadonlyRecord` into two parts according to a `Predicate`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1807,6 +1744,10 @@ export const filterMap: <A, B>(
  * })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const partition: {
@@ -1828,12 +1769,6 @@ export const partition: {
  * Maps a `ReadonlyRecord` with a function returning an `Either` and partitions the resulting `ReadonlyRecord` into
  * `Left`s and `Right`s.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1852,6 +1787,10 @@ export const partition: {
  * })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const partitionMap: <A, B, C>(
@@ -1863,12 +1802,6 @@ export const partitionMap: <A, B, C>(
  * Reduces a `ReadonlyRecord` passing each value to the iterating function. Entries are processed in order, sorted by
  * key according to the given `Ord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1879,6 +1812,10 @@ export const partitionMap: <A, B, C>(
  * assert.deepStrictEqual(reduce(Ord)([] as string[], (b, a) => [...b, `-${a}-`])(x), ['-foo-', '-false-', '-3-'])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function reduce(O: Ord<string>): <A, B>(b: B, f: (b: B, a: A) => B) => (fa: ReadonlyRecord<string, A>) => B
@@ -1902,12 +1839,6 @@ export function reduce<A, B>(
  * Map and fold a `ReadonlyRecord`. Map the `ReadonlyRecord` passing each value to the iterating function. Then fold the
  * results using the provided `Monoid`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1921,6 +1852,10 @@ export function reduce<A, B>(
  * assert.deepStrictEqual(foldMap(Ord)(m)(f)(x), '-1- -> -2- -> -3-')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function foldMap(
@@ -1951,12 +1886,6 @@ export function foldMap<M>(
  * Same as `reduce` but entries are processed _from the right_, i.e. in reverse order, from the last to the first entry,
  * according to the given `Ord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1971,6 +1900,10 @@ export function foldMap<M>(
  * ])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function reduceRight(O: Ord<string>): <A, B>(b: B, f: (a: A, b: B) => B) => (fa: ReadonlyRecord<string, A>) => B
@@ -1993,12 +1926,6 @@ export function reduceRight<A, B>(
 /**
  * Compact a `ReadonlyRecord` of `Option`s discarding the `None` values and keeping the `Some` values.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2011,6 +1938,10 @@ export function reduceRight<A, B>(
  * })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const compact = <A>(r: ReadonlyRecord<string, Option<A>>): ReadonlyRecord<string, A> => {
@@ -2029,12 +1960,6 @@ export const compact = <A>(r: ReadonlyRecord<string, Option<A>>): ReadonlyRecord
 /**
  * Separate a `ReadonlyRecord` of `Either`s into `Left`s and `Right`s.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2052,6 +1977,10 @@ export const compact = <A>(r: ReadonlyRecord<string, Option<A>>): ReadonlyRecord
  * })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const separate = <A, B>(
@@ -2073,23 +2002,19 @@ export const separate = <A, B>(
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const URI = 'ReadonlyRecord'
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export type URI = typeof URI
@@ -2104,12 +2029,6 @@ declare module './HKT' {
  * Produces a `Show` for a `ReadonlyRecord`, given a `Show` for the base type (a `Show` produces a human-readable
  * representation of an instance). `ReadonlyRecord` entries are sorted by key with the provided `Ord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2122,6 +2041,10 @@ declare module './HKT' {
  * assert.deepStrictEqual(sRecord.show({ b: 2, a: 1 }), '{ "a": 1, "b": 2 }')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getShow(O: Ord<string>): <A>(S: Show<A>) => Show<ReadonlyRecord<string, A>>
@@ -2148,12 +2071,6 @@ export function getShow<A>(
 /**
  * Given an `Eq` for the base type, it produces an `Eq` for a `ReadonlyRecord` of that base type.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2166,6 +2083,10 @@ export function getShow<A>(
  * assert.deepStrictEqual(eq.equals({ a: 'foo' }, { a: 'foo' }), true)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getEq<K extends string, A>(E: Eq<A>): Eq<ReadonlyRecord<K, A>>
@@ -2178,12 +2099,6 @@ export function getEq<A>(E: Eq<A>): Eq<ReadonlyRecord<string, A>> {
  * Returns a `Monoid` instance for `ReadonlyRecord`s, given a `Semigroup` instance for the base type. The `Monoid` makes
  * the union of two `ReadonlyRecord`s comining the overlapping entries with the provided `Semigroup`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2198,6 +2113,10 @@ export function getEq<A>(E: Eq<A>): Eq<ReadonlyRecord<string, A>> {
  * })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getMonoid<K extends string, A>(S: Semigroup<A>): Monoid<ReadonlyRecord<K, A>>
@@ -2223,12 +2142,10 @@ export function getMonoid<A>(S: Semigroup<A>): Monoid<ReadonlyRecord<string, A>>
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Functor: Functor1<URI> = {
@@ -2240,12 +2157,6 @@ export const Functor: Functor1<URI> = {
  * Takes a value and a `ReadonlyRecord` of functions and returns a `ReadonlyRecord` by applying each function to the
  * input value.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2258,17 +2169,19 @@ export const Functor: Functor1<URI> = {
  * })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FunctorWithIndex: FunctorWithIndex1<URI, string> = {
@@ -2281,12 +2194,10 @@ export const FunctorWithIndex: FunctorWithIndex1<URI, string> = {
  * Produces a `Foldable` instance for a `ReadonlyRecord`, using the provided `Ord` to sort the `ReadonlyRecord`'s
  * entries by key.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getFoldable = (O: Ord<string>): Foldable1<URI> => ({
@@ -2300,12 +2211,10 @@ export const getFoldable = (O: Ord<string>): Foldable1<URI> => ({
  * Produces a `FoldableWithIndex1` instance for a `ReadonlyRecord`, using the provided `Ord` to sort the
  * `ReadonlyRecord`'s entries by key.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getFoldableWithIndex = (O: Ord<string>): FoldableWithIndex1<URI, string> => ({
@@ -2319,12 +2228,10 @@ export const getFoldableWithIndex = (O: Ord<string>): FoldableWithIndex1<URI, st
 })
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Compactable: Compactable1<URI> = {
@@ -2334,12 +2241,10 @@ export const Compactable: Compactable1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Filterable: Filterable1<URI> = {
@@ -2354,12 +2259,10 @@ export const Filterable: Filterable1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FilterableWithIndex: FilterableWithIndex1<URI, string> = {
@@ -2382,12 +2285,10 @@ export const FilterableWithIndex: FilterableWithIndex1<URI, string> = {
  * Produces a `Traversable` instance for a `ReadonlyRecord`, using the provided `Ord` to sort the `ReadonlyRecord`'s
  * entries by key.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getTraversable = (O: Ord<string>): Traversable1<URI> => ({
@@ -2404,12 +2305,10 @@ export const getTraversable = (O: Ord<string>): Traversable1<URI> => ({
  * Produces a `TraversableWithIndex` instance for a `ReadonlyRecord`, using the provided `Ord` to sort the
  * `ReadonlyRecord`'s entries by key.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getTraversableWithIndex = (O: Ord<string>): TraversableWithIndex1<URI, string> => ({
@@ -2428,12 +2327,10 @@ export const getTraversableWithIndex = (O: Ord<string>): TraversableWithIndex1<U
 })
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getWitherable = (O: Ord<string>): Witherable1<URI> => {
@@ -2461,12 +2358,6 @@ export const getWitherable = (O: Ord<string>): Witherable1<URI> => {
  * Given a `Semigroup` in the base type, it produces a `Semigroup` in the `ReadonlyRecord` of the base type. The
  * resulting `Semigroup` concatenates two `ReadonlyRecord`s by `union`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2478,6 +2369,10 @@ export const getWitherable = (O: Ord<string>): Witherable1<URI> => {
  * assert.deepStrictEqual(sReadonlyRecord.concat({ a: 1, b: 2 }, { b: 3, c: 4 }), { a: 1, b: -1, c: 4 })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getUnionSemigroup = <A>(S: Semigroup<A>): Semigroup<ReadonlyRecord<string, A>> => {
@@ -2492,12 +2387,6 @@ export const getUnionSemigroup = <A>(S: Semigroup<A>): Semigroup<ReadonlyRecord<
  * type. The `Monoid` makes the union of two `ReadonlyRecord`s combining the entries that have the same key with the
  * provided `Semigroup`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2512,6 +2401,10 @@ export const getUnionSemigroup = <A>(S: Semigroup<A>): Semigroup<ReadonlyRecord<
  * })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getUnionMonoid = <A>(S: Semigroup<A>): Monoid<ReadonlyRecord<string, A>> => ({
@@ -2523,12 +2416,6 @@ export const getUnionMonoid = <A>(S: Semigroup<A>): Monoid<ReadonlyRecord<string
  * Given a `Semigroup` in the base type, it produces a `Semigroup` in the `ReadonlyRecord` of the base type. The
  * resulting `Semigroup` concatenates two `ReadonlyRecord`s by `intersection`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2540,6 +2427,10 @@ export const getUnionMonoid = <A>(S: Semigroup<A>): Monoid<ReadonlyRecord<string
  * assert.deepStrictEqual(sReadonlyRecord.concat({ a: 1, b: 2 }, { b: 3, c: 4 }), { b: -1 })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getIntersectionSemigroup = <A>(S: Semigroup<A>): Semigroup<ReadonlyRecord<string, A>> => {
@@ -2552,12 +2443,6 @@ export const getIntersectionSemigroup = <A>(S: Semigroup<A>): Semigroup<Readonly
 /**
  * Produces a `Magma` with a `concat` function that combines two `ReadonlyRecord`s by making the `difference`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2571,6 +2456,10 @@ export const getIntersectionSemigroup = <A>(S: Semigroup<A>): Semigroup<Readonly
  * assert.deepStrictEqual(m.concat(r1, r2), { c: 3, b: 2 })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getDifferenceMagma = <A>(): Magma<ReadonlyRecord<string, A>> => ({
@@ -2584,11 +2473,10 @@ export const getDifferenceMagma = <A>(): Magma<ReadonlyRecord<string, A>> => ({
 /**
  * Use `getFoldable` instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Foldable: Foldable1<URI> = {
@@ -2601,11 +2489,10 @@ export const Foldable: Foldable1<URI> = {
 /**
  * Use `getFoldableWithIndex` instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FoldableWithIndex: FoldableWithIndex1<URI, string> = {
@@ -2621,11 +2508,10 @@ export const FoldableWithIndex: FoldableWithIndex1<URI, string> = {
 /**
  * Use `getTraversable` instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Traversable: Traversable1<URI> = {
@@ -2641,11 +2527,10 @@ export const Traversable: Traversable1<URI> = {
 /**
  * Use `getTraversableWithIndex` instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const TraversableWithIndex: TraversableWithIndex1<URI, string> = {
@@ -2669,11 +2554,10 @@ const _wilt = /*#__PURE__*/ wiltDefault(Traversable, Compactable)
 /**
  * Use `getWitherable` instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Witherable: Witherable1<URI> = {
@@ -2697,11 +2581,10 @@ export const Witherable: Witherable1<URI> = {
 /**
  * Use [`upsertAt`](#upsertat) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const insertAt: <A>(k: string, a: A) => (r: ReadonlyRecord<string, A>) => ReadonlyRecord<string, A> = upsertAt
@@ -2709,11 +2592,10 @@ export const insertAt: <A>(k: string, a: A) => (r: ReadonlyRecord<string, A>) =>
 /**
  * Use [`has`](#has) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function hasOwnProperty<K extends string>(k: string, r: ReadonlyRecord<K, unknown>): k is K
@@ -2725,11 +2607,10 @@ export function hasOwnProperty<K extends string>(this: any, k: string, r?: Reado
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `RR.Functor` instead of `RR.readonlyRecord`
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const readonlyRecord: FunctorWithIndex1<URI, string> &

@@ -11,8 +11,11 @@ devDependencies:
     specifier: ^18.5.0
     version: 18.5.0
   '@fp-tx/build-tools':
-    specifier: ^0.3.0
-    version: 0.3.0(fast-check@3.1.3)(tsup@8.0.0)
+    specifier: ^0.3.3
+    version: 0.3.3(fast-check@3.1.3)(tsup@8.0.0)
+  '@fp-tx/documenter':
+    specifier: ^0.1.1
+    version: 0.1.1(@types/node@20.9.3)(prettier@3.1.0)(react@18.2.0)
   '@microsoft/api-documenter':
     specifier: ^7.23.17
     version: 7.23.17(@types/node@20.9.3)
@@ -1082,8 +1085,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fp-tx/build-tools@0.3.0(fast-check@3.1.3)(tsup@8.0.0):
-    resolution: {integrity: sha512-r4MIqFq+miiD6sWzGkviQtEPJ3iVSVy42sJcTVrpQ0n3YPYPJcXvkdO6Ijccx6+dlDISrSlSmJlDv9ew/JPGXA==}
+  /@fp-tx/build-tools@0.3.3(fast-check@3.1.3)(tsup@8.0.0):
+    resolution: {integrity: sha512-VYunqZW+Dpgcb9/0eGtlUh044gF312r/Zra0OJ825lnxrFx3EprVkUBOHuEd64kd4QdQ4gCBsTkhh+XnGAlnBg==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       tsup: ^8.0.0
@@ -1099,6 +1102,27 @@ packages:
       type-fest: 4.10.0
     transitivePeerDependencies:
       - fast-check
+    dev: true
+
+  /@fp-tx/core@0.2.1:
+    resolution: {integrity: sha512-aExCgtdUo5DilGeIkbW39s58/FxovLmLRyZnyh7LPRgW7iwWF39KrG8Rj9z9ppFHA2Lc+AUQulFjvi1aVYi/uw==}
+    dev: true
+
+  /@fp-tx/documenter@0.1.1(@types/node@20.9.3)(prettier@3.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-Cv9YDd2eHwTVnqGr8E/5KOrdqaNf7Mh85pfRz19wnNDAOECuKZnAOkZWu69l7vMY+BO9gHF3uPgCPn19gURdDw==}
+    hasBin: true
+    peerDependencies:
+      prettier: ^3.1.0
+    dependencies:
+      '@fp-tx/core': 0.2.1
+      '@microsoft/api-extractor-model': 7.28.13(@types/node@20.9.3)
+      '@microsoft/tsdoc': 0.14.2
+      commander: 12.0.0
+      prettier: 3.1.0
+      prism-react-renderer: 2.3.1(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/node'
+      - react
     dev: true
 
   /@humanwhocodes/config-array@0.11.13:
@@ -1433,6 +1457,16 @@ packages:
       - '@types/node'
     dev: true
 
+  /@microsoft/api-extractor-model@7.28.13(@types/node@20.9.3):
+    resolution: {integrity: sha512-39v/JyldX4MS9uzHcdfmjjfS6cYGAoXV+io8B5a338pkHiSt+gy2eXQ0Q7cGFJ7quSa1VqqlMdlPrB6sLR/cAw==}
+    dependencies:
+      '@microsoft/tsdoc': 0.14.2
+      '@microsoft/tsdoc-config': 0.16.2
+      '@rushstack/node-core-library': 4.0.2(@types/node@20.9.3)
+    transitivePeerDependencies:
+      - '@types/node'
+    dev: true
+
   /@microsoft/api-extractor-model@7.28.4(@types/node@20.9.3):
     resolution: {integrity: sha512-vucgyPmgHrJ/D4/xQywAmjTmSfxAx2/aDmD6TkIoLu51FdsAfuWRbijWA48AePy60OO+l+mmy9p2P/CEeBZqig==}
     dependencies:
@@ -1610,6 +1644,23 @@ packages:
     dependencies:
       '@types/node': 20.9.3
       colors: 1.2.5
+      fs-extra: 7.0.1
+      import-lazy: 4.0.0
+      jju: 1.4.0
+      resolve: 1.22.8
+      semver: 7.5.4
+      z-schema: 5.0.5
+    dev: true
+
+  /@rushstack/node-core-library@4.0.2(@types/node@20.9.3):
+    resolution: {integrity: sha512-hyES82QVpkfQMeBMteQUnrhASL/KHPhd7iJ8euduwNJG4mu2GSOKybf0rOEjOm1Wz7CwJEUm9y0yD7jg2C1bfg==}
+    peerDependencies:
+      '@types/node': '*'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+    dependencies:
+      '@types/node': 20.9.3
       fs-extra: 7.0.1
       import-lazy: 4.0.0
       jju: 1.4.0
@@ -1920,6 +1971,10 @@ packages:
 
   /@types/normalize-package-data@2.4.4:
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
+    dev: true
+
+  /@types/prismjs@1.26.3:
+    resolution: {integrity: sha512-A0D0aTXvjlqJ5ZILMz3rNfDBOx9hHxLZYv2by47Sm/pqW35zzjusrZTryatjN/Rf8Us2gZrJD+KeHbUSTux1Cw==}
     dev: true
 
   /@types/semver@7.5.5:
@@ -2573,6 +2628,11 @@ packages:
       wrap-ansi: 7.0.0
     dev: true
 
+  /clsx@2.1.0:
+    resolution: {integrity: sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg==}
+    engines: {node: '>=6'}
+    dev: true
+
   /co@4.6.0:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
@@ -2624,6 +2684,11 @@ packages:
   /commander@11.1.0:
     resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
     engines: {node: '>=16'}
+    dev: true
+
+  /commander@12.0.0:
+    resolution: {integrity: sha512-MwVNWlYjDTtOjX5PiD7o5pK0UrFU/OYgcJfjjK4RaHZETNtjJqrZa9Y9ds88+A+f+d5lv+561eZ+yCKoS3gbAA==}
+    engines: {node: '>=18'}
     dev: true
 
   /commander@2.20.3:
@@ -4686,6 +4751,13 @@ packages:
       wrap-ansi: 8.1.0
     dev: true
 
+  /loose-envify@1.4.0:
+    resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
+    hasBin: true
+    dependencies:
+      js-tokens: 4.0.0
+    dev: true
+
   /lru-cache@10.1.0:
     resolution: {integrity: sha512-/1clY/ui8CzjKFyjdvwPWJUYKiFVXG2I2cY0ssG7h4+hwk+XOIX7ZSG9Q7TW8TW3Kp3BUSqgFWBLgL4PJ+Blag==}
     engines: {node: 14 || >=16.14}
@@ -5366,6 +5438,16 @@ packages:
       react-is: 18.2.0
     dev: true
 
+  /prism-react-renderer@2.3.1(react@18.2.0):
+    resolution: {integrity: sha512-Rdf+HzBLR7KYjzpJ1rSoxT9ioO85nZngQEoFIhL07XhtJHlCU3SOz0GJ6+qvMyQe0Se+BV3qpe6Yd/NmQF5Juw==}
+    peerDependencies:
+      react: '>=16.0.0'
+    dependencies:
+      '@types/prismjs': 1.26.3
+      clsx: 2.1.0
+      react: 18.2.0
+    dev: true
+
   /prompts@2.4.2:
     resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
     engines: {node: '>= 6'}
@@ -5398,6 +5480,13 @@ packages:
 
   /react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
+    dev: true
+
+  /react@18.2.0:
+    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      loose-envify: 1.4.0
     dev: true
 
   /read-pkg-up@7.0.1:

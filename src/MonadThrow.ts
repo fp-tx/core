@@ -6,8 +6,8 @@
  *
  * - Left zero: `M.chain(M.throwError(e), f) = M.throwError(e)`
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 1.0.0}
  * @packageDocumentation
  */
 import {
@@ -28,12 +28,10 @@ import { type Monad, type Monad1, type Monad2, type Monad2C, type Monad3, type M
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface MonadThrow<M> extends Monad<M> {
@@ -41,12 +39,10 @@ export interface MonadThrow<M> extends Monad<M> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface MonadThrow1<M extends URIS> extends Monad1<M> {
@@ -54,12 +50,10 @@ export interface MonadThrow1<M extends URIS> extends Monad1<M> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface MonadThrow2<M extends URIS2> extends Monad2<M> {
@@ -67,12 +61,10 @@ export interface MonadThrow2<M extends URIS2> extends Monad2<M> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface MonadThrow2C<M extends URIS2, E> extends Monad2C<M, E> {
@@ -80,12 +72,10 @@ export interface MonadThrow2C<M extends URIS2, E> extends Monad2C<M, E> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface MonadThrow3<M extends URIS3> extends Monad3<M> {
@@ -93,12 +83,10 @@ export interface MonadThrow3<M extends URIS3> extends Monad3<M> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface MonadThrow3C<M extends URIS3, E> extends Monad3C<M, E> {
@@ -106,12 +94,10 @@ export interface MonadThrow3C<M extends URIS3, E> extends Monad3C<M, E> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface MonadThrow4<M extends URIS4> extends Monad4<M> {

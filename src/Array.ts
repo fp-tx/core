@@ -3,8 +3,8 @@
  *
  * In functional jargon, this module provides a monadic interface over Typescript's Array<T>.
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 1.0.0}
  * @packageDocumentation
  */
 import { type Alt1 } from './Alt'
@@ -61,12 +61,6 @@ import { guard as guard_, type Zero1 } from './Zero'
 /**
  * Test whether an array is empty
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Refinements
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -76,6 +70,10 @@ import { guard as guard_, type Zero1 } from './Zero'
  * assert.strictEqual(isEmpty(['a']), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Refinements}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const isEmpty = <A>(as: Array<A>): as is [] => as.length === 0
@@ -83,12 +81,6 @@ export const isEmpty = <A>(as: Array<A>): as is [] => as.length === 0
 /**
  * Test whether an array is non empty narrowing down the type to `NonEmptyArray<A>`
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Refinements
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -98,6 +90,10 @@ export const isEmpty = <A>(as: Array<A>): as is [] => as.length === 0
  * assert.strictEqual(isNonEmpty(['a']), true)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Refinements}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const isNonEmpty: <A>(as: Array<A>) => as is NonEmptyArray<A> = NEA.isNonEmpty
@@ -109,10 +105,6 @@ export const isNonEmpty: <A>(as: Array<A>) => as is NonEmptyArray<A> = NEA.isNon
 /**
  * Prepend an element to the front of a `Array`, creating a new `NonEmptyArray`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -122,6 +114,9 @@ export const isNonEmpty: <A>(as: Array<A>) => as is NonEmptyArray<A> = NEA.isNon
  * assert.deepStrictEqual(pipe([2, 3, 4], prepend(1)), [1, 2, 3, 4])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const prepend: <A>(head: A) => (tail: Array<A>) => NEA.NonEmptyArray<A> = NEA.prepend
@@ -129,10 +124,6 @@ export const prepend: <A>(head: A) => (tail: Array<A>) => NEA.NonEmptyArray<A> =
 /**
  * Less strict version of [`prepend`](#prepend).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -142,6 +133,9 @@ export const prepend: <A>(head: A) => (tail: Array<A>) => NEA.NonEmptyArray<A> =
  * assert.deepStrictEqual(pipe([2, 3, 4], prependW('a')), ['a', 2, 3, 4])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const prependW: <A, B>(head: B) => (tail: Array<A>) => NEA.NonEmptyArray<A | B> = NEA.prependW
@@ -149,10 +143,6 @@ export const prependW: <A, B>(head: B) => (tail: Array<A>) => NEA.NonEmptyArray<
 /**
  * Append an element to the end of a `Array`, creating a new `NonEmptyArray`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -162,6 +152,9 @@ export const prependW: <A, B>(head: B) => (tail: Array<A>) => NEA.NonEmptyArray<
  * assert.deepStrictEqual(pipe([1, 2, 3], append(4)), [1, 2, 3, 4])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const append: <A>(end: A) => (init: Array<A>) => NEA.NonEmptyArray<A> = NEA.append
@@ -169,10 +162,6 @@ export const append: <A>(end: A) => (init: Array<A>) => NEA.NonEmptyArray<A> = N
 /**
  * Less strict version of [`append`](#append).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -182,6 +171,9 @@ export const append: <A>(end: A) => (init: Array<A>) => NEA.NonEmptyArray<A> = N
  * assert.deepStrictEqual(pipe([1, 2, 3], appendW('d')), [1, 2, 3, 'd'])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const appendW: <A, B>(end: B) => (init: Array<A>) => NEA.NonEmptyArray<A | B> = NEA.appendW
@@ -191,12 +183,6 @@ export const appendW: <A, B>(end: B) => (init: Array<A>) => NEA.NonEmptyArray<A 
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -208,6 +194,10 @@ export const appendW: <A, B>(end: B) => (init: Array<A>) => NEA.NonEmptyArray<A 
  * assert.deepStrictEqual(makeBy(4.32164, double), [0, 2, 4, 6])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const makeBy = <A>(n: number, f: (i: number) => A): Array<A> => (n <= 0 ? [] : NEA.makeBy(f)(n))
@@ -217,12 +207,6 @@ export const makeBy = <A>(n: number, f: (i: number) => A): Array<A> => (n <= 0 ?
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -233,6 +217,10 @@ export const makeBy = <A>(n: number, f: (i: number) => A): Array<A> => (n <= 0 ?
  * assert.deepStrictEqual(replicate(2.985647, 'a'), ['a', 'a'])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const replicate = <A>(n: number, a: A): Array<A> => makeBy(n, () => a)
@@ -240,12 +228,6 @@ export const replicate = <A>(n: number, a: A): Array<A> => makeBy(n, () => a)
 /**
  * Create an array with one element, if the element satisfies the predicate, otherwise it returns an empty array.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -272,6 +254,10 @@ export const replicate = <A>(n: number, a: A): Array<A> => makeBy(n, () => a)
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function fromPredicate<A, B extends A>(refinement: Refinement<A, B>): (a: A) => Array<B>
@@ -289,12 +275,6 @@ export function fromPredicate<A>(predicate: Predicate<A>): (a: A) => Array<A> {
  * Create an array from an `Option`. The resulting array will contain the content of the `Option` if it is `Some` and it
  * will be empty if the `Option` is `None`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -306,6 +286,10 @@ export function fromPredicate<A>(predicate: Predicate<A>): (a: A) => Array<A> {
  * assert.deepStrictEqual(pipe(option.none, fromOption), [])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromOption: <A>(fa: Option<A>) => Array<A> = ma => (_.isNone(ma) ? [] : [ma.value])
@@ -314,12 +298,6 @@ export const fromOption: <A>(fa: Option<A>) => Array<A> = ma => (_.isNone(ma) ? 
  * Create an array from an `Either`. The resulting array will contain the content of the `Either` if it is `Right` and
  * it will be empty if the `Either` is `Left`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -331,6 +309,10 @@ export const fromOption: <A>(fa: Option<A>) => Array<A> = ma => (_.isNone(ma) ? 
  * assert.deepStrictEqual(pipe(either.left('l'), fromEither), [])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromEither: <A>(fa: Either<unknown, A>) => Array<A> = e => (_.isLeft(e) ? [] : [e.right])
@@ -340,12 +322,6 @@ export const fromEither: <A>(fa: Either<unknown, A>) => Array<A> = e => (_.isLef
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -360,6 +336,10 @@ export const fromEither: <A>(fa: Either<unknown, A>) => Array<A> = e => (_.isLef
  * assert.deepStrictEqual(pipe([], matcherW), 'No elements')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const matchW =
@@ -371,12 +351,6 @@ export const matchW =
  * Takes an array, if the array is empty it returns the result of `onEmpty`, otherwise it passes the array to
  * `onNonEmpty` and returns the result.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -391,6 +365,10 @@ export const matchW =
  * assert.deepStrictEqual(pipe([], matcher), 'No elements')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const match: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (as: NonEmptyArray<A>) => B) => (as: Array<A>) => B = matchW
@@ -399,12 +377,6 @@ export const match: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (as: NonEmptyArray<A
  * Less strict version of [`matchLeft`](#matchleft). It will work when `onEmpty` and `onNonEmpty` have different return
  * types.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -418,6 +390,10 @@ export const match: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (as: NonEmptyArray<A
  * assert.strictEqual(f([]), 0)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const matchLeftW =
@@ -429,12 +405,6 @@ export const matchLeftW =
  * Takes an array, if the array is empty it returns the result of `onEmpty`, otherwise it passes the array to
  * `onNonEmpty` broken into its first element and remaining elements.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -447,6 +417,10 @@ export const matchLeftW =
  * assert.strictEqual(len([1, 2, 3]), 3)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const matchLeft: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: Array<A>) => B) => (as: Array<A>) => B =
@@ -455,12 +429,10 @@ export const matchLeft: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: 
 /**
  * Alias of [`matchLeft`](#matchleft).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const foldLeft: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: Array<A>) => B) => (as: Array<A>) => B =
@@ -470,12 +442,6 @@ export const foldLeft: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: A
  * Less strict version of [`matchRight`](#matchright). It will work when `onEmpty` and `onNonEmpty` have different
  * return types.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -489,6 +455,10 @@ export const foldLeft: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (head: A, tail: A
  * assert.strictEqual(f([]), 0)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const matchRightW =
@@ -500,12 +470,6 @@ export const matchRightW =
  * Takes an array, if the array is empty it returns the result of `onEmpty`, otherwise it passes the array to
  * `onNonEmpty` broken into its initial elements and the last element.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -518,6 +482,10 @@ export const matchRightW =
  * assert.strictEqual(len([1, 2, 3]), 3)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const matchRight: <B, A>(
@@ -528,12 +496,10 @@ export const matchRight: <B, A>(
 /**
  * Alias of [`matchRight`](#matchright).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const foldRight: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (init: Array<A>, last: A) => B) => (as: Array<A>) => B =
@@ -546,12 +512,6 @@ export const foldRight: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (init: Array<A>,
 /**
  * Same as [`chain`](#chain), but passing also the index to the iterating function.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -562,6 +522,10 @@ export const foldRight: <A, B>(onEmpty: LazyArg<B>, onNonEmpty: (init: Array<A>,
  * assert.deepStrictEqual(pipe(['a', 'b', 'c'], chainWithIndex(f)), ['a0', 'a0', 'b1', 'b1', 'c2', 'c2'])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainWithIndex =
@@ -577,10 +541,6 @@ export const chainWithIndex =
 /**
  * Same as `reduce` but it carries over the intermediate steps
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -589,6 +549,9 @@ export const chainWithIndex =
  * assert.deepStrictEqual(scanLeft(10, (b, a: number) => b - a)([1, 2, 3]), [10, 9, 7, 4])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const scanLeft =
@@ -606,10 +569,6 @@ export const scanLeft =
 /**
  * Fold an array from the right, keeping all intermediate results instead of only the final result
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -618,6 +577,9 @@ export const scanLeft =
  * assert.deepStrictEqual(scanRight(10, (a: number, b) => b - a)([1, 2, 3]), [4, 5, 7, 10])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const scanRight =
@@ -635,10 +597,6 @@ export const scanRight =
 /**
  * Calculate the number of elements in a `Array`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -647,6 +605,9 @@ export const scanRight =
  * assert.strictEqual(size(['a', 'b', 'c']), 3)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const size = <A>(as: Array<A>): number => as.length
@@ -654,10 +615,6 @@ export const size = <A>(as: Array<A>): number => as.length
 /**
  * Test whether an array contains a particular index
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -668,6 +625,9 @@ export const size = <A>(as: Array<A>): number => as.length
  * assert.strictEqual(isOutOfBound(3, ['a', 'b', 'c']), true)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const isOutOfBound: <A>(i: number, as: Array<A>) => boolean = NEA.isOutOfBound
@@ -677,10 +637,6 @@ export const isOutOfBound: <A>(i: number, as: Array<A>) => boolean = NEA.isOutOf
  * This function provides a safe way to read a value at a particular index from an array. It returns a `none` if the
  * index is out of bounds, and a `some` of the element if the index is valid.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -692,6 +648,9 @@ export const isOutOfBound: <A>(i: number, as: Array<A>) => boolean = NEA.isOutOf
  * assert.deepStrictEqual(pipe([1, 2, 3], lookup(3)), none)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const lookup: {
@@ -702,10 +661,6 @@ export const lookup: {
 /**
  * Get the first element in an array, or `None` if the array is empty
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -716,6 +671,9 @@ export const lookup: {
  * assert.deepStrictEqual(head([]), none)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const head: <A>(as: Array<A>) => Option<A> = RA.head
@@ -723,10 +681,6 @@ export const head: <A>(as: Array<A>) => Option<A> = RA.head
 /**
  * Get the last element in an array, or `None` if the array is empty
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -737,6 +691,9 @@ export const head: <A>(as: Array<A>) => Option<A> = RA.head
  * assert.deepStrictEqual(last([]), none)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const last: <A>(as: Array<A>) => Option<A> = RA.last
@@ -744,10 +701,6 @@ export const last: <A>(as: Array<A>) => Option<A> = RA.last
 /**
  * Get all but the first element of an array, creating a new array, or `None` if the array is empty
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -758,6 +711,9 @@ export const last: <A>(as: Array<A>) => Option<A> = RA.last
  * assert.deepStrictEqual(tail([]), none)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tail = <A>(as: Array<A>): Option<Array<A>> => (isNonEmpty(as) ? _.some(NEA.tail(as)) : _.none)
@@ -765,10 +721,6 @@ export const tail = <A>(as: Array<A>): Option<Array<A>> => (isNonEmpty(as) ? _.s
 /**
  * Get all but the last element of an array, creating a new array, or `None` if the array is empty
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -779,6 +731,9 @@ export const tail = <A>(as: Array<A>): Option<Array<A>> => (isNonEmpty(as) ? _.s
  * assert.deepStrictEqual(init([]), none)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const init = <A>(as: Array<A>): Option<Array<A>> => (isNonEmpty(as) ? _.some(NEA.init(as)) : _.none)
@@ -788,10 +743,6 @@ export const init = <A>(as: Array<A>): Option<Array<A>> => (isNonEmpty(as) ? _.s
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -803,6 +754,9 @@ export const init = <A>(as: Array<A>): Option<Array<A>> => (isNonEmpty(as) ? _.s
  * assert.deepStrictEqual(takeLeft(-1)([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const takeLeft =
@@ -815,10 +769,6 @@ export const takeLeft =
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -830,6 +780,9 @@ export const takeLeft =
  * assert.deepStrictEqual(takeRight(-1)([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const takeRight =
@@ -842,10 +795,6 @@ export const takeRight =
 /**
  * Calculate the longest initial subarray for which all element satisfy the specified predicate, creating a new array
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -854,6 +803,9 @@ export const takeRight =
  * assert.deepStrictEqual(takeLeftWhile((n: number) => n % 2 === 0)([2, 4, 3, 6]), [2, 4])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function takeLeftWhile<A, B extends A>(refinement: Refinement<A, B>): (as: Array<A>) => Array<B>
@@ -886,10 +838,9 @@ const spanLeftIndex = <A>(as: Array<A>, predicate: Predicate<A>): number => {
 /**
  * Type returned by [`spanLeft`](#spanLeft) composed of an `init` array and a `rest` array.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Spanned<I, R> {
@@ -903,10 +854,6 @@ export interface Spanned<I, R> {
  * 1. The longest initial subarray for which all elements satisfy the specified predicate
  * 2. The remaining elements
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -918,6 +865,9 @@ export interface Spanned<I, R> {
  * assert.deepStrictEqual(spanLeft(isOdd)([1, 3, 5]), { init: [1, 3, 5], rest: [] })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function spanLeft<A, B extends A>(refinement: Refinement<A, B>): (as: Array<A>) => Spanned<B, A>
@@ -935,10 +885,6 @@ export function spanLeft<A>(predicate: Predicate<A>): (as: Array<A>) => Spanned<
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -950,6 +896,9 @@ export function spanLeft<A>(predicate: Predicate<A>): (as: Array<A>) => Spanned<
  * assert.deepStrictEqual(dropLeft(-2)([1, 2, 3]), [1, 2, 3])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const dropLeft =
@@ -964,10 +913,6 @@ export const dropLeft =
  *
  * **Note**. `n` is normalized to a non negative integer.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -979,6 +924,9 @@ export const dropLeft =
  * assert.deepStrictEqual(dropRight(-2)([1, 2, 3]), [1, 2, 3])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const dropRight =
@@ -992,10 +940,6 @@ export const dropRight =
  * Creates a new `Array` which is a copy of the input dropping the longest initial subarray for which all element
  * satisfy the specified predicate.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1004,6 +948,9 @@ export const dropRight =
  * assert.deepStrictEqual(dropLeftWhile((n: number) => n % 2 === 1)([1, 3, 2, 4, 5]), [2, 4, 5])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function dropLeftWhile<A, B extends A>(refinement: Refinement<A, B>): (as: Array<A>) => Array<B>
@@ -1018,10 +965,6 @@ export function dropLeftWhile<A>(predicate: Predicate<A>): (as: Array<A>) => Arr
  * element satisfies the predicate. Similar to [`findFirst`](#findFirst) but returning the index instead of the
  * element.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1032,6 +975,9 @@ export function dropLeftWhile<A>(predicate: Predicate<A>): (as: Array<A>) => Arr
  * assert.deepStrictEqual(findIndex((n: number) => n === 2)([]), none)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const findIndex: <A>(predicate: Predicate<A>) => (as: Array<A>) => Option<number> = RA.findIndex
@@ -1040,10 +986,6 @@ export const findIndex: <A>(predicate: Predicate<A>) => (as: Array<A>) => Option
  * Find the first element which satisfies a predicate (or a refinement) function. It returns an `Option` containing the
  * element or `None` if not found.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1064,6 +1006,9 @@ export const findIndex: <A>(predicate: Predicate<A>) => (as: Array<A>) => Option
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function findFirst<A, B extends A>(refinement: Refinement<A, B>): (as: Array<A>) => Option<B>
@@ -1077,10 +1022,6 @@ export function findFirst<A>(predicate: Predicate<A>): (as: Array<A>) => Option<
  * Given a selector function which takes an element and returns an option, this function applies the selector to each
  * element of the array and returns the first `Some` result. Otherwise it returns `None`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1104,6 +1045,9 @@ export function findFirst<A>(predicate: Predicate<A>): (as: Array<A>) => Option<
  * assert.deepStrictEqual(findFirstMap(nameOfPersonAbove70)(persons), none)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const findFirstMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<A>) => Option<B> = RA.findFirstMap
@@ -1112,10 +1056,6 @@ export const findFirstMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<A>) => O
  * Find the last element which satisfies a predicate function. It returns an `Option` containing the element or `None`
  * if not found.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1136,6 +1076,9 @@ export const findFirstMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<A>) => O
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function findLast<A, B extends A>(refinement: Refinement<A, B>): (as: Array<A>) => Option<B>
@@ -1149,10 +1092,6 @@ export function findLast<A>(predicate: Predicate<A>): (as: Array<A>) => Option<A
  * Given a selector function which takes an element and returns an option, this function applies the selector to each
  * element of the array starting from the end and returns the last `Some` result. Otherwise it returns `None`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1176,6 +1115,9 @@ export function findLast<A>(predicate: Predicate<A>): (as: Array<A>) => Option<A
  * assert.deepStrictEqual(findLastMap(nameOfPersonAbove70)(persons), none)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const findLastMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<A>) => Option<B> = RA.findLastMap
@@ -1184,10 +1126,6 @@ export const findLastMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<A>) => Op
  * Returns the index of the last element of the list which matches the predicate. It returns an `Option` containing the
  * index or `None` if not found.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1206,6 +1144,9 @@ export const findLastMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<A>) => Op
  * assert.deepStrictEqual(findLastIndex((x: { readonly a: number }) => x.a === 4)(xs), none)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const findLastIndex: <A>(predicate: Predicate<A>) => (as: Array<A>) => Option<number> = RA.findLastIndex
@@ -1213,10 +1154,9 @@ export const findLastIndex: <A>(predicate: Predicate<A>) => (as: Array<A>) => Op
 /**
  * This function takes an array and makes a new array containing the same elements.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const copy = <A>(as: Array<A>): Array<A> => as.slice()
@@ -1224,10 +1164,6 @@ export const copy = <A>(as: Array<A>): Array<A> => as.slice()
 /**
  * Insert an element at the specified index, creating a new array, or returning `None` if the index is out of bounds.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1237,6 +1173,9 @@ export const copy = <A>(as: Array<A>): Array<A> => as.slice()
  * assert.deepStrictEqual(insertAt(2, 5)([1, 2, 3, 4]), some([1, 2, 5, 3, 4]))
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const insertAt =
@@ -1247,10 +1186,6 @@ export const insertAt =
 /**
  * Change the element at the specified index, creating a new array, or returning `None` if the index is out of bounds.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1261,6 +1196,9 @@ export const insertAt =
  * assert.deepStrictEqual(updateAt(1, 1)([]), none)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const updateAt = <A>(i: number, a: A): ((as: Array<A>) => Option<Array<A>>) => modifyAt(i, () => a)
@@ -1268,10 +1206,6 @@ export const updateAt = <A>(i: number, a: A): ((as: Array<A>) => Option<Array<A>
 /**
  * Delete the element at the specified index, creating a new array, or returning `None` if the index is out of bounds.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1282,6 +1216,9 @@ export const updateAt = <A>(i: number, a: A): ((as: Array<A>) => Option<Array<A>
  * assert.deepStrictEqual(deleteAt(1)([]), none)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const deleteAt =
@@ -1293,10 +1230,6 @@ export const deleteAt =
  * Apply a function to the element at the specified index, creating a new array, or returning `None` if the index is out
  * of bounds.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1308,6 +1241,9 @@ export const deleteAt =
  * assert.deepStrictEqual(modifyAt(1, double)([]), none)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const modifyAt =
@@ -1318,10 +1254,6 @@ export const modifyAt =
 /**
  * Reverse an array, creating a new array
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1330,6 +1262,9 @@ export const modifyAt =
  * assert.deepStrictEqual(reverse([1, 2, 3]), [3, 2, 1])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const reverse = <A>(as: Array<A>): Array<A> => (isEmpty(as) ? [] : as.slice().reverse())
@@ -1338,10 +1273,6 @@ export const reverse = <A>(as: Array<A>): Array<A> => (isEmpty(as) ? [] : as.sli
  * Takes an `Array` of `Either` and produces a new `Array` containing the values of all the `Right` elements in the same
  * order.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1351,6 +1282,9 @@ export const reverse = <A>(as: Array<A>): Array<A> => (isEmpty(as) ? [] : as.sli
  * assert.deepStrictEqual(rights([right(1), left('foo'), right(2)]), [1, 2])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const rights = <E, A>(as: Array<Either<E, A>>): Array<A> => {
@@ -1368,10 +1302,6 @@ export const rights = <E, A>(as: Array<Either<E, A>>): Array<A> => {
  * Takes an `Array` of `Either` and produces a new `Array` containing the values of all the `Left` elements in the same
  * order.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1381,6 +1311,9 @@ export const rights = <E, A>(as: Array<Either<E, A>>): Array<A> => {
  * assert.deepStrictEqual(lefts([right(1), left('foo'), right(2)]), ['foo'])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const lefts = <E, A>(as: Array<Either<E, A>>): Array<E> => {
@@ -1397,10 +1330,6 @@ export const lefts = <E, A>(as: Array<Either<E, A>>): Array<E> => {
 /**
  * Sort the elements of an array in increasing order, creating a new array
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1410,6 +1339,9 @@ export const lefts = <E, A>(as: Array<Either<E, A>>): Array<E> => {
  * assert.deepStrictEqual(sort(N.Ord)([3, 2, 1]), [1, 2, 3])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const sort =
@@ -1421,10 +1353,6 @@ export const sort =
  * Apply a function to pairs of elements at the same index in two arrays, collecting the results in a new array. If one
  * input array is short, excess elements of the longer array are discarded.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1436,6 +1364,9 @@ export const sort =
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const zipWith = <A, B, C>(fa: Array<A>, fb: Array<B>, f: (a: A, b: B) => C): Array<C> => {
@@ -1452,10 +1383,6 @@ export const zipWith = <A, B, C>(fa: Array<A>, fb: Array<B>, f: (a: A, b: B) => 
  * Takes two arrays and returns an array of corresponding pairs. If one input array is short, excess elements of the
  * longer array are discarded
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1469,6 +1396,9 @@ export const zipWith = <A, B, C>(fa: Array<A>, fb: Array<B>, f: (a: A, b: B) => 
  * ])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function zip<B>(bs: Array<B>): <A>(as: Array<A>) => Array<[A, B]>
@@ -1483,10 +1413,6 @@ export function zip<A, B>(as: Array<A>, bs?: Array<B>): Array<[A, B]> | ((bs: Ar
 /**
  * The function is reverse of `zip`. Takes an array of pairs and return two corresponding arrays
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1505,6 +1431,9 @@ export function zip<A, B>(as: Array<A>, bs?: Array<B>): Array<[A, B]> | ((bs: Ar
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const unzip = <A, B>(as: Array<[A, B]>): [Array<A>, Array<B>] => {
@@ -1520,10 +1449,6 @@ export const unzip = <A, B>(as: Array<[A, B]>): [Array<A>, Array<B>] => {
 /**
  * Creates a new `Array`, prepending an element to every member of the input `Array`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1532,6 +1457,9 @@ export const unzip = <A, B>(as: Array<[A, B]>): [Array<A>, Array<B>] => {
  * assert.deepStrictEqual(prependAll(9)([1, 2, 3, 4]), [9, 1, 9, 2, 9, 3, 9, 4])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const prependAll = <A>(middle: A): ((as: Array<A>) => Array<A>) => {
@@ -1542,10 +1470,6 @@ export const prependAll = <A>(middle: A): ((as: Array<A>) => Array<A>) => {
 /**
  * Creates a new `Array` placing an element in between members of the input `Array`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1554,6 +1478,9 @@ export const prependAll = <A>(middle: A): ((as: Array<A>) => Array<A>) => {
  * assert.deepStrictEqual(intersperse(9)([1, 2, 3, 4]), [1, 9, 2, 9, 3, 9, 4])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const intersperse = <A>(middle: A): ((as: Array<A>) => Array<A>) => {
@@ -1564,10 +1491,6 @@ export const intersperse = <A>(middle: A): ((as: Array<A>) => Array<A>) => {
 /**
  * Creates a new `Array` rotating the input `Array` by `n` steps.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1576,6 +1499,9 @@ export const intersperse = <A>(middle: A): ((as: Array<A>) => Array<A>) => {
  * assert.deepStrictEqual(rotate(2)([1, 2, 3, 4, 5]), [4, 5, 1, 2, 3])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const rotate = (n: number): (<A>(as: Array<A>) => Array<A>) => {
@@ -1588,10 +1514,6 @@ export const rotate = (n: number): (<A>(as: Array<A>) => Array<A>) => {
  * Test if a value is a member of an `Array`. Takes a `Eq<A>` as a single argument which returns the function to use to
  * search for a value of type `A` in an `Array<A>`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1603,6 +1525,9 @@ export const rotate = (n: number): (<A>(as: Array<A>) => Array<A>) => {
  * assert.strictEqual(pipe([1, 2, 3], elem(N.Eq)(0)), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const elem: <A>(E: Eq<A>) => {
@@ -1613,10 +1538,6 @@ export const elem: <A>(E: Eq<A>) => {
 /**
  * Creates a new `Array` removing duplicate elements, keeping the first occurrence of an element, based on a `Eq<A>`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1626,6 +1547,9 @@ export const elem: <A>(E: Eq<A>) => {
  * assert.deepStrictEqual(uniq(N.Eq)([1, 2, 1]), [1, 2])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const uniq = <A>(E: Eq<A>): ((as: Array<A>) => Array<A>) => {
@@ -1637,10 +1561,6 @@ export const uniq = <A>(E: Eq<A>): ((as: Array<A>) => Array<A>) => {
  * Sort the elements of an array in increasing order, where elements are compared using first `ords[0]`, then `ords[1]`,
  * etc...
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1679,6 +1599,9 @@ export const uniq = <A>(E: Eq<A>): ((as: Array<A>) => Array<A>) => {
  * ])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const sortBy = <B>(ords: Array<Ord<B>>): (<A extends B>(as: Array<A>) => Array<A>) => {
@@ -1691,10 +1614,6 @@ export const sortBy = <B>(ords: Array<Ord<B>>): (<A extends B>(as: Array<A>) => 
  * array. Typically chop is called with some function that will consume an initial prefix of the array and produce a
  * value and the rest of the array.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1715,6 +1634,9 @@ export const sortBy = <B>(ords: Array<Ord<B>>): (<A extends B>(as: Array<A>) => 
  * assert.deepStrictEqual(group(N.Eq)([1, 1, 2, 3, 3, 4]), [[1, 1], [2], [3, 3], [4]])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chop = <A, B>(f: (as: NonEmptyArray<A>) => [B, Array<A>]): ((as: Array<A>) => Array<B>) => {
@@ -1725,10 +1647,6 @@ export const chop = <A, B>(f: (as: NonEmptyArray<A>) => [B, Array<A>]): ((as: Ar
 /**
  * Splits an `Array` into two pieces, the first piece has max `n` elements.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1740,6 +1658,9 @@ export const chop = <A, B>(f: (as: NonEmptyArray<A>) => [B, Array<A>]): ((as: Ar
  * ])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const splitAt =
@@ -1756,10 +1677,6 @@ export const splitAt =
  *
  * Whenever `n` evenly divides the length of `xs`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1768,6 +1685,9 @@ export const splitAt =
  * assert.deepStrictEqual(chunksOf(2)([1, 2, 3, 4, 5]), [[1, 2], [3, 4], [5]])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chunksOf = (n: number): (<A>(as: Array<A>) => Array<NonEmptyArray<A>>) => {
@@ -1776,12 +1696,10 @@ export const chunksOf = (n: number): (<A>(as: Array<A>) => Array<NonEmptyArray<A
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromOptionK =
@@ -1792,10 +1710,6 @@ export const fromOptionK =
 /**
  * `Array` comprehension.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1820,6 +1734,9 @@ export const fromOptionK =
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function comprehension<A, B, C, D, R>(
@@ -1851,10 +1768,9 @@ export function comprehension<A, R>(
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const concatW =
@@ -1865,10 +1781,9 @@ export const concatW =
     : (first as Array<A | B>).concat(second)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const concat: <A>(second: Array<A>) => (first: Array<A>) => Array<A> = concatW
@@ -1877,10 +1792,6 @@ export const concat: <A>(second: Array<A>) => (first: Array<A>) => Array<A> = co
 /**
  * Creates an array of unique values, in order, from all given arrays using a `Eq` for equality comparisons
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1891,6 +1802,9 @@ export const concat: <A>(second: Array<A>) => (first: Array<A>) => Array<A> = co
  * assert.deepStrictEqual(pipe([1, 2], union(N.Eq)([2, 3])), [1, 2, 3])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function union<A>(E: Eq<A>): {
@@ -1917,10 +1831,6 @@ export function union<A>(E: Eq<A>): (xs: Array<A>, ys?: Array<A>) => Array<A> | 
  * Creates an array of unique values that are included in all given arrays using a `Eq` for equality comparisons. The
  * order and references of result values are determined by the first array.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1931,6 +1841,9 @@ export function union<A>(E: Eq<A>): (xs: Array<A>, ys?: Array<A>) => Array<A> | 
  * assert.deepStrictEqual(pipe([1, 2], intersection(N.Eq)([2, 3])), [2])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function intersection<A>(E: Eq<A>): {
@@ -1953,10 +1866,6 @@ export function intersection<A>(E: Eq<A>): (xs: Array<A>, ys?: Array<A>) => Arra
  * Creates an array of array values not included in the other given array using a `Eq` for equality comparisons. The
  * order and references of result values are determined by the first array.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1967,6 +1876,9 @@ export function intersection<A>(E: Eq<A>): (xs: Array<A>, ys?: Array<A>) => Arra
  * assert.deepStrictEqual(pipe([1, 2], difference(N.Eq)([2, 3])), [1])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function difference<A>(E: Eq<A>): {
@@ -2061,12 +1973,6 @@ const _chainRecBreadthFirst: ChainRec1<URI>['chainRec'] = RA._chainRecBreadthFir
  * Given an element of the base type, `of` builds an `Array` containing just that element of the base type (this is
  * useful for building a `Monad`).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2075,6 +1981,10 @@ const _chainRecBreadthFirst: ChainRec1<URI>['chainRec'] = RA._chainRecBreadthFir
  * assert.deepStrictEqual(of('a'), ['a'])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const of: <A>(a: A) => Array<A> = NEA.of
@@ -2082,10 +1992,9 @@ export const of: <A>(a: A) => Array<A> = NEA.of
 /**
  * Makes an empty `Array`, useful for building a [`Monoid`](#Monoid)
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const zero: <A>() => Array<A> = () => []
@@ -2094,12 +2003,6 @@ export const zero: <A>() => Array<A> = () => []
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: Array<A>) => Array<B>`. In practice it applies
  * the base function to each element of the array and collects the results in a new array.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2110,15 +2013,15 @@ export const zero: <A>() => Array<A> = () => []
  * assert.deepStrictEqual(pipe([1, 2, 3], map(f)), [2, 4, 6])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const map: <A, B>(f: (a: A) => B) => (fa: Array<A>) => Array<B> = f => fa => fa.map(a => f(a))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2153,6 +2056,9 @@ export const map: <A, B>(f: (a: A) => B) => (fa: Array<A>) => Array<B> = f => fa
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ap: <A>(fa: Array<A>) => <B>(fab: Array<(a: A) => B>) => Array<B> = fa => flatMap(f => pipe(fa, map(f)))
@@ -2164,12 +2070,6 @@ export const ap: <A>(fa: Array<A>) => <B>(fab: Array<(a: A) => B>) => Array<B> =
  * a new function which applies `f` to each element of the input array (like [`map`](#map)) and, instead of returning an
  * array of arrays, concatenates the results into a single array (like [`flatten`](#flatten)).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2181,6 +2081,10 @@ export const ap: <A>(fa: Array<A>) => <B>(fab: Array<(a: A) => B>) => Array<B> =
  * assert.deepStrictEqual(pipe([1, 2, 3], flatMap(f)), ['1', '2', '2', '3', '3', '3'])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMap: {
@@ -2199,12 +2103,6 @@ export const flatMap: {
  * Takes an array of arrays of `A` and flattens them into an array of `A` by concatenating the elements of each array in
  * order.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2213,6 +2111,10 @@ export const flatMap: {
  * assert.deepStrictEqual(flatten([['a'], ['b', 'c'], ['d', 'e', 'f']]), ['a', 'b', 'c', 'd', 'e', 'f'])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatten: <A>(mma: Array<Array<A>>) => Array<A> = /*#__PURE__*/ flatMap(identity)
@@ -2220,12 +2122,6 @@ export const flatten: <A>(mma: Array<Array<A>>) => Array<A> = /*#__PURE__*/ flat
 /**
  * Same as [`map`](#map), but the iterating function takes both the index and the value of the element.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2236,6 +2132,10 @@ export const flatten: <A>(mma: Array<Array<A>>) => Array<A> = /*#__PURE__*/ flat
  * assert.deepStrictEqual(pipe(['a', 'b', 'c'], mapWithIndex(f)), ['a - 0', 'b - 1', 'c - 2'])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const mapWithIndex: <A, B>(f: (i: number, a: A) => B) => (fa: Array<A>) => Array<B> = f => fa =>
@@ -2247,12 +2147,6 @@ export const mapWithIndex: <A, B>(f: (i: number, a: A) => B) => (fa: Array<A>) =
  *
  * Same as [`filterMap`](#filterMap), but with an iterating function which takes also the index as input.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2264,6 +2158,10 @@ export const mapWithIndex: <A, B>(f: (i: number, a: A) => B) => (fa: Array<A>) =
  * assert.deepStrictEqual(pipe(['a', 'no', 'neither', 'b'], filterMapWithIndex(f)), ['NO', 'B'])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const filterMapWithIndex =
@@ -2283,12 +2181,6 @@ export const filterMapWithIndex =
  * Maps an array with an iterating function that returns an `Option` and it keeps only the `Some` values discarding the
  * `None`s.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2300,6 +2192,10 @@ export const filterMapWithIndex =
  * assert.deepStrictEqual(pipe(['a', 'no', 'neither', 'b'], filterMap(f)), ['A', 'B'])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Array<A>) => Array<B> = f =>
@@ -2309,12 +2205,6 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Array<A>) => Arra
  * Compact an array of `Option`s discarding the `None` values and keeping the `Some` values. It returns a new array
  * containing the values of the `Some` options.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2324,6 +2214,10 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Array<A>) => Arra
  * assert.deepStrictEqual(compact([option.some('a'), option.none, option.some('b')]), ['a', 'b'])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const compact: <A>(fa: Array<Option<A>>) => Array<A> = /*#__PURE__*/ filterMap(identity)
@@ -2332,12 +2226,6 @@ export const compact: <A>(fa: Array<Option<A>>) => Array<A> = /*#__PURE__*/ filt
  * Separate an array of `Either`s into `Left`s and `Right`s, creating two new arrays: one containing all the left values
  * and one containing all the right values.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2350,6 +2238,10 @@ export const compact: <A>(fa: Array<Option<A>>) => Array<A> = /*#__PURE__*/ filt
  * })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const separate = <A, B>(fa: Array<Either<A, B>>): Separated<Array<A>, Array<B>> => {
@@ -2369,12 +2261,6 @@ export const separate = <A, B>(fa: Array<Either<A, B>>): Separated<Array<A>, Arr
  * Given an iterating function that is a `Predicate` or a `Refinement`, `filter` creates a new `Array` containing the
  * elements of the original `Array` for which the iterating function is `true`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2385,6 +2271,10 @@ export const separate = <A, B>(fa: Array<Either<A, B>>): Separated<Array<A>, Arr
  * assert.deepStrictEqual(filter((x: number) => x > 0)([-3, 1, -2, 5]), [1, 5])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const filter: {
@@ -2401,12 +2291,6 @@ export const filter: {
  * containing the elements of the original `Array` for which the iterating function is `true`, `left` containing the
  * elements for which it is false.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2417,6 +2301,10 @@ export const filter: {
  * assert.deepStrictEqual(partition((x: number) => x > 0)([-3, 1, -2, 5]), { left: [-3, -2], right: [1, 5] })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const partition: {
@@ -2429,12 +2317,6 @@ export const partition: {
 /**
  * Same as [`partition`](#partition), but passing also the index to the iterating function.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2446,6 +2328,10 @@ export const partition: {
  * })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const partitionWithIndex: {
@@ -2475,12 +2361,6 @@ export const partitionWithIndex: {
  * and it creates two `Array`s: `right` containing the values of `Right` results, `left` containing the values of `Left`
  * results.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2494,6 +2374,10 @@ export const partitionWithIndex: {
  * })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const partitionMap: <A, B, C>(
@@ -2503,12 +2387,6 @@ export const partitionMap: <A, B, C>(
 /**
  * Same as [`partitionMap`](#partitionMap), but passing also the index to the iterating function.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2523,6 +2401,10 @@ export const partitionMap: <A, B, C>(
  * })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const partitionMapWithIndex =
@@ -2546,12 +2428,6 @@ export const partitionMapWithIndex =
  *
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2567,6 +2443,10 @@ export const partitionMapWithIndex =
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const altW =
@@ -2580,12 +2460,6 @@ export const altW =
  *
  * In case of `Array` concatenates the inputs into a single array.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2601,6 +2475,10 @@ export const altW =
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const alt: <A>(that: LazyArg<Array<A>>) => (fa: Array<A>) => Array<A> = altW
@@ -2608,12 +2486,6 @@ export const alt: <A>(that: LazyArg<Array<A>>) => (fa: Array<A>) => Array<A> = a
 /**
  * Same as [`filter`](#filter), but passing also the index to the iterating function.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2623,6 +2495,10 @@ export const alt: <A>(that: LazyArg<Array<A>>) => (fa: Array<A>) => Array<A> = a
  * assert.deepStrictEqual(filterWithIndex(f)([-3, 1, -2, 5]), [1])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const filterWithIndex: {
@@ -2639,10 +2515,6 @@ export const filterWithIndex: {
  * iterating function applied to the whole input `Array`, then to the input `Array` without the first element, then to
  * the input `Array` without the first two elements, etc.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2652,6 +2524,9 @@ export const filterWithIndex: {
  * assert.deepStrictEqual(extend(f)(['a', 'b', 'c']), ['a,b,c', 'b,c', 'c'])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const extend: <A, B>(f: (as: Array<A>) => B) => (as: Array<A>) => Array<B> = f => wa =>
@@ -2661,10 +2536,6 @@ export const extend: <A, B>(f: (as: Array<A>) => B) => (as: Array<A>) => Array<B
  * `duplicate` returns an array containing the whole input `Array`, then to the input `Array` dropping the first
  * element, then to the input `Array` dropping the first two elements, etc.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2673,6 +2544,9 @@ export const extend: <A, B>(f: (as: Array<A>) => B) => (as: Array<A>) => Array<B
  * assert.deepStrictEqual(duplicate(['a', 'b', 'c']), [['a', 'b', 'c'], ['b', 'c'], ['c']])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const duplicate: <A>(wa: Array<A>) => Array<Array<A>> = /*#__PURE__*/ extend(identity)
@@ -2681,12 +2555,6 @@ export const duplicate: <A>(wa: Array<A>) => Array<Array<A>> = /*#__PURE__*/ ext
  * Map and fold an `Array`. Map the `Array` passing each value to the iterating function. Then fold the results using
  * the provided `Monoid`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2697,6 +2565,10 @@ export const duplicate: <A>(wa: Array<A>) => Array<Array<A>> = /*#__PURE__*/ ext
  * assert.deepStrictEqual(foldMap(monoid)(f)(['a', 'b', 'c']), 'ABC')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: Array<A>) => M = RA.foldMap
@@ -2704,12 +2576,6 @@ export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: Array<A>)
 /**
  * Same as [`foldMap`](#foldMap) but passing also the index to the iterating function.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2720,6 +2586,10 @@ export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: Array<A>)
  * assert.deepStrictEqual(foldMapWithIndex(monoid)(f)(['a', 'b', 'c']), 'A(0)B(1)C(2)')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const foldMapWithIndex: <M>(M: Monoid<M>) => <A>(f: (i: number, a: A) => M) => (fa: Array<A>) => M =
@@ -2734,12 +2604,6 @@ export const foldMapWithIndex: <M>(M: Monoid<M>) => <A>(f: (i: number, a: A) => 
  * The first time that the iterating function is called there is no "return value of the previous calculation", the
  * initial value is used in its place.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2748,6 +2612,10 @@ export const foldMapWithIndex: <M>(M: Monoid<M>) => <A>(f: (i: number, a: A) => 
  * assert.deepStrictEqual(reduce(5, (acc: number, cur: number) => acc * cur)([2, 3]), 5 * 2 * 3)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => (fa: Array<A>) => B = RA.reduce
@@ -2755,12 +2623,6 @@ export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => (fa: Array<A>) => B =
 /**
  * Same as [`reduce`](#reduce) but passing also the index to the iterating function.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2771,6 +2633,10 @@ export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => (fa: Array<A>) => B =
  * assert.deepStrictEqual(reduceWithIndex('', f)([2, 'a', 'b', null]), 'A1B2')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const reduceWithIndex: <A, B>(b: B, f: (i: number, b: B, a: A) => B) => (fa: Array<A>) => B = RA.reduceWithIndex
@@ -2780,12 +2646,6 @@ export const reduceWithIndex: <A, B>(b: B, f: (i: number, b: B, a: A) => B) => (
  *
  * _Note_: the iterating function in this case takes the accumulator as the last argument.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2794,6 +2654,10 @@ export const reduceWithIndex: <A, B>(b: B, f: (i: number, b: B, a: A) => B) => (
  * assert.deepStrictEqual(reduceRight('', (cur: string, acc: string) => acc + cur)(['a', 'b', 'c']), 'cba')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => (fa: Array<A>) => B = RA.reduceRight
@@ -2801,12 +2665,6 @@ export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => (fa: Array<A>) =
 /**
  * Same as [`reduceRight`](#reduceRight) but passing also the index to the iterating function.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2817,6 +2675,10 @@ export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => (fa: Array<A>) =
  * assert.deepStrictEqual(reduceRightWithIndex('', f)([2, 'a', 'b', null]), 'B2A1')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const reduceRightWithIndex: <A, B>(b: B, f: (i: number, a: A, b: B) => B) => (fa: Array<A>) => B =
@@ -2831,12 +2693,6 @@ export const reduceRightWithIndex: <A, B>(b: B, f: (i: number, a: A, b: B) => B)
  * a result an `Either<Error,Array<B>>` i.e. an `Array<B>` if all the results are `B`, or an `Error` if some of the
  * results are `Error`s.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2848,6 +2704,10 @@ export const reduceRightWithIndex: <A, B>(b: B, f: (i: number, a: A, b: B) => B)
  * assert.deepStrictEqual(traverse(Applicative)(f)(['a', 5]), left(new Error('not a string')))
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverse: PipeableTraverse1<URI> = <F>(
@@ -2867,12 +2727,6 @@ export const traverse: PipeableTraverse1<URI> = <F>(
  * `Either<E, Array<A>>`, it needs an `Applicative` for `Either`, to to turn an `Array<Option<A>>` into an
  * `Option<Array<A>>`, it needs an `Applicative` for `Option`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2886,6 +2740,10 @@ export const traverse: PipeableTraverse1<URI> = <F>(
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const sequence: Traversable1<URI>['sequence'] =
@@ -2902,12 +2760,6 @@ export const sequence: Traversable1<URI>['sequence'] =
 /**
  * Same as [`traverse`](#traverse) but passing also the index to the iterating function.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2920,6 +2772,10 @@ export const sequence: Traversable1<URI>['sequence'] =
  * assert.deepStrictEqual(traverseWithIndex(Applicative)(f)(['a', 5]), left(new Error('not a string')))
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseWithIndex: PipeableTraverseWithIndex1<URI, number> =
@@ -2933,12 +2789,10 @@ export const traverseWithIndex: PipeableTraverseWithIndex1<URI, number> =
     )
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const wither: PipeableWither1<URI> = <F>(
@@ -2949,12 +2803,10 @@ export const wither: PipeableWither1<URI> = <F>(
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const wilt: PipeableWilt1<URI> = <F>(
@@ -2969,10 +2821,6 @@ export const wilt: PipeableWilt1<URI> = <F>(
  * following iteration. `unfold` applies `f` to the initial value `b` and then recursively to the second element of the
  * tuple contained in the returned `option` of the previous calculation until `f` returns `Option.none`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2988,6 +2836,9 @@ export const wilt: PipeableWilt1<URI> = <F>(
  * assert.deepStrictEqual(unfold(5, f), [10, 8, 6, 4, 2])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const unfold = <A, B>(b: B, f: (b: B) => Option<readonly [A, B]>): Array<A> => {
@@ -3008,23 +2859,19 @@ export const unfold = <A, B>(b: B, f: (b: B) => Option<readonly [A, B]>): Array<
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const URI = 'Array'
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export type URI = typeof URI
@@ -3038,12 +2885,6 @@ declare module './HKT' {
 /**
  * `getShow` makes a `Show` for an `Array<A>` from a `Show` for an `A`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3053,6 +2894,10 @@ declare module './HKT' {
  * assert.deepStrictEqual(getShow(numShow).show([-2, -1, 0, 1]), '[(2), (1), 0, 1]')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getShow: <A>(S: Show<A>) => Show<Array<A>> = RA.getShow
@@ -3060,12 +2905,6 @@ export const getShow: <A>(S: Show<A>) => Show<Array<A>> = RA.getShow
 /**
  * Get a `Semigroup` based on the concatenation of `Array`s. See also [`getMonoid`](#getMonoid).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3075,6 +2914,10 @@ export const getShow: <A>(S: Show<A>) => Show<Array<A>> = RA.getShow
  * assert.deepStrictEqual(S.concat([1, 2], [2, 3]), [1, 2, 2, 3])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getSemigroup = <A = never>(): Semigroup<Array<A>> => ({
@@ -3084,12 +2927,6 @@ export const getSemigroup = <A = never>(): Semigroup<Array<A>> => ({
 /**
  * Returns a `Monoid` for `Array<A>` based on the concatenation of `Array`s.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3099,6 +2936,10 @@ export const getSemigroup = <A = never>(): Semigroup<Array<A>> => ({
  * assert.deepStrictEqual(M.concat([1, 2], [3, 4]), [1, 2, 3, 4])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getMonoid = <A = never>(): Monoid<Array<A>> => ({
@@ -3111,12 +2952,6 @@ export const getMonoid = <A = never>(): Monoid<Array<A>> => ({
  * arrays as equal if all elements of both arrays are compared equal pairwise with the given `E`. In case of arrays of
  * different lengths, the result is non equality.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3128,6 +2963,10 @@ export const getMonoid = <A = never>(): Monoid<Array<A>> => ({
  * assert.strictEqual(E.equals(['a'], []), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getEq: <A>(E: Eq<A>) => Eq<Array<A>> = RA.getEq
@@ -3138,12 +2977,6 @@ export const getEq: <A>(E: Eq<A>) => Eq<Array<A>> = RA.getEq
  * case of equality over all the pairwise elements; the longest array is considered the greatest, if both arrays have
  * the same length, the result is equality.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3156,6 +2989,10 @@ export const getEq: <A>(E: Eq<A>) => Eq<Array<A>> = RA.getEq
  * assert.strictEqual(O.compare(['a'], ['b']), -1)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getOrd: <A>(O: Ord<A>) => Ord<Array<A>> = RA.getOrd
@@ -3164,12 +3001,6 @@ export const getOrd: <A>(O: Ord<A>) => Ord<Array<A>> = RA.getOrd
  * Get a `Semigroup` based on the union of the elements of `Array`s. Elements which equal according to the provided `Eq`
  * are included only once in the result. See also [`getUnionMonoid`](#getUnionMonoid).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3180,6 +3011,10 @@ export const getOrd: <A>(O: Ord<A>) => Ord<Array<A>> = RA.getOrd
  * assert.deepStrictEqual(S.concat([1, 2], [2, 3]), [1, 2, 3])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<Array<A>> => {
@@ -3193,12 +3028,6 @@ export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<Array<A>> => {
  * Get a `Monoid` based on the union of the elements of `Array`s. Elements which equal according to the provided `Eq`
  * are included only once in the result.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3210,6 +3039,10 @@ export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<Array<A>> => {
  * assert.deepStrictEqual(M.empty, [])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getUnionMonoid = <A>(E: Eq<A>): Monoid<Array<A>> => ({
@@ -3221,12 +3054,6 @@ export const getUnionMonoid = <A>(E: Eq<A>): Monoid<Array<A>> => ({
  * Get a `Semigroup` based on the intersection of the elements of `Array`s. Only elements present in the two arrays
  * which are equal according to the provided `Eq` are included in the result.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3237,6 +3064,10 @@ export const getUnionMonoid = <A>(E: Eq<A>): Monoid<Array<A>> => ({
  * assert.deepStrictEqual(S.concat([1, 2], [2, 3]), [2])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<Array<A>> => {
@@ -3251,12 +3082,6 @@ export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<Array<A>> => {
  * the result contains all the elements of the first array for which their is no equal element in the second array
  * according to the `Eq` provided.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3267,6 +3092,10 @@ export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<Array<A>> => {
  * assert.deepStrictEqual(S.concat([1, 2], [2, 3]), [1])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getDifferenceMagma = <A>(E: Eq<A>): Magma<Array<A>> => {
@@ -3277,12 +3106,10 @@ export const getDifferenceMagma = <A>(E: Eq<A>): Magma<Array<A>> => {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Functor: Functor1<URI> = {
@@ -3294,12 +3121,6 @@ export const Functor: Functor1<URI> = {
  * Given an input an `Array` of functions, `flap` returns an `Array` containing the results of applying each function to
  * the given input.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3313,17 +3134,19 @@ export const Functor: Functor1<URI> = {
  * assert.deepStrictEqual(flap(4)(funs), ['Double: 8', 'Triple: 12', 'Square: 16'])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Pointed: Pointed1<URI> = {
@@ -3332,12 +3155,10 @@ export const Pointed: Pointed1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FunctorWithIndex: FunctorWithIndex1<URI, number> = {
@@ -3347,12 +3168,10 @@ export const FunctorWithIndex: FunctorWithIndex1<URI, number> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Apply: Apply1<URI> = {
@@ -3364,10 +3183,9 @@ export const Apply: Apply1<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
@@ -3375,21 +3193,18 @@ export const apFirst = /*#__PURE__*/ apFirst_(Apply)
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Applicative: Applicative1<URI> = {
@@ -3400,12 +3215,10 @@ export const Applicative: Applicative1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Chain: Chain1<URI> = {
@@ -3419,12 +3232,6 @@ export const Chain: Chain1<URI> = {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3447,18 +3254,20 @@ export const Chain: Chain1<URI> = {
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirst: <A, B>(f: (a: A) => Array<B>) => (first: Array<A>) => Array<A> =
   /*#__PURE__*/ chainFirst_(Chain)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Monad: Monad1<URI> = {
@@ -3470,12 +3279,10 @@ export const Monad: Monad1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Unfoldable: Unfoldable1<URI> = {
@@ -3484,12 +3291,10 @@ export const Unfoldable: Unfoldable1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Alt: Alt1<URI> = {
@@ -3499,12 +3304,10 @@ export const Alt: Alt1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Zero: Zero1<URI> = {
@@ -3513,23 +3316,19 @@ export const Zero: Zero1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const guard = /*#__PURE__*/ guard_(Zero, Pointed)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Alternative: Alternative1<URI> = {
@@ -3542,12 +3341,10 @@ export const Alternative: Alternative1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Extend: Extend1<URI> = {
@@ -3557,12 +3354,10 @@ export const Extend: Extend1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Compactable: Compactable1<URI> = {
@@ -3572,12 +3367,10 @@ export const Compactable: Compactable1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Filterable: Filterable1<URI> = {
@@ -3592,12 +3385,10 @@ export const Filterable: Filterable1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FilterableWithIndex: FilterableWithIndex1<URI, number> = {
@@ -3617,12 +3408,10 @@ export const FilterableWithIndex: FilterableWithIndex1<URI, number> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Foldable: Foldable1<URI> = {
@@ -3633,12 +3422,10 @@ export const Foldable: Foldable1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FoldableWithIndex: FoldableWithIndex1<URI, number> = {
@@ -3652,12 +3439,10 @@ export const FoldableWithIndex: FoldableWithIndex1<URI, number> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Traversable: Traversable1<URI> = {
@@ -3671,12 +3456,10 @@ export const Traversable: Traversable1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const TraversableWithIndex: TraversableWithIndex1<URI, number> = {
@@ -3698,12 +3481,10 @@ const _wither: Witherable1<URI>['wither'] = /*#__PURE__*/ witherDefault(Traversa
 const _wilt: Witherable1<URI>['wilt'] = /*#__PURE__*/ wiltDefault(Traversable, Compactable)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Witherable: Witherable1<URI> = {
@@ -3725,24 +3506,20 @@ export const Witherable: Witherable1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainRecDepthFirst: <A, B>(f: (a: A) => Array<Either<A, B>>) => (a: A) => Array<B> =
   RA.chainRecDepthFirst as any
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ChainRecDepthFirst: ChainRec1<URI> = {
@@ -3754,24 +3531,20 @@ export const ChainRecDepthFirst: ChainRec1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainRecBreadthFirst: <A, B>(f: (a: A) => Array<Either<A, B>>) => (a: A) => Array<B> =
   RA.chainRecBreadthFirst as any
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ChainRecBreadthFirst: ChainRec1<URI> = {
@@ -3785,21 +3558,18 @@ export const ChainRecBreadthFirst: ChainRec1<URI> = {
 /**
  * Filter values inside a context.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const filterE = /*#__PURE__*/ filterE_(Witherable)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FromEither: FromEither1<URI> = {
@@ -3808,12 +3578,10 @@ export const FromEither: FromEither1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
@@ -3825,35 +3593,29 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Unsafe
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Unsafe}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const unsafeInsertAt: <A>(i: number, a: A, as: Array<A>) => NonEmptyArray<A> = NEA.unsafeInsertAt
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Unsafe
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Unsafe}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const unsafeUpdateAt = <A>(i: number, a: A, as: Array<A>): Array<A> =>
   isNonEmpty(as) ? NEA.unsafeUpdateAt(i, a, as) : []
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Unsafe
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Unsafe}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const unsafeDeleteAt = <A>(i: number, as: Array<A>): Array<A> => {
@@ -3869,10 +3631,6 @@ export const unsafeDeleteAt = <A>(i: number, as: Array<A>): Array<A> => {
 /**
  * `every` tells if the provided predicate holds true for every element in the `Array`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3882,6 +3640,9 @@ export const unsafeDeleteAt = <A>(i: number, as: Array<A>): Array<A> => {
  * assert.equal(every((x: number) => x >= 0)([-1, 2, 3]), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const every: {
@@ -3892,10 +3653,6 @@ export const every: {
 /**
  * `some` tells if the provided predicate holds true at least for one element in the `Array`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3905,6 +3662,9 @@ export const every: {
  * assert.equal(some((x: number) => x >= 10)([1, 2, 3]), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const some =
@@ -3915,10 +3675,9 @@ export const some =
 /**
  * Alias of [`some`](#some)
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const exists: <A>(predicate: Predicate<A>) => (as: Array<A>) => as is NEA.NonEmptyArray<A> = some
@@ -3926,10 +3685,6 @@ export const exists: <A>(predicate: Predicate<A>) => (as: Array<A>) => as is NEA
 /**
  * Places an element in between members of an `Array`, then folds the results using the provided `Monoid`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -3939,6 +3694,9 @@ export const exists: <A>(predicate: Predicate<A>) => (as: Array<A>) => as is NEA
  * assert.deepStrictEqual(intercalate(S.Monoid)('-')(['a', 'b', 'c']), 'a-b-c')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const intercalate: <A>(M: Monoid<A>) => (middle: A) => (as: Array<A>) => A = RA.intercalate
@@ -3948,23 +3706,19 @@ export const intercalate: <A>(M: Monoid<A>) => (middle: A) => (as: Array<A>) => 
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Do: Array<{}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
@@ -3973,35 +3727,29 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @remarks
-   * Added in 1.0.0
-   * @remarks
-   * Category: Do notation
-   * @remarks
-   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+   * @meta
+   * {@since 1.0.0}
+   * {@category Do notation}
+   * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   let_ as let,
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bind = /*#__PURE__*/ bind_(Chain)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
@@ -4013,12 +3761,10 @@ export const apS = /*#__PURE__*/ apS_(Apply)
 /**
  * Alias of `flatMap`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chain: <A, B>(f: (a: A) => Array<B>) => (ma: Array<A>) => Array<B> = flatMap
@@ -4030,11 +3776,10 @@ export const chain: <A, B>(f: (a: A) => Array<B>) => (ma: Array<A>) => Array<B> 
 /**
  * Use `NonEmptyArray` module instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const range = NEA.range
@@ -4042,11 +3787,10 @@ export const range = NEA.range
 /**
  * Use a new `[]` instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const empty: Array<never> = []
@@ -4054,11 +3798,10 @@ export const empty: Array<never> = []
 /**
  * Use `prepend` instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const cons = NEA.cons
@@ -4066,11 +3809,10 @@ export const cons = NEA.cons
 /**
  * Use `append` instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const snoc = NEA.snoc
@@ -4078,11 +3820,10 @@ export const snoc = NEA.snoc
 /**
  * Use `prependAll` instead
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const prependToAll = prependAll
@@ -4091,11 +3832,10 @@ export const prependToAll = prependAll
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `A.Functor` instead of `A.array` (where `A` is from `import A from 'fp-ts/Array'`)
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const array: FunctorWithIndex1<URI, number> &

@@ -1,6 +1,6 @@
 /**
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 1.0.0}
  * @packageDocumentation
  */
 import type * as B from './Bounded'
@@ -18,12 +18,10 @@ import type * as S from './Show'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Refinements
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Refinements}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const isNumber: Refinement<unknown, number> = (u: unknown): u is number => typeof u === 'number'
@@ -33,12 +31,10 @@ export const isNumber: Refinement<unknown, number> = (u: unknown): u is number =
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Eq: E.Eq<number> = {
@@ -46,12 +42,10 @@ export const Eq: E.Eq<number> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Ord: O.Ord<number> = {
@@ -63,12 +57,10 @@ export const Ord: O.Ord<number> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Bounded: B.Bounded<number> = {
@@ -79,12 +71,10 @@ export const Bounded: B.Bounded<number> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Show: S.Show<number> = {
@@ -92,12 +82,10 @@ export const Show: S.Show<number> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const MagmaSub: Magma<number> = {
@@ -107,12 +95,6 @@ export const MagmaSub: Magma<number> = {
 /**
  * `number` semigroup under addition.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -121,6 +103,10 @@ export const MagmaSub: Magma<number> = {
  * assert.deepStrictEqual(SemigroupSum.concat(2, 3), 5)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const SemigroupSum: Semigroup<number> = {
@@ -130,12 +116,6 @@ export const SemigroupSum: Semigroup<number> = {
 /**
  * `number` semigroup under multiplication.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -144,6 +124,10 @@ export const SemigroupSum: Semigroup<number> = {
  * assert.deepStrictEqual(SemigroupProduct.concat(2, 3), 6)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const SemigroupProduct: Semigroup<number> = {
@@ -155,12 +139,6 @@ export const SemigroupProduct: Semigroup<number> = {
  *
  * The `empty` value is `0`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -169,6 +147,10 @@ export const SemigroupProduct: Semigroup<number> = {
  * assert.deepStrictEqual(MonoidSum.concat(2, MonoidSum.empty), 2)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const MonoidSum: Monoid<number> = {
@@ -181,12 +163,6 @@ export const MonoidSum: Monoid<number> = {
  *
  * The `empty` value is `1`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -195,6 +171,10 @@ export const MonoidSum: Monoid<number> = {
  * assert.deepStrictEqual(MonoidProduct.concat(2, MonoidProduct.empty), 2)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const MonoidProduct: Monoid<number> = {
@@ -203,12 +183,10 @@ export const MonoidProduct: Monoid<number> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Field: F.Field<number> = {

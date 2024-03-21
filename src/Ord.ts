@@ -7,8 +7,8 @@
  * 2. Antisymmetry: if `S.compare(a, b) <= 0` and `S.compare(b, a) <= 0` then `a <-> b`
  * 3. Transitivity: if `S.compare(a, b) <= 0` and `S.compare(b, c) <= 0` then `S.compare(a, c) <= 0`
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 1.0.0}
  * @packageDocumentation
  */
 import { type Contravariant1 } from './Contravariant'
@@ -23,12 +23,10 @@ import { type Semigroup } from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Ord<A> extends Eq<A> {
@@ -40,12 +38,10 @@ export interface Ord<A> extends Eq<A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Defaults
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Defaults}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const equalsDefault =
@@ -58,12 +54,10 @@ export const equalsDefault =
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromCompare = <A>(compare: Ord<A>['compare']): Ord<A> => ({
@@ -78,10 +72,6 @@ export const fromCompare = <A>(compare: Ord<A>['compare']): Ord<A> => ({
 /**
  * Given a tuple of `Ord`s returns an `Ord` for the tuple.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -96,6 +86,9 @@ export const fromCompare = <A>(compare: Ord<A>['compare']): Ord<A> => ({
  * assert.strictEqual(O.compare(['a', 1, true], ['a', 1, false]), 1)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tuple = <A extends ReadonlyArray<unknown>>(...ords: { [K in keyof A]: Ord<A[K]> }): Ord<Readonly<A>> =>
@@ -111,10 +104,9 @@ export const tuple = <A extends ReadonlyArray<unknown>>(...ords: { [K in keyof A
   })
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const reverse = <A>(O: Ord<A>): Ord<A> => fromCompare((first, second) => O.compare(second, first))
@@ -128,10 +120,6 @@ const contramap_: <A, B>(fa: Ord<A>, f: (b: B) => A) => Ord<B> = (fa, f) => pipe
  * We can do so with a function from `User -> X` where `X` is some value that we know how to compare for ordering
  * (meaning we have an `Ord<X>`)
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -164,29 +152,28 @@ const contramap_: <A, B>(fa: Ord<A>, f: (b: B) => A) => Ord<B> = (fa, f) => pipe
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const contramap: <A, B>(f: (b: B) => A) => (fa: Ord<A>) => Ord<B> = f => fa =>
   fromCompare((first, second) => fa.compare(f(first), f(second)))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const URI = 'Ord'
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export type URI = typeof URI
@@ -203,12 +190,6 @@ declare module './HKT' {
  * For example the following snippet builds an `Ord` for a type `User` which sorts by `created` date descending, and
  * **then** `lastName`
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -250,6 +231,10 @@ declare module './HKT' {
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getSemigroup = <A = never>(): Semigroup<Ord<A>> => ({
@@ -266,12 +251,6 @@ export const getSemigroup = <A = never>(): Semigroup<Ord<A>> => ({
  * - Its `concat(ord1, ord2)` operation will order first by `ord1`, and then by `ord2`
  * - Its `empty` value is an `Ord` that always considers compared elements equal
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -333,6 +312,10 @@ export const getSemigroup = <A = never>(): Semigroup<Ord<A>> => ({
  * ])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getMonoid = <A = never>(): Monoid<Ord<A>> => ({
@@ -341,12 +324,10 @@ export const getMonoid = <A = never>(): Monoid<Ord<A>> => ({
 })
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Contravariant: Contravariant1<URI> = {
@@ -359,10 +340,9 @@ export const Contravariant: Contravariant1<URI> = {
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const trivial: Ord<unknown> = {
@@ -371,10 +351,9 @@ export const trivial: Ord<unknown> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const equals =
@@ -387,10 +366,9 @@ export const equals =
 /**
  * Test whether one value is _strictly less than_ another
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const lt =
@@ -402,10 +380,9 @@ export const lt =
 /**
  * Test whether one value is _strictly greater than_ another
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const gt =
@@ -417,10 +394,9 @@ export const gt =
 /**
  * Test whether one value is _non-strictly less than_ another
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const leq =
@@ -432,10 +408,9 @@ export const leq =
 /**
  * Test whether one value is _non-strictly greater than_ another
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const geq =
@@ -447,10 +422,9 @@ export const geq =
 /**
  * Take the minimum of two values. If they are considered equal, the first argument is chosen
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const min =
@@ -462,10 +436,9 @@ export const min =
 /**
  * Take the maximum of two values. If they are considered equal, the first argument is chosen
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const max =
@@ -476,10 +449,9 @@ export const max =
 /**
  * Clamp a value between a minimum and a maximum
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const clamp = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => A) => {
@@ -491,10 +463,9 @@ export const clamp = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => A) => {
 /**
  * Test whether a value is between a minimum and a maximum (inclusive)
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const between = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => boolean) => {
@@ -510,11 +481,10 @@ export const between = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => boolean) =>
 /**
  * Use [`tuple`](#tuple) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getTupleOrd: <T extends ReadonlyArray<Ord<any>>>(
@@ -524,11 +494,10 @@ export const getTupleOrd: <T extends ReadonlyArray<Ord<any>>>(
 /**
  * Use [`reverse`](#reverse) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getDualOrd = reverse
@@ -536,11 +505,10 @@ export const getDualOrd = reverse
 /**
  * Use [`Contravariant`](#contravariant) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ord: Contravariant1<URI> = Contravariant
@@ -562,11 +530,10 @@ const strictOrd = {
 /**
  * Use [`Ord`](./boolean.ts.html#ord) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ordBoolean: Ord<boolean> = strictOrd
@@ -574,11 +541,10 @@ export const ordBoolean: Ord<boolean> = strictOrd
 /**
  * Use [`Ord`](./string.ts.html#ord) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ordString: Ord<string> = strictOrd
@@ -586,11 +552,10 @@ export const ordString: Ord<string> = strictOrd
 /**
  * Use [`Ord`](./number.ts.html#ord) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ordNumber: Ord<number> = strictOrd
@@ -598,11 +563,10 @@ export const ordNumber: Ord<number> = strictOrd
 /**
  * Use [`Ord`](./Date.ts.html#ord) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ordDate: Ord<Date> = /*#__PURE__*/ pipe(

@@ -1,6 +1,6 @@
 /**
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 1.0.0}
  * @packageDocumentation
  */
 import { type Chain, type Chain1, type Chain2, type Chain2C, type Chain3, type Chain3C, type Chain4 } from './Chain'
@@ -34,12 +34,10 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface ChainRec<F> extends Chain<F> {
@@ -47,12 +45,10 @@ export interface ChainRec<F> extends Chain<F> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface ChainRec1<F extends URIS> extends Chain1<F> {
@@ -60,12 +56,10 @@ export interface ChainRec1<F extends URIS> extends Chain1<F> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface ChainRec2<F extends URIS2> extends Chain2<F> {
@@ -73,12 +67,10 @@ export interface ChainRec2<F extends URIS2> extends Chain2<F> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface ChainRec2C<F extends URIS2, E> extends Chain2C<F, E> {
@@ -86,12 +78,10 @@ export interface ChainRec2C<F extends URIS2, E> extends Chain2C<F, E> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface ChainRec3<F extends URIS3> extends Chain3<F> {
@@ -99,12 +89,10 @@ export interface ChainRec3<F extends URIS3> extends Chain3<F> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface ChainRec3C<F extends URIS3, E> extends Chain3C<F, E> {
@@ -112,12 +100,10 @@ export interface ChainRec3C<F extends URIS3, E> extends Chain3C<F, E> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface ChainRec4<F extends URIS4> extends Chain4<F> {
@@ -125,10 +111,9 @@ export interface ChainRec4<F extends URIS4> extends Chain4<F> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tailRec = <A, B>(startWith: A, f: (a: A) => E.Either<A, B>): B => {
@@ -140,12 +125,10 @@ export const tailRec = <A, B>(startWith: A, f: (a: A) => E.Either<A, B>): B => {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Utils
- * @remarks
- * Original License: Copyright (c) 2022-present Jacob Alford
+ * @meta
+ * {@since 1.0.0}
+ * {@category Utils}
+ * {@license Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export function forever<M extends URIS4>(
@@ -161,12 +144,10 @@ export function forever<M>(M: ChainRec<M>): <A, B>(ma: HKT<M, A>) => HKT<M, B> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Utils
- * @remarks
- * Original License: Copyright (c) 2022-present Jacob Alford
+ * @meta
+ * {@since 1.0.0}
+ * {@category Utils}
+ * {@license Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export function whileSome<M extends URIS4, A>(
@@ -207,12 +188,10 @@ export function whileSome<M, A>(M: ChainRec<M>, Mn: Mn.Monoid<A>): (ma: HKT<M, O
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Utils
- * @remarks
- * Original License: Copyright (c) 2022-present Jacob Alford
+ * @meta
+ * {@since 1.0.0}
+ * {@category Utils}
+ * {@license Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export function untilSome<M extends URIS4>(
@@ -232,12 +211,10 @@ export function untilSome<M>(M: ChainRec<M>): <A>(ma: HKT<M, O.Option<A>>) => HK
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Utils
- * @remarks
- * Original License: Copyright (c) 2022-present Jacob Alford
+ * @meta
+ * {@since 1.0.0}
+ * {@category Utils}
+ * {@license Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export function chainRec2<M extends URIS4>(
@@ -265,12 +242,10 @@ export function chainRec2<M>(
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Utils
- * @remarks
- * Original License: Copyright (c) 2022-present Jacob Alford
+ * @meta
+ * {@since 1.0.0}
+ * {@category Utils}
+ * {@license Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export function chainRec3<M extends URIS4>(
@@ -313,12 +288,10 @@ export function chainRec3<M>(
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Utils
- * @remarks
- * Original License: Copyright (c) 2022-present Jacob Alford
+ * @meta
+ * {@since 1.0.0}
+ * {@category Utils}
+ * {@license Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export const tailRec2: <A, B, C>(a: A, b: B, f: (a: A, b: B) => E.Either<readonly [A, B], C>) => C = (ai, bi, f) => {
@@ -331,12 +304,10 @@ export const tailRec2: <A, B, C>(a: A, b: B, f: (a: A, b: B) => E.Either<readonl
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Utils
- * @remarks
- * Original License: Copyright (c) 2022-present Jacob Alford
+ * @meta
+ * {@since 1.0.0}
+ * {@category Utils}
+ * {@license Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export const tailRec3: <A, B, C, D>(a: A, b: B, c: C, f: (a: A, b: B, c: C) => E.Either<readonly [A, B, C], D>) => D = (

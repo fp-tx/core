@@ -1,6 +1,6 @@
 /**
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 1.0.0}
  * @packageDocumentation
  */
 import { type BooleanAlgebra } from './BooleanAlgebra'
@@ -14,12 +14,10 @@ import { type Semiring } from './Semiring'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getBooleanAlgebra =
@@ -36,12 +34,6 @@ export const getBooleanAlgebra =
 /**
  * Unary functions form a semigroup as long as you can provide a semigroup for the codomain.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -62,6 +54,10 @@ export const getBooleanAlgebra =
  * assert.deepStrictEqual(S2.concat(f, g)(3), true)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getSemigroup =
@@ -73,12 +69,6 @@ export const getSemigroup =
 /**
  * Unary functions form a monoid as long as you can provide a monoid for the codomain.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -100,6 +90,10 @@ export const getSemigroup =
  * assert.deepStrictEqual(M2.concat(f, g)(3), true)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getMonoid = <M>(M: Monoid<M>): (<A = never>() => Monoid<(a: A) => M>) => {
@@ -111,12 +105,10 @@ export const getMonoid = <M>(M: Monoid<M>): (<A = never>() => Monoid<(a: A) => M
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getSemiring = <A, B>(S: Semiring<B>): Semiring<(a: A) => B> => ({
@@ -127,12 +119,10 @@ export const getSemiring = <A, B>(S: Semiring<B>): Semiring<(a: A) => B> => ({
 })
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getRing = <A, B>(R: Ring<B>): Ring<(a: A) => B> => {
@@ -151,10 +141,9 @@ export const getRing = <A, B>(R: Ring<B>): Ring<(a: A) => B> => {
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apply =
@@ -163,10 +152,6 @@ export const apply =
     f(a)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -175,6 +160,9 @@ export const apply =
  * export const sum: FunctionN<[number, number], number> = (a, b) => a + b
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface FunctionN<A extends ReadonlyArray<unknown>, B> {
@@ -182,10 +170,9 @@ export interface FunctionN<A extends ReadonlyArray<unknown>, B> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function identity<A>(a: A): A {
@@ -193,19 +180,17 @@ export function identity<A>(a: A): A {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const unsafeCoerce: <A, B>(a: A) => B = identity as any
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function constant<A>(a: A): LazyArg<A> {
@@ -215,10 +200,9 @@ export function constant<A>(a: A): LazyArg<A> {
 /**
  * A thunk that returns always `true`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const constTrue: LazyArg<boolean> = /*#__PURE__*/ constant(true)
@@ -226,10 +210,9 @@ export const constTrue: LazyArg<boolean> = /*#__PURE__*/ constant(true)
 /**
  * A thunk that returns always `false`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const constFalse: LazyArg<boolean> = /*#__PURE__*/ constant(false)
@@ -237,10 +220,9 @@ export const constFalse: LazyArg<boolean> = /*#__PURE__*/ constant(false)
 /**
  * A thunk that returns always `null`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const constNull: LazyArg<null> = /*#__PURE__*/ constant(null)
@@ -248,10 +230,9 @@ export const constNull: LazyArg<null> = /*#__PURE__*/ constant(null)
 /**
  * A thunk that returns always `undefined`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const constUndefined: LazyArg<undefined> = /*#__PURE__*/ constant(undefined)
@@ -259,10 +240,9 @@ export const constUndefined: LazyArg<undefined> = /*#__PURE__*/ constant(undefin
 /**
  * A thunk that returns always `void`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const constVoid: LazyArg<void> = constUndefined
@@ -270,10 +250,6 @@ export const constVoid: LazyArg<void> = constUndefined
 /**
  * Flips the arguments of a curried function.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -284,6 +260,9 @@ export const constVoid: LazyArg<void> = constUndefined
  * assert.strictEqual(flip(f)('aaa')(2), -1)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function flip<A, B, C>(f: (a: A) => (b: B) => C): (b: B) => (a: A) => C
@@ -305,10 +284,6 @@ export function flip(f: Function): Function {
  *
  * See also [`pipe`](#pipe).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -322,6 +297,9 @@ export function flip(f: Function): Function {
  * assert.strictEqual(f('aaa'), 6)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function flow<A extends ReadonlyArray<unknown>, B>(ab: (...a: A) => B): (...a: A) => B
@@ -433,10 +411,9 @@ export function flow(
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function tuple<T extends ReadonlyArray<any>>(...t: T): T {
@@ -444,10 +421,9 @@ export function tuple<T extends ReadonlyArray<any>>(...t: T): T {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function increment(n: number): number {
@@ -455,10 +431,9 @@ export function increment(n: number): number {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function decrement(n: number): number {
@@ -466,10 +441,9 @@ export function decrement(n: number): number {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function absurd<A>(_: never): A {
@@ -479,10 +453,6 @@ export function absurd<A>(_: never): A {
 /**
  * Creates a tupled version of this function: instead of `n` arguments, it accepts a single tuple argument.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -493,6 +463,9 @@ export function absurd<A>(_: never): A {
  * assert.strictEqual(add([1, 2]), 3)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function tupled<A extends ReadonlyArray<unknown>, B>(f: (...a: A) => B): (a: A) => B {
@@ -502,10 +475,9 @@ export function tupled<A extends ReadonlyArray<unknown>, B>(f: (...a: A) => B): 
 /**
  * Inverse function of `tupled`
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function untupled<A extends ReadonlyArray<unknown>, B>(f: (a: A) => B): (...a: A) => B {
@@ -517,10 +489,6 @@ export function untupled<A extends ReadonlyArray<unknown>, B>(f: (a: A) => B): (
  *
  * See also [`flow`](#flow).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -536,6 +504,9 @@ export function untupled<A extends ReadonlyArray<unknown>, B>(f: (a: A) => B): (
  * assert.strictEqual(pipe('aaa', len, double), 6)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function pipe<A>(a: A): A
@@ -816,19 +787,17 @@ export function pipe(
 /**
  * Type hole simulation
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const hole: <T>() => T = absurd as any
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const SK = <A, B>(_: A, b: B): B => b
@@ -840,11 +809,10 @@ export const SK = <A, B>(_: A, b: B): B => b
 /**
  * Use `Refinement` module instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Refinement<A, B extends A> {
@@ -854,11 +822,10 @@ export interface Refinement<A, B extends A> {
 /**
  * Use `Predicate` module instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Predicate<A> {
@@ -868,11 +835,10 @@ export interface Predicate<A> {
 /**
  * Use `Predicate` module instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function not<A>(predicate: Predicate<A>): Predicate<A> {
@@ -882,11 +848,10 @@ export function not<A>(predicate: Predicate<A>): Predicate<A> {
 /**
  * Use `Endomorphism` module instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Endomorphism<A> {
@@ -896,11 +861,10 @@ export interface Endomorphism<A> {
 /**
  * Use `Endomorphism` module instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => ({
@@ -911,10 +875,9 @@ export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => (
 /**
  * A lazy argument.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface LazyArg<A> {
@@ -949,12 +912,10 @@ export const dual: {
 /**
  * Use `LazyArg` instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lagacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Lagacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Lazy<A> {

@@ -1,6 +1,6 @@
 /**
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 1.0.0}
  * @packageDocumentation
  */
 import type * as E from './Eq'
@@ -16,12 +16,6 @@ import type * as Sh from './Show'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -31,6 +25,10 @@ import type * as Sh from './Show'
  * assert.deepStrictEqual(S.Eq.equals('a', 'b'), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Eq: E.Eq<string> = {
@@ -40,12 +38,6 @@ export const Eq: E.Eq<string> = {
 /**
  * `string` semigroup under concatenation.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -54,6 +46,10 @@ export const Eq: E.Eq<string> = {
  * assert.deepStrictEqual(S.Semigroup.concat('a', 'b'), 'ab')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Semigroup: S.Semigroup<string> = {
@@ -63,10 +59,9 @@ export const Semigroup: S.Semigroup<string> = {
 /**
  * An empty `string`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const empty = ''
@@ -76,12 +71,6 @@ export const empty = ''
  *
  * The `empty` value is `''`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -91,6 +80,10 @@ export const empty = ''
  * assert.deepStrictEqual(S.Monoid.concat('a', S.Monoid.empty), 'a')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Monoid: M.Monoid<string> = {
@@ -99,12 +92,6 @@ export const Monoid: M.Monoid<string> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -115,6 +102,10 @@ export const Monoid: M.Monoid<string> = {
  * assert.deepStrictEqual(S.Ord.compare('b', 'a'), 1)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Ord: O.Ord<string> = {
@@ -126,12 +117,6 @@ export const Ord: O.Ord<string> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -140,6 +125,10 @@ export const Ord: O.Ord<string> = {
  * assert.deepStrictEqual(S.Show.show('a'), '"a"')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Show: Sh.Show<string> = {
@@ -151,12 +140,6 @@ export const Show: Sh.Show<string> = {
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Refinements
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -166,6 +149,10 @@ export const Show: Sh.Show<string> = {
  * assert.deepStrictEqual(S.isString(1), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Refinements}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const isString: Refinement<unknown, string> = (u: unknown): u is string => typeof u === 'string'
@@ -175,10 +162,6 @@ export const isString: Refinement<unknown, string> = (u: unknown): u is string =
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -188,15 +171,14 @@ export const isString: Refinement<unknown, string> = (u: unknown): u is string =
  * assert.deepStrictEqual(pipe('a', S.toUpperCase), 'A')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const toUpperCase = (s: string): string => s.toUpperCase()
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -206,15 +188,14 @@ export const toUpperCase = (s: string): string => s.toUpperCase()
  * assert.deepStrictEqual(pipe('A', S.toLowerCase), 'a')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const toLowerCase = (s: string): string => s.toLowerCase()
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -224,6 +205,9 @@ export const toLowerCase = (s: string): string => s.toLowerCase()
  * assert.deepStrictEqual(pipe('abc', S.replace('b', 'd')), 'adc')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const replace =
@@ -232,10 +216,6 @@ export const replace =
     s.replace(searchValue, replaceValue)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -245,15 +225,14 @@ export const replace =
  * assert.deepStrictEqual(pipe(' a ', S.trim), 'a')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const trim = (s: string): string => s.trim()
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -263,15 +242,14 @@ export const trim = (s: string): string => s.trim()
  * assert.deepStrictEqual(pipe(' a ', S.trimLeft), 'a ')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const trimLeft = (s: string): string => s.trimLeft()
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -281,15 +259,14 @@ export const trimLeft = (s: string): string => s.trimLeft()
  * assert.deepStrictEqual(pipe(' a ', S.trimRight), ' a')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const trimRight = (s: string): string => s.trimRight()
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -299,6 +276,9 @@ export const trimRight = (s: string): string => s.trimRight()
  * assert.deepStrictEqual(pipe('abcd', S.slice(1, 3)), 'bc')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const slice =
@@ -313,10 +293,6 @@ export const slice =
 /**
  * Test whether a `string` is empty.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -327,6 +303,9 @@ export const slice =
  * assert.deepStrictEqual(pipe('a', S.isEmpty), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const isEmpty = (s: string): boolean => s.length === 0
@@ -334,10 +313,6 @@ export const isEmpty = (s: string): boolean => s.length === 0
 /**
  * Calculate the number of characters in a `string`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -347,15 +322,14 @@ export const isEmpty = (s: string): boolean => s.length === 0
  * assert.deepStrictEqual(pipe('abc', S.size), 3)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const size = (s: string): number => s.length
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -366,6 +340,9 @@ export const size = (s: string): number => s.length
  * assert.deepStrictEqual(pipe('', S.split('')), [''])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const split =
@@ -376,10 +353,6 @@ export const split =
   }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -390,6 +363,9 @@ export const split =
  * assert.deepStrictEqual(pipe('abc', S.includes('d')), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const includes =
@@ -398,10 +374,6 @@ export const includes =
     s.includes(searchString, position)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -412,6 +384,9 @@ export const includes =
  * assert.deepStrictEqual(pipe('bc', S.startsWith('a')), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const startsWith =
@@ -420,10 +395,6 @@ export const startsWith =
     s.startsWith(searchString, position)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -434,6 +405,9 @@ export const startsWith =
  * assert.deepStrictEqual(pipe('ab', S.endsWith('c')), false)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const endsWith =

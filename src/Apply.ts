@@ -10,8 +10,6 @@
  *
  * Formally, `Apply` represents a strong lax semi-monoidal endofunctor.
  *
- * @remarks
- * Added in 1.0.0
  * @example
  *
  * ```typescript
@@ -38,6 +36,8 @@
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
  * @packageDocumentation
  */
 import { tuple } from './function'
@@ -69,12 +69,10 @@ import { type Semigroup } from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Apply<F> extends Functor<F> {
@@ -82,12 +80,10 @@ export interface Apply<F> extends Functor<F> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Apply1<F extends URIS> extends Functor1<F> {
@@ -95,12 +91,10 @@ export interface Apply1<F extends URIS> extends Functor1<F> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Apply2<F extends URIS2> extends Functor2<F> {
@@ -108,12 +102,10 @@ export interface Apply2<F extends URIS2> extends Functor2<F> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Apply2C<F extends URIS2, E> extends Functor2C<F, E> {
@@ -121,12 +113,10 @@ export interface Apply2C<F extends URIS2, E> extends Functor2C<F, E> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Apply3<F extends URIS3> extends Functor3<F> {
@@ -134,12 +124,10 @@ export interface Apply3<F extends URIS3> extends Functor3<F> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Apply3C<F extends URIS3, E> extends Functor3C<F, E> {
@@ -147,12 +135,10 @@ export interface Apply3C<F extends URIS3, E> extends Functor3C<F, E> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Apply4<F extends URIS4> extends Functor4<F> {
@@ -166,10 +152,9 @@ export interface Apply4<F extends URIS4> extends Functor4<F> {
 /**
  * `ap` composition.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function ap<F extends URIS4, G extends URIS4>(
@@ -423,10 +408,9 @@ export function ap<F, G>(
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function apFirst<F extends URIS4>(
@@ -455,10 +439,9 @@ export function apFirst<F>(A: Apply<F>): <B>(second: HKT<F, B>) => <A>(first: HK
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function apSecond<F extends URIS4>(
@@ -488,10 +471,9 @@ export function apSecond<F>(A: Apply<F>): <B>(second: HKT<F, B>) => <A>(first: H
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function apS<F extends URIS4>(
@@ -557,10 +539,9 @@ export function apS<F>(
 /**
  * Lift a semigroup into 'F', the inner values are concatenated using the provided `Semigroup`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getApplySemigroup<F extends URIS4>(
@@ -618,10 +599,6 @@ function getTupleConstructor(len: number): (a: unknown) => any {
  * Tuple sequencing, i.e., take a tuple of monadic actions and does them from left-to-right, returning the resulting
  * tuple.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -634,6 +611,9 @@ function getTupleConstructor(len: number): (a: unknown) => any {
  * assert.deepStrictEqual(sequenceTOption(O.some(1), O.some('2'), O.none), O.none)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function sequenceT<F extends URIS4>(
@@ -727,10 +707,6 @@ function getRecordConstructor(keys: ReadonlyArray<string>) {
 /**
  * Like `Apply.sequenceT` but works with structs instead of tuples.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -755,6 +731,9 @@ function getRecordConstructor(keys: ReadonlyArray<string>) {
  * )
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function sequenceS<F extends URIS4>(

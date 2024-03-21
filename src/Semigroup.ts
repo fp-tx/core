@@ -31,8 +31,8 @@
  *
  * _Adapted from https://typelevel.org/cats_
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 1.0.0}
  * @packageDocumentation
  */
 import { getSemigroup, identity } from './function'
@@ -48,12 +48,10 @@ import { type ReadonlyRecord } from './ReadonlyRecord'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Semigroup<A> extends Magma<A> {}
@@ -65,12 +63,6 @@ export interface Semigroup<A> extends Magma<A> {}
 /**
  * Get a semigroup where `concat` will return the minimum, based on the provided order.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -82,6 +74,10 @@ export interface Semigroup<A> extends Magma<A> {}
  * assert.deepStrictEqual(S1.concat(1, 2), 1)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const min = <A>(O: Ord<A>): Semigroup<A> => ({
@@ -91,12 +87,6 @@ export const min = <A>(O: Ord<A>): Semigroup<A> => ({
 /**
  * Get a semigroup where `concat` will return the maximum, based on the provided order.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -108,6 +98,10 @@ export const min = <A>(O: Ord<A>): Semigroup<A> => ({
  * assert.deepStrictEqual(S1.concat(1, 2), 2)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const max = <A>(O: Ord<A>): Semigroup<A> => ({
@@ -115,12 +109,10 @@ export const max = <A>(O: Ord<A>): Semigroup<A> => ({
 })
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 1.0.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const constant = <A>(a: A): Semigroup<A> => ({
@@ -134,10 +126,6 @@ export const constant = <A>(a: A): Semigroup<A> => ({
 /**
  * The dual of a `Semigroup`, obtained by swapping the arguments of `concat`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -147,6 +135,9 @@ export const constant = <A>(a: A): Semigroup<A> => ({
  * assert.deepStrictEqual(reverse(S.Semigroup).concat('a', 'b'), 'ba')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const reverse: <A>(S: Semigroup<A>) => Semigroup<A> = M.reverse
@@ -154,10 +145,6 @@ export const reverse: <A>(S: Semigroup<A>) => Semigroup<A> = M.reverse
 /**
  * Given a struct of semigroups returns a semigroup for the struct.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -177,6 +164,9 @@ export const reverse: <A>(S: Semigroup<A>) => Semigroup<A> = M.reverse
  * assert.deepStrictEqual(S.concat({ x: 1, y: 2 }, { x: 3, y: 4 }), { x: 4, y: 6 })
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const struct = <A>(semigroups: { [K in keyof A]: Semigroup<A[K]> }): Semigroup<{
@@ -196,10 +186,6 @@ export const struct = <A>(semigroups: { [K in keyof A]: Semigroup<A[K]> }): Semi
 /**
  * Given a tuple of semigroups returns a semigroup for the tuple.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -215,6 +201,9 @@ export const struct = <A>(semigroups: { [K in keyof A]: Semigroup<A[K]> }): Semi
  * assert.deepStrictEqual(S2.concat(['a', 1, true], ['b', 2, false]), ['ab', 3, false])
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tuple = <A extends ReadonlyArray<unknown>>(
@@ -226,10 +215,6 @@ export const tuple = <A extends ReadonlyArray<unknown>>(
 /**
  * Between each pair of elements insert `middle`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -242,6 +227,9 @@ export const tuple = <A extends ReadonlyArray<unknown>>(
  * assert.strictEqual(S1.concat('a', 'b'), 'a + b')
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const intercalate =
@@ -257,12 +245,6 @@ export const intercalate =
 /**
  * Always return the first argument.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -271,6 +253,10 @@ export const intercalate =
  * assert.deepStrictEqual(S.first<number>().concat(1, 2), 1)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const first = <A = never>(): Semigroup<A> => ({ concat: identity })
@@ -278,12 +264,6 @@ export const first = <A = never>(): Semigroup<A> => ({ concat: identity })
 /**
  * Always return the last argument.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -292,6 +272,10 @@ export const first = <A = never>(): Semigroup<A> => ({ concat: identity })
  * assert.deepStrictEqual(S.last<number>().concat(1, 2), 2)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const last = <A = never>(): Semigroup<A> => ({ concat: (_, y) => y })
@@ -305,10 +289,6 @@ export const last = <A = never>(): Semigroup<A> => ({ concat: (_, y) => y })
  *
  * If `as` is empty, return the provided `startWith` value.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -321,6 +301,9 @@ export const last = <A = never>(): Semigroup<A> => ({ concat: (_, y) => y })
  * assert.deepStrictEqual(sum([]), 0)
  * ```
  *
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const concatAll: <A>(S: Semigroup<A>) => (startWith: A) => (as: ReadonlyArray<A>) => A = M.concatAll
@@ -332,11 +315,10 @@ export const concatAll: <A>(S: Semigroup<A>) => (startWith: A) => (as: ReadonlyA
 /**
  * Use `void` module instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const semigroupVoid: Semigroup<void> = constant<void>(undefined)
@@ -344,11 +326,10 @@ export const semigroupVoid: Semigroup<void> = constant<void>(undefined)
 /**
  * Use [`getAssignSemigroup`](./struct.ts.html#getAssignSemigroup) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getObjectSemigroup = <A extends object = never>(): Semigroup<A> => ({
@@ -358,11 +339,10 @@ export const getObjectSemigroup = <A extends object = never>(): Semigroup<A> => 
 /**
  * Use [`last`](#last) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getLastSemigroup = last
@@ -370,11 +350,10 @@ export const getLastSemigroup = last
 /**
  * Use [`first`](#first) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getFirstSemigroup = first
@@ -382,11 +361,10 @@ export const getFirstSemigroup = first
 /**
  * Use [`tuple`](#tuple) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getTupleSemigroup: <T extends ReadonlyArray<Semigroup<any>>>(
@@ -396,11 +374,10 @@ export const getTupleSemigroup: <T extends ReadonlyArray<Semigroup<any>>>(
 /**
  * Use [`struct`](#struct) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getStructSemigroup: <O extends ReadonlyRecord<string, any>>(semigroups: {
@@ -410,11 +387,10 @@ export const getStructSemigroup: <O extends ReadonlyRecord<string, any>>(semigro
 /**
  * Use [`reverse`](#reverse) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getDualSemigroup = reverse
@@ -422,11 +398,10 @@ export const getDualSemigroup = reverse
 /**
  * Use [`max`](#max) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getJoinSemigroup = max
@@ -434,11 +409,10 @@ export const getJoinSemigroup = max
 /**
  * Use [`min`](#min) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getMeetSemigroup = min
@@ -446,11 +420,10 @@ export const getMeetSemigroup = min
 /**
  * Use [`intercalate`](#intercalate) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getIntercalateSemigroup = intercalate
@@ -458,11 +431,10 @@ export const getIntercalateSemigroup = intercalate
 /**
  * Use [`concatAll`](#concatall) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function fold<A>(S: Semigroup<A>): {
@@ -477,11 +449,10 @@ export function fold<A>(S: Semigroup<A>): (startWith: A, as?: ReadonlyArray<A>) 
 /**
  * Use [`SemigroupAll`](./boolean.ts.html#SemigroupAll) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const semigroupAll: Semigroup<boolean> = {
@@ -491,11 +462,10 @@ export const semigroupAll: Semigroup<boolean> = {
 /**
  * Use [`SemigroupAny`](./boolean.ts.html#SemigroupAny) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const semigroupAny: Semigroup<boolean> = {
@@ -505,11 +475,10 @@ export const semigroupAny: Semigroup<boolean> = {
 /**
  * Use [`getSemigroup`](./function.ts.html#getSemigroup) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getFunctionSemigroup: <S>(S: Semigroup<S>) => <A = never>() => Semigroup<(a: A) => S> = getSemigroup
@@ -517,11 +486,10 @@ export const getFunctionSemigroup: <S>(S: Semigroup<S>) => <A = never>() => Semi
 /**
  * Use [`Semigroup`](./string.ts.html#Semigroup) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const semigroupString: Semigroup<string> = {
@@ -531,11 +499,10 @@ export const semigroupString: Semigroup<string> = {
 /**
  * Use [`SemigroupSum`](./number.ts.html#SemigroupSum) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const semigroupSum: Semigroup<number> = {
@@ -545,11 +512,10 @@ export const semigroupSum: Semigroup<number> = {
 /**
  * Use [`SemigroupProduct`](./number.ts.html#SemigroupProduct) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 1.0.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const semigroupProduct: Semigroup<number> = {
