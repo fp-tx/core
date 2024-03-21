@@ -9,3 +9,4 @@ docs/examples
 .eslintcache
 lib/**/*
 temp/**/*
+.docusaurus/**/*

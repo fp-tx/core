@@ -1,11 +1,11 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["./src"],
   "compilerOptions": {
-    "outDir": "./lib",
-    "noUnusedParameters": false,
+    "skipLibCheck": true,
+    "composite": true,
     "noEmit": false,
-    "emitDeclarationOnly": true,
-    "declaration": true
-  }
+    "resolveJsonModule": true
+  },
+  "include": ["./docusaurus.config.ts"],
+  "exclude": ["./src/**/*.ts", "./test/**/*.ts", "./perf/**/*.ts", "./tsup.config.ts"]
 }

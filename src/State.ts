@@ -271,7 +271,7 @@ export const Chain: chainable.Chain2<URI> = {
  * @meta
  * {@since 1.0.0}
  * {@category Instance methods}
- * {@license MIT – Copyright (c) 2017-present Giulio Canti}
+ * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export const chainRec: ChainRec2<URI>['chainRec'] = (a, f) => initialState => {
@@ -289,7 +289,7 @@ export const chainRec: ChainRec2<URI>['chainRec'] = (a, f) => initialState => {
  * @meta
  * {@since 1.0.0}
  * {@category Instances}
- * {@license MIT – Copyright (c) 2017-present Giulio Canti}
+ * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export const ChainRec: ChainRec2<URI> = {
