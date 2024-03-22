@@ -10,3 +10,4 @@ docs/examples
 lib/**/*
 temp/**/*
 .docusaurus/**/*
+build/**/*

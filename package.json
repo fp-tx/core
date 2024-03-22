@@ -32,10 +32,10 @@
     "test:ci": "pnpm run test --ci",
     "docs:extract": "api-extractor run --local --verbose",
     "docs:pack": "fp-tx-documenter -i ./temp/core.api.json -o ./docs/modules",
-    "docs": "pnpm run docs:extract && pnpm run docs:pack",
-    "docs:ls": "pnpm run docs && :",
+    "docs:prepare": "pnpm run docs:extract && pnpm run docs:pack",
+    "docs:ls": "pnpm run docs:prepare && :",
     "docs:start": "docusaurus start",
-    "docs:build": "pnpm run docs && docusaurus build",
+    "docs:build": "docusaurus build",
     "docs:serve": "docusaurus serve"
   },
   "lint-staged": {

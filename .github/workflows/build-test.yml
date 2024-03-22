@@ -54,3 +54,6 @@ jobs:
 
       - name: Run Build
         run: pnpm run prerelease
+
+      - name: Test Build Docs
+        run: pnpm run docs:prepare

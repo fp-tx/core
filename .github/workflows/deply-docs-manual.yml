@@ -1,22 +1,19 @@
-name: Publish
-on:
-  release:
-    types:
-      - published
+name: Deploy Docs
+on: workflow_dispatch
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm dist-tag add @fp-tx/core@${{ github.event.release.tag_name }} latest
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
