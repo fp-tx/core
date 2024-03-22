@@ -4,7 +4,7 @@
  * Adapted from https://github.com/LiamGoodacre/purescript-filterable/blob/master/src/Data/Filterable.purs
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import {
@@ -66,7 +66,7 @@ import { type Separated, separated } from './Separated'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -77,7 +77,7 @@ export interface Filter<F> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -88,7 +88,7 @@ export interface Partition<F> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -106,7 +106,7 @@ export interface Filterable<F> extends Functor<F>, Compactable<F> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -117,7 +117,7 @@ export interface Filter1<F extends URIS> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -128,7 +128,7 @@ export interface Partition1<F extends URIS> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -142,7 +142,7 @@ export interface Filterable1<F extends URIS> extends Functor1<F>, Compactable1<F
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -153,7 +153,7 @@ export interface Filter2<F extends URIS2> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -164,7 +164,7 @@ export interface Partition2<F extends URIS2> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -181,7 +181,7 @@ export interface Filterable2<F extends URIS2> extends Functor2<F>, Compactable2<
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -192,7 +192,7 @@ export interface Filter2C<F extends URIS2, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -203,7 +203,7 @@ export interface Partition2C<F extends URIS2, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -220,7 +220,7 @@ export interface Filterable2C<F extends URIS2, E> extends Functor2C<F, E>, Compa
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -231,7 +231,7 @@ export interface Filter3<F extends URIS3> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -245,7 +245,7 @@ export interface Partition3<F extends URIS3> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -262,7 +262,7 @@ export interface Filterable3<F extends URIS3> extends Functor3<F>, Compactable3<
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -273,7 +273,7 @@ export interface Filter3C<F extends URIS3, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -287,7 +287,7 @@ export interface Partition3C<F extends URIS3, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -304,7 +304,7 @@ export interface Filterable3C<F extends URIS3, E> extends Functor3C<F, E>, Compa
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -315,7 +315,7 @@ export interface Filter4<F extends URIS4> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -329,7 +329,7 @@ export interface Partition4<F extends URIS4> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -352,7 +352,7 @@ export interface Filterable4<F extends URIS4> extends Functor4<F>, Compactable4<
  * `filter` composition.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -399,7 +399,7 @@ export function filter<F, G>(
  * `filterMap` composition.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -430,7 +430,7 @@ export function filterMap<F, G>(
  * `partition` composition.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -502,7 +502,7 @@ export function partition<F, G>(
  * `partitionMap` composition.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -553,7 +553,7 @@ export function partitionMap<F, G>(
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -573,7 +573,7 @@ export interface FilterableComposition<F, G> extends FunctorComposition<F, G>, C
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -595,7 +595,7 @@ export interface FilterableComposition11<F extends URIS, G extends URIS>
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -617,7 +617,7 @@ export interface FilterableComposition12<F extends URIS, G extends URIS2>
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -639,7 +639,7 @@ export interface FilterableComposition12C<F extends URIS, G extends URIS2, E>
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -661,7 +661,7 @@ export interface FilterableComposition21<F extends URIS2, G extends URIS>
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -683,7 +683,7 @@ export interface FilterableComposition2C1<F extends URIS2, G extends URIS, E>
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -711,7 +711,7 @@ export interface FilterableComposition22<F extends URIS2, G extends URIS2>
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -736,7 +736,7 @@ export interface FilterableComposition22C<F extends URIS2, G extends URIS2, E>
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -773,7 +773,7 @@ export interface FilterableComposition23C<F extends URIS2, G extends URIS3, E>
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

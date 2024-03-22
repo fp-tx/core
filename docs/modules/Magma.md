@@ -37,7 +37,7 @@ export interface Magma<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -65,7 +65,7 @@ export declare const concatAll: <A>(M: Magma<A>) => (startWith: A) => (as: reado
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -99,7 +99,7 @@ export declare const endo: <A>(f: Endomorphism<A>) => (M: Magma<A>) => Magma<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -122,7 +122,7 @@ export declare const filterFirst: <A>(predicate: Predicate<A>) => (M: Magma<A>) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -145,7 +145,7 @@ export declare const filterSecond: <A>(predicate: Predicate<A>) => (M: Magma<A>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -170,7 +170,7 @@ export declare const reverse: <A>(M: Magma<A>) => Magma<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 

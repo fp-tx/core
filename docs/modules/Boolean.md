@@ -45,7 +45,7 @@ export declare const BooleanAlgebra: BA.BooleanAlgebra<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -68,7 +68,7 @@ export declare const Eq: E.Eq<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -96,7 +96,7 @@ export declare const MonoidAll: Monoid<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -133,7 +133,7 @@ export declare const MonoidAny: Monoid<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -166,7 +166,7 @@ export declare const Ord: O.Ord<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -191,7 +191,7 @@ export declare const SemigroupAll: Semigroup<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -225,7 +225,7 @@ export declare const SemigroupAny: Semigroup<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -258,7 +258,7 @@ export declare const Show: S.Show<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -283,7 +283,7 @@ export declare const fold: <A>(onFalse: LazyArg<A>, onTrue: LazyArg<A>) => (valu
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -308,7 +308,7 @@ export declare const foldW: <A, B>(onFalse: LazyArg<A>, onTrue: LazyArg<B>) => (
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -333,7 +333,7 @@ export declare const match: <A>(onFalse: LazyArg<A>, onTrue: LazyArg<A>) => (val
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -382,7 +382,7 @@ export declare const matchW: <A, B>(onFalse: LazyArg<A>, onTrue: LazyArg<B>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -405,7 +405,7 @@ export declare const isBoolean: Refinement<unknown, boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

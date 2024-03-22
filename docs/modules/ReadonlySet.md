@@ -79,7 +79,7 @@ export declare const getDifferenceMagma: <A>(E: Eq<A>) => Magma<ReadonlySet<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -103,7 +103,7 @@ export declare function getEq<A>(E: Eq<A>): Eq<ReadonlySet<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -126,7 +126,7 @@ export declare const getIntersectionSemigroup: <A>(E: Eq<A>) => Semigroup<Readon
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -150,7 +150,7 @@ export declare function getShow<A>(S: Show<A>): Show<ReadonlySet<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -173,7 +173,7 @@ export declare const getUnionMonoid: <A>(E: Eq<A>) => Monoid<ReadonlySet<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -196,7 +196,7 @@ export declare const getUnionSemigroup: <A>(E: Eq<A>) => Semigroup<ReadonlySet<A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -221,7 +221,7 @@ export declare const singleton: <A>(a: A) => ReadonlySet<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -246,7 +246,7 @@ export declare const fromReadonlyArray: <A>(E: Eq<A>) => (as: readonly A[]) => R
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -269,7 +269,7 @@ export declare const fromSet: <A>(s: Set<A>) => ReadonlySet<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -294,7 +294,7 @@ export declare const toReadonlyArray: <A>(O: Ord<A>) => (set: ReadonlySet<A>) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -318,7 +318,7 @@ export declare function toSet<A>(s: ReadonlySet<A>): Set<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -341,7 +341,7 @@ export declare const reduceRight: <A>(O: Ord<A>) => <B>(b: B, f: (a: A, b: B) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -364,7 +364,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -387,7 +387,7 @@ export declare const URI = 'ReadonlySet'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -411,7 +411,7 @@ export declare function chain<B>(E: Eq<B>): <A>(f: (x: A) => ReadonlySet<B>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -434,7 +434,7 @@ export declare const compact: <A>(E: Eq<A>) => (fa: ReadonlySet<Option<A>>) => R
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -463,7 +463,7 @@ export declare function difference<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -502,7 +502,7 @@ export declare function elem<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -525,7 +525,7 @@ export declare const empty: ReadonlySet<never>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -553,7 +553,7 @@ export declare function every<A>(predicate: Predicate<A>): Predicate<ReadonlySet
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -585,7 +585,7 @@ export declare function filter<A>(predicate: Predicate<A>): (set: ReadonlySet<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -609,7 +609,7 @@ export declare function filterMap<B>(E: Eq<B>): <A>(f: (a: A) => Option<B>) => (
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -633,7 +633,7 @@ export declare function foldMap<A, M>(O: Ord<A>, M: Monoid<M>): (f: (a: A) => M)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -658,7 +658,7 @@ export declare const fromArray: <A>(E: Eq<A>) => (as: ReadonlyArray<A>) => Reado
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -685,7 +685,7 @@ export declare function insert<A>(E: Eq<A>): (a: A) => (set: ReadonlySet<A>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -714,7 +714,7 @@ export declare function intersection<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -739,7 +739,7 @@ export declare const isEmpty: <A>(set: ReadonlySet<A>) => boolean
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -768,7 +768,7 @@ export declare function isSubset<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -794,7 +794,7 @@ export declare function map<B>(E: Eq<B>): <A>(f: (x: A) => B) => (set: ReadonlyS
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -832,7 +832,7 @@ export declare function partition<A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -859,7 +859,7 @@ export declare function partitionMap<B, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -883,7 +883,7 @@ export declare function reduce<A>(O: Ord<A>): <B>(b: B, f: (b: B, a: A) => B) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -908,7 +908,7 @@ export declare const remove: <A>(E: Eq<A>) => (a: A) => (set: ReadonlySet<A>) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -935,7 +935,7 @@ export declare function separate<E, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -960,7 +960,7 @@ export declare const size: <A>(set: ReadonlySet<A>) => number
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -983,7 +983,7 @@ export declare const some: <A>(predicate: Predicate<A>) => (set: ReadonlySet<A>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1008,7 +1008,7 @@ export declare const toggle: <A>(E: Eq<A>) => (a: A) => (set: ReadonlySet<A>) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1037,7 +1037,7 @@ export declare function union<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

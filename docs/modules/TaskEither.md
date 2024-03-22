@@ -226,7 +226,7 @@ export declare const Alt: Alt2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -251,7 +251,7 @@ export declare const ApplicativePar: Applicative2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -276,7 +276,7 @@ export declare const ApplicativeSeq: Applicative2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -301,7 +301,7 @@ export declare const ApplyPar: Apply2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -326,7 +326,7 @@ export declare const ApplySeq: Apply2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -349,7 +349,7 @@ export declare const Bifunctor: Bifunctor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -372,7 +372,7 @@ export declare const Chain: chainable.Chain2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -397,7 +397,7 @@ export declare const ChainRec: ChainRec2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -420,7 +420,7 @@ export declare const FromEither: FromEither2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -443,7 +443,7 @@ export declare const FromIO: FromIO2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -466,7 +466,7 @@ export declare const FromTask: FromTask2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -489,7 +489,7 @@ export declare const Functor: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -512,7 +512,7 @@ export declare const Monad: Monad2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -535,7 +535,7 @@ export declare const MonadIO: MonadIO2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -558,7 +558,7 @@ export declare const MonadTask: MonadTask2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -581,7 +581,7 @@ export declare const MonadThrow: MonadThrow2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -604,7 +604,7 @@ export declare const Pointed: Pointed2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -632,7 +632,7 @@ export declare const tap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -660,7 +660,7 @@ export declare const tapEither: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -709,7 +709,7 @@ export declare const tapIO: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -762,7 +762,7 @@ export declare const tapTask: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -801,7 +801,7 @@ export declare const left: <E = never, A = never>(e: E) => TaskEither<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -824,7 +824,7 @@ export declare const leftIO: <E = never, A = never>(me: IO<E>) => TaskEither<E, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -847,7 +847,7 @@ export declare const leftTask: <E = never, A = never>(me: Task<E>) => TaskEither
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -870,7 +870,7 @@ export declare const of: <E = never, A = never>(a: A) => TaskEither<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -893,7 +893,7 @@ export declare const right: <E = never, A = never>(a: A) => TaskEither<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -916,7 +916,7 @@ export declare const rightIO: <E = never, A = never>(ma: IO<A>) => TaskEither<E,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -939,7 +939,7 @@ export declare const rightTask: <E = never, A = never>(ma: Task<A>) => TaskEithe
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -962,7 +962,7 @@ export declare const fromEither: <E, A>(fa: Either<E, A>) => TaskEither<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -985,7 +985,7 @@ export declare const fromIO: <A, E = never>(fa: IO<A>) => TaskEither<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1008,7 +1008,7 @@ export declare const fromIOEither: <E, A>(fa: IOEither<E, A>) => TaskEither<E, A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1031,7 +1031,7 @@ export declare const fromNullable: <E>(e: E) => <A>(a: A) => TaskEither<E, NonNu
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1054,7 +1054,7 @@ export declare const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1077,7 +1077,7 @@ export declare const fromTask: <A, E = never>(fa: Task<A>) => TaskEither<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1100,7 +1100,7 @@ export declare const fromTaskOption: <E>(onNone: LazyArg<E>) => <A>(fa: TaskOpti
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1123,7 +1123,7 @@ export declare const toUnion: <E, A>(fa: TaskEither<E, A>) => Task<E | A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1146,7 +1146,7 @@ export declare const Do: TaskEither<never, {}>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1172,7 +1172,7 @@ export declare const apS: <N extends string, A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1208,7 +1208,7 @@ export declare const apSW: <A, N extends string, E2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1234,7 +1234,7 @@ export declare const bind: <N extends string, A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1259,7 +1259,7 @@ export declare const bindTo: <N extends string>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1292,7 +1292,7 @@ export declare const bindW: <N extends string, A, E2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1323,7 +1323,7 @@ export declare const alt: <E, A>(that: LazyArg<TaskEither<E, A>>) => (fa: TaskEi
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1387,7 +1387,7 @@ export declare const altW: <E2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1416,7 +1416,7 @@ export declare function getAltTaskValidation<E>(S: Semigroup<E>): Alt2C<URI, E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1442,7 +1442,7 @@ export declare function getApplicativeTaskValidation<E>(A: Apply1<T.URI>, S: Sem
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1511,7 +1511,7 @@ export declare const getOrElse: <E, A>(onLeft: (e: E) => Task<A>) => (ma: TaskEi
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1539,7 +1539,7 @@ export declare const getOrElseW: <E, B>(onLeft: (e: E) => Task<B>) => <A>(ma: Ta
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1567,7 +1567,7 @@ export declare const mapBoth: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1612,7 +1612,7 @@ export declare const mapError: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1658,7 +1658,7 @@ export declare const orElse: <E1, A, E2>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1697,7 +1697,7 @@ export declare const orElseFirstIOK: <E, B>(onLeft: (e: E) => IO<B>) => <A>(ma: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1722,7 +1722,7 @@ export declare const orElseFirstTaskK: <E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1752,7 +1752,7 @@ export declare const orElseW: <E1, E2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1775,7 +1775,7 @@ export declare const orLeft: <E1, E2>(onLeft: (e: E1) => Task<E2>) => <A>(fa: Ta
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1803,7 +1803,7 @@ export declare const tapError: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1830,7 +1830,7 @@ export declare const filterOrElse: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1868,7 +1868,7 @@ export declare const filterOrElseW: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1891,7 +1891,7 @@ export declare const getCompactable: <E>(M: Monoid<E>) => Compactable2C<'TaskEit
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1915,7 +1915,7 @@ export declare function getFilterable<E>(M: Monoid<E>): Filterable2C<URI, E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1938,7 +1938,7 @@ export declare const chainRec: ChainRec2<URI>['chainRec']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2008,7 +2008,7 @@ export declare function taskify<A, B, C, D, E, L, R>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2047,7 +2047,7 @@ export declare const tryCatch: <E, A>(f: LazyArg<Promise<A>>, onRejected: (reaso
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2089,7 +2089,7 @@ export declare const tryCatchK: <E, A extends readonly unknown[], B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2114,7 +2114,7 @@ export declare const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2139,7 +2139,7 @@ export declare const chain: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: Tas
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2164,7 +2164,7 @@ export declare const chainEitherK: <E, A, B>(f: (a: A) => E.Either<E, B>) => (ma
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2191,7 +2191,7 @@ export declare const chainEitherKW: <E2, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2216,7 +2216,7 @@ export declare const chainFirst: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2243,7 +2243,7 @@ export declare const chainFirstEitherK: <A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2276,7 +2276,7 @@ export declare const chainFirstEitherKW: <A, E2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2301,7 +2301,7 @@ export declare const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: Tas
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2326,7 +2326,7 @@ export declare const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(firs
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2353,7 +2353,7 @@ export declare const chainFirstW: <E2, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2380,7 +2380,7 @@ export declare const chainIOEitherK: <E, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2413,7 +2413,7 @@ export declare const chainIOEitherKW: <E2, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2438,7 +2438,7 @@ export declare const chainIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: TaskEith
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2465,7 +2465,7 @@ export declare const chainNullableK: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2492,7 +2492,7 @@ export declare const chainOptionK: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2519,7 +2519,7 @@ export declare const chainOptionKW: <E2>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2544,7 +2544,7 @@ export declare const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(first: Ta
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2571,7 +2571,7 @@ export declare const chainTaskOptionK: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2601,7 +2601,7 @@ export declare const chainTaskOptionKW: <E2>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2628,7 +2628,7 @@ export declare const chainW: <E2, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2657,7 +2657,7 @@ export declare const fromNullableK: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2684,7 +2684,7 @@ export declare const fromOptionK: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2709,7 +2709,7 @@ export declare const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: TaskEither<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2736,7 +2736,7 @@ export declare const orElseFirst: <E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2763,7 +2763,7 @@ export declare const orElseFirstW: <E1, E2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2788,7 +2788,7 @@ export declare const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2813,7 +2813,7 @@ export declare const fromIOEitherK: <E, A extends readonly unknown[], B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2838,7 +2838,7 @@ export declare const fromIOK: <A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2865,7 +2865,7 @@ export declare const fromPredicate: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2890,7 +2890,7 @@ export declare const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2915,7 +2915,7 @@ export declare const fromTaskOptionK: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2941,7 +2941,7 @@ export declare const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2967,7 +2967,7 @@ export declare const liftOption: <A extends ReadonlyArray<unknown>, B, E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2995,7 +2995,7 @@ export declare const as: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3020,7 +3020,7 @@ export declare const asUnit: <E, _>(self: TaskEither<E, _>) => TaskEither<E, voi
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3043,7 +3043,7 @@ export declare const flap: <A>(a: A) => <E, B>(fab: TaskEither<E, (a: A) => B>) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3068,7 +3068,7 @@ export declare const map: <A, B>(f: (a: A) => B) => <E>(fa: TaskEither<E, A>) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3091,7 +3091,7 @@ export interface TaskEither<E, A> extends Task<Either<E, A>> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3119,7 +3119,7 @@ export declare const fold: <E, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3147,7 +3147,7 @@ export declare const foldW: <E, B, A, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3170,7 +3170,7 @@ export declare const match: <E, B, A>(onLeft: (e: E) => B, onRight: (a: A) => B)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3198,7 +3198,7 @@ export declare const matchE: <E, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3229,7 +3229,7 @@ export declare const matchEW: <E, B, A, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3260,7 +3260,7 @@ export declare const matchW: <E, B, A, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3286,7 +3286,7 @@ export declare const flatMap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3312,7 +3312,7 @@ export declare const flatMapEither: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3338,7 +3338,7 @@ export declare const flatMapIO: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3364,7 +3364,7 @@ export declare const flatMapIOEither: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3397,7 +3397,7 @@ export declare const flatMapNullable: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3423,7 +3423,7 @@ export declare const flatMapOption: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3449,7 +3449,7 @@ export declare const flatMapTask: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3475,7 +3475,7 @@ export declare const flatMapTaskOption: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3498,7 +3498,7 @@ export declare const flatten: <E, A>(mma: TaskEither<E, TaskEither<E, A>>) => Ta
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3526,7 +3526,7 @@ export declare const flattenW: <E1, E2, A>(mma: TaskEither<E1, TaskEither<E2, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3551,7 +3551,7 @@ export declare const sequenceArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A>>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3576,7 +3576,7 @@ export declare const sequenceSeqArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3603,7 +3603,7 @@ export declare const traverseArray: <A, B, E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3630,7 +3630,7 @@ export declare const traverseArrayWithIndex: <A, B, E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3657,7 +3657,7 @@ export declare const traverseReadonlyArrayWithIndex: <A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3684,7 +3684,7 @@ export declare const traverseReadonlyArrayWithIndexSeq: <A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3711,7 +3711,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndex: <A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3738,7 +3738,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndexSeq: <A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3765,7 +3765,7 @@ export declare const traverseSeqArray: <A, B, E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3792,7 +3792,7 @@ export declare const traverseSeqArrayWithIndex: <A, B, E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3815,7 +3815,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3838,7 +3838,7 @@ export declare const URI = 'TaskEither'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3861,7 +3861,7 @@ export declare const ApT: TaskEither<never, readonly []>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3884,7 +3884,7 @@ export declare const ap: <E, A>(fa: TaskEither<E, A>) => <B>(fab: TaskEither<E, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3909,7 +3909,7 @@ export declare const apFirst: <E, B>(second: TaskEither<E, B>) => <A>(first: Tas
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3939,7 +3939,7 @@ export declare const apFirstW: <E2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3964,7 +3964,7 @@ export declare const apSecond: <E, B>(second: TaskEither<E, B>) => <A>(first: Ta
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3994,7 +3994,7 @@ export declare const apSecondW: <E2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -4024,7 +4024,7 @@ export declare const apW: <E2, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -4056,7 +4056,7 @@ export declare const bracket: <E, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -4088,7 +4088,7 @@ export declare const bracketW: <E1, A, E2, B, E3>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -4132,7 +4132,7 @@ export declare const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<TaskEither<E
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4158,7 +4158,7 @@ export declare const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<Tas
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4184,7 +4184,7 @@ export declare const getSemigroup: <E, A>(S: Semigroup<A>) => Semigroup<TaskEith
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4213,7 +4213,7 @@ export declare function getTaskValidation<E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4257,7 +4257,7 @@ export declare const swap: <E, A>(ma: TaskEither<E, A>) => TaskEither<A, E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -4282,7 +4282,7 @@ export declare const taskEither: Monad2<URI> & Bifunctor2<URI> & Alt2<URI> & Mon
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4308,7 +4308,7 @@ export declare const taskEitherSeq: typeof taskEither
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4332,7 +4332,7 @@ export declare const throwError: MonadThrow2<URI>['throwError']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

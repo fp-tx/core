@@ -36,7 +36,7 @@ export interface Bifunctor<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -63,7 +63,7 @@ export interface Bifunctor2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -91,7 +91,7 @@ export interface Bifunctor2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -118,7 +118,7 @@ export interface Bifunctor3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -146,7 +146,7 @@ export interface Bifunctor3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -173,7 +173,7 @@ export interface Bifunctor4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

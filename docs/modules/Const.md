@@ -69,7 +69,7 @@ export declare const Bifunctor: Bifunctor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -92,7 +92,7 @@ export declare const Contravariant: Contravariant2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -115,7 +115,7 @@ export declare const Functor: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -139,7 +139,7 @@ export declare function getApplicative<E>(M: Monoid<E>): Applicative2C<URI, E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -163,7 +163,7 @@ export declare function getApply<E>(S: Semigroup<E>): Apply2C<URI, E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -186,7 +186,7 @@ export declare const getBooleanAlgebra: <E, A>(H: BooleanAlgebra<E>) => BooleanA
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -209,7 +209,7 @@ export declare const getBounded: <E, A>(B: Bounded<E>) => Bounded<Const<E, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -232,7 +232,7 @@ export declare const getEq: <E, A>(E: Eq<E>) => Eq<Const<E, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -255,7 +255,7 @@ export declare const getHeytingAlgebra: <E, A>(H: HeytingAlgebra<E>) => HeytingA
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -278,7 +278,7 @@ export declare const getMonoid: <E, A>(M: Monoid<E>) => Monoid<Const<E, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -301,7 +301,7 @@ export declare const getOrd: <E, A>(O: Ord<E>) => Ord<Const<E, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -324,7 +324,7 @@ export declare const getRing: <E, A>(S: Ring<E>) => Ring<Const<E, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -347,7 +347,7 @@ export declare const getSemigroup: <E, A>(S: Semigroup<E>) => Semigroup<Const<E,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -370,7 +370,7 @@ export declare const getSemiring: <E, A>(S: Semiring<E>) => Semiring<Const<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -394,7 +394,7 @@ export declare function getShow<E, A>(S: Show<E>): Show<Const<E, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -417,7 +417,7 @@ export declare const make: <E, A = never>(e: E) => Const<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -442,7 +442,7 @@ export declare const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: Const<E, A>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -467,7 +467,7 @@ export declare const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -490,7 +490,7 @@ export declare const flap: <A>(a: A) => <E, B>(fab: Const<E, (a: A) => B>) => Co
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -515,7 +515,7 @@ export declare const map: <A, B>(f: (a: A) => B) => <E>(fa: Const<E, A>) => Cons
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -540,7 +540,7 @@ export type Const<E, A> = E & {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -563,7 +563,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -586,7 +586,7 @@ export declare const URI = 'Const'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -611,7 +611,7 @@ export declare const const_: Functor2<URI> & Contravariant2<URI> & Bifunctor2<UR
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -635,7 +635,7 @@ export declare const contramap: <A, B>(f: (b: B) => A) => <E>(fa: Const<E, A>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

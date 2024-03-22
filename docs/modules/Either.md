@@ -196,7 +196,7 @@ export declare const Alt: Alt2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -219,7 +219,7 @@ export declare const Applicative: Applicative2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -242,7 +242,7 @@ export declare const Apply: Apply2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -265,7 +265,7 @@ export declare const Bifunctor: Bifunctor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -288,7 +288,7 @@ export declare const Chain: chainable.Chain2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -311,7 +311,7 @@ export declare const ChainRec: ChnRec.ChainRec2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -334,7 +334,7 @@ export declare const Extend: Extend2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -357,7 +357,7 @@ export declare const Foldable: Foldable2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -380,7 +380,7 @@ export declare const FromEither: FromEither2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -403,7 +403,7 @@ export declare const Functor: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -426,7 +426,7 @@ export declare const Monad: Monad2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -449,7 +449,7 @@ export declare const MonadThrow: MonadThrow2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -472,7 +472,7 @@ export declare const Pointed: Pointed2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -495,7 +495,7 @@ export declare const Traversable: Traversable2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -518,7 +518,7 @@ export declare const getEq: <E, A>(EL: Eq<E>, EA: Eq<A>) => Eq<Either<E, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -543,7 +543,7 @@ export declare const getSemigroup: <E, A>(S: Semigroup<A>) => Semigroup<Either<E
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -579,7 +579,7 @@ export declare const getShow: <E, A>(SE: Show<E>, SA: Show<A>) => Show<Either<E,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -607,7 +607,7 @@ export declare const tap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -632,7 +632,7 @@ export declare const left: <E = never, A = never>(e: E) => Either<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -655,7 +655,7 @@ export declare const of: <E = never, A = never>(a: A) => Either<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -680,7 +680,7 @@ export declare const right: <E = never, A = never>(a: A) => Either<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -705,7 +705,7 @@ export declare const fromNullable: <E>(e: E) => <A>(a: A) => Either<E, NonNullab
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -739,7 +739,7 @@ export declare const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -785,7 +785,7 @@ export declare const toUnion: <E, A>(fa: Either<E, A>) => E | A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -808,7 +808,7 @@ export declare const Do: Either<never, {}>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -834,7 +834,7 @@ export declare const apS: <N extends string, A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -870,7 +870,7 @@ export declare const apSW: <A, N extends string, E2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -896,7 +896,7 @@ export declare const bind: <N extends string, A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -921,7 +921,7 @@ export declare const bindTo: <N extends string>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -954,7 +954,7 @@ export declare const bindW: <N extends string, A, E2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -985,7 +985,7 @@ export declare const alt: <E, A>(that: LazyArg<Either<E, A>>) => (fa: Either<E, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1049,7 +1049,7 @@ export declare const altW: <E2, B>(that: LazyArg<Either<E2, B>>) => <E1, A>(fa: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1074,7 +1074,7 @@ export declare const getAltValidation: <E>(SE: Semigroup<E>) => Alt2C<'Either', 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1129,7 +1129,7 @@ export declare const getApplicativeValidation: <E>(SE: Semigroup<E>) => Applicat
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1189,7 +1189,7 @@ export declare const getOrElse: <E, A>(onLeft: (e: E) => A) => (ma: Either<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1239,7 +1239,7 @@ export declare const getOrElseW: <E, B>(onLeft: (e: E) => B) => <A>(ma: Either<E
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1264,7 +1264,7 @@ export declare const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: Either<E, A>) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1289,7 +1289,7 @@ export declare const orElse: <E1, A, E2>(onLeft: (e: E1) => Either<E2, A>) => (m
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1319,7 +1319,7 @@ export declare const orElseW: <E1, E2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1346,7 +1346,7 @@ export declare const filterOrElse: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1419,7 +1419,7 @@ export declare const filterOrElseW: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1444,7 +1444,7 @@ export declare const getCompactable: <E>(M: Monoid<E>) => Compactable2C<'Either'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1469,7 +1469,7 @@ export declare const getFilterable: <E>(M: Monoid<E>) => Filterable2C<'Either', 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1494,7 +1494,7 @@ export declare const getWitherable: <E>(M: Monoid<E>) => Witherable2C<'Either', 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1519,7 +1519,7 @@ export declare const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => <E>(fa
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1558,7 +1558,7 @@ export declare const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => <E>(fa: Eithe
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1597,7 +1597,7 @@ export declare const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => <E>(fa: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1639,7 +1639,7 @@ export declare const tryCatch: <E, A>(f: LazyArg<A>, onThrow: (e: unknown) => E)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1690,7 +1690,7 @@ export declare const tryCatchK: <A extends readonly unknown[], B, E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1715,7 +1715,7 @@ export declare const chain: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Either<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1740,7 +1740,7 @@ export declare const chainFirst: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Ei
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1767,7 +1767,7 @@ export declare const chainFirstW: <E2, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1794,7 +1794,7 @@ export declare const chainNullableK: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1821,7 +1821,7 @@ export declare const chainOptionK: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1848,7 +1848,7 @@ export declare const chainOptionKW: <E2>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1873,7 +1873,7 @@ export declare const chainW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1900,7 +1900,7 @@ export declare const fromNullableK: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1927,7 +1927,7 @@ export declare const fromOptionK: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1954,7 +1954,7 @@ export declare const fromPredicate: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2008,7 +2008,7 @@ export declare const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2034,7 +2034,7 @@ export declare const liftOption: <A extends ReadonlyArray<unknown>, B, E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2062,7 +2062,7 @@ export declare const as: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2087,7 +2087,7 @@ export declare const asUnit: <E, _>(self: Either<E, _>) => Either<E, void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2112,7 +2112,7 @@ export declare const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2135,7 +2135,7 @@ export declare const flap: <A>(a: A) => <E, B>(fab: Either<E, (a: A) => B>) => E
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2158,7 +2158,7 @@ export declare const map: <A, B>(f: (a: A) => B) => <E>(fa: Either<E, A>) => Eit
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2181,7 +2181,7 @@ export type Either<E, A> = Left<E> | Right<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2207,7 +2207,7 @@ export interface Left<E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2233,7 +2233,7 @@ export interface Right<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2258,7 +2258,7 @@ export declare const fold: <E, A, B>(onLeft: (e: E) => B, onRight: (a: A) => B) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2283,7 +2283,7 @@ export declare const foldW: <E, B, A, C>(onLeft: (e: E) => B, onRight: (a: A) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2308,7 +2308,7 @@ export declare const match: <E, A, B>(onLeft: (e: E) => B, onRight: (a: A) => B)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2354,7 +2354,7 @@ export declare const matchW: <E, B, A, C>(onLeft: (e: E) => B, onRight: (a: A) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2379,7 +2379,7 @@ export declare const isLeft: <E>(ma: Either<E, unknown>) => ma is Left<E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2404,7 +2404,7 @@ export declare const isRight: <A>(ma: Either<unknown, A>) => ma is Right<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2430,7 +2430,7 @@ export declare const flatMap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2463,7 +2463,7 @@ export declare const flatMapNullable: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2489,7 +2489,7 @@ export declare const flatMapOption: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2514,7 +2514,7 @@ export declare const flatten: <E, A>(mma: Either<E, Either<E, A>>) => Either<E, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2552,7 +2552,7 @@ export declare const flattenW: <E1, E2, A>(mma: Either<E1, Either<E2, A>>) => Ei
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2577,7 +2577,7 @@ export declare const sequence: Traversable2<URI>['sequence']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2614,7 +2614,7 @@ export declare const sequenceArray: <E, A>(as: ReadonlyArray<Either<E, A>>) => E
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2639,7 +2639,7 @@ export declare const traverse: PipeableTraverse2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2679,7 +2679,7 @@ export declare const traverseArray: <E, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2706,7 +2706,7 @@ export declare const traverseArrayWithIndex: <E, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2733,7 +2733,7 @@ export declare const traverseReadonlyArrayWithIndex: <A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2760,7 +2760,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndex: <A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2783,7 +2783,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2806,7 +2806,7 @@ export declare const URI = 'Either'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2829,7 +2829,7 @@ export declare const ApT: Either<never, readonly []>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2854,7 +2854,7 @@ export type Json = boolean | number | string | null | JsonArray | JsonRecord
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2880,7 +2880,7 @@ export interface JsonArray extends ReadonlyArray<Json> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2908,7 +2908,7 @@ export interface JsonRecord {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2932,7 +2932,7 @@ export declare const ap: <E, A>(fa: Either<E, A>) => <B>(fab: Either<E, (a: A) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2957,7 +2957,7 @@ export declare const apFirst: <E, B>(second: Either<E, B>) => <A>(first: Either<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2985,7 +2985,7 @@ export declare const apFirstW: <E2, B>(second: Either<E2, B>) => <E1, A>(first: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3010,7 +3010,7 @@ export declare const apSecond: <E, B>(second: Either<E, B>) => <A>(first: Either
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3038,7 +3038,7 @@ export declare const apSecondW: <E2, B>(second: Either<E2, B>) => <E1, A>(first:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3066,7 +3066,7 @@ export declare const apW: <E2, A>(fa: Either<E2, A>) => <E1, B>(fab: Either<E1, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3108,7 +3108,7 @@ export declare const duplicate: <E, A>(ma: Either<E, A>) => Either<E, Either<E, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3140,7 +3140,7 @@ export declare const either: Monad2<URI> &
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3168,7 +3168,7 @@ export declare function elem<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3193,7 +3193,7 @@ export declare const exists: <A>(predicate: Predicate<A>) => (ma: Either<unknown
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3228,7 +3228,7 @@ export declare const extend: <E, A, B>(f: (wa: Either<E, A>) => B) => (wa: Eithe
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3253,7 +3253,7 @@ export declare const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<Either<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3282,7 +3282,7 @@ export declare const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<Eit
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3318,7 +3318,7 @@ export declare function getValidation<E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3344,7 +3344,7 @@ export declare const getValidationMonoid: <E, A>(SE: Semigroup<E>, MA: Monoid<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3370,7 +3370,7 @@ export declare const getValidationSemigroup: <E, A>(SE: Semigroup<E>, SA: Semigr
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3417,7 +3417,7 @@ export declare function parseJSON<E>(s: string, onError: (reason: unknown) => E)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3443,7 +3443,7 @@ export declare const stringifyJSON: <E>(u: unknown, onError: (reason: unknown) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3469,7 +3469,7 @@ export declare const swap: <E, A>(ma: Either<E, A>) => Either<A, E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3492,7 +3492,7 @@ export declare const throwError: MonadThrow2<URI>['throwError']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3518,7 +3518,7 @@ export declare function toError(e: unknown): Error
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

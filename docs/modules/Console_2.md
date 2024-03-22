@@ -30,7 +30,7 @@ export declare const error: <A>(a: A) => IO<void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -53,7 +53,7 @@ export declare const info: <A>(a: A) => IO<void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -76,7 +76,7 @@ export declare const log: <A>(a: A) => IO<void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -99,7 +99,7 @@ export declare const warn: <A>(a: A) => IO<void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

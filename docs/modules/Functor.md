@@ -80,7 +80,7 @@ export declare function flap<F>(F: Functor<F>): <A>(a: A) => <B>(fab: HKT<F, (a:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -106,7 +106,7 @@ export interface Functor<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -132,7 +132,7 @@ export interface Functor1<F extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -158,7 +158,7 @@ export interface Functor2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -185,7 +185,7 @@ export interface Functor2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -211,7 +211,7 @@ export interface Functor3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -238,7 +238,7 @@ export interface Functor3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -264,7 +264,7 @@ export interface Functor4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -289,7 +289,7 @@ export interface FunctorComposition<F, G> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -315,7 +315,7 @@ export interface FunctorComposition11<F extends URIS, G extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -341,7 +341,7 @@ export interface FunctorComposition12<F extends URIS, G extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -367,7 +367,7 @@ export interface FunctorComposition12C<F extends URIS, G extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -393,7 +393,7 @@ export interface FunctorComposition21<F extends URIS2, G extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -419,7 +419,7 @@ export interface FunctorComposition22<F extends URIS2, G extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -445,7 +445,7 @@ export interface FunctorComposition22C<F extends URIS2, G extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -471,7 +471,7 @@ export interface FunctorComposition23<F extends URIS2, G extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -497,7 +497,7 @@ export interface FunctorComposition23C<F extends URIS2, G extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -523,7 +523,7 @@ export interface FunctorComposition2C1<F extends URIS2, G extends URIS, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -549,7 +549,7 @@ export interface FunctorCompositionHKT1<F, G extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -575,7 +575,7 @@ export interface FunctorCompositionHKT2<F, G extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -601,7 +601,7 @@ export interface FunctorCompositionHKT2C<F, G extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -728,7 +728,7 @@ export declare function bindTo<F>(F: Functor<F>): <N extends string>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -810,7 +810,7 @@ export declare function getFunctorComposition<F, G>(F: Functor<F>, G: Functor<G>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -940,7 +940,7 @@ declare function let_<F>(F: Functor<F>): <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1025,7 +1025,7 @@ export declare function map<F, G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

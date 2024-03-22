@@ -2,7 +2,7 @@
  * Lift a computation from the `IO` monad
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import {
@@ -35,7 +35,7 @@ import { type IO } from './IO'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -47,7 +47,7 @@ export interface FromIO<F> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -59,7 +59,7 @@ export interface FromIO1<F extends URIS> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -71,7 +71,7 @@ export interface FromIO2<F extends URIS2> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -84,7 +84,7 @@ export interface FromIO2C<F extends URIS2, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -96,7 +96,7 @@ export interface FromIO3<F extends URIS3> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -109,7 +109,7 @@ export interface FromIO3C<F extends URIS3, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -125,7 +125,7 @@ export interface FromIO4<F extends URIS4> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -158,7 +158,7 @@ export function fromIOK<F>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -196,7 +196,7 @@ export function chainIOK<M>(F: FromIO<M>, M: Chain<M>): <A, B>(f: (a: A) => IO<B
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

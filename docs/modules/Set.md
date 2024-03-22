@@ -72,7 +72,7 @@ export declare const getDifferenceMagma: <A>(E: Eq<A>) => Magma<Set<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -95,7 +95,7 @@ export declare const getEq: <A>(E: Eq<A>) => Eq<Set<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -118,7 +118,7 @@ export declare const getIntersectionSemigroup: <A>(E: Eq<A>) => Semigroup<Set<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -141,7 +141,7 @@ export declare const getShow: <A>(S: Show<A>) => Show<Set<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -164,7 +164,7 @@ export declare const getUnionMonoid: <A>(E: Eq<A>) => Monoid<Set<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -187,7 +187,7 @@ export declare const getUnionSemigroup: <A>(E: Eq<A>) => Semigroup<Set<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -212,7 +212,7 @@ export declare const singleton: <A>(a: A) => Set<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -237,7 +237,7 @@ export declare const fromArray: <A>(E: Eq<A>) => (as: A[]) => Set<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -262,7 +262,7 @@ export declare const toArray: <A>(O: Ord<A>) => (set: Set<A>) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -285,7 +285,7 @@ export declare const foldMap: <A, M>(O: Ord<A>, M: Monoid<M>) => (f: (a: A) => M
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -308,7 +308,7 @@ export declare const reduce: <A>(O: Ord<A>) => <B>(b: B, f: (b: B, a: A) => B) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -331,7 +331,7 @@ export declare const reduceRight: <A>(O: Ord<A>) => <B>(b: B, f: (a: A, b: B) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -357,7 +357,7 @@ export declare function chain<B>(E: Eq<B>): <A>(f: (x: A) => Set<B>) => (set: Se
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -380,7 +380,7 @@ export declare const compact: <A>(E: Eq<A>) => (fa: Set<Option<A>>) => Set<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -409,7 +409,7 @@ export declare function difference<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -447,7 +447,7 @@ export declare const elem: <A>(E: Eq<A>) => {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -470,7 +470,7 @@ export declare const empty: Set<never>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -496,7 +496,7 @@ export declare const every: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -528,7 +528,7 @@ export declare function filter<A>(predicate: Predicate<A>): (set: Set<A>) => Set
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -552,7 +552,7 @@ export declare function filterMap<B>(E: Eq<B>): <A>(f: (a: A) => Option<B>) => (
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -578,7 +578,7 @@ export declare function insert<A>(E: Eq<A>): (a: A) => (set: Set<A>) => Set<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -607,7 +607,7 @@ export declare function intersection<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -632,7 +632,7 @@ export declare const isEmpty: <A>(set: Set<A>) => boolean
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -655,7 +655,7 @@ export declare const isSubset: <A>(E: Eq<A>) => (that: Set<A>) => (me: Set<A>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -681,7 +681,7 @@ export declare function map<B>(E: Eq<B>): <A>(f: (x: A) => B) => (set: Set<A>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -715,7 +715,7 @@ export declare function partition<A>(predicate: Predicate<A>): (set: Set<A>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -742,7 +742,7 @@ export declare function partitionMap<B, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -767,7 +767,7 @@ export declare const remove: <A>(E: Eq<A>) => (a: A) => (set: Set<A>) => Set<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -791,7 +791,7 @@ export declare function separate<E, A>(EE: Eq<E>, EA: Eq<A>): (fa: Set<Either<E,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -816,7 +816,7 @@ export declare const size: <A>(set: Set<A>) => number
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -839,7 +839,7 @@ export declare const some: <A>(predicate: Predicate<A>) => (set: Set<A>) => bool
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -867,7 +867,7 @@ export declare const subset: <A>(E: Eq<A>) => {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -893,7 +893,7 @@ export declare const toggle: <A>(E: Eq<A>) => (a: A) => (set: Set<A>) => Set<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -922,7 +922,7 @@ export declare function union<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

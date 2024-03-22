@@ -120,7 +120,7 @@ export declare const Applicative: Applicative2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -143,7 +143,7 @@ export declare const Apply: Apply2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -166,7 +166,7 @@ export declare const Category: Category2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -189,7 +189,7 @@ export declare const Chain: chainable.Chain2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -214,7 +214,7 @@ export declare const ChainRec: ChainRec2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -237,7 +237,7 @@ export declare const Choice: Choice2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -260,7 +260,7 @@ export declare const Functor: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -283,7 +283,7 @@ export declare const Monad: Monad2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -306,7 +306,7 @@ export declare const Pointed: Pointed2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -329,7 +329,7 @@ export declare const Profunctor: Profunctor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -352,7 +352,7 @@ export declare const Strong: Strong2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -380,7 +380,7 @@ export declare const tap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -405,7 +405,7 @@ export declare const ask: <R>() => Reader<R, R>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -430,7 +430,7 @@ export declare const asks: <R, A>(f: (r: R) => A) => Reader<R, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -455,7 +455,7 @@ export declare const asksReader: <R, A>(f: (r: R) => Reader<R, A>) => Reader<R, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -483,7 +483,7 @@ export declare const asksReaderW: <R1, R2, A>(f: (r1: R1) => Reader<R2, A>) => R
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -506,7 +506,7 @@ export declare const id: Category2<URI>['id']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -529,7 +529,7 @@ export declare const of: <R = unknown, A = never>(a: A) => Reader<R, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -552,7 +552,7 @@ export declare const Do: Reader<unknown, {}>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -578,7 +578,7 @@ export declare const apS: <N extends string, A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -614,7 +614,7 @@ export declare const apSW: <A, N extends string, R2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -640,7 +640,7 @@ export declare const bind: <N extends string, A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -665,7 +665,7 @@ export declare const bindTo: <N extends string>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -698,7 +698,7 @@ export declare const bindW: <N extends string, A, R2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -721,7 +721,7 @@ export declare const chainRec: ChainRec2<URI>['chainRec']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -746,7 +746,7 @@ export declare const chain: <A, R, B>(f: (a: A) => Reader<R, B>) => (ma: Reader<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -771,7 +771,7 @@ export declare const chainFirst: <A, R, B>(f: (a: A) => Reader<R, B>) => (first:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -798,7 +798,7 @@ export declare const chainFirstW: <R2, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -823,7 +823,7 @@ export declare const chainW: <R2, A, B>(f: (a: A) => Reader<R2, B>) => <R1>(ma: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -846,7 +846,7 @@ export declare const flap: <A>(a: A) => <E, B>(fab: Reader<E, (a: A) => B>) => R
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -871,7 +871,7 @@ export declare const map: <A, B>(f: (a: A) => B) => <R>(fa: Reader<R, A>) => Rea
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -896,7 +896,7 @@ export interface Reader<R, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -922,7 +922,7 @@ export declare const flatMap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -945,7 +945,7 @@ export declare const flatten: <R, A>(mma: Reader<R, Reader<R, A>>) => Reader<R, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -973,7 +973,7 @@ export declare const flattenW: <R1, R2, A>(mma: Reader<R1, Reader<R2, A>>) => Re
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -998,7 +998,7 @@ export declare const sequenceArray: <R, A>(arr: ReadonlyArray<Reader<R, A>>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1025,7 +1025,7 @@ export declare const traverseArray: <R, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1052,7 +1052,7 @@ export declare const traverseArrayWithIndex: <R, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1079,7 +1079,7 @@ export declare const traverseReadonlyArrayWithIndex: <A, R, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1106,7 +1106,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndex: <A, R, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1129,7 +1129,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1152,7 +1152,7 @@ export declare const URI = 'Reader'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1175,7 +1175,7 @@ export declare const ApT: Reader<unknown, readonly []>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1198,7 +1198,7 @@ export declare const ap: <R, A>(fa: Reader<R, A>) => <B>(fab: Reader<R, (a: A) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1223,7 +1223,7 @@ export declare const apFirst: <E, B>(second: Reader<E, B>) => <A>(first: Reader<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1251,7 +1251,7 @@ export declare const apFirstW: <R2, B>(second: Reader<R2, B>) => <R1, A>(first: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1276,7 +1276,7 @@ export declare const apSecond: <E, B>(second: Reader<E, B>) => <A>(first: Reader
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1304,7 +1304,7 @@ export declare const apSecondW: <R2, B>(second: Reader<R2, B>) => <R1, A>(first:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1332,7 +1332,7 @@ export declare const apW: <R2, A>(fa: Reader<R2, A>) => <R1, B>(fab: Reader<R1, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1355,7 +1355,7 @@ export declare const compose: <A, B>(ab: Reader<A, B>) => <C>(bc: Reader<B, C>) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1397,7 +1397,7 @@ export declare const first: Strong2<URI>['first']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1422,7 +1422,7 @@ export declare const getMonoid: <R, A>(M: Monoid<A>) => Monoid<Reader<R, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1448,7 +1448,7 @@ export declare const getSemigroup: <R, A>(S: Semigroup<A>) => Semigroup<Reader<R
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1472,7 +1472,7 @@ export declare const left: Choice2<URI>['left']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1517,7 +1517,7 @@ export declare const local: <R2, R1>(f: (r2: R2) => R1) => <A>(ma: Reader<R1, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1571,7 +1571,7 @@ export declare const promap: <E, A, D, B>(f: (d: D) => E, g: (a: A) => B) => (fe
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1596,7 +1596,7 @@ export declare const reader: Monad2<URI> & Profunctor2<URI> & Category2<URI> & S
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1620,7 +1620,7 @@ export declare const right: Choice2<URI>['right']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1643,7 +1643,7 @@ export declare const second: Strong2<URI>['second']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

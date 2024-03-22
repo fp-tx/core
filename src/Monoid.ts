@@ -28,7 +28,7 @@
  * _Adapted from https://typelevel.org/cats_
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Bounded } from './Bounded'
@@ -44,7 +44,7 @@ import * as Se from './Semigroup'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -74,7 +74,7 @@ export interface Monoid<A> extends Se.Semigroup<A> {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -100,7 +100,7 @@ export const min = <A>(B: Bounded<A>): Monoid<A> => ({
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -127,7 +127,7 @@ export const max = <A>(B: Bounded<A>): Monoid<A> => ({
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -159,7 +159,7 @@ export const reverse = <A>(M: Monoid<A>): Monoid<A> => ({
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -195,7 +195,7 @@ export const struct = <A>(monoids: { [K in keyof A]: Monoid<A[K]> }): Monoid<{ r
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -227,7 +227,7 @@ export const tuple = <A extends ReadonlyArray<unknown>>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -242,7 +242,7 @@ export const concatAll = <A>(M: Monoid<A>): ((as: ReadonlyArray<A>) => A) => Se.
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -256,7 +256,7 @@ export const monoidVoid: Monoid<void> = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -269,7 +269,7 @@ export const getTupleMonoid: <T extends ReadonlyArray<Monoid<any>>>(
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -282,7 +282,7 @@ export const getStructMonoid: <O extends ReadonlyRecord<string, any>>(monoids: {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -293,7 +293,7 @@ export const getDualMonoid = reverse
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -304,7 +304,7 @@ export const getJoinMonoid = max
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -315,7 +315,7 @@ export const getMeetMonoid = min
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -326,7 +326,7 @@ export const fold = concatAll
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -340,7 +340,7 @@ export const monoidAll: Monoid<boolean> = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -354,7 +354,7 @@ export const monoidAny: Monoid<boolean> = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -367,7 +367,7 @@ export const getFunctionMonoid: <M>(M: Monoid<M>) => <A = never>() => Monoid<(a:
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -378,7 +378,7 @@ export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => r
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -392,7 +392,7 @@ export const monoidString: Monoid<string> = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -406,7 +406,7 @@ export const monoidSum: Monoid<number> = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

@@ -203,7 +203,7 @@ export declare function alt<F>(F: Alt<F>): <A>(that: LazyArg<HKT<F, A>>) => (fa:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -265,7 +265,7 @@ export declare function ap<F>(F: Apply<F>): <A>(fa: HKT<F, A>) => <B>(fab: HKT<F
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -323,7 +323,7 @@ export declare function bimap<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -385,7 +385,7 @@ export declare function chain<F>(F: Chain<F>): <A, B>(f: (a: A) => HKT<F, B>) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -443,7 +443,7 @@ export declare function compose<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -505,7 +505,7 @@ export declare function contramap<F>(F: Contravariant<F>): <A, B>(f: (b: B) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -567,7 +567,7 @@ export declare function extend<F>(F: Extend<F>): <A, B>(f: (wa: HKT<F, A>) => B)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -650,7 +650,7 @@ export declare function filter<F>(F: Filterable<F>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -712,7 +712,7 @@ export declare function filterMap<F>(F: Filterable<F>): <A, B>(f: (a: A) => Opti
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -776,7 +776,7 @@ export declare function filterMapWithIndex<F, I>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -863,7 +863,7 @@ export declare function filterWithIndex<F, I>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -925,7 +925,7 @@ export declare function foldMap<F>(F: Foldable<F>): <M>(M: Monoid<M>) => <A>(f: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -989,7 +989,7 @@ export declare function foldMapWithIndex<F, I>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1049,7 +1049,7 @@ export declare function map<F>(F: Functor<F>): <A, B>(f: (a: A) => B) => (fa: HK
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1105,7 +1105,7 @@ export declare function mapLeft<F>(F: Bifunctor<F>): <E, G>(f: (e: E) => G) => <
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1169,7 +1169,7 @@ export declare function mapWithIndex<F, I>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1260,7 +1260,7 @@ export declare function partition<F>(F: Filterable<F>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1328,7 +1328,7 @@ export declare function partitionMap<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1398,7 +1398,7 @@ export declare function partitionMapWithIndex<F, I>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1499,7 +1499,7 @@ export declare function partitionWithIndex<F, I>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1557,7 +1557,7 @@ export declare function promap<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1619,7 +1619,7 @@ export declare function reduce<F>(F: Foldable<F>): <A, B>(b: B, f: (b: B, a: A) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1681,7 +1681,7 @@ export declare function reduceRight<F>(F: Foldable<F>): <A, B>(b: B, f: (a: A, b
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1745,7 +1745,7 @@ export declare function reduceRightWithIndex<F, I>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1809,7 +1809,7 @@ export declare function reduceWithIndex<F, I>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1834,7 +1834,7 @@ export interface PipeableAlt<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1860,7 +1860,7 @@ export interface PipeableAlt1<F extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1886,7 +1886,7 @@ export interface PipeableAlt2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1912,7 +1912,7 @@ export interface PipeableAlt2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1938,7 +1938,7 @@ export interface PipeableAlt3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1964,7 +1964,7 @@ export interface PipeableAlt3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1990,7 +1990,7 @@ export interface PipeableAlt4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2018,7 +2018,7 @@ export interface PipeableApply<F> extends PipeableFunctor<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2046,7 +2046,7 @@ export interface PipeableApply1<F extends URIS> extends PipeableFunctor1<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2074,7 +2074,7 @@ export interface PipeableApply2<F extends URIS2> extends PipeableFunctor2<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2102,7 +2102,7 @@ export interface PipeableApply2C<F extends URIS2, E> extends PipeableFunctor2C<F
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2130,7 +2130,7 @@ export interface PipeableApply3<F extends URIS3> extends PipeableFunctor3<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2158,7 +2158,7 @@ export interface PipeableApply3C<F extends URIS3, E> extends PipeableFunctor3C<F
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2188,7 +2188,7 @@ export interface PipeableApply4<F extends URIS4> extends PipeableFunctor4<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2215,7 +2215,7 @@ export interface PipeableBifunctor<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2242,7 +2242,7 @@ export interface PipeableBifunctor2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2269,7 +2269,7 @@ export interface PipeableBifunctor3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2296,7 +2296,7 @@ export interface PipeableBifunctor3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2326,7 +2326,7 @@ export interface PipeableBifunctor4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2354,7 +2354,7 @@ export interface PipeableChain<F> extends PipeableApply<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2382,7 +2382,7 @@ export interface PipeableChain1<F extends URIS> extends PipeableApply1<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2410,7 +2410,7 @@ export interface PipeableChain2<F extends URIS2> extends PipeableApply2<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2438,7 +2438,7 @@ export interface PipeableChain2C<F extends URIS2, E> extends PipeableApply2C<F, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2466,7 +2466,7 @@ export interface PipeableChain3<F extends URIS3> extends PipeableApply3<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2494,7 +2494,7 @@ export interface PipeableChain3C<F extends URIS3, E> extends PipeableApply3C<F, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2526,7 +2526,7 @@ export interface PipeableChain4<F extends URIS4> extends PipeableApply4<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2553,7 +2553,7 @@ export interface PipeableCompactable<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2580,7 +2580,7 @@ export interface PipeableCompactable1<F extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2607,7 +2607,7 @@ export interface PipeableCompactable2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2634,7 +2634,7 @@ export interface PipeableCompactable2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2661,7 +2661,7 @@ export interface PipeableCompactable3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2688,7 +2688,7 @@ export interface PipeableCompactable3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2717,7 +2717,7 @@ export interface PipeableCompactable4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2743,7 +2743,7 @@ export interface PipeableContravariant<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2769,7 +2769,7 @@ export interface PipeableContravariant1<F extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2795,7 +2795,7 @@ export interface PipeableContravariant2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2821,7 +2821,7 @@ export interface PipeableContravariant2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2847,7 +2847,7 @@ export interface PipeableContravariant3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2873,7 +2873,7 @@ export interface PipeableContravariant3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2899,7 +2899,7 @@ export interface PipeableContravariant4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2926,7 +2926,7 @@ export interface PipeableExtend<F> extends PipeableFunctor<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2953,7 +2953,7 @@ export interface PipeableExtend1<F extends URIS> extends PipeableFunctor1<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2980,7 +2980,7 @@ export interface PipeableExtend2<F extends URIS2> extends PipeableFunctor2<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3007,7 +3007,7 @@ export interface PipeableExtend2C<F extends URIS2, E> extends PipeableFunctor2C<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3034,7 +3034,7 @@ export interface PipeableExtend3<F extends URIS3> extends PipeableFunctor3<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3061,7 +3061,7 @@ export interface PipeableExtend3C<F extends URIS3, E> extends PipeableFunctor3C<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3090,7 +3090,7 @@ export interface PipeableExtend4<F extends URIS4> extends PipeableFunctor4<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3125,7 +3125,7 @@ export interface PipeableFilterable<F> extends PipeableCompactable<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3160,7 +3160,7 @@ export interface PipeableFilterable1<F extends URIS> extends PipeableCompactable
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3197,7 +3197,7 @@ export interface PipeableFilterable2<F extends URIS2> extends PipeableCompactabl
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3234,7 +3234,7 @@ export interface PipeableFilterable2C<F extends URIS2, E> extends PipeableCompac
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3273,7 +3273,7 @@ export interface PipeableFilterable3<F extends URIS3> extends PipeableCompactabl
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3312,7 +3312,7 @@ export interface PipeableFilterable3C<F extends URIS3, E> extends PipeableCompac
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3353,7 +3353,7 @@ export interface PipeableFilterable4<F extends URIS4> extends PipeableCompactabl
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3392,7 +3392,7 @@ export interface PipeableFilterableWithIndex<F, I> extends PipeableFilterable<F>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3431,7 +3431,7 @@ export interface PipeableFilterableWithIndex1<F extends URIS, I> extends Pipeabl
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3472,7 +3472,7 @@ export interface PipeableFilterableWithIndex2<F extends URIS2, I> extends Pipeab
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3511,7 +3511,7 @@ export interface PipeableFilterableWithIndex2C<F extends URIS2, I, E> extends Pi
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3556,7 +3556,7 @@ export interface PipeableFilterableWithIndex3<F extends URIS3, I> extends Pipeab
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3597,7 +3597,7 @@ export interface PipeableFilterableWithIndex3C<F extends URIS3, I, E> extends Pi
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3642,7 +3642,7 @@ export interface PipeableFilterableWithIndex4<F extends URIS4, I> extends Pipeab
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3670,7 +3670,7 @@ export interface PipeableFoldable<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3698,7 +3698,7 @@ export interface PipeableFoldable1<F extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3726,7 +3726,7 @@ export interface PipeableFoldable2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3754,7 +3754,7 @@ export interface PipeableFoldable2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3782,7 +3782,7 @@ export interface PipeableFoldable3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3810,7 +3810,7 @@ export interface PipeableFoldable3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3838,7 +3838,7 @@ export interface PipeableFoldable4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3866,7 +3866,7 @@ export interface PipeableFoldableWithIndex<F, I> extends PipeableFoldable<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3894,7 +3894,7 @@ export interface PipeableFoldableWithIndex1<F extends URIS, I> extends PipeableF
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3922,7 +3922,7 @@ export interface PipeableFoldableWithIndex2<F extends URIS2, I> extends Pipeable
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3950,7 +3950,7 @@ export interface PipeableFoldableWithIndex2C<F extends URIS2, I, E> extends Pipe
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3978,7 +3978,7 @@ export interface PipeableFoldableWithIndex3<F extends URIS3, I> extends Pipeable
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4006,7 +4006,7 @@ export interface PipeableFoldableWithIndex3C<F extends URIS3, I, E> extends Pipe
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4034,7 +4034,7 @@ export interface PipeableFoldableWithIndex4<F extends URIS4, I> extends Pipeable
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4060,7 +4060,7 @@ export interface PipeableFunctor<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4086,7 +4086,7 @@ export interface PipeableFunctor1<F extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4112,7 +4112,7 @@ export interface PipeableFunctor2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4138,7 +4138,7 @@ export interface PipeableFunctor2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4164,7 +4164,7 @@ export interface PipeableFunctor3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4190,7 +4190,7 @@ export interface PipeableFunctor3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4216,7 +4216,7 @@ export interface PipeableFunctor4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4242,7 +4242,7 @@ export interface PipeableFunctorWithIndex<F, I> extends PipeableFunctor<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4268,7 +4268,7 @@ export interface PipeableFunctorWithIndex1<F extends URIS, I> extends PipeableFu
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4294,7 +4294,7 @@ export interface PipeableFunctorWithIndex2<F extends URIS2, I> extends PipeableF
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4320,7 +4320,7 @@ export interface PipeableFunctorWithIndex2C<F extends URIS2, I, E> extends Pipea
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4346,7 +4346,7 @@ export interface PipeableFunctorWithIndex3<F extends URIS3, I> extends PipeableF
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4372,7 +4372,7 @@ export interface PipeableFunctorWithIndex3C<F extends URIS3, I, E> extends Pipea
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4398,7 +4398,7 @@ export interface PipeableFunctorWithIndex4<F extends URIS4, I> extends PipeableF
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4433,7 +4433,7 @@ export interface PipeableMonadThrow<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4468,7 +4468,7 @@ export interface PipeableMonadThrow1<F extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4503,7 +4503,7 @@ export interface PipeableMonadThrow2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4538,7 +4538,7 @@ export interface PipeableMonadThrow2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4576,7 +4576,7 @@ export interface PipeableMonadThrow3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4614,7 +4614,7 @@ export interface PipeableMonadThrow3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4652,7 +4652,7 @@ export interface PipeableMonadThrow4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4678,7 +4678,7 @@ export interface PipeableProfunctor<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4704,7 +4704,7 @@ export interface PipeableProfunctor2<F extends URIS2> extends PipeableFunctor2<F
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4730,7 +4730,7 @@ export interface PipeableProfunctor2C<F extends URIS2, E> extends PipeableFuncto
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4756,7 +4756,7 @@ export interface PipeableProfunctor3<F extends URIS3> extends PipeableFunctor3<F
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4782,7 +4782,7 @@ export interface PipeableProfunctor3C<F extends URIS3, E> extends PipeableFuncto
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4811,7 +4811,7 @@ export interface PipeableProfunctor4<F extends URIS4> extends PipeableFunctor4<F
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4837,7 +4837,7 @@ export interface PipeableSemigroupoid<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4863,7 +4863,7 @@ export interface PipeableSemigroupoid2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4889,7 +4889,7 @@ export interface PipeableSemigroupoid2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4915,7 +4915,7 @@ export interface PipeableSemigroupoid3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4941,7 +4941,7 @@ export interface PipeableSemigroupoid3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4967,7 +4967,7 @@ export interface PipeableSemigroupoid4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4993,7 +4993,7 @@ export declare const pipe: typeof pipeFromFunctionModule
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -5249,7 +5249,7 @@ export declare function pipeable<F, I>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 

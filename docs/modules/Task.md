@@ -128,7 +128,7 @@ export declare const ApplicativePar: Applicative1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -153,7 +153,7 @@ export declare const ApplicativeSeq: Applicative1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -178,7 +178,7 @@ export declare const ApplyPar: Apply1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -203,7 +203,7 @@ export declare const ApplySeq: Apply1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -226,7 +226,7 @@ export declare const Chain: chainable.Chain1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -251,7 +251,7 @@ export declare const ChainRec: ChainRec1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -274,7 +274,7 @@ export declare const FromIO: FromIO1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -297,7 +297,7 @@ export declare const FromTask: FromTask1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -320,7 +320,7 @@ export declare const Functor: Functor1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -343,7 +343,7 @@ export declare const Monad: Monad1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -366,7 +366,7 @@ export declare const MonadIO: MonadIO1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -389,7 +389,7 @@ export declare const MonadTask: MonadTask1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -412,7 +412,7 @@ export declare const Pointed: Pointed1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -441,7 +441,7 @@ export declare function getRaceMonoid<A = never>(): Monoid<Task<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -484,7 +484,7 @@ export declare const tap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -512,7 +512,7 @@ export declare const tapIO: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -555,7 +555,7 @@ export declare const of: <A>(a: A) => Task<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -578,7 +578,7 @@ export declare const fromIO: <A>(fa: IO<A>) => Task<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -601,7 +601,7 @@ export declare const Do: Task<{}>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -627,7 +627,7 @@ export declare const apS: <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -653,7 +653,7 @@ export declare const bind: <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -676,7 +676,7 @@ export declare const bindTo: <N extends string>(name: N) => <A>(fa: Task<A>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -699,7 +699,7 @@ export declare const chainRec: ChainRec1<URI>['chainRec']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -724,7 +724,7 @@ export declare const chain: <A, B>(f: (a: A) => Task<B>) => (ma: Task<A>) => Tas
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -749,7 +749,7 @@ export declare const chainFirst: <A, B>(f: (a: A) => Task<B>) => (first: Task<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -774,7 +774,7 @@ export declare const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => (first: Task<A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -799,7 +799,7 @@ export declare const chainIOK: <A, B>(f: (a: A) => IO<B>) => (first: Task<A>) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -822,7 +822,7 @@ export declare const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -850,7 +850,7 @@ export declare const as: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -875,7 +875,7 @@ export declare const asUnit: <_>(self: Task<_>) => Task<void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -898,7 +898,7 @@ export declare const flap: <A>(a: A) => <B>(fab: Task<(a: A) => B>) => Task<B>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -923,7 +923,7 @@ export declare const map: <A, B>(f: (a: A) => B) => (fa: Task<A>) => Task<B>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -948,7 +948,7 @@ export interface Task<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -974,7 +974,7 @@ export declare const flatMap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1000,7 +1000,7 @@ export declare const flatMapIO: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1023,7 +1023,7 @@ export declare const flatten: <A>(mma: Task<Task<A>>) => Task<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1048,7 +1048,7 @@ export declare const sequenceArray: <A>(arr: ReadonlyArray<Task<A>>) => Task<Rea
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1073,7 +1073,7 @@ export declare const sequenceSeqArray: <A>(arr: ReadonlyArray<Task<A>>) => Task<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1098,7 +1098,7 @@ export declare const traverseArray: <A, B>(f: (a: A) => Task<B>) => (as: readonl
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1125,7 +1125,7 @@ export declare const traverseArrayWithIndex: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1152,7 +1152,7 @@ export declare const traverseReadonlyArrayWithIndex: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1179,7 +1179,7 @@ export declare const traverseReadonlyArrayWithIndexSeq: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1206,7 +1206,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndex: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1233,7 +1233,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndexSeq: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1258,7 +1258,7 @@ export declare const traverseSeqArray: <A, B>(f: (a: A) => Task<B>) => (as: read
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1285,7 +1285,7 @@ export declare const traverseSeqArrayWithIndex: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1308,7 +1308,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1331,7 +1331,7 @@ export declare const URI = 'Task'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1354,7 +1354,7 @@ export declare const ApT: Task<readonly []>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1377,7 +1377,7 @@ export declare const ap: <A>(fa: Task<A>) => <B>(fab: Task<(a: A) => B>) => Task
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1402,7 +1402,7 @@ export declare const apFirst: <B>(second: Task<B>) => <A>(first: Task<A>) => Tas
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1427,7 +1427,7 @@ export declare const apSecond: <B>(second: Task<B>) => <A>(first: Task<A>) => Ta
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1453,7 +1453,7 @@ export declare function delay(millis: number): <A>(ma: Task<A>) => Task<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1519,7 +1519,7 @@ export declare const fromTask: <A>(fa: Task<A>) => Task<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1548,7 +1548,7 @@ export declare const getMonoid: <A>(M: Monoid<A>) => Monoid<Task<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1574,7 +1574,7 @@ export declare const getSemigroup: <A>(S: Semigroup<A>) => Semigroup<Task<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1620,7 +1620,7 @@ export declare const never: Task<never>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1645,7 +1645,7 @@ export declare const task: Monad1<URI> & MonadTask1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1671,7 +1671,7 @@ export declare const taskSeq: Monad1<URI> & MonadTask1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 

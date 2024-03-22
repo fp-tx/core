@@ -36,7 +36,7 @@ export interface Semiring<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -61,7 +61,7 @@ export declare const getFunctionSemiring: <A, B>(S: Semiring<B>) => Semiring<(a:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 

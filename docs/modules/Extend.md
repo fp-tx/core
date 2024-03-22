@@ -35,7 +35,7 @@ export interface Extend<W> extends Functor<W> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -60,7 +60,7 @@ export interface Extend1<W extends URIS> extends Functor1<W> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -85,7 +85,7 @@ export interface Extend2<W extends URIS2> extends Functor2<W> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -110,7 +110,7 @@ export interface Extend2C<W extends URIS2, E> extends Functor2C<W, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -135,7 +135,7 @@ export interface Extend3<W extends URIS3> extends Functor3<W> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -160,7 +160,7 @@ export interface Extend3C<W extends URIS3, E> extends Functor3C<W, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -185,7 +185,7 @@ export interface Extend4<W extends URIS4> extends Functor4<W> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

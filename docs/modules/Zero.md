@@ -71,7 +71,7 @@ export declare function guard<F>(F: Zero<F>, P: Pointed<F>): (b: boolean) => HKT
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -97,7 +97,7 @@ export interface Zero<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -123,7 +123,7 @@ export interface Zero1<F extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -149,7 +149,7 @@ export interface Zero2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -176,7 +176,7 @@ export interface Zero2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -202,7 +202,7 @@ export interface Zero3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -229,7 +229,7 @@ export interface Zero3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -255,7 +255,7 @@ export interface Zero4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

@@ -2,7 +2,7 @@
  * A `BoundedDistributiveLattice` is a lattice that is both bounded and distributive
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type BoundedLattice } from './BoundedLattice'
@@ -15,7 +15,7 @@ import { type Ord } from './Ord'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -28,7 +28,7 @@ export interface BoundedDistributiveLattice<A> extends BoundedLattice<A>, Distri
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public

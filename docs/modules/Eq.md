@@ -57,7 +57,7 @@ export declare const Contravariant: Contravariant1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -80,7 +80,7 @@ export declare const eqStrict: Eq<unknown>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -103,7 +103,7 @@ export declare const getMonoid: <A>() => Monoid<Eq<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -126,7 +126,7 @@ export declare const getSemigroup: <A>() => Semigroup<Eq<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -149,7 +149,7 @@ export declare const fromEquals: <A>(equals: (x: A, y: A) => boolean) => Eq<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -174,7 +174,7 @@ export interface Eq<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -197,7 +197,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -220,7 +220,7 @@ export declare const URI = 'Eq'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -254,7 +254,7 @@ export declare const contramap: <A, B>(f: (b: B) => A) => (fa: Eq<A>) => Eq<B>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -317,7 +317,7 @@ export declare const eq: Contravariant1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -343,7 +343,7 @@ export declare const eqBoolean: Eq<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -369,7 +369,7 @@ export declare const eqDate: Eq<Date>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -395,7 +395,7 @@ export declare const eqNumber: Eq<number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -421,7 +421,7 @@ export declare const eqString: Eq<string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -449,7 +449,7 @@ export declare const getStructEq: <O extends ReadonlyRecord<string, any>>(eqs: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -479,7 +479,7 @@ export declare const getTupleEq: <T extends ReadonlyArray<Eq<any>>>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -505,7 +505,7 @@ export declare const strictEqual: <A>(a: A, b: A) => boolean
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -529,7 +529,7 @@ export declare const struct: <A>(eqs: { [K in keyof A]: Eq<A[K]> }) => Eq<{ read
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -554,7 +554,7 @@ export declare const tuple: <A extends readonly unknown[]>(...eqs: { [K in keyof
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 

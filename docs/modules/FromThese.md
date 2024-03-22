@@ -39,7 +39,7 @@ export interface FromThese<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -65,7 +65,7 @@ export interface FromThese2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -92,7 +92,7 @@ export interface FromThese2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -118,7 +118,7 @@ export interface FromThese3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -145,7 +145,7 @@ export interface FromThese3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -171,7 +171,7 @@ export interface FromThese4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -227,7 +227,7 @@ export declare function fromTheseK<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

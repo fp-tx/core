@@ -3,7 +3,7 @@
  * polymorphism](https://www.cl.cam.ac.uk/~jdy22/papers/lightweight-higher-kinded-polymorphism.pdf))
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -12,7 +12,7 @@
  * `* -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -25,7 +25,7 @@ export interface HKT<URI, A> {
  * `* -> * -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -37,7 +37,7 @@ export interface HKT2<URI, E, A> extends HKT<URI, A> {
  * `* -> * -> * -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -49,7 +49,7 @@ export interface HKT3<URI, R, E, A> extends HKT2<URI, E, A> {
  * `* -> * -> * -> * -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -65,7 +65,7 @@ export interface HKT4<URI, S, R, E, A> extends HKT3<URI, R, E, A> {
  * `* -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -76,7 +76,7 @@ export interface URItoKind<A> {}
  * `* -> * -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -87,7 +87,7 @@ export interface URItoKind2<E, A> {}
  * `* -> * -> * -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -98,7 +98,7 @@ export interface URItoKind3<R, E, A> {}
  * `* -> * -> * -> * -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -113,7 +113,7 @@ export interface URItoKind4<S, R, E, A> {}
  * `* -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -123,7 +123,7 @@ export type URIS = keyof URItoKind<any>
  * `* -> * -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -133,7 +133,7 @@ export type URIS2 = keyof URItoKind2<any, any>
  * `* -> * -> * -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -143,7 +143,7 @@ export type URIS3 = keyof URItoKind3<any, any, any>
  * `* -> * -> * -> * -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -157,7 +157,7 @@ export type URIS4 = keyof URItoKind4<any, any, any, any>
  * `* -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -167,7 +167,7 @@ export type Kind<URI extends URIS, A> = URI extends URIS ? URItoKind<A>[URI] : a
  * `* -> * -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -177,7 +177,7 @@ export type Kind2<URI extends URIS2, E, A> = URI extends URIS2 ? URItoKind2<E, A
  * `* -> * -> * -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -187,7 +187,7 @@ export type Kind3<URI extends URIS3, R, E, A> = URI extends URIS3 ? URItoKind3<R
  * `* -> * -> * -> * -> *` constructors
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

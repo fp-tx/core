@@ -47,7 +47,7 @@ export declare const Eq: E.Eq<Ordering>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -70,7 +70,7 @@ export declare const Monoid: M.Monoid<Ordering>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -93,7 +93,7 @@ export declare const Semigroup: S.Semigroup<Ordering>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -116,7 +116,7 @@ export type Ordering = -1 | 0 | 1
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -139,7 +139,7 @@ export declare const match: <A>(onLessThan: () => A, onEqual: () => A, onGreater
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -171,7 +171,7 @@ export declare const matchW: <A, B, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -196,7 +196,7 @@ export declare const eqOrdering: E.Eq<Ordering>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -222,7 +222,7 @@ export declare const invert: (o: Ordering) => Ordering
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -248,7 +248,7 @@ export declare const monoidOrdering: M.Monoid<Ordering>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -272,7 +272,7 @@ export declare const reverse: (o: Ordering) => Ordering
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -297,7 +297,7 @@ export declare const semigroupOrdering: S.Semigroup<Ordering>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -321,7 +321,7 @@ export declare const sign: (n: number) => Ordering
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

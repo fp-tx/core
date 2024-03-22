@@ -1,6 +1,6 @@
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { ap as ap_, type Apply, type Apply1, type Apply2, type Apply2C, type Apply3, type Apply3C } from './Apply'
@@ -24,7 +24,7 @@ import { type These } from './These'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -40,7 +40,7 @@ export function right<F>(F: Pointed<F>): <A, E = never>(a: A) => HKT<F, These<E,
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -56,7 +56,7 @@ export function left<F>(F: Pointed<F>): <E, A = never>(e: E) => HKT<F, These<E, 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -72,7 +72,7 @@ export function both<F>(F: Pointed<F>): <E, A = never>(e: E, a: A) => HKT<F, The
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -96,7 +96,7 @@ export function rightF<F>(F: Functor<F>): <A, E = never>(fa: HKT<F, A>) => HKT<F
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -120,7 +120,7 @@ export function leftF<F>(F: Functor<F>): <E, A = never>(fe: HKT<F, E>) => HKT<F,
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -146,7 +146,7 @@ export function map<F>(F: Functor<F>): <A, B>(f: (a: A) => B) => <E>(fa: HKT<F, 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -187,7 +187,7 @@ export function ap<F, E>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -242,7 +242,7 @@ export function chain<M, E>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -278,7 +278,7 @@ export function bimap<F>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -308,7 +308,7 @@ export function mapLeft<F>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -366,7 +366,7 @@ export function match<F>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -424,7 +424,7 @@ export function matchE<M>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -448,7 +448,7 @@ export function swap<F>(F: Functor<F>): <E, A>(ma: HKT<F, These<E, A>>) => HKT<F
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -483,7 +483,7 @@ export function toTuple2<F>(
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -492,7 +492,7 @@ export interface TheseT<M, E, A> extends HKT<M, These<E, A>> {}
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -525,7 +525,7 @@ export interface TheseM<M> {
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -534,7 +534,7 @@ export type TheseT1<M extends URIS, E, A> = Kind<M, These<E, A>>
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -567,7 +567,7 @@ export interface TheseM1<M extends URIS> {
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -576,7 +576,7 @@ export type TheseT2<M extends URIS2, R, E, A> = Kind2<M, R, These<E, A>>
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -609,7 +609,7 @@ export interface TheseM2<M extends URIS2> {
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

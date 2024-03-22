@@ -3,7 +3,7 @@
  * as a `Functor` in `T`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import {
@@ -71,7 +71,7 @@ import { type PipeableWilt1, type PipeableWither1, wiltDefault, type Witherable1
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -90,7 +90,7 @@ export const size: <A>(r: Record<string, A>) => number = RR.size
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -113,7 +113,7 @@ const keys_ =
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -135,7 +135,7 @@ export const keys: <K extends string>(r: Record<K, unknown>) => Array<K> = /*#__
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -182,7 +182,7 @@ export function collect<A, B>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -216,7 +216,7 @@ export const toArray: <K extends string, A>(r: Record<K, A>) => Array<[K, A]> = 
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -245,7 +245,7 @@ export function toUnfoldable<F>(U: Unfoldable<F>): <A>(r: Record<string, A>) => 
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -266,7 +266,7 @@ export const upsertAt: <A>(k: string, a: A) => (r: Record<string, A>) => Record<
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -285,7 +285,7 @@ export const has: <K extends string>(k: string, r: Record<K, unknown>) => k is K
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -314,7 +314,7 @@ export function deleteAt(k: string): <A>(r: Record<string, A>) => Record<string,
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -332,7 +332,7 @@ export const updateAt = <A>(k: string, a: A): (<K extends string>(r: Record<K, A
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -358,7 +358,7 @@ export const modifyAt =
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -396,7 +396,7 @@ export function pop(k: string): <A>(r: Record<string, A>) => Option<[A, Record<s
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -412,7 +412,7 @@ export const isSubrecord: <A>(E: Eq<A>) => {
  * @example
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -434,7 +434,7 @@ export const lookup: {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -454,7 +454,7 @@ export const mapWithIndex: <K extends string, A, B>(f: (k: K, a: A) => B) => (fa
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -480,7 +480,7 @@ export const map: <A, B>(f: (a: A) => B) => <K extends string>(fa: Record<K, A>)
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -517,7 +517,7 @@ export function reduceWithIndex<A, B>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -559,7 +559,7 @@ export function foldMapWithIndex<M>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -590,7 +590,7 @@ export function reduceRightWithIndex<A, B>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -598,7 +598,7 @@ export const singleton: <A>(k: string, a: A) => Record<string, A> = RR.singleton
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -637,7 +637,7 @@ export function traverseWithIndex<F>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -696,7 +696,7 @@ export function traverse<F>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -722,7 +722,7 @@ export function sequence<F>(F: Applicative<F>): <A>(ta: Record<string, HKT<F, A>
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -736,7 +736,7 @@ export const wither: PipeableWither1<URI> = <F>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -774,7 +774,7 @@ export const wilt: PipeableWilt1<URI> = <F>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -805,7 +805,7 @@ export const partitionMapWithIndex: <K extends string, A, B, C>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -842,7 +842,7 @@ export function partitionWithIndex<A>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -867,7 +867,7 @@ export const filterMapWithIndex: <K extends string, A, B>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -891,7 +891,7 @@ export function filterWithIndex<A>(
  * duplicate keys.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -927,7 +927,7 @@ export function fromFoldable<F, A>(M: Magma<A>, F: FoldableHKT<F>): (fka: HKT<F,
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -953,7 +953,7 @@ export const toEntries = toArray
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1000,7 +1000,7 @@ export const fromEntries = <A>(fa: Array<[string, A]>): Record<string, A> => fro
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1040,7 +1040,7 @@ export function fromFoldableMap<F, B>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1062,7 +1062,7 @@ export const every: {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1083,7 +1083,7 @@ export const some: <A>(predicate: (a: A) => boolean) => (r: Record<string, A>) =
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1109,7 +1109,7 @@ export const elem: <A>(E: Eq<A>) => {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1145,7 +1145,7 @@ export const union = <A>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1174,7 +1174,7 @@ export const intersection =
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1249,7 +1249,7 @@ const _traverseWithIndex =
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1278,7 +1278,7 @@ export const filter: {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1305,7 +1305,7 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Record<string, A>
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1341,7 +1341,7 @@ export const partition: {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1365,7 +1365,7 @@ export const partitionMap: <A, B, C>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1401,7 +1401,7 @@ export function reduce<A, B>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1440,7 +1440,7 @@ export function foldMap<M>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1474,7 +1474,7 @@ export function reduceRight<A, B>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1502,7 +1502,7 @@ export const compact: <A>(fa: Record<string, Option<A>>) => Record<string, A> = 
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1512,7 +1512,7 @@ export const separate: <A, B>(fa: Record<string, Either<A, B>>) => Separated<Rec
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1521,7 +1521,7 @@ export const URI = 'Record'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1551,7 +1551,7 @@ declare module './HKT' {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1585,7 +1585,7 @@ export function getShow<A>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1611,7 +1611,7 @@ export const getEq: <K extends string, A>(E: Eq<A>) => Eq<Record<K, A>> = RR.get
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1620,7 +1620,7 @@ export const getMonoid: <K extends string, A>(S: Semigroup<A>) => Monoid<Record<
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1646,7 +1646,7 @@ export const Functor: Functor1<URI> = {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1655,7 +1655,7 @@ export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1670,7 +1670,7 @@ export const FunctorWithIndex: FunctorWithIndex1<URI, string> = {
  * Produces a `Foldable` instance for a `Record`, using the provided `Ord` to sort the `Record`'s entries by key.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1687,7 +1687,7 @@ export const getFoldable = (O: Ord<string>): Foldable1<URI> => ({
  * key.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1704,7 +1704,7 @@ export const getFoldableWithIndex = (O: Ord<string>): FoldableWithIndex1<URI, st
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1717,7 +1717,7 @@ export const Compactable: Compactable1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1735,7 +1735,7 @@ export const Filterable: Filterable1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1760,7 +1760,7 @@ export const FilterableWithIndex: FilterableWithIndex1<URI, string> = {
  * Produces a `Traversable` instance for a `Record`, using the provided `Ord` to sort the `Record`'s entries by key.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1780,7 +1780,7 @@ export const getTraversable = (O: Ord<string>): Traversable1<URI> => ({
  * key.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1802,7 +1802,7 @@ export const getTraversableWithIndex = (O: Ord<string>): TraversableWithIndex1<U
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1844,7 +1844,7 @@ export const getWitherable = (O: Ord<string>): Witherable1<URI> => {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1876,7 +1876,7 @@ export const getUnionSemigroup = <A>(S: Semigroup<A>): Semigroup<Record<string, 
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1902,7 +1902,7 @@ export const getUnionMonoid = <A>(S: Semigroup<A>): Monoid<Record<string, A>> =>
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1931,7 +1931,7 @@ export const getIntersectionSemigroup = <A>(S: Semigroup<A>): Semigroup<Record<s
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1949,7 +1949,7 @@ export const getDifferenceMagma = <A>(): Magma<Record<string, A>> => ({
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1965,7 +1965,7 @@ export const Foldable: Foldable1<URI> = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1984,7 +1984,7 @@ export const FoldableWithIndex: FoldableWithIndex1<URI, string> = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2003,7 +2003,7 @@ export const Traversable: Traversable1<URI> = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2030,7 +2030,7 @@ const _wilt = /*#__PURE__*/ wiltDefault(Traversable, Compactable)
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2057,7 +2057,7 @@ export const Witherable: Witherable1<URI> = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2068,7 +2068,7 @@ export const empty: Record<string, never> = {}
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2079,7 +2079,7 @@ export const insertAt: <A>(k: string, a: A) => (r: Record<string, A>) => Record<
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2091,7 +2091,7 @@ export const hasOwnProperty: <K extends string>(k: string, r: Record<K, unknown>
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

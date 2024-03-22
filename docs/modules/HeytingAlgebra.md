@@ -30,7 +30,7 @@ export interface HeytingAlgebra<A> extends BoundedDistributiveLattice<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

@@ -32,7 +32,7 @@ export declare function newIORef<A>(a: A): IO<IORef<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -58,7 +58,7 @@ constructor(value: A);
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -79,7 +79,7 @@ assert.strictEqual(flatMap(newIORef(1), ref => flatMap(ref.write(2), () => ref.r
 
 ##### `modify` (method)
 
-* Added in 1.0.0
+* Added in 0.1.0
 ```typescript
 modify(f: (a: A) => A): IO<void>;
 ```
@@ -91,7 +91,7 @@ modify(f: (a: A) => A): IO<void>;
 
 ##### `read` (property)
 
-* Added in 1.0.0
+* Added in 0.1.0
 ```typescript
 readonly read: IO<A>;
 ```
@@ -103,7 +103,7 @@ readonly read: IO<A>;
 
 ##### `write` (method)
 
-* Added in 1.0.0
+* Added in 0.1.0
 ```typescript
 write(a: A): IO<void>;
 ```

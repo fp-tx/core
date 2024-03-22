@@ -10,7 +10,7 @@
  * 2. Composition: `F.mapWithIndex(fa, (_i, a) => bc(ab(a))) <-> F.mapWithIndex(F.mapWithIndex(fa, ab), bc)`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { pipe } from './function'
@@ -50,7 +50,7 @@ import {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -61,7 +61,7 @@ export interface FunctorWithIndex<F, I> extends Functor<F> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -72,7 +72,7 @@ export interface FunctorWithIndex1<F extends URIS, I> extends Functor1<F> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -83,7 +83,7 @@ export interface FunctorWithIndex2<F extends URIS2, I> extends Functor2<F> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -94,7 +94,7 @@ export interface FunctorWithIndex2C<F extends URIS2, I, E> extends Functor2C<F, 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -105,7 +105,7 @@ export interface FunctorWithIndex3<F extends URIS3, I> extends Functor3<F> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -116,7 +116,7 @@ export interface FunctorWithIndex3C<F extends URIS3, I, E> extends Functor3C<F, 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -133,7 +133,7 @@ export interface FunctorWithIndex4<F extends URIS4, I> extends Functor4<F> {
  * `mapWithIndex` composition.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -159,7 +159,7 @@ export function mapWithIndex<F, I, G, J>(
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -170,7 +170,7 @@ export interface FunctorWithIndexComposition<F, FI, G, GI> extends FunctorCompos
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -182,7 +182,7 @@ export interface FunctorWithIndexComposition11<F extends URIS, FI, G extends URI
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -194,7 +194,7 @@ export interface FunctorWithIndexComposition12<F extends URIS, FI, G extends URI
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -206,7 +206,7 @@ export interface FunctorWithIndexComposition12C<F extends URIS, FI, G extends UR
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -218,7 +218,7 @@ export interface FunctorWithIndexComposition21<F extends URIS2, FI, G extends UR
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -230,7 +230,7 @@ export interface FunctorWithIndexComposition2C1<F extends URIS2, FI, G extends U
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -245,7 +245,7 @@ export interface FunctorWithIndexComposition22<F extends URIS2, FI, G extends UR
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -262,7 +262,7 @@ export interface FunctorWithIndexComposition22C<F extends URIS2, FI, G extends U
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

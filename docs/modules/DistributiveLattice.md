@@ -32,7 +32,7 @@ export declare function getMinMaxDistributiveLattice<A>(O: Ord<A>): Distributive
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -55,7 +55,7 @@ export interface DistributiveLattice<A> extends Lattice<A> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

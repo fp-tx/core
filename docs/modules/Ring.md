@@ -36,7 +36,7 @@ export interface Ring<A> extends Semiring<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -61,7 +61,7 @@ export declare const getFunctionRing: <A, B>(R: Ring<B>) => Ring<(a: A) => B>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -91,7 +91,7 @@ export declare const getTupleRing: <T extends ReadonlyArray<Ring<any>>>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -117,7 +117,7 @@ export declare const negate: <A>(R: Ring<A>) => (a: A) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -144,7 +144,7 @@ export declare const tuple: <A extends readonly unknown[]>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 

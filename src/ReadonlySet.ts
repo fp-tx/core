@@ -1,6 +1,6 @@
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Either } from './Either'
@@ -18,7 +18,7 @@ import { type Show } from './Show'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -33,7 +33,7 @@ export const fromSet = <A>(s: Set<A>): ReadonlySet<A> => new Set(s)
  * Create a set with one element
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -44,7 +44,7 @@ export const singleton = <A>(a: A): ReadonlySet<A> => new Set([a])
  * Create a `ReadonlySet` from a `ReadonlyArray`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -66,7 +66,7 @@ export const fromReadonlyArray =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -84,7 +84,7 @@ interface Next<A> {
  * Projects a Set through a function
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -104,7 +104,7 @@ export function map<B>(E: Eq<B>): <A>(f: (x: A) => B) => (set: ReadonlySet<A>) =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -125,7 +125,7 @@ export function chain<B>(E: Eq<B>): <A>(f: (x: A) => ReadonlySet<B>) => (set: Re
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -149,7 +149,7 @@ export function filter<A>(predicate: Predicate<A>): (set: ReadonlySet<A>) => Rea
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -187,7 +187,7 @@ export function partition<A>(
  * Form the union of two sets
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -225,7 +225,7 @@ export function union<A>(
  * The set of elements which are in both the first and second set
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -257,7 +257,7 @@ export function intersection<A>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -307,7 +307,7 @@ export function partitionMap<B, C>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -330,7 +330,7 @@ export function difference<A>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -341,7 +341,7 @@ export function reduce<A>(O: Ord<A>): <B>(b: B, f: (b: B, a: A) => B) => (fa: Re
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -352,7 +352,7 @@ export function foldMap<A, M>(O: Ord<A>, M: Monoid<M>): (f: (a: A) => M) => (fa:
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -366,7 +366,7 @@ export const reduceRight = <A>(O: Ord<A>): (<B>(b: B, f: (a: A, b: B) => B) => (
  * Insert a value into a set
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -387,7 +387,7 @@ export function insert<A>(E: Eq<A>): (a: A) => (set: ReadonlySet<A>) => Readonly
  * Delete a value from a set
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -401,7 +401,7 @@ export const remove =
  * Checks an element is a member of a set; If yes, removes the value from the set If no, inserts the value to the set
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -414,7 +414,7 @@ export const toggle = <A>(E: Eq<A>): ((a: A) => (set: ReadonlySet<A>) => Readonl
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -422,7 +422,7 @@ export const compact = <A>(E: Eq<A>): ((fa: ReadonlySet<Option<A>>) => ReadonlyS
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -455,7 +455,7 @@ export function separate<E, A>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -479,7 +479,7 @@ export function filterMap<B>(E: Eq<B>): <A>(f: (a: A) => Option<B>) => (fa: Read
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -489,7 +489,7 @@ export const empty: ReadonlySet<never> = new Set()
  * Test whether a `ReadonlySet` is empty.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -499,7 +499,7 @@ export const isEmpty = <A>(set: ReadonlySet<A>): boolean => set.size === 0
  * Calculate the number of elements in a `ReadonlySet`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -507,7 +507,7 @@ export const size = <A>(set: ReadonlySet<A>): number => set.size
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -525,7 +525,7 @@ export const some =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -540,7 +540,7 @@ export function every<A>(predicate: Predicate<A>): Predicate<ReadonlySet<A>> {
  * `true` if and only if every element in the first set is an element of the second set
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -566,7 +566,7 @@ export function isSubset<A>(
  * Test if a value is a member of a set
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -594,7 +594,7 @@ export function elem<A>(E: Eq<A>): (a: A, set?: ReadonlySet<A>) => boolean | ((s
  * Get a sorted `ReadonlyArray` of the values contained in a `ReadonlySet`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -609,7 +609,7 @@ export const toReadonlyArray =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -618,7 +618,7 @@ export const URI = 'ReadonlySet'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -633,7 +633,7 @@ declare module './HKT' {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -652,7 +652,7 @@ export function getShow<A>(S: Show<A>): Show<ReadonlySet<A>> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -664,7 +664,7 @@ export function getEq<A>(E: Eq<A>): Eq<ReadonlySet<A>> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -675,7 +675,7 @@ export const getUnionSemigroup = <A>(E: Eq<A>): Semigroup<ReadonlySet<A>> => ({
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -687,7 +687,7 @@ export const getUnionMonoid = <A>(E: Eq<A>): Monoid<ReadonlySet<A>> => ({
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -698,7 +698,7 @@ export const getIntersectionSemigroup = <A>(E: Eq<A>): Semigroup<ReadonlySet<A>>
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -716,7 +716,7 @@ export const getDifferenceMagma = <A>(E: Eq<A>): Magma<ReadonlySet<A>> => ({
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

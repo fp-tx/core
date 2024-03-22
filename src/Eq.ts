@@ -8,7 +8,7 @@
  * 3. Transitivity: if `E.equals(a, b) === true` and `E.equals(b, c) === true`, then `E.equals(a, c) === true`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Contravariant1 } from './Contravariant'
@@ -23,7 +23,7 @@ import { type Semigroup } from './Semigroup'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -38,7 +38,7 @@ export interface Eq<A> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -53,7 +53,7 @@ export const fromEquals = <A>(equals: Eq<A>['equals']): Eq<A> => ({
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -86,7 +86,7 @@ export const struct = <A>(eqs: { [K in keyof A]: Eq<A[K]> }): Eq<{ readonly [K i
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -147,7 +147,7 @@ const contramap_: <A, B>(fa: Eq<A>, f: (b: B) => A) => Eq<B> = (fa, f) => pipe(f
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -156,7 +156,7 @@ export const contramap: <A, B>(f: (b: B) => A) => (fa: Eq<A>) => Eq<B> = f => fa
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -165,7 +165,7 @@ export const URI = 'Eq'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -180,7 +180,7 @@ declare module './HKT' {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -195,7 +195,7 @@ const empty: Eq<unknown> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -206,7 +206,7 @@ export const getSemigroup = <A>(): Semigroup<Eq<A>> => ({
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -218,7 +218,7 @@ export const getMonoid = <A>(): Monoid<Eq<A>> => ({
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -237,7 +237,7 @@ export const Contravariant: Contravariant1<URI> = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -250,7 +250,7 @@ export const getTupleEq: <T extends ReadonlyArray<Eq<any>>>(
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -261,7 +261,7 @@ export const getStructEq: <O extends ReadonlyRecord<string, any>>(eqs: { [K in k
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -273,7 +273,7 @@ export const strictEqual: <A>(a: A, b: A) => boolean = eqStrict.equals
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -284,7 +284,7 @@ export const eq: Contravariant1<URI> = Contravariant
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -295,7 +295,7 @@ export const eqBoolean: Eq<boolean> = eqStrict
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -306,7 +306,7 @@ export const eqString: Eq<string> = eqStrict
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -317,7 +317,7 @@ export const eqNumber: Eq<number> = eqStrict
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

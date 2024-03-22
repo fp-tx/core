@@ -1,6 +1,6 @@
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import {
@@ -24,7 +24,7 @@ import { type Semigroup } from './Semigroup'
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -33,7 +33,7 @@ export interface ValidationT<M, E, A> extends HKT<M, Either<E, A>> {}
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -47,7 +47,7 @@ export interface ValidationM<M, E> extends ApplicativeCompositionHKT2C<M, E.URI,
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -56,7 +56,7 @@ export type ValidationT1<M extends URIS, E, A> = Kind<M, Either<E, A>>
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -70,7 +70,7 @@ export interface ValidationM1<M extends URIS, E> extends ApplicativeComposition1
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -79,7 +79,7 @@ export type ValidationT2<M extends URIS2, R, E, A> = Kind2<M, R, Either<E, A>>
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -102,7 +102,7 @@ export interface ValidationM2<M extends URIS2, E> extends ApplicativeComposition
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

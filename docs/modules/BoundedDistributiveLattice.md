@@ -34,7 +34,7 @@ export declare function getMinMaxBoundedDistributiveLattice<A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -57,7 +57,7 @@ export interface BoundedDistributiveLattice<A> extends BoundedLattice<A>, Distri
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

@@ -50,7 +50,7 @@ export interface StateT<M, S, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -75,7 +75,7 @@ export interface StateT1<M extends URIS, S, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -100,7 +100,7 @@ export interface StateT2<M extends URIS2, S, E, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -125,7 +125,7 @@ export interface StateT3<M extends URIS3, S, R, E, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -161,7 +161,7 @@ export interface StateM<M> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -198,7 +198,7 @@ export interface StateM1<M extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -235,7 +235,7 @@ export interface StateM2<M extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -272,7 +272,7 @@ export interface StateM2C<M extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -315,7 +315,7 @@ export interface StateM3<M extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -355,7 +355,7 @@ export interface StateM3C<M extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -412,7 +412,7 @@ export declare function ap<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -468,7 +468,7 @@ export declare function chain<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -520,7 +520,7 @@ export declare function evaluate<F>(F: Functor<F>): <S>(s: S) => <A>(ma: StateT<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -572,7 +572,7 @@ export declare function execute<F>(F: Functor<F>): <S>(s: S) => <A>(ma: StateT<F
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -620,7 +620,7 @@ export declare function fromF<F>(F: Functor<F>): <A, S>(ma: HKT<F, A>) => StateT
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -670,7 +670,7 @@ export declare function fromState<F>(F: Pointed<F>): <S, A>(sa: State<S, A>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -714,7 +714,7 @@ export declare function getStateM<M>(M: Monad<M>): StateM<M>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -769,7 +769,7 @@ export declare function map<F>(F: Functor<F>): <A, B>(f: (a: A) => B) => <S>(fa:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -813,7 +813,7 @@ export declare function of<F>(F: Pointed<F>): <A, S>(a: A) => StateT<F, S, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

@@ -22,7 +22,7 @@
  * arithmetic overflows, and the presence of `NaN` and `Infinity` values. The behaviour is unspecified in these cases.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { getSemiring } from './function'
@@ -33,7 +33,7 @@ import { getSemiring } from './function'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -54,7 +54,7 @@ export interface Semiring<A> {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

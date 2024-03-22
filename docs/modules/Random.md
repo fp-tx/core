@@ -33,7 +33,7 @@ export declare const random: IO<number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -58,7 +58,7 @@ export declare const randomBool: IO<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -83,7 +83,7 @@ export declare const randomElem: <A>(as: ReadonlyNonEmptyArray<A>) => IO<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -109,7 +109,7 @@ export declare function randomInt(low: number, high: number): IO<number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -135,7 +135,7 @@ export declare function randomRange(min: number, max: number): IO<number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

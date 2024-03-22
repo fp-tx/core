@@ -29,7 +29,7 @@ export interface BoundedJoinSemilattice<A> extends JoinSemilattice<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

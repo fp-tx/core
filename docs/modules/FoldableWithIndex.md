@@ -52,7 +52,7 @@ export interface FoldableWithIndex<F, I> extends Foldable<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -79,7 +79,7 @@ export interface FoldableWithIndex1<F extends URIS, I> extends Foldable1<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -106,7 +106,7 @@ export interface FoldableWithIndex2<F extends URIS2, I> extends Foldable2<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -133,7 +133,7 @@ export interface FoldableWithIndex2C<F extends URIS2, I, E> extends Foldable2C<F
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -160,7 +160,7 @@ export interface FoldableWithIndex3<F extends URIS3, I> extends Foldable3<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -187,7 +187,7 @@ export interface FoldableWithIndex3C<F extends URIS3, I, E> extends Foldable3C<F
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -214,7 +214,7 @@ export interface FoldableWithIndex4<F extends URIS4, I> extends Foldable4<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -241,7 +241,7 @@ export interface FoldableWithIndexComposition<F, FI, G, GI> extends FoldableComp
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -270,7 +270,7 @@ export interface FoldableWithIndexComposition11<F extends URIS, FI, G extends UR
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -299,7 +299,7 @@ export interface FoldableWithIndexComposition12<F extends URIS, FI, G extends UR
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -328,7 +328,7 @@ export interface FoldableWithIndexComposition12C<F extends URIS, FI, G extends U
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -359,7 +359,7 @@ export interface FoldableWithIndexComposition21<F extends URIS2, FI, G extends U
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -398,7 +398,7 @@ export interface FoldableWithIndexComposition22<F extends URIS2, FI, G extends U
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -433,7 +433,7 @@ export interface FoldableWithIndexComposition22C<F extends URIS2, FI, G extends 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -462,7 +462,7 @@ export interface FoldableWithIndexComposition2C1<F extends URIS2, FI, G extends 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -499,7 +499,7 @@ export declare function foldMapWithIndex<F, I, G, J>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -583,7 +583,7 @@ export declare function getFoldableWithIndexComposition<F, FI, G, GI>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -620,7 +620,7 @@ export declare function reduceRightWithIndex<F, I, G, J>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -656,7 +656,7 @@ export declare function reduceWithIndex<F, I, G, J>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

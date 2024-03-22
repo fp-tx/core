@@ -6,7 +6,7 @@
  * - Bounded: `bottom <= a <= top`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import * as O from './Ord'
@@ -18,7 +18,7 @@ import { type Ord } from './Ord'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -36,7 +36,7 @@ export interface Bounded<A> extends Ord<A> {
  * Clamp a value between bottom and top values.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Utils}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -47,7 +47,7 @@ export const clamp = <A>(B: Bounded<A>): ((a: A) => A) => O.clamp(B)(B.bottom, B
  * Reverses the Ord of a bound and swaps top and bottom values.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Utils}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -71,7 +71,7 @@ export const reverse = <A>(B: Bounded<A>): Bounded<A> => {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

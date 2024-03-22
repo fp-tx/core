@@ -98,7 +98,7 @@ export declare const Applicative: Applicative2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -121,7 +121,7 @@ export declare const Apply: Apply2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -144,7 +144,7 @@ export declare const Chain: chainable.Chain2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -169,7 +169,7 @@ export declare const ChainRec: ChainRec2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -192,7 +192,7 @@ export declare const FromState: FromState2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -215,7 +215,7 @@ export declare const Functor: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -238,7 +238,7 @@ export declare const Monad: Monad2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -261,7 +261,7 @@ export declare const Pointed: Pointed2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -289,7 +289,7 @@ export declare const tap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -314,7 +314,7 @@ export declare const get: <S>() => State<S, S>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -339,7 +339,7 @@ export declare const gets: <S, A>(f: (s: S) => A) => State<S, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -364,7 +364,7 @@ export declare const modify: <S>(f: (s: S) => S) => State<S, void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -387,7 +387,7 @@ export declare const of: <S, A>(a: A) => State<S, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -412,7 +412,7 @@ export declare const put: <S>(s: S) => State<S, void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -435,7 +435,7 @@ export declare const chainRec: ChainRec2<URI>['chainRec']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -460,7 +460,7 @@ export declare const chain: <S, A, B>(f: (a: A) => State<S, B>) => (ma: State<S,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -485,7 +485,7 @@ export declare const chainFirst: <S, A, B>(f: (a: A) => State<S, B>) => (ma: Sta
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -508,7 +508,7 @@ export declare const flap: <A>(a: A) => <E, B>(fab: State<E, (a: A) => B>) => St
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -533,7 +533,7 @@ export declare const map: <A, B>(f: (a: A) => B) => <E>(fa: State<E, A>) => Stat
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -558,7 +558,7 @@ export interface State<S, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -584,7 +584,7 @@ export declare const flatMap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -607,7 +607,7 @@ export declare const flatten: <E, A>(mma: State<E, State<E, A>>) => State<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -632,7 +632,7 @@ export declare const sequenceArray: <S, A>(arr: ReadonlyArray<State<S, A>>) => S
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -657,7 +657,7 @@ export declare const traverseArray: <A, S, B>(f: (a: A) => State<S, B>) => (as: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -684,7 +684,7 @@ export declare const traverseArrayWithIndex: <A, S, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -711,7 +711,7 @@ export declare const traverseReadonlyArrayWithIndex: <A, S, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -738,7 +738,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndex: <A, S, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -761,7 +761,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -784,7 +784,7 @@ export declare const URI = 'State'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -807,7 +807,7 @@ export declare const ap: <E, A>(fa: State<E, A>) => <B>(fab: State<E, (a: A) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -832,7 +832,7 @@ export declare const apFirst: <E, B>(second: State<E, B>) => <A>(first: State<E,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -858,7 +858,7 @@ export declare const apS: <N extends string, A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -883,7 +883,7 @@ export declare const apSecond: <E, B>(second: State<E, B>) => <A>(first: State<E
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -909,7 +909,7 @@ export declare const bind: <N extends string, A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -934,7 +934,7 @@ export declare const bindTo: <N extends string>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -978,7 +978,7 @@ export declare const evalState: <S, A>(ma: State<S, A>, s: S) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1004,7 +1004,7 @@ export declare const evaluate: <S>(s: S) => <A>(ma: State<S, A>) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1029,7 +1029,7 @@ export declare const execState: <S, A>(ma: State<S, A>, s: S) => S
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1055,7 +1055,7 @@ export declare const execute: <S>(s: S) => <A>(ma: State<S, A>) => S
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1100,7 +1100,7 @@ export declare const state: Monad2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 

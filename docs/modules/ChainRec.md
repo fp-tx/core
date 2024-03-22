@@ -51,7 +51,7 @@ export interface ChainRec<F> extends Chain<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -76,7 +76,7 @@ export interface ChainRec1<F extends URIS> extends Chain1<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -101,7 +101,7 @@ export interface ChainRec2<F extends URIS2> extends Chain2<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -126,7 +126,7 @@ export interface ChainRec2C<F extends URIS2, E> extends Chain2C<F, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -151,7 +151,7 @@ export interface ChainRec3<F extends URIS3> extends Chain3<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -176,7 +176,7 @@ export interface ChainRec3C<F extends URIS3, E> extends Chain3C<F, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -201,7 +201,7 @@ export interface ChainRec4<F extends URIS4> extends Chain4<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -257,7 +257,7 @@ export declare function chainRec2<M extends URIS>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -328,7 +328,7 @@ export declare function chainRec3<M extends URIS>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -378,7 +378,7 @@ export declare function forever<M extends URIS>(M: ChainRec1<M>): <A, B>(ma: Kin
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -401,7 +401,7 @@ export declare const tailRec2: <A, B, C>(a: A, b: B, f: (a: A, b: B) => E.Either
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -429,7 +429,7 @@ export declare const tailRec3: <A, B, C, D>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -483,7 +483,7 @@ export declare function untilSome<M extends URIS>(M: ChainRec1<M>): <A>(ma: Kind
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -545,7 +545,7 @@ export declare function whileSome<M extends URIS, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -626,7 +626,7 @@ export declare const tailRec: <A, B>(startWith: A, f: (a: A) => E.Either<A, B>) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

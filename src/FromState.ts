@@ -2,7 +2,7 @@
  * Lift a computation from the `State` monad.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Chain, type Chain2, type Chain3, type Chain4 } from './Chain'
@@ -18,7 +18,7 @@ import { type State } from './State'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -30,7 +30,7 @@ export interface FromState<F> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -42,7 +42,7 @@ export interface FromState2<F extends URIS2> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -54,7 +54,7 @@ export interface FromState3<F extends URIS3> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -67,7 +67,7 @@ export interface FromState3C<F extends URIS3, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -83,7 +83,7 @@ export interface FromState4<F extends URIS4> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -99,7 +99,7 @@ export function get<F>(F: FromState<F>): <S>() => HKT2<F, S, S> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -115,7 +115,7 @@ export function put<F>(F: FromState<F>): <S>(s: S) => HKT2<F, S, void> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -131,7 +131,7 @@ export function modify<F>(F: FromState<F>): <S>(f: Endomorphism<S>) => HKT2<F, S
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -151,7 +151,7 @@ export function gets<F>(F: FromState<F>): <S, A>(f: (s: S) => A) => HKT2<F, S, A
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -178,7 +178,7 @@ export function fromStateK<F>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

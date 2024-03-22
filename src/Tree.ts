@@ -2,7 +2,7 @@
  * Multi-way trees (aka rose trees) and forests, where a forest is
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Applicative as ApplicativeHKT, type Applicative1 } from './Applicative'
@@ -48,7 +48,7 @@ import { type PipeableTraverse1, type Traversable1 } from './Traversable'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -57,7 +57,7 @@ export type Forest<A> = Array<Tree<A>>
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -69,7 +69,7 @@ export interface Tree<A> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -83,7 +83,7 @@ export function make<A>(value: A, forest: Forest<A> = []): Tree<A> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -101,7 +101,7 @@ export function getShow<A>(S: Show<A>): Show<Tree<A>> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -131,7 +131,7 @@ const draw = (indentation: string, forest: Forest<string>): string => {
  * Neat 2-dimensional drawing of a forest
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -161,7 +161,7 @@ export function drawForest(forest: Forest<string>): string {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -173,7 +173,7 @@ export function drawTree(tree: Tree<string>): string {
  * Build a (possibly infinite) tree from a seed value in breadth-first order.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -187,7 +187,7 @@ export function unfoldTree<A, B>(b: B, f: (b: B) => [A, Array<B>]): Tree<A> {
  * Build a (possibly infinite) forest from a list of seed values in breadth-first order.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -200,7 +200,7 @@ export function unfoldForest<A, B>(bs: Array<B>, f: (b: B) => [A, Array<B>]): Fo
  * Monadic tree builder, in depth-first order
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -233,7 +233,7 @@ export function unfoldTreeM<M>(M: MonadHKT<M>): <A, B>(b: B, f: (b: B) => HKT<M,
  * Monadic forest builder, in depth-first order
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -299,7 +299,7 @@ export function unfoldForestM<M>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -331,7 +331,7 @@ const _traverse = <F>(F: ApplicativeHKT<F>): (<A, B>(ta: Tree<A>, f: (a: A) => H
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -339,7 +339,7 @@ export const ap: <A>(fa: Tree<A>) => <B>(fab: Tree<(a: A) => B>) => Tree<B> = fa
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -358,7 +358,7 @@ export const flatMap: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -369,7 +369,7 @@ export const extend: <A, B>(f: (wa: Tree<A>) => B) => (wa: Tree<A>) => Tree<B> =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -377,7 +377,7 @@ export const duplicate: <A>(wa: Tree<A>) => Tree<Tree<A>> = /*#__PURE__*/ extend
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -389,7 +389,7 @@ export const flatten: <A>(mma: Tree<Tree<A>>) => Tree<A> = /*#__PURE__*/ flatMap
  * use the type constructor `F` to represent some computational context.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -401,7 +401,7 @@ export const map: <A, B>(f: (a: A) => B) => (fa: Tree<A>) => Tree<B> = f => fa =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -419,7 +419,7 @@ export const reduce =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -429,7 +429,7 @@ export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: Tree<A>) 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -447,7 +447,7 @@ export const reduceRight =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Extract}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -456,7 +456,7 @@ export const extract: <A>(wa: Tree<A>) => A = wa => wa.value
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -480,7 +480,7 @@ export const traverse: PipeableTraverse1<URI> = <F>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -491,7 +491,7 @@ export const sequence: Traversable1<URI>['sequence'] = <F>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -500,7 +500,7 @@ export const of: <A>(a: A) => Tree<A> = a => make(a)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -509,7 +509,7 @@ export const URI = 'Tree'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -524,7 +524,7 @@ declare module './HKT' {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -536,7 +536,7 @@ export const Functor: Functor1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -545,7 +545,7 @@ export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -557,7 +557,7 @@ export const Pointed: Pointed1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -572,7 +572,7 @@ export const Apply: Apply1<URI> = {
  * Combine two effectful actions, keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -582,7 +582,7 @@ export const apFirst = /*#__PURE__*/ apFirst_(Apply)
  * Combine two effectful actions, keeping only the result of the second.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -590,7 +590,7 @@ export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -604,7 +604,7 @@ export const Applicative: Applicative1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -618,7 +618,7 @@ export const Chain: Chain1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -636,7 +636,7 @@ export const Monad: Monad1<URI> = {
  * keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -644,7 +644,7 @@ export const chainFirst: <A, B>(f: (a: A) => Tree<B>) => (first: Tree<A>) => Tre
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -658,7 +658,7 @@ export const Foldable: Foldable1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -675,7 +675,7 @@ export const Traversable: Traversable1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -693,7 +693,7 @@ export const Comonad: Comonad1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -702,7 +702,7 @@ export const Do: Tree<{}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -714,7 +714,7 @@ const let_ = /*#__PURE__*/ let__(Functor)
 export {
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Do notation}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -724,7 +724,7 @@ export {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -733,7 +733,7 @@ export const bind = /*#__PURE__*/ bind_(Chain)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -746,7 +746,7 @@ export const apS = /*#__PURE__*/ apS_(Apply)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -757,7 +757,7 @@ export function elem<A>(E: Eq<A>): (a: A, fa: Tree<A>) => boolean {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -774,7 +774,7 @@ export const exists =
  * Alias of `flatMap`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -791,7 +791,7 @@ export const chain: <A, B>(f: (a: A) => Tree<B>) => (ma: Tree<A>) => Tree<B> = f
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

@@ -56,7 +56,7 @@ export declare const Bifunctor: Bifunctor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -79,7 +79,7 @@ export declare const Functor: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -102,7 +102,7 @@ export declare const separated: <E, A>(left: E, right: A) => Separated<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -127,7 +127,7 @@ export declare const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: Separated<E, A>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -152,7 +152,7 @@ export declare const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -175,7 +175,7 @@ export declare const flap: <A>(a: A) => <E, B>(fab: Separated<E, (a: A) => B>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -200,7 +200,7 @@ export declare const map: <A, B>(f: (a: A) => B) => <E>(fa: Separated<E, A>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -228,7 +228,7 @@ export interface Separated<E, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -251,7 +251,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -274,7 +274,7 @@ export declare const URI = 'Separated'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -297,7 +297,7 @@ export declare const left: <E, A>(s: Separated<E, A>) => E
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -320,7 +320,7 @@ export declare const right: <E, A>(s: Separated<E, A>) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

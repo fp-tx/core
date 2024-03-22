@@ -33,7 +33,7 @@ const config: Config = {
   themeConfig: {
     image: 'https://avatars.githubusercontent.com/u/151417963?s=200&v=4',
     navbar: {
-      title: `documenter v${pkg.version}`,
+      title: `core v${pkg.version}`,
       logo: {
         alt: 'fp-tx/core Logo',
         src: 'https://avatars.githubusercontent.com/u/151417963?s=200&v=4',

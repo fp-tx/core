@@ -69,7 +69,7 @@ export declare const Contravariant: Contravariant1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -97,7 +97,7 @@ export declare const getMonoid: <A = never>() => Monoid<Ord<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -186,7 +186,7 @@ export declare const getSemigroup: <A = never>() => Semigroup<Ord<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -250,7 +250,7 @@ export declare const fromCompare: <A>(compare: (first: A, second: A) => Ordering
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -273,7 +273,7 @@ export declare const equalsDefault: <A>(compare: (first: A, second: A) => Orderi
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -298,7 +298,7 @@ export interface Ord<A> extends Eq<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -321,7 +321,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -344,7 +344,7 @@ export declare const URI = 'Ord'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -369,7 +369,7 @@ export declare const between: <A>(O: Ord<A>) => (low: A, hi: A) => (a: A) => boo
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -394,7 +394,7 @@ export declare const clamp: <A>(O: Ord<A>) => (low: A, hi: A) => (a: A) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -422,7 +422,7 @@ export declare const contramap: <A, B>(f: (b: B) => A) => (fa: Ord<A>) => Ord<B>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -477,7 +477,7 @@ export declare const equals: <A>(O: Ord<A>) => (second: A) => (first: A) => bool
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -502,7 +502,7 @@ export declare const geq: <A>(O: Ord<A>) => (first: A, second: A) => boolean
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -527,7 +527,7 @@ export declare const getDualOrd: <A>(O: Ord<A>) => Ord<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -557,7 +557,7 @@ export declare const getTupleOrd: <T extends ReadonlyArray<Ord<any>>>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -583,7 +583,7 @@ export declare const gt: <A>(O: Ord<A>) => (first: A, second: A) => boolean
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -608,7 +608,7 @@ export declare const leq: <A>(O: Ord<A>) => (first: A, second: A) => boolean
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -633,7 +633,7 @@ export declare const lt: <A>(O: Ord<A>) => (first: A, second: A) => boolean
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -658,7 +658,7 @@ export declare const max: <A>(O: Ord<A>) => (first: A, second: A) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -683,7 +683,7 @@ export declare const min: <A>(O: Ord<A>) => (first: A, second: A) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -708,7 +708,7 @@ export declare const ord: Contravariant1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -734,7 +734,7 @@ export declare const ordBoolean: Ord<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -760,7 +760,7 @@ export declare const ordDate: Ord<Date>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -786,7 +786,7 @@ export declare const ordNumber: Ord<number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -812,7 +812,7 @@ export declare const ordString: Ord<string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -836,7 +836,7 @@ export declare const reverse: <A>(O: Ord<A>) => Ord<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -859,7 +859,7 @@ export declare const trivial: Ord<unknown>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -884,7 +884,7 @@ export declare const tuple: <A extends readonly unknown[]>(...ords: { [K in keyo
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 

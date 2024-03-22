@@ -7,7 +7,7 @@
  * - Left zero: `M.chain(M.throwError(e), f) = M.throwError(e)`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import {
@@ -29,7 +29,7 @@ import { type Monad, type Monad1, type Monad2, type Monad2C, type Monad3, type M
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -40,7 +40,7 @@ export interface MonadThrow<M> extends Monad<M> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -51,7 +51,7 @@ export interface MonadThrow1<M extends URIS> extends Monad1<M> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -62,7 +62,7 @@ export interface MonadThrow2<M extends URIS2> extends Monad2<M> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -73,7 +73,7 @@ export interface MonadThrow2C<M extends URIS2, E> extends Monad2C<M, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -84,7 +84,7 @@ export interface MonadThrow3<M extends URIS3> extends Monad3<M> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -95,7 +95,7 @@ export interface MonadThrow3C<M extends URIS3, E> extends Monad3C<M, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public

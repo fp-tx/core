@@ -48,7 +48,7 @@ export interface NaturalTransformation<F, G> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -73,7 +73,7 @@ export interface NaturalTransformation11<F extends URIS, G extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -98,7 +98,7 @@ export interface NaturalTransformation12<F extends URIS, G extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -123,7 +123,7 @@ export interface NaturalTransformation12C<F extends URIS, G extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -148,7 +148,7 @@ export interface NaturalTransformation13<F extends URIS, G extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -173,7 +173,7 @@ export interface NaturalTransformation13C<F extends URIS, G extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -198,7 +198,7 @@ export interface NaturalTransformation14<F extends URIS, G extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -223,7 +223,7 @@ export interface NaturalTransformation14C<F extends URIS, G extends URIS4, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -248,7 +248,7 @@ export interface NaturalTransformation21<F extends URIS2, G extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -273,7 +273,7 @@ export interface NaturalTransformation22<F extends URIS2, G extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -298,7 +298,7 @@ export interface NaturalTransformation22C<F extends URIS2, G extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -323,7 +323,7 @@ export interface NaturalTransformation23<F extends URIS2, G extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -348,7 +348,7 @@ export interface NaturalTransformation23C<F extends URIS2, G extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -373,7 +373,7 @@ export interface NaturalTransformation23R<F extends URIS2, G extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -398,7 +398,7 @@ export interface NaturalTransformation23RC<F extends URIS2, G extends URIS3, E> 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -423,7 +423,7 @@ export interface NaturalTransformation24<F extends URIS2, G extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -448,7 +448,7 @@ export interface NaturalTransformation24R<F extends URIS2, G extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -473,7 +473,7 @@ export interface NaturalTransformation24S<F extends URIS2, G extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -498,7 +498,7 @@ export interface NaturalTransformation33<F extends URIS3, G extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -523,7 +523,7 @@ export interface NaturalTransformation34<F extends URIS3, G extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

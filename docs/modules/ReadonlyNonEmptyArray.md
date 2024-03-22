@@ -171,7 +171,7 @@ export declare const Alt: Alt1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -194,7 +194,7 @@ export declare const Applicative: Applicative1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -217,7 +217,7 @@ export declare const Apply: Apply1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -240,7 +240,7 @@ export declare const Chain: Chain1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -263,7 +263,7 @@ export declare const Comonad: Comonad1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -286,7 +286,7 @@ export declare const Foldable: Foldable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -309,7 +309,7 @@ export declare const FoldableWithIndex: FoldableWithIndex1<URI, number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -332,7 +332,7 @@ export declare const Functor: Functor1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -355,7 +355,7 @@ export declare const FunctorWithIndex: FunctorWithIndex1<URI, number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -378,7 +378,7 @@ export declare const Monad: Monad1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -401,7 +401,7 @@ export declare const Pointed: Pointed1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -424,7 +424,7 @@ export declare const Traversable: Traversable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -447,7 +447,7 @@ export declare const TraversableWithIndex: TraversableWithIndex1<URI, number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -470,7 +470,7 @@ export declare const getEq: <A>(E: Eq<A>) => Eq<ReadonlyNonEmptyArray<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -506,7 +506,7 @@ export declare const getSemigroup: <A = never>() => Se.Semigroup<ReadonlyNonEmpt
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -529,7 +529,7 @@ export declare const getShow: <A>(S: Show<A>) => Show<ReadonlyNonEmptyArray<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -552,7 +552,7 @@ export declare const extract: Comonad1<URI>['extract']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -580,7 +580,7 @@ export declare const makeBy: <A>(f: (i: number) => A) => (n: number) => Readonly
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -613,7 +613,7 @@ export declare const of: <A>(a: A) => ReadonlyNonEmptyArray<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -638,7 +638,7 @@ export declare const range: (start: number, end: number) => ReadonlyNonEmptyArra
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -674,7 +674,7 @@ export declare const replicate: <A>(a: A) => (n: number) => ReadonlyNonEmptyArra
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -706,7 +706,7 @@ export declare const fromArray: <A>(as: A[]) => Option<ReadonlyNonEmptyArray<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -731,7 +731,7 @@ export declare const fromReadonlyArray: <A>(as: readonly A[]) => Option<Readonly
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -754,7 +754,7 @@ export declare const Do: ReadonlyNonEmptyArray<{}>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -782,7 +782,7 @@ export declare const apS: <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -810,7 +810,7 @@ export declare const bind: <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -835,7 +835,7 @@ export declare const bindTo: <N extends string>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -865,7 +865,7 @@ export declare const alt: <A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -910,7 +910,7 @@ export declare const altW: <B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -950,7 +950,7 @@ export declare const foldMap: <S>(S: Se.Semigroup<S>) => <A>(f: (a: A) => S) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -977,7 +977,7 @@ export declare const foldMapWithIndex: <S>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1000,7 +1000,7 @@ export declare const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => (as: Readonly
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1023,7 +1023,7 @@ export declare const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => (as: Rea
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1049,7 +1049,7 @@ export declare const reduceRightWithIndex: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1075,7 +1075,7 @@ export declare const reduceWithIndex: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1102,7 +1102,7 @@ export declare const chain: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1125,7 +1125,7 @@ export declare const flap: <A>(a: A) => <B>(fab: ReadonlyNonEmptyArray<(a: A) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1150,7 +1150,7 @@ export declare const map: <A, B>(f: (a: A) => B) => (as: ReadonlyNonEmptyArray<A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1175,7 +1175,7 @@ export declare const mapWithIndex: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1200,7 +1200,7 @@ export type ReadonlyNonEmptyArray<A> = ReadonlyArray<A> & {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1225,7 +1225,7 @@ export declare const matchLeft: <A, B>(f: (head: A, tail: readonly A[]) => B) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1250,7 +1250,7 @@ export declare const matchRight: <A, B>(f: (init: readonly A[], last: A) => B) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1277,7 +1277,7 @@ export declare const chainFirst: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1317,7 +1317,7 @@ export declare const chainWithIndex: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1343,7 +1343,7 @@ export declare const flatMap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1381,7 +1381,7 @@ export declare const flatten: <A>(mma: ReadonlyNonEmptyArray<ReadonlyNonEmptyArr
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1404,7 +1404,7 @@ export declare const traverseWithIndex: PipeableTraverseWithIndex1<URI, number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1427,7 +1427,7 @@ export declare const sequence: Traversable1<URI>['sequence']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1450,7 +1450,7 @@ export declare const traverse: PipeableTraverse1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1473,7 +1473,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1496,7 +1496,7 @@ export declare const URI = 'ReadonlyNonEmptyArray'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1521,7 +1521,7 @@ export declare const ap: <A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1548,7 +1548,7 @@ export declare const apFirst: <B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1575,7 +1575,7 @@ export declare const apSecond: <B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1602,7 +1602,7 @@ export declare const chop: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1629,7 +1629,7 @@ export declare const chunksOf: (
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1669,7 +1669,7 @@ export declare function concat<A>(first: ReadonlyNonEmptyArray<A>, second: Reado
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1692,7 +1692,7 @@ export declare const concatAll: <A>(S: Se.Semigroup<A>) => (as: ReadonlyNonEmpty
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1724,7 +1724,7 @@ export declare function concatW<B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1754,7 +1754,7 @@ export declare function cons<A>(head: A, tail: ReadonlyArray<A>): ReadonlyNonEmp
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1778,7 +1778,7 @@ export declare const duplicate: <A>(ma: ReadonlyNonEmptyArray<A>) => ReadonlyNon
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1803,7 +1803,7 @@ export declare const extend: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1843,7 +1843,7 @@ export declare function filter<A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1871,7 +1871,7 @@ export declare const filterWithIndex: <A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1897,7 +1897,7 @@ export declare const fold: <A>(S: Se.Semigroup<A>) => (as: ReadonlyNonEmptyArray
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1921,7 +1921,7 @@ export declare const getUnionSemigroup: <A>(E: Eq<A>) => Se.Semigroup<ReadonlyNo
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1950,7 +1950,7 @@ export declare function group<B>(E: Eq<B>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1986,7 +1986,7 @@ export declare const groupBy: <A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2026,7 +2026,7 @@ export declare function groupSort<B>(O: Ord<B>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2050,7 +2050,7 @@ export declare const head: <A>(as: ReadonlyNonEmptyArray<A>) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2075,7 +2075,7 @@ export declare const init: <A>(as: ReadonlyNonEmptyArray<A>) => readonly A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2109,7 +2109,7 @@ export declare const insertAt: <A>(i: number, a: A) => (as: readonly A[]) => Opt
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2135,7 +2135,7 @@ export declare const intercalate: <A>(S: Se.Semigroup<A>) => (middle: A) => (as:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2169,7 +2169,7 @@ export declare const intersperse: <A>(middle: A) => (as: ReadonlyNonEmptyArray<A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2200,7 +2200,7 @@ export declare const last: <A>(as: ReadonlyNonEmptyArray<A>) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2245,7 +2245,7 @@ export declare const max: <A>(O: Ord<A>) => (as: ReadonlyNonEmptyArray<A>) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2268,7 +2268,7 @@ export declare const min: <A>(O: Ord<A>) => (as: ReadonlyNonEmptyArray<A>) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2294,7 +2294,7 @@ export declare const modifyAt: <A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2319,7 +2319,7 @@ export declare const modifyHead: <A>(f: Endomorphism<A>) => (as: ReadonlyNonEmpt
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2344,7 +2344,7 @@ export declare const modifyLast: <A>(f: Endomorphism<A>) => (as: ReadonlyNonEmpt
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2369,7 +2369,7 @@ export declare const prependAll: <A>(middle: A) => (as: ReadonlyNonEmptyArray<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2402,7 +2402,7 @@ export declare const prependToAll: <A>(middle: A) => (as: ReadonlyNonEmptyArray<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2433,7 +2433,7 @@ export declare const readonlyNonEmptyArray: Monad1<URI> &
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2457,7 +2457,7 @@ export declare const reverse: <A>(as: ReadonlyNonEmptyArray<A>) => ReadonlyNonEm
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2482,7 +2482,7 @@ export declare const rotate: (n: number) => <A>(as: ReadonlyNonEmptyArray<A>) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2516,7 +2516,7 @@ export declare const snoc: <A>(init: readonly A[], end: A) => ReadonlyNonEmptyAr
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2540,7 +2540,7 @@ export declare const sort: <B>(O: Ord<B>) => <A extends B>(as: ReadonlyNonEmptyA
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2567,7 +2567,7 @@ export declare const sortBy: <B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2635,7 +2635,7 @@ export declare const splitAt: (
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2658,7 +2658,7 @@ export declare const tail: <A>(as: ReadonlyNonEmptyArray<A>) => ReadonlyArray<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2683,7 +2683,7 @@ export declare const unappend: <A>(as: ReadonlyNonEmptyArray<A>) => readonly [re
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2716,7 +2716,7 @@ export declare const uncons: <A>(as: ReadonlyNonEmptyArray<A>) => readonly [A, R
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2742,7 +2742,7 @@ export declare const union: <A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2767,7 +2767,7 @@ export declare const uniq: <A>(E: Eq<A>) => (as: ReadonlyNonEmptyArray<A>) => Re
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2801,7 +2801,7 @@ export declare const unprepend: <A>(as: ReadonlyNonEmptyArray<A>) => readonly [A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2834,7 +2834,7 @@ export declare const unsnoc: <A>(as: ReadonlyNonEmptyArray<A>) => readonly [Read
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2860,7 +2860,7 @@ export declare const unzip: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2886,7 +2886,7 @@ export declare const updateAt: <A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2911,7 +2911,7 @@ export declare const updateHead: <A>(a: A) => (as: ReadonlyNonEmptyArray<A>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2936,7 +2936,7 @@ export declare const updateLast: <A>(a: A) => (as: ReadonlyNonEmptyArray<A>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2969,7 +2969,7 @@ export declare function zip<A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2996,7 +2996,7 @@ export declare const zipWith: <A, B, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

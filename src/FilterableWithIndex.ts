@@ -1,6 +1,6 @@
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Either } from './Either'
@@ -42,7 +42,7 @@ import { type Separated } from './Separated'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -50,7 +50,7 @@ export type RefinementWithIndex<I, A, B extends A> = (i: I, a: A) => a is B
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -58,7 +58,7 @@ export type PredicateWithIndex<I, A> = (i: I, a: A) => boolean
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -69,7 +69,7 @@ export interface FilterWithIndex<F, I> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -80,7 +80,7 @@ export interface PartitionWithIndex<F, I> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -97,7 +97,7 @@ export interface FilterableWithIndex<F, I> extends FunctorWithIndex<F, I>, Filte
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -108,7 +108,7 @@ export interface FilterWithIndex1<F extends URIS, I> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -119,7 +119,7 @@ export interface PartitionWithIndex1<F extends URIS, I> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -136,7 +136,7 @@ export interface FilterableWithIndex1<F extends URIS, I> extends FunctorWithInde
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -147,7 +147,7 @@ export interface FilterWithIndex2<F extends URIS2, I> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -161,7 +161,7 @@ export interface PartitionWithIndex2<F extends URIS2, I> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -178,7 +178,7 @@ export interface FilterableWithIndex2<F extends URIS2, I> extends FunctorWithInd
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -189,7 +189,7 @@ export interface FilterWithIndex2C<F extends URIS2, I, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -203,7 +203,7 @@ export interface PartitionWithIndex2C<F extends URIS2, I, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -220,7 +220,7 @@ export interface FilterableWithIndex2C<F extends URIS2, I, E> extends FunctorWit
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -231,7 +231,7 @@ export interface FilterWithIndex3<F extends URIS3, I> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -242,7 +242,7 @@ export interface FilterWithIndex3C<F extends URIS3, I, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -259,7 +259,7 @@ export interface FilterableWithIndex3C<F extends URIS3, I, E> extends FunctorWit
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -276,7 +276,7 @@ export interface PartitionWithIndex3<F extends URIS3, I> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -293,7 +293,7 @@ export interface PartitionWithIndex3C<F extends URIS3, I, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -310,7 +310,7 @@ export interface FilterableWithIndex3<F extends URIS3, I> extends FunctorWithInd
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -324,7 +324,7 @@ export interface FilterWithIndex4<F extends URIS4, I> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -341,7 +341,7 @@ export interface PartitionWithIndex4<F extends URIS4, I> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public

@@ -39,7 +39,7 @@ export declare const getMonoid: <A = never>() => Monoid<Endomorphism<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -64,7 +64,7 @@ export declare const getSemigroup: <A = never>() => Semigroup<Endomorphism<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -87,7 +87,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -110,7 +110,7 @@ export declare const URI = 'Endomorphism'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -135,7 +135,7 @@ export interface Endomorphism<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

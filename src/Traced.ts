@@ -1,6 +1,6 @@
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Comonad2C } from './Comonad'
@@ -14,7 +14,7 @@ import { type Monoid } from './Monoid'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -28,7 +28,7 @@ export interface Traced<P, A> {
  * Extracts a value at a relative position which depends on the current value.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -40,7 +40,7 @@ export function tracks<P, A>(M: Monoid<P>, f: (a: A) => P): (wa: Traced<P, A>) =
  * Get the current position
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -52,7 +52,7 @@ export function listen<P, A>(wa: Traced<P, A>): Traced<P, [A, P]> {
  * Get a value which depends on the current position
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -64,7 +64,7 @@ export function listens<P, B>(f: (p: P) => B): <A>(wa: Traced<P, A>) => Traced<P
  * Apply a function to the current position
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -74,7 +74,7 @@ export function censor<P>(f: (p: P) => P): <A>(wa: Traced<P, A>) => Traced<P, A>
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -105,7 +105,7 @@ const _map: Functor2<URI>['map'] = (fa, f) => pipe(fa, map(f))
  * use the type constructor `F` to represent some computational context.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -114,7 +114,7 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: Traced<E, A>) => Traced<E, B
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -123,7 +123,7 @@ export const URI = 'Traced'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -138,7 +138,7 @@ declare module './HKT' {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -150,7 +150,7 @@ export const Functor: Functor2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -166,7 +166,7 @@ export const flap = /*#__PURE__*/ flap_(Functor)
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

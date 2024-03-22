@@ -59,7 +59,7 @@ export interface Foldable<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -87,7 +87,7 @@ export interface Foldable1<F extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -115,7 +115,7 @@ export interface Foldable2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -144,7 +144,7 @@ export interface Foldable2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -172,7 +172,7 @@ export interface Foldable3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -201,7 +201,7 @@ export interface Foldable3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -229,7 +229,7 @@ export interface Foldable4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -256,7 +256,7 @@ export interface FoldableComposition<F, G> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -284,7 +284,7 @@ export interface FoldableComposition11<F extends URIS, G extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -312,7 +312,7 @@ export interface FoldableComposition12<F extends URIS, G extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -340,7 +340,7 @@ export interface FoldableComposition12C<F extends URIS, G extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -368,7 +368,7 @@ export interface FoldableComposition21<F extends URIS2, G extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -396,7 +396,7 @@ export interface FoldableComposition22<F extends URIS2, G extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -424,7 +424,7 @@ export interface FoldableComposition22C<F extends URIS2, G extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -452,7 +452,7 @@ export interface FoldableComposition2C1<F extends URIS2, G extends URIS, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -517,7 +517,7 @@ export declare function foldM<M, F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -554,7 +554,7 @@ export declare function foldMap<F, G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -635,7 +635,7 @@ export declare function getFoldableComposition<F, G>(F: Foldable<F>, G: Foldable
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -687,7 +687,7 @@ export declare function intercalate<M, F>(M: Monoid<M>, F: Foldable<F>): (middle
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -734,7 +734,7 @@ export declare function reduce<F, G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -801,7 +801,7 @@ export declare function reduceM<M, F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -855,7 +855,7 @@ export declare function reduceRight<F, G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -880,7 +880,7 @@ export declare const toArray: typeof toReadonlyArray
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -941,7 +941,7 @@ export declare function toReadonlyArray<F>(F: Foldable<F>): <A>(fa: HKT<F, A>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1008,7 +1008,7 @@ export declare function traverse_<M, F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 

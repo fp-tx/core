@@ -55,7 +55,7 @@
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Alt1 } from './Alt'
@@ -109,7 +109,7 @@ import { guard as guard_, type Zero1 } from './Zero'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -120,7 +120,7 @@ export interface None {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -132,7 +132,7 @@ export interface Some<A> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -147,7 +147,7 @@ export type Option<A> = None | Some<A>
  * `None` doesn't have a constructor, instead you can use it directly as a value. Represents a missing value.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -158,7 +158,7 @@ export const none: Option<never> = _.none
  * Constructs a `Some`. Represents an optional value that exists.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -180,7 +180,7 @@ export const some: <A>(a: A) => Option<A> = _.some
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -206,7 +206,7 @@ export function fromPredicate<A>(predicate: Predicate<A>): (a: A) => Option<A> {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -227,7 +227,7 @@ export const getLeft = <E, A>(ma: Either<E, A>): Option<E> => (ma._tag === 'Righ
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -263,7 +263,7 @@ const _partitionMap: Filterable1<URI>['partitionMap'] = (fa, f) => pipe(fa, part
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -272,7 +272,7 @@ export const URI = 'Option'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -287,7 +287,7 @@ declare module './HKT' {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -312,7 +312,7 @@ export const getShow = <A>(S: Show<A>): Show<Option<A>> => ({
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -346,7 +346,7 @@ export const getEq = <A>(E: Eq<A>): Eq<Option<A>> => ({
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -386,7 +386,7 @@ export const getOrd = <A>(O: Ord<A>): Ord<Option<A>> => ({
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -401,7 +401,7 @@ export const getMonoid = <A>(S: Semigroup<A>): Monoid<Option<A>> => ({
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -411,7 +411,7 @@ export const map: <A, B>(f: (a: A) => B) => (fa: Option<A>) => Option<B> = f => 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -425,7 +425,7 @@ export const Functor: Functor1<URI> = {
  * Maps the `Some` value of this `Option` to the specified constant value.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -439,7 +439,7 @@ export const as: {
  * Maps the `Some` value of this `Option` to the void constant value.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -448,7 +448,7 @@ export const asUnit: <_>(self: Option<_>) => Option<void> = asUnit_(Functor)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -457,7 +457,7 @@ export const of: <A>(a: A) => Option<A> = some
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -469,7 +469,7 @@ export const Pointed: Pointed1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -480,7 +480,7 @@ export const ap: <A>(fa: Option<A>) => <B>(fab: Option<(a: A) => B>) => Option<B
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -493,7 +493,7 @@ export const Apply: Apply1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -507,7 +507,7 @@ export const Applicative: Applicative1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -519,7 +519,7 @@ export const flatMap: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -533,7 +533,7 @@ export const Chain: chainable.Chain1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instance methods}
  * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
@@ -559,7 +559,7 @@ export const chainRec: ChainRec1<URI>['chainRec'] = <A, B>(a: A, f: (a: A) => Op
  * ChainRec for `Option`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
@@ -571,7 +571,7 @@ export const ChainRec: ChainRec1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -586,7 +586,7 @@ export const Monad: Monad1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -596,7 +596,7 @@ export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => (fa: Option<A>) => B 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -606,7 +606,7 @@ export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: Option<A>
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -616,7 +616,7 @@ export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => (fa: Option<A>) 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -634,7 +634,7 @@ export const Foldable: Foldable1<URI> = {
  * @example
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -652,7 +652,7 @@ export const orElse: {
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -663,7 +663,7 @@ export const altW: <B>(that: LazyArg<Option<B>>) => <A>(fa: Option<A>) => Option
  * Alias of `orElse`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -672,7 +672,7 @@ export const alt: <A>(that: LazyArg<Option<A>>) => (fa: Option<A>) => Option<A> 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -685,7 +685,7 @@ export const Alt: Alt1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -693,7 +693,7 @@ export const zero: <A>() => Option<A> = () => none
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -705,7 +705,7 @@ export const Zero: Zero1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -714,7 +714,7 @@ export const guard = /*#__PURE__*/ guard_(Zero, Pointed)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -730,7 +730,7 @@ export const Alternative: Alternative1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -739,7 +739,7 @@ export const extend: <A, B>(f: (wa: Option<A>) => B) => (wa: Option<A>) => Optio
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -752,7 +752,7 @@ export const Extend: Extend1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -763,7 +763,7 @@ const defaultSeparated = /*#__PURE__*/ separated(none, none)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -773,7 +773,7 @@ export const separate: <A, B>(ma: Option<Either<A, B>>) => Separated<Option<A>, 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -786,7 +786,7 @@ export const Compactable: Compactable1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -804,7 +804,7 @@ export const filter: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -814,7 +814,7 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Option<A>) => Opt
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -830,7 +830,7 @@ export const partition: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -841,7 +841,7 @@ export const partitionMap: <A, B, C>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -859,7 +859,7 @@ export const Filterable: Filterable1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -872,7 +872,7 @@ export const traverse: PipeableTraverse1<URI> =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -884,7 +884,7 @@ export const sequence: Traversable1<URI>['sequence'] =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -905,7 +905,7 @@ const _wilt: Witherable1<URI>['wilt'] = /*#__PURE__*/ wiltDefault(Traversable, C
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -919,7 +919,7 @@ export const wither: PipeableWither1<URI> = <F>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -933,7 +933,7 @@ export const wilt: PipeableWilt1<URI> = <F>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -958,7 +958,7 @@ export const Witherable: Witherable1<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -966,7 +966,7 @@ export const throwError: MonadThrow1<URI>['throwError'] = () => none
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -986,7 +986,7 @@ export const MonadThrow: MonadThrow1<URI> = {
  * Alias of [getRight](#getright)
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -995,7 +995,7 @@ export const fromEither: <A>(fa: Either<unknown, A>) => Option<A> = getRight
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1022,7 +1022,7 @@ export const FromEither: FromEither1<URI> = {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Refinements}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1042,7 +1042,7 @@ export const isSome: <A>(fa: Option<A>) => fa is Some<A> = _.isSome
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Refinements}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1055,7 +1055,7 @@ export const isNone = (fa: Option<unknown>): fa is None => fa._tag === 'None'
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1069,7 +1069,7 @@ export const matchW =
  * Alias of [`matchW`](#matchw).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1110,7 +1110,7 @@ export const foldW = matchW
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1121,7 +1121,7 @@ export const match: <A, B>(onNone: LazyArg<B>, onSome: (a: A) => B) => (ma: Opti
  * Alias of [`match`](#match).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1134,7 +1134,7 @@ export const fold = match
  * The `W` suffix (short for **W**idening) means that the handler return type will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1170,7 +1170,7 @@ export const getOrElseW =
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1179,7 +1179,7 @@ export const getOrElse: <A>(onNone: LazyArg<A>) => (ma: Option<A>) => A = getOrE
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1190,7 +1190,7 @@ export const flap = /*#__PURE__*/ flap_(Functor)
  * Combine two effectful actions, keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1200,7 +1200,7 @@ export const apFirst = /*#__PURE__*/ apFirst_(Apply)
  * Combine two effectful actions, keeping only the result of the second.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1208,7 +1208,7 @@ export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1220,7 +1220,7 @@ export const flatten: <A>(mma: Option<Option<A>>) => Option<A> = compact
  * keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1252,7 +1252,7 @@ export const tap: {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1264,7 +1264,7 @@ export const tapEither: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1272,7 +1272,7 @@ export const duplicate: <A>(ma: Option<A>) => Option<Option<A>> = /*#__PURE__*/ 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1283,7 +1283,7 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1295,7 +1295,7 @@ export const chainEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Option<A
  * Alias of `tapEither`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1317,7 +1317,7 @@ export const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Opt
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1348,7 +1348,7 @@ export const fromNullable = <A>(a: A): Option<NonNullable<A>> => (a == null ? no
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Interop}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1365,7 +1365,7 @@ export const tryCatch = <A>(f: LazyArg<A>): Option<A> => {
  * Converts a function that may throw to one returning a `Option`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Interop}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1395,7 +1395,7 @@ export const tryCatchK =
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1449,7 +1449,7 @@ export const fromNullableK: <A extends ReadonlyArray<unknown>, B>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1473,7 +1473,7 @@ export const chainNullableK =
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1494,7 +1494,7 @@ export const toNullable: <A>(ma: Option<A>) => A | null = /*#__PURE__*/ match(co
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1521,7 +1521,7 @@ export const toUndefined: <A>(ma: Option<A>) => A | undefined = /*#__PURE__*/ ma
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1572,7 +1572,7 @@ export function elem<A>(E: Eq<A>): (a: A, ma?: Option<A>) => boolean | ((ma: Opt
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1587,7 +1587,7 @@ export const exists =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1596,7 +1596,7 @@ export const Do: Option<{}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1608,7 +1608,7 @@ const let_ = /*#__PURE__*/ let__(Functor)
 export {
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Do notation}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -1618,7 +1618,7 @@ export {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1627,7 +1627,7 @@ export const bind = /*#__PURE__*/ chainable.bind(Chain)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1636,7 +1636,7 @@ export const apS = /*#__PURE__*/ apS_(Apply)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1654,7 +1654,7 @@ const do_: <MA extends OptionIterable<any>, A>(
 export {
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Do notation}
    * @public
    */
@@ -1669,7 +1669,7 @@ export {
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1696,7 +1696,7 @@ export const traverseReadonlyNonEmptyArrayWithIndex =
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1712,7 +1712,7 @@ export const traverseReadonlyArrayWithIndex = <A, B>(
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1725,7 +1725,7 @@ export const traverseArrayWithIndex: <A, B>(
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1737,7 +1737,7 @@ export const traverseArray = <A, B>(f: (a: A) => Option<B>): ((as: ReadonlyArray
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1753,7 +1753,7 @@ export const sequenceArray: <A>(arr: ReadonlyArray<Option<A>>) => Option<Readonl
  * Alias of `flatMap`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1764,7 +1764,7 @@ export const chain: <A, B>(f: (a: A) => Option<B>) => (ma: Option<A>) => Option<
  * Alias of `tap`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1780,7 +1780,7 @@ export const chainFirst: <A, B>(f: (a: A) => Option<B>) => (first: Option<A>) =>
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1793,7 +1793,7 @@ export function getRefinement<A, B extends A>(getOption: (a: A) => Option<B>): R
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1805,7 +1805,7 @@ export const mapNullable = chainNullableK
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1844,7 +1844,7 @@ export const option: Monad1<URI> &
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1855,7 +1855,7 @@ export const getApplySemigroup: <A>(S: Semigroup<A>) => Semigroup<Option<A>> = /
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1896,7 +1896,7 @@ export const getApplyMonoid: <A>(M: Monoid<A>) => Monoid<Option<A>> = /*#__PURE_
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1937,7 +1937,7 @@ export const getFirstMonoid = <A = never>(): Monoid<Option<A>> => getMonoid(firs
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

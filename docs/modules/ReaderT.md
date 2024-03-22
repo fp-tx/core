@@ -78,7 +78,7 @@ export declare function fromNaturalTransformation<F, G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -111,7 +111,7 @@ export interface ReaderM<M> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -145,7 +145,7 @@ export interface ReaderM1<M extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -179,7 +179,7 @@ export interface ReaderM2<M extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -213,7 +213,7 @@ export interface ReaderM2C<M extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -253,7 +253,7 @@ export interface ReaderM3<M extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -279,7 +279,7 @@ export interface ReaderT<M, R, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -305,7 +305,7 @@ export interface ReaderT1<M extends URIS, R, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -331,7 +331,7 @@ export interface ReaderT2<M extends URIS2, R, E, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -357,7 +357,7 @@ export interface ReaderT3<M extends URIS3, R, U, E, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -430,7 +430,7 @@ export declare function ap<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -500,7 +500,7 @@ export declare function chain<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -558,7 +558,7 @@ export declare function fromReader<F>(F: Pointed<F>): <R, A>(ma: Reader<R, A>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -598,7 +598,7 @@ export declare function getReaderM<M>(M: Monad<M>): ReaderM<M>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -661,7 +661,7 @@ export declare function map<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -711,7 +711,7 @@ export declare function of<F>(F: Pointed<F>): <A, R>(a: A) => Reader<R, HKT<F, A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

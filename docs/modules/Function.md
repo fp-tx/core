@@ -65,7 +65,7 @@ export declare const getBooleanAlgebra: <B>(B: BooleanAlgebra<B>) => <A = never>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -90,7 +90,7 @@ export declare const getMonoid: <M>(M: Monoid<M>) => <A = never>() => Monoid<(a:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -134,7 +134,7 @@ export declare const getRing: <A, B>(R: Ring<B>) => Ring<(a: A) => B>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -159,7 +159,7 @@ export declare const getSemigroup: <S>(S: Semigroup<S>) => <A = never>() => Semi
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -202,7 +202,7 @@ export declare const getSemiring: <A, B>(S: Semiring<B>) => Semiring<(a: A) => B
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -229,7 +229,7 @@ export interface Lazy<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -256,7 +256,7 @@ export interface Endomorphism<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -282,7 +282,7 @@ export interface FunctionN<A extends ReadonlyArray<unknown>, B> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -317,7 +317,7 @@ export interface LazyArg<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -344,7 +344,7 @@ export interface Predicate<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -372,7 +372,7 @@ export interface Refinement<A, B extends A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -396,7 +396,7 @@ export declare const SK: <A, B>(_: A, b: B) => B
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -420,7 +420,7 @@ export declare function absurd<A>(_: never): A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -443,7 +443,7 @@ export declare const apply: <A>(a: A) => <B>(f: (a: A) => B) => B
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -468,7 +468,7 @@ export declare const constFalse: LazyArg<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -493,7 +493,7 @@ export declare const constNull: LazyArg<null>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -518,7 +518,7 @@ export declare const constTrue: LazyArg<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -543,7 +543,7 @@ export declare const constUndefined: LazyArg<undefined>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -568,7 +568,7 @@ export declare const constVoid: LazyArg<void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -592,7 +592,7 @@ export declare function constant<A>(a: A): LazyArg<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -616,7 +616,7 @@ export declare function decrement(n: number): number
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -646,7 +646,7 @@ export declare function flip<A, B, C>(f: (a: A, b: B) => C): (b: B, a: A) => C
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -769,7 +769,7 @@ export declare function flow<A extends ReadonlyArray<unknown>, B, C, D, E, F, G,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -807,7 +807,7 @@ export declare const getEndomorphismMonoid: <A = never>() => Monoid<Endomorphism
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -833,7 +833,7 @@ export declare const hole: <T>() => T
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -857,7 +857,7 @@ export declare function identity<A>(a: A): A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -881,7 +881,7 @@ export declare function increment(n: number): number
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -907,7 +907,7 @@ export declare function not<A>(predicate: Predicate<A>): Predicate<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1223,7 +1223,7 @@ export declare function pipe<A, B, C, D, E, F, G, H, I>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1262,7 +1262,7 @@ export declare function tuple<T extends ReadonlyArray<any>>(...t: T): T
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1288,7 +1288,7 @@ export declare function tupled<A extends ReadonlyArray<unknown>, B>(f: (...a: A)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1321,7 +1321,7 @@ export declare const unsafeCoerce: <A, B>(a: A) => B
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1347,7 +1347,7 @@ export declare function untupled<A extends ReadonlyArray<unknown>, B>(f: (a: A) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

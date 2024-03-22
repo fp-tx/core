@@ -1,6 +1,6 @@
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Applicative2, getApplicativeMonoid } from './Applicative'
@@ -42,7 +42,7 @@ import { type Task } from './Task'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -57,7 +57,7 @@ export interface ReaderTask<R, A> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -66,7 +66,7 @@ export const fromReader: <R, A>(fa: R.Reader<R, A>) => ReaderTask<R, A> = /*#__P
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -75,7 +75,7 @@ export const fromTask: <A, R = unknown>(fa: Task<A>) => ReaderTask<R, A> = /*#__
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -84,7 +84,7 @@ export const fromIO: <A, R = unknown>(fa: IO<A>) => ReaderTask<R, A> = /*#__PURE
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -100,7 +100,7 @@ export const fromReaderIO: <R, A>(fa: ReaderIO<R, A>) => ReaderTask<R, A> = R.ma
  * `contramap`).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -112,7 +112,7 @@ export const local: <R2, R1>(f: (r2: R2) => R1) => <A>(ma: ReaderTask<R1, A>) =>
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -123,7 +123,7 @@ export const asksReaderTaskW: <R1, R2, A>(f: (r1: R1) => ReaderTask<R2, A>) => R
  * Effectfully accesses the environment.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -139,7 +139,7 @@ const _apSeq: Apply2<URI>['ap'] = (fab, fa) => flatMap(fab, f => pipe(fa, map(f)
  * use the type constructor `F` to represent some computational context.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -150,7 +150,7 @@ export const map: <A, B>(f: (a: A) => B) => <R>(fa: ReaderTask<R, A>) => ReaderT
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -163,7 +163,7 @@ export const ap: <R, A>(fa: ReaderTask<R, A>) => <B>(fab: ReaderTask<R, (a: A) =
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -173,7 +173,7 @@ export const apW: <R2, A>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -182,7 +182,7 @@ export const of: <R = unknown, A = never>(a: A) => ReaderTask<R, A> = /*#__PURE_
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -198,7 +198,7 @@ export const flatMap: {
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -208,7 +208,7 @@ export const flattenW: <R1, R2, A>(mma: ReaderTask<R1, ReaderTask<R2, A>>) => Re
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -217,7 +217,7 @@ export const flatten: <R, A>(mma: ReaderTask<R, ReaderTask<R, A>>) => ReaderTask
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -226,7 +226,7 @@ export const URI = 'ReaderTask'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -241,7 +241,7 @@ declare module './HKT' {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -255,7 +255,7 @@ export const Functor: Functor2<URI> = {
  * Maps the value to the specified constant value.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -269,7 +269,7 @@ export const as: {
  * Maps the value to the void constant value.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -278,7 +278,7 @@ export const asUnit: <R, _>(self: ReaderTask<R, _>) => ReaderTask<R, void> = asU
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -287,7 +287,7 @@ export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -301,7 +301,7 @@ export const Pointed: Pointed2<URI> = {
  * Runs computations in parallel.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -316,7 +316,7 @@ export const ApplyPar: Apply2<URI> = {
  * Combine two effectful actions, keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -326,7 +326,7 @@ export const apFirst = /*#__PURE__*/ apFirst_(ApplyPar)
  * Combine two effectful actions, keeping only the result of the second.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -336,7 +336,7 @@ export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
  * Runs computations in parallel.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -352,7 +352,7 @@ export const ApplicativePar: Applicative2<URI> = {
  * Runs computations sequentially.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -367,7 +367,7 @@ export const ApplySeq: Apply2<URI> = {
  * Runs computations sequentially.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -381,7 +381,7 @@ export const ApplicativeSeq: Applicative2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -395,7 +395,7 @@ export const Chain: chainable.Chain2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instance methods}
  * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
@@ -412,7 +412,7 @@ export const chainRec: ChainRec2<URI>['chainRec'] = (a, f) => r => async () => {
  * ChainRec for `ReaderTask`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
@@ -424,7 +424,7 @@ export const ChainRec: ChainRec2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -439,7 +439,7 @@ export const Monad: Monad2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -455,7 +455,7 @@ export const MonadIO: MonadIO2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -472,7 +472,7 @@ export const MonadTask: MonadTask2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -484,7 +484,7 @@ export const FromIO: FromIO2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -497,7 +497,7 @@ export const FromTask: FromTask2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -534,7 +534,7 @@ const _FromReader: _.FromReader<ReaderTaskTypeLambda> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -546,7 +546,7 @@ export const flatMapIO: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -558,7 +558,7 @@ export const flatMapTask: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -570,7 +570,7 @@ export const flatMapReader: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -589,7 +589,7 @@ export const flatMapReaderIO: {
  * keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -624,7 +624,7 @@ export const tap: {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -639,7 +639,7 @@ export const tapIO: {
  * keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -673,7 +673,7 @@ export const tapReader: {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -688,7 +688,7 @@ export const tapTask: {
  * keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -704,7 +704,7 @@ export const tapReaderIO: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -717,7 +717,7 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
  * Alias of `flatMapIO`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -728,7 +728,7 @@ export const chainIOK: <A, B>(f: (a: A) => IO<B>) => <R>(first: ReaderTask<R, A>
  * Alias of `tapIO`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -739,7 +739,7 @@ export const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => <R>(first: ReaderTask<
  * Reads the current context.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -750,7 +750,7 @@ export const ask = /*#__PURE__*/ ask_(FromReader)
  * Projects a value from the global context in a `ReaderTask`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -759,7 +759,7 @@ export const asks = /*#__PURE__*/ asks_(FromReader)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -772,7 +772,7 @@ export const fromReaderK: <A extends ReadonlyArray<unknown>, R, B>(
  * Alias of `flatMapReader`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -788,7 +788,7 @@ export const chainReaderK: <A, R, B>(f: (a: A) => R.Reader<R, B>) => (ma: Reader
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -801,7 +801,7 @@ export const chainReaderKW: <A, R1, B>(
  * Alias of `tapReader`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -817,7 +817,7 @@ export const chainFirstReaderK: <A, R, B>(f: (a: A) => R.Reader<R, B>) => (ma: R
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -828,7 +828,7 @@ export const chainFirstReaderKW: <A, R1, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -844,7 +844,7 @@ export const fromReaderIOK =
  * Less strict version of [`chainReaderIOK`](#chainreaderiok).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -857,7 +857,7 @@ export const chainReaderIOKW: <A, R2, B>(
  * Alias of `flatMapReaderIO`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -871,7 +871,7 @@ export const chainReaderIOK: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (ma: Read
  * Less strict version of [`chainFirstReaderIOK`](#chainfirstreaderiok).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -884,7 +884,7 @@ export const chainFirstReaderIOKW: <A, R2, B>(
  * Alias of `tapReaderIO`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -894,7 +894,7 @@ export const chainFirstReaderIOK: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (ma:
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -907,7 +907,7 @@ export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
  * Alias of `flatMapTask`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -919,7 +919,7 @@ export const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => <R>(first: ReaderTask
  * Alias of `tapTask`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -933,7 +933,7 @@ export const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => <R>(first: Reade
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -942,7 +942,7 @@ export const Do: ReaderTask<unknown, {}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -954,7 +954,7 @@ const let_ = /*#__PURE__*/ let__(Functor)
 export {
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Do notation}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -964,7 +964,7 @@ export {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -975,7 +975,7 @@ export const bind = /*#__PURE__*/ chainable.bind(Chain)
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -988,7 +988,7 @@ export const bindW: <N extends string, A, R2, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1001,7 +1001,7 @@ export const apS = /*#__PURE__*/ apS_(ApplyPar)
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1014,7 +1014,7 @@ export const apSW: <A, N extends string, R2, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1035,7 +1035,7 @@ const do_: <MA extends ReaderTaskIterable<any, any>, A>(
 export {
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Do notation}
    * @public
    */
@@ -1050,7 +1050,7 @@ export {
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1064,7 +1064,7 @@ export const traverseReadonlyNonEmptyArrayWithIndex = <A, R, B>(
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1080,7 +1080,7 @@ export const traverseReadonlyArrayWithIndex = <A, R, B>(
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(ApplicativeSeq)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1094,7 +1094,7 @@ export const traverseReadonlyNonEmptyArrayWithIndexSeq = <R, A, B>(
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1110,7 +1110,7 @@ export const traverseReadonlyArrayWithIndexSeq = <R, A, B>(
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1123,7 +1123,7 @@ export const traverseArrayWithIndex: <R, A, B>(
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1136,7 +1136,7 @@ export const traverseArray = <R, A, B>(
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1148,7 +1148,7 @@ export const sequenceArray: <R, A>(arr: ReadonlyArray<ReaderTask<R, A>>) => Read
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1161,7 +1161,7 @@ export const traverseSeqArrayWithIndex: <R, A, B>(
  * Equivalent to `ReadonlyArray#traverse(ApplicativeSeq)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1178,7 +1178,7 @@ export const traverseSeqArray = <R, A, B>(
  * Alias of `flatMap`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1189,7 +1189,7 @@ export const chain: <A, R, B>(f: (a: A) => ReaderTask<R, B>) => (ma: ReaderTask<
  * Alias of `flatMap`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1202,7 +1202,7 @@ export const chainW: <R2, A, B>(
  * Alias of `tap`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1213,7 +1213,7 @@ export const chainFirst: <A, R, B>(f: (a: A) => ReaderTask<R, B>) => (first: Rea
  * Alias of `tap`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1231,7 +1231,7 @@ export const chainFirstW: <R2, A, B>(
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1244,7 +1244,7 @@ export const sequenceSeqArray: <R, A>(arr: ReadonlyArray<ReaderTask<R, A>>) => R
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1264,7 +1264,7 @@ export const readerTask: MonadTask2<URI> = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1284,7 +1284,7 @@ export const readerTaskSeq: typeof readerTask = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1296,7 +1296,7 @@ export const getSemigroup: <R, A>(S: Semigroup<A>) => Semigroup<ReaderTask<R, A>
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1306,7 +1306,7 @@ export const getMonoid: <R, A>(M: Monoid<A>) => Monoid<ReaderTask<R, A>> =
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

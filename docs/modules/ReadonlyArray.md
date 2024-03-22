@@ -241,7 +241,7 @@ export declare const Alt: Alt1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -264,7 +264,7 @@ export declare const Alternative: Alternative1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -287,7 +287,7 @@ export declare const Applicative: Applicative1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -310,7 +310,7 @@ export declare const Apply: Apply1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -333,7 +333,7 @@ export declare const Chain: Chain1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -356,7 +356,7 @@ export declare const ChainRecBreadthFirst: ChainRec1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -379,7 +379,7 @@ export declare const ChainRecDepthFirst: ChainRec1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -402,7 +402,7 @@ export declare const Compactable: Compactable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -425,7 +425,7 @@ export declare const Extend: Extend1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -448,7 +448,7 @@ export declare const Filterable: Filterable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -471,7 +471,7 @@ export declare const FilterableWithIndex: FilterableWithIndex1<URI, number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -494,7 +494,7 @@ export declare const Foldable: Foldable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -517,7 +517,7 @@ export declare const FoldableWithIndex: FoldableWithIndex1<URI, number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -540,7 +540,7 @@ export declare const FromEither: FromEither1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -563,7 +563,7 @@ export declare const Functor: Functor1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -586,7 +586,7 @@ export declare const FunctorWithIndex: FunctorWithIndex1<URI, number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -609,7 +609,7 @@ export declare const Monad: Monad1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -632,7 +632,7 @@ export declare const Pointed: Pointed1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -655,7 +655,7 @@ export declare const Traversable: Traversable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -678,7 +678,7 @@ export declare const TraversableWithIndex: TraversableWithIndex1<URI, number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -701,7 +701,7 @@ export declare const Unfoldable: Unfoldable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -724,7 +724,7 @@ export declare const Witherable: Witherable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -747,7 +747,7 @@ export declare const Zero: Zero1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -770,7 +770,7 @@ export declare const getDifferenceMagma: <A>(E: Eq<A>) => Magma<readonly A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -795,7 +795,7 @@ export declare const getEq: <A>(E: Eq<A>) => Eq<readonly A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -829,7 +829,7 @@ export declare const getIntersectionSemigroup: <A>(E: Eq<A>) => Semigroup<readon
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -854,7 +854,7 @@ export declare const getMonoid: <A = never>() => Monoid<readonly A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -888,7 +888,7 @@ export declare const getOrd: <A>(O: Ord<A>) => Ord<readonly A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -923,7 +923,7 @@ export declare const getSemigroup: <A = never>() => Semigroup<readonly A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -946,7 +946,7 @@ export declare const getShow: <A>(S: Show<A>) => Show<readonly A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -969,7 +969,7 @@ export declare const getUnionMonoid: <A>(E: Eq<A>) => Monoid<readonly A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -992,7 +992,7 @@ export declare const getUnionSemigroup: <A>(E: Eq<A>) => Semigroup<readonly A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1020,7 +1020,7 @@ export declare const makeBy: <A>(n: number, f: (i: number) => A) => readonly A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1052,7 +1052,7 @@ export declare const of: <A>(a: A) => ReadonlyArray<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1080,7 +1080,7 @@ export declare const replicate: <A>(n: number, a: A) => readonly A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1111,7 +1111,7 @@ export declare const fromArray: <A>(as: A[]) => readonly A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1136,7 +1136,7 @@ export declare const fromEither: <A>(fa: Either<unknown, A>) => ReadonlyArray<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1159,7 +1159,7 @@ export declare const fromOption: <A>(fa: Option<A>) => ReadonlyArray<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1182,7 +1182,7 @@ export declare const toArray: <A>(as: readonly A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1205,7 +1205,7 @@ export declare const Do: ReadonlyArray<{}>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1231,7 +1231,7 @@ export declare const apS: <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1257,7 +1257,7 @@ export declare const bind: <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1280,7 +1280,7 @@ export declare const bindTo: <N extends string>(name: N) => <A>(fa: readonly A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1303,7 +1303,7 @@ export declare const guard: (b: boolean) => readonly void[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1331,7 +1331,7 @@ export declare const alt: <A>(that: LazyArg<ReadonlyArray<A>>) => (fa: ReadonlyA
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1374,7 +1374,7 @@ export declare const altW: <B>(that: LazyArg<readonly B[]>) => <A>(fa: readonly 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1412,7 +1412,7 @@ export declare const compact: <A>(fa: ReadonlyArray<Option<A>>) => ReadonlyArray
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1439,7 +1439,7 @@ export declare const filter: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1462,7 +1462,7 @@ export declare const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: ReadonlyA
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1485,7 +1485,7 @@ export declare const filterMapWithIndex: <A, B>(f: (i: number, a: A) => Option<B
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1512,7 +1512,7 @@ export declare const filterWithIndex: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1541,7 +1541,7 @@ export declare const partition: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1566,7 +1566,7 @@ export declare const partitionMap: <A, B, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1591,7 +1591,7 @@ export declare const partitionMapWithIndex: <A, B, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1624,7 +1624,7 @@ export declare const partitionWithIndex: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1647,7 +1647,7 @@ export declare const separate: <A, B>(fa: readonly Either<A, B>[]) => Separated<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1670,7 +1670,7 @@ export declare const wilt: PipeableWilt1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1693,7 +1693,7 @@ export declare const wither: PipeableWither1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1716,7 +1716,7 @@ export declare const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: R
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1739,7 +1739,7 @@ export declare const foldMapWithIndex: <M>(M: Monoid<M>) => <A>(f: (i: number, a
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1762,7 +1762,7 @@ export declare const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => (fa: Readonly
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1785,7 +1785,7 @@ export declare const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => (fa: Rea
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1808,7 +1808,7 @@ export declare const reduceRightWithIndex: <A, B>(b: B, f: (i: number, a: A, b: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1831,7 +1831,7 @@ export declare const reduceWithIndex: <A, B>(b: B, f: (i: number, b: B, a: A) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1856,7 +1856,7 @@ export declare const chain: <A, B>(f: (a: A) => ReadonlyArray<B>) => (ma: Readon
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1881,7 +1881,7 @@ export declare const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1906,7 +1906,7 @@ export declare const fromOptionK: <A extends readonly unknown[], B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1938,7 +1938,7 @@ export declare function fromPredicate<A>(predicate: Predicate<A>): (a: A) => Rea
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1961,7 +1961,7 @@ export declare const flap: <A>(a: A) => <B>(fab: readonly ((a: A) => B)[]) => re
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1986,7 +1986,7 @@ export declare const map: <A, B>(f: (a: A) => B) => (fa: ReadonlyArray<A>) => Re
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2009,7 +2009,7 @@ export declare const mapWithIndex: <A, B>(f: (i: number, a: A) => B) => (fa: Rea
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2037,7 +2037,7 @@ export declare const foldLeft: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2065,7 +2065,7 @@ export declare const foldRight: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2091,7 +2091,7 @@ export declare const match: <B, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2119,7 +2119,7 @@ export declare const matchLeft: <B, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2159,7 +2159,7 @@ export declare const matchLeftW: <B, A, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2187,7 +2187,7 @@ export declare const matchRight: <B, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2215,7 +2215,7 @@ export declare const matchRightW: <B, A, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2246,7 +2246,7 @@ export declare const matchW: <B, A, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2271,7 +2271,7 @@ export declare const isEmpty: <A>(as: readonly A[]) => as is readonly []
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2304,7 +2304,7 @@ export declare const isNonEmpty: <A>(as: ReadonlyArray<A>) => as is ReadonlyNonE
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2329,7 +2329,7 @@ export declare const chainFirst: <A, B>(f: (a: A) => ReadonlyArray<B>) => (first
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2374,7 +2374,7 @@ export declare const chainRecBreadthFirst: <A, B>(f: (a: A) => readonly Either<A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2397,7 +2397,7 @@ export declare const chainRecDepthFirst: <A, B>(f: (a: A) => readonly Either<A, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2420,7 +2420,7 @@ export declare const chainWithIndex: <A, B>(f: (i: number, a: A) => readonly B[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2448,7 +2448,7 @@ export declare const flatMap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2493,7 +2493,7 @@ export declare const flatten: <A>(mma: ReadonlyArray<ReadonlyArray<A>>) => Reado
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2516,7 +2516,7 @@ export declare const traverseWithIndex: PipeableTraverseWithIndex1<URI, number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2539,7 +2539,7 @@ export declare const sequence: Traversable1<URI>['sequence']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2562,7 +2562,7 @@ export declare const traverse: PipeableTraverse1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2585,7 +2585,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2608,7 +2608,7 @@ export declare const URI = 'ReadonlyArray'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2631,7 +2631,7 @@ export declare const unsafeDeleteAt: <A>(i: number, as: readonly A[]) => readonl
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2654,7 +2654,7 @@ export declare const unsafeInsertAt: <A>(i: number, a: A, as: ReadonlyArray<A>) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2677,7 +2677,7 @@ export declare const unsafeUpdateAt: <A>(i: number, a: A, as: readonly A[]) => r
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2703,7 +2703,7 @@ export interface Spanned<I, R> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2726,7 +2726,7 @@ export declare const ap: <A>(fa: ReadonlyArray<A>) => <B>(fab: ReadonlyArray<(a:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2751,7 +2751,7 @@ export declare const apFirst: <B>(second: readonly B[]) => <A>(first: readonly A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2776,7 +2776,7 @@ export declare const apSecond: <B>(second: readonly B[]) => <A>(first: readonly 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2801,7 +2801,7 @@ export declare const append: <A>(end: A) => (init: readonly A[]) => RNEA.Readonl
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2835,7 +2835,7 @@ export declare const appendW: <B>(end: B) => <A>(init: readonly A[]) => RNEA.Rea
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2862,7 +2862,7 @@ export declare const chop: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2910,7 +2910,7 @@ export declare const chunksOf: (n: number) => <A>(as: readonly A[]) => readonly 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2972,7 +2972,7 @@ export declare function comprehension<A, R>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3019,7 +3019,7 @@ export declare const concat: <A>(second: ReadonlyArray<A>) => (first: ReadonlyAr
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3042,7 +3042,7 @@ export declare const concatW: <B>(second: readonly B[]) => <A>(first: readonly A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3067,7 +3067,7 @@ export declare const cons: typeof RNEA.cons
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3093,7 +3093,7 @@ export declare const deleteAt: (i: number) => <A>(as: readonly A[]) => Option<re
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3132,7 +3132,7 @@ export declare function difference<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3170,7 +3170,7 @@ export declare const dropLeft: (n: number) => <A>(as: readonly A[]) => readonly 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3220,7 +3220,7 @@ export declare function dropLeftWhile<A>(predicate: Predicate<A>): (as: Readonly
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3256,7 +3256,7 @@ export declare const dropRight: (n: number) => <A>(as: readonly A[]) => readonly
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3291,7 +3291,7 @@ export declare const duplicate: <A>(wa: ReadonlyArray<A>) => ReadonlyArray<Reado
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3320,7 +3320,7 @@ export declare function elem<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3356,7 +3356,7 @@ export declare const empty: ReadonlyArray<never>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3388,7 +3388,7 @@ export declare function every<A>(predicate: Predicate<A>): Predicate<ReadonlyArr
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3427,7 +3427,7 @@ export declare const exists: <A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3450,7 +3450,7 @@ export declare const extend: <A, B>(f: (fa: ReadonlyArray<A>) => B) => (wa: Read
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3475,7 +3475,7 @@ export declare const filterE: import('./Witherable.js').FilterE1<'ReadonlyArray'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3529,7 +3529,7 @@ export declare function findFirst<A>(predicate: Predicate<A>): (as: ReadonlyArra
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3574,7 +3574,7 @@ export declare const findFirstMap: <A, B>(f: (a: A) => Option<B>) => (as: readon
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3619,7 +3619,7 @@ export declare const findIndex: <A>(predicate: Predicate<A>) => (as: readonly A[
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3663,7 +3663,7 @@ export declare function findLast<A>(predicate: Predicate<A>): (as: ReadonlyArray
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3708,7 +3708,7 @@ export declare const findLastIndex: <A>(predicate: Predicate<A>) => (as: readonl
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3751,7 +3751,7 @@ export declare const findLastMap: <A, B>(f: (a: A) => Option<B>) => (as: readonl
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3796,7 +3796,7 @@ export declare const head: <A>(as: readonly A[]) => Option<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3831,7 +3831,7 @@ export declare const init: <A>(as: readonly A[]) => Option<readonly A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3866,7 +3866,7 @@ export declare const insertAt: <A>(i: number, a: A) => (as: readonly A[]) => Opt
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3900,7 +3900,7 @@ export declare const intercalate: <A>(M: Monoid<A>) => (middle: A) => (as: reado
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3938,7 +3938,7 @@ export declare function intersection<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3973,7 +3973,7 @@ export declare const intersperse: <A>(middle: A) => (as: readonly A[]) => readon
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4006,7 +4006,7 @@ export declare const isOutOfBound: <A>(i: number, as: ReadonlyArray<A>) => boole
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -4031,7 +4031,7 @@ export declare const last: <A>(as: readonly A[]) => Option<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4066,7 +4066,7 @@ export declare const lefts: <E, A>(as: readonly Either<E, A>[]) => readonly E[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4125,7 +4125,7 @@ export declare function lookup<A>(i: number, as: ReadonlyArray<A>): Option<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4161,7 +4161,7 @@ export declare const modifyAt: <A>(i: number, f: (a: A) => A) => (as: readonly A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4197,7 +4197,7 @@ export declare const prepend: <A>(head: A) => (tail: readonly A[]) => RNEA.Reado
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4231,7 +4231,7 @@ export declare const prependAll: <A>(middle: A) => (as: readonly A[]) => readonl
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4264,7 +4264,7 @@ export declare const prependToAll: <A>(middle: A) => (as: readonly A[]) => reado
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4290,7 +4290,7 @@ export declare const prependW: <B>(head: B) => <A>(tail: readonly A[]) => RNEA.R
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -4315,7 +4315,7 @@ export declare const range: (start: number, end: number) => RNEA.ReadonlyNonEmpt
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4349,7 +4349,7 @@ export declare const readonlyArray: FunctorWithIndex1<URI, number> &
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4375,7 +4375,7 @@ export declare const reverse: <A>(as: readonly A[]) => readonly A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4408,7 +4408,7 @@ export declare const rights: <E, A>(as: readonly Either<E, A>[]) => readonly A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4442,7 +4442,7 @@ export declare const rotate: (n: number) => <A>(as: readonly A[]) => readonly A[
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4475,7 +4475,7 @@ export declare const scanLeft: <A, B>(b: B, f: (b: B, a: A) => B) => (as: readon
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4511,7 +4511,7 @@ export declare const scanRight: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4544,7 +4544,7 @@ export declare const size: <A>(as: readonly A[]) => number
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -4569,7 +4569,7 @@ export declare const snoc: <A>(init: readonly A[], end: A) => RNEA.ReadonlyNonEm
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4595,7 +4595,7 @@ export declare const some: <A>(predicate: Predicate<A>) => (as: readonly A[]) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4632,7 +4632,7 @@ export declare const sort: <B>(O: Ord<B>) => <A extends B>(as: readonly A[]) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4666,7 +4666,7 @@ export declare const sortBy: <B>(ords: readonly Ord<B>[]) => <A extends B>(as: r
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4741,7 +4741,7 @@ export declare function spanLeft<A>(predicate: Predicate<A>): (as: ReadonlyArray
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4774,7 +4774,7 @@ export declare const splitAt: (n: number) => <A>(as: readonly A[]) => readonly [
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4810,7 +4810,7 @@ export declare const tail: <A>(as: readonly A[]) => Option<readonly A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4848,7 +4848,7 @@ export declare const takeLeft: (n: number) => <A>(as: readonly A[]) => readonly 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4900,7 +4900,7 @@ export declare function takeLeftWhile<A>(predicate: Predicate<A>): (as: Readonly
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4936,7 +4936,7 @@ export declare const takeRight: (n: number) => <A>(as: readonly A[]) => readonly
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4973,7 +4973,7 @@ export declare const unfold: <A, B>(b: B, f: (b: B) => Option<readonly [A, B]>) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -5002,7 +5002,7 @@ export declare function union<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5037,7 +5037,7 @@ export declare const uniq: <A>(E: Eq<A>) => (as: readonly A[]) => readonly A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5071,7 +5071,7 @@ export declare const unzip: <A, B>(as: readonly (readonly [A, B])[]) => readonly
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5114,7 +5114,7 @@ export declare const updateAt: <A>(i: number, a: A) => (as: readonly A[]) => Opt
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5147,7 +5147,7 @@ export declare const zero: <A>() => ReadonlyArray<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -5177,7 +5177,7 @@ export declare function zip<A, B>(as: ReadonlyArray<A>, bs: ReadonlyArray<B>): R
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5215,7 +5215,7 @@ export declare const zipWith: <A, B, C>(fa: readonly A[], fb: readonly B[], f: (
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 

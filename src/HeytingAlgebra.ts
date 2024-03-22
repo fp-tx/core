@@ -22,7 +22,7 @@
  *   - `¬a <-> a → 0`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type BoundedDistributiveLattice } from './BoundedDistributiveLattice'
@@ -33,7 +33,7 @@ import { type BoundedDistributiveLattice } from './BoundedDistributiveLattice'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public

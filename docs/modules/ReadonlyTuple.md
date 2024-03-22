@@ -79,7 +79,7 @@ export declare const Bifunctor: Bifunctor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -102,7 +102,7 @@ export declare const Comonad: Comonad2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -125,7 +125,7 @@ export declare const Foldable: Foldable2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -148,7 +148,7 @@ export declare const Functor: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -171,7 +171,7 @@ export declare const Semigroupoid: Semigroupoid2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -194,7 +194,7 @@ export declare const Traversable: Traversable2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -218,7 +218,7 @@ export declare function getApplicative<M>(M: Monoid<M>): Applicative2C<URI, M>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -242,7 +242,7 @@ export declare function getApply<S>(S: Semigroup<S>): Apply2C<URI, S>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -266,7 +266,7 @@ export declare function getChain<S>(S: Semigroup<S>): Chain2C<URI, S>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -290,7 +290,7 @@ export declare function getChainRec<M>(M: Monoid<M>): ChainRec2C<URI, M>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -314,7 +314,7 @@ export declare function getMonad<M>(M: Monoid<M>): Monad2C<URI, M>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -339,7 +339,7 @@ export declare const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: readonly [A, E])
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -362,7 +362,7 @@ export declare const extract: <E, A>(wa: readonly [A, E]) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -385,7 +385,7 @@ export declare const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => <E>(fa
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -408,7 +408,7 @@ export declare const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => <E>(fa: reado
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -431,7 +431,7 @@ export declare const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => <E>(fa: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -459,7 +459,7 @@ export declare const bimap: <E, G, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -482,7 +482,7 @@ export declare const flap: <A>(a: A) => <E, B>(fab: readonly [(a: A) => B, E]) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -507,7 +507,7 @@ export declare const map: <A, B>(f: (a: A) => B) => <E>(fa: readonly [A, E]) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -535,7 +535,7 @@ export declare const mapFst: <A, B>(f: (a: A) => B) => <E>(fa: readonly [A, E]) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -563,7 +563,7 @@ export declare const mapSnd: <E, G>(f: (e: E) => G) => <A>(fa: readonly [A, E]) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -586,7 +586,7 @@ export declare const sequence: Traversable2<URI>['sequence']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -609,7 +609,7 @@ export declare const traverse: PipeableTraverse2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -632,7 +632,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -655,7 +655,7 @@ export declare const URI = 'ReadonlyTuple'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -678,7 +678,7 @@ export declare const compose: <A, B>(ab: readonly [B, A]) => <C>(bc: readonly [C
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -701,7 +701,7 @@ export declare const duplicate: <E, A>(wa: readonly [A, E]) => readonly [readonl
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -724,7 +724,7 @@ export declare const extend: <E, A, B>(f: (wa: readonly [A, E]) => B) => (wa: re
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -748,7 +748,7 @@ export declare function fst<A, E>(ea: readonly [A, E]): A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -777,7 +777,7 @@ export declare const readonlyTuple: Semigroupoid2<URI> &
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -802,7 +802,7 @@ export declare function snd<A, E>(ea: readonly [A, E]): E
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -825,7 +825,7 @@ export declare const swap: <A, E>(ea: readonly [A, E]) => readonly [E, A]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

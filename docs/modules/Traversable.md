@@ -56,7 +56,7 @@ export interface Traversable<T> extends Functor<T>, Foldable<T> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -82,7 +82,7 @@ export interface Traversable1<T extends URIS> extends Functor1<T>, Foldable1<T> 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -108,7 +108,7 @@ export interface Traversable2<T extends URIS2> extends Functor2<T>, Foldable2<T>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -134,7 +134,7 @@ export interface Traversable2C<T extends URIS2, TL> extends Functor2C<T, TL>, Fo
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -160,7 +160,7 @@ export interface Traversable3<T extends URIS3> extends Functor3<T>, Foldable3<T>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -198,7 +198,7 @@ export interface PipeableTraverse1<T extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -235,7 +235,7 @@ export interface PipeableTraverse2<T extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -266,7 +266,7 @@ export interface Sequence<T> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -299,7 +299,7 @@ export interface Sequence1<T extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -338,7 +338,7 @@ export interface Sequence2<T extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -375,7 +375,7 @@ export interface Sequence2C<T extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -416,7 +416,7 @@ export interface Sequence3<T extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -451,7 +451,7 @@ export interface SequenceComposition11<F extends URIS, G extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -480,7 +480,7 @@ export interface TraversableComposition<F, G> extends FoldableComposition<F, G>,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -509,7 +509,7 @@ export interface TraversableComposition11<F extends URIS, G extends URIS>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -549,7 +549,7 @@ export interface Traverse<T> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -590,7 +590,7 @@ export interface Traverse1<T extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -636,7 +636,7 @@ export interface Traverse2<T extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -677,7 +677,7 @@ export interface Traverse2C<T extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -729,7 +729,7 @@ export interface Traverse3<T extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -766,7 +766,7 @@ export interface TraverseComposition11<F extends URIS, G extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -809,7 +809,7 @@ export declare function getTraversableComposition<F, G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -893,7 +893,7 @@ export declare function sequence<T, G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -990,7 +990,7 @@ export declare function traverse<T, G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

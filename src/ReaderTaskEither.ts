@@ -1,6 +1,6 @@
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Alt3, type Alt3C } from './Alt'
@@ -81,7 +81,7 @@ import { type TaskEither } from './TaskEither'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -96,7 +96,7 @@ export interface ReaderTaskEither<R, E, A> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -105,7 +105,7 @@ export const fromTaskEither: <E, A, R = unknown>(fa: TaskEither<E, A>) => Reader
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -114,7 +114,7 @@ export const left: <R, E = never, A = never>(e: E) => ReaderTaskEither<R, E, A> 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -123,7 +123,7 @@ export const right: <R, E = never, A = never>(a: A) => ReaderTaskEither<R, E, A>
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -135,7 +135,7 @@ export const rightTask: <R, E = never, A = never>(ma: Task<A>) => ReaderTaskEith
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -147,7 +147,7 @@ export const leftTask: <R, E = never, A = never>(me: Task<E>) => ReaderTaskEithe
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -157,7 +157,7 @@ export const rightReader: <R, E = never, A = never>(ma: Reader<R, A>) => ReaderT
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -167,7 +167,7 @@ export const leftReader: <R, E = never, A = never>(me: Reader<R, E>) => ReaderTa
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -177,7 +177,7 @@ export const rightReaderTask: <R, E = never, A = never>(ma: ReaderTask<R, A>) =>
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -187,7 +187,7 @@ export const leftReaderTask: <R, E = never, A = never>(me: ReaderTask<R, E>) => 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -199,7 +199,7 @@ export const rightIO: <R, E = never, A = never>(ma: IO<A>) => ReaderTaskEither<R
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -211,7 +211,7 @@ export const leftIO: <R, E = never, A = never>(me: IO<E>) => ReaderTaskEither<R,
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -222,7 +222,7 @@ export const rightReaderIO: <R, E = never, A = never>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -237,7 +237,7 @@ export const leftReaderIO: <R, E = never, A = never>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -246,7 +246,7 @@ export const fromEither: <E, A, R = unknown>(fa: Either<E, A>) => ReaderTaskEith
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -255,7 +255,7 @@ export const fromReader: <R, A, E = never>(fa: Reader<R, A>) => ReaderTaskEither
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -264,7 +264,7 @@ export const fromIO: <A, R = unknown, E = never>(fa: IO<A>) => ReaderTaskEither<
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -273,7 +273,7 @@ export const fromTask: <A, R = unknown, E = never>(fa: Task<A>) => ReaderTaskEit
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -285,7 +285,7 @@ export const fromIOEither: <E, A, R = unknown>(fa: IOEither<E, A>) => ReaderTask
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -295,7 +295,7 @@ export const fromReaderEither: <R, E, A>(fa: ReaderEither<R, E, A>) => ReaderTas
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -311,7 +311,7 @@ export const match: <E, B, A>(
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -325,7 +325,7 @@ export const matchW: <E, B, A, C>(
  * The `E` suffix (short for **E**ffect) means that the handlers return an effect (`ReaderTask`).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -339,7 +339,7 @@ export const matchE: <R, E, A, B>(
  * Alias of [`matchE`](#matche).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -352,7 +352,7 @@ export const fold = matchE
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -366,7 +366,7 @@ export const matchEW: <E, R2, B, A, R3, C>(
  * Alias of [`matchEW`](#matchew).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -375,7 +375,7 @@ export const foldW = matchEW
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -390,7 +390,7 @@ export const getOrElse: <R, E, A>(
  * The `W` suffix (short for **W**idening) means that the handler return type will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -401,7 +401,7 @@ export const getOrElseW: <R2, E, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -412,7 +412,7 @@ export const toUnion: <R, E, A>(fa: ReaderTaskEither<R, E, A>) => ReaderTask<R, 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -424,7 +424,7 @@ export const fromNullable: <E>(e: E) => <R, A>(a: A) => ReaderTaskEither<R, E, N
  * Use `liftNullable`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -439,7 +439,7 @@ export const fromNullableK: <E>(
  * Use `flatMapNullable`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -461,7 +461,7 @@ export const chainNullableK: <E>(
  * `contramap`).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -475,7 +475,7 @@ export const local: <R2, R1>(
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -488,7 +488,7 @@ export const asksReaderTaskEitherW: <R1, R2, E, A>(
  * Effectfully accesses the environment.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -498,7 +498,7 @@ export const asksReaderTaskEither: <R, E, A>(f: (r: R) => ReaderTaskEither<R, E,
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -513,7 +513,7 @@ export const orElse: <R, E1, A, E2>(
  * The `W` suffix (short for **W**idening) means that the environment types and the return types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -526,7 +526,7 @@ export const orElseW: <E1, R1, E2, B>(
  * Returns an effect that effectfully "peeks" at the failure of this effect.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -543,7 +543,7 @@ export const tapError: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -554,7 +554,7 @@ export const orLeft: <E1, R, E2>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -564,7 +564,7 @@ export const swap: <R, E, A>(ma: ReaderTaskEither<R, E, A>) => ReaderTaskEither<
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -575,7 +575,7 @@ export const fromIOEitherK = <E, A extends ReadonlyArray<unknown>, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -586,7 +586,7 @@ export const fromTaskEitherK = <E, A extends ReadonlyArray<unknown>, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -606,7 +606,7 @@ const _alt: Alt3<URI>['alt'] = (fa, that) => pipe(fa, alt(that))
  * use the type constructor `F` to represent some computational context.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -639,7 +639,7 @@ export const map: <A, B>(f: (a: A) => B) => <R, E>(fa: ReaderTaskEither<R, E, A>
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -653,7 +653,7 @@ export const mapBoth: {
  * Alias of `mapBoth`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -686,7 +686,7 @@ export const bimap: <E, G, A, B>(
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -700,7 +700,7 @@ export const mapError: {
  * Alias of `mapError`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -710,7 +710,7 @@ export const mapLeft: <E, G>(f: (e: E) => G) => <R, A>(fa: ReaderTaskEither<R, E
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -724,7 +724,7 @@ export const ap: <R, E, A>(
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -734,7 +734,7 @@ export const apW: <R2, E2, A>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -743,7 +743,7 @@ export const of: <R = unknown, E = never, A = never>(a: A) => ReaderTaskEither<R
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -764,7 +764,7 @@ export const flatMap: {
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -775,7 +775,7 @@ export const flattenW: <R1, E1, R2, E2, A>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -788,7 +788,7 @@ export const flatten: <R, E, A>(mma: ReaderTaskEither<R, E, ReaderTaskEither<R, 
  * types of kind `* -> *`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -803,7 +803,7 @@ export const alt: <R, E, A>(
  * The `W` suffix (short for **W**idening) means that the environment, the error and the return types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -814,7 +814,7 @@ export const altW: <R2, E2, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -822,7 +822,7 @@ export const throwError: MonadThrow3<URI>['throwError'] = left
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -831,7 +831,7 @@ export const URI = 'ReaderTaskEither'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -846,7 +846,7 @@ declare module './HKT' {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -863,7 +863,7 @@ export const getCompactable = <E>(M: Monoid<E>): Compactable3C<URI, E> => {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -896,7 +896,7 @@ export function getFilterable<E>(M: Monoid<E>): Filterable3C<URI, E> {
  * See [`getApplicativeValidation`](./Either#getapplicativevalidation).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -919,7 +919,7 @@ export function getApplicativeReaderTaskValidation<E>(A: Apply1<T.URI>, S: Semig
  * See [`getAltValidation`](./Either#getaltvalidation).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -936,7 +936,7 @@ export function getAltReaderTaskValidation<E>(S: Semigroup<E>): Alt3C<URI, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -950,7 +950,7 @@ export const Functor: Functor3<URI> = {
  * Maps the `Right` value of this `ReaderTaskEither` to the specified constant value.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -964,7 +964,7 @@ export const as: {
  * Maps the `Right` value of this `ReaderTaskEither` to the void constant value.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -973,7 +973,7 @@ export const asUnit: <R, E, _>(self: ReaderTaskEither<R, E, _>) => ReaderTaskEit
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -982,7 +982,7 @@ export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -996,7 +996,7 @@ export const Pointed: Pointed3<URI> = {
  * Runs computations in parallel.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1011,7 +1011,7 @@ export const ApplyPar: Apply3<URI> = {
  * Combine two effectful actions, keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1023,7 +1023,7 @@ export const apFirst = /*#__PURE__*/ apFirst_(ApplyPar)
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1035,7 +1035,7 @@ export const apFirstW: <R2, E2, B>(
  * Combine two effectful actions, keeping only the result of the second.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1047,7 +1047,7 @@ export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1059,7 +1059,7 @@ export const apSecondW: <R2, E2, B>(
  * Runs computations in parallel.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1075,7 +1075,7 @@ export const ApplicativePar: Applicative3<URI> = {
  * Runs computations sequentially.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1090,7 +1090,7 @@ export const ApplySeq: Apply3<URI> = {
  * Runs computations sequentially.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1104,7 +1104,7 @@ export const ApplicativeSeq: Applicative3<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1118,7 +1118,7 @@ export const Chain: chainable.Chain3<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instance methods}
  * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
@@ -1147,7 +1147,7 @@ export const chainRec: ChainRec3<URI>['chainRec'] =
  * ChainRec for `ReaderTaskEither`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
@@ -1159,7 +1159,7 @@ export const ChainRec: ChainRec3<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1174,7 +1174,7 @@ export const Monad: Monad3<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1190,7 +1190,7 @@ export const MonadIO: MonadIO3<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1207,7 +1207,7 @@ export const MonadTask: MonadTask3<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1223,7 +1223,7 @@ export const MonadThrow: MonadThrow3<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1235,7 +1235,7 @@ export const FromEither: FromEither3<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1247,7 +1247,7 @@ export const FromIO: FromIO3<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1260,7 +1260,7 @@ export const FromTask: FromTask3<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1275,7 +1275,7 @@ export const FromReader: FromReader3<URI> = {
  * keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1316,7 +1316,7 @@ export const tap: {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1348,7 +1348,7 @@ export const tapEither: {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1379,7 +1379,7 @@ export const tapIO: {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1394,7 +1394,7 @@ export const tapTask: {
  * keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1409,7 +1409,7 @@ export const tapReader: {
  * keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1435,7 +1435,7 @@ export const tapReaderEither: {
  * keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1458,7 +1458,7 @@ export const tapTaskEither: {
  * keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1481,7 +1481,7 @@ export const tapReaderTask: {
  * keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1497,7 +1497,7 @@ export const tapReaderIO: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1510,7 +1510,7 @@ export const Bifunctor: Bifunctor3<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1525,7 +1525,7 @@ export const Alt: Alt3<URI> = {
  * Reads the current context.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1536,7 +1536,7 @@ export const ask: <R, E = never>() => ReaderTaskEither<R, E, R> = /*#__PURE__*/ 
  * Projects a value from the global context in a `ReaderEither`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1545,7 +1545,7 @@ export const asks: <R, A, E = never>(f: (r: R) => A) => ReaderTaskEither<R, E, A
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1558,7 +1558,7 @@ export const fromReaderK: <A extends ReadonlyArray<unknown>, R, B>(
  * Alias of `tapReader`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1575,7 +1575,7 @@ export const chainFirstReaderK: <A, R, B>(
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1592,7 +1592,7 @@ export const chainFirstReaderKW: <A, R1, B>(
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1605,7 +1605,7 @@ export const chainFirstReaderEitherKW: <R2, E2, A, B>(
  * Alias of `tapReaderEither`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1622,7 +1622,7 @@ export const chainFirstReaderEitherK: <R, E, A, B>(
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1635,7 +1635,7 @@ export const chainFirstTaskEitherKW: <E2, A, B>(
  * Alias of `tapTaskEither`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1646,7 +1646,7 @@ export const chainFirstTaskEitherK: <E, A, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1666,7 +1666,7 @@ export const fromReaderTaskK =
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1679,7 +1679,7 @@ export const chainFirstReaderTaskKW: <A, R2, B>(
  * Alias of `tapReaderTask`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1690,7 +1690,7 @@ export const chainFirstReaderTaskK: <A, R, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1708,7 +1708,7 @@ export const fromReaderIOK =
  * Less strict version of [`chainFirstReaderIOK`](#chainfirstreaderiok).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1721,7 +1721,7 @@ export const chainFirstReaderIOKW: <A, R2, B>(
  * Alias of `tapReaderIO`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1732,7 +1732,7 @@ export const chainFirstReaderIOK: <A, R, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1744,7 +1744,7 @@ export const fromOption: <E>(onNone: LazyArg<E>) => <A, R = unknown>(fa: Option<
  * Use `liftOption`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1759,7 +1759,7 @@ export const fromOptionK: <E>(
  * Use `flatMapOption`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1773,7 +1773,7 @@ export const chainOptionK: <E>(
  * Use `flatMapOption`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1795,7 +1795,7 @@ const _FromEither: _.FromEither<ReaderTaskEitherTypeLambda> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1807,7 +1807,7 @@ export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1839,7 +1839,7 @@ const _FromReader: _.FromReader<ReaderTaskEitherTypeLambda> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1858,7 +1858,7 @@ export const flatMapNullable: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1877,7 +1877,7 @@ export const flatMapOption: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1889,7 +1889,7 @@ export const flatMapEither: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1909,7 +1909,7 @@ export const flatMapTaskEither: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1929,7 +1929,7 @@ export const flatMapReaderTask: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1941,7 +1941,7 @@ export const flatMapIO: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1953,7 +1953,7 @@ export const flatMapTask: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1965,7 +1965,7 @@ export const flatMapReader: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1981,7 +1981,7 @@ export const flatMapReaderIO: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1997,7 +1997,7 @@ export const flatMapIOEither: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2022,7 +2022,7 @@ export const flatMapReaderEither: {
  * Alias of `flatMapEither`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2035,7 +2035,7 @@ export const chainEitherK: <E, A, B>(
  * Alias of `flatMapEither`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2048,7 +2048,7 @@ export const chainEitherKW: <E2, A, B>(
  * Alias of `tapEither`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2065,7 +2065,7 @@ export const chainFirstEitherK: <A, E, B>(
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2082,7 +2082,7 @@ export const chainFirstEitherKW: <A, E2, B>(
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2095,7 +2095,7 @@ export const chainTaskEitherKW: <E2, A, B>(
  * Alias of `flatMapTaskEither`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2112,7 +2112,7 @@ export const chainTaskEitherK: <E, A, B>(
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2125,7 +2125,7 @@ export const chainReaderTaskKW: <A, R2, B>(
  * Alias of `flatMapReaderTask`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2136,7 +2136,7 @@ export const chainReaderTaskK: <A, R, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2155,7 +2155,7 @@ export const fromPredicate: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2178,7 +2178,7 @@ export const filterOrElse: {
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2200,7 +2200,7 @@ export const filterOrElseW: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2211,7 +2211,7 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2224,7 +2224,7 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
  * Alias of `flatMapIO`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2237,7 +2237,7 @@ export const chainIOK: <A, B>(
  * Alias of `tapIO`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2248,7 +2248,7 @@ export const chainFirstIOK: <A, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2261,7 +2261,7 @@ export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
  * Alias of `flatMapTask`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2274,7 +2274,7 @@ export const chainTaskK: <A, B>(
  * Alias of `tapTask`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2287,7 +2287,7 @@ export const chainFirstTaskK: <A, B>(
  * Alias of `flatMapReader`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2304,7 +2304,7 @@ export const chainReaderK: <A, R, B>(
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2319,7 +2319,7 @@ export const chainReaderKW: <A, R1, B>(
  * Less strict version of [`chainReaderIOK`](#chainreaderiok).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2332,7 +2332,7 @@ export const chainReaderIOKW: <A, R2, B>(
  * Alias of `flatMapReaderIO`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2349,7 +2349,7 @@ export const chainReaderIOK: <A, R, B>(
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2362,7 +2362,7 @@ export const chainIOEitherKW: <E2, A, B>(
  * Alias of `flatMapIOEither`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2379,7 +2379,7 @@ export const chainIOEitherK: <E, A, B>(
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2392,7 +2392,7 @@ export const chainReaderEitherKW: <R2, E2, A, B>(
  * Alias of `flatMapReaderEither`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2412,7 +2412,7 @@ export const chainReaderEitherK: <R, E, A, B>(
  * (*) i.e. returns a `Left`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2428,7 +2428,7 @@ export function bracket<R, E, A, B>(
  * Less strict version of [`bracket`](#bracket).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2451,7 +2451,7 @@ export function bracketW<R1, E1, A, R2, E2, B, R3, E3>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2460,7 +2460,7 @@ export const Do: ReaderTaskEither<unknown, never, {}> = /*#__PURE__*/ of(_.empty
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2472,7 +2472,7 @@ const let_ = /*#__PURE__*/ let__(Functor)
 export {
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Do notation}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -2482,7 +2482,7 @@ export {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2493,7 +2493,7 @@ export const bind = /*#__PURE__*/ chainable.bind(Chain)
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2507,7 +2507,7 @@ export const bindW: <N extends string, A, R2, E2, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2520,7 +2520,7 @@ export const apS = /*#__PURE__*/ apS_(ApplyPar)
  * The `W` suffix (short for **W**idening) means that the environment types and the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2534,7 +2534,7 @@ export const apSW: <A, N extends string, R2, E2, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2558,7 +2558,7 @@ const do_: <MA extends ReaderTaskEitherIterable<any, any, any>, A>(
 export {
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Do notation}
    * @public
    */
@@ -2573,7 +2573,7 @@ export {
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(ApplicativePar)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2587,7 +2587,7 @@ export const traverseReadonlyNonEmptyArrayWithIndex = <A, R, E, B>(
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativePar)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2603,7 +2603,7 @@ export const traverseReadonlyArrayWithIndex = <A, R, E, B>(
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(ApplicativeSeq)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2617,7 +2617,7 @@ export const traverseReadonlyNonEmptyArrayWithIndexSeq = <A, R, E, B>(
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2633,7 +2633,7 @@ export const traverseReadonlyArrayWithIndexSeq = <A, R, E, B>(
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2646,7 +2646,7 @@ export const traverseArrayWithIndex: <R, E, A, B>(
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2660,7 +2660,7 @@ export const traverseArray = <R, E, A, B>(
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2673,7 +2673,7 @@ export const sequenceArray: <R, E, A>(
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2686,7 +2686,7 @@ export const traverseSeqArrayWithIndex: <R, E, A, B>(
  * Equivalent to `ReadonlyArray#traverse(ApplicativeSeq)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2700,7 +2700,7 @@ export const traverseSeqArray = <R, E, A, B>(
  * Equivalent to `ReadonlyArray#sequence(ApplicativeSeq)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2717,7 +2717,7 @@ export const sequenceSeqArray: <R, E, A>(
  * Alias of `flatMap`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2730,7 +2730,7 @@ export const chain: <R, E, A, B>(
  * Alias of `flatMap`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2743,7 +2743,7 @@ export const chainW: <R2, E2, A, B>(
  * Alias of `tap`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2756,7 +2756,7 @@ export const chainFirst: <R, E, A, B>(
  * Alias of `tap`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2769,7 +2769,7 @@ export const chainFirstW: <R2, E2, A, B>(
  * Alias of `tapError`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2782,7 +2782,7 @@ export const orElseFirst: <E, R, B>(
  * Alias of `tapError`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2801,7 +2801,7 @@ export const orElseFirstW: <E1, R2, E2, B>(
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2825,7 +2825,7 @@ export const readerTaskEither: Monad3<URI> & Bifunctor3<URI> & Alt3<URI> & Monad
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2852,7 +2852,7 @@ export const readerTaskEitherSeq: typeof readerTaskEither = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2864,7 +2864,7 @@ export const getApplySemigroup: <R, E, A>(S: Semigroup<A>) => Semigroup<ReaderTa
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2876,7 +2876,7 @@ export const getApplyMonoid: <R, E, A>(M: Monoid<A>) => Monoid<ReaderTaskEither<
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2890,7 +2890,7 @@ export const getSemigroup = <R, E, A>(S: Semigroup<A>): Semigroup<ReaderTaskEith
  * @deprecated Use [`getApplicativeReaderTaskValidation`](#getapplicativereadertaskvalidation) and
  *   [`getAltReaderTaskValidation`](#getaltreadertaskvalidation) instead.
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2919,7 +2919,7 @@ export function getReaderTaskValidation<E>(
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

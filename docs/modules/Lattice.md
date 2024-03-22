@@ -27,7 +27,7 @@ export interface Lattice<A> extends JoinSemilattice<A>, MeetSemilattice<A> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

@@ -108,7 +108,7 @@ export declare const Applicative: Applicative1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -131,7 +131,7 @@ export declare const Apply: Apply1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -154,7 +154,7 @@ export declare const Chain: Chain1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -177,7 +177,7 @@ export declare const Comonad: Comonad1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -200,7 +200,7 @@ export declare const Foldable: Foldable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -223,7 +223,7 @@ export declare const Functor: Functor1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -246,7 +246,7 @@ export declare const Monad: Monad1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -269,7 +269,7 @@ export declare const Pointed: Pointed1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -292,7 +292,7 @@ export declare const Traversable: Traversable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -316,7 +316,7 @@ export declare function getEq<A>(E: Eq<A>): Eq<Tree<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -340,7 +340,7 @@ export declare function getShow<A>(S: Show<A>): Show<Tree<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -364,7 +364,7 @@ export declare function make<A>(value: A, forest?: Forest<A>): Tree<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -387,7 +387,7 @@ export declare const of: <A>(a: A) => Tree<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -413,7 +413,7 @@ export declare function unfoldForest<A, B>(bs: Array<B>, f: (b: B) => [A, Array<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -477,7 +477,7 @@ export declare function unfoldForestM<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -503,7 +503,7 @@ export declare function unfoldTree<A, B>(b: B, f: (b: B) => [A, Array<B>]): Tree
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -567,7 +567,7 @@ export declare function unfoldTreeM<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -590,7 +590,7 @@ export declare const Do: Tree<{}>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -616,7 +616,7 @@ export declare const apS: <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -642,7 +642,7 @@ export declare const bind: <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -665,7 +665,7 @@ export declare const bindTo: <N extends string>(name: N) => <A>(fa: Tree<A>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -688,7 +688,7 @@ export declare const extract: <A>(wa: Tree<A>) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -720,7 +720,7 @@ export declare function fold<A, B>(f: (a: A, bs: Array<B>) => B): (tree: Tree<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -764,7 +764,7 @@ export declare const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: T
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -787,7 +787,7 @@ export declare const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => (fa: Tree<A>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -810,7 +810,7 @@ export declare const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => (fa: Tre
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -835,7 +835,7 @@ export declare const chain: <A, B>(f: (a: A) => Tree<B>) => (ma: Tree<A>) => Tre
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -858,7 +858,7 @@ export declare const flap: <A>(a: A) => <B>(fab: Tree<(a: A) => B>) => Tree<B>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -883,7 +883,7 @@ export declare const map: <A, B>(f: (a: A) => B) => (fa: Tree<A>) => Tree<B>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -906,7 +906,7 @@ export type Forest<A> = Array<Tree<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -932,7 +932,7 @@ export interface Tree<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -958,7 +958,7 @@ export declare const flatMap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -981,7 +981,7 @@ export declare const flatten: <A>(mma: Tree<Tree<A>>) => Tree<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1004,7 +1004,7 @@ export declare const sequence: Traversable1<URI>['sequence']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1027,7 +1027,7 @@ export declare const traverse: PipeableTraverse1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1050,7 +1050,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1073,7 +1073,7 @@ export declare const URI = 'Tree'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1096,7 +1096,7 @@ export declare const ap: <A>(fa: Tree<A>) => <B>(fab: Tree<(a: A) => B>) => Tree
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1121,7 +1121,7 @@ export declare const apFirst: <B>(second: Tree<B>) => <A>(first: Tree<A>) => Tre
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1146,7 +1146,7 @@ export declare const apSecond: <B>(second: Tree<B>) => <A>(first: Tree<A>) => Tr
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1171,7 +1171,7 @@ export declare const chainFirst: <A, B>(f: (a: A) => Tree<B>) => (first: Tree<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1197,7 +1197,7 @@ export declare function drawForest(forest: Forest<string>): string
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1223,7 +1223,7 @@ export declare function drawTree(tree: Tree<string>): string
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1264,7 +1264,7 @@ export declare const duplicate: <A>(wa: Tree<A>) => Tree<Tree<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1288,7 +1288,7 @@ export declare function elem<A>(E: Eq<A>): (a: A, fa: Tree<A>) => boolean
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1311,7 +1311,7 @@ export declare const exists: <A>(predicate: Predicate<A>) => (ma: Tree<A>) => bo
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1334,7 +1334,7 @@ export declare const extend: <A, B>(f: (wa: Tree<A>) => B) => (wa: Tree<A>) => T
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1379,7 +1379,7 @@ export declare const tree: Monad1<URI> & Foldable1<URI> & Traversable1<URI> & Co
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 

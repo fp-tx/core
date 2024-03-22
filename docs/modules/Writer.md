@@ -62,7 +62,7 @@ export declare const Functor: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -85,7 +85,7 @@ export declare const getApplicative: <W>(M: Monoid<W>) => Applicative2C<'Writer'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -108,7 +108,7 @@ export declare const getApply: <W>(S: Semigroup<W>) => Apply2C<'Writer', W>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -132,7 +132,7 @@ export declare function getChain<W>(S: Semigroup<W>): Chain2C<URI, W>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -156,7 +156,7 @@ export declare function getMonad<W>(M: Monoid<W>): Monad2C<URI, W>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -179,7 +179,7 @@ export declare const getPointed: <W>(M: Monoid<W>) => Pointed2C<'Writer', W>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -204,7 +204,7 @@ export declare const tell: <W>(w: W) => Writer<W, void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -227,7 +227,7 @@ export declare const flap: <A>(a: A) => <E, B>(fab: Writer<E, (a: A) => B>) => W
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -252,7 +252,7 @@ export declare const map: <A, B>(f: (a: A) => B) => <E>(fa: Writer<E, A>) => Wri
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -277,7 +277,7 @@ export interface Writer<W, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -300,7 +300,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -323,7 +323,7 @@ export declare const URI = 'Writer'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -348,7 +348,7 @@ export declare const censor: <W>(f: (w: W) => W) => <A>(fa: Writer<W, A>) => Wri
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -373,7 +373,7 @@ export declare const evalWriter: <W, A>(fa: Writer<W, A>) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -397,7 +397,7 @@ export declare const evaluate: <W, A>(fa: Writer<W, A>) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -422,7 +422,7 @@ export declare const execWriter: <W, A>(fa: Writer<W, A>) => W
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -446,7 +446,7 @@ export declare const execute: <W, A>(fa: Writer<W, A>) => W
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -471,7 +471,7 @@ export declare const listen: <W, A>(fa: Writer<W, A>) => Writer<W, [A, W]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -496,7 +496,7 @@ export declare const listens: <W, B>(f: (w: W) => B) => <A>(fa: Writer<W, A>) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -521,7 +521,7 @@ export declare const pass: <W, A>(fa: Writer<W, [A, (w: W) => W]>) => Writer<W, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -546,7 +546,7 @@ export declare const writer: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 

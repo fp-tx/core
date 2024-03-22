@@ -8,7 +8,7 @@
  * Adapted from https://github.com/purescript/purescript-prelude/blob/master/src/Data/Ring.purs
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { getRing } from './function'
@@ -20,7 +20,7 @@ import { type Semiring } from './Semiring'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -51,7 +51,7 @@ export interface Ring<A> extends Semiring<A> {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -72,7 +72,7 @@ export const tuple = <A extends ReadonlyArray<unknown>>(...rings: { [K in keyof 
  * `negate x` can be used as a shorthand for `zero - x`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -90,7 +90,7 @@ export const negate =
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -103,7 +103,7 @@ export const getTupleRing: <T extends ReadonlyArray<Ring<any>>>(
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

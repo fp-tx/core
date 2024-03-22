@@ -41,7 +41,7 @@ export interface FromTask<F> extends FromIO<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -66,7 +66,7 @@ export interface FromTask1<F extends URIS> extends FromIO1<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -91,7 +91,7 @@ export interface FromTask2<F extends URIS2> extends FromIO2<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -116,7 +116,7 @@ export interface FromTask2C<F extends URIS2, E> extends FromIO2C<F, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -141,7 +141,7 @@ export interface FromTask3<F extends URIS3> extends FromIO3<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -166,7 +166,7 @@ export interface FromTask3C<F extends URIS3, E> extends FromIO3C<F, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -191,7 +191,7 @@ export interface FromTask4<F extends URIS4> extends FromIO4<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -260,7 +260,7 @@ export declare function chainFirstTaskK<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -329,7 +329,7 @@ export declare function chainTaskK<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -391,7 +391,7 @@ export declare function fromTaskK<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

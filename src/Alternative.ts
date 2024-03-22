@@ -14,7 +14,7 @@
  * 5. Annihilation: `A.ap(zero, fa) <-> zero`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Alt, type Alt1, type Alt2, type Alt2C, type Alt3, type Alt3C, type Alt4, altAll as altAll_ } from './Alt'
@@ -49,7 +49,7 @@ import { type Zero, type Zero1, type Zero2, type Zero2C, type Zero3, type Zero3C
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -58,7 +58,7 @@ export interface Alternative<F> extends Applicative<F>, Alt<F>, Zero<F> {}
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -67,7 +67,7 @@ export interface Alternative1<F extends URIS> extends Applicative1<F>, Alt1<F>, 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -76,7 +76,7 @@ export interface Alternative2<F extends URIS2> extends Applicative2<F>, Alt2<F>,
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -85,7 +85,7 @@ export interface Alternative2C<F extends URIS2, E> extends Applicative2C<F, E>, 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -94,7 +94,7 @@ export interface Alternative3<F extends URIS3> extends Applicative3<F>, Alt3<F>,
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -103,7 +103,7 @@ export interface Alternative3C<F extends URIS3, E> extends Applicative3C<F, E>, 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -116,7 +116,7 @@ export interface Alternative4<F extends URIS4> extends Applicative4<F>, Alt4<F>,
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -143,7 +143,7 @@ export function altAll<F>(F: Alternative<F>): <A>(as: ReadonlyArray<HKT<F, A>>) 
  * Lift a semigroup into a monoid alternative 'F', the inner values are concatenated using the provided `Semigroup`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

@@ -9,7 +9,7 @@
  * Boolean algebras generalize classical logic: one is equivalent to "true" and zero is equivalent to "false".
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { getBooleanAlgebra } from './function'
@@ -21,7 +21,7 @@ import { type HeytingAlgebra } from './HeytingAlgebra'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -36,7 +36,7 @@ export interface BooleanAlgebra<A> extends HeytingAlgebra<A> {}
  * Every boolean algebras has a dual algebra, which involves reversing one/zero as well as join/meet.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -55,7 +55,7 @@ export const reverse = <A>(B: BooleanAlgebra<A>): BooleanAlgebra<A> => ({
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -78,7 +78,7 @@ export const booleanAlgebraVoid: BooleanAlgebra<void> = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -89,7 +89,7 @@ export const getDualBooleanAlgebra = reverse
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -107,7 +107,7 @@ export const booleanAlgebraBoolean: BooleanAlgebra<boolean> = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

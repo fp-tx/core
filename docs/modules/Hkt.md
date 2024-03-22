@@ -47,7 +47,7 @@ export interface HKT<URI, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -74,7 +74,7 @@ export interface HKT2<URI, E, A> extends HKT<URI, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -101,7 +101,7 @@ export interface HKT3<URI, R, E, A> extends HKT2<URI, E, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -128,7 +128,7 @@ export interface HKT4<URI, S, R, E, A> extends HKT3<URI, R, E, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -153,7 +153,7 @@ export type Kind<URI extends URIS, A> = URI extends URIS ? URItoKind<A>[URI] : a
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -178,7 +178,7 @@ export type Kind2<URI extends URIS2, E, A> = URI extends URIS2 ? URItoKind2<E, A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -203,7 +203,7 @@ export type Kind3<URI extends URIS3, R, E, A> = URI extends URIS3 ? URItoKind3<R
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -228,7 +228,7 @@ export type Kind4<URI extends URIS4, S, R, E, A> = URI extends URIS4 ? URItoKind
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -253,7 +253,7 @@ export type URIS = keyof URItoKind<any>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -278,7 +278,7 @@ export type URIS2 = keyof URItoKind2<any, any>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -303,7 +303,7 @@ export type URIS3 = keyof URItoKind3<any, any, any>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -328,7 +328,7 @@ export type URIS4 = keyof URItoKind4<any, any, any, any>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -353,7 +353,7 @@ export interface URItoKind<A> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -378,7 +378,7 @@ export interface URItoKind2<E, A> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -403,7 +403,7 @@ export interface URItoKind3<R, E, A> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -428,7 +428,7 @@ export interface URItoKind4<S, R, E, A> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

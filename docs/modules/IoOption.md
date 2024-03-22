@@ -160,7 +160,7 @@ export declare const Alt: Alt1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -183,7 +183,7 @@ export declare const Alternative: Alternative1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -206,7 +206,7 @@ export declare const Applicative: Applicative1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -229,7 +229,7 @@ export declare const Apply: Apply1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -252,7 +252,7 @@ export declare const Chain: chainable.Chain1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -277,7 +277,7 @@ export declare const ChainRec: ChainRec1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -300,7 +300,7 @@ export declare const Compactable: Compactable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -323,7 +323,7 @@ export declare const Filterable: Filterable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -346,7 +346,7 @@ export declare const FromEither: FromEither1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -369,7 +369,7 @@ export declare const FromIO: FromIO1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -392,7 +392,7 @@ export declare const Functor: Functor1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -415,7 +415,7 @@ export declare const Monad: Monad1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -438,7 +438,7 @@ export declare const MonadIO: MonadIO1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -461,7 +461,7 @@ export declare const MonadThrow: MonadThrow1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -484,7 +484,7 @@ export declare const Pointed: Pointed1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -507,7 +507,7 @@ export declare const Zero: Zero1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -535,7 +535,7 @@ export declare const tap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -563,7 +563,7 @@ export declare const tapEither: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -609,7 +609,7 @@ export declare const tapIO: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -660,7 +660,7 @@ export declare const none: IOOption<never>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -683,7 +683,7 @@ export declare const of: <A>(a: A) => IOOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -706,7 +706,7 @@ export declare const some: <A>(a: A) => IOOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -729,7 +729,7 @@ export declare const fromEither: <A>(fa: Either<unknown, A>) => IOOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -752,7 +752,7 @@ export declare const fromIO: <A>(fa: IO<A>) => IOOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -775,7 +775,7 @@ export declare const fromIOEither: <A>(fa: IOEither<unknown, A>) => IOOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -798,7 +798,7 @@ export declare const fromNullable: <A>(a: A) => IOOption<NonNullable<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -821,7 +821,7 @@ export declare const fromOption: <A>(fa: Option<A>) => IOOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -844,7 +844,7 @@ export declare const toNullable: <A>(ma: IOOption<A>) => IO<A | null>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -867,7 +867,7 @@ export declare const toUndefined: <A>(ma: IOOption<A>) => IO<A | undefined>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -890,7 +890,7 @@ export declare const Do: IOOption<{}>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -916,7 +916,7 @@ export declare const apS: <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -942,7 +942,7 @@ export declare const bind: <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -965,7 +965,7 @@ export declare const bindTo: <N extends string>(name: N) => <A>(fa: IOOption<A>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -988,7 +988,7 @@ export declare const guard: (b: boolean) => IOOption<void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1011,7 +1011,7 @@ export declare const alt: <A>(second: LazyArg<IOOption<A>>) => (first: IOOption<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1039,7 +1039,7 @@ export declare const altW: <B>(second: LazyArg<IOOption<B>>) => <A>(first: IOOpt
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1062,7 +1062,7 @@ export declare const getOrElse: <A>(onNone: LazyArg<IO<A>>) => (fa: IOOption<A>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1090,7 +1090,7 @@ export declare const getOrElseW: <B>(onNone: LazyArg<IO<B>>) => <A>(ma: IOOption
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1113,7 +1113,7 @@ export declare const compact: Compactable1<URI>['compact']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1140,7 +1140,7 @@ export declare const filter: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1163,7 +1163,7 @@ export declare const filterMap: <A, B>(f: (a: A) => Option<B>) => (fga: IOOption
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1190,7 +1190,7 @@ export declare const partition: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1215,7 +1215,7 @@ export declare const partitionMap: <A, B, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1238,7 +1238,7 @@ export declare const separate: Compactable1<URI>['separate']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1261,7 +1261,7 @@ export declare const chainRec: ChainRec1<URI>['chainRec']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1286,7 +1286,7 @@ export declare const chain: <A, B>(f: (a: A) => IOOption<B>) => (ma: IOOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1311,7 +1311,7 @@ export declare const chainEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1336,7 +1336,7 @@ export declare const chainFirst: <A, B>(f: (a: A) => IOOption<B>) => (first: IOO
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1361,7 +1361,7 @@ export declare const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1386,7 +1386,7 @@ export declare const chainFirstIOK: <A, B>(f: (a: A) => I.IO<B>) => (first: IOOp
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1411,7 +1411,7 @@ export declare const chainIOK: <A, B>(f: (a: A) => I.IO<B>) => (first: IOOption<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1438,7 +1438,7 @@ export declare const chainNullableK: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1463,7 +1463,7 @@ export declare const chainOptionK: <A, B>(f: (a: A) => Option<B>) => (ma: IOOpti
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1488,7 +1488,7 @@ export declare const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1511,7 +1511,7 @@ export declare const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1536,7 +1536,7 @@ export declare const fromNullableK: <A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1561,7 +1561,7 @@ export declare const fromOptionK: <A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1588,7 +1588,7 @@ export declare const fromPredicate: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1616,7 +1616,7 @@ export declare const as: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1641,7 +1641,7 @@ export declare const asUnit: <_>(self: IOOption<_>) => IOOption<void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1664,7 +1664,7 @@ export declare const flap: <A>(a: A) => <B>(fab: IOOption<(a: A) => B>) => IOOpt
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1689,7 +1689,7 @@ export declare const map: <A, B>(f: (a: A) => B) => (fa: IOOption<A>) => IOOptio
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1712,7 +1712,7 @@ export interface IOOption<A> extends IO<Option<A>> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1737,7 +1737,7 @@ export declare const fold: <B, A>(onNone: () => I.IO<B>, onSome: (a: A) => I.IO<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1760,7 +1760,7 @@ export declare const match: <B, A>(onNone: () => B, onSome: (a: A) => B) => (ma:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1785,7 +1785,7 @@ export declare const matchE: <B, A>(onNone: () => IO<B>, onSome: (a: A) => IO<B>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1813,7 +1813,7 @@ export declare const matchEW: <B, C, A>(onNone: () => IO<B>, onSome: (a: A) => I
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1841,7 +1841,7 @@ export declare const matchW: <B, A, C>(onNone: () => B, onSome: (a: A) => C) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1867,7 +1867,7 @@ export declare const flatMap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1893,7 +1893,7 @@ export declare const flatMapEither: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1919,7 +1919,7 @@ export declare const flatMapIO: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1945,7 +1945,7 @@ export declare const flatMapNullable: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1971,7 +1971,7 @@ export declare const flatMapOption: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1994,7 +1994,7 @@ export declare const flatten: <A>(mma: IOOption<IOOption<A>>) => IOOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2021,7 +2021,7 @@ export declare const traverseReadonlyArrayWithIndex: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2048,7 +2048,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndex: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2071,7 +2071,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2094,7 +2094,7 @@ export declare const URI = 'IOOption'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2117,7 +2117,7 @@ export declare const ApT: IOOption<readonly []>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2140,7 +2140,7 @@ export declare const ap: <A>(fa: IOOption<A>) => <B>(fab: IOOption<(a: A) => B>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2165,7 +2165,7 @@ export declare const apFirst: <B>(second: IOOption<B>) => <A>(first: IOOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2190,7 +2190,7 @@ export declare const apSecond: <B>(second: IOOption<B>) => <A>(first: IOOption<A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2252,7 +2252,7 @@ export declare const throwError: MonadThrow1<URI>['throwError']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2275,7 +2275,7 @@ export declare const zero: <A>() => IOOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

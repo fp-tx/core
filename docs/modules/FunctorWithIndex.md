@@ -48,7 +48,7 @@ export interface FunctorWithIndex<F, I> extends Functor<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -73,7 +73,7 @@ export interface FunctorWithIndex1<F extends URIS, I> extends Functor1<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -98,7 +98,7 @@ export interface FunctorWithIndex2<F extends URIS2, I> extends Functor2<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -123,7 +123,7 @@ export interface FunctorWithIndex2C<F extends URIS2, I, E> extends Functor2C<F, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -148,7 +148,7 @@ export interface FunctorWithIndex3<F extends URIS3, I> extends Functor3<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -173,7 +173,7 @@ export interface FunctorWithIndex3C<F extends URIS3, I, E> extends Functor3C<F, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -198,7 +198,7 @@ export interface FunctorWithIndex4<F extends URIS4, I> extends Functor4<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -223,7 +223,7 @@ export interface FunctorWithIndexComposition<F, FI, G, GI> extends FunctorCompos
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -250,7 +250,7 @@ export interface FunctorWithIndexComposition11<F extends URIS, FI, G extends URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -277,7 +277,7 @@ export interface FunctorWithIndexComposition12<F extends URIS, FI, G extends URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -304,7 +304,7 @@ export interface FunctorWithIndexComposition12C<F extends URIS, FI, G extends UR
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -331,7 +331,7 @@ export interface FunctorWithIndexComposition21<F extends URIS2, FI, G extends UR
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -361,7 +361,7 @@ export interface FunctorWithIndexComposition22<F extends URIS2, FI, G extends UR
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -391,7 +391,7 @@ export interface FunctorWithIndexComposition22C<F extends URIS2, FI, G extends U
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -418,7 +418,7 @@ export interface FunctorWithIndexComposition2C1<F extends URIS2, FI, G extends U
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -497,7 +497,7 @@ export declare function getFunctorWithIndexComposition<F, FI, G, GI>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -534,7 +534,7 @@ export declare function mapWithIndex<F, I, G, J>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

@@ -39,7 +39,7 @@ export interface Show<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -66,7 +66,7 @@ export declare const getStructShow: <O extends ReadonlyRecord<string, any>>(show
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -96,7 +96,7 @@ export declare const getTupleShow: <T extends ReadonlyArray<Show<any>>>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -122,7 +122,7 @@ export declare const showBoolean: Show<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -148,7 +148,7 @@ export declare const showNumber: Show<number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -174,7 +174,7 @@ export declare const showString: Show<string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -198,7 +198,7 @@ export declare const struct: <A>(shows: { [K in keyof A]: Show<A[K]> }) => Show<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -223,7 +223,7 @@ export declare const tuple: <A extends readonly unknown[]>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

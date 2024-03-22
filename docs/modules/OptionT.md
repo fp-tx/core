@@ -122,7 +122,7 @@ export declare function fromPredicate<F>(F: Pointed<F>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -184,7 +184,7 @@ export declare function match<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -214,7 +214,7 @@ export interface OptionM<M> extends ApplicativeCompositionHKT1<M, O.URI> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -245,7 +245,7 @@ export interface OptionM1<M extends URIS> extends ApplicativeComposition11<M, O.
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -280,7 +280,7 @@ export interface OptionM2<M extends URIS2> extends ApplicativeComposition21<M, O
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -315,7 +315,7 @@ export interface OptionM2C<M extends URIS2, E> extends ApplicativeComposition2C1
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -339,7 +339,7 @@ export interface OptionT<M, A> extends HKT<M, Option<A>> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -363,7 +363,7 @@ export type OptionT1<M extends URIS, A> = Kind<M, Option<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -387,7 +387,7 @@ export type OptionT2<M extends URIS2, E, A> = Kind2<M, E, Option<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -454,7 +454,7 @@ export declare function alt<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -520,7 +520,7 @@ export declare function ap<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -584,7 +584,7 @@ export declare function chain<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -652,7 +652,7 @@ export declare function chainNullableK<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -714,7 +714,7 @@ export declare function chainOptionK<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -778,7 +778,7 @@ export declare function fromEither<F>(F: Pointed<F>): <A>(e: Either<unknown, A>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -832,7 +832,7 @@ export declare function fromF<F>(F: Functor<F>): <A>(ma: HKT<F, A>) => HKT<F, Op
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -890,7 +890,7 @@ export declare function fromNullable<F>(F: Pointed<F>): <A>(a: A) => HKT<F, Opti
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -966,7 +966,7 @@ export declare function fromNullableK<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1030,7 +1030,7 @@ export declare function fromOptionK<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1066,7 +1066,7 @@ export declare function getOptionM<M>(M: Monad<M>): OptionM<M>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1129,7 +1129,7 @@ export declare function getOrElse<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1189,7 +1189,7 @@ export declare function map<F>(F: Functor<F>): <A, B>(f: (a: A) => B) => (fa: HK
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1266,7 +1266,7 @@ export declare function matchE<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1314,7 +1314,7 @@ export declare function some<F>(F: Pointed<F>): <A>(a: A) => HKT<F, Option<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1362,7 +1362,7 @@ export declare function zero<F>(F: Pointed<F>): <A>() => HKT<F, Option<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

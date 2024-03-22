@@ -40,7 +40,7 @@ export interface Chain<F> extends Apply<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -65,7 +65,7 @@ export interface Chain1<F extends URIS> extends Apply1<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -90,7 +90,7 @@ export interface Chain2<F extends URIS2> extends Apply2<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -115,7 +115,7 @@ export interface Chain2C<F extends URIS2, E> extends Apply2C<F, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -140,7 +140,7 @@ export interface Chain3<F extends URIS3> extends Apply3<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -165,7 +165,7 @@ export interface Chain3C<F extends URIS3, E> extends Apply3C<F, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -190,7 +190,7 @@ export interface Chain4<F extends URIS4> extends Apply4<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -315,7 +315,7 @@ export declare function bind<M>(M: Chain<M>): <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -375,7 +375,7 @@ export declare function chainFirst<M>(M: Chain<M>): <A, _>(f: (a: A) => HKT<M, _
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

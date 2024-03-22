@@ -32,7 +32,7 @@ export interface Category<F> extends Semigroupoid<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -57,7 +57,7 @@ export interface Category2<F extends URIS2> extends Semigroupoid2<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -82,7 +82,7 @@ export interface Category3<F extends URIS3> extends Semigroupoid3<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -107,7 +107,7 @@ export interface Category4<F extends URIS4> extends Semigroupoid4<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

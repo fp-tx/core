@@ -1,6 +1,6 @@
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import type * as BA from './BooleanAlgebra'
@@ -18,7 +18,7 @@ import type * as S from './Show'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Refinements}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -31,7 +31,7 @@ export const isBoolean: Refinement<unknown, boolean> = (u: unknown): u is boolea
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -45,7 +45,7 @@ export const matchW =
  * Alias of [`matchW`](#matchw).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -78,7 +78,7 @@ export const foldW = matchW
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -89,7 +89,7 @@ export const match: <A>(onFalse: LazyArg<A>, onTrue: LazyArg<A>) => (value: bool
  * Alias of [`match`](#match).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -102,7 +102,7 @@ export const fold = match
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -113,7 +113,7 @@ export const Eq: E.Eq<boolean> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -140,7 +140,7 @@ export const BooleanAlgebra: BA.BooleanAlgebra<boolean> = {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -163,7 +163,7 @@ export const SemigroupAll: Semigroup<boolean> = {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -187,7 +187,7 @@ export const SemigroupAny: Semigroup<boolean> = {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -213,7 +213,7 @@ export const MonoidAll: Monoid<boolean> = {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -225,7 +225,7 @@ export const MonoidAny: Monoid<boolean> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -240,7 +240,7 @@ export const Ord: O.Ord<boolean> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public

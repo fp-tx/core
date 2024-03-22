@@ -240,7 +240,7 @@ export declare const Alt: Alt1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -263,7 +263,7 @@ export declare const Alternative: Alternative1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -286,7 +286,7 @@ export declare const Applicative: Applicative1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -309,7 +309,7 @@ export declare const Apply: Apply1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -332,7 +332,7 @@ export declare const Chain: Chain1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -355,7 +355,7 @@ export declare const ChainRecBreadthFirst: ChainRec1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -378,7 +378,7 @@ export declare const ChainRecDepthFirst: ChainRec1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -401,7 +401,7 @@ export declare const Compactable: Compactable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -424,7 +424,7 @@ export declare const Extend: Extend1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -447,7 +447,7 @@ export declare const Filterable: Filterable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -470,7 +470,7 @@ export declare const FilterableWithIndex: FilterableWithIndex1<URI, number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -493,7 +493,7 @@ export declare const Foldable: Foldable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -516,7 +516,7 @@ export declare const FoldableWithIndex: FoldableWithIndex1<URI, number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -539,7 +539,7 @@ export declare const FromEither: FromEither1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -562,7 +562,7 @@ export declare const Functor: Functor1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -585,7 +585,7 @@ export declare const FunctorWithIndex: FunctorWithIndex1<URI, number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -608,7 +608,7 @@ export declare const Monad: Monad1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -631,7 +631,7 @@ export declare const Pointed: Pointed1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -654,7 +654,7 @@ export declare const Traversable: Traversable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -677,7 +677,7 @@ export declare const TraversableWithIndex: TraversableWithIndex1<URI, number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -700,7 +700,7 @@ export declare const Unfoldable: Unfoldable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -723,7 +723,7 @@ export declare const Witherable: Witherable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -746,7 +746,7 @@ export declare const Zero: Zero1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -771,7 +771,7 @@ export declare const getDifferenceMagma: <A>(E: Eq<A>) => Magma<A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -806,7 +806,7 @@ export declare const getEq: <A>(E: Eq<A>) => Eq<Array<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -842,7 +842,7 @@ export declare const getIntersectionSemigroup: <A>(E: Eq<A>) => Semigroup<A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -877,7 +877,7 @@ export declare const getMonoid: <A = never>() => Monoid<A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -911,7 +911,7 @@ export declare const getOrd: <A>(O: Ord<A>) => Ord<Array<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -948,7 +948,7 @@ export declare const getSemigroup: <A = never>() => Semigroup<A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -982,7 +982,7 @@ export declare const getShow: <A>(S: Show<A>) => Show<Array<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1016,7 +1016,7 @@ export declare const getUnionMonoid: <A>(E: Eq<A>) => Monoid<A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1052,7 +1052,7 @@ export declare const getUnionSemigroup: <A>(E: Eq<A>) => Semigroup<A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1090,7 +1090,7 @@ export declare const makeBy: <A>(n: number, f: (i: number) => A) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1126,7 +1126,7 @@ export declare const of: <A>(a: A) => Array<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1162,7 +1162,7 @@ export declare const replicate: <A>(n: number, a: A) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1197,7 +1197,7 @@ export declare const fromEither: <A>(fa: Either<unknown, A>) => Array<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1233,7 +1233,7 @@ export declare const fromOption: <A>(fa: Option<A>) => Array<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1267,7 +1267,7 @@ export declare const Do: Array<{}>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1293,7 +1293,7 @@ export declare const apS: <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1319,7 +1319,7 @@ export declare const bind: <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1342,7 +1342,7 @@ export declare const bindTo: <N extends string>(name: N) => <A>(fa: A[]) => { re
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1365,7 +1365,7 @@ export declare const guard: (b: boolean) => void[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1393,7 +1393,7 @@ export declare const alt: <A>(that: LazyArg<Array<A>>) => (fa: Array<A>) => Arra
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1436,7 +1436,7 @@ export declare const altW: <B>(that: LazyArg<B[]>) => <A>(fa: A[]) => (B | A)[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1476,7 +1476,7 @@ export declare const compact: <A>(fa: Array<Option<A>>) => Array<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1514,7 +1514,7 @@ export declare const filter: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1549,7 +1549,7 @@ export declare const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Array<A>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1588,7 +1588,7 @@ export declare const filterMapWithIndex: <A, B>(f: (i: number, a: A) => Option<B
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1628,7 +1628,7 @@ export declare const filterWithIndex: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1666,7 +1666,7 @@ export declare const partition: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1703,7 +1703,7 @@ export declare const partitionMap: <A, B, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1743,7 +1743,7 @@ export declare const partitionMapWithIndex: <A, B, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1788,7 +1788,7 @@ export declare const partitionWithIndex: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1824,7 +1824,7 @@ export declare const separate: <A, B>(fa: Either<A, B>[]) => Separated<A[], B[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1859,7 +1859,7 @@ export declare const wilt: PipeableWilt1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1882,7 +1882,7 @@ export declare const wither: PipeableWither1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1907,7 +1907,7 @@ export declare const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1942,7 +1942,7 @@ export declare const foldMapWithIndex: <M>(M: Monoid<M>) => <A>(f: (i: number, a
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1983,7 +1983,7 @@ export declare const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => (fa: Array<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2019,7 +2019,7 @@ export declare const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => (fa: Arr
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2052,7 +2052,7 @@ export declare const reduceRightWithIndex: <A, B>(b: B, f: (i: number, a: A, b: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2087,7 +2087,7 @@ export declare const reduceWithIndex: <A, B>(b: B, f: (i: number, b: B, a: A) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2122,7 +2122,7 @@ export declare const chain: <A, B>(f: (a: A) => Array<B>) => (ma: Array<A>) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2147,7 +2147,7 @@ export declare const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2170,7 +2170,7 @@ export declare const fromOptionK: <A extends readonly unknown[], B>(f: (...a: A)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2204,7 +2204,7 @@ export declare function fromPredicate<A>(predicate: Predicate<A>): (a: A) => Arr
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2255,7 +2255,7 @@ export declare const flap: <A>(a: A) => <B>(fab: ((a: A) => B)[]) => B[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2293,7 +2293,7 @@ export declare const map: <A, B>(f: (a: A) => B) => (fa: Array<A>) => Array<B>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2328,7 +2328,7 @@ export declare const mapWithIndex: <A, B>(f: (i: number, a: A) => B) => (fa: Arr
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2366,7 +2366,7 @@ export declare const foldLeft: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2394,7 +2394,7 @@ export declare const foldRight: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2419,7 +2419,7 @@ export declare const match: <B, A>(onEmpty: LazyArg<B>, onNonEmpty: (as: NonEmpt
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2461,7 +2461,7 @@ export declare const matchLeft: <B, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2501,7 +2501,7 @@ export declare const matchLeftW: <B, A, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2542,7 +2542,7 @@ export declare const matchRight: <B, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2582,7 +2582,7 @@ export declare const matchRightW: <B, A, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2626,7 +2626,7 @@ export declare const matchW: <B, A, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2665,7 +2665,7 @@ export declare const isEmpty: <A>(as: A[]) => as is []
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2699,7 +2699,7 @@ export declare const isNonEmpty: <A>(as: Array<A>) => as is NonEmptyArray<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2733,7 +2733,7 @@ export declare const chainFirst: <A, B>(f: (a: A) => Array<B>) => (first: Array<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2778,7 +2778,7 @@ export declare const chainRecBreadthFirst: <A, B>(f: (a: A) => Array<Either<A, B
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2801,7 +2801,7 @@ export declare const chainRecDepthFirst: <A, B>(f: (a: A) => Array<Either<A, B>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2826,7 +2826,7 @@ export declare const chainWithIndex: <A, B>(f: (i: number, a: A) => B[]) => (as:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2867,7 +2867,7 @@ export declare const flatMap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2903,7 +2903,7 @@ export declare const flatten: <A>(mma: Array<Array<A>>) => Array<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2936,7 +2936,7 @@ export declare const traverseWithIndex: PipeableTraverseWithIndex1<URI, number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2979,7 +2979,7 @@ export declare const sequence: Traversable1<URI>['sequence']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3020,7 +3020,7 @@ export declare const traverse: PipeableTraverse1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3054,7 +3054,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3077,7 +3077,7 @@ export declare const URI = 'Array'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3100,7 +3100,7 @@ export declare const unsafeDeleteAt: <A>(i: number, as: A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3123,7 +3123,7 @@ export declare const unsafeInsertAt: <A>(i: number, a: A, as: Array<A>) => NonEm
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3146,7 +3146,7 @@ export declare const unsafeUpdateAt: <A>(i: number, a: A, as: A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3174,7 +3174,7 @@ export interface Spanned<I, R> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3197,7 +3197,7 @@ export declare const ap: <A>(fa: Array<A>) => <B>(fab: Array<(a: A) => B>) => Ar
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3256,7 +3256,7 @@ export declare const apFirst: <B>(second: B[]) => <A>(first: A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3281,7 +3281,7 @@ export declare const apSecond: <B>(second: B[]) => <A>(first: A[]) => B[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3306,7 +3306,7 @@ export declare const append: <A>(end: A) => (init: Array<A>) => NEA.NonEmptyArra
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3340,7 +3340,7 @@ export declare const appendW: <A, B>(end: B) => (init: Array<A>) => NEA.NonEmpty
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3382,7 +3382,7 @@ export declare const array: FunctorWithIndex1<URI, number> &
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3408,7 +3408,7 @@ export declare const chop: <A, B>(f: (as: NEA.NonEmptyArray<A>) => [B, A[]]) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3456,7 +3456,7 @@ export declare const chunksOf: (n: number) => <A>(as: A[]) => NEA.NonEmptyArray<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3514,7 +3514,7 @@ export declare function comprehension<A, R>(input: [Array<A>], f: (a: A) => R, g
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3561,7 +3561,7 @@ export declare const concat: <A>(second: Array<A>) => (first: Array<A>) => Array
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3584,7 +3584,7 @@ export declare const concatW: <B>(second: B[]) => <A>(first: A[]) => (B | A)[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3609,7 +3609,7 @@ export declare const cons: typeof NEA.cons
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3635,7 +3635,7 @@ export declare const copy: <A>(as: A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3660,7 +3660,7 @@ export declare const deleteAt: (i: number) => <A>(as: A[]) => Option<A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3699,7 +3699,7 @@ export declare function difference<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3737,7 +3737,7 @@ export declare const dropLeft: (n: number) => <A>(as: A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3782,7 +3782,7 @@ export declare function dropLeftWhile<A>(predicate: Predicate<A>): (as: Array<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3818,7 +3818,7 @@ export declare const dropRight: (n: number) => <A>(as: A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3854,7 +3854,7 @@ export declare const duplicate: <A>(wa: Array<A>) => Array<Array<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3890,7 +3890,7 @@ export declare const elem: <A>(E: Eq<A>) => {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3926,7 +3926,7 @@ export declare const empty: Array<never>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -3955,7 +3955,7 @@ export declare const every: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3989,7 +3989,7 @@ export declare const exists: <A>(predicate: Predicate<A>) => (as: Array<A>) => a
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -4014,7 +4014,7 @@ export declare const extend: <A, B>(f: (as: Array<A>) => B) => (as: Array<A>) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4048,7 +4048,7 @@ export declare const filterE: import('./Witherable.js').FilterE1<'Array'>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -4082,7 +4082,7 @@ export declare function findFirst<A>(predicate: Predicate<A>): (as: Array<A>) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4127,7 +4127,7 @@ export declare const findFirstMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4175,7 +4175,7 @@ export declare const findIndex: <A>(predicate: Predicate<A>) => (as: Array<A>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4219,7 +4219,7 @@ export declare function findLast<A>(predicate: Predicate<A>): (as: Array<A>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4264,7 +4264,7 @@ export declare const findLastIndex: <A>(predicate: Predicate<A>) => (as: Array<A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4307,7 +4307,7 @@ export declare const findLastMap: <A, B>(f: (a: A) => Option<B>) => (as: Array<A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4355,7 +4355,7 @@ export declare const head: <A>(as: Array<A>) => Option<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4390,7 +4390,7 @@ export declare const init: <A>(as: A[]) => Option<A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4425,7 +4425,7 @@ export declare const insertAt: <A>(i: number, a: A) => (as: A[]) => Option<NEA.N
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4459,7 +4459,7 @@ export declare const intercalate: <A>(M: Monoid<A>) => (middle: A) => (as: Array
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4497,7 +4497,7 @@ export declare function intersection<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4532,7 +4532,7 @@ export declare const intersperse: <A>(middle: A) => (as: A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4565,7 +4565,7 @@ export declare const isOutOfBound: <A>(i: number, as: Array<A>) => boolean
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4600,7 +4600,7 @@ export declare const last: <A>(as: Array<A>) => Option<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4635,7 +4635,7 @@ export declare const lefts: <E, A>(as: Either<E, A>[]) => E[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4692,7 +4692,7 @@ export declare const lookup: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4728,7 +4728,7 @@ export declare const modifyAt: <A>(i: number, f: (a: A) => A) => (as: A[]) => Op
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4764,7 +4764,7 @@ export declare const prepend: <A>(head: A) => (tail: Array<A>) => NEA.NonEmptyAr
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4798,7 +4798,7 @@ export declare const prependAll: <A>(middle: A) => (as: A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4831,7 +4831,7 @@ export declare const prependToAll: <A>(middle: A) => (as: A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4857,7 +4857,7 @@ export declare const prependW: <A, B>(head: B) => (tail: Array<A>) => NEA.NonEmp
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4891,7 +4891,7 @@ export declare const range: (start: number, end: number) => NEA.NonEmptyArray<nu
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -4917,7 +4917,7 @@ export declare const reverse: <A>(as: A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4950,7 +4950,7 @@ export declare const rights: <E, A>(as: Either<E, A>[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -4984,7 +4984,7 @@ export declare const rotate: (n: number) => <A>(as: A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5017,7 +5017,7 @@ export declare const scanLeft: <A, B>(b: B, f: (b: B, a: A) => B) => (as: A[]) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5050,7 +5050,7 @@ export declare const scanRight: <A, B>(b: B, f: (a: A, b: B) => B) => (as: A[]) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5083,7 +5083,7 @@ export declare const size: <A>(as: A[]) => number
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5116,7 +5116,7 @@ export declare const snoc: <A>(init: A[], end: A) => NEA.NonEmptyArray<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -5142,7 +5142,7 @@ export declare const some: <A>(predicate: Predicate<A>) => (as: A[]) => as is NE
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5176,7 +5176,7 @@ export declare const sort: <B>(O: Ord<B>) => <A extends B>(as: A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5210,7 +5210,7 @@ export declare const sortBy: <B>(ords: Ord<B>[]) => <A extends B>(as: A[]) => A[
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5285,7 +5285,7 @@ export declare function spanLeft<A>(predicate: Predicate<A>): (as: Array<A>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5321,7 +5321,7 @@ export declare const splitAt: (n: number) => <A>(as: A[]) => [A[], A[]]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5357,7 +5357,7 @@ export declare const tail: <A>(as: A[]) => Option<A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5395,7 +5395,7 @@ export declare const takeLeft: (n: number) => <A>(as: A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5440,7 +5440,7 @@ export declare function takeLeftWhile<A>(predicate: Predicate<A>): (as: Array<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5476,7 +5476,7 @@ export declare const takeRight: (n: number) => <A>(as: A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5512,7 +5512,7 @@ export declare const unfold: <A, B>(b: B, f: (b: B) => Option<readonly [A, B]>) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5556,7 +5556,7 @@ export declare function union<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5591,7 +5591,7 @@ export declare const uniq: <A>(E: Eq<A>) => (as: A[]) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5625,7 +5625,7 @@ export declare const unzip: <A, B>(as: [A, B][]) => [A[], B[]]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5668,7 +5668,7 @@ export declare const updateAt: <A>(i: number, a: A) => (as: A[]) => Option<A[]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5703,7 +5703,7 @@ export declare const zero: <A>() => Array<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -5733,7 +5733,7 @@ export declare function zip<A, B>(as: Array<A>, bs: Array<B>): Array<[A, B]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -5771,7 +5771,7 @@ export declare const zipWith: <A, B, C>(fa: A[], fb: B[], f: (a: A, b: B) => C) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 

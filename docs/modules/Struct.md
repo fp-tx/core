@@ -33,7 +33,7 @@ export declare const getAssignSemigroup: <A extends object = never>() => Semigro
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -74,7 +74,7 @@ export declare const evolve: <A, F extends { [K in keyof A]: (a: A[K]) => unknow
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 

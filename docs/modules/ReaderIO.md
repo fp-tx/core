@@ -128,7 +128,7 @@ export declare const Applicative: Applicative2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -151,7 +151,7 @@ export declare const Apply: Apply2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -174,7 +174,7 @@ export declare const Chain: chainable.Chain2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -199,7 +199,7 @@ export declare const ChainRec: ChainRec2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -222,7 +222,7 @@ export declare const FromIO: FromIO2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -245,7 +245,7 @@ export declare const FromReader: FromReader2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -268,7 +268,7 @@ export declare const Functor: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -291,7 +291,7 @@ export declare const Monad: Monad2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -314,7 +314,7 @@ export declare const MonadIO: MonadIO2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -337,7 +337,7 @@ export declare const Pointed: Pointed2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -365,7 +365,7 @@ export declare const tap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -393,7 +393,7 @@ export declare const tapIO: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -441,7 +441,7 @@ export declare const tapReader: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -466,7 +466,7 @@ export declare const ask: <R>() => ReaderIO<R, R>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -491,7 +491,7 @@ export declare const asks: <R, A>(f: (r: R) => A) => ReaderIO<R, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -516,7 +516,7 @@ export declare const asksReaderIO: <R, A>(f: (r: R) => ReaderIO<R, A>) => Reader
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -544,7 +544,7 @@ export declare const asksReaderIOW: <R1, R2, A>(f: (r1: R1) => ReaderIO<R2, A>) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -567,7 +567,7 @@ export declare const of: <R = unknown, A = never>(a: A) => ReaderIO<R, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -590,7 +590,7 @@ export declare const fromIO: <A, R = unknown>(fa: IO<A>) => ReaderIO<R, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -613,7 +613,7 @@ export declare const fromReader: <R, A>(fa: Reader<R, A>) => ReaderIO<R, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -636,7 +636,7 @@ export declare const Do: ReaderIO<unknown, {}>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -662,7 +662,7 @@ export declare const apS: <N extends string, A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -698,7 +698,7 @@ export declare const apSW: <N extends string, A, R2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -724,7 +724,7 @@ export declare const bind: <N extends string, A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -749,7 +749,7 @@ export declare const bindTo: <N extends string>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -782,7 +782,7 @@ export declare const bindW: <N extends string, A, R2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -805,7 +805,7 @@ export declare const chainRec: ChainRec2<URI>['chainRec']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -830,7 +830,7 @@ export declare const chain: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (ma: Reade
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -855,7 +855,7 @@ export declare const chainFirst: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (firs
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -880,7 +880,7 @@ export declare const chainFirstIOK: <A, B>(f: (a: A) => I.IO<B>) => <E>(first: R
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -905,7 +905,7 @@ export declare const chainFirstReaderK: <A, R, B>(f: (a: A) => R.Reader<R, B>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -938,7 +938,7 @@ export declare const chainFirstReaderKW: <A, R1, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -965,7 +965,7 @@ export declare const chainFirstW: <A, R2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -990,7 +990,7 @@ export declare const chainIOK: <A, B>(f: (a: A) => I.IO<B>) => <E>(first: Reader
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1015,7 +1015,7 @@ export declare const chainReaderK: <A, R, B>(f: (a: A) => R.Reader<R, B>) => (ma
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1048,7 +1048,7 @@ export declare const chainReaderKW: <A, R1, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1075,7 +1075,7 @@ export declare const chainW: <A, R2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1100,7 +1100,7 @@ export declare const fromIOK: <A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1125,7 +1125,7 @@ export declare const fromReaderK: <A extends ReadonlyArray<unknown>, R, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1153,7 +1153,7 @@ export declare const as: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1178,7 +1178,7 @@ export declare const asUnit: <R, _>(self: ReaderIO<R, _>) => ReaderIO<R, void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1201,7 +1201,7 @@ export declare const flap: <A>(a: A) => <E, B>(fab: ReaderIO<E, (a: A) => B>) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1226,7 +1226,7 @@ export declare const map: <A, B>(f: (a: A) => B) => <R>(fa: ReaderIO<R, A>) => R
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1251,7 +1251,7 @@ export interface ReaderIO<R, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1277,7 +1277,7 @@ export declare const flatMap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1303,7 +1303,7 @@ export declare const flatMapIO: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1329,7 +1329,7 @@ export declare const flatMapReader: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1352,7 +1352,7 @@ export declare const flatten: <R, A>(mma: ReaderIO<R, ReaderIO<R, A>>) => Reader
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1380,7 +1380,7 @@ export declare const flattenW: <R1, R2, A>(mma: ReaderIO<R1, ReaderIO<R2, A>>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1405,7 +1405,7 @@ export declare const sequenceArray: <R, A>(arr: ReadonlyArray<ReaderIO<R, A>>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1432,7 +1432,7 @@ export declare const traverseArray: <A, R, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1459,7 +1459,7 @@ export declare const traverseArrayWithIndex: <A, R, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1486,7 +1486,7 @@ export declare const traverseReadonlyArrayWithIndex: <A, R, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1513,7 +1513,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndex: <A, R, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1536,7 +1536,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1559,7 +1559,7 @@ export declare const URI = 'ReaderIO'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1582,7 +1582,7 @@ export declare const ApT: ReaderIO<unknown, readonly []>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1605,7 +1605,7 @@ export declare const ap: <R, A>(fa: ReaderIO<R, A>) => <B>(fab: ReaderIO<R, (a: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1630,7 +1630,7 @@ export declare const apFirst: <E, B>(second: ReaderIO<E, B>) => <A>(first: Reade
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1655,7 +1655,7 @@ export declare const apSecond: <E, B>(second: ReaderIO<E, B>) => <A>(first: Read
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1685,7 +1685,7 @@ export declare const apW: <R2, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1729,7 +1729,7 @@ export declare const local: <R2, R1>(f: (r2: R2) => R1) => <A>(ma: ReaderIO<R1, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

@@ -58,7 +58,7 @@
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Alt2, type Alt2C } from './Alt'
@@ -116,7 +116,7 @@ import { wiltDefault, type Witherable2C, witherDefault } from './Witherable'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -128,7 +128,7 @@ export interface Left<E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -140,7 +140,7 @@ export interface Right<A> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -156,7 +156,7 @@ export type Either<E, A> = Left<E> | Right<A>
  * structure.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -168,7 +168,7 @@ export const left: <E = never, A = never>(e: E) => Either<E, A> = _.left
  * of this structure.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -177,7 +177,7 @@ export const right: <E = never, A = never>(a: A) => Either<E, A> = _.right
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -216,7 +216,7 @@ const _extend: Extend2<URI>['extend'] = (wa, f) => pipe(wa, extend(f))
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -225,7 +225,7 @@ export const URI = 'Either'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -240,7 +240,7 @@ declare module './HKT' {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -251,7 +251,7 @@ export const getShow = <E, A>(SE: Show<E>, SA: Show<A>): Show<Either<E, A>> => (
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -279,7 +279,7 @@ export const getEq = <E, A>(EL: Eq<E>, EA: Eq<A>): Eq<Either<E, A>> => ({
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -295,7 +295,7 @@ export const getSemigroup = <E, A>(S: Semigroup<A>): Semigroup<Either<E, A>> => 
  * Builds a `Compactable` instance for `Either` given `Monoid` for the left side.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -320,7 +320,7 @@ export const getCompactable = <E>(M: Monoid<E>): Compactable2C<URI, E> => {
  * Builds a `Filterable` instance for `Either` given `Monoid` for the left side
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -372,7 +372,7 @@ export const getFilterable = <E>(M: Monoid<E>): Filterable2C<URI, E> => {
  * Builds `Witherable` instance for `Either` given `Monoid` for the left side
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -440,7 +440,7 @@ export const getWitherable = <E>(M: Monoid<E>): Witherable2C<URI, E> => {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -493,7 +493,7 @@ export const getApplicativeValidation = <E>(SE: Semigroup<E>): Applicative2C<URI
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -513,7 +513,7 @@ export const getAltValidation = <E>(SE: Semigroup<E>): Alt2C<URI, E> => ({
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -523,7 +523,7 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: Either<E, A>) => Either<E, B
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -537,7 +537,7 @@ export const Functor: Functor2<URI> = {
  * Maps the `Right` value of this `Either` to the specified constant value.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -551,7 +551,7 @@ export const as: {
  * Maps the `Right` value of this `Either` to the void constant value.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -560,7 +560,7 @@ export const asUnit: <E, _>(self: Either<E, _>) => Either<E, void> = asUnit_(Fun
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -569,7 +569,7 @@ export const of: <E = never, A = never>(a: A) => Either<E, A> = right
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -585,7 +585,7 @@ export const Pointed: Pointed2<URI> = {
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -597,7 +597,7 @@ export const apW: <E2, A>(fa: Either<E2, A>) => <E1, B>(fab: Either<E1, (a: A) =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -605,7 +605,7 @@ export const ap: <E, A>(fa: Either<E, A>) => <B>(fab: Either<E, (a: A) => B>) =>
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -618,7 +618,7 @@ export const Apply: Apply2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -632,7 +632,7 @@ export const Applicative: Applicative2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -646,7 +646,7 @@ export const Chain: chainable.Chain2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -677,7 +677,7 @@ export const Monad: Monad2<URI> = {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -703,7 +703,7 @@ export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => <E>(fa: Either<E, A>)
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -729,7 +729,7 @@ export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => <E>(fa: Either
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Folding}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -739,7 +739,7 @@ export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => <E>(fa: Either<E
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -768,7 +768,7 @@ export const Foldable: Foldable2<URI> = {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -795,7 +795,7 @@ export const traverse: PipeableTraverse2<URI> =
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -808,7 +808,7 @@ export const sequence: Traversable2<URI>['sequence'] =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -827,7 +827,7 @@ export const Traversable: Traversable2<URI> = {
  * Map a pair of functions over the two type arguments of the bifunctor.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -839,7 +839,7 @@ export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: Either<
  * Map a function over the first type argument of a bifunctor.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -849,7 +849,7 @@ export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: Either<E, A>) => Either<
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -866,7 +866,7 @@ export const Bifunctor: Bifunctor2<URI> = {
  * The `W` suffix (short for **W**idening) means that the error and the return types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -925,7 +925,7 @@ export const altW: <E2, B>(that: LazyArg<Either<E2, B>>) => <E1, A>(fa: Either<E
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -934,7 +934,7 @@ export const alt: <E, A>(that: LazyArg<Either<E, A>>) => (fa: Either<E, A>) => E
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -947,7 +947,7 @@ export const Alt: Alt2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -956,7 +956,7 @@ export const extend: <E, A, B>(f: (wa: Either<E, A>) => B) => (wa: Either<E, A>)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -969,7 +969,7 @@ export const Extend: Extend2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instance Methods}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -983,7 +983,7 @@ const chainRec: ChnRec.ChainRec2<URI>['chainRec'] = (a, f) =>
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -998,7 +998,7 @@ export const ChainRec: ChnRec.ChainRec2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1006,7 +1006,7 @@ export const throwError: MonadThrow2<URI>['throwError'] = left
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1022,7 +1022,7 @@ export const MonadThrow: MonadThrow2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1062,7 +1062,7 @@ export const FromEither: FromEither2<URI> = {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1102,7 +1102,7 @@ export const fromPredicate: {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1118,7 +1118,7 @@ export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => Either
  * Returns `true` if the either is an instance of `Left`, `false` otherwise.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Refinements}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1129,7 +1129,7 @@ export const isLeft: <E>(ma: Either<E, unknown>) => ma is Left<E> = _.isLeft
  * Returns `true` if the either is an instance of `Right`, `false` otherwise.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Refinements}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1142,7 +1142,7 @@ export const isRight: <A>(ma: Either<unknown, A>) => ma is Right<A> = _.isRight
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1156,7 +1156,7 @@ export const matchW =
  * Alias of [`matchW`](#matchw).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1186,7 +1186,7 @@ export const foldW = matchW
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1197,7 +1197,7 @@ export const match: <E, A, B>(onLeft: (e: E) => B, onRight: (a: A) => B) => (ma:
  * Alias of [`match`](#match).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Pattern matching}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1210,7 +1210,7 @@ export const fold: <E, A, B>(onLeft: (e: E) => B, onRight: (a: A) => B) => (ma: 
  * The `W` suffix (short for **W**idening) means that the handler return type will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1246,7 +1246,7 @@ export const getOrElseW =
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1259,7 +1259,7 @@ export const getOrElse: <E, A>(onLeft: (e: E) => A) => (ma: Either<E, A>) => A =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1270,7 +1270,7 @@ export const flap = /*#__PURE__*/ flap_(Functor)
  * Combine two effectful actions, keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1282,7 +1282,7 @@ export const apFirst = /*#__PURE__*/ apFirst_(Apply)
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1293,7 +1293,7 @@ export const apFirstW: <E2, B>(second: Either<E2, B>) => <E1, A>(first: Either<E
  * Combine two effectful actions, keeping only the result of the second.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1305,7 +1305,7 @@ export const apSecond = /*#__PURE__*/ apSecond_(Apply)
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1317,7 +1317,7 @@ export const apSecondW: <E2, B>(second: Either<E2, B>) => <E1, A>(first: Either<
  * keeping only the result of the first.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Combinators}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1333,7 +1333,7 @@ export const tap: {
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1356,7 +1356,7 @@ export const flattenW: <E1, E2, A>(mma: Either<E1, Either<E2, A>>) => Either<E1 
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1365,7 +1365,7 @@ export const flatten: <E, A>(mma: Either<E, Either<E, A>>) => Either<E, A> = fla
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1375,7 +1375,7 @@ export const duplicate: <E, A>(ma: Either<E, A>) => Either<E, Either<E, A>> = /*
  * Use `liftOption`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1389,7 +1389,7 @@ export const fromOptionK: <E>(
  * Use `flatMapOption`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1405,7 +1405,7 @@ export const chainOptionK: <E>(
  * Use `flatMapOption`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1426,7 +1426,7 @@ const _FromEither: _.FromEither<EitherTypeLambda> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1438,7 +1438,7 @@ export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lifting}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1455,7 +1455,7 @@ const _FlatMap: _.FlatMap<EitherTypeLambda> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1474,7 +1474,7 @@ export const flatMapNullable: {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Sequencing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1524,7 +1524,7 @@ export const flatMapOption: {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1541,7 +1541,7 @@ export const filterOrElse: {
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Filtering}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1559,7 +1559,7 @@ export const filterOrElseW: {
  * Returns a `Right` if is a `Left` (and vice versa).
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1571,7 +1571,7 @@ export const swap = <E, A>(ma: Either<E, A>): Either<A, E> => (isLeft(ma) ? righ
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1585,7 +1585,7 @@ export const orElseW =
  * Useful for recovering from errors.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Error handling}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1608,7 +1608,7 @@ export const orElse: <E1, A, E2>(onLeft: (e: E1) => Either<E2, A>) => (ma: Eithe
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1647,7 +1647,7 @@ export const fromNullable =
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Interop}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1664,7 +1664,7 @@ export const tryCatch = <E, A>(f: LazyArg<A>, onThrow: (e: unknown) => E): Eithe
  * Converts a function that may throw to one returning a `Either`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Interop}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1681,7 +1681,7 @@ export const tryCatchK =
  * Use `liftNullable`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1699,7 +1699,7 @@ export const fromNullableK = <E>(
  * Use `flatMapNullable`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1713,7 +1713,7 @@ export const chainNullableK = <E>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Conversions}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1728,7 +1728,7 @@ export const toUnion: <E, A>(fa: Either<E, A>) => E | A = /*#__PURE__*/ foldW(id
  * Default value for the `onError` argument of `tryCatch`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1738,7 +1738,7 @@ export function toError(e: unknown): Error {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1772,7 +1772,7 @@ export function elem<A>(E: Eq<A>): <E>(a: A, ma?: Either<E, A>) => boolean | ((m
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1787,7 +1787,7 @@ export const exists =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1796,7 +1796,7 @@ export const Do: Either<never, {}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1808,7 +1808,7 @@ const let_ = /*#__PURE__*/ let__(Functor)
 export {
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Do notation}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -1818,7 +1818,7 @@ export {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1829,7 +1829,7 @@ export const bind = /*#__PURE__*/ chainable.bind(Chain)
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1842,7 +1842,7 @@ export const bindW: <N extends string, A, E2, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1855,7 +1855,7 @@ export const apS = /*#__PURE__*/ apS_(Apply)
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Do notation}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1868,7 +1868,7 @@ export const apSW: <A, N extends string, E2, B>(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -1886,7 +1886,7 @@ const do_: <MA extends EitherIterable<any, any>, A>(
 export {
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Do notation}
    * @public
    */
@@ -1901,7 +1901,7 @@ export {
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1928,7 +1928,7 @@ export const traverseReadonlyNonEmptyArrayWithIndex =
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1944,7 +1944,7 @@ export const traverseReadonlyArrayWithIndex = <A, E, B>(
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1957,7 +1957,7 @@ export const traverseArrayWithIndex: <E, A, B>(
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1970,7 +1970,7 @@ export const traverseArray = <E, A, B>(
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Traversing}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1986,7 +1986,7 @@ export const sequenceArray: <E, A>(as: ReadonlyArray<Either<E, A>>) => Either<E,
  * Alias of `flatMap`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -1997,7 +1997,7 @@ export const chainW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Either<E
  * Alias of `flatMap`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2008,7 +2008,7 @@ export const chain: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Either<E, A>) =
  * Alias of `tap`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2019,7 +2019,7 @@ export const chainFirst: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: Either<E, 
  * Alias of `tap`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Legacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -2035,7 +2035,7 @@ export const chainFirstW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Eit
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2046,7 +2046,7 @@ export type Json = boolean | number | string | null | JsonArray | JsonRecord
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2059,7 +2059,7 @@ export interface JsonRecord {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2070,7 +2070,7 @@ export interface JsonArray extends ReadonlyArray<Json> {}
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2083,7 +2083,7 @@ export function parseJSON<E>(s: string, onError: (reason: unknown) => E): Either
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2102,7 +2102,7 @@ export const stringifyJSON = <E>(u: unknown, onError: (reason: unknown) => E): E
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2140,7 +2140,7 @@ export const either: Monad2<URI> &
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2152,7 +2152,7 @@ export const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<Either<E, A
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2164,7 +2164,7 @@ export const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<Either<E, A>> =
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2176,7 +2176,7 @@ export const getValidationSemigroup = <E, A>(SE: Semigroup<E>, SA: Semigroup<A>)
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -2188,7 +2188,7 @@ export const getValidationMonoid = <E, A>(SE: Semigroup<E>, MA: Monoid<A>): Mono
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

@@ -159,7 +159,7 @@ export declare const ApplicativePar: Applicative2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -184,7 +184,7 @@ export declare const ApplicativeSeq: Applicative2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -209,7 +209,7 @@ export declare const ApplyPar: Apply2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -234,7 +234,7 @@ export declare const ApplySeq: Apply2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -257,7 +257,7 @@ export declare const Chain: chainable.Chain2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -282,7 +282,7 @@ export declare const ChainRec: ChainRec2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -305,7 +305,7 @@ export declare const FromIO: FromIO2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -328,7 +328,7 @@ export declare const FromReader: FromReader2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -351,7 +351,7 @@ export declare const FromTask: FromTask2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -374,7 +374,7 @@ export declare const Functor: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -397,7 +397,7 @@ export declare const Monad: Monad2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -420,7 +420,7 @@ export declare const MonadIO: MonadIO2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -443,7 +443,7 @@ export declare const MonadTask: MonadTask2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -466,7 +466,7 @@ export declare const Pointed: Pointed2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -494,7 +494,7 @@ export declare const tap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -522,7 +522,7 @@ export declare const tapIO: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -570,7 +570,7 @@ export declare const tapReader: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -598,7 +598,7 @@ export declare const tapReaderIO: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -626,7 +626,7 @@ export declare const tapTask: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -670,7 +670,7 @@ export declare const ask: <R>() => ReaderTask<R, R>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -695,7 +695,7 @@ export declare const asks: <R, A>(f: (r: R) => A) => ReaderTask<R, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -720,7 +720,7 @@ export declare const asksReaderTask: <R, A>(f: (r: R) => ReaderTask<R, A>) => Re
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -748,7 +748,7 @@ export declare const asksReaderTaskW: <R1, R2, A>(f: (r1: R1) => ReaderTask<R2, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -771,7 +771,7 @@ export declare const of: <R = unknown, A = never>(a: A) => ReaderTask<R, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -794,7 +794,7 @@ export declare const fromIO: <A, R = unknown>(fa: IO<A>) => ReaderTask<R, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -817,7 +817,7 @@ export declare const fromReader: <R, A>(fa: R.Reader<R, A>) => ReaderTask<R, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -840,7 +840,7 @@ export declare const fromReaderIO: <R, A>(fa: ReaderIO<R, A>) => ReaderTask<R, A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -863,7 +863,7 @@ export declare const fromTask: <A, R = unknown>(fa: Task<A>) => ReaderTask<R, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -886,7 +886,7 @@ export declare const Do: ReaderTask<unknown, {}>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -912,7 +912,7 @@ export declare const apS: <N extends string, A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -948,7 +948,7 @@ export declare const apSW: <A, N extends string, R2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -974,7 +974,7 @@ export declare const bind: <N extends string, A, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -999,7 +999,7 @@ export declare const bindTo: <N extends string>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1032,7 +1032,7 @@ export declare const bindW: <N extends string, A, R2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1055,7 +1055,7 @@ export declare const chainRec: ChainRec2<URI>['chainRec']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1080,7 +1080,7 @@ export declare const chain: <A, R, B>(f: (a: A) => ReaderTask<R, B>) => (ma: Rea
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1107,7 +1107,7 @@ export declare const chainFirst: <A, R, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1132,7 +1132,7 @@ export declare const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => <R>(first: Rea
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1159,7 +1159,7 @@ export declare const chainFirstReaderIOK: <A, R, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1189,7 +1189,7 @@ export declare const chainFirstReaderIOKW: <A, R2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1216,7 +1216,7 @@ export declare const chainFirstReaderK: <A, R, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1249,7 +1249,7 @@ export declare const chainFirstReaderKW: <A, R1, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1274,7 +1274,7 @@ export declare const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => <R>(firs
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1301,7 +1301,7 @@ export declare const chainFirstW: <R2, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1326,7 +1326,7 @@ export declare const chainIOK: <A, B>(f: (a: A) => IO<B>) => <R>(first: ReaderTa
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1353,7 +1353,7 @@ export declare const chainReaderIOK: <A, R, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1383,7 +1383,7 @@ export declare const chainReaderIOKW: <A, R2, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1408,7 +1408,7 @@ export declare const chainReaderK: <A, R, B>(f: (a: A) => R.Reader<R, B>) => (ma
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1441,7 +1441,7 @@ export declare const chainReaderKW: <A, R1, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1466,7 +1466,7 @@ export declare const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => <R>(first: Re
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1493,7 +1493,7 @@ export declare const chainW: <R2, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1518,7 +1518,7 @@ export declare const fromIOK: <A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1543,7 +1543,7 @@ export declare const fromReaderIOK: <A extends readonly unknown[], R, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1568,7 +1568,7 @@ export declare const fromReaderK: <A extends ReadonlyArray<unknown>, R, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1593,7 +1593,7 @@ export declare const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1621,7 +1621,7 @@ export declare const as: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1646,7 +1646,7 @@ export declare const asUnit: <R, _>(self: ReaderTask<R, _>) => ReaderTask<R, voi
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1669,7 +1669,7 @@ export declare const flap: <A>(a: A) => <E, B>(fab: ReaderTask<E, (a: A) => B>) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1694,7 +1694,7 @@ export declare const map: <A, B>(f: (a: A) => B) => <R>(fa: ReaderTask<R, A>) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1719,7 +1719,7 @@ export interface ReaderTask<R, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1745,7 +1745,7 @@ export declare const flatMap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1771,7 +1771,7 @@ export declare const flatMapIO: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1797,7 +1797,7 @@ export declare const flatMapReader: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1823,7 +1823,7 @@ export declare const flatMapReaderIO: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1849,7 +1849,7 @@ export declare const flatMapTask: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1872,7 +1872,7 @@ export declare const flatten: <R, A>(mma: ReaderTask<R, ReaderTask<R, A>>) => Re
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1900,7 +1900,7 @@ export declare const flattenW: <R1, R2, A>(mma: ReaderTask<R1, ReaderTask<R2, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1925,7 +1925,7 @@ export declare const sequenceArray: <R, A>(arr: ReadonlyArray<ReaderTask<R, A>>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1952,7 +1952,7 @@ export declare const traverseArray: <R, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1979,7 +1979,7 @@ export declare const traverseArrayWithIndex: <R, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2006,7 +2006,7 @@ export declare const traverseReadonlyArrayWithIndex: <A, R, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2033,7 +2033,7 @@ export declare const traverseReadonlyArrayWithIndexSeq: <R, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2060,7 +2060,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndex: <A, R, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2087,7 +2087,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndexSeq: <R, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2114,7 +2114,7 @@ export declare const traverseSeqArray: <R, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2141,7 +2141,7 @@ export declare const traverseSeqArrayWithIndex: <R, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2164,7 +2164,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2187,7 +2187,7 @@ export declare const URI = 'ReaderTask'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2210,7 +2210,7 @@ export declare const ApT: ReaderTask<unknown, readonly []>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2233,7 +2233,7 @@ export declare const ap: <R, A>(fa: ReaderTask<R, A>) => <B>(fab: ReaderTask<R, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2258,7 +2258,7 @@ export declare const apFirst: <E, B>(second: ReaderTask<E, B>) => <A>(first: Rea
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2283,7 +2283,7 @@ export declare const apSecond: <E, B>(second: ReaderTask<E, B>) => <A>(first: Re
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2313,7 +2313,7 @@ export declare const apW: <R2, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2357,7 +2357,7 @@ export declare const getMonoid: <R, A>(M: Monoid<A>) => Monoid<ReaderTask<R, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2383,7 +2383,7 @@ export declare const getSemigroup: <R, A>(S: Semigroup<A>) => Semigroup<ReaderTa
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2429,7 +2429,7 @@ export declare const local: <R2, R1>(f: (r2: R2) => R1) => <A>(ma: ReaderTask<R1
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2454,7 +2454,7 @@ export declare const readerTask: MonadTask2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2480,7 +2480,7 @@ export declare const readerTaskSeq: typeof readerTask
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2505,7 +2505,7 @@ export declare function run<R, A>(ma: ReaderTask<R, A>, r: R): Promise<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2531,7 +2531,7 @@ export declare const sequenceSeqArray: <R, A>(arr: ReadonlyArray<ReaderTask<R, A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 

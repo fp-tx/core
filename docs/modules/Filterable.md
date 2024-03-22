@@ -69,7 +69,7 @@ export interface Filterable<F> extends Functor<F>, Compactable<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -97,7 +97,7 @@ export interface Filterable1<F extends URIS> extends Functor1<F>, Compactable1<F
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -128,7 +128,7 @@ export interface Filterable2<F extends URIS2> extends Functor2<F>, Compactable2<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -159,7 +159,7 @@ export interface Filterable2C<F extends URIS2, E> extends Functor2C<F, E>, Compa
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -190,7 +190,7 @@ export interface Filterable3<F extends URIS3> extends Functor3<F>, Compactable3<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -221,7 +221,7 @@ export interface Filterable3C<F extends URIS3, E> extends Functor3C<F, E>, Compa
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -252,7 +252,7 @@ export interface Filterable4<F extends URIS4> extends Functor4<F>, Compactable4<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -278,7 +278,7 @@ export interface Filter<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -304,7 +304,7 @@ export interface Filter1<F extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -330,7 +330,7 @@ export interface Filter2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -356,7 +356,7 @@ export interface Filter2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -382,7 +382,7 @@ export interface Filter3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -408,7 +408,7 @@ export interface Filter3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -434,7 +434,7 @@ export interface Filter4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -468,7 +468,7 @@ export interface FilterableComposition<F, G> extends FunctorComposition<F, G>, C
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -505,7 +505,7 @@ export interface FilterableComposition11<F extends URIS, G extends URIS>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -542,7 +542,7 @@ export interface FilterableComposition12<F extends URIS, G extends URIS2>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -579,7 +579,7 @@ export interface FilterableComposition12C<F extends URIS, G extends URIS2, E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -616,7 +616,7 @@ export interface FilterableComposition21<F extends URIS2, G extends URIS>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -659,7 +659,7 @@ export interface FilterableComposition22<F extends URIS2, G extends URIS2>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -699,7 +699,7 @@ export interface FilterableComposition22C<F extends URIS2, G extends URIS2, E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -742,7 +742,7 @@ export interface FilterableComposition23C<F extends URIS2, G extends URIS3, E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -779,7 +779,7 @@ export interface FilterableComposition2C1<F extends URIS2, G extends URIS, E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -806,7 +806,7 @@ export interface Partition<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -832,7 +832,7 @@ export interface Partition1<F extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -858,7 +858,7 @@ export interface Partition2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -884,7 +884,7 @@ export interface Partition2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -913,7 +913,7 @@ export interface Partition3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -942,7 +942,7 @@ export interface Partition3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -971,7 +971,7 @@ export interface Partition4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1037,7 +1037,7 @@ export declare function filter<F, G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1087,7 +1087,7 @@ export declare function filterMap<F, G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1175,7 +1175,7 @@ export declare function getFilterableComposition<F, G>(F: Functor<F>, G: Filtera
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1262,7 +1262,7 @@ export declare function partition<F, G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1318,7 +1318,7 @@ export declare function partitionMap<F, G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

@@ -36,7 +36,7 @@ export interface Profunctor<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -61,7 +61,7 @@ export interface Profunctor2<F extends URIS2> extends Functor2<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -86,7 +86,7 @@ export interface Profunctor2C<F extends URIS2, E> extends Functor2C<F, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -111,7 +111,7 @@ export interface Profunctor3<F extends URIS3> extends Functor3<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -136,7 +136,7 @@ export interface Profunctor3C<F extends URIS3, E> extends Functor3C<F, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -161,7 +161,7 @@ export interface Profunctor4<F extends URIS4> extends Functor4<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

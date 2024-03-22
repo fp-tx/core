@@ -284,7 +284,7 @@ export const flatMapReader = <F extends TypeLambda>(
 // Credit to sindresorhus > type-fest for this excellent type
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

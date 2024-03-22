@@ -2,7 +2,7 @@
  * Mutable references in the `IO` monad
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type IO } from './IO'
@@ -18,7 +18,7 @@ import { type IO } from './IO'
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -26,7 +26,7 @@ import { type IO } from './IO'
 export class IORef<A> {
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
@@ -38,7 +38,7 @@ export class IORef<A> {
   }
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
@@ -49,7 +49,7 @@ export class IORef<A> {
   }
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
@@ -62,7 +62,7 @@ export class IORef<A> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Constructors}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public

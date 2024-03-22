@@ -133,7 +133,7 @@ export declare const Compactable: Compactable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -156,7 +156,7 @@ export declare const Filterable: Filterable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -179,7 +179,7 @@ export declare const FilterableWithIndex: FilterableWithIndex1<URI, string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -202,7 +202,7 @@ export declare const Functor: Functor1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -225,7 +225,7 @@ export declare const FunctorWithIndex: FunctorWithIndex1<URI, string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -250,7 +250,7 @@ export declare const getDifferenceMagma: <A>() => Magma<Readonly<Record<string, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -289,7 +289,7 @@ export declare function getEq<K extends string, A>(E: Eq<A>): Eq<ReadonlyRecord<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -326,7 +326,7 @@ export declare const getIntersectionSemigroup: <A>(S: Semigroup<A>) => Semigroup
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -363,7 +363,7 @@ export declare function getMonoid<K extends string, A>(S: Semigroup<A>): Monoid<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -407,7 +407,7 @@ export declare function getShow<A>(S: Show<A>): Show<ReadonlyRecord<string, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -444,7 +444,7 @@ export declare const getUnionMonoid: <A>(S: Semigroup<A>) => Monoid<Readonly<Rec
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -483,7 +483,7 @@ export declare const getUnionSemigroup: <A>(S: Semigroup<A>) => Semigroup<Readon
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -519,7 +519,7 @@ export declare const singleton: <A>(k: string, a: A) => Readonly<Record<string, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -552,7 +552,7 @@ export declare const fromEntries: <A>(fa: readonly (readonly [string, A])[]) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -592,7 +592,7 @@ export declare const fromRecord: <K extends string, A>(r: Record<K, A>) => Reado
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -628,7 +628,7 @@ export declare const toEntries: <K extends string, A>(r: Readonly<Record<K, A>>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -664,7 +664,7 @@ export declare const toReadonlyArray: <K extends string, A>(r: ReadonlyRecord<K,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -702,7 +702,7 @@ export declare const toRecord: <K extends string, A>(r: Readonly<Record<K, A>>) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -750,7 +750,7 @@ export declare function toUnfoldable<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -791,7 +791,7 @@ export declare const compact: <A>(r: Readonly<Record<string, Option<A>>>) => Rea
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -832,7 +832,7 @@ export declare const filter: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -870,7 +870,7 @@ export declare const filterMap: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -906,7 +906,7 @@ export declare const getWitherable: (O: Ord<string>) => Witherable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -941,7 +941,7 @@ export declare const partition: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -984,7 +984,7 @@ export declare const partitionMap: <A, B, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1029,7 +1029,7 @@ export declare const separate: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1069,7 +1069,7 @@ export declare const wilt: PipeableWilt1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1092,7 +1092,7 @@ export declare const wither: PipeableWither1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1124,7 +1124,7 @@ export declare function foldMap<M>(M: Monoid<M>): <A>(f: (a: A) => M) => (fa: Re
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1162,7 +1162,7 @@ export declare const getFoldable: (O: Ord<string>) => Foldable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1187,7 +1187,7 @@ export declare const getFoldableWithIndex: (O: Ord<string>) => FoldableWithIndex
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1219,7 +1219,7 @@ export declare function reduce<A, B>(b: B, f: (b: B, a: A) => B): (fa: ReadonlyR
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1261,7 +1261,7 @@ export declare function reduceRight<A, B>(b: B, f: (a: A, b: B) => B): (fa: Read
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1300,7 +1300,7 @@ export declare const flap: <A>(a: A) => <B>(fab: Readonly<Record<string, (a: A) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1335,7 +1335,7 @@ export type ReadonlyRecord<K extends string, T> = Readonly<Record<K, T>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1360,7 +1360,7 @@ export declare const getTraversable: (O: Ord<string>) => Traversable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1385,7 +1385,7 @@ export declare const getTraversableWithIndex: (O: Ord<string>) => TraversableWit
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1408,7 +1408,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1431,7 +1431,7 @@ export declare const URI = 'ReadonlyRecord'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1456,7 +1456,7 @@ export declare const Foldable: Foldable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1482,7 +1482,7 @@ export declare const FoldableWithIndex: FoldableWithIndex1<URI, string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1508,7 +1508,7 @@ export declare const Traversable: Traversable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1534,7 +1534,7 @@ export declare const TraversableWithIndex: TraversableWithIndex1<URI, string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1560,7 +1560,7 @@ export declare const Witherable: Witherable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1595,7 +1595,7 @@ export declare function collect<K extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1634,7 +1634,7 @@ export declare function deleteAt<K extends string>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1670,7 +1670,7 @@ export declare const difference: <A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1709,7 +1709,7 @@ export declare function elem<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1742,7 +1742,7 @@ export declare const empty: ReadonlyRecord<string, never>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1774,7 +1774,7 @@ export declare function every<A>(predicate: Predicate<A>): Predicate<ReadonlyRec
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1811,7 +1811,7 @@ export declare function filterMapWithIndex<K extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1864,7 +1864,7 @@ export declare function filterWithIndex<K extends string, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1911,7 +1911,7 @@ export declare function foldMapWithIndex<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1974,7 +1974,7 @@ export declare function fromFoldable<F, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2027,7 +2027,7 @@ export declare function fromFoldableMap<F, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2090,7 +2090,7 @@ export declare const has: <K extends string>(k: string, r: Readonly<Record<K, un
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2125,7 +2125,7 @@ export declare function hasOwnProperty<K extends string>(k: string, r: ReadonlyR
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2151,7 +2151,7 @@ export declare const insertAt: <A>(k: string, a: A) => (r: ReadonlyRecord<string
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2179,7 +2179,7 @@ export declare const intersection: <A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2216,7 +2216,7 @@ export declare const isEmpty: <A>(r: Readonly<Record<string, A>>) => boolean
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2254,7 +2254,7 @@ export declare function isSubrecord<A>(E: Eq<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2295,7 +2295,7 @@ export declare const keys: <K extends string>(r: ReadonlyRecord<K, unknown>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2325,7 +2325,7 @@ export declare function lookup<A>(k: string, r: ReadonlyRecord<string, A>): Opti
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2351,7 +2351,7 @@ export declare function map<A, B>(f: (a: A) => B): <K extends string>(fa: Readon
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2388,7 +2388,7 @@ export declare function mapWithIndex<K extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2425,7 +2425,7 @@ export declare const modifyAt: <A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2460,7 +2460,7 @@ export declare function partitionMapWithIndex<K extends string, A, B, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2519,7 +2519,7 @@ export declare function partitionWithIndex<K extends string, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2568,7 +2568,7 @@ export declare function pop<K extends string>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2604,7 +2604,7 @@ export declare const readonlyRecord: FunctorWithIndex1<URI, string> &
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -2640,7 +2640,7 @@ export declare function reduceRightWithIndex<K extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2689,7 +2689,7 @@ export declare function reduceWithIndex<K extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2767,7 +2767,7 @@ export declare function sequence<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2810,7 +2810,7 @@ export declare const size: <A>(r: Readonly<Record<string, A>>) => number
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2844,7 +2844,7 @@ export declare function some<A>(predicate: (a: A) => boolean): (r: ReadonlyRecor
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -2925,7 +2925,7 @@ export declare function traverse<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2999,7 +2999,7 @@ export declare function traverseWithIndex<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -3026,7 +3026,7 @@ export declare const union: <A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3066,7 +3066,7 @@ export declare const updateAt: <A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -3098,7 +3098,7 @@ export declare const upsertAt: <A>(k: string, a: A) => (r: Readonly<Record<strin
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 

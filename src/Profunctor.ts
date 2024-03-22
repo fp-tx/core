@@ -1,6 +1,6 @@
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Functor2, type Functor2C, type Functor3, type Functor3C, type Functor4 } from './Functor'
@@ -12,7 +12,7 @@ import { type HKT, type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, ty
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -25,7 +25,7 @@ export interface Profunctor<F> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -36,7 +36,7 @@ export interface Profunctor2<F extends URIS2> extends Functor2<F> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -47,7 +47,7 @@ export interface Profunctor2C<F extends URIS2, E> extends Functor2C<F, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -58,7 +58,7 @@ export interface Profunctor3<F extends URIS3> extends Functor3<F> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -69,7 +69,7 @@ export interface Profunctor3C<F extends URIS3, E> extends Functor3C<F, E> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public

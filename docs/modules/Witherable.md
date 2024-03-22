@@ -82,7 +82,7 @@ export declare function wiltDefault<W>(T: Traversable<W>, C: Compactable<W>): Wi
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -126,7 +126,7 @@ export declare function witherDefault<W>(T: Traversable<W>, C: Compactable<W>): 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -152,7 +152,7 @@ export interface Witherable<T> extends Traversable<T>, Filterable<T> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -178,7 +178,7 @@ export interface Witherable1<T extends URIS> extends Traversable1<T>, Filterable
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -204,7 +204,7 @@ export interface Witherable2<T extends URIS2> extends Traversable2<T>, Filterabl
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -230,7 +230,7 @@ export interface Witherable2C<T extends URIS2, TL> extends Traversable2C<T, TL>,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -256,7 +256,7 @@ export interface Witherable3<T extends URIS3> extends Traversable3<T>, Filterabl
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -296,7 +296,7 @@ export interface FilterE1<G extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -346,7 +346,7 @@ export interface PipeableWilt<W> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -396,7 +396,7 @@ export interface PipeableWilt1<W extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -445,7 +445,7 @@ export interface PipeableWilt2<W extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -494,7 +494,7 @@ export interface PipeableWilt2C<W extends URIS2, WE> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -543,7 +543,7 @@ export interface PipeableWilt3<W extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -581,7 +581,7 @@ export interface PipeableWither<W> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -621,7 +621,7 @@ export interface PipeableWither1<W extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -660,7 +660,7 @@ export interface PipeableWither2<W extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -697,7 +697,7 @@ export interface PipeableWither2C<W extends URIS2, WE> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -742,7 +742,7 @@ export interface PipeableWither3<W extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -790,7 +790,7 @@ export interface Wilt<W> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -841,7 +841,7 @@ export interface Wilt1<W extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -895,7 +895,7 @@ export interface Wilt2<W extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -949,7 +949,7 @@ export interface Wilt2C<W extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1003,7 +1003,7 @@ export interface Wilt3<W extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1041,7 +1041,7 @@ export interface Wither<W> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1079,7 +1079,7 @@ export interface Wither1<W extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1116,7 +1116,7 @@ export interface Wither2<W extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1153,7 +1153,7 @@ export interface Wither2C<W extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1198,7 +1198,7 @@ export interface Wither3<W extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1233,7 +1233,7 @@ export declare function filterE<G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

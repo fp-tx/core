@@ -54,7 +54,7 @@ export interface Compactable<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -81,7 +81,7 @@ export interface Compactable1<F extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -108,7 +108,7 @@ export interface Compactable2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -136,7 +136,7 @@ export interface Compactable2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -163,7 +163,7 @@ export interface Compactable3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -191,7 +191,7 @@ export interface Compactable3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -220,7 +220,7 @@ export interface Compactable4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -246,7 +246,7 @@ export interface CompactableComposition<F, G> extends FunctorComposition<F, G> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -273,7 +273,7 @@ export interface CompactableComposition11<F extends URIS, G extends URIS> extend
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -302,7 +302,7 @@ export interface CompactableComposition12<F extends URIS, G extends URIS2> exten
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -331,7 +331,7 @@ export interface CompactableComposition12C<F extends URIS, G extends URIS2, E> e
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -360,7 +360,7 @@ export interface CompactableComposition21<F extends URIS2, G extends URIS> exten
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -389,7 +389,7 @@ export interface CompactableComposition22<F extends URIS2, G extends URIS2> exte
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -418,7 +418,7 @@ export interface CompactableComposition22C<F extends URIS2, G extends URIS2, E> 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -447,7 +447,7 @@ export interface CompactableComposition23<F extends URIS2, G extends URIS3> exte
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -476,7 +476,7 @@ export interface CompactableComposition23C<F extends URIS2, G extends URIS3, E> 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -505,7 +505,7 @@ export interface CompactableComposition2C1<F extends URIS2, G extends URIS, E> e
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -534,7 +534,7 @@ export interface Separated<A, B> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -585,7 +585,7 @@ export declare function compact<F, G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -670,7 +670,7 @@ export declare function getCompactableComposition<F, G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -727,7 +727,7 @@ export declare function separate<F, G>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

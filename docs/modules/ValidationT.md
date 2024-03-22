@@ -36,7 +36,7 @@ export interface ValidationM<M, E> extends ApplicativeCompositionHKT2C<M, E.URI,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -63,7 +63,7 @@ export interface ValidationM1<M extends URIS, E> extends ApplicativeComposition1
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -96,7 +96,7 @@ export interface ValidationM2<M extends URIS2, E> extends ApplicativeComposition
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -120,7 +120,7 @@ export interface ValidationT<M, E, A> extends HKT<M, Either<E, A>> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -144,7 +144,7 @@ export type ValidationT1<M extends URIS, E, A> = Kind<M, Either<E, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -168,7 +168,7 @@ export type ValidationT2<M extends URIS2, R, E, A> = Kind2<M, R, Either<E, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -203,7 +203,7 @@ export declare function getValidationM<E, M>(S: Semigroup<E>, M: Monad<M>): Vali
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 

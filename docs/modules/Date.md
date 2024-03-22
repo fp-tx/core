@@ -39,7 +39,7 @@ export declare const Eq: E.Eq<Date>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -62,7 +62,7 @@ export declare const Ord: O.Ord<Date>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -93,7 +93,7 @@ export declare const eqDate: E.Eq<Date>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -116,7 +116,7 @@ export declare const eqMonth: E.Eq<Date>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -139,7 +139,7 @@ export declare const eqYear: E.Eq<Date>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -164,7 +164,7 @@ export declare const create: IO<Date>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -189,7 +189,7 @@ export declare const now: IO<number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

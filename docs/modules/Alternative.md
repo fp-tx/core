@@ -38,7 +38,7 @@ export interface Alternative<F> extends Applicative<F>, Alt<F>, Zero<F> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -61,7 +61,7 @@ export interface Alternative1<F extends URIS> extends Applicative1<F>, Alt1<F>, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -84,7 +84,7 @@ export interface Alternative2<F extends URIS2> extends Applicative2<F>, Alt2<F>,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -107,7 +107,7 @@ export interface Alternative2C<F extends URIS2, E> extends Applicative2C<F, E>, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -130,7 +130,7 @@ export interface Alternative3<F extends URIS3> extends Applicative3<F>, Alt3<F>,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -153,7 +153,7 @@ export interface Alternative3C<F extends URIS3, E> extends Applicative3C<F, E>, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -176,7 +176,7 @@ export interface Alternative4<F extends URIS4> extends Applicative4<F>, Alt4<F>,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -234,7 +234,7 @@ export declare function altAll<F>(F: Alternative<F>): <A>(as: ReadonlyArray<HKT<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -296,7 +296,7 @@ export declare function getAlternativeMonoid<F>(F: Alternative<F>): <A>(S: Semig
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

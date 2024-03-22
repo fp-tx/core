@@ -16,7 +16,7 @@
  * Note. `Functor`'s `map` can be derived: `A.map(x, f) = A.ap(A.of(f), x)`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import {
@@ -73,7 +73,7 @@ import {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -82,7 +82,7 @@ export interface Applicative<F> extends Apply<F>, Pointed<F> {}
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -91,7 +91,7 @@ export interface Applicative1<F extends URIS> extends Apply1<F>, Pointed1<F> {}
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -100,7 +100,7 @@ export interface Applicative2<F extends URIS2> extends Apply2<F>, Pointed2<F> {}
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -109,7 +109,7 @@ export interface Applicative2C<F extends URIS2, E> extends Apply2C<F, E>, Pointe
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -118,7 +118,7 @@ export interface Applicative3<F extends URIS3> extends Apply3<F>, Pointed3<F> {}
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -127,7 +127,7 @@ export interface Applicative3C<F extends URIS3, E> extends Apply3C<F, E>, Pointe
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -142,7 +142,7 @@ export interface Applicative4<F extends URIS4> extends Apply4<F>, Pointed4<F> {}
  * Lift a monoid into 'F', the inner values are concatenated using the provided `Monoid`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -178,7 +178,7 @@ export function getApplicativeMonoid<F>(F: Applicative<F>): <A>(M: Monoid<A>) =>
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -190,7 +190,7 @@ export interface ApplicativeComposition<F, G> extends FunctorComposition<F, G> {
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -202,7 +202,7 @@ export interface ApplicativeCompositionHKT1<F, G extends URIS> extends FunctorCo
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -214,7 +214,7 @@ export interface ApplicativeCompositionHKT2<F, G extends URIS2> extends FunctorC
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -226,7 +226,7 @@ export interface ApplicativeCompositionHKT2C<F, G extends URIS2, E> extends Func
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -238,7 +238,7 @@ export interface ApplicativeComposition11<F extends URIS, G extends URIS> extend
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -253,7 +253,7 @@ export interface ApplicativeComposition12<F extends URIS, G extends URIS2> exten
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -265,7 +265,7 @@ export interface ApplicativeComposition12C<F extends URIS, G extends URIS2, E> e
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -280,7 +280,7 @@ export interface ApplicativeComposition21<F extends URIS2, G extends URIS> exten
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -292,7 +292,7 @@ export interface ApplicativeComposition2C1<F extends URIS2, G extends URIS, E> e
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -307,7 +307,7 @@ export interface ApplicativeComposition22<F extends URIS2, G extends URIS2> exte
 /**
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -324,7 +324,7 @@ export interface ApplicativeComposition22C<F extends URIS2, G extends URIS2, E> 
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

@@ -108,7 +108,7 @@ export declare const Compactable: Compactable2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -131,7 +131,7 @@ export declare const Filterable: Filterable2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -154,7 +154,7 @@ export declare const Functor: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -177,7 +177,7 @@ export declare const getDifferenceMagma: <K>(E: Eq<K>) => <A>() => Magma<Map<K, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -200,7 +200,7 @@ export declare const getEq: <K, A>(SK: Eq<K>, SA: Eq<A>) => Eq<Map<K, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -223,7 +223,7 @@ export declare const getIntersectionSemigroup: <K, A>(E: Eq<K>, S: Semigroup<A>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -249,7 +249,7 @@ export declare function getMonoid<K, A>(SK: Eq<K>, SA: Semigroup<A>): Monoid<Map
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -272,7 +272,7 @@ export declare const getShow: <K, A>(SK: Show<K>, SA: Show<A>) => Show<Map<K, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -295,7 +295,7 @@ export declare const getUnionMonoid: <K, A>(E: Eq<K>, S: Semigroup<A>) => Monoid
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -318,7 +318,7 @@ export declare const getUnionSemigroup: <K, A>(E: Eq<K>, S: Semigroup<A>) => Sem
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -368,7 +368,7 @@ export declare function fromFoldable<F, K, A>(E: Eq<K>, M: Magma<A>, F: Foldable
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -391,7 +391,7 @@ export declare const compact: <K, A>(fa: Map<K, O.Option<A>>) => Map<K, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -418,7 +418,7 @@ export declare const filter: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -441,7 +441,7 @@ export declare const filterMap: <A, B>(f: (a: A) => Option<B>) => <K>(fa: Map<K,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -465,7 +465,7 @@ export declare function getFilterableWithIndex<K = never>(): FilterableWithIndex
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -489,7 +489,7 @@ export declare function getWitherable<K>(O: Ord<K>): Witherable2C<URI, K> & Trav
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -516,7 +516,7 @@ export declare const partition: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -541,7 +541,7 @@ export declare const partitionMap: <A, B, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -564,7 +564,7 @@ export declare const separate: <K, A, B>(fa: Map<K, Either<A, B>>) => Separated<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -587,7 +587,7 @@ export declare const foldMap: <K>(O: Ord<K>) => <M>(M: Monoid<M>) => <A>(f: (a: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -612,7 +612,7 @@ export declare const foldMapWithIndex: <K>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -635,7 +635,7 @@ export declare const getFoldable: <K>(O: Ord<K>) => Foldable2C<'Map', K>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -658,7 +658,7 @@ export declare const getFoldableWithIndex: <K>(O: Ord<K>) => FoldableWithIndex2C
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -681,7 +681,7 @@ export declare const reduce: <K>(O: Ord<K>) => <B, A>(b: B, f: (b: B, a: A) => B
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -704,7 +704,7 @@ export declare const reduceRight: <K>(O: Ord<K>) => <B, A>(b: B, f: (a: A, b: B)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -729,7 +729,7 @@ export declare const reduceRightWithIndex: <K>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -752,7 +752,7 @@ export declare const reduceWithIndex: <K>(O: Ord<K>) => <B, A>(b: B, f: (k: K, b
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -775,7 +775,7 @@ export declare const flap: <A>(a: A) => <E, B>(fab: Map<E, (a: A) => B>) => Map<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -800,7 +800,7 @@ export declare const map: <A, B>(f: (a: A) => B) => <K>(fa: Map<K, A>) => Map<K,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -823,7 +823,7 @@ export declare const mapWithIndex: <K, A, B>(f: (k: K, a: A) => B) => (fa: Map<K
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -846,7 +846,7 @@ export declare const getTraversableWithIndex: <K>(O: Ord<K>) => TraversableWithI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -869,7 +869,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -892,7 +892,7 @@ export declare const URI = 'Map'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -916,7 +916,7 @@ export declare function collect<K>(O: Ord<K>): <A, B>(f: (k: K, a: A) => B) => (
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -941,7 +941,7 @@ export declare const deleteAt: <K>(E: Eq<K>) => (k: K) => <A>(m: Map<K, A>) => M
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -964,7 +964,7 @@ export declare const difference: <K>(E: Eq<K>) => <A>(_second: Map<K, A>) => (fi
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -992,7 +992,7 @@ export declare const elem: <A>(E: Eq<A>) => {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1017,7 +1017,7 @@ export declare const empty: Map<never, never>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1041,7 +1041,7 @@ export declare const filterMapWithIndex: <K, A, B>(f: (k: K, a: A) => O.Option<B
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1073,7 +1073,7 @@ export declare function filterWithIndex<K, A>(p: (k: K, a: A) => boolean): (m: M
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1098,7 +1098,7 @@ export declare const insertAt: <K>(E: Eq<K>) => <A>(k: K, a: A) => (m: Map<K, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1125,7 +1125,7 @@ export declare const intersection: <K, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1150,7 +1150,7 @@ export declare const isEmpty: <K, A>(m: Map<K, A>) => boolean
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1181,7 +1181,7 @@ export declare const isSubmap: <K, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1206,7 +1206,7 @@ export declare const keys: <K>(O: Ord<K>) => <A>(m: Map<K, A>) => K[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1234,7 +1234,7 @@ export declare const lookup: <K>(E: Eq<K>) => {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1263,7 +1263,7 @@ export declare function lookupWithKey<K>(E: Eq<K>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1288,7 +1288,7 @@ export declare const map_: Filterable2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1317,7 +1317,7 @@ export declare const member: <K>(E: Eq<K>) => {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1340,7 +1340,7 @@ export declare const modifyAt: <K>(E: Eq<K>) => <A>(k: K, f: (a: A) => A) => (m:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1365,7 +1365,7 @@ export declare const partitionMapWithIndex: <K, A, B, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1403,7 +1403,7 @@ export declare function partitionWithIndex<K, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1429,7 +1429,7 @@ export declare function pop<K>(E: Eq<K>): (k: K) => <A>(m: Map<K, A>) => Option<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1454,7 +1454,7 @@ export declare const singleton: <K, A>(k: K, a: A) => Map<K, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1479,7 +1479,7 @@ export declare const size: <K, A>(m: Map<K, A>) => number
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1505,7 +1505,7 @@ export declare function toArray<K>(O: Ord<K>): <A>(m: Map<K, A>) => Array<[K, A]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1538,7 +1538,7 @@ export declare function toUnfoldable<K, F>(ord: Ord<K>, U: Unfoldable<F>): <A>(d
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1561,7 +1561,7 @@ export declare const union: <K, A>(E: Eq<K>, M: Magma<A>) => (second: Map<K, A>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1584,7 +1584,7 @@ export declare const updateAt: <K>(E: Eq<K>) => <A>(k: K, a: A) => (m: Map<K, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1609,7 +1609,7 @@ export declare const upsertAt: <K>(E: Eq<K>) => <A>(k: K, a: A) => (m: Map<K, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1634,7 +1634,7 @@ export declare const values: <A>(O: Ord<A>) => <K>(m: Map<K, A>) => A[]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

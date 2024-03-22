@@ -111,7 +111,7 @@ export declare const Bifunctor: Bifunctor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -134,7 +134,7 @@ export declare const FromEither: FromEither2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -157,7 +157,7 @@ export declare const FromIO: FromIO2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -180,7 +180,7 @@ export declare const FromTask: FromTask2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -203,7 +203,7 @@ export declare const FromThese: FromThese2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -226,7 +226,7 @@ export declare const Functor: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -249,7 +249,7 @@ export declare const Pointed: Pointed2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -273,7 +273,7 @@ export declare function getApplicative<E>(A: Apply1<T.URI>, S: Semigroup<E>): Ap
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -296,7 +296,7 @@ export declare const getApply: <E>(A: Apply1<T.URI>, S: Semigroup<E>) => Apply2C
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -320,7 +320,7 @@ export declare function getChain<E>(S: Semigroup<E>): Chain2C<URI, E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -344,7 +344,7 @@ export declare function getMonad<E>(S: Semigroup<E>): Monad2C<URI, E> & MonadTas
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -367,7 +367,7 @@ export declare const both: <E, A>(e: E, a: A) => TaskThese<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -390,7 +390,7 @@ export declare const left: <E = never, A = never>(e: E) => TaskThese<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -413,7 +413,7 @@ export declare const leftIO: <E = never, A = never>(me: IO<E>) => TaskThese<E, A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -436,7 +436,7 @@ export declare const leftTask: <E = never, A = never>(me: Task<E>) => TaskThese<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -459,7 +459,7 @@ export declare const of: <E = never, A = never>(a: A) => TaskThese<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -482,7 +482,7 @@ export declare const right: <E = never, A = never>(a: A) => TaskThese<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -505,7 +505,7 @@ export declare const rightIO: <E = never, A = never>(ma: IO<A>) => TaskThese<E, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -528,7 +528,7 @@ export declare const rightTask: <E = never, A = never>(ma: Task<A>) => TaskThese
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -551,7 +551,7 @@ export declare const fromEither: <E, A>(fa: Either<E, A>) => TaskThese<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -574,7 +574,7 @@ export declare const fromIO: <A, E = never>(fa: IO<A>) => TaskThese<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -597,7 +597,7 @@ export declare const fromIOEither: <E, A>(fa: IOEither<E, A>) => TaskThese<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -620,7 +620,7 @@ export declare const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -643,7 +643,7 @@ export declare const fromTask: <A, E = never>(fa: Task<A>) => TaskThese<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -666,7 +666,7 @@ export declare const fromThese: <E, A>(fa: These<E, A>) => TaskThese<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -691,7 +691,7 @@ export declare const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: TaskThese<E, A>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -716,7 +716,7 @@ export declare const fromIOK: <A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -741,7 +741,7 @@ export declare const fromOptionK: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -768,7 +768,7 @@ export declare const fromPredicate: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -793,7 +793,7 @@ export declare const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -818,7 +818,7 @@ export declare const fromTheseK: <A extends ReadonlyArray<unknown>, E, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -843,7 +843,7 @@ export declare const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -866,7 +866,7 @@ export declare const flap: <A>(a: A) => <E, B>(fab: TaskThese<E, (a: A) => B>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -891,7 +891,7 @@ export declare const map: <A, B>(f: (a: A) => B) => <E>(fa: TaskThese<E, A>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -914,7 +914,7 @@ export interface TaskThese<E, A> extends Task<These<E, A>> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -943,7 +943,7 @@ export declare const fold: <E, B, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -972,7 +972,7 @@ export declare const foldW: <E, B, A, C, D>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -999,7 +999,7 @@ export declare const match: <E, B, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1028,7 +1028,7 @@ export declare const matchE: <E, B, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1060,7 +1060,7 @@ export declare const matchEW: <E, B, A, C, D>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1092,7 +1092,7 @@ export declare const matchW: <E, B, A, C, D>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1119,7 +1119,7 @@ export declare const traverseReadonlyArrayWithIndex: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1146,7 +1146,7 @@ export declare const traverseReadonlyArrayWithIndexSeq: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1175,7 +1175,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndex: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1204,7 +1204,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndexSeq: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1227,7 +1227,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1250,7 +1250,7 @@ export declare const URI = 'TaskThese'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1273,7 +1273,7 @@ export declare const ApT: TaskThese<never, readonly []>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1298,7 +1298,7 @@ export declare const bifunctorTaskThese: Bifunctor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1324,7 +1324,7 @@ export declare const functorTaskThese: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1350,7 +1350,7 @@ export declare const getSemigroup: <E, A>(SE: Semigroup<E>, SA: Semigroup<A>) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1374,7 +1374,7 @@ export declare const swap: <E, A>(fa: TaskThese<E, A>) => TaskThese<A, E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1399,7 +1399,7 @@ export declare const taskThese: Functor2<URI> & Bifunctor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1425,7 +1425,7 @@ export declare const toTuple: <E, A>(e: E, a: A) => (fa: TaskThese<E, A>) => T.T
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1449,7 +1449,7 @@ export declare const toTuple2: <E, A>(e: LazyArg<E>, a: LazyArg<A>) => (fa: Task
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

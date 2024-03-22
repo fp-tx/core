@@ -11,7 +11,7 @@
  * Note. `Functor`'s `map` can be derived: `A.map = (fa, f) => A.chain(fa, a => A.of(f(a)))`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import {
@@ -32,7 +32,7 @@ import { type URIS, type URIS2, type URIS3, type URIS4 } from './HKT'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -41,7 +41,7 @@ export interface Monad<F> extends Applicative<F>, Chain<F> {}
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -50,7 +50,7 @@ export interface Monad1<F extends URIS> extends Applicative1<F>, Chain1<F> {}
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -59,7 +59,7 @@ export interface Monad2<M extends URIS2> extends Applicative2<M>, Chain2<M> {}
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -68,7 +68,7 @@ export interface Monad2C<M extends URIS2, L> extends Applicative2C<M, L>, Chain2
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -77,7 +77,7 @@ export interface Monad3<M extends URIS3> extends Applicative3<M>, Chain3<M> {}
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -86,7 +86,7 @@ export interface Monad3C<M extends URIS3, E> extends Applicative3C<M, E>, Chain3
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public

@@ -33,7 +33,7 @@ export interface MonadTask<M> extends MonadIO<M>, FromTask<M> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -56,7 +56,7 @@ export interface MonadTask1<M extends URIS> extends MonadIO1<M>, FromTask1<M> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -79,7 +79,7 @@ export interface MonadTask2<M extends URIS2> extends MonadIO2<M>, FromTask2<M> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -102,7 +102,7 @@ export interface MonadTask2C<M extends URIS2, E> extends MonadIO2C<M, E>, FromTa
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -125,7 +125,7 @@ export interface MonadTask3<M extends URIS3> extends MonadIO3<M>, FromTask3<M> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -148,7 +148,7 @@ export interface MonadTask3C<M extends URIS3, E> extends MonadIO3C<M, E>, FromTa
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -171,7 +171,7 @@ export interface MonadTask4<M extends URIS4> extends MonadIO4<M>, FromTask4<M> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

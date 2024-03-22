@@ -50,7 +50,7 @@ export declare const Functor: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -74,7 +74,7 @@ export declare function getComonad<P>(monoid: Monoid<P>): Comonad2C<URI, P>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -97,7 +97,7 @@ export declare const flap: <A>(a: A) => <E, B>(fab: Traced<E, (a: A) => B>) => T
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -122,7 +122,7 @@ export declare const map: <A, B>(f: (a: A) => B) => <E>(fa: Traced<E, A>) => Tra
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -147,7 +147,7 @@ export interface Traced<P, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -170,7 +170,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -193,7 +193,7 @@ export declare const URI = 'Traced'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -219,7 +219,7 @@ export declare function censor<P>(f: (p: P) => P): <A>(wa: Traced<P, A>) => Trac
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -245,7 +245,7 @@ export declare function listen<P, A>(wa: Traced<P, A>): Traced<P, [A, P]>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -271,7 +271,7 @@ export declare function listens<P, B>(f: (p: P) => B): <A>(wa: Traced<P, A>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -296,7 +296,7 @@ export declare const traced: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -323,7 +323,7 @@ export declare function tracks<P, A>(M: Monoid<P>, f: (a: A) => P): (wa: Traced<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

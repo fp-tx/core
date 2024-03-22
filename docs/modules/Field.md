@@ -37,7 +37,7 @@ export interface Field<A> extends Ring<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -62,7 +62,7 @@ export declare const fieldNumber: Field<number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -89,7 +89,7 @@ export declare function gcd<A>(E: Eq<A>, field: Field<A>): (x: A, y: A) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -115,7 +115,7 @@ export declare function lcm<A>(E: Eq<A>, F: Field<A>): (x: A, y: A) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

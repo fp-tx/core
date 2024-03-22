@@ -4,7 +4,7 @@
  * - `a ∧ 1 <-> a`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type MeetSemilattice } from './MeetSemilattice'
@@ -15,7 +15,7 @@ import { type MeetSemilattice } from './MeetSemilattice'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public

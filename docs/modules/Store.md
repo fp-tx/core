@@ -56,7 +56,7 @@ export declare const Comonad: Comonad2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -79,7 +79,7 @@ export declare const Functor: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -102,7 +102,7 @@ export declare const extract: <E, A>(wa: Store<E, A>) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -125,7 +125,7 @@ export declare const flap: <A>(a: A) => <E, B>(fab: Store<E, (a: A) => B>) => St
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -150,7 +150,7 @@ export declare const map: <A, B>(f: (a: A) => B) => <E>(fa: Store<E, A>) => Stor
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -176,7 +176,7 @@ export interface Store<S, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -199,7 +199,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -222,7 +222,7 @@ export declare const URI = 'Store'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -245,7 +245,7 @@ export declare const duplicate: <E, A>(wa: Store<E, A>) => Store<E, Store<E, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -303,7 +303,7 @@ export declare function experiment<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -326,7 +326,7 @@ export declare const extend: <E, A, B>(f: (wa: Store<E, A>) => B) => (wa: Store<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -352,7 +352,7 @@ export declare function peeks<S>(f: Endomorphism<S>): <A>(wa: Store<S, A>) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -378,7 +378,7 @@ export declare function seek<S>(s: S): <A>(wa: Store<S, A>) => Store<S, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -404,7 +404,7 @@ export declare function seeks<S>(f: Endomorphism<S>): <A>(wa: Store<S, A>) => St
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -429,7 +429,7 @@ export declare const store: Comonad2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 

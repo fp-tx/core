@@ -60,7 +60,7 @@ export interface FilterableWithIndex<F, I> extends FunctorWithIndex<F, I>, Filte
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -91,7 +91,7 @@ export interface FilterableWithIndex1<F extends URIS, I> extends FunctorWithInde
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -122,7 +122,7 @@ export interface FilterableWithIndex2<F extends URIS2, I> extends FunctorWithInd
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -153,7 +153,7 @@ export interface FilterableWithIndex2C<F extends URIS2, I, E> extends FunctorWit
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -184,7 +184,7 @@ export interface FilterableWithIndex3<F extends URIS3, I> extends FunctorWithInd
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -215,7 +215,7 @@ export interface FilterableWithIndex3C<F extends URIS3, I, E> extends FunctorWit
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -249,7 +249,7 @@ export interface FilterableWithIndex4<F extends URIS4, I> extends FunctorWithInd
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -275,7 +275,7 @@ export interface FilterWithIndex<F, I> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -301,7 +301,7 @@ export interface FilterWithIndex1<F extends URIS, I> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -327,7 +327,7 @@ export interface FilterWithIndex2<F extends URIS2, I> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -353,7 +353,7 @@ export interface FilterWithIndex2C<F extends URIS2, I, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -379,7 +379,7 @@ export interface FilterWithIndex3<F extends URIS3, I> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -405,7 +405,7 @@ export interface FilterWithIndex3C<F extends URIS3, I, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -434,7 +434,7 @@ export interface FilterWithIndex4<F extends URIS4, I> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -460,7 +460,7 @@ export interface PartitionWithIndex<F, I> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -486,7 +486,7 @@ export interface PartitionWithIndex1<F extends URIS, I> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -515,7 +515,7 @@ export interface PartitionWithIndex2<F extends URIS2, I> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -544,7 +544,7 @@ export interface PartitionWithIndex2C<F extends URIS2, I, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -576,7 +576,7 @@ export interface PartitionWithIndex3<F extends URIS3, I> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -608,7 +608,7 @@ export interface PartitionWithIndex3C<F extends URIS3, I, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -640,7 +640,7 @@ export interface PartitionWithIndex4<F extends URIS4, I> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -663,7 +663,7 @@ export type PredicateWithIndex<I, A> = (i: I, a: A) => boolean
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -686,7 +686,7 @@ export type RefinementWithIndex<I, A, B extends A> = (i: I, a: A) => a is B
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

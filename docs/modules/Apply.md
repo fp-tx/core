@@ -45,7 +45,7 @@ export interface Apply<F> extends Functor<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -70,7 +70,7 @@ export interface Apply1<F extends URIS> extends Functor1<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -95,7 +95,7 @@ export interface Apply2<F extends URIS2> extends Functor2<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -120,7 +120,7 @@ export interface Apply2C<F extends URIS2, E> extends Functor2C<F, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -145,7 +145,7 @@ export interface Apply3<F extends URIS3> extends Functor3<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -170,7 +170,7 @@ export interface Apply3C<F extends URIS3, E> extends Functor3C<F, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -195,7 +195,7 @@ export interface Apply4<F extends URIS4> extends Functor4<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -584,7 +584,7 @@ export declare function ap<F extends URIS3, FE, G extends URIS3, GE>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -644,7 +644,7 @@ export declare function apFirst<F>(A: Apply<F>): <B>(second: HKT<F, B>) => <A>(f
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -769,7 +769,7 @@ export declare function apS<F>(F: Apply<F>): <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -829,7 +829,7 @@ export declare function apSecond<F>(A: Apply<F>): <B>(second: HKT<F, B>) => <A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -889,7 +889,7 @@ export declare function getApplySemigroup<F>(F: Apply<F>): <A>(S: Semigroup<A>) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1009,7 +1009,7 @@ export declare function sequenceS<F>(F: Apply<F>): <NER extends Record<string, H
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -1167,7 +1167,7 @@ export declare function sequenceT<F>(F: Apply<F>): <T extends Array<HKT<F, any>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 

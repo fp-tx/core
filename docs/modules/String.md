@@ -52,7 +52,7 @@ export declare const Eq: E.Eq<string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -89,7 +89,7 @@ export declare const Monoid: M.Monoid<string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -121,7 +121,7 @@ export declare const Ord: O.Ord<string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -156,7 +156,7 @@ export declare const Semigroup: S.Semigroup<string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -187,7 +187,7 @@ export declare const Show: Sh.Show<string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -218,7 +218,7 @@ export declare const isString: Refinement<unknown, string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -252,7 +252,7 @@ export declare const empty = ''
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -275,7 +275,7 @@ export declare const endsWith: (searchString: string, position?: number) => (s: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -308,7 +308,7 @@ export declare const includes: (searchString: string, position?: number) => (s: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -343,7 +343,7 @@ export declare const isEmpty: (s: string) => boolean
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -376,7 +376,7 @@ export declare const replace: (searchValue: string | RegExp, replaceValue: strin
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -410,7 +410,7 @@ export declare const size: (s: string) => number
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -442,7 +442,7 @@ export declare const slice: (start: number, end: number) => (s: string) => strin
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -474,7 +474,7 @@ export declare const split: (separator: string | RegExp) => (s: string) => Reado
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -507,7 +507,7 @@ export declare const startsWith: (searchString: string, position?: number) => (s
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -540,7 +540,7 @@ export declare const toLowerCase: (s: string) => string
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -572,7 +572,7 @@ export declare const toUpperCase: (s: string) => string
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -604,7 +604,7 @@ export declare const trim: (s: string) => string
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -636,7 +636,7 @@ export declare const trimLeft: (s: string) => string
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -668,7 +668,7 @@ export declare const trimRight: (s: string) => string
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 

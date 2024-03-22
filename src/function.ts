@@ -1,6 +1,6 @@
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type BooleanAlgebra } from './BooleanAlgebra'
@@ -15,7 +15,7 @@ import { type Semiring } from './Semiring'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -55,7 +55,7 @@ export const getBooleanAlgebra =
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -91,7 +91,7 @@ export const getSemigroup =
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -106,7 +106,7 @@ export const getMonoid = <M>(M: Monoid<M>): (<A = never>() => Monoid<(a: A) => M
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -120,7 +120,7 @@ export const getSemiring = <A, B>(S: Semiring<B>): Semiring<(a: A) => B> => ({
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -142,7 +142,7 @@ export const getRing = <A, B>(R: Ring<B>): Ring<(a: A) => B> => {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -161,7 +161,7 @@ export const apply =
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -171,7 +171,7 @@ export interface FunctionN<A extends ReadonlyArray<unknown>, B> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -181,7 +181,7 @@ export function identity<A>(a: A): A {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -189,7 +189,7 @@ export const unsafeCoerce: <A, B>(a: A) => B = identity as any
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -201,7 +201,7 @@ export function constant<A>(a: A): LazyArg<A> {
  * A thunk that returns always `true`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -211,7 +211,7 @@ export const constTrue: LazyArg<boolean> = /*#__PURE__*/ constant(true)
  * A thunk that returns always `false`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -221,7 +221,7 @@ export const constFalse: LazyArg<boolean> = /*#__PURE__*/ constant(false)
  * A thunk that returns always `null`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -231,7 +231,7 @@ export const constNull: LazyArg<null> = /*#__PURE__*/ constant(null)
  * A thunk that returns always `undefined`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -241,7 +241,7 @@ export const constUndefined: LazyArg<undefined> = /*#__PURE__*/ constant(undefin
  * A thunk that returns always `void`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -261,7 +261,7 @@ export const constVoid: LazyArg<void> = constUndefined
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -298,7 +298,7 @@ export function flip(f: Function): Function {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -412,7 +412,7 @@ export function flow(
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -422,7 +422,7 @@ export function tuple<T extends ReadonlyArray<any>>(...t: T): T {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -432,7 +432,7 @@ export function increment(n: number): number {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -442,7 +442,7 @@ export function decrement(n: number): number {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -464,7 +464,7 @@ export function absurd<A>(_: never): A {
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -476,7 +476,7 @@ export function tupled<A extends ReadonlyArray<unknown>, B>(f: (...a: A) => B): 
  * Inverse function of `tupled`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -505,7 +505,7 @@ export function untupled<A extends ReadonlyArray<unknown>, B>(f: (a: A) => B): (
  * ```
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -788,7 +788,7 @@ export function pipe(
  * Type hole simulation
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -796,7 +796,7 @@ export const hole: <T>() => T = absurd as any
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -811,7 +811,7 @@ export const SK = <A, B>(_: A, b: B): B => b
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -824,7 +824,7 @@ export interface Refinement<A, B extends A> {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -837,7 +837,7 @@ export interface Predicate<A> {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -850,7 +850,7 @@ export function not<A>(predicate: Predicate<A>): Predicate<A> {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -863,7 +863,7 @@ export interface Endomorphism<A> {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -876,7 +876,7 @@ export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => (
  * A lazy argument.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -913,7 +913,7 @@ export const dual: {
  * Use `LazyArg` instead.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Lagacy}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public

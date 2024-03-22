@@ -31,7 +31,7 @@ export type Json = boolean | number | string | null | JsonArray | JsonRecord
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -54,7 +54,7 @@ export interface JsonArray extends ReadonlyArray<Json> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -79,7 +79,7 @@ export interface JsonRecord {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -104,7 +104,7 @@ export declare const parse: (s: string) => Either<unknown, Json>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -143,7 +143,7 @@ export declare const stringify: <A>(a: A) => Either<unknown, string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 

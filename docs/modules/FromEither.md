@@ -81,7 +81,7 @@ export declare function fromOption<F>(F: FromEither<F>): <E>(onNone: LazyArg<E>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -159,7 +159,7 @@ export declare function fromPredicate<F>(F: FromEither<F>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -185,7 +185,7 @@ export interface FromEither<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -211,7 +211,7 @@ export interface FromEither1<F extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -237,7 +237,7 @@ export interface FromEither2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -264,7 +264,7 @@ export interface FromEither2C<F extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -290,7 +290,7 @@ export interface FromEither3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -317,7 +317,7 @@ export interface FromEither3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -343,7 +343,7 @@ export interface FromEither4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -412,7 +412,7 @@ export declare function chainEitherK<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -481,7 +481,7 @@ export declare function chainFirstEitherK<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -543,7 +543,7 @@ export declare function chainOptionK<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -638,7 +638,7 @@ export declare function filterOrElse<M extends URIS2>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -700,7 +700,7 @@ export declare function fromEitherK<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -768,7 +768,7 @@ export declare function fromOptionK<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

@@ -65,7 +65,7 @@ export declare const first: <A = never>() => Semigroup<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -98,7 +98,7 @@ export declare const last: <A = never>() => Semigroup<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -129,7 +129,7 @@ export declare const constant: <A>(a: A) => Semigroup<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -154,7 +154,7 @@ export declare const max: <A>(O: Or.Ord<A>) => Semigroup<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -190,7 +190,7 @@ export declare const min: <A>(O: Or.Ord<A>) => Semigroup<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -224,7 +224,7 @@ export interface Semigroup<A> extends Magma<A> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -252,7 +252,7 @@ export declare const concatAll: <A>(S: Semigroup<A>) => (startWith: A) => (as: R
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -293,7 +293,7 @@ export declare function fold<A>(S: Semigroup<A>): {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -319,7 +319,7 @@ export declare const getDualSemigroup: <A>(S: Semigroup<A>) => Semigroup<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -345,7 +345,7 @@ export declare const getFirstSemigroup: <A = never>() => Semigroup<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -371,7 +371,7 @@ export declare const getFunctionSemigroup: <S>(S: Semigroup<S>) => <A = never>()
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -397,7 +397,7 @@ export declare const getIntercalateSemigroup: <A>(middle: A) => (S: Semigroup<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -423,7 +423,7 @@ export declare const getJoinSemigroup: <A>(O: Or.Ord<A>) => Semigroup<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -449,7 +449,7 @@ export declare const getLastSemigroup: <A = never>() => Semigroup<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -475,7 +475,7 @@ export declare const getMeetSemigroup: <A>(O: Or.Ord<A>) => Semigroup<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -501,7 +501,7 @@ export declare const getObjectSemigroup: <A extends object = never>() => Semigro
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -529,7 +529,7 @@ export declare const getStructSemigroup: <O extends ReadonlyRecord<string, any>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -559,7 +559,7 @@ export declare const getTupleSemigroup: <T extends ReadonlyArray<Semigroup<any>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -585,7 +585,7 @@ export declare const intercalate: <A>(middle: A) => (S: Semigroup<A>) => Semigro
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -622,7 +622,7 @@ export declare const reverse: <A>(S: Semigroup<A>) => Semigroup<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -656,7 +656,7 @@ export declare const semigroupAll: Semigroup<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -682,7 +682,7 @@ export declare const semigroupAny: Semigroup<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -708,7 +708,7 @@ export declare const semigroupProduct: Semigroup<number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -734,7 +734,7 @@ export declare const semigroupString: Semigroup<string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -760,7 +760,7 @@ export declare const semigroupSum: Semigroup<number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -786,7 +786,7 @@ export declare const semigroupVoid: Semigroup<void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -814,7 +814,7 @@ export declare const struct: <A>(semigroups: { [K in keyof A]: Semigroup<A[K]> }
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -860,7 +860,7 @@ export declare const tuple: <A extends readonly unknown[]>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 

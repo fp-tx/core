@@ -41,7 +41,7 @@ export declare const id: <A>() => Refinement<A, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -64,7 +64,7 @@ export declare const fromEitherK: <A, B extends A>(getEither: (a: A) => Either<u
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -89,7 +89,7 @@ export declare const fromOptionK: <A, B extends A>(getOption: (a: A) => Option<B
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -114,7 +114,7 @@ export interface Refinement<A, B extends A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -139,7 +139,7 @@ export declare const and: <A, C extends A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -164,7 +164,7 @@ export declare const compose: <A, B extends A, C extends B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -187,7 +187,7 @@ export declare const not: <A, B extends A>(refinement: Refinement<A, B>) => Refi
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -212,7 +212,7 @@ export declare const or: <A, C extends A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -235,7 +235,7 @@ export declare const zero: <A, B extends A>() => Refinement<A, B>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

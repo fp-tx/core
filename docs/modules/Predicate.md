@@ -44,7 +44,7 @@ export declare const Contravariant: Contravariant1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -67,7 +67,7 @@ export declare const getMonoidAll: <A = never>() => Monoid<Predicate<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -90,7 +90,7 @@ export declare const getMonoidAny: <A = never>() => Monoid<Predicate<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -113,7 +113,7 @@ export declare const getSemigroupAll: <A = never>() => Semigroup<Predicate<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -136,7 +136,7 @@ export declare const getSemigroupAny: <A = never>() => Semigroup<Predicate<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -159,7 +159,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -182,7 +182,7 @@ export declare const URI = 'Predicate'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -207,7 +207,7 @@ export interface Predicate<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -230,7 +230,7 @@ export declare const and: <A>(second: Predicate<A>) => (first: Predicate<A>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -253,7 +253,7 @@ export declare const contramap: <B, A>(f: (b: B) => A) => (predicate: Predicate<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -276,7 +276,7 @@ export declare const not: <A>(predicate: Predicate<A>) => Predicate<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -299,7 +299,7 @@ export declare const or: <A>(second: Predicate<A>) => (first: Predicate<A>) => P
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

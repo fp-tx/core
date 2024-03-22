@@ -49,7 +49,7 @@ export interface Applicative<F> extends Apply<F>, Pointed<F> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -72,7 +72,7 @@ export interface Applicative1<F extends URIS> extends Apply1<F>, Pointed1<F> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -95,7 +95,7 @@ export interface Applicative2<F extends URIS2> extends Apply2<F>, Pointed2<F> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -118,7 +118,7 @@ export interface Applicative2C<F extends URIS2, E> extends Apply2C<F, E>, Pointe
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -141,7 +141,7 @@ export interface Applicative3<F extends URIS3> extends Apply3<F>, Pointed3<F> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -164,7 +164,7 @@ export interface Applicative3C<F extends URIS3, E> extends Apply3C<F, E>, Pointe
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -187,7 +187,7 @@ export interface Applicative4<F extends URIS4> extends Apply4<F>, Pointed4<F> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -213,7 +213,7 @@ export interface ApplicativeComposition<F, G> extends FunctorComposition<F, G> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -240,7 +240,7 @@ export interface ApplicativeComposition11<F extends URIS, G extends URIS> extend
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -270,7 +270,7 @@ export interface ApplicativeComposition12<F extends URIS, G extends URIS2> exten
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -297,7 +297,7 @@ export interface ApplicativeComposition12C<F extends URIS, G extends URIS2, E> e
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -327,7 +327,7 @@ export interface ApplicativeComposition21<F extends URIS2, G extends URIS> exten
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -357,7 +357,7 @@ export interface ApplicativeComposition22<F extends URIS2, G extends URIS2> exte
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -387,7 +387,7 @@ export interface ApplicativeComposition22C<F extends URIS2, G extends URIS2, E> 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -414,7 +414,7 @@ export interface ApplicativeComposition2C1<F extends URIS2, G extends URIS, E> e
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -441,7 +441,7 @@ export interface ApplicativeCompositionHKT1<F, G extends URIS> extends FunctorCo
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -468,7 +468,7 @@ export interface ApplicativeCompositionHKT2<F, G extends URIS2> extends FunctorC
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -495,7 +495,7 @@ export interface ApplicativeCompositionHKT2C<F, G extends URIS2, E> extends Func
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -595,7 +595,7 @@ export declare function getApplicativeComposition<F, G extends URIS2, E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -658,7 +658,7 @@ export declare function getApplicativeMonoid<F>(F: Applicative<F>): <A>(M: Monoi
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

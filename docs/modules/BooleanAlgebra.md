@@ -38,7 +38,7 @@ export declare const booleanAlgebraVoid: BooleanAlgebra<void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -61,7 +61,7 @@ export interface BooleanAlgebra<A> extends HeytingAlgebra<A> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -86,7 +86,7 @@ export declare const booleanAlgebraBoolean: BooleanAlgebra<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -112,7 +112,7 @@ export declare const getDualBooleanAlgebra: <A>(B: BooleanAlgebra<A>) => Boolean
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -140,7 +140,7 @@ export declare const getFunctionBooleanAlgebra: <B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -166,7 +166,7 @@ export declare const reverse: <A>(B: BooleanAlgebra<A>) => BooleanAlgebra<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

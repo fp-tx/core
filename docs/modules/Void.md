@@ -28,7 +28,7 @@ export declare const Monoid: M.Monoid<void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -51,7 +51,7 @@ export declare const Semigroup: Se.Semigroup<void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

@@ -106,7 +106,7 @@ export declare function altValidation<M, E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -170,7 +170,7 @@ export declare function orElseFirst<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -232,7 +232,7 @@ export declare function orLeft<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -291,7 +291,7 @@ export declare function match<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -326,7 +326,7 @@ export interface EitherM<M> extends ApplicativeCompositionHKT2<M, URI> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -366,7 +366,7 @@ export interface EitherM1<M extends URIS> extends ApplicativeComposition12<M, UR
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -409,7 +409,7 @@ export interface EitherM2<M extends URIS2> extends ApplicativeComposition22<M, U
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -433,7 +433,7 @@ export interface EitherT<M, E, A> extends HKT<M, Either<E, A>> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -457,7 +457,7 @@ export type EitherT1<M extends URIS, E, A> = Kind<M, Either<E, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -481,7 +481,7 @@ export type EitherT2<M extends URIS2, R, E, A> = Kind2<M, R, Either<E, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -546,7 +546,7 @@ export declare function alt<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -610,7 +610,7 @@ export declare function ap<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -672,7 +672,7 @@ export declare function bimap<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -734,7 +734,7 @@ export declare function chain<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -810,7 +810,7 @@ export declare function chainNullableK<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -864,7 +864,7 @@ export declare function fromNullable<F>(F: Pointed<F>): <E>(e: E) => <A>(a: A) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -944,7 +944,7 @@ export declare function fromNullableK<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -976,7 +976,7 @@ export declare function getEitherM<M>(M: Monad<M>): EitherM<M>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1033,7 +1033,7 @@ export declare function getOrElse<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1083,7 +1083,7 @@ export declare function left<F>(F: Pointed<F>): <E, A = never>(e: E) => HKT<F, E
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1135,7 +1135,7 @@ export declare function leftF<F>(F: Functor<F>): <E, A = never>(fe: HKT<F, E>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1191,7 +1191,7 @@ export declare function map<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1247,7 +1247,7 @@ export declare function mapLeft<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1315,7 +1315,7 @@ export declare function matchE<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1379,7 +1379,7 @@ export declare function orElse<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1429,7 +1429,7 @@ export declare function right<F>(F: Pointed<F>): <A, E = never>(a: A) => HKT<F, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1481,7 +1481,7 @@ export declare function rightF<F>(F: Functor<F>): <A, E = never>(fa: HKT<F, A>) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1533,7 +1533,7 @@ export declare function swap<F>(F: Functor<F>): <E, A>(ma: HKT<F, Either<E, A>>)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1585,7 +1585,7 @@ export declare function toUnion<F>(F: Functor<F>): <E, A>(fa: HKT<F, Either<E, A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

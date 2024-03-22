@@ -60,7 +60,7 @@ export declare function ask<F>(F: FromReader<F>): <R>() => HKT2<F, R, R>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -100,7 +100,7 @@ export declare function asks<F>(F: FromReader<F>): <R, A>(f: (r: R) => A) => HKT
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -126,7 +126,7 @@ export interface FromReader<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -152,7 +152,7 @@ export interface FromReader2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -178,7 +178,7 @@ export interface FromReader3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -205,7 +205,7 @@ export interface FromReader3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -231,7 +231,7 @@ export interface FromReader4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -286,7 +286,7 @@ export declare function chainFirstReaderK<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -341,7 +341,7 @@ export declare function chainReaderK<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -391,7 +391,7 @@ export declare function fromReaderK<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

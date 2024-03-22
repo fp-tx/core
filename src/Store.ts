@@ -1,6 +1,6 @@
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Comonad2 } from './Comonad'
@@ -24,7 +24,7 @@ import { type HKT, type Kind, type Kind2, type Kind3, type URIS, type URIS2, typ
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -38,7 +38,7 @@ export interface Store<S, A> {
  * Reposition the focus at the specified position
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -50,7 +50,7 @@ export function seek<S>(s: S): <A>(wa: Store<S, A>) => Store<S, A> {
  * Reposition the focus at the specified position, which depends on the current position
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -62,7 +62,7 @@ export function seeks<S>(f: Endomorphism<S>): <A>(wa: Store<S, A>) => Store<S, A
  * Extract a value from a position which depends on the current position
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -74,7 +74,7 @@ export function peeks<S>(f: Endomorphism<S>): <A>(wa: Store<S, A>) => A {
  * Extract a collection of values from positions which depend on the current position
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -105,7 +105,7 @@ const _extend: Extend2<URI>['extend'] = (wa, f) => pipe(wa, extend(f))
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -116,7 +116,7 @@ export const extend: <E, A, B>(f: (wa: Store<E, A>) => B) => (wa: Store<E, A>) =
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Extract}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -125,7 +125,7 @@ export const extract: <E, A>(wa: Store<E, A>) => A = wa => wa.peek(wa.pos)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -136,7 +136,7 @@ export const duplicate: <E, A>(wa: Store<E, A>) => Store<E, Store<E, A>> = /*#__
  * use the type constructor `F` to represent some computational context.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -148,7 +148,7 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: Store<E, A>) => Store<E, B> 
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -157,7 +157,7 @@ export const URI = 'Store'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Type lambdas}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -172,7 +172,7 @@ declare module './HKT' {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -184,7 +184,7 @@ export const Functor: Functor2<URI> = {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Mapping}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -193,7 +193,7 @@ export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Instances}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -215,7 +215,7 @@ export const Comonad: Comonad2<URI> = {
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

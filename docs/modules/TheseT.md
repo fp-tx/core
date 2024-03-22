@@ -71,7 +71,7 @@ export interface TheseM<M> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -119,7 +119,7 @@ export interface TheseM1<M extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -167,7 +167,7 @@ export interface TheseM2<M extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -191,7 +191,7 @@ export interface TheseT<M, E, A> extends HKT<M, These<E, A>> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -215,7 +215,7 @@ export type TheseT1<M extends URIS, E, A> = Kind<M, These<E, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -239,7 +239,7 @@ export type TheseT2<M extends URIS2, R, E, A> = Kind2<M, R, These<E, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -306,7 +306,7 @@ export declare function ap<F, E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -368,7 +368,7 @@ export declare function bimap<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -412,7 +412,7 @@ export declare function both<F>(F: Pointed<F>): <E, A = never>(e: E, a: A) => HK
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -478,7 +478,7 @@ export declare function chain<M, E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -510,7 +510,7 @@ export declare function getTheseM<M>(M: Monad<M>): TheseM<M>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -561,7 +561,7 @@ export declare function left<F>(F: Pointed<F>): <E, A = never>(e: E) => HKT<F, T
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -613,7 +613,7 @@ export declare function leftF<F>(F: Functor<F>): <E, A = never>(fe: HKT<F, E>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -669,7 +669,7 @@ export declare function map<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -725,7 +725,7 @@ export declare function mapLeft<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -805,7 +805,7 @@ export declare function match<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -885,7 +885,7 @@ export declare function matchE<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -935,7 +935,7 @@ export declare function right<F>(F: Pointed<F>): <A, E = never>(a: A) => HKT<F, 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -987,7 +987,7 @@ export declare function rightF<F>(F: Functor<F>): <A, E = never>(fa: HKT<F, A>) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1039,7 +1039,7 @@ export declare function swap<F>(F: Functor<F>): <E, A>(ma: HKT<F, These<E, A>>) 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1095,7 +1095,7 @@ export declare function toTuple2<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

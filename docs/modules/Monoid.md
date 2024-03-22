@@ -58,7 +58,7 @@ export declare const max: <A>(B: Bounded<A>) => Monoid<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -97,7 +97,7 @@ export declare const min: <A>(B: Bounded<A>) => Monoid<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -133,7 +133,7 @@ export interface Monoid<A> extends Se.Semigroup<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -161,7 +161,7 @@ export declare const concatAll: <A>(M: Monoid<A>) => (as: readonly A[]) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -196,7 +196,7 @@ export declare const fold: <A>(M: Monoid<A>) => (as: readonly A[]) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -222,7 +222,7 @@ export declare const getDualMonoid: <A>(M: Monoid<A>) => Monoid<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -251,7 +251,7 @@ export declare const getEndomorphismMonoid: <A = never>() => Monoid<Endomorphism
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -277,7 +277,7 @@ export declare const getFunctionMonoid: <M>(M: Monoid<M>) => <A = never>() => Mo
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -303,7 +303,7 @@ export declare const getJoinMonoid: <A>(B: Bounded<A>) => Monoid<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -329,7 +329,7 @@ export declare const getMeetMonoid: <A>(B: Bounded<A>) => Monoid<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -357,7 +357,7 @@ export declare const getStructMonoid: <O extends ReadonlyRecord<string, any>>(mo
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -387,7 +387,7 @@ export declare const getTupleMonoid: <T extends ReadonlyArray<Monoid<any>>>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -413,7 +413,7 @@ export declare const monoidAll: Monoid<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -439,7 +439,7 @@ export declare const monoidAny: Monoid<boolean>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -465,7 +465,7 @@ export declare const monoidProduct: Monoid<number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -491,7 +491,7 @@ export declare const monoidString: Monoid<string>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -517,7 +517,7 @@ export declare const monoidSum: Monoid<number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -543,7 +543,7 @@ export declare const monoidVoid: Monoid<void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -569,7 +569,7 @@ export declare const reverse: <A>(M: Monoid<A>) => Monoid<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -605,7 +605,7 @@ export declare const struct: <A>(monoids: { [K in keyof A]: Monoid<A[K]> }) => M
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -651,7 +651,7 @@ export declare const tuple: <A extends readonly unknown[]>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 

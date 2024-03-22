@@ -60,7 +60,7 @@ export declare function get<F>(F: FromState<F>): <S>() => HKT2<F, S, S>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -100,7 +100,7 @@ export declare function gets<F>(F: FromState<F>): <S, A>(f: (s: S) => A) => HKT2
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -144,7 +144,7 @@ export declare function modify<F>(F: FromState<F>): <S>(f: Endomorphism<S>) => H
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -184,7 +184,7 @@ export declare function put<F>(F: FromState<F>): <S>(s: S) => HKT2<F, S, void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -210,7 +210,7 @@ export interface FromState<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -236,7 +236,7 @@ export interface FromState2<F extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -262,7 +262,7 @@ export interface FromState3<F extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -289,7 +289,7 @@ export interface FromState3C<F extends URIS3, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -315,7 +315,7 @@ export interface FromState4<F extends URIS4> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -363,7 +363,7 @@ export declare function chainStateK<M>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -413,7 +413,7 @@ export declare function fromStateK<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

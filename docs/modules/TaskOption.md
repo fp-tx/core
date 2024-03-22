@@ -179,7 +179,7 @@ export declare const Alt: Alt1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -202,7 +202,7 @@ export declare const Alternative: Alternative1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -227,7 +227,7 @@ export declare const ApplicativePar: Applicative1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -252,7 +252,7 @@ export declare const ApplicativeSeq: Applicative1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -277,7 +277,7 @@ export declare const ApplyPar: Apply1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -302,7 +302,7 @@ export declare const ApplySeq: Apply1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -325,7 +325,7 @@ export declare const Chain: chainable.Chain1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -350,7 +350,7 @@ export declare const ChainRec: ChainRec1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -373,7 +373,7 @@ export declare const Compactable: Compactable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -396,7 +396,7 @@ export declare const Filterable: Filterable1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -419,7 +419,7 @@ export declare const FromEither: FromEither1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -442,7 +442,7 @@ export declare const FromIO: FromIO1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -465,7 +465,7 @@ export declare const FromTask: FromTask1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -488,7 +488,7 @@ export declare const Functor: Functor1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -511,7 +511,7 @@ export declare const Monad: Monad1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -534,7 +534,7 @@ export declare const MonadIO: MonadIO1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -557,7 +557,7 @@ export declare const MonadTask: MonadTask1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -580,7 +580,7 @@ export declare const MonadThrow: MonadThrow1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -603,7 +603,7 @@ export declare const Pointed: Pointed1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -626,7 +626,7 @@ export declare const Zero: Zero1<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -654,7 +654,7 @@ export declare const tap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -682,7 +682,7 @@ export declare const tapEither: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -732,7 +732,7 @@ export declare const tapIO: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -785,7 +785,7 @@ export declare const tapTask: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -824,7 +824,7 @@ export declare const none: TaskOption<never>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -847,7 +847,7 @@ export declare const of: <A>(a: A) => TaskOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -870,7 +870,7 @@ export declare const some: <A>(a: A) => TaskOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -893,7 +893,7 @@ export declare const fromEither: <A>(fa: Either<unknown, A>) => TaskOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -916,7 +916,7 @@ export declare const fromIO: <A>(fa: IO<A>) => TaskOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -939,7 +939,7 @@ export declare const fromNullable: <A>(a: A) => TaskOption<NonNullable<A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -962,7 +962,7 @@ export declare const fromOption: <A>(fa: Option<A>) => TaskOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -985,7 +985,7 @@ export declare const fromTask: <A>(fa: Task<A>) => TaskOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1008,7 +1008,7 @@ export declare const fromTaskEither: <A>(fa: TaskEither<unknown, A>) => TaskOpti
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1031,7 +1031,7 @@ export declare const Do: TaskOption<{}>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1057,7 +1057,7 @@ export declare const apS: <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1083,7 +1083,7 @@ export declare const bind: <N extends string, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1108,7 +1108,7 @@ export declare const bindTo: <N extends string>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1131,7 +1131,7 @@ export declare const guard: (b: boolean) => TaskOption<void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1154,7 +1154,7 @@ export declare const alt: <A>(second: LazyArg<TaskOption<A>>) => (first: TaskOpt
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1182,7 +1182,7 @@ export declare const altW: <B>(second: LazyArg<TaskOption<B>>) => <A>(first: Tas
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1205,7 +1205,7 @@ export declare const getOrElse: <A>(onNone: LazyArg<Task<A>>) => (fa: TaskOption
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1233,7 +1233,7 @@ export declare const getOrElseW: <B>(onNone: LazyArg<Task<B>>) => <A>(ma: TaskOp
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1256,7 +1256,7 @@ export declare const compact: Compactable1<URI>['compact']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1283,7 +1283,7 @@ export declare const filter: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1306,7 +1306,7 @@ export declare const filterMap: <A, B>(f: (a: A) => Option<B>) => (fga: TaskOpti
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1333,7 +1333,7 @@ export declare const partition: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1358,7 +1358,7 @@ export declare const partitionMap: <A, B, C>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1381,7 +1381,7 @@ export declare const separate: Compactable1<URI>['separate']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1404,7 +1404,7 @@ export declare const chainRec: ChainRec1<URI>['chainRec']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1432,7 +1432,7 @@ export declare const tryCatch: <A>(f: LazyArg<Promise<A>>) => TaskOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1459,7 +1459,7 @@ export declare const tryCatchK: <A extends readonly unknown[], B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1484,7 +1484,7 @@ export declare const chain: <A, B>(f: (a: A) => TaskOption<B>) => (ma: TaskOptio
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1509,7 +1509,7 @@ export declare const chainFirst: <A, B>(f: (a: A) => TaskOption<B>) => (first: T
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1534,7 +1534,7 @@ export declare const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1559,7 +1559,7 @@ export declare const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => (first: TaskOp
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1584,7 +1584,7 @@ export declare const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => (first: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1609,7 +1609,7 @@ export declare const chainIOK: <A, B>(f: (a: A) => IO<B>) => (first: TaskOption<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1634,7 +1634,7 @@ export declare const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => (first: TaskO
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1659,7 +1659,7 @@ export declare const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1682,7 +1682,7 @@ export declare const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A)
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1707,7 +1707,7 @@ export declare const fromNullableK: <A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1732,7 +1732,7 @@ export declare const fromOptionK: <A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1759,7 +1759,7 @@ export declare const fromPredicate: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1784,7 +1784,7 @@ export declare const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1812,7 +1812,7 @@ export declare const as: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1837,7 +1837,7 @@ export declare const asUnit: <_>(self: TaskOption<_>) => TaskOption<void>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1860,7 +1860,7 @@ export declare const flap: <A>(a: A) => <B>(fab: TaskOption<(a: A) => B>) => Tas
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1885,7 +1885,7 @@ export declare const map: <A, B>(f: (a: A) => B) => (fa: TaskOption<A>) => TaskO
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1908,7 +1908,7 @@ export interface TaskOption<A> extends Task<Option<A>> {}
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1936,7 +1936,7 @@ export declare const fold: <B, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1964,7 +1964,7 @@ export declare const foldW: <B, C, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1987,7 +1987,7 @@ export declare const match: <B, A>(onNone: () => B, onSome: (a: A) => B) => (ma:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2012,7 +2012,7 @@ export declare const matchE: <B, A>(onNone: () => Task<B>, onSome: (a: A) => Tas
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2043,7 +2043,7 @@ export declare const matchEW: <B, C, A>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2071,7 +2071,7 @@ export declare const matchW: <B, A, C>(onNone: () => B, onSome: (a: A) => C) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2094,7 +2094,7 @@ export declare const chainEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2119,7 +2119,7 @@ export declare const chainNullableK: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2142,7 +2142,7 @@ export declare const chainOptionK: <A, B>(f: (a: A) => Option<B>) => (ma: TaskOp
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2168,7 +2168,7 @@ export declare const flatMap: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2194,7 +2194,7 @@ export declare const flatMapIO: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2220,7 +2220,7 @@ export declare const flatMapTask: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2243,7 +2243,7 @@ export declare const flatten: <A>(mma: TaskOption<TaskOption<A>>) => TaskOption<
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2268,7 +2268,7 @@ export declare const sequenceArray: <A>(as: ReadonlyArray<TaskOption<A>>) => Tas
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2293,7 +2293,7 @@ export declare const sequenceSeqArray: <A>(as: ReadonlyArray<TaskOption<A>>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2320,7 +2320,7 @@ export declare const traverseArray: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2347,7 +2347,7 @@ export declare const traverseArrayWithIndex: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2374,7 +2374,7 @@ export declare const traverseReadonlyArrayWithIndex: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2401,7 +2401,7 @@ export declare const traverseReadonlyArrayWithIndexSeq: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2428,7 +2428,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndex: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2455,7 +2455,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndexSeq: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2482,7 +2482,7 @@ export declare const traverseSeqArray: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2509,7 +2509,7 @@ export declare const traverseSeqArrayWithIndex: <A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2532,7 +2532,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2555,7 +2555,7 @@ export declare const URI = 'TaskOption'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2578,7 +2578,7 @@ export declare const ApT: TaskOption<readonly []>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2601,7 +2601,7 @@ export declare const ap: <A>(fa: TaskOption<A>) => <B>(fab: TaskOption<(a: A) =>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2626,7 +2626,7 @@ export declare const apFirst: <B>(second: TaskOption<B>) => <A>(first: TaskOptio
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2651,7 +2651,7 @@ export declare const apSecond: <B>(second: TaskOption<B>) => <A>(first: TaskOpti
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2713,7 +2713,7 @@ export declare const throwError: MonadThrow1<URI>['throwError']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -2736,7 +2736,7 @@ export declare const zero: <A>() => TaskOption<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

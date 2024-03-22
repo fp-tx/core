@@ -1,6 +1,6 @@
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { pipe } from './function'
@@ -12,7 +12,7 @@ import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
  * `Math.random()`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -24,7 +24,7 @@ export const random: IO<number> = () => Math.random()
  * `low` or `high` is not an integer.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -40,7 +40,7 @@ export function randomInt(low: number, high: number): IO<number> {
  * happens if `maximum < minimum`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -55,7 +55,7 @@ export function randomRange(min: number, max: number): IO<number> {
  * Returns a random boolean value with an equal chance of being `true` or `false`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -68,7 +68,7 @@ export const randomBool: IO<boolean> = /*#__PURE__*/ pipe(
  * Returns a random element of a `ReadonlyNonEmptyArray`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

@@ -4,7 +4,7 @@
  * - Inverse: `concat(inverse(a), a) <-> empty = concat(a, inverse(a))`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Monoid } from './Monoid'
@@ -15,7 +15,7 @@ import { type Monoid } from './Monoid'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public

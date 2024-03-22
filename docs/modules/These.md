@@ -119,7 +119,7 @@ export declare const Bifunctor: Bifunctor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -142,7 +142,7 @@ export declare const Foldable: Foldable2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -165,7 +165,7 @@ export declare const FromEither: FromEither2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -188,7 +188,7 @@ export declare const FromThese: FromThese2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -211,7 +211,7 @@ export declare const Functor: Functor2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -234,7 +234,7 @@ export declare const Pointed: Pointed2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -257,7 +257,7 @@ export declare const Traversable: Traversable2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -281,7 +281,7 @@ export declare function getApplicative<E>(S: Semigroup<E>): Applicative2C<URI, E
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -304,7 +304,7 @@ export declare const getApply: <E>(S: Semigroup<E>) => Apply2C<'These', E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -328,7 +328,7 @@ export declare function getChain<E>(S: Semigroup<E>): Chain2C<URI, E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -352,7 +352,7 @@ export declare function getEq<E, A>(EE: Eq<E>, EA: Eq<A>): Eq<These<E, A>>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -376,7 +376,7 @@ export declare function getMonad<E>(S: Semigroup<E>): Monad2C<URI, E> & MonadThr
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -400,7 +400,7 @@ export declare function getSemigroup<E, A>(SE: Semigroup<E>, SA: Semigroup<A>): 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -424,7 +424,7 @@ export declare function getShow<E, A>(SE: Show<E>, SA: Show<A>): Show<These<E, A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -448,7 +448,7 @@ export declare function both<E, A>(left: E, right: A): These<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -472,7 +472,7 @@ export declare function left<E = never, A = never>(left: E): These<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -496,7 +496,7 @@ export declare function leftOrBoth<E>(e: E): <A>(ma: Option<A>) => These<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -529,7 +529,7 @@ export declare const of: <E = never, A = never>(right: A) => These<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -553,7 +553,7 @@ export declare function right<E = never, A = never>(right: A): These<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -577,7 +577,7 @@ export declare function rightOrBoth<A>(a: A): <E>(me: Option<E>) => These<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -610,7 +610,7 @@ export declare const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) =
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -635,7 +635,7 @@ export declare const fromOptions: <E, A>(fe: Option<E>, fa: Option<A>) => Option
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -673,7 +673,7 @@ export declare function getLeft<E, A>(fa: These<E, A>): Option<E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -710,7 +710,7 @@ export declare function getLeftOnly<E, A>(fa: These<E, A>): Option<E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -747,7 +747,7 @@ export declare function getRight<E, A>(fa: These<E, A>): Option<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -784,7 +784,7 @@ export declare function getRightOnly<E, A>(fa: These<E, A>): Option<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -818,7 +818,7 @@ export declare const toTuple2: <E, A>(e: LazyArg<E>, a: LazyArg<A>) => (fa: Thes
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 #### Example
 
@@ -871,7 +871,7 @@ export declare const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: These<E, A>) => 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -894,7 +894,7 @@ export declare const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => <E>(fa
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -917,7 +917,7 @@ export declare const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => <E>(fa: These
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -940,7 +940,7 @@ export declare const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => <E>(fa: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -965,7 +965,7 @@ export declare const fromOptionK: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -992,7 +992,7 @@ export declare const fromPredicate: {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1017,7 +1017,7 @@ export declare const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa:
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1040,7 +1040,7 @@ export declare const flap: <A>(a: A) => <E, B>(fab: These<E, (a: A) => B>) => Th
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1065,7 +1065,7 @@ export declare const map: <A, B>(f: (a: A) => B) => <E>(fa: These<E, A>) => Thes
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1092,7 +1092,7 @@ export interface Both<E, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1115,7 +1115,7 @@ export type These<E, A> = Either<E, A> | Both<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1144,7 +1144,7 @@ export declare const fold: <E, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1173,7 +1173,7 @@ export declare const foldW: <E, B, A, C, D>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1200,7 +1200,7 @@ export declare const match: <E, A, B>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1232,7 +1232,7 @@ export declare const matchW: <E, B, A, C, D>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1258,7 +1258,7 @@ export declare function isBoth<E, A>(fa: These<E, A>): fa is Both<E, A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1283,7 +1283,7 @@ export declare const isLeft: <E>(fa: These<E, unknown>) => fa is Left<E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1308,7 +1308,7 @@ export declare const isRight: <A>(fa: These<unknown, A>) => fa is Right<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1331,7 +1331,7 @@ export declare const sequence: Traversable2<URI>['sequence']
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1354,7 +1354,7 @@ export declare const traverse: PipeableTraverse2<URI>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1381,7 +1381,7 @@ export declare const traverseReadonlyArrayWithIndex: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1410,7 +1410,7 @@ export declare const traverseReadonlyNonEmptyArrayWithIndex: <E>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1433,7 +1433,7 @@ export type URI = typeof URI
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1456,7 +1456,7 @@ export declare const URI = 'These'
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1479,7 +1479,7 @@ export declare const ApT: These<never, readonly []>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1502,7 +1502,7 @@ export declare const elem: <A>(E: Eq<A>) => (a: A) => <E>(ma: These<E, A>) => bo
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1525,7 +1525,7 @@ export declare const exists: <A>(predicate: Predicate<A>) => (ma: These<unknown,
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1548,7 +1548,7 @@ export declare const swap: <E, A>(fa: These<E, A>) => These<A, E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -1573,7 +1573,7 @@ export declare const these: Functor2<URI> & Bifunctor2<URI> & Foldable2<URI> & T
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -1599,7 +1599,7 @@ export declare const toTuple: <E, A>(e: E, a: A) => (fa: These<E, A>) => [E, A]
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 

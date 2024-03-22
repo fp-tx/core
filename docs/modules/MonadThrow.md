@@ -35,7 +35,7 @@ export interface MonadThrow<M> extends Monad<M> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -60,7 +60,7 @@ export interface MonadThrow1<M extends URIS> extends Monad1<M> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -85,7 +85,7 @@ export interface MonadThrow2<M extends URIS2> extends Monad2<M> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -110,7 +110,7 @@ export interface MonadThrow2C<M extends URIS2, E> extends Monad2C<M, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -135,7 +135,7 @@ export interface MonadThrow3<M extends URIS3> extends Monad3<M> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -160,7 +160,7 @@ export interface MonadThrow3C<M extends URIS3, E> extends Monad3C<M, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -185,7 +185,7 @@ export interface MonadThrow4<M extends URIS4> extends Monad4<M> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

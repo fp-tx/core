@@ -39,7 +39,7 @@ export interface Bounded<A> extends Ord<A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -64,7 +64,7 @@ export declare const clamp: <A>(B: Bounded<A>) => (a: A) => A
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -89,7 +89,7 @@ export declare const reverse: <A>(B: Bounded<A>) => Bounded<A>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -114,7 +114,7 @@ export declare const boundedNumber: Bounded<number>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 

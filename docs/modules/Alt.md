@@ -39,7 +39,7 @@ export interface Alt<F> extends Functor<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -64,7 +64,7 @@ export interface Alt1<F extends URIS> extends Functor1<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -89,7 +89,7 @@ export interface Alt2<F extends URIS2> extends Functor2<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -114,7 +114,7 @@ export interface Alt2C<F extends URIS2, E> extends Functor2C<F, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -139,7 +139,7 @@ export interface Alt3<F extends URIS3> extends Functor3<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -164,7 +164,7 @@ export interface Alt3C<F extends URIS3, E> extends Functor3C<F, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -189,7 +189,7 @@ export interface Alt4<F extends URIS4> extends Functor4<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -249,7 +249,7 @@ export declare function altAll<F>(F: Alt<F>): <A>(startWith: HKT<F, A>) => (as: 
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

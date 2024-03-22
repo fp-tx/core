@@ -40,7 +40,7 @@ export interface Strong<F> extends Profunctor<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -66,7 +66,7 @@ export interface Strong2<F extends URIS2> extends Profunctor2<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -92,7 +92,7 @@ export interface Strong3<F extends URIS3> extends Profunctor3<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -118,7 +118,7 @@ export interface Strong4<F extends URIS4> extends Profunctor4<F> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -180,7 +180,7 @@ export declare function fanOut<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -226,7 +226,7 @@ export declare function fanout<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 
@@ -286,7 +286,7 @@ export declare function split<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -332,7 +332,7 @@ export declare function splitStrong<F>(
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 * **Deprecated**
 
 

@@ -41,7 +41,7 @@ export interface WriterT<M, W, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -66,7 +66,7 @@ export interface WriterT1<M extends URIS, W, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -91,7 +91,7 @@ export interface WriterT2<M extends URIS2, E, W, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -130,7 +130,7 @@ export interface WriterM<M> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -169,7 +169,7 @@ export interface WriterM1<M extends URIS> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -208,7 +208,7 @@ export interface WriterM2<M extends URIS2> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -247,7 +247,7 @@ export interface WriterM2C<M extends URIS2, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -292,7 +292,7 @@ export interface WriterM3<M extends URIS3> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -317,7 +317,7 @@ export interface WriterT3<M extends URIS3, R, E, W, A> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -357,7 +357,7 @@ export declare function getWriterM<M>(M: Monad<M>): WriterM<M>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

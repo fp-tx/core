@@ -1,6 +1,6 @@
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -130,7 +130,7 @@ import * as zero from './Zero'
 export {
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -138,7 +138,7 @@ export {
   alt,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -146,7 +146,7 @@ export {
   alternative,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -154,7 +154,7 @@ export {
   applicative,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -162,7 +162,7 @@ export {
   apply,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -170,7 +170,7 @@ export {
   array,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -178,14 +178,14 @@ export {
   bifunctor,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   boolean,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -193,7 +193,7 @@ export {
   booleanAlgebra,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -201,7 +201,7 @@ export {
   bounded,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -209,7 +209,7 @@ export {
   boundedDistributiveLattice,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -217,7 +217,7 @@ export {
   boundedJoinSemilattice,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -225,7 +225,7 @@ export {
   boundedLattice,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -233,7 +233,7 @@ export {
   boundedMeetSemilattice,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -241,7 +241,7 @@ export {
   category,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -249,7 +249,7 @@ export {
   chain,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -257,7 +257,7 @@ export {
   chainRec,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -265,7 +265,7 @@ export {
   choice,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -273,7 +273,7 @@ export {
   comonad,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -281,14 +281,14 @@ export {
   compactable,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   console,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -296,7 +296,7 @@ export {
   const_ as const,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -304,14 +304,14 @@ export {
   contravariant,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   date,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -319,7 +319,7 @@ export {
   distributiveLattice,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -327,7 +327,7 @@ export {
   either,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Monad transformers}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -335,7 +335,7 @@ export {
   eitherT,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -343,7 +343,7 @@ export {
   endomorphism,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -351,7 +351,7 @@ export {
   eq,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -359,7 +359,7 @@ export {
   extend,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -367,7 +367,7 @@ export {
   field,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -375,7 +375,7 @@ export {
   filterable,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -383,7 +383,7 @@ export {
   filterableWithIndex,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -391,7 +391,7 @@ export {
   foldable,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -399,7 +399,7 @@ export {
   foldableWithIndex,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -407,7 +407,7 @@ export {
   fromEither,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -415,7 +415,7 @@ export {
   fromIO,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -423,7 +423,7 @@ export {
   fromReader,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -431,7 +431,7 @@ export {
   fromState,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -439,7 +439,7 @@ export {
   fromTask,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -447,14 +447,14 @@ export {
   fromThese,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   function_ as function,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -462,7 +462,7 @@ export {
   functor,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -470,7 +470,7 @@ export {
   functorWithIndex,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -478,7 +478,7 @@ export {
   group,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -486,14 +486,14 @@ export {
   heytingAlgebra,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   hkt,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -501,7 +501,7 @@ export {
   identity,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -509,7 +509,7 @@ export {
   invariant,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -517,7 +517,7 @@ export {
   io,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -525,7 +525,7 @@ export {
   ioEither,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -533,14 +533,14 @@ export {
   ioOption,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   ioRef,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -548,14 +548,14 @@ export {
   joinSemilattice,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   json,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -563,7 +563,7 @@ export {
   lattice,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -571,7 +571,7 @@ export {
   magma,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -579,7 +579,7 @@ export {
   map,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -587,7 +587,7 @@ export {
   meetSemilattice,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -595,7 +595,7 @@ export {
   monad,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -603,7 +603,7 @@ export {
   monadIO,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -611,7 +611,7 @@ export {
   monadTask,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -619,7 +619,7 @@ export {
   monadThrow,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -627,14 +627,14 @@ export {
   monoid,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   naturalTransformation,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -642,14 +642,14 @@ export {
   nonEmptyArray,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   number,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -657,7 +657,7 @@ export {
   option,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Monad transformers}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -665,7 +665,7 @@ export {
   optionT,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -673,21 +673,21 @@ export {
   ord,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   ordering,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   pipeable,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -695,7 +695,7 @@ export {
   pointed,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -703,7 +703,7 @@ export {
   predicate,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -711,14 +711,14 @@ export {
   profunctor,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   random,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -726,7 +726,7 @@ export {
   reader,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -734,7 +734,7 @@ export {
   readerEither,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -742,7 +742,7 @@ export {
   readerIO,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Monad transformers}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -750,7 +750,7 @@ export {
   readerT,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -758,7 +758,7 @@ export {
   readerTask,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -766,7 +766,7 @@ export {
   readerTaskEither,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -774,7 +774,7 @@ export {
   readonlyArray,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -782,7 +782,7 @@ export {
   readonlyMap,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -790,7 +790,7 @@ export {
   readonlyNonEmptyArray,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -798,7 +798,7 @@ export {
   readonlyRecord,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -806,7 +806,7 @@ export {
   readonlySet,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -814,7 +814,7 @@ export {
   readonlyTuple,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -822,7 +822,7 @@ export {
   record,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -830,7 +830,7 @@ export {
   refinement,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -838,7 +838,7 @@ export {
   ring,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -846,7 +846,7 @@ export {
   semigroup,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -854,7 +854,7 @@ export {
   semigroupoid,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -862,7 +862,7 @@ export {
   semiring,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -870,7 +870,7 @@ export {
   separated,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -878,7 +878,7 @@ export {
   set,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -886,7 +886,7 @@ export {
   show,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -894,7 +894,7 @@ export {
   state,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -902,7 +902,7 @@ export {
   stateReaderTaskEither,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Monad transformers}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -910,7 +910,7 @@ export {
   stateT,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -918,14 +918,14 @@ export {
   store,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   string,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -933,14 +933,14 @@ export {
   strong,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   struct,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -948,7 +948,7 @@ export {
   task,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -956,7 +956,7 @@ export {
   taskEither,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -964,7 +964,7 @@ export {
   taskOption,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -972,7 +972,7 @@ export {
   taskThese,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -980,7 +980,7 @@ export {
   these,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Monad transformers}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -988,7 +988,7 @@ export {
   theseT,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -996,7 +996,7 @@ export {
   traced,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -1004,7 +1004,7 @@ export {
   traversable,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -1012,7 +1012,7 @@ export {
   traversableWithIndex,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -1020,7 +1020,7 @@ export {
   tree,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -1028,7 +1028,7 @@ export {
   tuple,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -1036,7 +1036,7 @@ export {
   unfoldable,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -1045,7 +1045,7 @@ export {
   /**
    * @deprecated Use applicative validation instead
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Zone of death}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -1053,7 +1053,7 @@ export {
   void_ as void,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -1061,7 +1061,7 @@ export {
   witherable,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Data types}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -1069,7 +1069,7 @@ export {
   writer,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Monad transformers}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
@@ -1077,7 +1077,7 @@ export {
   writerT,
   /**
    * @meta
-   * {@since 1.0.0}
+   * {@since 0.1.0}
    * {@category Model}
    * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public

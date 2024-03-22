@@ -4,7 +4,7 @@
  * - `a ∨ 0 <-> a`
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type JoinSemilattice } from './JoinSemilattice'
@@ -15,7 +15,7 @@ import { type JoinSemilattice } from './JoinSemilattice'
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public

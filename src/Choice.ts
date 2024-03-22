@@ -23,7 +23,7 @@
  * Adapted from https://github.com/purescript/purescript-profunctor/blob/master/src/Data/Profunctor/Choice.purs
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Category, type Category2, type Category3, type Category4 } from './Category'
@@ -38,7 +38,7 @@ import { type Profunctor, type Profunctor2, type Profunctor3, type Profunctor4 }
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -50,7 +50,7 @@ export interface Choice<F> extends Profunctor<F> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -62,7 +62,7 @@ export interface Choice2<F extends URIS2> extends Profunctor2<F> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -74,7 +74,7 @@ export interface Choice3<F extends URIS3> extends Profunctor3<F> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -97,7 +97,7 @@ export interface Choice4<F extends URIS4> extends Profunctor4<F> {
  * over the left side and `g` over the right side. Just like `bimap` would do for the `Bifunctor` instance of `Either`.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -146,7 +146,7 @@ export function split<P>(
  * which will run the appropriate computation based on the parameter supplied in the `Either` value.
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -187,7 +187,7 @@ export function fanIn<P>(
  *
  * @deprecated Zone of Death
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
@@ -213,7 +213,7 @@ export function splitChoice<F>(
  *
  * @deprecated Use `fanIn` instead
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */

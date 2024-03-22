@@ -2,7 +2,7 @@
  * Lift a computation from the `Task` monad
  *
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import {
@@ -31,7 +31,7 @@ import {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -40,7 +40,7 @@ export interface MonadTask<M> extends MonadIO<M>, FromTask<M> {}
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -49,7 +49,7 @@ export interface MonadTask1<M extends URIS> extends MonadIO1<M>, FromTask1<M> {}
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -58,7 +58,7 @@ export interface MonadTask2<M extends URIS2> extends MonadIO2<M>, FromTask2<M> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -67,7 +67,7 @@ export interface MonadTask2C<M extends URIS2, E> extends MonadIO2C<M, E>, FromTa
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -76,7 +76,7 @@ export interface MonadTask3<M extends URIS3> extends MonadIO3<M>, FromTask3<M> {
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
@@ -85,7 +85,7 @@ export interface MonadTask3C<M extends URIS3, E> extends MonadIO3C<M, E>, FromTa
 
 /**
  * @meta
- * {@since 1.0.0}
+ * {@since 0.1.0}
  * {@category Model}
  * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public

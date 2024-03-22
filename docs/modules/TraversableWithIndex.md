@@ -51,7 +51,7 @@ export interface PipeableTraverseWithIndex1<T extends URIS, I> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -90,7 +90,7 @@ export interface PipeableTraverseWithIndex2<T extends URIS2, I> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -115,7 +115,7 @@ export interface TraversableWithIndex<T, I> extends FunctorWithIndex<T, I>, Fold
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -143,7 +143,7 @@ export interface TraversableWithIndex1<T extends URIS, I>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -171,7 +171,7 @@ export interface TraversableWithIndex2<T extends URIS2, I>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -199,7 +199,7 @@ export interface TraversableWithIndex2C<T extends URIS2, I, E>
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -237,7 +237,7 @@ export interface TraverseWithIndex<T, I> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -275,7 +275,7 @@ export interface TraverseWithIndex1<T extends URIS, I> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -312,7 +312,7 @@ export interface TraverseWithIndex2<T extends URIS2, I> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -352,7 +352,7 @@ export interface TraverseWithIndex2C<T extends URIS2, I, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License

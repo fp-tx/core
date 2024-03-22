@@ -35,7 +35,7 @@ export interface Comonad<W> extends Extend<W> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -60,7 +60,7 @@ export interface Comonad1<W extends URIS> extends Extend1<W> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -85,7 +85,7 @@ export interface Comonad2<W extends URIS2> extends Extend2<W> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -110,7 +110,7 @@ export interface Comonad2C<W extends URIS2, E> extends Extend2C<W, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -135,7 +135,7 @@ export interface Comonad3<W extends URIS3> extends Extend3<W> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -160,7 +160,7 @@ export interface Comonad3C<W extends URIS3, E> extends Extend3C<W, E> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
@@ -185,7 +185,7 @@ export interface Comonad4<W extends URIS4> extends Extend4<W> {
 
 #### Details
 
-* Added in 1.0.0
+* Added in 0.1.0
 
 
 #### License
