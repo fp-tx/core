@@ -2,8 +2,8 @@
  * `TaskEither<E, A>` represents an asynchronous computation that either yields a value of type `A` or fails yielding an
  * error of type `E`. If you want to represent an asynchronous computation that never fails, please see `Task`.
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Alt2, type Alt2C } from './Alt'
@@ -66,12 +66,10 @@ import { type Task } from './Task'
 import { type TaskOption } from './TaskOption'
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface TaskEither<E, A> extends Task<Either<E, A>> {}
@@ -81,67 +79,55 @@ export interface TaskEither<E, A> extends Task<Either<E, A>> {}
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const left: <E = never, A = never>(e: E) => TaskEither<E, A> = /*#__PURE__*/ ET.left(T.Pointed)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const right: <E = never, A = never>(a: A) => TaskEither<E, A> = /*#__PURE__*/ ET.right(T.Pointed)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const rightTask: <E = never, A = never>(ma: Task<A>) => TaskEither<E, A> = /*#__PURE__*/ ET.rightF(T.Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const leftTask: <E = never, A = never>(me: Task<E>) => TaskEither<E, A> = /*#__PURE__*/ ET.leftF(T.Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const rightIO: <E = never, A = never>(ma: IO<A>) => TaskEither<E, A> = /*#__PURE__*/ flow(T.fromIO, rightTask)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const leftIO: <E = never, A = never>(me: IO<E>) => TaskEither<E, A> = /*#__PURE__*/ flow(T.fromIO, leftTask)
@@ -151,68 +137,56 @@ export const leftIO: <E = never, A = never>(me: IO<E>) => TaskEither<E, A> = /*#
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromIO: <A, E = never>(fa: IO<A>) => TaskEither<E, A> = rightIO
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromTask: <A, E = never>(fa: Task<A>) => TaskEither<E, A> = rightTask
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromEither: <E, A>(fa: Either<E, A>) => TaskEither<E, A> = T.of
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromIOEither: <E, A>(fa: IOEither<E, A>) => TaskEither<E, A> = T.fromIO
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromTaskOption: <E>(onNone: LazyArg<E>) => <A>(fa: TaskOption<A>) => TaskEither<E, A> = onNone =>
   T.map(E.fromOption(onNone))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const match: <E, B, A>(onLeft: (e: E) => B, onRight: (a: A) => B) => (ma: TaskEither<E, A>) => Task<B> =
@@ -223,12 +197,10 @@ export const match: <E, B, A>(onLeft: (e: E) => B, onRight: (a: A) => B) => (ma:
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const matchW: <E, B, A, C>(onLeft: (e: E) => B, onRight: (a: A) => C) => (ma: TaskEither<E, A>) => Task<B | C> =
@@ -237,12 +209,10 @@ export const matchW: <E, B, A, C>(onLeft: (e: E) => B, onRight: (a: A) => C) => 
 /**
  * The `E` suffix (short for **E**ffect) means that the handlers return an effect (`Task`).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const matchE: <E, A, B>(
@@ -253,12 +223,10 @@ export const matchE: <E, A, B>(
 /**
  * Alias of [`matchE`](#matche).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fold = matchE
@@ -268,12 +236,10 @@ export const fold = matchE
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const matchEW: <E, B, A, C>(
@@ -284,23 +250,19 @@ export const matchEW: <E, B, A, C>(
 /**
  * Alias of [`matchEW`](#matchew).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const foldW = matchEW
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getOrElse: <E, A>(onLeft: (e: E) => Task<A>) => (ma: TaskEither<E, A>) => Task<A> =
@@ -311,12 +273,10 @@ export const getOrElse: <E, A>(onLeft: (e: E) => Task<A>) => (ma: TaskEither<E, 
  *
  * The `W` suffix (short for **W**idening) means that the handler return type will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getOrElseW: <E, B>(onLeft: (e: E) => Task<B>) => <A>(ma: TaskEither<E, A>) => Task<A | B> =
@@ -327,12 +287,6 @@ export const getOrElseW: <E, B>(onLeft: (e: E) => Task<B>) => <A>(ma: TaskEither
  *
  * See also [`tryCatchK`](#trycatchk).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Interop
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -347,6 +301,10 @@ export const getOrElseW: <E, B>(onLeft: (e: E) => Task<B>) => <A>(ma: TaskEither
  * })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Interop}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tryCatch =
@@ -362,12 +320,10 @@ export const tryCatch =
 /**
  * Converts a function returning a `Promise` to one returning a `TaskEither`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Interop
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Interop}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tryCatchK =
@@ -379,23 +335,19 @@ export const tryCatchK =
     tryCatch(() => f(...a), onRejected)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const toUnion: <E, A>(fa: TaskEither<E, A>) => Task<E | A> = /*#__PURE__*/ ET.toUnion(T.Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromNullable: <E>(e: E) => <A>(a: A) => TaskEither<E, NonNullable<A>> = /*#__PURE__*/ ET.fromNullable(
@@ -405,12 +357,10 @@ export const fromNullable: <E>(e: E) => <A>(a: A) => TaskEither<E, NonNullable<A
 /**
  * Use `liftNullable`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromNullableK: <E>(
@@ -422,12 +372,10 @@ export const fromNullableK: <E>(
 /**
  * Use `flatMapNullable`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainNullableK: <E>(
@@ -444,12 +392,6 @@ export const chainNullableK: <E>(
  *
  * See also [alt](#alt).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -466,6 +408,10 @@ export const chainNullableK: <E>(
  * test()
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const orElse: <E1, A, E2>(onLeft: (e: E1) => TaskEither<E2, A>) => (ma: TaskEither<E1, A>) => TaskEither<E2, A> =
@@ -476,12 +422,10 @@ export const orElse: <E1, A, E2>(onLeft: (e: E1) => TaskEither<E2, A>) => (ma: T
  *
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const orElseW: <E1, E2, B>(
@@ -491,12 +435,10 @@ export const orElseW: <E1, E2, B>(
 /**
  * Returns an effect that effectfully "peeks" at the failure of this effect.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tapError: {
@@ -505,12 +447,10 @@ export const tapError: {
 } = /*#__PURE__*/ dual(2, ET.tapError(T.Monad))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const orElseFirstIOK: <E, B>(
@@ -518,12 +458,10 @@ export const orElseFirstIOK: <E, B>(
 ) => <A>(ma: TaskEither<E, A>) => TaskEither<E, A> = onLeft => tapError(fromIOK(onLeft))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const orElseFirstTaskK: <E, B>(
@@ -531,33 +469,28 @@ export const orElseFirstTaskK: <E, B>(
 ) => <A>(ma: TaskEither<E, A>) => TaskEither<E, A> = onLeft => tapError(fromTaskK(onLeft))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const orLeft: <E1, E2>(onLeft: (e: E1) => Task<E2>) => <A>(fa: TaskEither<E1, A>) => TaskEither<E2, A> =
   /*#__PURE__*/ ET.orLeft(T.Monad)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const swap: <E, A>(ma: TaskEither<E, A>) => TaskEither<A, E> = /*#__PURE__*/ ET.swap(T.Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromTaskOptionK = <E>(
@@ -572,12 +505,10 @@ export const fromTaskOptionK = <E>(
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainTaskOptionKW =
@@ -589,12 +520,10 @@ export const chainTaskOptionKW =
 /**
  * Use `flatMapTaskOption`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainTaskOptionK: <E>(
@@ -602,12 +531,10 @@ export const chainTaskOptionK: <E>(
 ) => <A, B>(f: (a: A) => TaskOption<B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> = chainTaskOptionKW
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromIOEitherK = <E, A extends ReadonlyArray<unknown>, B>(
@@ -624,12 +551,10 @@ const _alt: Alt2<URI>['alt'] = (fa, that) => pipe(fa, alt(that))
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: TaskEither<E, A>) => TaskEither<E, B> = /*#__PURE__*/ ET.map(
@@ -640,12 +565,6 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: TaskEither<E, A>) => TaskEit
  * Returns a `TaskEither` whose failure and success channels have been mapped by the specified pair of functions, `f`
  * and `g`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -663,6 +582,10 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: TaskEither<E, A>) => TaskEit
  * test()
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const mapBoth: {
@@ -673,12 +596,10 @@ export const mapBoth: {
 /**
  * Alias of `mapBoth`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: TaskEither<E, A>) => TaskEither<G, B> = mapBoth
@@ -686,12 +607,6 @@ export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: TaskEit
 /**
  * Returns a `TaskEither` with its error channel mapped using the specified function.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -708,6 +623,10 @@ export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: TaskEit
  * test()
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const mapError: {
@@ -718,21 +637,18 @@ export const mapError: {
 /**
  * Alias of `mapError`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: TaskEither<E, A>) => TaskEither<G, A> = mapError
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ap: <E, A>(fa: TaskEither<E, A>) => <B>(fab: TaskEither<E, (a: A) => B>) => TaskEither<E, B> =
@@ -743,10 +659,9 @@ export const ap: <E, A>(fa: TaskEither<E, A>) => <B>(fab: TaskEither<E, (a: A) =
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apW: <E2, A>(
@@ -754,12 +669,10 @@ export const apW: <E2, A>(
 ) => <E1, B>(fab: TaskEither<E1, (a: A) => B>) => TaskEither<E1 | E2, B> = ap as any
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMap: {
@@ -772,24 +685,20 @@ export const flatMap: {
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flattenW: <E1, E2, A>(mma: TaskEither<E1, TaskEither<E2, A>>) => TaskEither<E1 | E2, A> =
   /*#__PURE__*/ flatMap(identity)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatten: <E, A>(mma: TaskEither<E, TaskEither<E, A>>) => TaskEither<E, A> = flattenW
@@ -802,12 +711,6 @@ export const flatten: <E, A>(mma: TaskEither<E, TaskEither<E, A>>) => TaskEither
  *
  * See also [orElse](#orelse).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -842,6 +745,10 @@ export const flatten: <E, A>(mma: TaskEither<E, TaskEither<E, A>>) => TaskEither
  * test()
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const alt: <E, A>(that: LazyArg<TaskEither<E, A>>) => (fa: TaskEither<E, A>) => TaskEither<E, A> =
@@ -852,12 +759,10 @@ export const alt: <E, A>(that: LazyArg<TaskEither<E, A>>) => (fa: TaskEither<E, 
  *
  * The `W` suffix (short for **W**idening) means that the error and the return types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const altW: <E2, B>(
@@ -865,43 +770,36 @@ export const altW: <E2, B>(
 ) => <E1, A>(fa: TaskEither<E1, A>) => TaskEither<E2, A | B> = alt as any
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const of: <E = never, A = never>(a: A) => TaskEither<E, A> = right
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const throwError: MonadThrow2<URI>['throwError'] = left
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const URI = 'TaskEither'
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export type URI = typeof URI
@@ -916,12 +814,6 @@ declare module './HKT' {
  * The default [`ApplicativePar`](#applicativepar) instance returns the first error, if you want to get all errors you
  * need to provide a way to concatenate them via a `Semigroup`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -968,6 +860,10 @@ declare module './HKT' {
  * test()
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getApplicativeTaskValidation<E>(A: Apply1<T.URI>, S: Semigroup<E>): Applicative2C<URI, E> {
@@ -985,14 +881,12 @@ export function getApplicativeTaskValidation<E>(A: Apply1<T.URI>, S: Semigroup<E
  * The default [`Alt`](#alt) instance returns the last error, if you want to get all errors you need to provide a way to
  * concatenate them via a `Semigroup`.
  *
- * See [`getAltValidation`](./Either.ts.html#getaltvalidation).
+ * See [`getAltValidation`](./Either#getaltvalidation).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getAltTaskValidation<E>(S: Semigroup<E>): Alt2C<URI, E> {
@@ -1006,12 +900,10 @@ export function getAltTaskValidation<E>(S: Semigroup<E>): Alt2C<URI, E> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getCompactable = <E>(M: Monoid<E>): Compactable2C<URI, E> => {
@@ -1025,12 +917,10 @@ export const getCompactable = <E>(M: Monoid<E>): Compactable2C<URI, E> => {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getFilterable<E>(M: Monoid<E>): Filterable2C<URI, E> {
@@ -1055,12 +945,10 @@ export function getFilterable<E>(M: Monoid<E>): Filterable2C<URI, E> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Functor: Functor2<URI> = {
@@ -1071,12 +959,10 @@ export const Functor: Functor2<URI> = {
 /**
  * Maps the `Right` value of this `TaskEither` to the specified constant value.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const as: {
@@ -1087,34 +973,28 @@ export const as: {
 /**
  * Maps the `Right` value of this `TaskEither` to the void constant value.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const asUnit: <E, _>(self: TaskEither<E, _>) => TaskEither<E, void> = asUnit_(Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Pointed: Pointed2<URI> = {
@@ -1125,12 +1005,10 @@ export const Pointed: Pointed2<URI> = {
 /**
  * Runs computations in parallel.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApplyPar: Apply2<URI> = {
@@ -1142,10 +1020,9 @@ export const ApplyPar: Apply2<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apFirst = /*#__PURE__*/ apFirst_(ApplyPar)
@@ -1155,10 +1032,9 @@ export const apFirst = /*#__PURE__*/ apFirst_(ApplyPar)
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apFirstW: <E2, B>(
@@ -1168,10 +1044,9 @@ export const apFirstW: <E2, B>(
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
@@ -1181,10 +1056,9 @@ export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apSecondW: <E2, B>(
@@ -1194,12 +1068,10 @@ export const apSecondW: <E2, B>(
 /**
  * Runs computations in parallel.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApplicativePar: Applicative2<URI> = {
@@ -1212,12 +1084,10 @@ export const ApplicativePar: Applicative2<URI> = {
 /**
  * Runs computations sequentially.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApplySeq: Apply2<URI> = {
@@ -1229,12 +1099,10 @@ export const ApplySeq: Apply2<URI> = {
 /**
  * Runs computations sequentially.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApplicativeSeq: Applicative2<URI> = {
@@ -1245,12 +1113,10 @@ export const ApplicativeSeq: Applicative2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Chain: chainable.Chain2<URI> = {
@@ -1261,12 +1127,10 @@ export const Chain: chainable.Chain2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instance methods
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instance methods}
+ * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export const chainRec: ChainRec2<URI>['chainRec'] =
@@ -1291,12 +1155,10 @@ export const chainRec: ChainRec2<URI>['chainRec'] =
 /**
  * ChainRec for `TaskEither`
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export const ChainRec: ChainRec2<URI> = {
@@ -1305,12 +1167,10 @@ export const ChainRec: ChainRec2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Monad: Monad2<URI> = {
@@ -1322,12 +1182,10 @@ export const Monad: Monad2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const MonadIO: MonadIO2<URI> = {
@@ -1340,12 +1198,10 @@ export const MonadIO: MonadIO2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const MonadTask: MonadTask2<URI> = {
@@ -1359,12 +1215,10 @@ export const MonadTask: MonadTask2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const MonadThrow: MonadThrow2<URI> = {
@@ -1377,12 +1231,10 @@ export const MonadThrow: MonadThrow2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FromEither: FromEither2<URI> = {
@@ -1391,12 +1243,10 @@ export const FromEither: FromEither2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FromIO: FromIO2<URI> = {
@@ -1405,12 +1255,10 @@ export const FromIO: FromIO2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FromTask: FromTask2<URI> = {
@@ -1423,12 +1271,10 @@ export const FromTask: FromTask2<URI> = {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Combinators
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Combinators}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tap: {
@@ -1440,12 +1286,6 @@ export const tap: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Combinators
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1467,6 +1307,10 @@ export const tap: {
  * test()
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Combinators}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tapEither: {
@@ -1478,12 +1322,6 @@ export const tapEither: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Combinators
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1509,6 +1347,10 @@ export const tapEither: {
  * test()
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Combinators}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tapIO: {
@@ -1520,12 +1362,6 @@ export const tapIO: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Combinators
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1542,6 +1378,10 @@ export const tapIO: {
  * test()
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Combinators}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tapTask: {
@@ -1550,12 +1390,10 @@ export const tapTask: {
 } = /*#__PURE__*/ dual(2, tapTask_(FromTask, Chain))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Bifunctor: Bifunctor2<URI> = {
@@ -1565,12 +1403,10 @@ export const Bifunctor: Bifunctor2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Alt: Alt2<URI> = {
@@ -1580,12 +1416,10 @@ export const Alt: Alt2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => TaskEither<E, A> =
@@ -1594,12 +1428,10 @@ export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => TaskEi
 /**
  * Use `liftOption`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromOptionK: <E>(
@@ -1610,12 +1442,10 @@ export const fromOptionK: <E>(
 /**
  * Use `flatMapOption`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainOptionK: <E>(
@@ -1628,12 +1458,10 @@ export const chainOptionK: <E>(
 /**
  * Use `flatMapOption`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainOptionKW: <E2>(
@@ -1652,12 +1480,10 @@ const _FromEither: _.FromEither<TaskEitherTypeLambda> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
@@ -1666,12 +1492,10 @@ export const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(
 ) => (...a: A) => TaskEither<E, NonNullable<B>> = /*#__PURE__*/ _.liftNullable(_FromEither)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const liftOption: <A extends ReadonlyArray<unknown>, B, E>(
@@ -1695,12 +1519,10 @@ const _FromTask: _.FromTask<TaskEitherTypeLambda> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMapNullable: {
@@ -1716,12 +1538,10 @@ export const flatMapNullable: {
 } = /*#__PURE__*/ _.flatMapNullable(_FromEither, _FlatMap)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMapOption: {
@@ -1730,12 +1550,10 @@ export const flatMapOption: {
 } = /*#__PURE__*/ _.flatMapOption(_FromEither, _FlatMap)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMapEither: {
@@ -1744,12 +1562,10 @@ export const flatMapEither: {
 } = /*#__PURE__*/ _.flatMapEither(_FromEither, _FlatMap)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMapIO: {
@@ -1758,12 +1574,10 @@ export const flatMapIO: {
 } = /*#__PURE__*/ _.flatMapIO(_FromIO, _FlatMap)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMapTask: {
@@ -1772,12 +1586,10 @@ export const flatMapTask: {
 } = /*#__PURE__*/ _.flatMapTask(_FromTask, _FlatMap)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMapIOEither: {
@@ -1790,12 +1602,10 @@ export const flatMapIOEither: {
 )
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMapTaskOption: {
@@ -1810,12 +1620,10 @@ export const flatMapTaskOption: {
 /**
  * Alias of `flatMapEither`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainEitherK: <E, A, B>(f: (a: A) => E.Either<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> =
@@ -1824,12 +1632,10 @@ export const chainEitherK: <E, A, B>(f: (a: A) => E.Either<E, B>) => (ma: TaskEi
 /**
  * Alias of `flatMapEither`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainEitherKW: <E2, A, B>(
@@ -1839,12 +1645,10 @@ export const chainEitherKW: <E2, A, B>(
 /**
  * Alias of `tapEither`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirstEitherK: <A, E, B>(f: (a: A) => E.Either<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, A> =
@@ -1857,12 +1661,10 @@ export const chainFirstEitherK: <A, E, B>(f: (a: A) => E.Either<E, B>) => (ma: T
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirstEitherKW: <A, E2, B>(
@@ -1870,12 +1672,10 @@ export const chainFirstEitherKW: <A, E2, B>(
 ) => <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, A> = tapEither
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromPredicate: {
@@ -1885,12 +1685,10 @@ export const fromPredicate: {
 } = /*#__PURE__*/ fromPredicate_(FromEither)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const filterOrElse: {
@@ -1904,12 +1702,10 @@ export const filterOrElse: {
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const filterOrElseW: {
@@ -1925,12 +1721,10 @@ export const filterOrElseW: {
 } = filterOrElse
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
@@ -1938,12 +1732,10 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 ) => (...a: A) => TaskEither<E, B> = /*#__PURE__*/ fromEitherK_(FromEither)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
@@ -1953,12 +1745,10 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
 /**
  * Alias of `flatMapIO`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, B> = flatMapIO
@@ -1966,23 +1756,19 @@ export const chainIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: TaskEither<E, A>
 /**
  * Alias of `tapIO`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, A> = tapIO
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
@@ -1992,12 +1778,10 @@ export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(
 /**
  * Alias of `flatMapTask`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, B> =
@@ -2006,12 +1790,10 @@ export const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(first: TaskEither
 /**
  * Alias of `tapTask`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(first: TaskEither<E, A>) => TaskEither<E, A> =
@@ -2024,12 +1806,10 @@ export const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => <E>(first: TaskE
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainIOEitherKW: <E2, A, B>(
@@ -2039,12 +1819,10 @@ export const chainIOEitherKW: <E2, A, B>(
 /**
  * Alias of `flatMapIOEither`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainIOEitherK: <E, A, B>(f: (a: A) => IOEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> =
@@ -2071,12 +1849,6 @@ export const chainIOEitherK: <E, A, B>(f: (a: A) => IOEither<E, B>) => (ma: Task
  * )
  * ```
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Interop
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2088,6 +1860,10 @@ export const chainIOEitherK: <E, A, B>(f: (a: A) => IOEither<E, B>) => (ma: Task
  * assert.strictEqual(stat.length, 0)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Interop}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function taskify<L, R>(f: (cb: (e: L | null | undefined, r?: R) => void) => void): () => TaskEither<L, R>
@@ -2123,10 +1899,9 @@ export function taskify<L, R>(f: Function): () => TaskEither<L, R> {
  *
  * (*) i.e. returns a `Left`
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bracket = <E, A, B>(
@@ -2140,10 +1915,9 @@ export const bracket = <E, A, B>(
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bracketW: <E1, A, E2, B, E3>(
@@ -2158,23 +1932,19 @@ export const bracketW: <E1, A, E2, B, E3>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Do: TaskEither<never, {}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
@@ -2183,24 +1953,20 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @remarks
-   * Added in 1.0.0
-   * @remarks
-   * Category: Do notation
-   * @remarks
-   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+   * @meta
+   * {@since 0.1.0}
+   * {@category Do notation}
+   * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   let_ as let,
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
@@ -2208,12 +1974,10 @@ export const bind = /*#__PURE__*/ chainable.bind(Chain)
 /**
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bindW: <N extends string, A, E2, B>(
@@ -2233,22 +1997,19 @@ const do_: <MA extends TaskEitherIterable<any, any>, A>(
 
 export {
   /**
-   * @remarks
-   * Added in 1.0.0
-   * @remarks
-   * Category: Do notation
+   * @meta
+   * {@since 0.1.0}
+   * {@category Do notation}
    * @public
    */
   do_ as do,
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apS = /*#__PURE__*/ apS_(ApplyPar)
@@ -2258,12 +2019,10 @@ export const apS = /*#__PURE__*/ apS_(ApplyPar)
  *
  * The `W` suffix (short for **W**idening) means that the error types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apSW: <A, N extends string, E2, B>(
@@ -2273,10 +2032,9 @@ export const apSW: <A, N extends string, E2, B>(
   apS as any
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApT: TaskEither<never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
@@ -2288,12 +2046,10 @@ export const ApT: TaskEither<never, readonly []> = /*#__PURE__*/ of(_.emptyReado
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(ApplicativePar)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndex = <A, E, B>(
@@ -2304,12 +2060,10 @@ export const traverseReadonlyNonEmptyArrayWithIndex = <A, E, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativePar)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyArrayWithIndex = <A, E, B>(
@@ -2322,12 +2076,10 @@ export const traverseReadonlyArrayWithIndex = <A, E, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndexSeq =
@@ -2353,12 +2105,10 @@ export const traverseReadonlyNonEmptyArrayWithIndexSeq =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyArrayWithIndexSeq = <A, E, B>(
@@ -2371,12 +2121,10 @@ export const traverseReadonlyArrayWithIndexSeq = <A, E, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseArrayWithIndex: <A, B, E>(
@@ -2386,12 +2134,10 @@ export const traverseArrayWithIndex: <A, B, E>(
 /**
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseArray = <A, B, E>(
@@ -2401,12 +2147,10 @@ export const traverseArray = <A, B, E>(
 /**
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const sequenceArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A>>) => TaskEither<E, ReadonlyArray<A>> =
@@ -2415,12 +2159,10 @@ export const sequenceArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A>>) => Task
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseSeqArrayWithIndex: <A, B, E>(
@@ -2430,12 +2172,10 @@ export const traverseSeqArrayWithIndex: <A, B, E>(
 /**
  * Equivalent to `ReadonlyArray#traverse(ApplicativeSeq)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseSeqArray = <A, B, E>(
@@ -2445,12 +2185,10 @@ export const traverseSeqArray = <A, B, E>(
 /**
  * Equivalent to `ReadonlyArray#sequence(ApplicativeSeq)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const sequenceSeqArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A>>) => TaskEither<E, ReadonlyArray<A>> =
@@ -2463,12 +2201,10 @@ export const sequenceSeqArray: <A, E>(arr: ReadonlyArray<TaskEither<E, A>>) => T
 /**
  * Alias of `flatMap`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chain: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> = flatMap
@@ -2476,12 +2212,10 @@ export const chain: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEither<
 /**
  * Alias of `flatMap`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainW: <E2, A, B>(
@@ -2491,12 +2225,10 @@ export const chainW: <E2, A, B>(
 /**
  * Alias of `tap`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirst: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, A> = tap
@@ -2504,12 +2236,10 @@ export const chainFirst: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEi
 /**
  * Alias of `tap`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirstW: <E2, A, B>(
@@ -2519,12 +2249,10 @@ export const chainFirstW: <E2, A, B>(
 /**
  * Alias of `tapError`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const orElseFirst: <E, B>(onLeft: (e: E) => TaskEither<E, B>) => <A>(ma: TaskEither<E, A>) => TaskEither<E, A> =
@@ -2533,12 +2261,10 @@ export const orElseFirst: <E, B>(onLeft: (e: E) => TaskEither<E, B>) => <A>(ma: 
 /**
  * Alias of `tapError`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const orElseFirstW: <E1, E2, B>(
@@ -2553,11 +2279,10 @@ export const orElseFirstW: <E1, E2, B>(
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `TE.Functor` instead of `TE.taskEither` (where `TE` is from `import TE from 'fp-ts/TaskEither'`)
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const taskEither: Monad2<URI> & Bifunctor2<URI> & Alt2<URI> & MonadTask2<URI> & MonadThrow2<URI> = {
@@ -2578,11 +2303,10 @@ export const taskEither: Monad2<URI> & Bifunctor2<URI> & Alt2<URI> & MonadTask2<
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `TE.Functor` instead of `TE.taskEitherSeq` (where `TE` is from `import TE from 'fp-ts/TaskEither'`)
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 
@@ -2601,39 +2325,36 @@ export const taskEitherSeq: typeof taskEither = {
 }
 
 /**
- * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+ * Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<TaskEither<E, A>> =
   /*#__PURE__*/ getApplySemigroup_(ApplySeq)
 
 /**
- * Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+ * Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<TaskEither<E, A>> =
   /*#__PURE__*/ getApplicativeMonoid(ApplicativeSeq)
 
 /**
- * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+ * Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getSemigroup = <E, A>(S: Semigroup<A>): Semigroup<TaskEither<E, A>> =>
@@ -2643,11 +2364,10 @@ export const getSemigroup = <E, A>(S: Semigroup<A>): Semigroup<TaskEither<E, A>>
  * Use [`getApplicativeTaskValidation`](#getapplicativetaskvalidation) and
  * [`getAltTaskValidation`](#getalttaskvalidation) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getTaskValidation<E>(

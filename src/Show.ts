@@ -4,8 +4,8 @@
  * While not required, it is recommended that for any expression `x`, the string `show(x)` be executable TypeScript code
  * which evaluates to the same value as the expression `x`.
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import * as _ from './internal'
@@ -16,12 +16,10 @@ import { type ReadonlyRecord } from './ReadonlyRecord'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Show<A> {
@@ -33,10 +31,9 @@ export interface Show<A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const struct = <A>(shows: { [K in keyof A]: Show<A[K]> }): Show<{ readonly [K in keyof A]: A[K] }> => ({
@@ -56,10 +53,9 @@ export const struct = <A>(shows: { [K in keyof A]: Show<A[K]> }): Show<{ readonl
 })
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tuple = <A extends ReadonlyArray<unknown>>(
@@ -75,11 +71,10 @@ export const tuple = <A extends ReadonlyArray<unknown>>(
 /**
  * Use [`tuple`](#tuple) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getTupleShow: <T extends ReadonlyArray<Show<any>>>(
@@ -89,24 +84,22 @@ export const getTupleShow: <T extends ReadonlyArray<Show<any>>>(
 /**
  * Use [`struct`](#struct) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getStructShow: <O extends ReadonlyRecord<string, any>>(shows: { [K in keyof O]: Show<O[K]> }) => Show<O> =
   struct
 
 /**
- * Use [`Show`](./boolean.ts.html#show) instead.
+ * Use [`Show`](./boolean#show) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const showBoolean: Show<boolean> = {
@@ -114,13 +107,12 @@ export const showBoolean: Show<boolean> = {
 }
 
 /**
- * Use [`Show`](./string.ts.html#show) instead.
+ * Use [`Show`](./string#show) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const showString: Show<string> = {
@@ -128,13 +120,12 @@ export const showString: Show<string> = {
 }
 
 /**
- * Use [`Show`](./number.ts.html#show) instead.
+ * Use [`Show`](./number#show) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const showNumber: Show<number> = {

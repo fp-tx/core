@@ -1,6 +1,6 @@
 /**
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import {
@@ -29,12 +29,10 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Comonad<W> extends Extend<W> {
@@ -42,12 +40,10 @@ export interface Comonad<W> extends Extend<W> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Comonad1<W extends URIS> extends Extend1<W> {
@@ -55,12 +51,10 @@ export interface Comonad1<W extends URIS> extends Extend1<W> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Comonad2<W extends URIS2> extends Extend2<W> {
@@ -68,12 +62,10 @@ export interface Comonad2<W extends URIS2> extends Extend2<W> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Comonad2C<W extends URIS2, E> extends Extend2C<W, E> {
@@ -81,12 +73,10 @@ export interface Comonad2C<W extends URIS2, E> extends Extend2C<W, E> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Comonad3<W extends URIS3> extends Extend3<W> {
@@ -94,12 +84,10 @@ export interface Comonad3<W extends URIS3> extends Extend3<W> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Comonad3C<W extends URIS3, E> extends Extend3C<W, E> {
@@ -107,12 +95,10 @@ export interface Comonad3C<W extends URIS3, E> extends Extend3C<W, E> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Comonad4<W extends URIS4> extends Extend4<W> {

@@ -1,6 +1,6 @@
 /**
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, type URIS4 } from './HKT'
@@ -10,12 +10,10 @@ import { type HKT2, type Kind2, type Kind3, type Kind4, type URIS2, type URIS3, 
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Semigroupoid<F> {
@@ -24,12 +22,10 @@ export interface Semigroupoid<F> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Semigroupoid2<F extends URIS2> {
@@ -38,12 +34,10 @@ export interface Semigroupoid2<F extends URIS2> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Semigroupoid2C<F extends URIS2, A> {
@@ -53,12 +47,10 @@ export interface Semigroupoid2C<F extends URIS2, A> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Semigroupoid3<F extends URIS3> {
@@ -67,12 +59,10 @@ export interface Semigroupoid3<F extends URIS3> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Semigroupoid3C<F extends URIS3, A> {
@@ -82,12 +72,10 @@ export interface Semigroupoid3C<F extends URIS3, A> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Semigroupoid4<F extends URIS4> {

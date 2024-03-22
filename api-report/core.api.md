@@ -64,13 +64,13 @@ interface Alt4<F extends URIS4> extends Functor4<F> {
 }
 
 // @public (undocumented)
-const Alt_10: Alt3<URI_18>;
+const Alt_10: Alt3<URI_19>;
 
 // @public (undocumented)
 const alt_10: <A>(second: LazyArg<IOOption<A>>) => (first: IOOption<A>) => IOOption<A>;
 
 // @public (undocumented)
-const Alt_11: Alt2<URI_23>;
+const Alt_11: Alt2<URI_24>;
 
 // @public (undocumented)
 function alt_11<M extends URIS4>(M: Monad4<M>): <S, R, E, A>(second: LazyArg<Kind4<M, S, R, E, Option_2<A>>>) => (first: Kind4<M, S, R, E, Option_2<A>>) => Kind4<M, S, R, E, Option_2<A>>;
@@ -94,7 +94,7 @@ function alt_11<M extends URIS>(M: Monad1<M>): <A>(second: LazyArg<Kind<M, Optio
 function alt_11<M>(M: Monad_6<M>): <A>(second: LazyArg<HKT<M, Option_2<A>>>) => (first: HKT<M, Option_2<A>>) => HKT<M, Option_2<A>>;
 
 // @public (undocumented)
-const Alt_12: Alt3<URI_22>;
+const Alt_12: Alt3<URI_23>;
 
 // @public
 function alt_12<F extends URIS4>(F: Alt4<F>): <S, R, E, A>(that: LazyArg<Kind4<F, S, R, E, A>>) => (fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, A>;
@@ -118,19 +118,19 @@ function alt_12<F extends URIS>(F: Alt1<F>): <A>(that: LazyArg<Kind<F, A>>) => (
 function alt_12<F>(F: Alt<F>): <A>(that: LazyArg<HKT<F, A>>) => (fa: HKT<F, A>) => HKT<F, A>;
 
 // @public (undocumented)
-const Alt_13: Alt1<URI_24>;
+const Alt_13: Alt1<URI_25>;
 
 // @public
 const alt_13: <R, E, A>(that: () => ReaderEither<R, E, A>) => (fa: ReaderEither<R, E, A>) => ReaderEither<R, E, A>;
 
 // @public (undocumented)
-const Alt_14: Alt4<URI_31>;
+const Alt_14: Alt4<URI_32>;
 
 // @public
 const alt_14: <E, A>(that: LazyArg<TaskEither<E, A>>) => (fa: TaskEither<E, A>) => TaskEither<E, A>;
 
 // @public (undocumented)
-const Alt_15: Alt1<URI_33>;
+const Alt_15: Alt1<URI_34>;
 
 // @public
 const alt_15: <R, E, A>(that: () => ReaderTaskEither<R, E, A>) => (fa: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, A>;
@@ -302,10 +302,10 @@ const Alternative_3: Alternative1<URI_7>;
 const Alternative_4: Alternative1<URI_14>;
 
 // @public (undocumented)
-const Alternative_5: Alternative1<URI_24>;
+const Alternative_5: Alternative1<URI_25>;
 
 // @public (undocumented)
-const Alternative_6: Alternative1<URI_33>;
+const Alternative_6: Alternative1<URI_34>;
 
 // @public (undocumented)
 function altValidation<M extends URIS3, E>(M: Monad3<M>, S: Semigroup<E>): <R, ME, A>(second: LazyArg<Kind3<M, R, ME, Either<E, A>>>) => (first: Kind3<M, R, ME, Either<E, A>>) => Kind3<M, R, ME, Either<E, A>>;
@@ -787,17 +787,29 @@ const apFirstW_6: <R2, E2, B>(second: ReaderTaskEither<R2, E2, B>) => <R1, E1, A
 // @public
 const apFirstW_7: <S, R2, E2, A, B>(second: StateReaderTaskEither<S, R2, E2, B>) => <R1, E1>(first: StateReaderTaskEither<S, R1, E1, A>) => StateReaderTaskEither<S, R1 & R2, E1 | E2, A>;
 
-// @public
-const append: <A>(end: A) => (init: Array<A>) => nonEmptyArray.NonEmptyArray<A>;
+// @internal (undocumented)
+const append: <A>(end: A) => (init: Array<A>) => NonEmptyArray<A>;
+
+// @internal (undocumented)
+const append_2: <A>(end: A) => (init: ReadonlyArray<A>) => ReadonlyNonEmptyArray<A>;
 
 // @public
-const append_2: <A>(end: A) => (init: readonly A[]) => readonlyNonEmptyArray.ReadonlyNonEmptyArray<A>;
+const append_3: <A>(end: A) => (init: Array<A>) => nonEmptyArray.NonEmptyArray<A>;
 
 // @public
-const appendW: <A, B>(end: B) => (init: Array<A>) => nonEmptyArray.NonEmptyArray<A | B>;
+const append_4: <A>(end: A) => (init: readonly A[]) => readonlyNonEmptyArray.ReadonlyNonEmptyArray<A>;
+
+// @internal (undocumented)
+const appendW: <B>(end: B) => <A>(init: A[]) => NonEmptyArray<B | A>;
+
+// @internal (undocumented)
+const appendW_2: <B>(end: B) => <A>(init: readonly A[]) => ReadonlyNonEmptyArray<B | A>;
 
 // @public
-const appendW_2: <B>(end: B) => <A>(init: readonly A[]) => readonlyNonEmptyArray.ReadonlyNonEmptyArray<B | A>;
+const appendW_3: <A, B>(end: B) => (init: Array<A>) => nonEmptyArray.NonEmptyArray<A | B>;
+
+// @public
+const appendW_4: <B>(end: B) => <A>(init: readonly A[]) => readonlyNonEmptyArray.ReadonlyNonEmptyArray<B | A>;
 
 // @public (undocumented)
 interface Applicative<F> extends Apply<F>, Pointed<F> {
@@ -860,22 +872,22 @@ const Applicative_10: Applicative1<URI_14>;
 const Applicative_11: Applicative2<URI_17>;
 
 // @public (undocumented)
-const Applicative_12: Applicative3<URI_18>;
+const Applicative_12: Applicative3<URI_19>;
 
 // @public (undocumented)
-const Applicative_13: Applicative2<URI_19>;
+const Applicative_13: Applicative2<URI_20>;
 
 // @public (undocumented)
-const Applicative_14: Applicative1<URI_24>;
+const Applicative_14: Applicative1<URI_25>;
 
 // @public (undocumented)
-const Applicative_15: Applicative2<URI_30>;
+const Applicative_15: Applicative2<URI_31>;
 
 // @public (undocumented)
-const Applicative_16: Applicative4<URI_31>;
+const Applicative_16: Applicative4<URI_32>;
 
 // @public (undocumented)
-const Applicative_17: Applicative1<URI_37>;
+const Applicative_17: Applicative1<URI_38>;
 
 // @public (undocumented)
 const Applicative_2: Applicative1<URI_2>;
@@ -993,37 +1005,37 @@ interface ApplicativeCompositionHKT2C<F, G extends URIS2, E> extends FunctorComp
 const ApplicativePar: Applicative2<URI_13>;
 
 // @public
-const ApplicativePar_2: Applicative2<URI_20>;
+const ApplicativePar_2: Applicative2<URI_21>;
 
 // @public
-const ApplicativePar_3: Applicative1<URI_21>;
+const ApplicativePar_3: Applicative1<URI_22>;
 
 // @public
-const ApplicativePar_4: Applicative2<URI_23>;
+const ApplicativePar_4: Applicative2<URI_24>;
 
 // @public
-const ApplicativePar_5: Applicative3<URI_22>;
+const ApplicativePar_5: Applicative3<URI_23>;
 
 // @public
-const ApplicativePar_6: Applicative1<URI_33>;
+const ApplicativePar_6: Applicative1<URI_34>;
 
 // @public
 const ApplicativeSeq: Applicative2<URI_13>;
 
 // @public
-const ApplicativeSeq_2: Applicative2<URI_20>;
+const ApplicativeSeq_2: Applicative2<URI_21>;
 
 // @public
-const ApplicativeSeq_3: Applicative1<URI_21>;
+const ApplicativeSeq_3: Applicative1<URI_22>;
 
 // @public
-const ApplicativeSeq_4: Applicative2<URI_23>;
+const ApplicativeSeq_4: Applicative2<URI_24>;
 
 // @public
-const ApplicativeSeq_5: Applicative3<URI_22>;
+const ApplicativeSeq_5: Applicative3<URI_23>;
 
 // @public
-const ApplicativeSeq_6: Applicative1<URI_33>;
+const ApplicativeSeq_6: Applicative1<URI_34>;
 
 // @public (undocumented)
 interface Apply<F> extends Functor<F> {
@@ -1091,22 +1103,22 @@ interface Apply4<F extends URIS4> extends Functor4<F> {
 const Apply_10: Apply2<URI_17>;
 
 // @public (undocumented)
-const Apply_11: Apply3<URI_18>;
+const Apply_11: Apply3<URI_19>;
 
 // @public (undocumented)
-const Apply_12: Apply2<URI_19>;
+const Apply_12: Apply2<URI_20>;
 
 // @public (undocumented)
-const Apply_13: Apply1<URI_24>;
+const Apply_13: Apply1<URI_25>;
 
 // @public (undocumented)
-const Apply_14: Apply2<URI_30>;
+const Apply_14: Apply2<URI_31>;
 
 // @public (undocumented)
-const Apply_15: Apply4<URI_31>;
+const Apply_15: Apply4<URI_32>;
 
 // @public (undocumented)
-const Apply_16: Apply1<URI_37>;
+const Apply_16: Apply1<URI_38>;
 
 // @public (undocumented)
 const Apply_2: Apply1<URI_2>;
@@ -1139,34 +1151,34 @@ const Apply_9: Apply1<URI_14>;
 const ApplyPar: Apply2<URI_13>;
 
 // @public
-const ApplyPar_2: Apply2<URI_20>;
+const ApplyPar_2: Apply2<URI_21>;
 
 // @public
-const ApplyPar_3: Apply1<URI_21>;
+const ApplyPar_3: Apply1<URI_22>;
 
 // @public
-const ApplyPar_4: Apply2<URI_23>;
+const ApplyPar_4: Apply2<URI_24>;
 
 // @public
-const ApplyPar_5: Apply3<URI_22>;
+const ApplyPar_5: Apply3<URI_23>;
 
 // @public
-const ApplyPar_6: Apply1<URI_33>;
+const ApplyPar_6: Apply1<URI_34>;
 
 // @public
-const ApplySeq: Apply2<URI_20>;
+const ApplySeq: Apply2<URI_21>;
 
 // @public
-const ApplySeq_2: Apply1<URI_21>;
+const ApplySeq_2: Apply1<URI_22>;
 
 // @public
-const ApplySeq_3: Apply2<URI_23>;
+const ApplySeq_3: Apply2<URI_24>;
 
 // @public
-const ApplySeq_4: Apply3<URI_22>;
+const ApplySeq_4: Apply3<URI_23>;
 
 // @public
-const ApplySeq_5: Apply1<URI_33>;
+const ApplySeq_5: Apply1<URI_34>;
 
 // @public (undocumented)
 function apS<F extends URIS4>(F: Apply4<F>): <N extends string, A, S, R, E, B>(name: Exclude<N, keyof A>, fb: Kind4<F, S, R, E, B>) => (fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, {
@@ -1504,9 +1516,9 @@ declare namespace array {
         isEmpty,
         isNonEmpty,
         prepend,
-        prependW,
-        append,
-        appendW,
+        prependW_3 as prependW,
+        append_3 as append,
+        appendW_3 as appendW,
         makeBy_3 as makeBy,
         replicate_3 as replicate,
         fromOption,
@@ -1523,7 +1535,7 @@ declare namespace array {
         scanLeft,
         scanRight,
         size,
-        isOutOfBound,
+        isOutOfBound_3 as isOutOfBound,
         lookup,
         head_3 as head,
         last_4 as last,
@@ -1636,8 +1648,8 @@ declare namespace array {
         filterE,
         FromEither_3 as FromEither,
         fromEitherK_2 as fromEitherK,
-        unsafeInsertAt,
-        unsafeUpdateAt,
+        unsafeInsertAt_3 as unsafeInsertAt,
+        unsafeUpdateAt_3 as unsafeUpdateAt,
         unsafeDeleteAt,
         every,
         some_2 as some,
@@ -1650,7 +1662,7 @@ declare namespace array {
         apS_6 as apS,
         chain_6 as chain,
         range_3 as range,
-        empty,
+        empty_2 as empty,
         cons_3 as cons,
         snoc_3 as snoc,
         prependToAll_3 as prependToAll,
@@ -1670,24 +1682,30 @@ const as: {
 
 // @public
 const as_10: {
+    <A>(a: A): <_>(self: Task<_>) => Task<A>;
+    <_, A>(self: Task<_>, a: A): Task<A>;
+};
+
+// @public
+const as_11: {
     <A>(a: A): <E, _>(self: TaskEither<E, _>) => TaskEither<E, A>;
     <E, _, A>(self: TaskEither<E, _>, a: A): TaskEither<E, A>;
 };
 
 // @public
-const as_11: {
+const as_12: {
     <A>(a: A): <R, E, _>(self: ReaderTaskEither<R, E, _>) => ReaderTaskEither<R, E, A>;
     <R, E, _, A>(self: ReaderTaskEither<R, E, _>, a: A): ReaderTaskEither<R, E, A>;
 };
 
 // @public
-const as_12: {
+const as_13: {
     <A>(a: A): <S, R, E, _>(self: StateReaderTaskEither<S, R, E, _>) => StateReaderTaskEither<S, R, E, A>;
     <S, R, E, _, A>(self: StateReaderTaskEither<S, R, E, _>, a: A): StateReaderTaskEither<S, R, E, A>;
 };
 
 // @public
-const as_13: {
+const as_14: {
     <A>(a: A): <_>(self: TaskOption<_>) => TaskOption<A>;
     <_, A>(self: TaskOption<_>, a: A): TaskOption<A>;
 };
@@ -1698,46 +1716,55 @@ const as_2: {
     <E, _, A>(self: Either<E, _>, a: A): Either<E, A>;
 };
 
+// @internal (undocumented)
+function as_3<F extends URIS4>(F: Functor4<F>): <S, R, E, A, _>(self: Kind4<F, S, R, E, _>, a: A) => Kind4<F, S, R, E, A>;
+
+// @internal (undocumented)
+function as_3<F extends URIS3>(F: Functor3<F>): <R, E, A, _>(self: Kind3<F, R, E, _>, a: _) => Kind3<F, R, E, A>;
+
+// @internal (undocumented)
+function as_3<F extends URIS2>(F: Functor2<F>): <E, A, _>(self: Kind2<F, E, _>, a: A) => Kind2<F, E, A>;
+
+// @internal (undocumented)
+function as_3<F extends URIS>(F: Functor1<F>): <A, _>(self: Kind<F, _>, a: A) => Kind<F, A>;
+
+// @internal (undocumented)
+function as_3<F>(F: Functor<F>): <A, _>(self: HKT<F, _>, a: A) => HKT<F, A>;
+
 // @public
-const as_3: {
+const as_4: {
     <A>(a: A): <_>(self: IO<_>) => IO<A>;
     <_, A>(self: IO<_>, a: A): IO<A>;
 };
 
 // @public
-const as_4: {
+const as_5: {
     <A>(a: A): <E, _>(self: IOEither<E, _>) => IOEither<E, A>;
     <E, _, A>(self: IOEither<E, _>, a: A): IOEither<E, A>;
 };
 
 // @public
-const as_5: {
+const as_6: {
     <A>(a: A): <_>(self: IOOption<_>) => IOOption<A>;
     <_, A>(self: IOOption<_>, a: A): IOOption<A>;
 };
 
 // @public
-const as_6: {
+const as_7: {
     <A>(a: A): <R, E, _>(self: ReaderEither<R, E, _>) => ReaderEither<R, E, A>;
     <R, E, _, A>(self: ReaderEither<R, E, _>, a: A): ReaderEither<R, E, A>;
 };
 
 // @public
-const as_7: {
+const as_8: {
     <A>(a: A): <R, _>(self: ReaderIO<R, _>) => ReaderIO<R, A>;
     <R, _, A>(self: ReaderIO<R, _>, a: A): ReaderIO<R, A>;
 };
 
 // @public
-const as_8: {
+const as_9: {
     <A>(a: A): <R, _>(self: ReaderTask<R, _>) => ReaderTask<R, A>;
     <R, _, A>(self: ReaderTask<R, _>, a: A): ReaderTask<R, A>;
-};
-
-// @public
-const as_9: {
-    <A>(a: A): <_>(self: Task<_>) => Task<A>;
-    <_, A>(self: Task<_>, a: A): Task<A>;
 };
 
 // @public (undocumented)
@@ -1846,40 +1873,55 @@ const asksStateReaderTaskEitherW: <R1, S, R2, E, A>(f: (r1: R1) => StateReaderTa
 const asUnit: <_>(self: Option_2<_>) => Option_2<void>;
 
 // @public
-const asUnit_10: <E, _>(self: TaskEither<E, _>) => TaskEither<E, void>;
+const asUnit_10: <_>(self: Task<_>) => Task<void>;
 
 // @public
-const asUnit_11: <R, E, _>(self: ReaderTaskEither<R, E, _>) => ReaderTaskEither<R, E, void>;
+const asUnit_11: <E, _>(self: TaskEither<E, _>) => TaskEither<E, void>;
 
 // @public
-const asUnit_12: <S, R, E, _>(self: StateReaderTaskEither<S, R, E, _>) => StateReaderTaskEither<S, R, E, void>;
+const asUnit_12: <R, E, _>(self: ReaderTaskEither<R, E, _>) => ReaderTaskEither<R, E, void>;
 
 // @public
-const asUnit_13: <_>(self: TaskOption<_>) => TaskOption<void>;
+const asUnit_13: <S, R, E, _>(self: StateReaderTaskEither<S, R, E, _>) => StateReaderTaskEither<S, R, E, void>;
+
+// @public
+const asUnit_14: <_>(self: TaskOption<_>) => TaskOption<void>;
 
 // @public
 const asUnit_2: <E, _>(self: Either<E, _>) => Either<E, void>;
 
-// @public
-const asUnit_3: <_>(self: IO<_>) => IO<void>;
+// @internal (undocumented)
+function asUnit_3<F extends URIS4>(F: Functor4<F>): <S, R, E, _>(self: Kind4<F, S, R, E, _>) => Kind4<F, S, R, E, void>;
+
+// @internal (undocumented)
+function asUnit_3<F extends URIS3>(F: Functor3<F>): <R, E, _>(self: Kind3<F, R, E, _>) => Kind3<F, R, E, void>;
+
+// @internal (undocumented)
+function asUnit_3<F extends URIS2>(F: Functor2<F>): <E, _>(self: Kind2<F, E, _>) => Kind2<F, E, void>;
+
+// @internal (undocumented)
+function asUnit_3<F extends URIS>(F: Functor1<F>): <_>(self: Kind<F, _>) => Kind<F, void>;
+
+// @internal (undocumented)
+function asUnit_3<F>(F: Functor<F>): <_>(self: HKT<F, _>) => HKT<F, void>;
 
 // @public
-const asUnit_4: <E, _>(self: IOEither<E, _>) => IOEither<E, void>;
+const asUnit_4: <_>(self: IO<_>) => IO<void>;
 
 // @public
-const asUnit_5: <_>(self: IOOption<_>) => IOOption<void>;
+const asUnit_5: <E, _>(self: IOEither<E, _>) => IOEither<E, void>;
 
 // @public
-const asUnit_6: <R, E, _>(self: ReaderEither<R, E, _>) => ReaderEither<R, E, void>;
+const asUnit_6: <_>(self: IOOption<_>) => IOOption<void>;
 
 // @public
-const asUnit_7: <R, _>(self: ReaderIO<R, _>) => ReaderIO<R, void>;
+const asUnit_7: <R, E, _>(self: ReaderEither<R, E, _>) => ReaderEither<R, E, void>;
 
 // @public
-const asUnit_8: <R, _>(self: ReaderTask<R, _>) => ReaderTask<R, void>;
+const asUnit_8: <R, _>(self: ReaderIO<R, _>) => ReaderIO<R, void>;
 
 // @public
-const asUnit_9: <_>(self: Task<_>) => Task<void>;
+const asUnit_9: <R, _>(self: ReaderTask<R, _>) => ReaderTask<R, void>;
 
 // @public
 const between: <A>(O: Ord<A>) => (low: A, hi: A) => (a: A) => boolean;
@@ -1954,16 +1996,16 @@ interface Bifunctor4<F extends URIS4> {
 }
 
 // @public (undocumented)
-const Bifunctor_10: Bifunctor4<URI_31>;
+const Bifunctor_10: Bifunctor4<URI_32>;
 
 // @public (undocumented)
-const Bifunctor_11: Bifunctor2<URI_34>;
+const Bifunctor_11: Bifunctor2<URI_35>;
 
 // @public (undocumented)
-const Bifunctor_12: Bifunctor2<URI_35>;
+const Bifunctor_12: Bifunctor2<URI_36>;
 
 // @public (undocumented)
-const Bifunctor_13: Bifunctor2<URI_38>;
+const Bifunctor_13: Bifunctor2<URI_39>;
 
 // @public (undocumented)
 const Bifunctor_2: Bifunctor2<URI_6>;
@@ -1985,19 +2027,19 @@ const Bifunctor_4: Bifunctor2<URI_9>;
 const Bifunctor_5: Bifunctor2<URI_13>;
 
 // @public (undocumented)
-const Bifunctor_6: Bifunctor3<URI_18>;
+const Bifunctor_6: Bifunctor3<URI_19>;
 
 // @public (undocumented)
-const Bifunctor_7: Bifunctor2<URI_23>;
+const Bifunctor_7: Bifunctor2<URI_24>;
 
 // @public (undocumented)
-const Bifunctor_8: Bifunctor3<URI_22>;
+const Bifunctor_8: Bifunctor3<URI_23>;
 
 // @public (undocumented)
-const Bifunctor_9: Bifunctor2<URI_28>;
+const Bifunctor_9: Bifunctor2<URI_29>;
 
 // @public @deprecated
-const bifunctorTaskThese: Bifunctor2<URI_34>;
+const bifunctorTaskThese: Bifunctor2<URI_35>;
 
 // @public
 const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: Separated<E, A>) => Separated<G, B>;
@@ -2548,6 +2590,7 @@ const Chain: Chain1<URI_2>;
 declare namespace chain {
     export {
         chainFirst_4 as chainFirst,
+        tap,
         bind_3 as bind,
         Chain_5 as Chain,
         Chain1,
@@ -2609,7 +2652,7 @@ const Chain_11: chain.Chain2<URI_17>;
 const chain_11: <A, B>(f: (a: A) => IOOption<B>) => (ma: IOOption<A>) => IOOption<B>;
 
 // @public (undocumented)
-const Chain_12: chain.Chain3<URI_18>;
+const Chain_12: chain.Chain3<URI_19>;
 
 // @public (undocumented)
 function chain_12<M extends URIS4>(M: Monad4<M>): <A, S, R, E, B>(f: (a: A) => Kind4<M, S, R, E, Option_2<B>>) => (ma: Kind4<M, S, R, E, Option_2<A>>) => Kind4<M, S, R, E, Option_2<B>>;
@@ -2633,7 +2676,7 @@ function chain_12<M extends URIS>(M: Monad1<M>): <A, B>(f: (a: A) => Kind<M, Opt
 function chain_12<M>(M: Monad_6<M>): <A, B>(f: (a: A) => HKT<M, Option_2<B>>) => (ma: HKT<M, Option_2<A>>) => HKT<M, Option_2<B>>;
 
 // @public (undocumented)
-const Chain_13: chain.Chain2<URI_19>;
+const Chain_13: chain.Chain2<URI_20>;
 
 // @public
 function chain_13<F extends URIS4>(F: Chain4<F>): <A, S, R, E, B>(f: (a: A) => Kind4<F, S, R, E, B>) => (fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, B>;
@@ -2657,25 +2700,25 @@ function chain_13<F extends URIS>(F: Chain1<F>): <A, B>(f: (a: A) => Kind<F, B>)
 function chain_13<F>(F: Chain_5<F>): <A, B>(f: (a: A) => HKT<F, B>) => (fa: HKT<F, A>) => HKT<F, B>;
 
 // @public (undocumented)
-const Chain_14: chain.Chain2<URI_20>;
+const Chain_14: chain.Chain2<URI_21>;
 
 // @public
 const chain_14: <A, R, B>(f: (a: A) => Reader<R, B>) => (ma: Reader<R, A>) => Reader<R, B>;
 
 // @public (undocumented)
-const Chain_15: chain.Chain1<URI_21>;
+const Chain_15: chain.Chain1<URI_22>;
 
 // @public
 const chain_15: <R, E, A, B>(f: (a: A) => ReaderEither<R, E, B>) => (ma: ReaderEither<R, E, A>) => ReaderEither<R, E, B>;
 
 // @public (undocumented)
-const Chain_16: chain.Chain2<URI_23>;
+const Chain_16: chain.Chain2<URI_24>;
 
 // @public
 const chain_16: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (ma: ReaderIO<R, A>) => ReaderIO<R, B>;
 
 // @public (undocumented)
-const Chain_17: chain.Chain3<URI_22>;
+const Chain_17: chain.Chain3<URI_23>;
 
 // @public (undocumented)
 function chain_17<M extends URIS4>(M: Chain4<M>): <A, R, S, FR, FE, B>(f: (a: A) => Reader<R, Kind4<M, S, FR, FE, B>>) => (ma: Reader<R, Kind4<M, S, FR, FE, A>>) => Reader<R, Kind4<M, S, FR, FE, B>>;
@@ -2699,13 +2742,13 @@ function chain_17<M extends URIS>(M: Chain1<M>): <A, R, B>(f: (a: A) => Reader<R
 function chain_17<M>(M: Chain_5<M>): <A, R, B>(f: (a: A) => Reader<R, HKT<M, B>>) => (ma: Reader<R, HKT<M, A>>) => Reader<R, HKT<M, B>>;
 
 // @public (undocumented)
-const Chain_18: Chain1<URI_24>;
+const Chain_18: Chain1<URI_25>;
 
 // @public
 const chain_18: <A, B>(f: (a: A) => Task<B>) => (ma: Task<A>) => Task<B>;
 
 // @public (undocumented)
-const Chain_19: chain.Chain2<URI_30>;
+const Chain_19: chain.Chain2<URI_31>;
 
 // @public
 const chain_19: <A, R, B>(f: (a: A) => ReaderTask<R, B>) => (ma: ReaderTask<R, A>) => ReaderTask<R, B>;
@@ -2717,19 +2760,19 @@ const Chain_2: Chain1<URI_3>;
 const chain_2: <A, B>(f: (a: A) => ReadonlyNonEmptyArray<B>) => (ma: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArray<B>;
 
 // @public (undocumented)
-const Chain_20: chain.Chain4<URI_31>;
+const Chain_20: chain.Chain4<URI_32>;
 
 // @public
 const chain_20: <E, A, B>(f: (a: A) => TaskEither<E, B>) => (ma: TaskEither<E, A>) => TaskEither<E, B>;
 
 // @public (undocumented)
-const Chain_21: chain.Chain1<URI_33>;
+const Chain_21: chain.Chain1<URI_34>;
 
 // @public
 const chain_21: <R, E, A, B>(f: (a: A) => ReaderTaskEither<R, E, B>) => (ma: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, B>;
 
 // @public (undocumented)
-const Chain_22: Chain1<URI_37>;
+const Chain_22: Chain1<URI_38>;
 
 // @public
 const chain_22: <A, B>(f: (a: A) => ReadonlyArray<B>) => (ma: ReadonlyArray<A>) => ReadonlyArray<B>;
@@ -3305,10 +3348,10 @@ const chainIOK_8: <A, B>(f: (a: A) => IO<B>) => <R, E>(first: ReaderTaskEither<R
 const chainIOK_9: <A, B>(f: (a: A) => IO<B>) => <S, R, E>(first: StateReaderTaskEither<S, R, E, A>) => StateReaderTaskEither<S, R, E, B>;
 
 // @public
-const chainNullableK: <A, B>(f: (a: A) => B | null | undefined) => (ma: Option_2<A>) => Option_2<NonNullable<B>>;
+const chainNullableK: <A, B>(f: (a: A) => B) => (ma: Option_2<A>) => Option_2<NonNullable<B>>;
 
 // @public
-const chainNullableK_2: <E>(e: E) => <A, B>(f: (a: A) => B | null | undefined) => (ma: Either<E, A>) => Either<E, NonNullable<B>>;
+const chainNullableK_2: <E>(e: E) => <A, B>(f: (a: A) => B) => (ma: Either<E, A>) => Either<E, NonNullable<B>>;
 
 // @public (undocumented)
 function chainNullableK_3<M extends URIS3>(M: Monad3<M>): <E>(e: E) => <A, B>(f: (a: A) => B | null | undefined) => <S, R>(ma: Kind3<M, S, R, Either<E, A>>) => Kind3<M, S, R, Either<E, NonNullable<B>>>;
@@ -3616,49 +3659,49 @@ interface ChainRec4<F extends URIS4> extends Chain4<F> {
 }
 
 // @public
-const ChainRec_10: ChainRec2<URI_19>;
+const ChainRec_10: ChainRec2<URI_20>;
 
 // @public (undocumented)
-const chainRec_10: ChainRec2<URI_20>['chainRec'];
+const chainRec_10: ChainRec2<URI_21>['chainRec'];
 
 // @public
-const ChainRec_11: ChainRec2<URI_20>;
+const ChainRec_11: ChainRec2<URI_21>;
 
 // @public (undocumented)
-const chainRec_11: ChainRec1<URI_21>['chainRec'];
+const chainRec_11: ChainRec1<URI_22>['chainRec'];
 
 // @public
-const ChainRec_12: ChainRec1<URI_21>;
+const ChainRec_12: ChainRec1<URI_22>;
 
 // @public (undocumented)
-const chainRec_12: ChainRec2<URI_23>['chainRec'];
+const chainRec_12: ChainRec2<URI_24>['chainRec'];
 
 // @public
-const ChainRec_13: ChainRec2<URI_23>;
+const ChainRec_13: ChainRec2<URI_24>;
 
 // @public (undocumented)
-const chainRec_13: ChainRec3<URI_22>['chainRec'];
+const chainRec_13: ChainRec3<URI_23>['chainRec'];
 
 // @public
-const ChainRec_14: ChainRec3<URI_22>;
+const ChainRec_14: ChainRec3<URI_23>;
 
 // @public (undocumented)
-const chainRec_14: ChainRec2<URI_30>['chainRec'];
+const chainRec_14: ChainRec2<URI_31>['chainRec'];
 
 // @public
-const ChainRec_15: ChainRec2<URI_30>;
+const ChainRec_15: ChainRec2<URI_31>;
 
 // @public (undocumented)
-const chainRec_15: ChainRec4<URI_31>['chainRec'];
+const chainRec_15: ChainRec4<URI_32>['chainRec'];
 
 // @public
-const ChainRec_16: ChainRec4<URI_31>;
+const ChainRec_16: ChainRec4<URI_32>;
 
 // @public (undocumented)
-const chainRec_16: ChainRec1<URI_33>['chainRec'];
+const chainRec_16: ChainRec1<URI_34>['chainRec'];
 
 // @public
-const ChainRec_17: ChainRec1<URI_33>;
+const ChainRec_17: ChainRec1<URI_34>;
 
 // @public (undocumented)
 interface ChainRec_2<F> extends Chain_5<F> {
@@ -3703,13 +3746,13 @@ const chainRec_7: ChainRec2<URI_17>['chainRec'];
 const ChainRec_8: ChainRec2<URI_17>;
 
 // @public (undocumented)
-const chainRec_8: ChainRec3<URI_18>['chainRec'];
+const chainRec_8: ChainRec3<URI_19>['chainRec'];
 
 // @public
-const ChainRec_9: ChainRec3<URI_18>;
+const ChainRec_9: ChainRec3<URI_19>;
 
 // @public (undocumented)
-const chainRec_9: ChainRec2<URI_19>['chainRec'];
+const chainRec_9: ChainRec2<URI_20>['chainRec'];
 
 // @public (undocumented)
 const ChainRecBreadthFirst: ChainRec1<URI_4>;
@@ -3717,8 +3760,11 @@ const ChainRecBreadthFirst: ChainRec1<URI_4>;
 // @public (undocumented)
 const chainRecBreadthFirst: <A, B>(f: (a: A) => Array<Either<A, B>>) => (a: A) => Array<B>;
 
+// @internal (undocumented)
+const _chainRecBreadthFirst: ChainRec1<URI_25>['chainRec'];
+
 // @public (undocumented)
-const ChainRecBreadthFirst_2: ChainRec1<URI_24>;
+const ChainRecBreadthFirst_2: ChainRec1<URI_25>;
 
 // @public (undocumented)
 const chainRecBreadthFirst_2: <A, B>(f: (a: A) => readonly Either<A, B>[]) => (a: A) => readonly B[];
@@ -3729,8 +3775,11 @@ const ChainRecDepthFirst: ChainRec1<URI_4>;
 // @public (undocumented)
 const chainRecDepthFirst: <A, B>(f: (a: A) => Array<Either<A, B>>) => (a: A) => Array<B>;
 
+// @internal (undocumented)
+const _chainRecDepthFirst: ChainRec1<URI_25>['chainRec'];
+
 // @public (undocumented)
-const ChainRecDepthFirst_2: ChainRec1<URI_24>;
+const ChainRecDepthFirst_2: ChainRec1<URI_25>;
 
 // @public (undocumented)
 const chainRecDepthFirst_2: <A, B>(f: (a: A) => readonly Either<A, B>[]) => (a: A) => readonly B[];
@@ -4005,16 +4054,16 @@ interface Comonad_3<W> extends Extend_4<W> {
 const Comonad_4: Comonad1<URI_11>;
 
 // @public (undocumented)
-const Comonad_5: Comonad2<URI_28>;
+const Comonad_5: Comonad2<URI_29>;
 
 // @public (undocumented)
-const Comonad_6: Comonad2<URI_32>;
+const Comonad_6: Comonad2<URI_33>;
 
 // @public (undocumented)
-const Comonad_7: Comonad1<URI_37>;
+const Comonad_7: Comonad1<URI_38>;
 
 // @public (undocumented)
-const Comonad_8: Comonad2<URI_38>;
+const Comonad_8: Comonad2<URI_39>;
 
 // @public
 const compact: <A>(fa: Array<Option_2<A>>) => Array<A>;
@@ -4026,7 +4075,7 @@ const compact_10: <A>(fa: Record<string, Option_2<A>>) => Record<string, A>;
 const compact_11: <A>(E: Eq<A>) => (fa: Set<Option_2<A>>) => Set<A>;
 
 // @public (undocumented)
-const compact_12: Compactable1<URI_33>['compact'];
+const compact_12: Compactable1<URI_34>['compact'];
 
 // @public (undocumented)
 const compact_2: <A>(fa: Option_2<Option_2<A>>) => Option_2<A>;
@@ -4156,7 +4205,7 @@ interface Compactable4<F extends URIS4> {
 }
 
 // @public (undocumented)
-const Compactable_10: Compactable1<URI_33>;
+const Compactable_10: Compactable1<URI_34>;
 
 // @public (undocumented)
 const Compactable_2: Compactable1<URI_7>;
@@ -4176,16 +4225,16 @@ const Compactable_4: Compactable1<URI_14>;
 const Compactable_5: Compactable2<URI_15>;
 
 // @public (undocumented)
-const Compactable_6: Compactable1<URI_24>;
+const Compactable_6: Compactable1<URI_25>;
 
 // @public (undocumented)
-const Compactable_7: Compactable2<URI_25>;
+const Compactable_7: Compactable2<URI_26>;
 
 // @public (undocumented)
-const Compactable_8: Compactable1<URI_26>;
+const Compactable_8: Compactable1<URI_27>;
 
 // @public (undocumented)
-const Compactable_9: Compactable1<URI_29>;
+const Compactable_9: Compactable1<URI_30>;
 
 // @public @deprecated (undocumented)
 interface CompactableComposition<F, G> extends FunctorComposition<F, G> {
@@ -4882,6 +4931,12 @@ const dropRight: (n: number) => <A>(as: A[]) => A[];
 // @public
 const dropRight_2: (n: number) => <A>(as: readonly A[]) => readonly A[];
 
+// @internal (undocumented)
+const dual: {
+    <DataLast extends (...args: Array<any>) => any, DataFirst extends (...args: Array<any>) => any>(arity: Parameters<DataFirst>['length'], body: DataFirst): DataLast & DataFirst;
+    <DataLast extends (...args: Array<any>) => any, DataFirst extends (...args: Array<any>) => any>(isDataFirst: (args: IArguments) => boolean, body: DataFirst): DataLast & DataFirst;
+};
+
 // @public (undocumented)
 const duplicate: <A>(ma: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArray<ReadonlyNonEmptyArray<A>>;
 
@@ -4985,7 +5040,7 @@ declare namespace either {
         apFirstW,
         apSecond_6 as apSecond,
         apSecondW,
-        tap_2 as tap,
+        tap_3 as tap,
         flattenW,
         flatten_5 as flatten,
         duplicate_5 as duplicate,
@@ -5136,15 +5191,19 @@ declare namespace eitherT {
         map_9 as map,
         ap_7 as ap,
         chain_7 as chain,
+        flatMap_6 as flatMap,
         alt_7 as alt,
         bimap_4 as bimap,
+        mapBoth,
         mapLeft_4 as mapLeft,
+        mapError,
         altValidation,
         match_5 as match,
         matchE,
         getOrElse_3 as getOrElse,
         orElse_3 as orElse,
         orElseFirst,
+        tapError,
         orLeft,
         swap_2 as swap,
         toUnion_2 as toUnion,
@@ -5231,32 +5290,35 @@ const elem_9: <A>(E: Eq<A>) => {
     (a: A, fa: Record<string, A>): boolean;
 };
 
-// @public @deprecated
-const empty: Array<never>;
-
-// @public @deprecated
-const empty_2: Map<never, never>;
+// @internal (undocumented)
+const empty: ReadonlyArray<never>;
 
 // @public
-const empty_3: ReadonlyArray<never>;
-
-// @public (undocumented)
-const empty_4: ReadonlyMap<never, never>;
-
-// @public (undocumented)
-const empty_5: ReadonlyRecord<string, never>;
-
-// @public (undocumented)
-const empty_6: ReadonlySet<never>;
+const empty_10 = "";
 
 // @public @deprecated
-const empty_7: Record<string, never>;
+const empty_2: Array<never>;
 
-// @public (undocumented)
-const empty_8: Set<never>;
+// @public @deprecated
+const empty_3: Map<never, never>;
 
 // @public
-const empty_9 = "";
+const empty_4: ReadonlyArray<never>;
+
+// @public (undocumented)
+const empty_5: ReadonlyMap<never, never>;
+
+// @public (undocumented)
+const empty_6: ReadonlyRecord<string, never>;
+
+// @public (undocumented)
+const empty_7: ReadonlySet<never>;
+
+// @public @deprecated
+const empty_8: Record<string, never>;
+
+// @public (undocumented)
+const empty_9: Set<never>;
 
 // @public (undocumented)
 const endo: <A>(f: Endomorphism<A>) => (M: Magma<A>) => Magma<A>;
@@ -5603,7 +5665,7 @@ interface Extend_4<W> extends Functor<W> {
 const extend_4: <A, B>(f: (as: Array<A>) => B) => (as: Array<A>) => Array<B>;
 
 // @public (undocumented)
-const Extend_5: Extend1<URI_24>;
+const Extend_5: Extend1<URI_25>;
 
 // @public (undocumented)
 const extend_5: <A, B>(f: (wa: Option_2<A>) => B) => (wa: Option_2<A>) => Option_2<B>;
@@ -5746,6 +5808,9 @@ function filter<A>(predicate: Predicate<A>): <B extends A>(bs: NonEmptyArray<B>)
 
 // @public (undocumented)
 function filter<A>(predicate: Predicate<A>): (as: NonEmptyArray<A>) => Option_2<NonEmptyArray<A>>;
+
+// @internal (undocumented)
+const _filter: <A>(fa: Readonly<Record<string, A>>, predicate: Predicate<A>) => Readonly<Record<string, A>>;
 
 // @public (undocumented)
 interface Filter1<F extends URIS> {
@@ -6072,7 +6137,7 @@ interface Filterable4<F extends URIS4> extends Functor4<F>, Compactable4<F> {
 }
 
 // @public (undocumented)
-const Filterable_10: Filterable1<URI_33>;
+const Filterable_10: Filterable1<URI_34>;
 
 // @public (undocumented)
 const Filterable_2: Filterable1<URI_7>;
@@ -6092,16 +6157,16 @@ const Filterable_4: Filterable1<URI_14>;
 const Filterable_5: Filterable2<URI_15>;
 
 // @public (undocumented)
-const Filterable_6: Filterable1<URI_24>;
+const Filterable_6: Filterable1<URI_25>;
 
 // @public (undocumented)
-const Filterable_7: Filterable2<URI_25>;
+const Filterable_7: Filterable2<URI_26>;
 
 // @public (undocumented)
-const Filterable_8: Filterable1<URI_26>;
+const Filterable_8: Filterable1<URI_27>;
 
 // @public (undocumented)
-const Filterable_9: Filterable1<URI_29>;
+const Filterable_9: Filterable1<URI_30>;
 
 // @public @deprecated (undocumented)
 interface FilterableComposition<F, G> extends FunctorComposition<F, G>, CompactableComposition<F, G> {
@@ -6328,13 +6393,13 @@ interface FilterableWithIndex_2<F, I> extends FunctorWithIndex_4<F, I>, Filterab
 }
 
 // @public (undocumented)
-const FilterableWithIndex_3: FilterableWithIndex1<URI_24, number>;
+const FilterableWithIndex_3: FilterableWithIndex1<URI_25, number>;
 
 // @public (undocumented)
-const FilterableWithIndex_4: FilterableWithIndex1<URI_26, string>;
+const FilterableWithIndex_4: FilterableWithIndex1<URI_27, string>;
 
 // @public (undocumented)
-const FilterableWithIndex_5: FilterableWithIndex1<URI_29, string>;
+const FilterableWithIndex_5: FilterableWithIndex1<URI_30, string>;
 
 // @public
 const filterE: FilterE1<"Array">;
@@ -6369,6 +6434,9 @@ const filterFirst: <A>(predicate: Predicate<A>) => (M: Magma<A>) => Magma<A>;
 
 // @public
 const filterMap: <A, B>(f: (a: A) => Option_2<B>) => (fa: Array<A>) => Array<B>;
+
+// @internal (undocumented)
+const _filterMap: Filterable1<URI_27>['filterMap'];
 
 // @public (undocumented)
 function filterMap_10<B>(E: Eq<B>): <A>(f: (a: A) => Option_2<B>) => (fa: ReadonlySet<A>) => ReadonlySet<B>;
@@ -6435,6 +6503,9 @@ const filterMap_9: <A, B>(f: (a: A) => Option_2<B>) => (fa: ReadonlyRecord<strin
 
 // @public
 const filterMapWithIndex: <A, B>(f: (i: number, a: A) => Option_2<B>) => (fa: A[]) => B[];
+
+// @internal (undocumented)
+const _filterMapWithIndex: <A, B>(fa: Readonly<Record<string, A>>, f: (key: string, a: A) => Option_2<B>) => Readonly<Record<string, B>>;
 
 // @public (undocumented)
 const filterMapWithIndex_2: <K, A, B>(f: (k: K, a: A) => option.Option<B>) => (fa: Map<K, A>) => Map<K, B>;
@@ -6611,6 +6682,9 @@ interface FilterWithIndex<F, I> {
 
 // @public @deprecated
 const filterWithIndex: <A>(predicate: (i: number, a: A) => boolean) => (as: ReadonlyNonEmptyArray<A>) => Option_2<ReadonlyNonEmptyArray<A>>;
+
+// @internal (undocumented)
+const _filterWithIndex: <A>(fa: Readonly<Record<string, A>>, predicateWithIndex: PredicateWithIndex<string, A>) => Readonly<Record<string, A>>;
 
 // @public (undocumented)
 interface FilterWithIndex1<F extends URIS, I> {
@@ -6946,62 +7020,62 @@ const flatMap: {
 
 // @public (undocumented)
 const flatMap_10: {
+    <A, B>(f: (a: A) => IOOption<B>): (ma: IOOption<A>) => IOOption<B>;
+    <A, B>(ma: IOOption<A>, f: (a: A) => IOOption<B>): IOOption<B>;
+};
+
+// @internal (undocumented)
+function flatMap_11<M extends URIS>(M: Monad1<M>): <A, B>(ma: Kind<M, Option_2<A>>, f: (a: A) => Kind<M, Option_2<B>>) => Kind<M, Option_2<B>>;
+
+// @internal (undocumented)
+function flatMap_11<M>(M: Monad_6<M>): <A, B>(ma: HKT<M, Option_2<A>>, f: (a: A) => HKT<M, Option_2<B>>) => HKT<M, Option_2<B>>;
+
+// @public (undocumented)
+const flatMap_12: {
     <A, R2, B>(f: (a: A) => Reader<R2, B>): <R1>(ma: Reader<R1, A>) => Reader<R1 & R2, B>;
     <R1, A, R2, B>(ma: Reader<R1, A>, f: (a: A) => Reader<R2, B>): Reader<R1 & R2, B>;
 };
 
 // @public (undocumented)
-const flatMap_11: {
+const flatMap_13: {
     <A, R2, E2, B>(f: (a: A) => ReaderEither<R2, E2, B>): <R1, E1>(ma: ReaderEither<R1, E1, A>) => ReaderEither<R1 & R2, E1 | E2, B>;
     <R1, E1, A, R2, E2, B>(ma: ReaderEither<R1, E1, A>, f: (a: A) => ReaderEither<R2, E2, B>): ReaderEither<R1 & R2, E1 | E2, B>;
 };
 
 // @public (undocumented)
-const flatMap_12: {
+const flatMap_14: {
     <A, R2, B>(f: (a: A) => ReaderIO<R2, B>): <R1>(ma: ReaderIO<R1, A>) => ReaderIO<R1 & R2, B>;
     <R1, A, R2, B>(ma: ReaderIO<R1, A>, f: (a: A) => ReaderIO<R2, B>): ReaderIO<R1 & R2, B>;
 };
 
+// @internal (undocumented)
+function flatMap_15<M extends URIS>(M: Chain1<M>): <R, A, B>(ma: Reader<R, Kind<M, A>>, f: (a: A) => Reader<R, Kind<M, B>>) => Reader<R, Kind<M, B>>;
+
+// @internal (undocumented)
+function flatMap_15<M>(M: Chain_5<M>): <R, A, B>(ma: Reader<R, HKT<M, A>>, f: (a: A) => Reader<R, HKT<M, B>>) => Reader<R, HKT<M, B>>;
+
 // @public (undocumented)
-const flatMap_13: {
+const flatMap_16: {
     <A, R2, B>(f: (a: A) => ReaderTask<R2, B>): <R1>(ma: ReaderTask<R1, A>) => ReaderTask<R1 & R2, B>;
     <R1, A, R2, B>(ma: ReaderTask<R1, A>, f: (a: A) => ReaderTask<R2, B>): ReaderTask<R1 & R2, B>;
 };
 
 // @public (undocumented)
-const flatMap_14: {
+const flatMap_17: {
     <A, B>(f: (a: A) => Task<B>): (ma: Task<A>) => Task<B>;
     <A, B>(ma: Task<A>, f: (a: A) => Task<B>): Task<B>;
 };
 
 // @public (undocumented)
-const flatMap_15: {
+const flatMap_18: {
     <A, E2, B>(f: (a: A) => TaskEither<E2, B>): <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, B>;
     <E1, A, E2, B>(ma: TaskEither<E1, A>, f: (a: A) => TaskEither<E2, B>): TaskEither<E1 | E2, B>;
 };
 
 // @public (undocumented)
-const flatMap_16: {
+const flatMap_19: {
     <A, R2, E2, B>(f: (a: A) => ReaderTaskEither<R2, E2, B>): <R1, E1>(ma: ReaderTaskEither<R1, E1, A>) => ReaderTaskEither<R1 & R2, E1 | E2, B>;
     <R1, E1, A, R2, E2, B>(ma: ReaderTaskEither<R1, E1, A>, f: (a: A) => ReaderTaskEither<R2, E2, B>): ReaderTaskEither<R1 & R2, E1 | E2, B>;
-};
-
-// @public
-const flatMap_17: {
-    <A, B>(f: (a: A, i: number) => ReadonlyArray<B>): (ma: ReadonlyArray<A>) => ReadonlyArray<B>;
-    <A, B>(ma: ReadonlyArray<A>, f: (a: A, i: number) => ReadonlyArray<B>): ReadonlyArray<B>;
-};
-
-// @public (undocumented)
-const flatMap_18: {
-    <A, S, B>(f: (a: A) => State<S, B>): (ma: State<S, A>) => State<S, B>;
-    <S, A, B>(ma: State<S, A>, f: (a: A) => State<S, B>): State<S, B>;
-};
-
-// @public (undocumented)
-const flatMap_19: {
-    <A, S, R2, E2, B>(f: (a: A) => StateReaderTaskEither<S, R2, E2, B>): <R1, E1>(ma: StateReaderTaskEither<S, R1, E1, A>) => StateReaderTaskEither<S, R1 & R2, E1 | E2, B>;
-    <S, R1, E1, A, R2, E2, B>(ma: StateReaderTaskEither<S, R1, E1, A>, f: (a: A) => StateReaderTaskEither<S, R2, E2, B>): StateReaderTaskEither<S, R1 & R2, E1 | E2, B>;
 };
 
 // @public (undocumented)
@@ -7010,14 +7084,38 @@ const flatMap_2: {
     <A, B>(ma: NonEmptyArray<A>, f: (a: A, i: number) => NonEmptyArray<B>): NonEmptyArray<B>;
 };
 
-// @public (undocumented)
+// @public
 const flatMap_20: {
+    <A, B>(f: (a: A, i: number) => ReadonlyArray<B>): (ma: ReadonlyArray<A>) => ReadonlyArray<B>;
+    <A, B>(ma: ReadonlyArray<A>, f: (a: A, i: number) => ReadonlyArray<B>): ReadonlyArray<B>;
+};
+
+// @public (undocumented)
+const flatMap_21: {
+    <A, S, B>(f: (a: A) => State<S, B>): (ma: State<S, A>) => State<S, B>;
+    <S, A, B>(ma: State<S, A>, f: (a: A) => State<S, B>): State<S, B>;
+};
+
+// @public (undocumented)
+const flatMap_22: {
+    <A, S, R2, E2, B>(f: (a: A) => StateReaderTaskEither<S, R2, E2, B>): <R1, E1>(ma: StateReaderTaskEither<S, R1, E1, A>) => StateReaderTaskEither<S, R1 & R2, E1 | E2, B>;
+    <S, R1, E1, A, R2, E2, B>(ma: StateReaderTaskEither<S, R1, E1, A>, f: (a: A) => StateReaderTaskEither<S, R2, E2, B>): StateReaderTaskEither<S, R1 & R2, E1 | E2, B>;
+};
+
+// @internal (undocumented)
+function flatMap_23<M extends URIS3>(M: Chain3<M>): <S, R, E, A, B>(ma: StateT3<M, S, R, E, A>, f: (a: A) => StateT3<M, S, R, E, B>) => StateT<M, S, B>;
+
+// @internal (undocumented)
+function flatMap_23<M>(M: Chain_5<M>): <S, A, B>(ma: StateT<M, S, A>, f: (a: A) => StateT<M, S, B>) => StateT<M, S, B>;
+
+// @public (undocumented)
+const flatMap_24: {
     <A, B>(f: (a: A) => TaskOption<B>): (ma: TaskOption<A>) => TaskOption<B>;
     <A, B>(ma: TaskOption<A>, f: (a: A) => TaskOption<B>): TaskOption<B>;
 };
 
 // @public (undocumented)
-const flatMap_21: {
+const flatMap_25: {
     <A, B>(f: (a: A) => Tree<B>): (ma: Tree<A>) => Tree<B>;
     <A, B>(ma: Tree<A>, f: (a: A) => Tree<B>): Tree<B>;
 };
@@ -7040,28 +7138,31 @@ const flatMap_5: {
     <E1, A, E2, B>(ma: Either<E1, A>, f: (a: A) => Either<E2, B>): Either<E1 | E2, B>;
 };
 
+// @internal (undocumented)
+function flatMap_6<M extends URIS2>(M: Monad2<M>): <ME, E, A, B>(ma: Kind2<M, ME, Either<E, A>>, f: (a: A) => Kind2<M, ME, Either<E, B>>) => Kind2<M, ME, Either<E, B>>;
+
+// @internal (undocumented)
+function flatMap_6<M extends URIS>(M: Monad1<M>): <E, A, B>(ma: Kind<M, Either<E, A>>, f: (a: A) => Kind<M, Either<E, B>>) => Kind<M, Either<E, B>>;
+
+// @internal (undocumented)
+function flatMap_6<M>(M: Monad_6<M>): <E, A, B>(ma: HKT<M, Either<E, A>>, f: (a: A) => HKT<M, Either<E, B>>) => HKT<M, Either<E, B>>;
+
 // @public (undocumented)
-const flatMap_6: {
+const flatMap_7: {
     <A, B>(f: (a: A) => Identity<B>): (ma: Identity<A>) => Identity<B>;
     <A, B>(ma: Identity<A>, f: (a: A) => Identity<B>): Identity<B>;
 };
 
 // @public (undocumented)
-const flatMap_7: {
+const flatMap_8: {
     <A, B>(f: (a: A) => IO<B>): (ma: IO<A>) => IO<B>;
     <A, B>(ma: IO<A>, f: (a: A) => IO<B>): IO<B>;
 };
 
 // @public (undocumented)
-const flatMap_8: {
+const flatMap_9: {
     <A, E2, B>(f: (a: A) => IOEither<E2, B>): <E1>(ma: IOEither<E1, A>) => IOEither<E1 | E2, B>;
     <E1, A, E2, B>(ma: IOEither<E1, A>, f: (a: A) => IOEither<E2, B>): IOEither<E1 | E2, B>;
-};
-
-// @public (undocumented)
-const flatMap_9: {
-    <A, B>(f: (a: A) => IOOption<B>): (ma: IOOption<A>) => IOOption<B>;
-    <A, B>(ma: IOOption<A>, f: (a: A) => IOOption<B>): IOOption<B>;
 };
 
 // @public (undocumented)
@@ -7077,25 +7178,25 @@ const flatMapEither_2: {
 };
 
 // @public (undocumented)
-const flatMapEither_3: {
+const flatMapEither_4: {
     <A, E2, B>(f: (a: A) => either.Either<E2, B>): <R, E1>(self: ReaderEither<R, E1, A>) => ReaderEither<R, E1 | E2, B>;
     <R, E1, A, E2, B>(self: ReaderEither<R, E1, A>, f: (a: A) => either.Either<E2, B>): ReaderEither<R, E1 | E2, B>;
 };
 
 // @public (undocumented)
-const flatMapEither_4: {
+const flatMapEither_5: {
     <A, E2, B>(f: (a: A) => either.Either<E2, B>): <E1>(self: TaskEither<E1, A>) => TaskEither<E1 | E2, B>;
     <E1, A, E2, B>(self: TaskEither<E1, A>, f: (a: A) => either.Either<E2, B>): TaskEither<E1 | E2, B>;
 };
 
 // @public (undocumented)
-const flatMapEither_5: {
+const flatMapEither_6: {
     <A, E2, B>(f: (a: A) => either.Either<E2, B>): <R, E1>(self: ReaderTaskEither<R, E1, A>) => ReaderTaskEither<R, E1 | E2, B>;
     <R, E1, A, E2, B>(self: ReaderTaskEither<R, E1, A>, f: (a: A) => either.Either<E2, B>): ReaderTaskEither<R, E1 | E2, B>;
 };
 
 // @public (undocumented)
-const flatMapEither_6: {
+const flatMapEither_7: {
     <A, E2, B>(f: (a: A) => Either<E2, B>): <S, R, E1>(self: StateReaderTaskEither<S, R, E1, A>) => StateReaderTaskEither<S, R, E1 | E2, B>;
     <S, R, E1, A, E2, B>(self: StateReaderTaskEither<S, R, E1, A>, f: (a: A) => Either<E2, B>): StateReaderTaskEither<S, R, E1 | E2, B>;
 };
@@ -7107,51 +7208,51 @@ const flatMapIO: {
 };
 
 // @public (undocumented)
+const flatMapIO_10: {
+    <A, B>(f: (a: A) => IO<B>): (self: TaskOption<A>) => TaskOption<B>;
+    <A, B>(self: TaskOption<A>, f: (a: A) => IO<B>): TaskOption<B>;
+};
+
+// @public (undocumented)
 const flatMapIO_2: {
     <A, B>(f: (a: A) => IO<B>): (self: IOOption<A>) => IOOption<B>;
     <A, B>(self: IOOption<A>, f: (a: A) => IO<B>): IOOption<B>;
 };
 
 // @public (undocumented)
-const flatMapIO_3: {
+const flatMapIO_4: {
     <A, B>(f: (a: A) => IO<B>): <R>(self: ReaderIO<R, A>) => ReaderIO<R, B>;
     <R, A, B>(self: ReaderIO<R, A>, f: (a: A) => IO<B>): ReaderIO<R, B>;
 };
 
 // @public (undocumented)
-const flatMapIO_4: {
+const flatMapIO_5: {
     <A, B>(f: (a: A) => IO<B>): <R>(self: ReaderTask<R, A>) => ReaderTask<R, B>;
     <R, A, B>(self: ReaderTask<R, A>, f: (a: A) => IO<B>): ReaderTask<R, B>;
 };
 
 // @public (undocumented)
-const flatMapIO_5: {
+const flatMapIO_6: {
     <A, B>(f: (a: A) => IO<B>): (self: Task<A>) => Task<B>;
     <A, B>(self: Task<A>, f: (a: A) => IO<B>): Task<B>;
 };
 
 // @public (undocumented)
-const flatMapIO_6: {
+const flatMapIO_7: {
     <A, B>(f: (a: A) => IO<B>): <E>(self: TaskEither<E, A>) => TaskEither<E, B>;
     <E, A, B>(self: TaskEither<E, A>, f: (a: A) => IO<B>): TaskEither<E, B>;
 };
 
 // @public (undocumented)
-const flatMapIO_7: {
+const flatMapIO_8: {
     <A, B>(f: (a: A) => IO<B>): <R, E>(self: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, B>;
     <R, E, A, B>(self: ReaderTaskEither<R, E, A>, f: (a: A) => IO<B>): ReaderTaskEither<R, E, B>;
 };
 
 // @public (undocumented)
-const flatMapIO_8: {
+const flatMapIO_9: {
     <A, B>(f: (a: A) => IO<B>): <S, R, E>(self: StateReaderTaskEither<S, R, E, A>) => StateReaderTaskEither<S, R, E, B>;
     <S, R, E, A, B>(self: StateReaderTaskEither<S, R, E, A>, f: (a: A) => IO<B>): StateReaderTaskEither<S, R, E, B>;
-};
-
-// @public (undocumented)
-const flatMapIO_9: {
-    <A, B>(f: (a: A) => IO<B>): (self: TaskOption<A>) => TaskOption<B>;
-    <A, B>(self: TaskOption<A>, f: (a: A) => IO<B>): TaskOption<B>;
 };
 
 // @public (undocumented)
@@ -7191,19 +7292,19 @@ const flatMapNullable_3: {
 };
 
 // @public (undocumented)
-const flatMapNullable_4: {
+const flatMapNullable_5: {
     <A, B, E2>(f: (a: A) => B | null | undefined, onNullable: (a: A) => E2): <R, E1>(self: ReaderEither<R, E1, A>) => ReaderEither<R, E2 | E1, NonNullable<B>>;
     <R, E1, A, B, E2>(self: ReaderEither<R, E1, A>, f: (a: A) => B | null | undefined, onNullable: (a: A) => E2): ReaderEither<R, E1 | E2, NonNullable<B>>;
 };
 
 // @public (undocumented)
-const flatMapNullable_5: {
+const flatMapNullable_6: {
     <A, B, E2>(f: (a: A) => B | null | undefined, onNullable: (a: A) => E2): <E1>(self: TaskEither<E1, A>) => TaskEither<E2 | E1, NonNullable<B>>;
     <E1, A, B, E2>(self: TaskEither<E1, A>, f: (a: A) => B | null | undefined, onNullable: (a: A) => E2): TaskEither<E1 | E2, NonNullable<B>>;
 };
 
 // @public (undocumented)
-const flatMapNullable_6: {
+const flatMapNullable_7: {
     <A, B, E2>(f: (a: A) => B | null | undefined, onNullable: (a: A) => E2): <R, E1>(self: ReaderTaskEither<R, E1, A>) => ReaderTaskEither<R, E2 | E1, NonNullable<B>>;
     <R, E1, A, B, E2>(self: ReaderTaskEither<R, E1, A>, f: (a: A) => B | null | undefined, onNullable: (a: A) => E2): ReaderTaskEither<R, E1 | E2, NonNullable<B>>;
 };
@@ -7227,55 +7328,55 @@ const flatMapOption_3: {
 };
 
 // @public (undocumented)
-const flatMapOption_4: {
+const flatMapOption_5: {
     <A, B, E2>(f: (a: A) => Option_2<B>, onNone: (a: A) => E2): <R, E1>(self: ReaderEither<R, E1, A>) => ReaderEither<R, E2 | E1, B>;
     <R, E1, A, B, E2>(self: ReaderEither<R, E1, A>, f: (a: A) => Option_2<B>, onNone: (a: A) => E2): ReaderEither<R, E1 | E2, B>;
 };
 
 // @public (undocumented)
-const flatMapOption_5: {
+const flatMapOption_6: {
     <A, B, E2>(f: (a: A) => Option_2<B>, onNone: (a: A) => E2): <E1>(self: TaskEither<E1, A>) => TaskEither<E2 | E1, B>;
     <E1, A, B, E2>(self: TaskEither<E1, A>, f: (a: A) => Option_2<B>, onNone: (a: A) => E2): TaskEither<E1 | E2, B>;
 };
 
 // @public (undocumented)
-const flatMapOption_6: {
+const flatMapOption_7: {
     <A, B, E2>(f: (a: A) => Option_2<B>, onNone: (a: A) => E2): <R, E1>(self: ReaderTaskEither<R, E1, A>) => ReaderTaskEither<R, E2 | E1, B>;
     <R, E1, A, B, E2>(self: ReaderTaskEither<R, E1, A>, f: (a: A) => Option_2<B>, onNone: (a: A) => E2): ReaderTaskEither<R, E1 | E2, B>;
 };
 
 // @public (undocumented)
-const flatMapOption_7: {
+const flatMapOption_8: {
     <A, E2, B>(f: (a: A) => Option_2<B>, onNone: (a: A) => E2): <S, R, E1>(self: StateReaderTaskEither<S, R, E1, A>) => StateReaderTaskEither<S, R, E1 | E2, B>;
     <S, R, E1, A, E2, B>(self: StateReaderTaskEither<S, R, E1, A>, f: (a: A) => Option_2<B>, onNone: (a: A) => E2): StateReaderTaskEither<S, R, E1 | E2, B>;
 };
 
 // @public (undocumented)
-const flatMapReader: {
+const flatMapReader_2: {
     <A, R2, B>(f: (a: A) => Reader<R2, B>): <R1, E>(self: ReaderEither<R1, E, A>) => ReaderEither<R1 & R2, E, B>;
     <R1, E, A, R2, B>(self: ReaderEither<R1, E, A>, f: (a: A) => Reader<R2, B>): ReaderEither<R1 & R2, E, B>;
 };
 
 // @public (undocumented)
-const flatMapReader_2: {
+const flatMapReader_3: {
     <A, R2, B>(f: (a: A) => Reader<R2, B>): <R1>(self: ReaderIO<R1, A>) => ReaderIO<R1 & R2, B>;
     <R1, A, R2, B>(self: ReaderIO<R1, A>, f: (a: A) => Reader<R2, B>): ReaderIO<R1 & R2, B>;
 };
 
 // @public (undocumented)
-const flatMapReader_3: {
+const flatMapReader_4: {
     <A, R2, B>(f: (a: A) => reader.Reader<R2, B>): <R1>(self: ReaderTask<R1, A>) => ReaderTask<R1 & R2, B>;
     <R1, A, R2, B>(self: ReaderTask<R1, A>, f: (a: A) => reader.Reader<R2, B>): ReaderTask<R1 & R2, B>;
 };
 
 // @public (undocumented)
-const flatMapReader_4: {
+const flatMapReader_5: {
     <A, R2, B>(f: (a: A) => Reader<R2, B>): <R1, E>(self: ReaderTaskEither<R1, E, A>) => ReaderTaskEither<R1 & R2, E, B>;
     <R1, E, A, R2, B>(self: ReaderTaskEither<R1, E, A>, f: (a: A) => Reader<R2, B>): ReaderTaskEither<R1 & R2, E, B>;
 };
 
 // @public (undocumented)
-const flatMapReader_5: {
+const flatMapReader_6: {
     <A, R2, B>(f: (a: A) => Reader<R2, B>): <S, R1, E>(self: StateReaderTaskEither<S, R1, E, A>) => StateReaderTaskEither<S, R1 & R2, E, B>;
     <S, R1, E, A, R2, B>(self: StateReaderTaskEither<S, R1, E, A>, f: (a: A) => Reader<R2, B>): StateReaderTaskEither<S, R1 & R2, E, B>;
 };
@@ -7317,31 +7418,31 @@ const flatMapState: {
 };
 
 // @public (undocumented)
-const flatMapTask: {
+const flatMapTask_2: {
     <A, B>(f: (a: A) => Task<B>): <R>(self: ReaderTask<R, A>) => ReaderTask<R, B>;
     <R, A, B>(self: ReaderTask<R, A>, f: (a: A) => Task<B>): ReaderTask<R, B>;
 };
 
 // @public (undocumented)
-const flatMapTask_2: {
+const flatMapTask_3: {
     <A, B>(f: (a: A) => Task<B>): <E>(self: TaskEither<E, A>) => TaskEither<E, B>;
     <E, A, B>(self: TaskEither<E, A>, f: (a: A) => Task<B>): TaskEither<E, B>;
 };
 
 // @public (undocumented)
-const flatMapTask_3: {
+const flatMapTask_4: {
     <A, B>(f: (a: A) => Task<B>): <R, E>(self: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, B>;
     <R, E, A, B>(self: ReaderTaskEither<R, E, A>, f: (a: A) => Task<B>): ReaderTaskEither<R, E, B>;
 };
 
 // @public (undocumented)
-const flatMapTask_4: {
+const flatMapTask_5: {
     <A, B>(f: (a: A) => Task<B>): <S, R, E>(self: StateReaderTaskEither<S, R, E, A>) => StateReaderTaskEither<S, R, E, B>;
     <S, R, E, A, B>(self: StateReaderTaskEither<S, R, E, A>, f: (a: A) => Task<B>): StateReaderTaskEither<S, R, E, B>;
 };
 
 // @public (undocumented)
-const flatMapTask_5: {
+const flatMapTask_6: {
     <A, B>(f: (a: A) => Task<B>): (self: TaskOption<A>) => TaskOption<B>;
     <A, B>(self: TaskOption<A>, f: (a: A) => Task<B>): TaskOption<B>;
 };
@@ -7649,19 +7750,19 @@ interface Foldable4<F extends URIS4> {
 }
 
 // @public (undocumented)
-const Foldable_10: Foldable2<URI_28>;
+const Foldable_10: Foldable2<URI_29>;
 
 // @public @deprecated
-const Foldable_11: Foldable1<URI_29>;
+const Foldable_11: Foldable1<URI_30>;
 
 // @public (undocumented)
-const Foldable_12: Foldable2<URI_35>;
+const Foldable_12: Foldable2<URI_36>;
 
 // @public (undocumented)
-const Foldable_13: Foldable1<URI_37>;
+const Foldable_13: Foldable1<URI_38>;
 
 // @public (undocumented)
-const Foldable_14: Foldable2<URI_38>;
+const Foldable_14: Foldable2<URI_39>;
 
 // @public (undocumented)
 const Foldable_2: Foldable1<URI_3>;
@@ -7691,10 +7792,10 @@ interface Foldable_6<F> {
 const Foldable_7: Foldable1<URI_11>;
 
 // @public (undocumented)
-const Foldable_8: Foldable1<URI_24>;
+const Foldable_8: Foldable1<URI_25>;
 
 // @public @deprecated
-const Foldable_9: Foldable1<URI_26>;
+const Foldable_9: Foldable1<URI_27>;
 
 // @public @deprecated (undocumented)
 interface FoldableComposition<F, G> {
@@ -7881,13 +7982,13 @@ interface FoldableWithIndex_4<F, I> extends Foldable_6<F> {
 }
 
 // @public (undocumented)
-const FoldableWithIndex_5: FoldableWithIndex1<URI_24, number>;
+const FoldableWithIndex_5: FoldableWithIndex1<URI_25, number>;
 
 // @public @deprecated
-const FoldableWithIndex_6: FoldableWithIndex1<URI_26, string>;
+const FoldableWithIndex_6: FoldableWithIndex1<URI_27, string>;
 
 // @public @deprecated
-const FoldableWithIndex_7: FoldableWithIndex1<URI_29, string>;
+const FoldableWithIndex_7: FoldableWithIndex1<URI_30, string>;
 
 // @public @deprecated (undocumented)
 interface FoldableWithIndexComposition<F, FI, G, GI> extends FoldableComposition<F, G> {
@@ -7996,6 +8097,9 @@ function foldM<M, F>(M: Monad_6<M>, F: Foldable_6<F>): <A, B>(fa: HKT<F, A>, b: 
 // @public
 const foldMap: <S>(S: semigroup.Semigroup<S>) => <A>(f: (a: A) => S) => (as: ReadonlyNonEmptyArray<A>) => S;
 
+// @internal (undocumented)
+const _foldMap: (O: Ord<string>) => Foldable1<URI_27>['foldMap'];
+
 // @public (undocumented)
 const foldMap_10: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: ReadonlyArray<A>) => M;
 
@@ -8079,6 +8183,9 @@ function foldMap_9<F>(F: Foldable_6<F>): <M>(M: Monoid<M>) => <A>(f: (a: A) => M
 
 // @public
 const foldMapWithIndex: <S>(S: semigroup.Semigroup<S>) => <A>(f: (i: number, a: A) => S) => (as: ReadonlyNonEmptyArray<A>) => S;
+
+// @internal (undocumented)
+const _foldMapWithIndex: (O: Ord<string>) => FoldableWithIndex1<URI_27, string>['foldMapWithIndex'];
 
 // @public
 function foldMapWithIndex_10(O: Ord<string>): <M>(M: Monoid<M>) => <K extends string, A>(f: (k: K, a: A) => M) => (fa: Record<K, A>) => M;
@@ -8222,6 +8329,7 @@ declare namespace fromEither {
         chainEitherK_2 as chainEitherK,
         chainFirstEitherK_2 as chainFirstEitherK,
         filterOrElse_2 as filterOrElse,
+        tapEither_2 as tapEither,
         FromEither_4 as FromEither,
         FromEither1,
         FromEither2,
@@ -8286,31 +8394,34 @@ interface FromEither4<F extends URIS4> {
 }
 
 // @public (undocumented)
-const FromEither_10: FromEither1<URI_24>;
+const FromEither_10: FromEither3<URI_23>;
 
 // @public
 const fromEither_10: <A>(fa: Either<unknown, A>) => ReadonlyArray<A>;
 
 // @public (undocumented)
-const FromEither_11: FromEither4<URI_31>;
+const FromEither_11: FromEither1<URI_25>;
 
 // @public (undocumented)
 const fromEither_11: <E, A, S, R = unknown>(fa: Either<E, A>) => StateReaderTaskEither<S, R, E, A>;
 
 // @public (undocumented)
-const FromEither_12: FromEither1<URI_33>;
+const FromEither_12: FromEither4<URI_32>;
 
 // @public (undocumented)
 const fromEither_12: <A>(fa: Either<unknown, A>) => TaskOption<A>;
 
 // @public (undocumented)
-const FromEither_13: FromEither2<URI_34>;
+const FromEither_13: FromEither1<URI_34>;
 
 // @public (undocumented)
 const fromEither_13: <E, A>(fa: Either<E, A>) => TaskThese<E, A>;
 
 // @public (undocumented)
 const FromEither_14: FromEither2<URI_35>;
+
+// @public (undocumented)
+const FromEither_15: FromEither2<URI_36>;
 
 // @public (undocumented)
 const FromEither_2: FromEither2<URI_6>;
@@ -8369,19 +8480,16 @@ function fromEither_6<F extends URIS>(F: Pointed1<F>): <A>(e: Either<unknown, A>
 function fromEither_6<F>(F: Pointed<F>): <A>(e: Either<unknown, A>) => HKT<F, Option_2<A>>;
 
 // @public (undocumented)
-const FromEither_7: FromEither3<URI_18>;
-
-// @public (undocumented)
 const fromEither_7: <E, A, R = unknown>(fa: Either<E, A>) => ReaderEither<R, E, A>;
 
 // @public (undocumented)
-const FromEither_8: FromEither2<URI_23>;
+const FromEither_8: FromEither3<URI_19>;
 
 // @public (undocumented)
 const fromEither_8: <E, A, R = unknown>(fa: Either<E, A>) => ReaderTaskEither<R, E, A>;
 
 // @public (undocumented)
-const FromEither_9: FromEither3<URI_22>;
+const FromEither_9: FromEither2<URI_24>;
 
 // @public (undocumented)
 const fromEither_9: <E, A>(fa: Either<E, A>) => TaskEither<E, A>;
@@ -8573,6 +8681,7 @@ declare namespace fromIO {
         fromIOK,
         chainIOK,
         chainFirstIOK,
+        tapIO,
         FromIO,
         FromIO1,
         FromIO2,
@@ -8637,22 +8746,25 @@ interface FromIO4<F extends URIS4> {
 }
 
 // @public (undocumented)
-const FromIO_10: FromIO4<URI_31>;
+const FromIO_10: FromIO3<URI_23>;
 
 // @public (undocumented)
 const fromIO_10: <A, S, R = unknown, E = never>(fa: IO<A>) => StateReaderTaskEither<S, R, E, A>;
 
 // @public (undocumented)
-const FromIO_11: FromIO1<URI_33>;
+const FromIO_11: FromIO4<URI_32>;
 
 // @public (undocumented)
 const fromIO_11: <A>(fa: IO<A>) => TaskOption<A>;
 
 // @public (undocumented)
-const FromIO_12: FromIO2<URI_34>;
+const FromIO_12: FromIO1<URI_34>;
 
 // @public (undocumented)
 const fromIO_12: <A, E = never>(fa: IO<A>) => TaskThese<E, A>;
+
+// @public (undocumented)
+const FromIO_13: FromIO2<URI_35>;
 
 // @public (undocumented)
 const FromIO_2: FromIO1<URI_12>;
@@ -8673,9 +8785,6 @@ const FromIO_4: FromIO1<URI_14>;
 const fromIO_4: <A>(fa: IO<A>) => IOOption<A>;
 
 // @public (undocumented)
-const FromIO_5: FromIO2<URI_19>;
-
-// @public (undocumented)
 const fromIO_5: <A, R = unknown>(fa: IO<A>) => ReaderIO<R, A>;
 
 // @public (undocumented)
@@ -8685,19 +8794,19 @@ const FromIO_6: FromIO2<URI_20>;
 const fromIO_6: <A, R = unknown>(fa: IO<A>) => ReaderTask<R, A>;
 
 // @public (undocumented)
-const FromIO_7: FromIO1<URI_21>;
+const FromIO_7: FromIO2<URI_21>;
 
 // @public (undocumented)
 const fromIO_7: <A>(fa: IO<A>) => Task<A>;
 
 // @public (undocumented)
-const FromIO_8: FromIO2<URI_23>;
+const FromIO_8: FromIO1<URI_22>;
 
 // @public (undocumented)
 const fromIO_8: <A, R = unknown, E = never>(fa: IO<A>) => ReaderTaskEither<R, E, A>;
 
 // @public (undocumented)
-const FromIO_9: FromIO3<URI_22>;
+const FromIO_9: FromIO2<URI_24>;
 
 // @public (undocumented)
 const fromIO_9: <A, E = never>(fa: IO<A>) => TaskEither<E, A>;
@@ -8859,7 +8968,7 @@ const fromNullable_8: <A>(a: A) => TaskOption<NonNullable<A>>;
 const fromNullableK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => B | null | undefined) => (...a: A) => Option_2<NonNullable<B>>;
 
 // @public
-const fromNullableK_2: <E>(e: E) => <A extends readonly unknown[], B>(f: (...a: A) => B | null | undefined) => (...a: A) => Either<E, NonNullable<B>>;
+const fromNullableK_2: <E>(e: E) => <A extends readonly unknown[], B>(f: (...a: A) => B) => (...a: A) => Either<E, NonNullable<B>>;
 
 // @public (undocumented)
 function fromNullableK_3<F extends URIS3>(F: Pointed3<F>): <E>(e: E) => <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => B | null | undefined) => <S, R>(...a: A) => Kind3<F, S, R, Either<E, NonNullable<B>>>;
@@ -9295,13 +9404,10 @@ interface FromReader4<F extends URIS4> {
 }
 
 // @public (undocumented)
-const FromReader_2: FromReader3<URI_18>;
-
-// @public (undocumented)
 const fromReader_2: <R, A, E = never>(fa: Reader<R, A>) => ReaderEither<R, E, A>;
 
 // @public (undocumented)
-const FromReader_3: FromReader2<URI_19>;
+const FromReader_3: FromReader3<URI_19>;
 
 // @public (undocumented)
 const fromReader_3: <R, A>(fa: Reader<R, A>) => ReaderIO<R, A>;
@@ -9331,16 +9437,19 @@ function fromReader_4<F extends URIS>(F: Pointed1<F>): <R, A>(ma: Reader<R, A>) 
 function fromReader_4<F>(F: Pointed<F>): <R, A>(ma: Reader<R, A>) => Reader<R, HKT<F, A>>;
 
 // @public (undocumented)
-const FromReader_5: FromReader3<URI_22>;
+const FromReader_5: FromReader2<URI_21>;
 
 // @public (undocumented)
 const fromReader_5: <R, A>(fa: reader.Reader<R, A>) => ReaderTask<R, A>;
 
 // @public (undocumented)
-const FromReader_6: FromReader4<URI_31>;
+const FromReader_6: FromReader3<URI_23>;
 
 // @public (undocumented)
 const fromReader_6: <R, A, E = never>(fa: Reader<R, A>) => ReaderTaskEither<R, E, A>;
+
+// @public (undocumented)
+const FromReader_7: FromReader4<URI_32>;
 
 // @public (undocumented)
 const fromReader_7: <R, A, S, E = never>(fa: Reader<R, A>) => StateReaderTaskEither<S, R, E, A>;
@@ -9477,13 +9586,13 @@ interface FromState4<F extends URIS4> {
 }
 
 // @public (undocumented)
-const FromState_2: FromState2<URI_30>;
+const FromState_2: FromState2<URI_31>;
 
 // @public (undocumented)
 const fromState_2: <S, A, R = unknown, E = never>(fa: State<S, A>) => StateReaderTaskEither<S, R, E, A>;
 
 // @public (undocumented)
-const FromState_3: FromState4<URI_31>;
+const FromState_3: FromState4<URI_32>;
 
 // @public (undocumented)
 function fromState_3<F extends URIS3>(F: Pointed3<F>): <S, A, R, E>(sa: State<S, A>) => StateT3<F, S, R, E, A>;
@@ -9532,6 +9641,7 @@ declare namespace fromTask {
         fromTaskK,
         chainTaskK,
         chainFirstTaskK,
+        tapTask,
         FromTask,
         FromTask1,
         FromTask2,
@@ -9580,46 +9690,46 @@ interface FromTask4<F extends URIS4> extends FromIO4<F> {
 }
 
 // @public (undocumented)
-const FromTask_2: FromTask2<URI_20>;
-
-// @public (undocumented)
 const fromTask_2: <A, R = unknown>(fa: Task<A>) => ReaderTask<R, A>;
 
 // @public (undocumented)
-const FromTask_3: FromTask1<URI_21>;
+const FromTask_3: FromTask2<URI_21>;
 
 // @public @deprecated (undocumented)
 const fromTask_3: <A>(fa: Task<A>) => Task<A>;
 
 // @public (undocumented)
-const FromTask_4: FromTask2<URI_23>;
+const FromTask_4: FromTask1<URI_22>;
 
 // @public (undocumented)
 const fromTask_4: <A, R = unknown, E = never>(fa: Task<A>) => ReaderTaskEither<R, E, A>;
 
 // @public (undocumented)
-const FromTask_5: FromTask3<URI_22>;
+const FromTask_5: FromTask2<URI_24>;
 
 // @public (undocumented)
 const fromTask_5: <A, E = never>(fa: Task<A>) => TaskEither<E, A>;
 
 // @public (undocumented)
-const FromTask_6: FromTask4<URI_31>;
+const FromTask_6: FromTask3<URI_23>;
 
 // @public (undocumented)
 const fromTask_6: <A, S, R = unknown, E = never>(fa: Task<A>) => StateReaderTaskEither<S, R, E, A>;
 
 // @public (undocumented)
-const FromTask_7: FromTask1<URI_33>;
+const FromTask_7: FromTask4<URI_32>;
 
 // @public (undocumented)
 const fromTask_7: <A>(fa: Task<A>) => TaskOption<A>;
 
 // @public (undocumented)
-const FromTask_8: FromTask2<URI_34>;
+const FromTask_8: FromTask1<URI_34>;
 
 // @public (undocumented)
 const fromTask_8: <A, E = never>(fa: Task<A>) => TaskThese<E, A>;
+
+// @public (undocumented)
+const FromTask_9: FromTask2<URI_35>;
 
 // @public (undocumented)
 const fromTaskEither: <E, A, R = unknown>(fa: TaskEither<E, A>) => ReaderTaskEither<R, E, A>;
@@ -9747,13 +9857,13 @@ interface FromThese4<F extends URIS4> {
 }
 
 // @public (undocumented)
-const FromThese_2: FromThese2<URI_34>;
+const FromThese_2: FromThese2<URI_35>;
 
 // @public (undocumented)
 const fromThese_2: <E, A>(fa: These<E, A>) => TaskThese<E, A>;
 
 // @public (undocumented)
-const FromThese_3: FromThese2<URI_35>;
+const FromThese_3: FromThese2<URI_36>;
 
 // @public (undocumented)
 function fromTheseK<F extends URIS4>(F: FromThese4<F>): <A extends ReadonlyArray<unknown>, E, B>(f: (...a: A) => These<E, B>) => <S, R>(...a: A) => Kind4<F, S, R, E, B>;
@@ -9816,6 +9926,7 @@ declare namespace function {
         Endomorphism_2 as Endomorphism,
         getEndomorphismMonoid_2 as getEndomorphismMonoid,
         LazyArg,
+        dual,
         Lazy
     }
 }
@@ -9841,6 +9952,8 @@ declare namespace functor {
         flap_8 as flap,
         bindTo_6 as bindTo,
         getFunctorComposition,
+        as_3 as as,
+        asUnit_3 as asUnit,
         Functor,
         Functor1,
         Functor2,
@@ -9934,73 +10047,73 @@ const Functor_13: Functor2<URI_15>;
 const Functor_14: Functor2<URI_17>;
 
 // @public (undocumented)
-const Functor_15: Functor3<URI_18>;
+const Functor_15: Functor3<URI_19>;
 
 // @public (undocumented)
-const Functor_16: Functor2<URI_19>;
+const Functor_16: Functor2<URI_20>;
 
 // @public (undocumented)
-const Functor_17: Functor2<URI_20>;
+const Functor_17: Functor2<URI_21>;
 
 // @public (undocumented)
-const Functor_18: Functor1<URI_21>;
+const Functor_18: Functor1<URI_22>;
 
 // @public (undocumented)
-const Functor_19: Functor2<URI_23>;
+const Functor_19: Functor2<URI_24>;
 
 // @public (undocumented)
 const Functor_2: Functor1<URI_2>;
 
 // @public (undocumented)
-const Functor_20: Functor3<URI_22>;
+const Functor_20: Functor3<URI_23>;
 
 // @public (undocumented)
-const Functor_21: Functor1<URI_24>;
+const Functor_21: Functor1<URI_25>;
 
 // @public (undocumented)
-const Functor_22: Functor2<URI_25>;
+const Functor_22: Functor2<URI_26>;
 
 // @public (undocumented)
-const Functor_23: Functor1<URI_26>;
+const Functor_23: Functor1<URI_27>;
 
 // @public (undocumented)
-const Functor_24: Functor2<URI_28>;
+const Functor_24: Functor2<URI_29>;
 
 // @public (undocumented)
-const Functor_25: Functor1<URI_29>;
+const Functor_25: Functor1<URI_30>;
 
 // @public (undocumented)
-const Functor_26: Functor2<URI_30>;
+const Functor_26: Functor2<URI_31>;
 
 // @public (undocumented)
-const Functor_27: Functor4<URI_31>;
+const Functor_27: Functor4<URI_32>;
 
 // @public (undocumented)
-const Functor_28: Functor2<URI_32>;
+const Functor_28: Functor2<URI_33>;
 
 // @public (undocumented)
-const Functor_29: Functor1<URI_33>;
+const Functor_29: Functor1<URI_34>;
 
 // @public (undocumented)
 const Functor_3: Functor1<URI_3>;
 
 // @public (undocumented)
-const Functor_30: Functor2<URI_34>;
+const Functor_30: Functor2<URI_35>;
 
 // @public (undocumented)
-const Functor_31: Functor2<URI_35>;
+const Functor_31: Functor2<URI_36>;
 
 // @public (undocumented)
-const Functor_32: Functor2<URI_36>;
+const Functor_32: Functor2<URI_37>;
 
 // @public (undocumented)
-const Functor_33: Functor1<URI_37>;
+const Functor_33: Functor1<URI_38>;
 
 // @public (undocumented)
-const Functor_34: Functor2<URI_38>;
+const Functor_34: Functor2<URI_39>;
 
 // @public (undocumented)
-const Functor_35: Functor2<URI_39>;
+const Functor_35: Functor2<URI_40>;
 
 // @public (undocumented)
 const Functor_4: Functor1<URI_4>;
@@ -10099,7 +10212,7 @@ interface FunctorCompositionHKT2C<F, G extends URIS2, E> {
 }
 
 // @public @deprecated
-const functorTaskThese: Functor2<URI_34>;
+const functorTaskThese: Functor2<URI_35>;
 
 // @public (undocumented)
 const FunctorWithIndex: FunctorWithIndex1<URI_2, number>;
@@ -10176,13 +10289,13 @@ interface FunctorWithIndex_4<F, I> extends Functor<F> {
 }
 
 // @public (undocumented)
-const FunctorWithIndex_5: FunctorWithIndex1<URI_24, number>;
+const FunctorWithIndex_5: FunctorWithIndex1<URI_25, number>;
 
 // @public (undocumented)
-const FunctorWithIndex_6: FunctorWithIndex1<URI_26, string>;
+const FunctorWithIndex_6: FunctorWithIndex1<URI_27, string>;
 
 // @public (undocumented)
-const FunctorWithIndex_7: FunctorWithIndex1<URI_29, string>;
+const FunctorWithIndex_7: FunctorWithIndex1<URI_30, string>;
 
 // @public @deprecated (undocumented)
 interface FunctorWithIndexComposition<F, FI, G, GI> extends FunctorComposition<F, G> {
@@ -10284,13 +10397,13 @@ function getAlternativeMonoid<F>(F: Alternative<F>): <A>(S: Semigroup<A>) => Mon
 function getAltIOValidation<E>(S: Semigroup<E>): Alt2C<URI_13, E>;
 
 // @public
-function getAltReaderTaskValidation<E>(S: Semigroup<E>): Alt3C<URI_22, E>;
+function getAltReaderTaskValidation<E>(S: Semigroup<E>): Alt3C<URI_23, E>;
 
 // @public
-function getAltReaderValidation<E>(S: Semigroup<E>): Alt3C<URI_18, E>;
+function getAltReaderValidation<E>(S: Semigroup<E>): Alt3C<URI_19, E>;
 
 // @public
-function getAltTaskValidation<E>(S: Semigroup<E>): Alt2C<URI_23, E>;
+function getAltTaskValidation<E>(S: Semigroup<E>): Alt2C<URI_24, E>;
 
 // @public
 const getAltValidation: <E>(SE: Semigroup<E>) => Alt2C<"Either", E>;
@@ -10299,16 +10412,16 @@ const getAltValidation: <E>(SE: Semigroup<E>) => Alt2C<"Either", E>;
 function getApplicative<E>(M: Monoid<E>): Applicative2C<URI_9, E>;
 
 // @public (undocumented)
-function getApplicative_2<M>(M: Monoid<M>): Applicative2C<URI_28, M>;
+function getApplicative_2<M>(M: Monoid<M>): Applicative2C<URI_29, M>;
 
 // @public (undocumented)
-function getApplicative_3<E>(A: Apply1<task.URI>, S: Semigroup<E>): Applicative2C<URI_34, E>;
+function getApplicative_3<E>(A: Apply1<task.URI>, S: Semigroup<E>): Applicative2C<URI_35, E>;
 
 // @public (undocumented)
-function getApplicative_4<E>(S: Semigroup<E>): Applicative2C<URI_35, E>;
+function getApplicative_4<E>(S: Semigroup<E>): Applicative2C<URI_36, E>;
 
 // @public (undocumented)
-function getApplicative_5<M>(M: Monoid<M>): Applicative2C<URI_38, M>;
+function getApplicative_5<M>(M: Monoid<M>): Applicative2C<URI_39, M>;
 
 // @public (undocumented)
 const getApplicative_6: <W>(M: Monoid<W>) => Applicative2C<"Writer", W>;
@@ -10371,13 +10484,13 @@ function getApplicativeMonoid<F extends URIS>(F: Applicative1<F>): <A>(M: Monoid
 function getApplicativeMonoid<F>(F: Applicative<F>): <A>(M: Monoid<A>) => Monoid<HKT<F, A>>;
 
 // @public
-function getApplicativeReaderTaskValidation<E>(A: Apply1<task.URI>, S: Semigroup<E>): Applicative3C<URI_22, E>;
+function getApplicativeReaderTaskValidation<E>(A: Apply1<task.URI>, S: Semigroup<E>): Applicative3C<URI_23, E>;
 
 // @public
-function getApplicativeReaderValidation<E>(S: Semigroup<E>): Applicative3C<URI_18, E>;
+function getApplicativeReaderValidation<E>(S: Semigroup<E>): Applicative3C<URI_19, E>;
 
 // @public
-function getApplicativeTaskValidation<E>(A: Apply1<task.URI>, S: Semigroup<E>): Applicative2C<URI_23, E>;
+function getApplicativeTaskValidation<E>(A: Apply1<task.URI>, S: Semigroup<E>): Applicative2C<URI_24, E>;
 
 // @public
 const getApplicativeValidation: <E>(SE: Semigroup<E>) => Applicative2C<"Either", E>;
@@ -10386,7 +10499,7 @@ const getApplicativeValidation: <E>(SE: Semigroup<E>) => Applicative2C<"Either",
 function getApply<E>(S: Semigroup<E>): Apply2C<URI_9, E>;
 
 // @public (undocumented)
-function getApply_2<S>(S: Semigroup<S>): Apply2C<URI_28, S>;
+function getApply_2<S>(S: Semigroup<S>): Apply2C<URI_29, S>;
 
 // @public (undocumented)
 const getApply_3: <E>(A: Apply1<task.URI>, S: Semigroup<E>) => Apply2C<"TaskThese", E>;
@@ -10395,7 +10508,7 @@ const getApply_3: <E>(A: Apply1<task.URI>, S: Semigroup<E>) => Apply2C<"TaskThes
 const getApply_4: <E>(S: Semigroup<E>) => Apply2C<"These", E>;
 
 // @public (undocumented)
-function getApply_5<S>(S: Semigroup<S>): Apply2C<URI_38, S>;
+function getApply_5<S>(S: Semigroup<S>): Apply2C<URI_39, S>;
 
 // @public (undocumented)
 const getApply_6: <W>(S: Semigroup<W>) => Apply2C<"Writer", W>;
@@ -10470,28 +10583,28 @@ const getBooleanAlgebra_2: <B>(B: BooleanAlgebra_2<B>) => <A = never>() => Boole
 const getBounded: <E, A>(B: Bounded<E>) => Bounded<Const<E, A>>;
 
 // @public (undocumented)
-function getChain<S>(S: Semigroup<S>): Chain2C<URI_28, S>;
+function getChain<S>(S: Semigroup<S>): Chain2C<URI_29, S>;
 
 // @public (undocumented)
-function getChain_2<E>(S: Semigroup<E>): Chain2C<URI_34, E>;
+function getChain_2<E>(S: Semigroup<E>): Chain2C<URI_35, E>;
 
 // @public (undocumented)
-function getChain_3<E>(S: Semigroup<E>): Chain2C<URI_35, E>;
+function getChain_3<E>(S: Semigroup<E>): Chain2C<URI_36, E>;
 
 // @public (undocumented)
-function getChain_4<S>(S: Semigroup<S>): Chain2C<URI_38, S>;
+function getChain_4<S>(S: Semigroup<S>): Chain2C<URI_39, S>;
 
 // @public (undocumented)
-function getChain_5<W>(S: Semigroup<W>): Chain2C<URI_39, W>;
+function getChain_5<W>(S: Semigroup<W>): Chain2C<URI_40, W>;
 
 // @public (undocumented)
-function getChainRec<M>(M: Monoid<M>): ChainRec2C<URI_28, M>;
+function getChainRec<M>(M: Monoid<M>): ChainRec2C<URI_29, M>;
 
 // @public (undocumented)
-function getChainRec_2<M>(M: Monoid<M>): ChainRec2C<URI_38, M>;
+function getChainRec_2<M>(M: Monoid<M>): ChainRec2C<URI_39, M>;
 
 // @public (undocumented)
-function getComonad<P>(monoid: Monoid<P>): Comonad2C<URI_36, P>;
+function getComonad<P>(monoid: Monoid<P>): Comonad2C<URI_37, P>;
 
 // @public
 const getCompactable: <E>(M: Monoid<E>) => Compactable2C<"Either", E>;
@@ -10641,13 +10754,13 @@ const getFilterable: <E>(M: Monoid<E>) => Filterable2C<"Either", E>;
 function getFilterable_2<E>(M: Monoid<E>): Filterable2C<URI_13, E>;
 
 // @public (undocumented)
-function getFilterable_3<E>(M: Monoid<E>): Filterable3C<URI_18, E>;
+function getFilterable_3<E>(M: Monoid<E>): Filterable3C<URI_19, E>;
 
 // @public (undocumented)
-function getFilterable_4<E>(M: Monoid<E>): Filterable3C<URI_22, E>;
+function getFilterable_4<E>(M: Monoid<E>): Filterable3C<URI_23, E>;
 
 // @public (undocumented)
-function getFilterable_5<E>(M: Monoid<E>): Filterable2C<URI_23, E>;
+function getFilterable_5<E>(M: Monoid<E>): Filterable2C<URI_24, E>;
 
 // @public @deprecated
 function getFilterableComposition<F extends URIS2, G extends URIS3, E>(F: Functor2<F>, G: Filterable3C<G, E>): FilterableComposition23C<F, G, E>;
@@ -10680,7 +10793,7 @@ function getFilterableComposition<F, G>(F: Functor<F>, G: Filterable_3<G>): Filt
 function getFilterableWithIndex<K = never>(): FilterableWithIndex2C<URI_15, K, K>;
 
 // @public (undocumented)
-function getFilterableWithIndex_2<K = never>(): FilterableWithIndex2C<URI_25, K, K>;
+function getFilterableWithIndex_2<K = never>(): FilterableWithIndex2C<URI_26, K, K>;
 
 // @public @deprecated
 const getFirstMonoid: <A = never>() => Monoid<Option_2<A>>;
@@ -10695,10 +10808,10 @@ const getFoldable: <K>(O: Ord<K>) => Foldable2C<"Map", K>;
 const getFoldable_2: <K>(O: Ord<K>) => Foldable2C<"ReadonlyMap", K>;
 
 // @public
-const getFoldable_3: (O: Ord<string>) => Foldable1<URI_26>;
+const getFoldable_3: (O: Ord<string>) => Foldable1<URI_27>;
 
 // @public
-const getFoldable_4: (O: Ord<string>) => Foldable1<URI_29>;
+const getFoldable_4: (O: Ord<string>) => Foldable1<URI_30>;
 
 // @public @deprecated
 function getFoldableComposition<F extends URIS2, G extends URIS2, E>(F: Foldable2<F>, G: Foldable2C<G, E>): FoldableComposition22C<F, G, E>;
@@ -10731,10 +10844,10 @@ const getFoldableWithIndex: <K>(O: Ord<K>) => FoldableWithIndex2C<"Map", K, K>;
 const getFoldableWithIndex_2: <K>(O: Ord<K>) => FoldableWithIndex2C<"ReadonlyMap", K, K>;
 
 // @public
-const getFoldableWithIndex_3: (O: Ord<string>) => FoldableWithIndex1<URI_26, string>;
+const getFoldableWithIndex_3: (O: Ord<string>) => FoldableWithIndex1<URI_27, string>;
 
 // @public
-const getFoldableWithIndex_4: (O: Ord<string>) => FoldableWithIndex1<URI_29, string>;
+const getFoldableWithIndex_4: (O: Ord<string>) => FoldableWithIndex1<URI_30, string>;
 
 // @public @deprecated
 function getFoldableWithIndexComposition<F extends URIS2, FI, G extends URIS2, GI, E>(F: FoldableWithIndex2<F, FI>, G: FoldableWithIndex2C<G, GI, E>): FoldableWithIndexComposition22C<F, FI, G, GI, E>;
@@ -10896,19 +11009,19 @@ function getMinMaxBoundedDistributiveLattice<A>(O: Ord<A>): (min: A, max: A) => 
 function getMinMaxDistributiveLattice<A>(O: Ord<A>): DistributiveLattice<A>;
 
 // @public (undocumented)
-function getMonad<M>(M: Monoid<M>): Monad2C<URI_28, M>;
+function getMonad<M>(M: Monoid<M>): Monad2C<URI_29, M>;
 
 // @public (undocumented)
-function getMonad_2<E>(S: Semigroup<E>): Monad2C<URI_34, E> & MonadTask2C<URI_34, E>;
+function getMonad_2<E>(S: Semigroup<E>): Monad2C<URI_35, E> & MonadTask2C<URI_35, E>;
 
 // @public (undocumented)
-function getMonad_3<E>(S: Semigroup<E>): Monad2C<URI_35, E> & MonadThrow2C<URI_35, E>;
+function getMonad_3<E>(S: Semigroup<E>): Monad2C<URI_36, E> & MonadThrow2C<URI_36, E>;
 
 // @public (undocumented)
-function getMonad_4<M>(M: Monoid<M>): Monad2C<URI_38, M>;
+function getMonad_4<M>(M: Monoid<M>): Monad2C<URI_39, M>;
 
 // @public (undocumented)
-function getMonad_5<W>(M: Monoid<W>): Monad2C<URI_39, W>;
+function getMonad_5<W>(M: Monoid<W>): Monad2C<URI_40, W>;
 
 // @public
 const getMonoid: <A = never>() => Monoid<Ord<A>>;
@@ -11100,10 +11213,10 @@ function getReaderM<M extends URIS>(M: Monad1<M>): ReaderM1<M>;
 function getReaderM<M>(M: Monad_6<M>): ReaderM<M>;
 
 // @public @deprecated
-function getReaderTaskValidation<E>(SE: Semigroup<E>): Monad3C<URI_22, E> & Bifunctor3<URI_22> & Alt3C<URI_22, E> & MonadTask3C<URI_22, E> & MonadThrow3C<URI_22, E>;
+function getReaderTaskValidation<E>(SE: Semigroup<E>): Monad3C<URI_23, E> & Bifunctor3<URI_23> & Alt3C<URI_23, E> & MonadTask3C<URI_23, E> & MonadThrow3C<URI_23, E>;
 
 // @public @deprecated
-function getReaderValidation<E>(SE: Semigroup<E>): Monad3C<URI_18, E> & Bifunctor3<URI_18> & Alt3C<URI_18, E> & MonadThrow3C<URI_18, E>;
+function getReaderValidation<E>(SE: Semigroup<E>): Monad3C<URI_19, E> & Bifunctor3<URI_19> & Alt3C<URI_19, E> & MonadThrow3C<URI_19, E>;
 
 // @public @deprecated
 function getRefinement<A, B extends A>(getOption: (a: A) => Option_2<B>): Refinement<A, B>;
@@ -11309,7 +11422,7 @@ const getStructShow: <O extends ReadonlyRecord<string, any>>(shows: {
 }) => Show<O>;
 
 // @public @deprecated
-function getTaskValidation<E>(SE: Semigroup<E>): Monad2C<URI_23, E> & Bifunctor2<URI_23> & Alt2C<URI_23, E> & MonadTask2C<URI_23, E> & MonadThrow2C<URI_23, E>;
+function getTaskValidation<E>(SE: Semigroup<E>): Monad2C<URI_24, E> & Bifunctor2<URI_24> & Alt2C<URI_24, E> & MonadTask2C<URI_24, E> & MonadThrow2C<URI_24, E>;
 
 // @public @deprecated (undocumented)
 function getTheseM<M extends URIS2>(M: Monad2<M>): TheseM2<M>;
@@ -11324,10 +11437,10 @@ function getTheseM<M>(M: Monad_6<M>): TheseM<M>;
 const getTraversable: <K>(O: Ord<K>) => Traversable2C<"ReadonlyMap", K>;
 
 // @public
-const getTraversable_2: (O: Ord<string>) => Traversable1<URI_26>;
+const getTraversable_2: (O: Ord<string>) => Traversable1<URI_27>;
 
 // @public
-const getTraversable_3: (O: Ord<string>) => Traversable1<URI_29>;
+const getTraversable_3: (O: Ord<string>) => Traversable1<URI_30>;
 
 // @public @deprecated
 function getTraversableComposition<F extends URIS, G extends URIS>(F: Traversable1<F>, G: Traversable1<G>): TraversableComposition11<F, G>;
@@ -11342,10 +11455,10 @@ const getTraversableWithIndex: <K>(O: Ord<K>) => TraversableWithIndex2C<"Map", K
 const getTraversableWithIndex_2: <K>(O: Ord<K>) => TraversableWithIndex2C<"ReadonlyMap", K, K>;
 
 // @public
-const getTraversableWithIndex_3: (O: Ord<string>) => TraversableWithIndex1<URI_26, string>;
+const getTraversableWithIndex_3: (O: Ord<string>) => TraversableWithIndex1<URI_27, string>;
 
 // @public
-const getTraversableWithIndex_4: (O: Ord<string>) => TraversableWithIndex1<URI_29, string>;
+const getTraversableWithIndex_4: (O: Ord<string>) => TraversableWithIndex1<URI_30, string>;
 
 // @public @deprecated
 const getTupleEq: <T extends ReadonlyArray<Eq<any>>>(...eqs: T) => Eq<{
@@ -11456,13 +11569,13 @@ const getWitherable: <E>(M: Monoid<E>) => Witherable2C<"Either", E>;
 function getWitherable_2<K>(O: Ord<K>): Witherable2C<URI_15, K> & TraversableWithIndex2C<URI_15, K, K>;
 
 // @public (undocumented)
-function getWitherable_3<K>(O: Ord<K>): Witherable2C<URI_25, K> & TraversableWithIndex2C<URI_25, K, K>;
+function getWitherable_3<K>(O: Ord<K>): Witherable2C<URI_26, K> & TraversableWithIndex2C<URI_26, K, K>;
 
 // @public (undocumented)
-const getWitherable_4: (O: Ord<string>) => Witherable1<URI_26>;
+const getWitherable_4: (O: Ord<string>) => Witherable1<URI_27>;
 
 // @public (undocumented)
-const getWitherable_5: (O: Ord<string>) => Witherable1<URI_29>;
+const getWitherable_5: (O: Ord<string>) => Witherable1<URI_30>;
 
 // @public (undocumented)
 function getWriterM<M extends URIS3>(M: Monad3<M>): WriterM3<M>;
@@ -11562,10 +11675,10 @@ function guard_6<F extends URIS>(F: Zero1<F>, P: Pointed1<F>): (b: boolean) => K
 function guard_6<F>(F: Zero<F>, P: Pointed<F>): (b: boolean) => HKT<F, void>;
 
 // @public
-const has: <K extends string>(k: string, r: Readonly<Record<K, unknown>>) => k is K;
+const has_2: <K extends string>(k: string, r: Readonly<Record<K, unknown>>) => k is K;
 
 // @public
-const has_2: <K extends string>(k: string, r: Record<K, unknown>) => k is K;
+const has_3: <K extends string>(k: string, r: Record<K, unknown>) => k is K;
 
 // @public @deprecated
 function hasOwnProperty<K extends string>(k: string, r: ReadonlyRecord<K, unknown>): k is K;
@@ -11583,7 +11696,7 @@ const head_2: <A>(nea: NonEmptyArray<A>) => A;
 const head_3: <A>(as: Array<A>) => Option_2<A>;
 
 // @public
-const head_4: <A>(as: readonly A[]) => Option_2<A>;
+const head_5: <A>(as: readonly A[]) => Option_2<A>;
 
 // @public (undocumented)
 interface HeytingAlgebra<A> extends BoundedDistributiveLattice<A> {
@@ -11666,7 +11779,7 @@ declare namespace identity {
         map_11 as map,
         ap_8 as ap,
         of_6 as of,
-        flatMap_6 as flatMap,
+        flatMap_7 as flatMap,
         extend_7 as extend,
         extract_3 as extract,
         duplicate_6 as duplicate,
@@ -11931,12 +12044,12 @@ declare namespace io {
         map_12 as map,
         ap_9 as ap,
         of_7 as of,
-        flatMap_7 as flatMap,
+        flatMap_8 as flatMap,
         flatten_7 as flatten,
         URI_12 as URI,
         Functor_10 as Functor,
-        as_3 as as,
-        asUnit_3 as asUnit,
+        as_4 as as,
+        asUnit_4 as asUnit,
         flap_10 as flap,
         Pointed_8 as Pointed,
         Apply_8 as Apply,
@@ -11945,7 +12058,7 @@ declare namespace io {
         Applicative_8 as Applicative,
         Chain_8 as Chain,
         Monad_8 as Monad,
-        tap_3 as tap,
+        tap_4 as tap,
         fromIO_2 as fromIO,
         MonadIO,
         chainRec_4 as chainRec,
@@ -12005,19 +12118,19 @@ declare namespace ioEither {
         toUnion_3 as toUnion,
         orElse_4 as orElse,
         orElseW_2 as orElseW,
-        tapError,
+        tapError_2 as tapError,
         orElseFirstIOK,
         orLeft_2 as orLeft,
         swap_3 as swap,
         map_13 as map,
-        mapBoth,
+        mapBoth_2 as mapBoth,
         bimap_5 as bimap,
-        mapError,
+        mapError_2 as mapError,
         mapLeft_5 as mapLeft,
         ap_10 as ap,
         apW_2 as apW,
         of_8 as of,
-        flatMap_8 as flatMap,
+        flatMap_9 as flatMap,
         flattenW_2 as flattenW,
         flatten_8 as flatten,
         alt_9 as alt,
@@ -12026,8 +12139,8 @@ declare namespace ioEither {
         URI_13 as URI,
         getCompactable_2 as getCompactable,
         Functor_11 as Functor,
-        as_4 as as,
-        asUnit_4 as asUnit,
+        as_5 as as,
+        asUnit_5 as asUnit,
         flap_11 as flap,
         Pointed_9 as Pointed,
         Bifunctor_5 as Bifunctor,
@@ -12044,9 +12157,9 @@ declare namespace ioEither {
         Monad_9 as Monad,
         FromEither_5 as FromEither,
         FromIO_3 as FromIO,
-        tap_4 as tap,
-        tapEither_2 as tapEither,
-        tapIO,
+        tap_5 as tap,
+        tapEither_3 as tapEither,
+        tapIO_2 as tapIO,
         Alt_8 as Alt,
         MonadIO_2 as MonadIO,
         MonadThrow_3 as MonadThrow,
@@ -12139,7 +12252,7 @@ declare namespace ioOption {
         map_14 as map,
         ap_11 as ap,
         of_9 as of,
-        flatMap_9 as flatMap,
+        flatMap_10 as flatMap,
         flatten_9 as flatten,
         alt_10 as alt,
         altW_8 as altW,
@@ -12154,8 +12267,8 @@ declare namespace ioOption {
         partitionMap_4 as partitionMap,
         URI_14 as URI,
         Functor_12 as Functor,
-        as_5 as as,
-        asUnit_5 as asUnit,
+        as_6 as as,
+        asUnit_6 as asUnit,
         flap_12 as flap,
         Pointed_10 as Pointed,
         Apply_9 as Apply,
@@ -12167,9 +12280,9 @@ declare namespace ioOption {
         ChainRec_7 as ChainRec,
         FromEither_6 as FromEither,
         FromIO_4 as FromIO,
-        tap_5 as tap,
-        tapEither_3 as tapEither,
-        tapIO_2 as tapIO,
+        tap_6 as tap,
+        tapEither_4 as tapEither,
+        tapIO_3 as tapIO,
         Alt_9 as Alt,
         Zero_4 as Zero,
         guard_3 as guard,
@@ -12261,7 +12374,7 @@ const isEmpty_9: (s: string) => boolean;
 const isLeft: <E>(ma: Either<E, unknown>) => ma is Left<E>;
 
 // @public
-const isLeft_2: <E>(fa: These<E, unknown>) => fa is Left<E>;
+const isLeft_3: <E>(fa: These<E, unknown>) => fa is Left<E>;
 
 // @public
 const isNone: (fa: Option_2<unknown>) => fa is None;
@@ -12269,23 +12382,35 @@ const isNone: (fa: Option_2<unknown>) => fa is None;
 // @public
 const isNonEmpty: <A>(as: Array<A>) => as is NonEmptyArray<A>;
 
+// @internal (undocumented)
+const isNonEmpty_2: <A>(as: A[]) => as is NonEmptyArray<A>;
+
+// @internal (undocumented)
+const isNonEmpty_3: <A>(as: ReadonlyArray<A>) => as is ReadonlyNonEmptyArray<A>;
+
 // @public
-const isNonEmpty_2: <A>(as: ReadonlyArray<A>) => as is ReadonlyNonEmptyArray<A>;
+const isNonEmpty_5: <A>(as: ReadonlyArray<A>) => as is ReadonlyNonEmptyArray<A>;
 
 // @public (undocumented)
 const isNumber: Refinement<unknown, number>;
 
-// @public
-const isOutOfBound: <A>(i: number, as: Array<A>) => boolean;
+// @internal (undocumented)
+const isOutOfBound: <A>(i: number, as: A[]) => boolean;
+
+// @internal (undocumented)
+const isOutOfBound_2: <A>(i: number, as: readonly A[]) => boolean;
 
 // @public
-const isOutOfBound_2: <A>(i: number, as: ReadonlyArray<A>) => boolean;
+const isOutOfBound_3: <A>(i: number, as: Array<A>) => boolean;
+
+// @public
+const isOutOfBound_4: <A>(i: number, as: ReadonlyArray<A>) => boolean;
 
 // @public
 const isRight: <A>(ma: Either<unknown, A>) => ma is Right<A>;
 
 // @public
-const isRight_2: <A>(fa: These<unknown, A>) => fa is Right<A>;
+const isRight_3: <A>(fa: These<unknown, A>) => fa is Right<A>;
 
 // @public
 const isSome: <A>(fa: Option_2<A>) => fa is Some<A>;
@@ -12461,28 +12586,31 @@ interface Left<E> {
 const left: <E, A>(s: Separated<E, A>) => E;
 
 // @public (undocumented)
-const left_10: <E = never, A = never>(e: E) => TaskThese<E, A>;
+const left_10: <S, R, E, A = never>(e: E) => StateReaderTaskEither<S, R, E, A>;
 
 // @public (undocumented)
-function left_11<E = never, A = never>(left: E): These<E, A>;
+const left_11: <E = never, A = never>(e: E) => TaskThese<E, A>;
 
 // @public (undocumented)
-function left_12<F extends URIS3>(F: Pointed3<F>): <E, R, FE, A = never>(e: E) => Kind3<F, R, FE, These<E, A>>;
+function left_12<E = never, A = never>(left: E): These<E, A>;
 
 // @public (undocumented)
-function left_12<F extends URIS3, FE>(F: Pointed3C<F, FE>): <E, R, A = never>(e: E) => Kind3<F, R, FE, These<E, A>>;
+function left_13<F extends URIS3>(F: Pointed3<F>): <E, R, FE, A = never>(e: E) => Kind3<F, R, FE, These<E, A>>;
 
 // @public (undocumented)
-function left_12<F extends URIS2>(F: Pointed2<F>): <E, FE, A = never>(e: E) => Kind2<F, FE, These<E, A>>;
+function left_13<F extends URIS3, FE>(F: Pointed3C<F, FE>): <E, R, A = never>(e: E) => Kind3<F, R, FE, These<E, A>>;
 
 // @public (undocumented)
-function left_12<F extends URIS2, FE>(F: Pointed2C<F, FE>): <E, A = never>(e: E) => Kind2<F, FE, These<E, A>>;
+function left_13<F extends URIS2>(F: Pointed2<F>): <E, FE, A = never>(e: E) => Kind2<F, FE, These<E, A>>;
 
 // @public (undocumented)
-function left_12<F extends URIS>(F: Pointed1<F>): <E, A = never>(e: E) => Kind<F, These<E, A>>;
+function left_13<F extends URIS2, FE>(F: Pointed2C<F, FE>): <E, A = never>(e: E) => Kind2<F, FE, These<E, A>>;
 
 // @public (undocumented)
-function left_12<F>(F: Pointed<F>): <E, A = never>(e: E) => HKT<F, These<E, A>>;
+function left_13<F extends URIS>(F: Pointed1<F>): <E, A = never>(e: E) => Kind<F, These<E, A>>;
+
+// @public (undocumented)
+function left_13<F>(F: Pointed<F>): <E, A = never>(e: E) => HKT<F, These<E, A>>;
 
 // @public
 const left_2: <E = never, A = never>(e: E) => Either<E, A>;
@@ -12512,16 +12640,13 @@ const left_4: <E = never, A = never>(l: E) => IOEither<E, A>;
 const left_5: Choice2<URI_17>['left'];
 
 // @public (undocumented)
-const left_6: <R, E = never, A = never>(e: E) => ReaderEither<R, E, A>;
+const left_7: <R, E = never, A = never>(e: E) => ReaderEither<R, E, A>;
 
 // @public (undocumented)
-const left_7: <R, E = never, A = never>(e: E) => ReaderTaskEither<R, E, A>;
+const left_8: <R, E = never, A = never>(e: E) => ReaderTaskEither<R, E, A>;
 
 // @public (undocumented)
-const left_8: <E = never, A = never>(e: E) => TaskEither<E, A>;
-
-// @public (undocumented)
-const left_9: <S, R, E, A = never>(e: E) => StateReaderTaskEither<S, R, E, A>;
+const left_9: <E = never, A = never>(e: E) => TaskEither<E, A>;
 
 // @public (undocumented)
 function leftF<F extends URIS3>(F: Functor3<F>): <R, FE, E, A = never>(fe: Kind3<F, R, FE, E>) => Kind3<F, R, FE, Either<E, A>>;
@@ -12718,13 +12843,13 @@ const liftNullable: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => B |
 const liftNullable_2: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => B | null | undefined, onNullable: (...a: A) => E) => (...a: A) => IOEither<E, NonNullable<B>>;
 
 // @public (undocumented)
-const liftNullable_3: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => B | null | undefined, onNullable: (...a: A) => E) => <R>(...a: A) => ReaderEither<R, E, NonNullable<B>>;
+const liftNullable_4: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => B | null | undefined, onNullable: (...a: A) => E) => <R>(...a: A) => ReaderEither<R, E, NonNullable<B>>;
 
 // @public (undocumented)
-const liftNullable_4: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => B | null | undefined, onNullable: (...a: A) => E) => (...a: A) => TaskEither<E, NonNullable<B>>;
+const liftNullable_5: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => B | null | undefined, onNullable: (...a: A) => E) => (...a: A) => TaskEither<E, NonNullable<B>>;
 
 // @public (undocumented)
-const liftNullable_5: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => B | null | undefined, onNullable: (...a: A) => E) => <R>(...a: A) => ReaderTaskEither<R, E, NonNullable<B>>;
+const liftNullable_6: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => B | null | undefined, onNullable: (...a: A) => E) => <R>(...a: A) => ReaderTaskEither<R, E, NonNullable<B>>;
 
 // @public (undocumented)
 const liftOption: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => Option_2<B>, onNone: (...a: A) => E) => (...a: A) => Either<E, B>;
@@ -12733,13 +12858,13 @@ const liftOption: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => Optio
 const liftOption_2: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => Option_2<B>, onNone: (...a: A) => E) => (...a: A) => IOEither<E, B>;
 
 // @public (undocumented)
-const liftOption_3: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => Option_2<B>, onNone: (...a: A) => E) => <R>(...a: A) => ReaderEither<R, E, B>;
+const liftOption_4: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => Option_2<B>, onNone: (...a: A) => E) => <R>(...a: A) => ReaderEither<R, E, B>;
 
 // @public (undocumented)
-const liftOption_4: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => Option_2<B>, onNone: (...a: A) => E) => (...a: A) => TaskEither<E, B>;
+const liftOption_5: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => Option_2<B>, onNone: (...a: A) => E) => (...a: A) => TaskEither<E, B>;
 
 // @public (undocumented)
-const liftOption_5: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => Option_2<B>, onNone: (...a: A) => E) => <R>(...a: A) => ReaderTaskEither<R, E, B>;
+const liftOption_6: <A extends ReadonlyArray<unknown>, B, E>(f: (...a: A) => Option_2<B>, onNone: (...a: A) => E) => <R>(...a: A) => ReaderTaskEither<R, E, B>;
 
 // @public
 function listen<P, A>(wa: Traced<P, A>): Traced<P, [A, P]>;
@@ -12923,12 +13048,15 @@ declare namespace map {
         union_4 as union,
         intersection_2 as intersection,
         difference_2 as difference,
-        empty_2 as empty,
+        empty_3 as empty,
         insertAt_4 as insertAt,
         map_
     }
 }
 export { map }
+
+// @internal (undocumented)
+const _map: Functor1<URI_27>['map'];
 
 // @public @deprecated
 const map_: Filterable2<URI_15>;
@@ -13185,50 +13313,68 @@ function map_9<F extends URIS>(F: Functor1<F>): <A, B>(f: (a: A) => B) => <E>(fa
 // @public (undocumented)
 function map_9<F>(F: Functor<F>): <A, B>(f: (a: A) => B) => <E>(fa: HKT<F, Either<E, A>>) => HKT<F, Either<E, B>>;
 
+// @internal (undocumented)
+function mapBoth<F extends URIS2>(F: Functor2<F>): <R, E, A, G, B>(self: Kind2<F, R, Either<E, A>>, f: (e: E) => G, g: (a: A) => B) => Kind2<F, R, Either<G, B>>;
+
+// @internal (undocumented)
+function mapBoth<F extends URIS>(F: Functor1<F>): <E, A, G, B>(self: Kind<F, Either<E, A>>, f: (e: E) => G, g: (a: A) => B) => Kind<F, Either<G, B>>;
+
+// @internal (undocumented)
+function mapBoth<F>(F: Functor<F>): <E, A, G, B>(self: HKT<F, Either<E, A>>, f: (e: E) => G, g: (a: A) => B) => HKT<F, Either<G, B>>;
+
 // @public
-const mapBoth: {
+const mapBoth_2: {
     <E, G, A, B>(f: (e: E) => G, g: (a: A) => B): (self: IOEither<E, A>) => IOEither<G, B>;
     <E, A, G, B>(self: IOEither<E, A>, f: (e: E) => G, g: (a: A) => B): IOEither<G, B>;
 };
 
 // @public
-const mapBoth_2: {
+const mapBoth_3: {
     <E, G, A, B>(f: (e: E) => G, g: (a: A) => B): <R>(self: ReaderEither<R, E, A>) => ReaderEither<R, G, B>;
     <R, E, A, G, B>(self: ReaderEither<R, E, A>, f: (e: E) => G, g: (a: A) => B): ReaderEither<R, G, B>;
 };
 
 // @public
-const mapBoth_3: {
+const mapBoth_4: {
     <E, G, A, B>(f: (e: E) => G, g: (a: A) => B): (self: TaskEither<E, A>) => TaskEither<G, B>;
     <E, A, G, B>(self: TaskEither<E, A>, f: (e: E) => G, g: (a: A) => B): TaskEither<G, B>;
 };
 
 // @public
-const mapBoth_4: {
+const mapBoth_5: {
     <E, G, A, B>(f: (e: E) => G, g: (a: A) => B): <R>(self: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, G, B>;
     <R, E, A, G, B>(self: ReaderTaskEither<R, E, A>, f: (e: E) => G, g: (a: A) => B): ReaderTaskEither<R, G, B>;
 };
 
+// @internal (undocumented)
+function mapError<F extends URIS2>(F: Functor2<F>): <R, E, A, G>(self: Kind2<F, R, Either<E, A>>, f: (e: E) => G) => Kind2<F, R, Either<G, A>>;
+
+// @internal (undocumented)
+function mapError<F extends URIS>(F: Functor1<F>): <E, A, G>(self: Kind<F, Either<E, A>>, f: (e: E) => G) => Kind<F, Either<G, A>>;
+
+// @internal (undocumented)
+function mapError<F>(F: Functor<F>): <E, A, G>(self: HKT<F, Either<E, A>>, f: (e: E) => G) => HKT<F, Either<G, A>>;
+
 // @public
-const mapError: {
+const mapError_2: {
     <E, G>(f: (e: E) => G): <A>(self: IOEither<E, A>) => IOEither<G, A>;
     <E, A, G>(self: IOEither<E, A>, f: (e: E) => G): IOEither<G, A>;
 };
 
 // @public
-const mapError_2: {
+const mapError_3: {
     <R, E, G>(f: (e: E) => G): <A>(self: ReaderEither<R, E, A>) => ReaderEither<R, G, A>;
     <R, E, A, G>(self: ReaderEither<R, E, A>, f: (e: E) => G): ReaderEither<R, G, A>;
 };
 
 // @public
-const mapError_3: {
+const mapError_4: {
     <E, G>(f: (e: E) => G): <A>(self: TaskEither<E, A>) => TaskEither<G, A>;
     <E, A, G>(self: TaskEither<E, A>, f: (e: E) => G): TaskEither<G, A>;
 };
 
 // @public
-const mapError_4: {
+const mapError_5: {
     <R, E, G>(f: (e: E) => G): <A>(self: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, G, A>;
     <R, E, A, G>(self: ReaderTaskEither<R, E, A>, f: (e: E) => G): ReaderTaskEither<R, G, A>;
 };
@@ -13330,7 +13476,7 @@ const mapLeft_8: <E, G>(f: (e: E) => G) => <A>(fa: TaskEither<E, A>) => TaskEith
 const mapLeft_9: <E, G>(f: (e: E) => G) => <R, A>(fa: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, G, A>;
 
 // @public @deprecated
-const mapNullable: <A, B>(f: (a: A) => B | null | undefined) => (ma: Option_2<A>) => Option_2<NonNullable<B>>;
+const mapNullable: <A, B>(f: (a: A) => B) => (ma: Option_2<A>) => Option_2<NonNullable<B>>;
 
 // @public
 const mapSnd: <E, G>(f: (e: E) => G) => <A>(fa: readonly [A, E]) => readonly [A, G];
@@ -13340,6 +13486,9 @@ const mapSnd_2: <E, G>(f: (e: E) => G) => <A>(fa: [A, E]) => [A, G];
 
 // @public (undocumented)
 const mapWithIndex: <A, B>(f: (i: number, a: A) => B) => (as: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArray<B>;
+
+// @internal (undocumented)
+const _mapWithIndex: FunctorWithIndex1<URI_27, string>['mapWithIndex'];
 
 // @public
 const mapWithIndex_10: <K extends string, A, B>(f: (k: K, a: A) => B) => (fa: Record<K, A>) => Record<K, B>;
@@ -13824,40 +13973,40 @@ const Monad_10: Monad1<URI_14>;
 const Monad_11: Monad2<URI_17>;
 
 // @public (undocumented)
-const Monad_12: Monad3<URI_18>;
+const Monad_12: Monad3<URI_19>;
 
 // @public (undocumented)
-const Monad_13: Monad2<URI_19>;
+const Monad_13: Monad2<URI_20>;
 
 // @public (undocumented)
-const Monad_14: Monad2<URI_20>;
+const Monad_14: Monad2<URI_21>;
 
 // @public (undocumented)
-const Monad_15: Monad1<URI_21>;
+const Monad_15: Monad1<URI_22>;
 
 // @public (undocumented)
-const Monad_16: Monad2<URI_23>;
+const Monad_16: Monad2<URI_24>;
 
 // @public (undocumented)
-const Monad_17: Monad3<URI_22>;
+const Monad_17: Monad3<URI_23>;
 
 // @public (undocumented)
-const Monad_18: Monad1<URI_24>;
+const Monad_18: Monad1<URI_25>;
 
 // @public (undocumented)
-const Monad_19: Monad2<URI_30>;
+const Monad_19: Monad2<URI_31>;
 
 // @public (undocumented)
 const Monad_2: Monad1<URI_3>;
 
 // @public (undocumented)
-const Monad_20: Monad4<URI_31>;
+const Monad_20: Monad4<URI_32>;
 
 // @public (undocumented)
-const Monad_21: Monad1<URI_33>;
+const Monad_21: Monad1<URI_34>;
 
 // @public (undocumented)
-const Monad_22: Monad1<URI_37>;
+const Monad_22: Monad1<URI_38>;
 
 // @public (undocumented)
 const Monad_3: Monad1<URI_4>;
@@ -13922,10 +14071,10 @@ interface MonadIO4<M extends URIS4> extends Monad4<M>, FromIO4<M> {
 }
 
 // @public (undocumented)
-const MonadIO_10: MonadIO4<URI_31>;
+const MonadIO_10: MonadIO4<URI_32>;
 
 // @public (undocumented)
-const MonadIO_11: MonadIO1<URI_33>;
+const MonadIO_11: MonadIO1<URI_34>;
 
 // @public (undocumented)
 const MonadIO_2: MonadIO2<URI_13>;
@@ -13938,19 +14087,19 @@ interface MonadIO_4<M> extends Monad_6<M>, FromIO<M> {
 }
 
 // @public (undocumented)
-const MonadIO_5: MonadIO2<URI_19>;
+const MonadIO_5: MonadIO2<URI_20>;
 
 // @public (undocumented)
-const MonadIO_6: MonadIO2<URI_20>;
+const MonadIO_6: MonadIO2<URI_21>;
 
 // @public (undocumented)
-const MonadIO_7: MonadIO1<URI_21>;
+const MonadIO_7: MonadIO1<URI_22>;
 
 // @public (undocumented)
-const MonadIO_8: MonadIO2<URI_23>;
+const MonadIO_8: MonadIO2<URI_24>;
 
 // @public (undocumented)
-const MonadIO_9: MonadIO3<URI_22>;
+const MonadIO_9: MonadIO3<URI_23>;
 
 // @public (undocumented)
 interface MonadTask<M> extends MonadIO_4<M>, FromTask<M> {
@@ -13994,22 +14143,22 @@ interface MonadTask4<M extends URIS4> extends MonadIO4<M>, FromTask4<M> {
 }
 
 // @public (undocumented)
-const MonadTask_2: MonadTask2<URI_20>;
+const MonadTask_2: MonadTask2<URI_21>;
 
 // @public (undocumented)
-const MonadTask_3: MonadTask1<URI_21>;
+const MonadTask_3: MonadTask1<URI_22>;
 
 // @public (undocumented)
-const MonadTask_4: MonadTask2<URI_23>;
+const MonadTask_4: MonadTask2<URI_24>;
 
 // @public (undocumented)
-const MonadTask_5: MonadTask3<URI_22>;
+const MonadTask_5: MonadTask3<URI_23>;
 
 // @public (undocumented)
-const MonadTask_6: MonadTask4<URI_31>;
+const MonadTask_6: MonadTask4<URI_32>;
 
 // @public (undocumented)
-const MonadTask_7: MonadTask1<URI_33>;
+const MonadTask_7: MonadTask1<URI_34>;
 
 // @public (undocumented)
 const MonadThrow: MonadThrow1<URI_7>;
@@ -14064,7 +14213,7 @@ interface MonadThrow4<M extends URIS4> extends Monad4<M> {
 }
 
 // @public (undocumented)
-const MonadThrow_10: MonadThrow1<URI_33>;
+const MonadThrow_10: MonadThrow1<URI_34>;
 
 // @public (undocumented)
 const MonadThrow_2: MonadThrow2<URI_6>;
@@ -14082,16 +14231,16 @@ interface MonadThrow_5<M> extends Monad_6<M> {
 }
 
 // @public (undocumented)
-const MonadThrow_6: MonadThrow3<URI_18>;
+const MonadThrow_6: MonadThrow3<URI_19>;
 
 // @public (undocumented)
-const MonadThrow_7: MonadThrow2<URI_23>;
+const MonadThrow_7: MonadThrow2<URI_24>;
 
 // @public (undocumented)
-const MonadThrow_8: MonadThrow3<URI_22>;
+const MonadThrow_8: MonadThrow3<URI_23>;
 
 // @public (undocumented)
-const MonadThrow_9: MonadThrow4<URI_31>;
+const MonadThrow_9: MonadThrow4<URI_32>;
 
 // @public (undocumented)
 interface Monoid<A> extends semigroup.Semigroup<A> {
@@ -14336,7 +14485,7 @@ const none: Option_2<never>;
 const none_2: IOOption<never>;
 
 // @public (undocumented)
-const none_3: TaskOption<never>;
+const none_4: TaskOption<never>;
 
 // @public (undocumented)
 interface NonEmptyArray<A> extends Array<A> {
@@ -14354,6 +14503,14 @@ declare namespace nonEmptyArray {
         filter,
         cons,
         NonEmptyArray,
+        isNonEmpty_2 as isNonEmpty,
+        isOutOfBound,
+        prependW,
+        prepend_2 as prepend,
+        appendW,
+        append,
+        unsafeInsertAt,
+        unsafeUpdateAt,
         uniq,
         sortBy,
         union_2 as union,
@@ -14668,7 +14825,7 @@ declare namespace option {
         apFirst_5 as apFirst,
         apSecond_5 as apSecond,
         flatten_4 as flatten,
-        tap,
+        tap_2 as tap,
         tapEither,
         duplicate_4 as duplicate,
         fromEitherK,
@@ -14798,6 +14955,7 @@ declare namespace optionT {
         map_16 as map,
         ap_12 as ap,
         chain_12 as chain,
+        flatMap_11 as flatMap,
         alt_11 as alt,
         getOptionM,
         OptionT,
@@ -15066,6 +15224,9 @@ const partition: {
     <A>(predicate: Predicate<A>): (as: Array<A>) => Separated<Array<A>, Array<A>>;
 };
 
+// @internal (undocumented)
+const _partition: <A>(fa: Readonly<Record<string, A>>, predicate: Predicate<A>) => Separated<Readonly<Record<string, A>>, Readonly<Record<string, A>>>;
+
 // @public (undocumented)
 interface Partition1<F extends URIS> {
     // (undocumented)
@@ -15261,6 +15422,9 @@ const partition_9: {
 // @public
 const partitionMap: <A, B, C>(f: (a: A) => Either<B, C>) => (fa: Array<A>) => Separated<Array<B>, Array<C>>;
 
+// @internal (undocumented)
+const _partitionMap: Filterable1<URI_27>['partitionMap'];
+
 // @public (undocumented)
 function partitionMap_10<B, C>(EB: Eq<B>, EC: Eq<C>): <A>(f: (a: A) => Either<B, C>) => (set: ReadonlySet<A>) => Separated<ReadonlySet<B>, ReadonlySet<C>>;
 
@@ -15327,6 +15491,9 @@ const partitionMap_9: <A, B, C>(f: (a: A) => Either<B, C>) => (fa: ReadonlyRecor
 // @public
 const partitionMapWithIndex: <A, B, C>(f: (i: number, a: A) => Either<B, C>) => (fa: A[]) => Separated<B[], C[]>;
 
+// @internal (undocumented)
+const _partitionMapWithIndex: <A, B, C>(fa: Readonly<Record<string, A>>, f: (key: string, a: A) => Either<B, C>) => Separated<Readonly<Record<string, B>>, Readonly<Record<string, C>>>;
+
 // @public (undocumented)
 const partitionMapWithIndex_2: <K, A, B, C>(f: (k: K, a: A) => Either<B, C>) => (fa: Map<K, A>) => Separated<Map<K, B>, Map<K, C>>;
 
@@ -15377,6 +15544,9 @@ const partitionWithIndex: {
     <A>(predicateWithIndex: PredicateWithIndex<number, A>): <B extends A>(bs: Array<B>) => Separated<Array<B>, Array<B>>;
     <A>(predicateWithIndex: PredicateWithIndex<number, A>): (as: Array<A>) => Separated<Array<A>, Array<A>>;
 };
+
+// @internal (undocumented)
+const _partitionWithIndex: <A>(fa: Readonly<Record<string, A>>, predicateWithIndex: PredicateWithIndex<string, A>) => Separated<Readonly<Record<string, A>>, Readonly<Record<string, A>>>;
 
 // @public (undocumented)
 interface PartitionWithIndex1<F extends URIS, I> {
@@ -17095,46 +17265,46 @@ const Pointed_10: Pointed1<URI_14>;
 const Pointed_11: Pointed2<URI_17>;
 
 // @public (undocumented)
-const Pointed_12: Pointed3<URI_18>;
+const Pointed_12: Pointed3<URI_19>;
 
 // @public (undocumented)
-const Pointed_13: Pointed2<URI_19>;
+const Pointed_13: Pointed2<URI_20>;
 
 // @public (undocumented)
-const Pointed_14: Pointed2<URI_20>;
+const Pointed_14: Pointed2<URI_21>;
 
 // @public (undocumented)
-const Pointed_15: Pointed1<URI_21>;
+const Pointed_15: Pointed1<URI_22>;
 
 // @public (undocumented)
-const Pointed_16: Pointed2<URI_23>;
+const Pointed_16: Pointed2<URI_24>;
 
 // @public (undocumented)
-const Pointed_17: Pointed3<URI_22>;
+const Pointed_17: Pointed3<URI_23>;
 
 // @public (undocumented)
-const Pointed_18: Pointed1<URI_24>;
+const Pointed_18: Pointed1<URI_25>;
 
 // @public (undocumented)
-const Pointed_19: Pointed2<URI_30>;
+const Pointed_19: Pointed2<URI_31>;
 
 // @public (undocumented)
 const Pointed_2: Pointed1<URI_2>;
 
 // @public (undocumented)
-const Pointed_20: Pointed4<URI_31>;
+const Pointed_20: Pointed4<URI_32>;
 
 // @public (undocumented)
-const Pointed_21: Pointed1<URI_33>;
+const Pointed_21: Pointed1<URI_34>;
 
 // @public (undocumented)
-const Pointed_22: Pointed2<URI_34>;
+const Pointed_22: Pointed2<URI_35>;
 
 // @public (undocumented)
-const Pointed_23: Pointed2<URI_35>;
+const Pointed_23: Pointed2<URI_36>;
 
 // @public (undocumented)
-const Pointed_24: Pointed1<URI_37>;
+const Pointed_24: Pointed1<URI_38>;
 
 // @public (undocumented)
 const Pointed_3: Pointed1<URI_3>;
@@ -17204,8 +17374,14 @@ type PredicateWithIndex<I, A> = (i: I, a: A) => boolean;
 // @public
 const prepend: <A>(head: A) => (tail: Array<A>) => nonEmptyArray.NonEmptyArray<A>;
 
+// @internal (undocumented)
+const prepend_2: <A>(head: A) => (tail: Array<A>) => NonEmptyArray<A>;
+
+// @internal (undocumented)
+const prepend_3: <A>(head: A) => (tail: ReadonlyArray<A>) => ReadonlyNonEmptyArray<A>;
+
 // @public
-const prepend_2: <A>(head: A) => (tail: readonly A[]) => readonlyNonEmptyArray.ReadonlyNonEmptyArray<A>;
+const prepend_4: <A>(head: A) => (tail: readonly A[]) => readonlyNonEmptyArray.ReadonlyNonEmptyArray<A>;
 
 // @public
 const prependAll: <A>(middle: A) => (as: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArray<A>;
@@ -17231,11 +17407,17 @@ const prependToAll_3: <A>(middle: A) => (as: A[]) => A[];
 // @public @deprecated
 const prependToAll_4: <A>(middle: A) => (as: readonly A[]) => readonly A[];
 
-// @public
-const prependW: <A, B>(head: B) => (tail: Array<A>) => nonEmptyArray.NonEmptyArray<A | B>;
+// @internal (undocumented)
+const prependW: <B>(head: B) => <A>(tail: A[]) => NonEmptyArray<B | A>;
+
+// @internal (undocumented)
+const prependW_2: <B>(head: B) => <A>(tail: readonly A[]) => ReadonlyNonEmptyArray<B | A>;
 
 // @public
-const prependW_2: <B>(head: B) => <A>(tail: readonly A[]) => readonlyNonEmptyArray.ReadonlyNonEmptyArray<B | A>;
+const prependW_3: <A, B>(head: B) => (tail: Array<A>) => nonEmptyArray.NonEmptyArray<A | B>;
+
+// @public
+const prependW_4: <B>(head: B) => <A>(tail: readonly A[]) => readonlyNonEmptyArray.ReadonlyNonEmptyArray<B | A>;
 
 // @public (undocumented)
 interface Profunctor<F> {
@@ -17390,7 +17572,7 @@ declare namespace reader {
         apW_3 as apW,
         ap_14 as ap,
         of_10 as of,
-        flatMap_10 as flatMap,
+        flatMap_12 as flatMap,
         flattenW_3 as flattenW,
         flatten_10 as flatten,
         compose_2 as compose,
@@ -17414,7 +17596,7 @@ declare namespace reader {
         chainRec_7 as chainRec,
         ChainRec_8 as ChainRec,
         Monad_11 as Monad,
-        tap_6 as tap,
+        tap_7 as tap,
         Profunctor_2 as Profunctor,
         Category_2 as Category,
         Strong,
@@ -17458,8 +17640,8 @@ declare namespace readerEither {
         getAltReaderValidation,
         getReaderValidation,
         ReaderEither,
-        left_6 as left,
-        right_6 as right,
+        left_7 as left,
+        right_7 as right,
         rightReader,
         leftReader,
         fromEither_7 as fromEither,
@@ -17478,28 +17660,28 @@ declare namespace readerEither {
         asksReaderEither,
         orElse_5 as orElse,
         orElseW_3 as orElseW,
-        tapError_2 as tapError,
+        tapError_3 as tapError,
         orLeft_3 as orLeft,
         swap_4 as swap,
         map_19 as map,
-        mapBoth_2 as mapBoth,
+        mapBoth_3 as mapBoth,
         bimap_7 as bimap,
-        mapError_2 as mapError,
+        mapError_3 as mapError,
         mapLeft_7 as mapLeft,
         ap_15 as ap,
         apW_4 as apW,
         of_11 as of,
-        flatMap_11 as flatMap,
+        flatMap_13 as flatMap,
         flattenW_4 as flattenW,
         flatten_11 as flatten,
         alt_13 as alt,
         altW_9 as altW,
         throwError_5 as throwError,
-        URI_18 as URI,
+        URI_19 as URI,
         getCompactable_3 as getCompactable,
         Functor_15 as Functor,
-        as_6 as as,
-        asUnit_6 as asUnit,
+        as_7 as as,
+        asUnit_7 as asUnit,
         flap_15 as flap,
         Pointed_12 as Pointed,
         Apply_11 as Apply,
@@ -17512,10 +17694,10 @@ declare namespace readerEither {
         chainRec_8 as chainRec,
         ChainRec_9 as ChainRec,
         Monad_12 as Monad,
-        FromEither_7 as FromEither,
-        FromReader_2 as FromReader,
-        tap_7 as tap,
-        tapEither_4 as tapEither,
+        FromEither_8 as FromEither,
+        FromReader_3 as FromReader,
+        tap_8 as tap,
+        tapEither_5 as tapEither,
         tapReader_2 as tapReader,
         Bifunctor_6 as Bifunctor,
         Alt_10 as Alt,
@@ -17529,12 +17711,12 @@ declare namespace readerEither {
         fromOptionK_7 as fromOptionK,
         chainOptionK_6 as chainOptionK,
         chainOptionKW_3 as chainOptionKW,
-        liftNullable_3 as liftNullable,
-        liftOption_3 as liftOption,
-        flatMapNullable_4 as flatMapNullable,
-        flatMapOption_4 as flatMapOption,
-        flatMapEither_3 as flatMapEither,
-        flatMapReader,
+        liftNullable_4 as liftNullable,
+        liftOption_4 as liftOption,
+        flatMapNullable_5 as flatMapNullable,
+        flatMapOption_5 as flatMapOption,
+        flatMapEither_4 as flatMapEither,
+        flatMapReader_2 as flatMapReader,
         chainEitherK_5 as chainEitherK,
         chainEitherKW_2 as chainEitherKW,
         chainFirstEitherK_5 as chainFirstEitherK,
@@ -17574,7 +17756,7 @@ declare namespace readerEither {
 export { readerEither }
 
 // @public @deprecated
-const readerEither_2: Monad3<URI_18> & Bifunctor3<URI_18> & Alt3<URI_18> & MonadThrow3<URI_18>;
+const readerEither_2: Monad3<URI_19> & Bifunctor3<URI_19> & Alt3<URI_19> & MonadThrow3<URI_19>;
 
 // @public (undocumented)
 interface ReaderIO<R, A> {
@@ -17594,13 +17776,13 @@ declare namespace readerIO {
         ap_16 as ap,
         apW_5 as apW,
         of_12 as of,
-        flatMap_12 as flatMap,
+        flatMap_14 as flatMap,
         flattenW_5 as flattenW,
         flatten_12 as flatten,
-        URI_19 as URI,
+        URI_20 as URI,
         Functor_16 as Functor,
-        as_7 as as,
-        asUnit_7 as asUnit,
+        as_8 as as,
+        asUnit_8 as asUnit,
         flap_16 as flap,
         Pointed_13 as Pointed,
         Apply_12 as Apply,
@@ -17612,12 +17794,12 @@ declare namespace readerIO {
         ChainRec_10 as ChainRec,
         Monad_13 as Monad,
         MonadIO_5 as MonadIO,
-        FromIO_5 as FromIO,
-        FromReader_3 as FromReader,
-        flatMapIO_3 as flatMapIO,
-        flatMapReader_2 as flatMapReader,
-        tap_8 as tap,
-        tapIO_3 as tapIO,
+        FromIO_6 as FromIO,
+        FromReader_4 as FromReader,
+        flatMapIO_4 as flatMapIO,
+        flatMapReader_3 as flatMapReader,
+        tap_9 as tap,
+        tapIO_4 as tapIO,
         tapReader_3 as tapReader,
         fromIOK_4 as fromIOK,
         chainIOK_4 as chainIOK,
@@ -17772,6 +17954,7 @@ declare namespace readerT {
         map_21 as map,
         ap_17 as ap,
         chain_17 as chain,
+        flatMap_15 as flatMap,
         fromReader_4 as fromReader,
         fromNaturalTransformation,
         getReaderM,
@@ -17827,13 +18010,13 @@ declare namespace readerTask {
         ap_18 as ap,
         apW_6 as apW,
         of_14 as of,
-        flatMap_13 as flatMap,
+        flatMap_16 as flatMap,
         flattenW_6 as flattenW,
         flatten_13 as flatten,
-        URI_20 as URI,
+        URI_21 as URI,
         Functor_17 as Functor,
-        as_8 as as,
-        asUnit_8 as asUnit,
+        as_9 as as,
+        asUnit_9 as asUnit,
         flap_17 as flap,
         Pointed_14 as Pointed,
         ApplyPar_2 as ApplyPar,
@@ -17848,17 +18031,17 @@ declare namespace readerTask {
         Monad_14 as Monad,
         MonadIO_6 as MonadIO,
         MonadTask_2 as MonadTask,
-        FromIO_6 as FromIO,
-        FromTask_2 as FromTask,
-        FromReader_4 as FromReader,
-        flatMapIO_4 as flatMapIO,
-        flatMapTask,
-        flatMapReader_3 as flatMapReader,
+        FromIO_7 as FromIO,
+        FromTask_3 as FromTask,
+        FromReader_5 as FromReader,
+        flatMapIO_5 as flatMapIO,
+        flatMapTask_2 as flatMapTask,
+        flatMapReader_4 as flatMapReader,
         flatMapReaderIO,
-        tap_9 as tap,
-        tapIO_4 as tapIO,
+        tap_10 as tap,
+        tapIO_5 as tapIO,
         tapReader_4 as tapReader,
-        tapTask,
+        tapTask_2 as tapTask,
         tapReaderIO,
         fromIOK_5 as fromIOK,
         chainIOK_5 as chainIOK,
@@ -17910,7 +18093,7 @@ declare namespace readerTask {
 export { readerTask }
 
 // @public @deprecated
-const readerTask_2: MonadTask2<URI_20>;
+const readerTask_2: MonadTask2<URI_21>;
 
 // @public (undocumented)
 interface ReaderTaskEither<R, E, A> {
@@ -17929,8 +18112,8 @@ declare namespace readerTaskEither {
         run_2 as run,
         ReaderTaskEither,
         fromTaskEither,
-        left_7 as left,
-        right_7 as right,
+        left_8 as left,
+        right_8 as right,
         rightTask,
         leftTask,
         rightReader_2 as rightReader,
@@ -17964,31 +18147,31 @@ declare namespace readerTaskEither {
         asksReaderTaskEither,
         orElse_6 as orElse,
         orElseW_4 as orElseW,
-        tapError_3 as tapError,
+        tapError_4 as tapError,
         orLeft_4 as orLeft,
         swap_5 as swap,
         fromIOEitherK,
         fromTaskEitherK,
         fromReaderEitherK,
         map_25 as map,
-        mapBoth_4 as mapBoth,
+        mapBoth_5 as mapBoth,
         bimap_9 as bimap,
-        mapError_4 as mapError,
+        mapError_5 as mapError,
         mapLeft_9 as mapLeft,
         ap_21 as ap,
         apW_8 as apW,
         of_17 as of,
-        flatMap_16 as flatMap,
+        flatMap_19 as flatMap,
         flattenW_8 as flattenW,
         flatten_16 as flatten,
         alt_15 as alt,
         altW_11 as altW,
         throwError_7 as throwError,
-        URI_22 as URI,
+        URI_23 as URI,
         getCompactable_5 as getCompactable,
         Functor_20 as Functor,
-        as_11 as as,
-        asUnit_11 as asUnit,
+        as_12 as as,
+        asUnit_12 as asUnit,
         flap_20 as flap,
         Pointed_17 as Pointed,
         ApplyPar_5 as ApplyPar,
@@ -18006,14 +18189,14 @@ declare namespace readerTaskEither {
         MonadIO_9 as MonadIO,
         MonadTask_5 as MonadTask,
         MonadThrow_8 as MonadThrow,
-        FromEither_9 as FromEither,
-        FromIO_9 as FromIO,
-        FromTask_5 as FromTask,
-        FromReader_5 as FromReader,
-        tap_12 as tap,
-        tapEither_6 as tapEither,
-        tapIO_7 as tapIO,
-        tapTask_3 as tapTask,
+        FromEither_10 as FromEither,
+        FromIO_10 as FromIO,
+        FromTask_6 as FromTask,
+        FromReader_6 as FromReader,
+        tap_13 as tap,
+        tapEither_7 as tapEither,
+        tapIO_8 as tapIO,
+        tapTask_4 as tapTask,
         tapReader_5 as tapReader,
         tapReaderEither,
         tapTaskEither,
@@ -18040,16 +18223,16 @@ declare namespace readerTaskEither {
         fromOptionK_9 as fromOptionK,
         chainOptionK_8 as chainOptionK,
         chainOptionKW_5 as chainOptionKW,
-        liftNullable_5 as liftNullable,
-        liftOption_5 as liftOption,
-        flatMapNullable_6 as flatMapNullable,
-        flatMapOption_6 as flatMapOption,
-        flatMapEither_5 as flatMapEither,
+        liftNullable_6 as liftNullable,
+        liftOption_6 as liftOption,
+        flatMapNullable_7 as flatMapNullable,
+        flatMapOption_7 as flatMapOption,
+        flatMapEither_6 as flatMapEither,
         flatMapTaskEither,
         flatMapReaderTask,
-        flatMapIO_7 as flatMapIO,
-        flatMapTask_3 as flatMapTask,
-        flatMapReader_4 as flatMapReader,
+        flatMapIO_8 as flatMapIO,
+        flatMapTask_4 as flatMapTask,
+        flatMapReader_5 as flatMapReader,
         flatMapReaderIO_2 as flatMapReaderIO,
         flatMapIOEither_2 as flatMapIOEither,
         flatMapReaderEither,
@@ -18114,7 +18297,7 @@ declare namespace readerTaskEither {
 export { readerTaskEither }
 
 // @public @deprecated
-const readerTaskEither_2: Monad3<URI_22> & Bifunctor3<URI_22> & Alt3<URI_22> & MonadTask3<URI_22> & MonadThrow3<URI_22>;
+const readerTaskEither_2: Monad3<URI_23> & Bifunctor3<URI_23> & Alt3<URI_23> & MonadTask3<URI_23> & MonadThrow3<URI_23>;
 
 // @public @deprecated
 const readerTaskEitherSeq: typeof readerTaskEither_2;
@@ -18139,11 +18322,11 @@ declare namespace readonlyArray {
         difference_3 as difference,
         every_2 as every,
         isEmpty_3 as isEmpty,
-        isNonEmpty_2 as isNonEmpty,
-        prepend_2 as prepend,
-        prependW_2 as prependW,
-        append_2 as append,
-        appendW_2 as appendW,
+        isNonEmpty_5 as isNonEmpty,
+        prepend_4 as prepend,
+        prependW_4 as prependW,
+        append_4 as append,
+        appendW_4 as appendW,
         makeBy_4 as makeBy,
         replicate_4 as replicate,
         fromOption_9 as fromOption,
@@ -18160,10 +18343,10 @@ declare namespace readonlyArray {
         scanLeft_2 as scanLeft,
         scanRight_2 as scanRight,
         size_3 as size,
-        isOutOfBound_2 as isOutOfBound,
-        head_4 as head,
+        isOutOfBound_4 as isOutOfBound,
+        head_5 as head,
         last_5 as last,
-        tail_4 as tail,
+        tail_5 as tail,
         init_4 as init,
         takeLeft_2 as takeLeft,
         takeRight_2 as takeRight,
@@ -18195,12 +18378,14 @@ declare namespace readonlyArray {
         fromOptionK_10 as fromOptionK,
         concatW_4 as concatW,
         concat_4 as concat,
+        _chainRecDepthFirst,
+        _chainRecBreadthFirst,
         of_18 as of,
         zero_6 as zero,
         altW_12 as altW,
         alt_16 as alt,
         ap_22 as ap,
-        flatMap_17 as flatMap,
+        flatMap_20 as flatMap,
         flatten_17 as flatten,
         map_26 as map,
         mapWithIndex_7 as mapWithIndex,
@@ -18228,7 +18413,7 @@ declare namespace readonlyArray {
         wither_3 as wither,
         wilt_3 as wilt,
         unfold_2 as unfold,
-        URI_24 as URI,
+        URI_25 as URI,
         getShow_9 as getShow,
         getSemigroup_18 as getSemigroup,
         getMonoid_13 as getMonoid,
@@ -18268,15 +18453,15 @@ declare namespace readonlyArray {
         ChainRecBreadthFirst_2 as ChainRecBreadthFirst,
         Witherable_3 as Witherable,
         filterE_2 as filterE,
-        FromEither_10 as FromEither,
+        FromEither_11 as FromEither,
         fromEitherK_9 as fromEitherK,
-        unsafeInsertAt_2 as unsafeInsertAt,
-        unsafeUpdateAt_2 as unsafeUpdateAt,
+        unsafeInsertAt_4 as unsafeInsertAt,
+        unsafeUpdateAt_4 as unsafeUpdateAt,
         unsafeDeleteAt_2 as unsafeDeleteAt,
         toArray_3 as toArray,
         fromArray_3 as fromArray,
-        empty_3 as empty,
-        some_5 as some,
+        empty_4 as empty,
+        some_6 as some,
         exists_4 as exists,
         intercalate_6 as intercalate,
         Do_17 as Do,
@@ -18295,7 +18480,7 @@ declare namespace readonlyArray {
 export { readonlyArray }
 
 // @public @deprecated
-const readonlyArray_2: FunctorWithIndex1<URI_24, number> & Monad1<URI_24> & Unfoldable1<URI_24> & Alternative1<URI_24> & Extend1<URI_24> & FilterableWithIndex1<URI_24, number> & FoldableWithIndex1<URI_24, number> & TraversableWithIndex1<URI_24, number> & Witherable1<URI_24>;
+const readonlyArray_2: FunctorWithIndex1<URI_25, number> & Monad1<URI_25> & Unfoldable1<URI_25> & Alternative1<URI_25> & Extend1<URI_25> & FilterableWithIndex1<URI_25, number> & FoldableWithIndex1<URI_25, number> & TraversableWithIndex1<URI_25, number> & Witherable1<URI_25>;
 
 declare namespace readonlyMap {
     export {
@@ -18326,8 +18511,8 @@ declare namespace readonlyMap {
         deleteAt_4 as deleteAt,
         updateAt_6 as updateAt,
         modifyAt_6 as modifyAt,
-        empty_4 as empty,
-        singleton_2 as singleton,
+        empty_5 as empty,
+        singleton_3 as singleton,
         partitionMapWithIndex_5 as partitionMapWithIndex,
         filterMapWithIndex_5 as filterMapWithIndex,
         compact_7 as compact,
@@ -18338,7 +18523,7 @@ declare namespace readonlyMap {
         partition_8 as partition,
         partitionMap_8 as partitionMap,
         separate_7 as separate,
-        URI_25 as URI,
+        URI_26 as URI,
         getUnionSemigroup_6 as getUnionSemigroup,
         getUnionMonoid_4 as getUnionMonoid,
         getIntersectionSemigroup_4 as getIntersectionSemigroup,
@@ -18368,7 +18553,7 @@ declare namespace readonlyMap {
 export { readonlyMap }
 
 // @public @deprecated
-const readonlyMap_2: Filterable2<URI_25>;
+const readonlyMap_2: Filterable2<URI_26>;
 
 // @public (undocumented)
 type ReadonlyNonEmptyArray<A> = ReadonlyArray<A> & {
@@ -18385,6 +18570,15 @@ declare namespace readonlyNonEmptyArray {
         filter_2 as filter,
         cons_2 as cons,
         ReadonlyNonEmptyArray,
+        empty,
+        isNonEmpty_3 as isNonEmpty,
+        isOutOfBound_2 as isOutOfBound,
+        prependW_2 as prependW,
+        prepend_3 as prepend,
+        appendW_2 as appendW,
+        append_2 as append,
+        unsafeInsertAt_2 as unsafeInsertAt,
+        unsafeUpdateAt_2 as unsafeUpdateAt,
         uniq_2 as uniq,
         sortBy_2 as sortBy,
         union_3 as union,
@@ -18512,7 +18706,7 @@ declare namespace readonlyRecord {
         fromFoldable_3 as fromFoldable,
         fromFoldableMap,
         every_3 as every,
-        some_6 as some,
+        some_7 as some,
         elem_7 as elem,
         reduce_12 as reduce,
         foldMap_12 as foldMap,
@@ -18529,11 +18723,11 @@ declare namespace readonlyRecord {
         keys_3 as keys,
         toReadonlyArray_3 as toReadonlyArray,
         upsertAt_3 as upsertAt,
-        has,
+        has_2 as has,
         updateAt_7 as updateAt,
         modifyAt_7 as modifyAt,
-        empty_5 as empty,
-        singleton_3 as singleton,
+        empty_6 as empty,
+        singleton_4 as singleton,
         wither_4 as wither,
         wilt_4 as wilt,
         toEntries,
@@ -18541,13 +18735,31 @@ declare namespace readonlyRecord {
         union_7 as union,
         intersection_5 as intersection,
         difference_5 as difference,
+        _map,
+        _mapWithIndex,
+        _reduce,
+        _foldMap,
+        _reduceRight,
+        _filter,
+        _filterMap,
+        _partition,
+        _partitionMap,
+        _reduceWithIndex,
+        _foldMapWithIndex,
+        _reduceRightWithIndex,
+        _partitionMapWithIndex,
+        _partitionWithIndex,
+        _filterMapWithIndex,
+        _filterWithIndex,
+        _traverse,
+        _sequence,
         filter_11 as filter,
         filterMap_9 as filterMap,
         partition_9 as partition,
         partitionMap_9 as partitionMap,
         compact_8 as compact,
         separate_8 as separate,
-        URI_26 as URI,
+        URI_27 as URI,
         Functor_23 as Functor,
         flap_23 as flap,
         FunctorWithIndex_6 as FunctorWithIndex,
@@ -18575,7 +18787,7 @@ declare namespace readonlyRecord {
 export { readonlyRecord }
 
 // @public @deprecated
-const readonlyRecord_2: FunctorWithIndex1<URI_26, string> & FoldableWithIndex1<URI_26, string> & FilterableWithIndex1<URI_26, string> & TraversableWithIndex1<URI_26, string> & Witherable1<URI_26>;
+const readonlyRecord_2: FunctorWithIndex1<URI_27, string> & FoldableWithIndex1<URI_27, string> & FilterableWithIndex1<URI_27, string> & TraversableWithIndex1<URI_27, string> & Witherable1<URI_27>;
 
 declare namespace readonlySet {
     export {
@@ -18599,18 +18811,18 @@ declare namespace readonlySet {
         getShow_12 as getShow,
         getEq_12 as getEq,
         fromSet,
-        singleton_4 as singleton,
+        singleton_5 as singleton,
         fromReadonlyArray_2 as fromReadonlyArray,
         reduceRight_13 as reduceRight,
         remove,
         toggle,
         compact_9 as compact,
-        empty_6 as empty,
+        empty_7 as empty,
         isEmpty_6 as isEmpty,
         size_6 as size,
-        some_7 as some,
+        some_8 as some,
         toReadonlyArray_4 as toReadonlyArray,
-        URI_27 as URI,
+        URI_28 as URI,
         getUnionSemigroup_8 as getUnionSemigroup,
         getUnionMonoid_6 as getUnionMonoid,
         getIntersectionSemigroup_6 as getIntersectionSemigroup,
@@ -18642,7 +18854,7 @@ declare namespace readonlyTuple {
         reduceRight_14 as reduceRight,
         traverse_9 as traverse,
         sequence_9 as sequence,
-        URI_28 as URI,
+        URI_29 as URI,
         Functor_24 as Functor,
         flap_24 as flap,
         map_30 as map,
@@ -18658,7 +18870,7 @@ declare namespace readonlyTuple {
 export { readonlyTuple }
 
 // @public @deprecated
-const readonlyTuple_2: Semigroupoid2<URI_28> & Bifunctor2<URI_28> & Comonad2<URI_28> & Foldable2<URI_28> & Traversable2<URI_28>;
+const readonlyTuple_2: Semigroupoid2<URI_29> & Bifunctor2<URI_29> & Comonad2<URI_29> & Foldable2<URI_29> & Traversable2<URI_29>;
 
 declare namespace record {
     export {
@@ -18685,14 +18897,14 @@ declare namespace record {
         keys_4 as keys,
         toArray_4 as toArray,
         upsertAt_4 as upsertAt,
-        has_2 as has,
+        has_3 as has,
         updateAt_8 as updateAt,
         modifyAt_8 as modifyAt,
         isSubrecord_2 as isSubrecord,
         lookup_6 as lookup,
         mapWithIndex_10 as mapWithIndex,
         map_31 as map,
-        singleton_5 as singleton,
+        singleton_6 as singleton,
         wither_5 as wither,
         wilt_5 as wilt,
         partitionMapWithIndex_7 as partitionMapWithIndex,
@@ -18700,7 +18912,7 @@ declare namespace record {
         toEntries_2 as toEntries,
         fromEntries_2 as fromEntries,
         every_5 as every,
-        some_8 as some,
+        some_9 as some,
         elem_9 as elem,
         union_9 as union,
         intersection_7 as intersection,
@@ -18711,7 +18923,7 @@ declare namespace record {
         partitionMap_11 as partitionMap,
         compact_10 as compact,
         separate_10 as separate,
-        URI_29 as URI,
+        URI_30 as URI,
         getEq_13 as getEq,
         getMonoid_16 as getMonoid,
         Functor_25 as Functor,
@@ -18734,7 +18946,7 @@ declare namespace record {
         Traversable_10 as Traversable,
         TraversableWithIndex_6 as TraversableWithIndex,
         Witherable_5 as Witherable,
-        empty_7 as empty,
+        empty_8 as empty,
         insertAt_8 as insertAt,
         hasOwnProperty_2 as hasOwnProperty,
         record_2 as record
@@ -18743,10 +18955,13 @@ declare namespace record {
 export { record }
 
 // @public @deprecated
-const record_2: FunctorWithIndex1<URI_29, string> & FoldableWithIndex1<URI_29, string> & FilterableWithIndex1<URI_29, string> & TraversableWithIndex1<URI_29, string> & Witherable1<URI_29>;
+const record_2: FunctorWithIndex1<URI_30, string> & FoldableWithIndex1<URI_30, string> & FilterableWithIndex1<URI_30, string> & TraversableWithIndex1<URI_30, string> & Witherable1<URI_30>;
 
 // @public (undocumented)
 const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => (as: ReadonlyNonEmptyArray<A>) => B;
+
+// @internal (undocumented)
+const _reduce: (O: Ord<string>) => Foldable1<URI_27>['reduce'];
 
 // @public (undocumented)
 const reduce_10: <A, B>(b: B, f: (b: B, a: A) => B) => (fa: ReadonlyArray<A>) => B;
@@ -18850,6 +19065,9 @@ function reduceM<M, F>(M: Monad_6<M>, F: Foldable_6<F>): <B, A>(b: B, f: (b: B, 
 // @public (undocumented)
 const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => (as: ReadonlyNonEmptyArray<A>) => B;
 
+// @internal (undocumented)
+const _reduceRight: (O: Ord<string>) => Foldable1<URI_27>['reduceRight'];
+
 // @public (undocumented)
 const reduceRight_10: <A, B>(b: B, f: (a: A, b: B) => B) => (fa: ReadonlyArray<A>) => B;
 
@@ -18934,6 +19152,9 @@ function reduceRight_9<F>(F: Foldable_6<F>): <A, B>(b: B, f: (a: A, b: B) => B) 
 // @public (undocumented)
 const reduceRightWithIndex: <A, B>(b: B, f: (i: number, a: A, b: B) => B) => (as: ReadonlyNonEmptyArray<A>) => B;
 
+// @internal (undocumented)
+const _reduceRightWithIndex: (O: Ord<string>) => FoldableWithIndex1<URI_27, string>['reduceRightWithIndex'];
+
 // @public
 function reduceRightWithIndex_10(O: Ord<string>): <K extends string, A, B>(b: B, f: (k: K, a: A, b: B) => B) => (fa: Record<K, A>) => B;
 
@@ -18990,6 +19211,9 @@ function reduceRightWithIndex_9<K extends string, A, B>(b: B, f: (k: K, a: A, b:
 
 // @public (undocumented)
 const reduceWithIndex: <A, B>(b: B, f: (i: number, b: B, a: A) => B) => (as: ReadonlyNonEmptyArray<A>) => B;
+
+// @internal (undocumented)
+const _reduceWithIndex: (O: Ord<string>) => FoldableWithIndex1<URI_27, string>['reduceWithIndex'];
 
 // @public
 function reduceWithIndex_10(O: Ord<string>): <K extends string, A, B>(b: B, f: (k: K, b: B, a: A) => B) => (fa: Record<K, A>) => B;
@@ -19141,28 +19365,31 @@ interface Right<A> {
 const right: <E, A>(s: Separated<E, A>) => A;
 
 // @public (undocumented)
-const right_10: <E = never, A = never>(a: A) => TaskThese<E, A>;
+const right_10: <S, R, E = never, A = never>(a: A) => StateReaderTaskEither<S, R, E, A>;
 
 // @public (undocumented)
-function right_11<E = never, A = never>(right: A): These<E, A>;
+const right_11: <E = never, A = never>(a: A) => TaskThese<E, A>;
 
 // @public (undocumented)
-function right_12<F extends URIS3>(F: Pointed3<F>): <A, R, FE, E = never>(a: A) => Kind3<F, R, FE, These<E, A>>;
+function right_12<E = never, A = never>(right: A): These<E, A>;
 
 // @public (undocumented)
-function right_12<F extends URIS3, FE>(F: Pointed3C<F, FE>): <A, R, E = never>(a: A) => Kind3<F, R, FE, These<E, A>>;
+function right_13<F extends URIS3>(F: Pointed3<F>): <A, R, FE, E = never>(a: A) => Kind3<F, R, FE, These<E, A>>;
 
 // @public (undocumented)
-function right_12<F extends URIS2>(F: Pointed2<F>): <A, FE, E = never>(a: A) => Kind2<F, FE, These<E, A>>;
+function right_13<F extends URIS3, FE>(F: Pointed3C<F, FE>): <A, R, E = never>(a: A) => Kind3<F, R, FE, These<E, A>>;
 
 // @public (undocumented)
-function right_12<F extends URIS2, FE>(F: Pointed2C<F, FE>): <A, E = never>(a: A) => Kind2<F, FE, These<E, A>>;
+function right_13<F extends URIS2>(F: Pointed2<F>): <A, FE, E = never>(a: A) => Kind2<F, FE, These<E, A>>;
 
 // @public (undocumented)
-function right_12<F extends URIS>(F: Pointed1<F>): <A, E = never>(a: A) => Kind<F, These<E, A>>;
+function right_13<F extends URIS2, FE>(F: Pointed2C<F, FE>): <A, E = never>(a: A) => Kind2<F, FE, These<E, A>>;
 
 // @public (undocumented)
-function right_12<F>(F: Pointed<F>): <A, E = never>(a: A) => HKT<F, These<E, A>>;
+function right_13<F extends URIS>(F: Pointed1<F>): <A, E = never>(a: A) => Kind<F, These<E, A>>;
+
+// @public (undocumented)
+function right_13<F>(F: Pointed<F>): <A, E = never>(a: A) => HKT<F, These<E, A>>;
 
 // @public
 const right_2: <E = never, A = never>(a: A) => Either<E, A>;
@@ -19192,16 +19419,13 @@ const right_4: <E = never, A = never>(a: A) => IOEither<E, A>;
 const right_5: Choice2<URI_17>['right'];
 
 // @public (undocumented)
-const right_6: <R, E = never, A = never>(a: A) => ReaderEither<R, E, A>;
+const right_7: <R, E = never, A = never>(a: A) => ReaderEither<R, E, A>;
 
 // @public (undocumented)
-const right_7: <R, E = never, A = never>(a: A) => ReaderTaskEither<R, E, A>;
+const right_8: <R, E = never, A = never>(a: A) => ReaderTaskEither<R, E, A>;
 
 // @public (undocumented)
-const right_8: <E = never, A = never>(a: A) => TaskEither<E, A>;
-
-// @public (undocumented)
-const right_9: <S, R, E = never, A = never>(a: A) => StateReaderTaskEither<S, R, E, A>;
+const right_9: <E = never, A = never>(a: A) => TaskEither<E, A>;
 
 // @public (undocumented)
 function rightF<F extends URIS3>(F: Functor3<F>): <R, FE, A, E = never>(fa: Kind3<F, R, FE, A>) => Kind3<F, R, FE, Either<E, A>>;
@@ -19476,10 +19700,10 @@ interface Semigroupoid4<F extends URIS4> {
 }
 
 // @public (undocumented)
-const Semigroupoid_2: Semigroupoid2<URI_28>;
+const Semigroupoid_2: Semigroupoid2<URI_29>;
 
 // @public (undocumented)
-const Semigroupoid_3: Semigroupoid2<URI_38>;
+const Semigroupoid_3: Semigroupoid2<URI_39>;
 
 // @public @deprecated
 const semigroupOrdering: semigroup.Semigroup<Ordering>;
@@ -19532,7 +19756,7 @@ const separate_10: <A, B>(fa: Record<string, Either<A, B>>) => Separated<Record<
 function separate_11<E, A>(EE: Eq<E>, EA: Eq<A>): (fa: Set<Either<E, A>>) => Separated<Set<E>, Set<A>>;
 
 // @public (undocumented)
-const separate_12: Compactable1<URI_33>['separate'];
+const separate_12: Compactable1<URI_34>['separate'];
 
 // @public (undocumented)
 const separate_2: <A, B>(ma: Option_2<Either<A, B>>) => Separated<Option_2<A>, Option_2<B>>;
@@ -19623,6 +19847,9 @@ interface Sequence<T> {
 
 // @public (undocumented)
 const sequence: Traversable1<URI_2>['sequence'];
+
+// @internal (undocumented)
+const _sequence: (O: Ord<string>) => <F>(F: Applicative<F>) => <A>(ta: Readonly<Record<string, HKT<F, A>>>) => HKT<F, Readonly<Record<string, A>>>;
 
 // @public (undocumented)
 interface Sequence1<T extends URIS> {
@@ -19715,7 +19942,7 @@ function sequence_10<F extends URIS>(F: Applicative1<F>): <K extends string, A>(
 function sequence_10<F>(F: Applicative<F>): <K extends string, A>(ta: Record<K, HKT<F, A>>) => HKT<F, Record<K, A>>;
 
 // @public (undocumented)
-const sequence_11: Traversable2<URI_35>['sequence'];
+const sequence_11: Traversable2<URI_36>['sequence'];
 
 // @public
 function sequence_12<T extends URIS, G extends URIS2>(T: Traversable1<T>, G: Traversable2<G>): {
@@ -19743,10 +19970,10 @@ function sequence_12<T extends URIS, G extends URIS>(T: Traversable1<T>, G: Trav
 function sequence_12<T, G>(T: Traversable_12<T>, G: Traversable_12<G>): <F>(F: Applicative<F>) => <A>(tgfa: HKT<T, HKT<G, HKT<F, A>>>) => HKT<F, HKT<T, HKT<G, A>>>;
 
 // @public (undocumented)
-const sequence_13: Traversable1<URI_37>['sequence'];
+const sequence_13: Traversable1<URI_38>['sequence'];
 
 // @public (undocumented)
-const sequence_14: Traversable2<URI_38>['sequence'];
+const sequence_14: Traversable2<URI_39>['sequence'];
 
 // @public (undocumented)
 const sequence_2: Traversable1<URI_3>['sequence'];
@@ -19764,7 +19991,7 @@ const sequence_5: Traversable2<URI_6>['sequence'];
 const sequence_6: Traversable1<URI_11>['sequence'];
 
 // @public (undocumented)
-const sequence_7: Traversable1<URI_24>['sequence'];
+const sequence_7: Traversable1<URI_25>['sequence'];
 
 // @public
 function sequence_8<F extends URIS3>(F: Applicative3<F>): <K extends string, R, E, A>(ta: ReadonlyRecord<K, Kind3<F, R, E, A>>) => Kind3<F, R, E, ReadonlyRecord<K, A>>;
@@ -19785,7 +20012,7 @@ function sequence_8<F extends URIS>(F: Applicative1<F>): <K extends string, A>(t
 function sequence_8<F>(F: Applicative<F>): <K extends string, A>(ta: ReadonlyRecord<K, HKT<F, A>>) => HKT<F, ReadonlyRecord<K, A>>;
 
 // @public (undocumented)
-const sequence_9: Traversable2<URI_28>['sequence'];
+const sequence_9: Traversable2<URI_29>['sequence'];
 
 // @public
 const sequenceArray: <A>(arr: ReadonlyArray<Option_2<A>>) => Option_2<ReadonlyArray<A>>;
@@ -19969,15 +20196,15 @@ declare namespace set {
         reduce_16 as reduce,
         foldMap_16 as foldMap,
         reduceRight_16 as reduceRight,
-        singleton_6 as singleton,
+        singleton_7 as singleton,
         remove_2 as remove,
         toggle_2 as toggle,
         fromArray_5 as fromArray,
         compact_11 as compact,
-        empty_8 as empty,
+        empty_9 as empty,
         isEmpty_8 as isEmpty,
         size_8 as size,
-        some_9 as some,
+        some_10 as some,
         every_6 as every,
         isSubset_2 as isSubset,
         elem_10 as elem,
@@ -20032,19 +20259,19 @@ const sign: (n: number) => Ordering;
 const singleton: <K, A>(k: K, a: A) => Map<K, A>;
 
 // @public
-const singleton_2: <K, A>(k: K, a: A) => ReadonlyMap<K, A>;
+const singleton_3: <K, A>(k: K, a: A) => ReadonlyMap<K, A>;
 
 // @public
-const singleton_3: <A>(k: string, a: A) => Readonly<Record<string, A>>;
+const singleton_4: <A>(k: string, a: A) => Readonly<Record<string, A>>;
 
 // @public
-const singleton_4: <A>(a: A) => ReadonlySet<A>;
+const singleton_5: <A>(a: A) => ReadonlySet<A>;
 
 // @public
-const singleton_5: <A>(k: string, a: A) => Record<string, A>;
+const singleton_6: <A>(k: string, a: A) => Record<string, A>;
 
 // @public
-const singleton_6: <A>(a: A) => Set<A>;
+const singleton_7: <A>(a: A) => Set<A>;
 
 // @public
 const size: <A>(as: A[]) => number;
@@ -20109,7 +20336,10 @@ interface Some<A> {
 const some: <A>(a: A) => Option_2<A>;
 
 // @public (undocumented)
-const some_10: <A>(a: A) => TaskOption<A>;
+const some_10: <A>(predicate: Predicate<A>) => (set: Set<A>) => boolean;
+
+// @public (undocumented)
+const some_11: <A>(a: A) => TaskOption<A>;
 
 // @public
 const some_2: <A>(predicate: Predicate<A>) => (as: A[]) => as is nonEmptyArray.NonEmptyArray<A>;
@@ -20139,19 +20369,16 @@ function some_4<F extends URIS>(F: Pointed1<F>): <A>(a: A) => Kind<F, Option_2<A
 function some_4<F>(F: Pointed<F>): <A>(a: A) => HKT<F, Option_2<A>>;
 
 // @public
-const some_5: <A>(predicate: Predicate<A>) => (as: readonly A[]) => as is readonlyNonEmptyArray.ReadonlyNonEmptyArray<A>;
+const some_6: <A>(predicate: Predicate<A>) => (as: readonly A[]) => as is readonlyNonEmptyArray.ReadonlyNonEmptyArray<A>;
 
 // @public
-function some_6<A>(predicate: (a: A) => boolean): (r: ReadonlyRecord<string, A>) => boolean;
+function some_7<A>(predicate: (a: A) => boolean): (r: ReadonlyRecord<string, A>) => boolean;
 
 // @public (undocumented)
-const some_7: <A>(predicate: Predicate<A>) => (set: ReadonlySet<A>) => boolean;
+const some_8: <A>(predicate: Predicate<A>) => (set: ReadonlySet<A>) => boolean;
 
 // @public
-const some_8: <A>(predicate: (a: A) => boolean) => (r: Record<string, A>) => boolean;
-
-// @public (undocumented)
-const some_9: <A>(predicate: Predicate<A>) => (set: Set<A>) => boolean;
+const some_9: <A>(predicate: (a: A) => boolean) => (r: Record<string, A>) => boolean;
 
 // @public (undocumented)
 const sort: <B>(O: Ord<B>) => <A extends B>(as: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArray<A>;
@@ -20290,9 +20517,9 @@ declare namespace state {
         map_33 as map,
         ap_23 as ap,
         of_19 as of,
-        flatMap_18 as flatMap,
+        flatMap_21 as flatMap,
         flatten_18 as flatten,
-        URI_30 as URI,
+        URI_31 as URI,
         Functor_26 as Functor,
         flap_26 as flap,
         Pointed_19 as Pointed,
@@ -20304,7 +20531,7 @@ declare namespace state {
         chainRec_14 as chainRec,
         ChainRec_15 as ChainRec,
         Monad_19 as Monad,
-        tap_13 as tap,
+        tap_14 as tap,
         FromState_2 as FromState,
         evaluate,
         execute,
@@ -20328,7 +20555,7 @@ declare namespace state {
 export { state }
 
 // @public @deprecated
-const state_2: Monad2<URI_30>;
+const state_2: Monad2<URI_31>;
 
 // @public @deprecated (undocumented)
 interface StateM<M> {
@@ -20514,8 +20741,8 @@ declare namespace stateReaderTaskEither {
         leftIO_4 as leftIO,
         run_3 as run,
         StateReaderTaskEither,
-        left_9 as left,
-        right_9 as right,
+        left_10 as left,
+        right_10 as right,
         rightState,
         leftState,
         fromEither_11 as fromEither,
@@ -20541,14 +20768,14 @@ declare namespace stateReaderTaskEither {
         ap_24 as ap,
         apW_9 as apW,
         of_20 as of,
-        flatMap_19 as flatMap,
+        flatMap_22 as flatMap,
         flatMapTaskEither_2 as flatMapTaskEither,
-        flatMapIO_8 as flatMapIO,
-        flatMapTask_4 as flatMapTask,
-        flatMapReader_5 as flatMapReader,
+        flatMapIO_9 as flatMapIO,
+        flatMapTask_5 as flatMapTask,
+        flatMapReader_6 as flatMapReader,
         flatMapIOEither_3 as flatMapIOEither,
-        flatMapEither_6 as flatMapEither,
-        flatMapOption_7 as flatMapOption,
+        flatMapEither_7 as flatMapEither,
+        flatMapOption_8 as flatMapOption,
         flatMapReaderTaskEither,
         flatMapState,
         flattenW_9 as flattenW,
@@ -20556,10 +20783,10 @@ declare namespace stateReaderTaskEither {
         altW_13 as altW,
         alt_17 as alt,
         throwError_8 as throwError,
-        URI_31 as URI,
+        URI_32 as URI,
         Functor_27 as Functor,
-        as_12 as as,
-        asUnit_12 as asUnit,
+        as_13 as as,
+        asUnit_13 as asUnit,
         flap_27 as flap,
         Pointed_20 as Pointed,
         Apply_15 as Apply,
@@ -20582,14 +20809,14 @@ declare namespace stateReaderTaskEither {
         MonadIO_10 as MonadIO,
         MonadTask_6 as MonadTask,
         MonadThrow_9 as MonadThrow,
-        FromEither_11 as FromEither,
-        FromIO_10 as FromIO,
-        FromTask_6 as FromTask,
-        FromReader_6 as FromReader,
-        tap_14 as tap,
-        tapEither_7 as tapEither,
-        tapIO_8 as tapIO,
-        tapTask_4 as tapTask,
+        FromEither_12 as FromEither,
+        FromIO_11 as FromIO,
+        FromTask_7 as FromTask,
+        FromReader_7 as FromReader,
+        tap_15 as tap,
+        tapEither_8 as tapEither,
+        tapIO_9 as tapIO,
+        tapTask_5 as tapTask,
         tapReader_6 as tapReader,
         Bifunctor_10 as Bifunctor,
         Alt_14 as Alt,
@@ -20649,7 +20876,7 @@ declare namespace stateReaderTaskEither {
 export { stateReaderTaskEither }
 
 // @public @deprecated
-const stateReaderTaskEither_2: Monad4<URI_31> & Bifunctor4<URI_31> & Alt4<URI_31> & MonadTask4<URI_31> & MonadThrow4<URI_31>;
+const stateReaderTaskEither_2: Monad4<URI_32> & Bifunctor4<URI_32> & Alt4<URI_32> & MonadTask4<URI_32> & MonadThrow4<URI_32>;
 
 // @public @deprecated
 const stateReaderTaskEitherSeq: typeof stateReaderTaskEither_2;
@@ -20666,6 +20893,7 @@ declare namespace stateT {
         map_35 as map,
         ap_25 as ap,
         chain_27 as chain,
+        flatMap_23 as flatMap,
         fromState_3 as fromState,
         fromF_2 as fromF,
         evaluate_3 as evaluate,
@@ -20722,7 +20950,7 @@ declare namespace store {
         extract_5 as extract,
         duplicate_9 as duplicate,
         map_36 as map,
-        URI_32 as URI,
+        URI_33 as URI,
         Functor_28 as Functor,
         flap_28 as flap,
         Comonad_6 as Comonad,
@@ -20732,7 +20960,7 @@ declare namespace store {
 export { store }
 
 // @public @deprecated
-const store_2: Comonad2<URI_32>;
+const store_2: Comonad2<URI_33>;
 
 // @public @deprecated
 const strictEqual: <A>(a: A, b: A) => boolean;
@@ -20741,7 +20969,7 @@ declare namespace string {
     export {
         Eq_6 as Eq,
         Semigroup_3 as Semigroup,
-        empty_9 as empty,
+        empty_10 as empty,
         Monoid_3 as Monoid,
         Ord_5 as Ord,
         Show_4 as Show,
@@ -20917,7 +21145,7 @@ const tail_2: <A>(as: NonEmptyArray<A>) => A[];
 const tail_3: <A>(as: A[]) => Option_2<A[]>;
 
 // @public
-const tail_4: <A>(as: readonly A[]) => Option_2<readonly A[]>;
+const tail_5: <A>(as: readonly A[]) => Option_2<readonly A[]>;
 
 // @public (undocumented)
 const tailRec: <A, B>(startWith: A, f: (a: A) => either.Either<A, B>) => B;
@@ -20958,94 +21186,109 @@ const takeRight: (n: number) => <A>(as: A[]) => A[];
 // @public
 const takeRight_2: (n: number) => <A>(as: readonly A[]) => readonly A[];
 
-// @public
-const tap: {
-    <A, _>(self: Option_2<A>, f: (a: A) => Option_2<_>): Option_2<A>;
-    <A, _>(f: (a: A) => Option_2<_>): (self: Option_2<A>) => Option_2<A>;
-};
+// @internal (undocumented)
+function tap<M extends URIS4>(M: Chain4<M>): <S, R1, E1, A, R2, E2, _>(first: Kind4<M, S, R1, E1, A>, f: (a: A) => Kind4<M, S, R2, E2, _>) => Kind4<M, S, R1 & R2, E1 | E2, A>;
+
+// @internal (undocumented)
+function tap<M extends URIS3>(M: Chain3<M>): <R1, E1, A, R2, E2, _>(first: Kind3<M, R1, E1, A>, f: (a: A) => Kind3<M, R2, E2, _>) => Kind3<M, R1 & R2, E1 | E2, A>;
+
+// @internal (undocumented)
+function tap<M extends URIS2>(M: Chain2<M>): <E1, A, E2, _>(first: Kind2<M, E1, A>, f: (a: A) => Kind2<M, E2, _>) => Kind2<M, E1 | E2, A>;
+
+// @internal (undocumented)
+function tap<M extends URIS>(M: Chain1<M>): <A, _>(first: Kind<M, A>, f: (a: A) => Kind<M, _>) => Kind<M, A>;
+
+// @internal (undocumented)
+function tap<M>(M: Chain_5<M>): <A, _>(first: HKT<M, A>, f: (a: A) => HKT<M, _>) => HKT<M, A>;
 
 // @public
 const tap_10: {
+    <R1, A, R2, _>(self: ReaderTask<R1, A>, f: (a: A) => ReaderTask<R2, _>): ReaderTask<R1 & R2, A>;
+    <A, R2, _>(f: (a: A) => ReaderTask<R2, _>): <R1>(self: ReaderTask<R1, A>) => ReaderTask<R2 & R1, A>;
+};
+
+// @public
+const tap_11: {
     <A, _>(self: Task<A>, f: (a: A) => Task<_>): Task<A>;
     <A, _>(f: (a: A) => Task<_>): (self: Task<A>) => Task<A>;
 };
 
 // @public
-const tap_11: {
+const tap_12: {
     <E1, A, E2, _>(self: TaskEither<E1, A>, f: (a: A) => TaskEither<E2, _>): TaskEither<E1 | E2, A>;
     <A, E2, _>(f: (a: A) => TaskEither<E2, _>): <E1>(self: TaskEither<E1, A>) => TaskEither<E2 | E1, A>;
 };
 
 // @public
-const tap_12: {
+const tap_13: {
     <R1, E1, A, R2, E2, _>(self: ReaderTaskEither<R1, E1, A>, f: (a: A) => ReaderTaskEither<R2, E2, _>): ReaderTaskEither<R1 & R2, E1 | E2, A>;
     <A, R2, E2, _>(f: (a: A) => ReaderTaskEither<R2, E2, _>): <R1, E1>(self: ReaderTaskEither<R1, E1, A>) => ReaderTaskEither<R1 & R2, E2 | E1, A>;
 };
 
 // @public
-const tap_13: {
+const tap_14: {
     <S, A, _>(self: State<S, A>, f: (a: A) => State<S, _>): State<S, A>;
     <A, S, _>(f: (a: A) => State<S, _>): (self: State<S, A>) => State<S, A>;
 };
 
 // @public
-const tap_14: {
+const tap_15: {
     <S, R1, E1, A, R2, E2, _>(self: StateReaderTaskEither<S, R1, E1, A>, f: (a: A) => StateReaderTaskEither<S, R2, E2, _>): StateReaderTaskEither<S, R1 & R2, E1 | E2, A>;
     <A, S, R2, E2, _>(f: (a: A) => StateReaderTaskEither<S, R2, E2, _>): <R1, E1>(self: StateReaderTaskEither<S, R1, E1, A>) => StateReaderTaskEither<S, R1 & R2, E2 | E1, A>;
 };
 
 // @public
-const tap_15: {
+const tap_16: {
     <A, _>(self: TaskOption<A>, f: (a: A) => TaskOption<_>): TaskOption<A>;
     <A, _>(f: (a: A) => TaskOption<_>): (self: TaskOption<A>) => TaskOption<A>;
 };
 
 // @public
 const tap_2: {
+    <A, _>(self: Option_2<A>, f: (a: A) => Option_2<_>): Option_2<A>;
+    <A, _>(f: (a: A) => Option_2<_>): (self: Option_2<A>) => Option_2<A>;
+};
+
+// @public
+const tap_3: {
     <E1, A, E2, _>(self: Either<E1, A>, f: (a: A) => Either<E2, _>): Either<E1 | E2, A>;
     <A, E2, _>(f: (a: A) => Either<E2, _>): <E1>(self: Either<E1, A>) => Either<E2 | E1, A>;
 };
 
 // @public
-const tap_3: {
+const tap_4: {
     <A, _>(self: IO<A>, f: (a: A) => IO<_>): IO<A>;
     <A, _>(f: (a: A) => IO<_>): (self: IO<A>) => IO<A>;
 };
 
 // @public
-const tap_4: {
+const tap_5: {
     <E1, A, E2, _>(self: IOEither<E1, A>, f: (a: A) => IOEither<E2, _>): IOEither<E1 | E2, A>;
     <A, E2, _>(f: (a: A) => IOEither<E2, _>): <E1>(self: IOEither<E1, A>) => IOEither<E2 | E1, A>;
 };
 
 // @public
-const tap_5: {
+const tap_6: {
     <A, _>(self: IOOption<A>, f: (a: A) => IOOption<_>): IOOption<A>;
     <A, _>(f: (a: A) => IOOption<_>): (self: IOOption<A>) => IOOption<A>;
 };
 
 // @public
-const tap_6: {
+const tap_7: {
     <R1, A, R2, _>(self: Reader<R1, A>, f: (a: A) => Reader<R2, _>): Reader<R1 & R2, A>;
     <A, R2, _>(f: (a: A) => Reader<R2, _>): <R1>(self: Reader<R1, A>) => Reader<R2 & R1, A>;
 };
 
 // @public
-const tap_7: {
+const tap_8: {
     <R1, E1, A, R2, E2, _>(self: ReaderEither<R1, E1, A>, f: (a: A) => ReaderEither<R2, E2, _>): ReaderEither<R1 & R2, E1 | E2, A>;
     <A, R2, E2, _>(f: (a: A) => ReaderEither<R2, E2, _>): <R1, E1>(self: ReaderEither<R1, E1, A>) => ReaderEither<R1 & R2, E2 | E1, A>;
 };
 
 // @public
-const tap_8: {
+const tap_9: {
     <R1, A, R2, _>(self: ReaderIO<R1, A>, f: (a: A) => ReaderIO<R2, _>): ReaderIO<R1 & R2, A>;
     <A, R2, _>(f: (a: A) => ReaderIO<R2, _>): <R1>(self: ReaderIO<R1, A>) => ReaderIO<R2 & R1, A>;
-};
-
-// @public
-const tap_9: {
-    <R1, A, R2, _>(self: ReaderTask<R1, A>, f: (a: A) => ReaderTask<R2, _>): ReaderTask<R1 & R2, A>;
-    <A, R2, _>(f: (a: A) => ReaderTask<R2, _>): <R1>(self: ReaderTask<R1, A>) => ReaderTask<R2 & R1, A>;
 };
 
 // @public
@@ -21054,125 +21297,191 @@ const tapEither: {
     <A, E, _>(self: Option_2<A>, f: (a: A) => Either<E, _>): Option_2<A>;
 };
 
+// @internal (undocumented)
+function tapEither_2<M extends URIS4>(F: FromEither4<M>, M: Chain4<M>): <A, E, B, S, R>(self: Kind4<M, S, R, E, A>, f: (a: A) => Either<E, B>) => Kind4<M, S, R, E, A>;
+
+// @internal (undocumented)
+function tapEither_2<M extends URIS3>(F: FromEither3<M>, M: Chain3<M>): <A, E, B, R>(self: Kind3<M, R, E, A>, f: (a: A) => Either<E, B>) => Kind3<M, R, E, A>;
+
+// @internal (undocumented)
+function tapEither_2<M extends URIS3, E>(F: FromEither3C<M, E>, M: Chain3C<M, E>): <A, B, R>(self: Kind3<M, R, E, A>, f: (a: A) => Either<E, B>) => Kind3<M, R, E, A>;
+
+// @internal (undocumented)
+function tapEither_2<M extends URIS2>(F: FromEither2<M>, M: Chain2<M>): <A, E, B>(self: Kind2<M, E, A>, f: (a: A) => Either<E, B>) => Kind2<M, E, A>;
+
+// @internal (undocumented)
+function tapEither_2<M extends URIS2, E>(F: FromEither2C<M, E>, M: Chain2C<M, E>): <A, B>(self: Kind2<M, E, A>, f: (a: A) => Either<E, B>) => Kind2<M, E, A>;
+
+// @internal (undocumented)
+function tapEither_2<M extends URIS>(F: FromEither1<M>, M: Chain1<M>): <E, A, B>(self: Kind<M, A>, f: (a: A) => Either<E, B>) => Kind<M, A>;
+
+// @internal (undocumented)
+function tapEither_2<M>(F: FromEither_4<M>, M: Chain_5<M>): <A, E, B>(self: HKT2<M, E, A>, f: (a: A) => Either<E, B>) => HKT2<M, E, A>;
+
 // @public
-const tapEither_2: {
+const tapEither_3: {
     <A, E2, _>(f: (a: A) => Either<E2, _>): <E1>(self: IOEither<E1, A>) => IOEither<E2 | E1, A>;
     <E1, A, E2, _>(self: IOEither<E1, A>, f: (a: A) => Either<E2, _>): IOEither<E1 | E2, A>;
 };
 
 // @public
-const tapEither_3: {
+const tapEither_4: {
     <A, E, _>(f: (a: A) => Either<E, _>): (self: IOOption<A>) => IOOption<A>;
     <A, E, _>(self: IOOption<A>, f: (a: A) => Either<E, _>): IOOption<A>;
 };
 
 // @public
-const tapEither_4: {
+const tapEither_5: {
     <A, E2, _>(f: (a: A) => Either<E2, _>): <R1, E1>(self: ReaderEither<R1, E1, A>) => ReaderEither<R1, E1 | E2, A>;
     <R1, E1, A, E2, _>(self: ReaderEither<R1, E1, A>, f: (a: A) => Either<E2, _>): ReaderEither<R1, E1 | E2, A>;
 };
 
 // @public
-const tapEither_5: {
+const tapEither_6: {
     <A, E2, _>(f: (a: A) => Either<E2, _>): <E1>(self: TaskEither<E1, A>) => TaskEither<E2 | E1, A>;
     <E1, A, E2, _>(self: TaskEither<E1, A>, f: (a: A) => Either<E2, _>): TaskEither<E1 | E2, A>;
 };
 
 // @public
-const tapEither_6: {
+const tapEither_7: {
     <A, E2, _>(f: (a: A) => Either<E2, _>): <R, E1>(self: ReaderTaskEither<R, E1, A>) => ReaderTaskEither<R, E1 | E2, A>;
     <R, E1, A, E2, _>(self: ReaderTaskEither<R, E1, A>, f: (a: A) => Either<E2, _>): ReaderTaskEither<R, E1 | E2, A>;
 };
 
 // @public
-const tapEither_7: {
+const tapEither_8: {
     <A, E2, _>(f: (a: A) => Either<E2, _>): <S, R1, E1>(self: StateReaderTaskEither<S, R1, E1, A>) => StateReaderTaskEither<S, R1, E2 | E1, A>;
     <S, R1, E1, A, E2, _>(self: StateReaderTaskEither<S, R1, E1, A>, f: (a: A) => Either<E2, _>): StateReaderTaskEither<S, R1, E1 | E2, A>;
 };
 
 // @public
-const tapEither_8: {
+const tapEither_9: {
     <A, E, _>(f: (a: A) => Either<E, _>): (self: TaskOption<A>) => TaskOption<A>;
     <A, E, _>(self: TaskOption<A>, f: (a: A) => Either<E, _>): TaskOption<A>;
 };
 
+// @internal (undocumented)
+function tapError<M extends URIS2>(M: Monad2<M>): <R, E, A, B>(ma: Kind2<M, R, Either<E, A>>, onLeft: (e: E) => Kind2<M, R, Either<E, B>>) => Kind2<M, R, Either<E, A>>;
+
+// @internal (undocumented)
+function tapError<M extends URIS>(M: Monad1<M>): <E, A, B>(ma: Kind<M, Either<E, A>>, onLeft: (e: E) => Kind<M, Either<E, B>>) => Kind<M, Either<E, A>>;
+
+// @internal (undocumented)
+function tapError<M>(M: Monad_6<M>): <E, A, B>(ma: HKT<M, Either<E, A>>, onLeft: (e: E) => HKT<M, Either<E, B>>) => HKT<M, Either<E, A>>;
+
 // @public
-const tapError: {
+const tapError_2: {
     <E1, E2, _>(onLeft: (e: E1) => IOEither<E2, _>): <A>(self: IOEither<E1, A>) => IOEither<E1 | E2, A>;
     <E1, A, E2, _>(self: IOEither<E1, A>, onLeft: (e: E1) => IOEither<E2, _>): IOEither<E1 | E2, A>;
 };
 
 // @public
-const tapError_2: {
+const tapError_3: {
     <E1, R2, E2, _>(onLeft: (e: E1) => ReaderEither<R2, E2, _>): <R1, A>(self: ReaderEither<R1, E1, A>) => ReaderEither<R1 & R2, E1 | E2, A>;
     <R1, E1, A, R2, E2, _>(self: ReaderEither<R1, E1, A>, onLeft: (e: E1) => ReaderEither<R2, E2, _>): ReaderEither<R1 & R2, E1 | E2, A>;
 };
 
 // @public
-const tapError_3: {
+const tapError_4: {
     <E1, R2, E2, _>(onLeft: (e: E1) => ReaderTaskEither<R2, E2, _>): <R1, A>(self: ReaderTaskEither<R1, E1, A>) => ReaderTaskEither<R1 & R2, E1 | E2, A>;
     <R1, E1, A, R2, E2, _>(self: ReaderTaskEither<R1, E1, A>, onLeft: (e: E1) => ReaderTaskEither<R2, E2, _>): ReaderTaskEither<R1 & R2, E1 | E2, A>;
 };
 
 // @public
-const tapError_4: {
+const tapError_5: {
     <E1, E2, _>(onLeft: (e: E1) => TaskEither<E2, _>): <A>(self: TaskEither<E1, A>) => TaskEither<E1 | E2, A>;
     <E1, A, E2, _>(self: TaskEither<E1, A>, onLeft: (e: E1) => TaskEither<E2, _>): TaskEither<E1 | E2, A>;
 };
 
+// @internal (undocumented)
+function tapIO<M extends URIS4>(F: FromIO4<M>, M: Chain4<M>): <A, B, S, R, E>(self: Kind4<M, S, R, E, A>, f: (a: A) => IO<B>) => Kind4<M, S, R, E, A>;
+
+// @internal (undocumented)
+function tapIO<M extends URIS3>(F: FromIO3<M>, M: Chain3<M>): <A, B, R, E>(self: Kind3<M, R, E, A>, f: (a: A) => IO<B>) => Kind3<M, R, E, A>;
+
+// @internal (undocumented)
+function tapIO<M extends URIS3, E>(F: FromIO3C<M, E>, M: Chain3C<M, E>): <A, B, R, E>(self: Kind3<M, R, E, A>, f: (a: A) => IO<B>) => Kind3<M, R, E, A>;
+
+// @internal (undocumented)
+function tapIO<M extends URIS2>(F: FromIO2<M>, M: Chain2<M>): <A, B, E>(self: Kind2<M, E, A>, f: (a: A) => IO<B>) => Kind2<M, E, A>;
+
+// @internal (undocumented)
+function tapIO<M extends URIS2, E>(F: FromIO2C<M, E>, M: Chain2C<M, E>): <A, B, E>(self: Kind2<M, E, A>, f: (a: A) => IO<B>) => Kind2<M, E, A>;
+
+// @internal (undocumented)
+function tapIO<M extends URIS>(F: FromIO1<M>, M: Chain1<M>): <A, B>(self: Kind<M, A>, f: (a: A) => IO<B>) => Kind<M, A>;
+
+// @internal (undocumented)
+function tapIO<M>(F: FromIO<M>, M: Chain_5<M>): <A, B>(self: HKT<M, A>, f: (a: A) => IO<B>) => HKT<M, A>;
+
 // @public
-const tapIO: {
+const tapIO_10: {
+    <A, _>(f: (a: A) => IO<_>): (self: TaskOption<A>) => TaskOption<A>;
+    <A, _>(self: TaskOption<A>, f: (a: A) => IO<_>): TaskOption<A>;
+};
+
+// @public
+const tapIO_2: {
     <A, _>(f: (a: A) => IO<_>): <E>(self: IOEither<E, A>) => IOEither<E, A>;
     <E, A, _>(self: IOEither<E, A>, f: (a: A) => IO<_>): IOEither<E, A>;
 };
 
 // @public
-const tapIO_2: {
+const tapIO_3: {
     <A, _>(f: (a: A) => IO<_>): (self: IOOption<A>) => IOOption<A>;
     <A, _>(self: IOOption<A>, f: (a: A) => IO<_>): IOOption<A>;
 };
 
 // @public
-const tapIO_3: {
+const tapIO_4: {
     <A, _>(f: (a: A) => IO<_>): <R>(self: ReaderIO<R, A>) => ReaderIO<R, A>;
     <R, A, _>(self: ReaderIO<R, A>, f: (a: A) => IO<_>): ReaderIO<R, A>;
 };
 
 // @public
-const tapIO_4: {
+const tapIO_5: {
     <A, _>(f: (a: A) => IO<_>): <R>(self: ReaderTask<R, A>) => ReaderTask<R, A>;
     <R, A, _>(self: ReaderTask<R, A>, f: (a: A) => IO<_>): ReaderTask<R, A>;
 };
 
 // @public
-const tapIO_5: {
+const tapIO_6: {
     <A, _>(f: (a: A) => IO<_>): (self: Task<A>) => Task<A>;
     <A, _>(self: Task<A>, f: (a: A) => IO<_>): Task<A>;
 };
 
 // @public
-const tapIO_6: {
+const tapIO_7: {
     <A, _>(f: (a: A) => IO<_>): <E>(self: TaskEither<E, A>) => TaskEither<E, A>;
     <E, A, _>(self: TaskEither<E, A>, f: (a: A) => IO<_>): TaskEither<E, A>;
 };
 
 // @public
-const tapIO_7: {
+const tapIO_8: {
     <A, _>(f: (a: A) => IO<_>): <R, E>(self: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, A>;
     <R, E, A, _>(self: ReaderTaskEither<R, E, A>, f: (a: A) => IO<_>): ReaderTaskEither<R, E, A>;
 };
 
 // @public
-const tapIO_8: {
+const tapIO_9: {
     <A, _>(f: (a: A) => IO<_>): <S, R, E>(self: StateReaderTaskEither<S, R, E, A>) => StateReaderTaskEither<S, R, E, A>;
     <S, R, E, A, _>(self: StateReaderTaskEither<S, R, E, A>, f: (a: A) => IO<_>): StateReaderTaskEither<S, R, E, A>;
 };
 
-// @public
-const tapIO_9: {
-    <A, _>(f: (a: A) => IO<_>): (self: TaskOption<A>) => TaskOption<A>;
-    <A, _>(self: TaskOption<A>, f: (a: A) => IO<_>): TaskOption<A>;
-};
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "tapReader" because one of its declarations is marked as @internal
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "tapReader" because one of its declarations is marked as @internal
+//
+// @internal (undocumented)
+function tapReader<M extends URIS4>(F: FromReader4<M>, M: Chain4<M>): <A, S, R, E, B>(self: Kind4<M, S, R, E, A>, f: (a: A) => Reader<R, B>) => Kind4<M, S, R, E, A>;
+
+// @internal (undocumented)
+function tapReader<M extends URIS3>(F: FromReader3<M>, M: Chain3<M>): <A, R, E, B>(self: Kind3<M, R, E, A>, f: (a: A) => Reader<R, B>) => Kind3<M, R, E, A>;
+
+// @internal (undocumented)
+function tapReader<M extends URIS3, E>(F: FromReader3C<M, E>, M: Chain3C<M, E>): <A, R, E, B>(self: Kind3<M, R, E, A>, f: (a: A) => Reader<R, B>) => Kind3<M, R, E, A>;
+
+// @internal (undocumented)
+function tapReader<M extends URIS2>(F: FromReader2<M>, M: Chain2<M>): <A, R, E, B>(self: Kind2<M, E, A>, f: (a: A) => Reader<R, B>) => Kind2<M, E, A>;
 
 // @public (undocumented)
 function tapReader<M extends URIS2>(F: FromReader<M>, M: Chain_5<M>): <A, R, B>(self: HKT2<M, R, A>, f: (a: A) => Reader<R, B>) => HKT2<M, R, A>;
@@ -21231,32 +21540,53 @@ const tapReaderTask: {
     <R1, E, A, R2, _>(self: ReaderTaskEither<R1, E, A>, f: (a: A) => ReaderTask<R2, _>): ReaderTaskEither<R1 & R2, E, A>;
 };
 
+// @internal (undocumented)
+function tapTask<M extends URIS4>(F: FromTask4<M>, M: Chain4<M>): <S, R, E, A, B>(self: Kind4<M, S, R, E, A>, f: (a: A) => Task<B>) => Kind4<M, S, R, E, A>;
+
+// @internal (undocumented)
+function tapTask<M extends URIS3>(F: FromTask3<M>, M: Chain3<M>): <R, E, A, B>(self: Kind3<M, R, E, A>, f: (a: A) => Task<B>) => Kind3<M, R, E, A>;
+
+// @internal (undocumented)
+function tapTask<M extends URIS3, E>(F: FromTask3C<M, E>, M: Chain3C<M, E>): <R, A, B>(self: Kind3<M, R, E, A>, f: (a: A) => Task<B>) => Kind3<M, R, E, A>;
+
+// @internal (undocumented)
+function tapTask<M extends URIS2>(F: FromTask2<M>, M: Chain2<M>): <E, A, B>(self: Kind2<M, E, A>, f: (a: A) => Task<B>) => Kind2<M, E, A>;
+
+// @internal (undocumented)
+function tapTask<M extends URIS2, E>(F: FromTask2C<M, E>, M: Chain2C<M, E>): <A, B>(self: Kind2<M, E, A>, f: (a: A) => Task<B>) => Kind2<M, E, A>;
+
+// @internal (undocumented)
+function tapTask<M extends URIS>(F: FromTask1<M>, M: Chain1<M>): <A, B>(self: Kind<M, A>, f: (a: A) => Task<B>) => Kind<M, A>;
+
+// @internal (undocumented)
+function tapTask<M>(F: FromTask<M>, M: Chain_5<M>): <A, B>(self: HKT<M, A>, f: (a: A) => Task<B>) => HKT<M, A>;
+
 // @public
-const tapTask: {
+const tapTask_2: {
     <A, _>(f: (a: A) => Task<_>): <R>(self: ReaderTask<R, A>) => ReaderTask<R, A>;
     <R, A, _>(self: ReaderTask<R, A>, f: (a: A) => Task<_>): ReaderTask<R, A>;
 };
 
 // @public
-const tapTask_2: {
+const tapTask_3: {
     <A, _>(f: (a: A) => Task<_>): <E>(self: TaskEither<E, A>) => TaskEither<E, A>;
     <E, A, _>(self: TaskEither<E, A>, f: (a: A) => Task<_>): TaskEither<E, A>;
 };
 
 // @public
-const tapTask_3: {
+const tapTask_4: {
     <A, _>(f: (a: A) => Task<_>): <R, E>(self: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, A>;
     <R, E, A, _>(self: ReaderTaskEither<R, E, A>, f: (a: A) => Task<_>): ReaderTaskEither<R, E, A>;
 };
 
 // @public
-const tapTask_4: {
+const tapTask_5: {
     <A, _>(f: (a: A) => Task<_>): <S, R, E>(self: StateReaderTaskEither<S, R, E, A>) => StateReaderTaskEither<S, R, E, A>;
     <S, R, E, A, _>(self: StateReaderTaskEither<S, R, E, A>, f: (a: A) => Task<_>): StateReaderTaskEither<S, R, E, A>;
 };
 
 // @public
-const tapTask_5: {
+const tapTask_6: {
     <A, _>(f: (a: A) => Task<_>): (self: TaskOption<A>) => TaskOption<A>;
     <A, _>(self: TaskOption<A>, f: (a: A) => Task<_>): TaskOption<A>;
 };
@@ -21282,12 +21612,12 @@ declare namespace task {
         map_23 as map,
         ap_19 as ap,
         of_15 as of,
-        flatMap_14 as flatMap,
+        flatMap_17 as flatMap,
         flatten_14 as flatten,
-        URI_21 as URI,
+        URI_22 as URI,
         Functor_18 as Functor,
-        as_9 as as,
-        asUnit_9 as asUnit,
+        as_10 as as,
+        asUnit_10 as asUnit,
         flap_18 as flap,
         Pointed_15 as Pointed,
         ApplyPar_3 as ApplyPar,
@@ -21303,14 +21633,14 @@ declare namespace task {
         MonadIO_7 as MonadIO,
         fromTask_3 as fromTask,
         MonadTask_3 as MonadTask,
-        FromIO_7 as FromIO,
-        flatMapIO_5 as flatMapIO,
-        tap_10 as tap,
-        tapIO_5 as tapIO,
+        FromIO_8 as FromIO,
+        flatMapIO_6 as flatMapIO,
+        tap_11 as tap,
+        tapIO_6 as tapIO,
         fromIOK_6 as fromIOK,
         chainIOK_6 as chainIOK,
         chainFirstIOK_6 as chainFirstIOK,
-        FromTask_3 as FromTask,
+        FromTask_4 as FromTask,
         never,
         Do_13 as Do,
         bindTo_14 as bindTo,
@@ -21340,7 +21670,7 @@ declare namespace task {
 export { task }
 
 // @public @deprecated
-const task_2: Monad1<URI_21> & MonadTask1<URI_21>;
+const task_2: Monad1<URI_22> & MonadTask1<URI_22>;
 
 // @public (undocumented)
 interface TaskEither<E, A> extends Task<Either<E, A>> {
@@ -21354,8 +21684,8 @@ declare namespace taskEither {
         taskify,
         getTaskValidation,
         TaskEither,
-        left_8 as left,
-        right_8 as right,
+        left_9 as left,
+        right_9 as right,
         rightTask_2 as rightTask,
         leftTask_2 as leftTask,
         rightIO_3 as rightIO,
@@ -21381,7 +21711,7 @@ declare namespace taskEither {
         chainNullableK_7 as chainNullableK,
         orElse_7 as orElse,
         orElseW_5 as orElseW,
-        tapError_4 as tapError,
+        tapError_5 as tapError,
         orElseFirstIOK_2 as orElseFirstIOK,
         orElseFirstTaskK,
         orLeft_5 as orLeft,
@@ -21391,24 +21721,24 @@ declare namespace taskEither {
         chainTaskOptionK,
         fromIOEitherK_2 as fromIOEitherK,
         map_24 as map,
-        mapBoth_3 as mapBoth,
+        mapBoth_4 as mapBoth,
         bimap_8 as bimap,
-        mapError_3 as mapError,
+        mapError_4 as mapError,
         mapLeft_8 as mapLeft,
         ap_20 as ap,
         apW_7 as apW,
-        flatMap_15 as flatMap,
+        flatMap_18 as flatMap,
         flattenW_7 as flattenW,
         flatten_15 as flatten,
         alt_14 as alt,
         altW_10 as altW,
         of_16 as of,
         throwError_6 as throwError,
-        URI_23 as URI,
+        URI_24 as URI,
         getCompactable_4 as getCompactable,
         Functor_19 as Functor,
-        as_10 as as,
-        asUnit_10 as asUnit,
+        as_11 as as,
+        asUnit_11 as asUnit,
         flap_19 as flap,
         Pointed_16 as Pointed,
         ApplyPar_4 as ApplyPar,
@@ -21426,26 +21756,26 @@ declare namespace taskEither {
         MonadIO_8 as MonadIO,
         MonadTask_4 as MonadTask,
         MonadThrow_7 as MonadThrow,
-        FromEither_8 as FromEither,
-        FromIO_8 as FromIO,
-        FromTask_4 as FromTask,
-        tap_11 as tap,
-        tapEither_5 as tapEither,
-        tapIO_6 as tapIO,
-        tapTask_2 as tapTask,
+        FromEither_9 as FromEither,
+        FromIO_9 as FromIO,
+        FromTask_5 as FromTask,
+        tap_12 as tap,
+        tapEither_6 as tapEither,
+        tapIO_7 as tapIO,
+        tapTask_3 as tapTask,
         Bifunctor_7 as Bifunctor,
         Alt_11 as Alt,
         fromOption_7 as fromOption,
         fromOptionK_8 as fromOptionK,
         chainOptionK_7 as chainOptionK,
         chainOptionKW_4 as chainOptionKW,
-        liftNullable_4 as liftNullable,
-        liftOption_4 as liftOption,
-        flatMapNullable_5 as flatMapNullable,
-        flatMapOption_5 as flatMapOption,
-        flatMapEither_4 as flatMapEither,
-        flatMapIO_6 as flatMapIO,
-        flatMapTask_2 as flatMapTask,
+        liftNullable_5 as liftNullable,
+        liftOption_5 as liftOption,
+        flatMapNullable_6 as flatMapNullable,
+        flatMapOption_6 as flatMapOption,
+        flatMapEither_5 as flatMapEither,
+        flatMapIO_7 as flatMapIO,
+        flatMapTask_3 as flatMapTask,
         flatMapIOEither,
         flatMapTaskOption,
         chainEitherK_6 as chainEitherK,
@@ -21501,7 +21831,7 @@ declare namespace taskEither {
 export { taskEither }
 
 // @public @deprecated
-const taskEither_2: Monad2<URI_23> & Bifunctor2<URI_23> & Alt2<URI_23> & MonadTask2<URI_23> & MonadThrow2<URI_23>;
+const taskEither_2: Monad2<URI_24> & Bifunctor2<URI_24> & Alt2<URI_24> & MonadTask2<URI_24> & MonadThrow2<URI_24>;
 
 // @public @deprecated
 const taskEitherSeq: typeof taskEither_2;
@@ -21531,7 +21861,7 @@ interface TaskOption<A> extends Task<Option_2<A>> {
 declare namespace taskOption {
     export {
         TaskOption,
-        some_10 as some,
+        some_11 as some,
         fromPredicate_13 as fromPredicate,
         fromOption_11 as fromOption,
         fromEither_12 as fromEither,
@@ -21556,25 +21886,25 @@ declare namespace taskOption {
         map_37 as map,
         ap_26 as ap,
         of_22 as of,
-        flatMap_20 as flatMap,
-        flatMapIO_9 as flatMapIO,
-        flatMapTask_5 as flatMapTask,
+        flatMap_24 as flatMap,
+        flatMapIO_10 as flatMapIO,
+        flatMapTask_6 as flatMapTask,
         flatten_20 as flatten,
         alt_18 as alt,
         altW_14 as altW,
         zero_8 as zero,
         throwError_9 as throwError,
-        none_3 as none,
+        none_4 as none,
         compact_12 as compact,
         separate_12 as separate,
         filter_15 as filter,
         filterMap_13 as filterMap,
         partition_13 as partition,
         partitionMap_13 as partitionMap,
-        URI_33 as URI,
+        URI_34 as URI,
         Functor_29 as Functor,
-        as_13 as as,
-        asUnit_13 as asUnit,
+        as_14 as as,
+        asUnit_14 as asUnit,
         flap_29 as flap,
         Pointed_21 as Pointed,
         ApplyPar_6 as ApplyPar,
@@ -21586,13 +21916,13 @@ declare namespace taskOption {
         Chain_21 as Chain,
         chainRec_16 as chainRec,
         ChainRec_17 as ChainRec,
-        FromEither_12 as FromEither,
-        FromIO_11 as FromIO,
-        FromTask_7 as FromTask,
-        tap_15 as tap,
-        tapEither_8 as tapEither,
-        tapIO_9 as tapIO,
-        tapTask_5 as tapTask,
+        FromEither_13 as FromEither,
+        FromIO_12 as FromIO,
+        FromTask_8 as FromTask,
+        tap_16 as tap,
+        tapEither_9 as tapEither,
+        tapIO_10 as tapIO,
+        tapTask_6 as tapTask,
         Alt_15 as Alt,
         Zero_6 as Zero,
         guard_5 as guard,
@@ -21636,7 +21966,7 @@ declare namespace taskOption {
 export { taskOption }
 
 // @public @deprecated
-const taskSeq: Monad1<URI_21> & MonadTask1<URI_21>;
+const taskSeq: Monad1<URI_22> & MonadTask1<URI_22>;
 
 // @public (undocumented)
 interface TaskThese<E, A> extends Task<These<E, A>> {
@@ -21648,8 +21978,8 @@ declare namespace taskThese {
         getChain_2 as getChain,
         getMonad_2 as getMonad,
         TaskThese,
-        left_10 as left,
-        right_10 as right,
+        left_11 as left,
+        right_11 as right,
         both,
         rightTask_4 as rightTask,
         leftTask_4 as leftTask,
@@ -21671,21 +22001,21 @@ declare namespace taskThese {
         bimap_12 as bimap,
         mapLeft_12 as mapLeft,
         of_23 as of,
-        URI_34 as URI,
+        URI_35 as URI,
         getApply_3 as getApply,
         Functor_30 as Functor,
         flap_30 as flap,
         Pointed_22 as Pointed,
         Bifunctor_11 as Bifunctor,
-        FromEither_13 as FromEither,
+        FromEither_14 as FromEither,
         fromOption_12 as fromOption,
         fromOptionK_14 as fromOptionK,
         fromPredicate_14 as fromPredicate,
         FromThese_2 as FromThese,
         fromTheseK_2 as fromTheseK,
-        FromIO_12 as FromIO,
+        FromIO_13 as FromIO,
         fromIOK_11 as fromIOK,
-        FromTask_8 as FromTask,
+        FromTask_9 as FromTask,
         fromTaskK_7 as fromTaskK,
         toTuple2_2 as toTuple2,
         ApT_15 as ApT,
@@ -21703,7 +22033,7 @@ declare namespace taskThese {
 export { taskThese }
 
 // @public @deprecated
-const taskThese_2: Functor2<URI_34> & Bifunctor2<URI_34>;
+const taskThese_2: Functor2<URI_35> & Bifunctor2<URI_35>;
 
 // @public
 const tell: <W>(w: W) => Writer<W, void>;
@@ -21714,8 +22044,8 @@ type These<E, A> = Either<E, A> | Both<E, A>;
 declare namespace these {
     export {
         isBoth,
-        left_11 as left,
-        right_11 as right,
+        left_12 as left,
+        right_12 as right,
         both_2 as both,
         getShow_15 as getShow,
         getEq_15 as getEq,
@@ -21731,8 +22061,8 @@ declare namespace these {
         getRightOnly,
         Both,
         These,
-        isLeft_2 as isLeft,
-        isRight_2 as isRight,
+        isLeft_3 as isLeft,
+        isRight_3 as isRight,
         matchW_14 as matchW,
         foldW_10 as foldW,
         match_16 as match,
@@ -21749,7 +22079,7 @@ declare namespace these {
         traverse_11 as traverse,
         sequence_11 as sequence,
         of_24 as of,
-        URI_35 as URI,
+        URI_36 as URI,
         Functor_31 as Functor,
         flap_31 as flap,
         Pointed_23 as Pointed,
@@ -21757,7 +22087,7 @@ declare namespace these {
         FromThese_3 as FromThese,
         Foldable_12 as Foldable,
         Traversable_11 as Traversable,
-        FromEither_14 as FromEither,
+        FromEither_15 as FromEither,
         fromPredicate_15 as fromPredicate,
         fromOption_13 as fromOption,
         fromOptionK_15 as fromOptionK,
@@ -21774,7 +22104,7 @@ declare namespace these {
 export { these }
 
 // @public @deprecated
-const these_2: Functor2<URI_35> & Bifunctor2<URI_35> & Foldable2<URI_35> & Traversable2<URI_35>;
+const these_2: Functor2<URI_36> & Bifunctor2<URI_36> & Foldable2<URI_36> & Traversable2<URI_36>;
 
 // @public @deprecated (undocumented)
 interface TheseM<M> {
@@ -21884,8 +22214,8 @@ interface TheseT<M, E, A> extends HKT<M, These<E, A>> {
 
 declare namespace theseT {
     export {
-        right_12 as right,
-        left_12 as left,
+        right_13 as right,
+        left_13 as left,
         both_3 as both,
         rightF_2 as rightF,
         leftF_2 as leftF,
@@ -21928,19 +22258,19 @@ const throwError_3: MonadThrow2<URI_13>['throwError'];
 const throwError_4: MonadThrow1<URI_14>['throwError'];
 
 // @public (undocumented)
-const throwError_5: MonadThrow3<URI_18>['throwError'];
+const throwError_5: MonadThrow3<URI_19>['throwError'];
 
 // @public (undocumented)
-const throwError_6: MonadThrow2<URI_23>['throwError'];
+const throwError_6: MonadThrow2<URI_24>['throwError'];
 
 // @public (undocumented)
-const throwError_7: MonadThrow3<URI_22>['throwError'];
+const throwError_7: MonadThrow3<URI_23>['throwError'];
 
 // @public (undocumented)
-const throwError_8: MonadThrow4<URI_31>['throwError'];
+const throwError_8: MonadThrow4<URI_32>['throwError'];
 
 // @public (undocumented)
-const throwError_9: MonadThrow1<URI_33>['throwError'];
+const throwError_9: MonadThrow1<URI_34>['throwError'];
 
 // @public @deprecated
 const toArray: typeof toReadonlyArray;
@@ -22131,7 +22461,7 @@ declare namespace traced {
         getComonad,
         Traced,
         map_41 as map,
-        URI_36 as URI,
+        URI_37 as URI,
         Functor_32 as Functor,
         flap_32 as flap,
         traced_2 as traced
@@ -22140,7 +22470,7 @@ declare namespace traced {
 export { traced }
 
 // @public @deprecated
-const traced_2: Functor2<URI_36>;
+const traced_2: Functor2<URI_37>;
 
 // @public
 function tracks<P, A>(M: Monoid<P>, f: (a: A) => P): (wa: Traced<P, A>) => A;
@@ -22211,10 +22541,10 @@ interface Traversable3<T extends URIS3> extends Functor3<T>, Foldable3<T> {
 }
 
 // @public @deprecated
-const Traversable_10: Traversable1<URI_29>;
+const Traversable_10: Traversable1<URI_30>;
 
 // @public (undocumented)
-const Traversable_11: Traversable2<URI_35>;
+const Traversable_11: Traversable2<URI_36>;
 
 // @public (undocumented)
 interface Traversable_12<T> extends Functor<T>, Foldable_6<T> {
@@ -22224,10 +22554,10 @@ interface Traversable_12<T> extends Functor<T>, Foldable_6<T> {
 }
 
 // @public (undocumented)
-const Traversable_13: Traversable1<URI_37>;
+const Traversable_13: Traversable1<URI_38>;
 
 // @public (undocumented)
-const Traversable_14: Traversable2<URI_38>;
+const Traversable_14: Traversable2<URI_39>;
 
 // @public (undocumented)
 const Traversable_2: Traversable1<URI_3>;
@@ -22245,13 +22575,13 @@ const Traversable_5: Traversable2<URI_6>;
 const Traversable_6: Traversable1<URI_11>;
 
 // @public (undocumented)
-const Traversable_7: Traversable1<URI_24>;
+const Traversable_7: Traversable1<URI_25>;
 
 // @public @deprecated
-const Traversable_8: Traversable1<URI_26>;
+const Traversable_8: Traversable1<URI_27>;
 
 // @public (undocumented)
-const Traversable_9: Traversable2<URI_28>;
+const Traversable_9: Traversable2<URI_29>;
 
 // @public @deprecated (undocumented)
 interface TraversableComposition<F, G> extends FoldableComposition<F, G>, FunctorComposition<F, G> {
@@ -22313,13 +22643,13 @@ const TraversableWithIndex_2: TraversableWithIndex1<URI_3, number>;
 const TraversableWithIndex_3: TraversableWithIndex1<URI_4, number>;
 
 // @public (undocumented)
-const TraversableWithIndex_4: TraversableWithIndex1<URI_24, number>;
+const TraversableWithIndex_4: TraversableWithIndex1<URI_25, number>;
 
 // @public @deprecated
-const TraversableWithIndex_5: TraversableWithIndex1<URI_26, string>;
+const TraversableWithIndex_5: TraversableWithIndex1<URI_27, string>;
 
 // @public @deprecated
-const TraversableWithIndex_6: TraversableWithIndex1<URI_29, string>;
+const TraversableWithIndex_6: TraversableWithIndex1<URI_30, string>;
 
 // @public (undocumented)
 interface TraversableWithIndex_7<T, I> extends FunctorWithIndex_4<T, I>, FoldableWithIndex_4<T, I>, Traversable_12<T> {
@@ -22347,6 +22677,9 @@ interface Traverse<T> {
 
 // @public (undocumented)
 const traverse: PipeableTraverse1<URI_2>;
+
+// @internal (undocumented)
+const _traverse: (O: Ord<string>) => <F>(F: Applicative<F>) => <A, B>(ta: Readonly<Record<string, A>>, f: (a: A) => HKT<F, B>) => HKT<F, Readonly<Record<string, B>>>;
 
 // @public (undocumented)
 interface Traverse1<T extends URIS> {
@@ -22457,7 +22790,7 @@ function traverse_10<F extends URIS>(F: Applicative1<F>): <A, B>(f: (a: A) => Ki
 function traverse_10<F>(F: Applicative<F>): <A, B>(f: (a: A) => HKT<F, B>) => <K extends string>(ta: Record<K, A>) => HKT<F, Record<K, B>>;
 
 // @public (undocumented)
-const traverse_11: PipeableTraverse2<URI_35>;
+const traverse_11: PipeableTraverse2<URI_36>;
 
 // @public
 function traverse_12<T extends URIS, G extends URIS2>(T: Traversable1<T>, G: Traversable2<G>): {
@@ -22485,10 +22818,10 @@ function traverse_12<T extends URIS, G extends URIS>(T: Traversable1<T>, G: Trav
 function traverse_12<T, G>(T: Traversable_12<T>, G: Traversable_12<G>): <F>(F: Applicative<F>) => <A, B>(f: (a: A) => HKT<F, B>) => (tga: HKT<T, HKT<G, A>>) => HKT<F, HKT<T, HKT<G, B>>>;
 
 // @public (undocumented)
-const traverse_13: PipeableTraverse1<URI_37>;
+const traverse_13: PipeableTraverse1<URI_38>;
 
 // @public (undocumented)
-const traverse_14: PipeableTraverse2<URI_38>;
+const traverse_14: PipeableTraverse2<URI_39>;
 
 // @public (undocumented)
 const traverse_2: PipeableTraverse1<URI_3>;
@@ -22506,7 +22839,7 @@ const traverse_5: PipeableTraverse2<URI_6>;
 const traverse_6: PipeableTraverse1<URI_11>;
 
 // @public (undocumented)
-const traverse_7: PipeableTraverse1<URI_24>;
+const traverse_7: PipeableTraverse1<URI_25>;
 
 // @public (undocumented)
 function traverse_8<F extends URIS4>(F: Applicative4<F>): <S, R, E, A, B>(f: (a: A) => Kind4<F, S, R, E, B>) => <K extends string>(ta: ReadonlyRecord<K, A>) => Kind4<F, S, R, E, ReadonlyRecord<K, B>>;
@@ -22530,7 +22863,7 @@ function traverse_8<F extends URIS>(F: Applicative1<F>): <A, B>(f: (a: A) => Kin
 function traverse_8<F>(F: Applicative<F>): <A, B>(f: (a: A) => HKT<F, B>) => <K extends string>(ta: ReadonlyRecord<K, A>) => HKT<F, ReadonlyRecord<K, B>>;
 
 // @public (undocumented)
-const traverse_9: PipeableTraverse2<URI_28>;
+const traverse_9: PipeableTraverse2<URI_29>;
 
 // @public
 const traverseArray: <A, B>(f: (a: A) => Option_2<B>) => (as: readonly A[]) => Option_2<readonly B[]>;
@@ -22882,7 +23215,7 @@ const traverseWithIndex_2: PipeableTraverseWithIndex1<URI_3, number>;
 const traverseWithIndex_3: PipeableTraverseWithIndex1<URI_4, number>;
 
 // @public (undocumented)
-const traverseWithIndex_4: PipeableTraverseWithIndex1<URI_24, number>;
+const traverseWithIndex_4: PipeableTraverseWithIndex1<URI_25, number>;
 
 // @public (undocumented)
 function traverseWithIndex_5<F extends URIS4>(F: Applicative4<F>): <K extends string, S, R, E, A, B>(f: (k: K, a: A) => Kind4<F, S, R, E, B>) => (ta: ReadonlyRecord<K, A>) => Kind4<F, S, R, E, ReadonlyRecord<K, B>>;
@@ -22950,7 +23283,7 @@ declare namespace tree {
         Forest,
         Tree,
         ap_28 as ap,
-        flatMap_21 as flatMap,
+        flatMap_25 as flatMap,
         extend_12 as extend,
         duplicate_10 as duplicate,
         flatten_21 as flatten,
@@ -22962,7 +23295,7 @@ declare namespace tree {
         traverse_13 as traverse,
         sequence_13 as sequence,
         of_25 as of,
-        URI_37 as URI,
+        URI_38 as URI,
         Functor_33 as Functor,
         flap_33 as flap,
         Pointed_24 as Pointed,
@@ -22989,7 +23322,7 @@ declare namespace tree {
 export { tree }
 
 // @public @deprecated
-const tree_2: Monad1<URI_37> & Foldable1<URI_37> & Traversable1<URI_37> & Comonad1<URI_37>;
+const tree_2: Monad1<URI_38> & Foldable1<URI_38> & Traversable1<URI_38> & Comonad1<URI_38>;
 
 // @public (undocumented)
 const trim: (s: string) => string;
@@ -23055,7 +23388,7 @@ declare namespace tuple {
         reduceRight_19 as reduceRight,
         traverse_14 as traverse,
         sequence_14 as sequence,
-        URI_38 as URI,
+        URI_39 as URI,
         Functor_34 as Functor,
         flap_34 as flap,
         Bifunctor_13 as Bifunctor,
@@ -23092,7 +23425,7 @@ function tuple_7<T extends ReadonlyArray<any>>(...t: T): T;
 const tuple_8: <A extends readonly unknown[]>(...rings: { [K in keyof A]: Ring<A[K]>; }) => Ring<Readonly<A>>;
 
 // @public @deprecated
-const tuple_9: Semigroupoid2<URI_38> & Bifunctor2<URI_38> & Comonad2<URI_38> & Foldable2<URI_38> & Traversable2<URI_38>;
+const tuple_9: Semigroupoid2<URI_39> & Bifunctor2<URI_39> & Comonad2<URI_39> & Foldable2<URI_39> & Traversable2<URI_39>;
 
 // @public
 function tupled<A extends ReadonlyArray<unknown>, B>(f: (...a: A) => B): (a: A) => B;
@@ -23192,7 +23525,7 @@ interface Unfoldable_2<F> {
 }
 
 // @public (undocumented)
-const Unfoldable_3: Unfoldable1<URI_24>;
+const Unfoldable_3: Unfoldable1<URI_25>;
 
 // @public
 function unfoldForest<A, B>(bs: Array<B>, f: (b: B) => [A, Array<B>]): Forest<A>;
@@ -23311,17 +23644,29 @@ const unsafeDeleteAt: <A>(i: number, as: A[]) => A[];
 // @public (undocumented)
 const unsafeDeleteAt_2: <A>(i: number, as: readonly A[]) => readonly A[];
 
-// @public (undocumented)
-const unsafeInsertAt: <A>(i: number, a: A, as: Array<A>) => NonEmptyArray<A>;
+// @internal (undocumented)
+const unsafeInsertAt: <A>(i: number, a: A, as: A[]) => NonEmptyArray<A>;
+
+// @internal (undocumented)
+const unsafeInsertAt_2: <A>(i: number, a: A, as: readonly A[]) => ReadonlyNonEmptyArray<A>;
 
 // @public (undocumented)
-const unsafeInsertAt_2: <A>(i: number, a: A, as: ReadonlyArray<A>) => ReadonlyNonEmptyArray<A>;
+const unsafeInsertAt_3: <A>(i: number, a: A, as: Array<A>) => NonEmptyArray<A>;
 
 // @public (undocumented)
-const unsafeUpdateAt: <A>(i: number, a: A, as: A[]) => A[];
+const unsafeInsertAt_4: <A>(i: number, a: A, as: ReadonlyArray<A>) => ReadonlyNonEmptyArray<A>;
+
+// @internal (undocumented)
+const unsafeUpdateAt: <A>(i: number, a: A, as: NonEmptyArray<A>) => NonEmptyArray<A>;
+
+// @internal (undocumented)
+const unsafeUpdateAt_2: <A>(i: number, a: A, as: ReadonlyNonEmptyArray<A>) => ReadonlyNonEmptyArray<A>;
 
 // @public (undocumented)
-const unsafeUpdateAt_2: <A>(i: number, a: A, as: readonly A[]) => readonly A[];
+const unsafeUpdateAt_3: <A>(i: number, a: A, as: A[]) => A[];
+
+// @public (undocumented)
+const unsafeUpdateAt_4: <A>(i: number, a: A, as: readonly A[]) => readonly A[];
 
 // @public @deprecated
 const unsnoc: <A>(as: ReadonlyNonEmptyArray<A>) => readonly [ReadonlyArray<A>, A];
@@ -23465,13 +23810,7 @@ const URI_17 = "Reader";
 type URI_17 = typeof URI_17;
 
 // @public (undocumented)
-const URI_18 = "ReaderEither";
-
-// @public (undocumented)
-type URI_18 = typeof URI_18;
-
-// @public (undocumented)
-const URI_19 = "ReaderIO";
+const URI_19 = "ReaderEither";
 
 // @public (undocumented)
 type URI_19 = typeof URI_19;
@@ -23483,61 +23822,61 @@ const URI_2 = "ReadonlyNonEmptyArray";
 type URI_2 = typeof URI_2;
 
 // @public (undocumented)
-const URI_20 = "ReaderTask";
+const URI_20 = "ReaderIO";
 
 // @public (undocumented)
 type URI_20 = typeof URI_20;
 
 // @public (undocumented)
-const URI_21 = "Task";
+const URI_21 = "ReaderTask";
 
 // @public (undocumented)
 type URI_21 = typeof URI_21;
 
 // @public (undocumented)
-const URI_22 = "ReaderTaskEither";
+const URI_22 = "Task";
 
 // @public (undocumented)
 type URI_22 = typeof URI_22;
 
 // @public (undocumented)
-const URI_23 = "TaskEither";
+const URI_23 = "ReaderTaskEither";
 
 // @public (undocumented)
 type URI_23 = typeof URI_23;
 
 // @public (undocumented)
-const URI_24 = "ReadonlyArray";
+const URI_24 = "TaskEither";
 
 // @public (undocumented)
 type URI_24 = typeof URI_24;
 
 // @public (undocumented)
-const URI_25 = "ReadonlyMap";
+const URI_25 = "ReadonlyArray";
 
 // @public (undocumented)
 type URI_25 = typeof URI_25;
 
 // @public (undocumented)
-const URI_26 = "ReadonlyRecord";
+const URI_26 = "ReadonlyMap";
 
 // @public (undocumented)
 type URI_26 = typeof URI_26;
 
 // @public (undocumented)
-const URI_27 = "ReadonlySet";
+const URI_27 = "ReadonlyRecord";
 
 // @public (undocumented)
 type URI_27 = typeof URI_27;
 
 // @public (undocumented)
-const URI_28 = "ReadonlyTuple";
+const URI_28 = "ReadonlySet";
 
 // @public (undocumented)
 type URI_28 = typeof URI_28;
 
 // @public (undocumented)
-const URI_29 = "Record";
+const URI_29 = "ReadonlyTuple";
 
 // @public (undocumented)
 type URI_29 = typeof URI_29;
@@ -23549,61 +23888,61 @@ const URI_3 = "NonEmptyArray";
 type URI_3 = typeof URI_3;
 
 // @public (undocumented)
-const URI_30 = "State";
+const URI_30 = "Record";
 
 // @public (undocumented)
 type URI_30 = typeof URI_30;
 
 // @public (undocumented)
-const URI_31 = "StateReaderTaskEither";
+const URI_31 = "State";
 
 // @public (undocumented)
 type URI_31 = typeof URI_31;
 
 // @public (undocumented)
-const URI_32 = "Store";
+const URI_32 = "StateReaderTaskEither";
 
 // @public (undocumented)
 type URI_32 = typeof URI_32;
 
 // @public (undocumented)
-const URI_33 = "TaskOption";
+const URI_33 = "Store";
 
 // @public (undocumented)
 type URI_33 = typeof URI_33;
 
 // @public (undocumented)
-const URI_34 = "TaskThese";
+const URI_34 = "TaskOption";
 
 // @public (undocumented)
 type URI_34 = typeof URI_34;
 
 // @public (undocumented)
-const URI_35 = "These";
+const URI_35 = "TaskThese";
 
 // @public (undocumented)
 type URI_35 = typeof URI_35;
 
 // @public (undocumented)
-const URI_36 = "Traced";
+const URI_36 = "These";
 
 // @public (undocumented)
 type URI_36 = typeof URI_36;
 
 // @public (undocumented)
-const URI_37 = "Tree";
+const URI_37 = "Traced";
 
 // @public (undocumented)
 type URI_37 = typeof URI_37;
 
 // @public (undocumented)
-const URI_38 = "Tuple";
+const URI_38 = "Tree";
 
 // @public (undocumented)
 type URI_38 = typeof URI_38;
 
 // @public (undocumented)
-const URI_39 = "Writer";
+const URI_39 = "Tuple";
 
 // @public (undocumented)
 type URI_39 = typeof URI_39;
@@ -23613,6 +23952,12 @@ const URI_4 = "Array";
 
 // @public (undocumented)
 type URI_4 = typeof URI_4;
+
+// @public (undocumented)
+const URI_40 = "Writer";
+
+// @public (undocumented)
+type URI_40 = typeof URI_40;
 
 // @public (undocumented)
 const URI_5 = "Separated";
@@ -23835,13 +24180,13 @@ interface Wilt3<W extends URIS3> {
 const wilt_2: PipeableWilt1<URI_7>;
 
 // @public (undocumented)
-const wilt_3: PipeableWilt1<URI_24>;
+const wilt_3: PipeableWilt1<URI_25>;
 
 // @public (undocumented)
-const wilt_4: PipeableWilt1<URI_26>;
+const wilt_4: PipeableWilt1<URI_27>;
 
 // @public (undocumented)
-const wilt_5: PipeableWilt1<URI_29>;
+const wilt_5: PipeableWilt1<URI_30>;
 
 // @public
 function wiltDefault<W extends URIS2, E>(T: Traversable2C<W, E>, C: Compactable2<W>): Witherable2C<W, E>['wilt'];
@@ -23936,13 +24281,13 @@ interface Wither3<W extends URIS3> {
 const wither_2: PipeableWither1<URI_7>;
 
 // @public (undocumented)
-const wither_3: PipeableWither1<URI_24>;
+const wither_3: PipeableWither1<URI_25>;
 
 // @public (undocumented)
-const wither_4: PipeableWither1<URI_26>;
+const wither_4: PipeableWither1<URI_27>;
 
 // @public (undocumented)
-const wither_5: PipeableWither1<URI_29>;
+const wither_5: PipeableWither1<URI_30>;
 
 // @public (undocumented)
 const Witherable: Witherable1<URI_4>;
@@ -24018,13 +24363,13 @@ interface Witherable3<T extends URIS3> extends Traversable3<T>, Filterable3<T> {
 const Witherable_2: Witherable1<URI_7>;
 
 // @public (undocumented)
-const Witherable_3: Witherable1<URI_24>;
+const Witherable_3: Witherable1<URI_25>;
 
 // @public @deprecated
-const Witherable_4: Witherable1<URI_26>;
+const Witherable_4: Witherable1<URI_27>;
 
 // @public @deprecated
-const Witherable_5: Witherable1<URI_29>;
+const Witherable_5: Witherable1<URI_30>;
 
 // @public (undocumented)
 interface Witherable_6<T> extends Traversable_12<T>, Filterable_3<T> {
@@ -24061,7 +24406,7 @@ declare namespace writer {
         listens_2 as listens,
         censor_2 as censor,
         map_44 as map,
-        URI_39 as URI,
+        URI_40 as URI,
         getPointed,
         getApply_6 as getApply,
         getApplicative_6 as getApplicative,
@@ -24077,7 +24422,7 @@ declare namespace writer {
 export { writer }
 
 // @public @deprecated
-const writer_2: Functor2<URI_39>;
+const writer_2: Functor2<URI_40>;
 
 // @public (undocumented)
 interface WriterM<M> {
@@ -24352,7 +24697,7 @@ const Zero_4: Zero1<URI_14>;
 const zero_4: <A>() => IOOption<A>;
 
 // @public (undocumented)
-const Zero_5: Zero1<URI_24>;
+const Zero_5: Zero1<URI_25>;
 
 // @public (undocumented)
 function zero_5<F extends URIS4>(F: Pointed4<F>): <S, R, E, A>() => Kind4<F, S, R, E, Option_2<A>>;
@@ -24376,7 +24721,7 @@ function zero_5<F extends URIS>(F: Pointed1<F>): <A>() => Kind<F, Option_2<A>>;
 function zero_5<F>(F: Pointed<F>): <A>() => HKT<F, Option_2<A>>;
 
 // @public (undocumented)
-const Zero_6: Zero1<URI_33>;
+const Zero_6: Zero1<URI_34>;
 
 // @public (undocumented)
 const zero_6: <A>() => ReadonlyArray<A>;

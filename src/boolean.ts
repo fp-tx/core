@@ -1,6 +1,6 @@
 /**
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import type * as BA from './BooleanAlgebra'
@@ -17,12 +17,10 @@ import type * as S from './Show'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Refinements
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Refinements}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const isBoolean: Refinement<unknown, boolean> = (u: unknown): u is boolean => typeof u === 'boolean'
@@ -32,12 +30,10 @@ export const isBoolean: Refinement<unknown, boolean> = (u: unknown): u is boolea
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const matchW =
@@ -48,12 +44,10 @@ export const matchW =
 /**
  * Alias of [`matchW`](#matchw).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const foldW = matchW
@@ -62,12 +56,6 @@ export const foldW = matchW
  * Defines the fold over a boolean value. Takes two thunks `onTrue`, `onFalse` and a `boolean` value. If `value` is
  * false, `onFalse()` is returned, otherwise `onTrue()`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -89,6 +77,10 @@ export const foldW = matchW
  * )
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const match: <A>(onFalse: LazyArg<A>, onTrue: LazyArg<A>) => (value: boolean) => A = foldW
@@ -96,12 +88,10 @@ export const match: <A>(onFalse: LazyArg<A>, onTrue: LazyArg<A>) => (value: bool
 /**
  * Alias of [`match`](#match).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fold = match
@@ -111,12 +101,10 @@ export const fold = match
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Eq: E.Eq<boolean> = {
@@ -124,12 +112,10 @@ export const Eq: E.Eq<boolean> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const BooleanAlgebra: BA.BooleanAlgebra<boolean> = {
@@ -144,12 +130,6 @@ export const BooleanAlgebra: BA.BooleanAlgebra<boolean> = {
 /**
  * `boolean` semigroup under conjunction.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -159,6 +139,10 @@ export const BooleanAlgebra: BA.BooleanAlgebra<boolean> = {
  * assert.deepStrictEqual(SemigroupAll.concat(true, false), false)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const SemigroupAll: Semigroup<boolean> = {
@@ -168,12 +152,6 @@ export const SemigroupAll: Semigroup<boolean> = {
 /**
  * `boolean` semigroup under disjunction.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -184,6 +162,10 @@ export const SemigroupAll: Semigroup<boolean> = {
  * assert.deepStrictEqual(SemigroupAny.concat(false, false), false)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const SemigroupAny: Semigroup<boolean> = {
@@ -195,12 +177,6 @@ export const SemigroupAny: Semigroup<boolean> = {
  *
  * The `empty` value is `true`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -210,6 +186,10 @@ export const SemigroupAny: Semigroup<boolean> = {
  * assert.deepStrictEqual(MonoidAll.concat(true, false), false)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const MonoidAll: Monoid<boolean> = {
@@ -222,12 +202,6 @@ export const MonoidAll: Monoid<boolean> = {
  *
  * The `empty` value is `false`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -238,6 +212,10 @@ export const MonoidAll: Monoid<boolean> = {
  * assert.deepStrictEqual(MonoidAny.concat(false, false), false)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const MonoidAny: Monoid<boolean> = {
@@ -246,12 +224,10 @@ export const MonoidAny: Monoid<boolean> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Ord: O.Ord<boolean> = {
@@ -263,12 +239,10 @@ export const Ord: O.Ord<boolean> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Show: S.Show<boolean> = {

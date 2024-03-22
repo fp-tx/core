@@ -25,8 +25,8 @@
  *
  * Adapted from https://github.com/purescript/purescript-profunctor/blob/master/src/Data/Profunctor/Strong.purs
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Category, type Category2, type Category3, type Category4 } from './Category'
@@ -39,12 +39,10 @@ import { type Profunctor, type Profunctor2, type Profunctor3, type Profunctor4 }
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Strong<F> extends Profunctor<F> {
@@ -53,12 +51,10 @@ export interface Strong<F> extends Profunctor<F> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Strong2<F extends URIS2> extends Profunctor2<F> {
@@ -67,12 +63,10 @@ export interface Strong2<F extends URIS2> extends Profunctor2<F> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Strong3<F extends URIS3> extends Profunctor3<F> {
@@ -81,12 +75,10 @@ export interface Strong3<F extends URIS3> extends Profunctor3<F> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Strong4<F extends URIS4> extends Profunctor4<F> {
@@ -106,10 +98,9 @@ export interface Strong4<F extends URIS4> extends Profunctor4<F> {
  * We take two functions, `f` and `g`, and we transform them into a single function which takes a tuple and maps `f`
  * over the first element and `g` over the second. Just like `bi-map` would do for the `bi-functor` instance of tuple.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function split<F extends URIS4>(
@@ -152,10 +143,9 @@ export function split<F>(
  * takes one parameter and returns a tuple of the results of running `f` and `g` on the parameter, respectively. This
  * allows us to run two parallel computations on the same input and return both results in a tuple.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function fanOut<F extends URIS4>(
@@ -193,11 +183,10 @@ export function fanOut<F>(
 /**
  * Use [`split`](#split) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function splitStrong<F extends URIS4>(
@@ -224,11 +213,10 @@ export function splitStrong<F>(
 /**
  * Use [`fanOut`](#fanout) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function fanout<F extends URIS4>(

@@ -1,19 +1,13 @@
 /**
  * Mutable references in the `IO` monad
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type IO } from './IO'
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -23,14 +17,17 @@ import { type IO } from './IO'
  * assert.strictEqual(flatMap(newIORef(1), ref => flatMap(ref.write(2), () => ref.read))(), 2)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export class IORef<A> {
   /**
-   * @remarks
-   * Added in 1.0.0
-   * @remarks
-   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+   * @meta
+   * {@since 0.1.0}
+   * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   readonly read: IO<A>
@@ -40,10 +37,9 @@ export class IORef<A> {
     this.modify = this.modify.bind(this)
   }
   /**
-   * @remarks
-   * Added in 1.0.0
-   * @remarks
-   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+   * @meta
+   * {@since 0.1.0}
+   * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   write(a: A): IO<void> {
@@ -52,10 +48,9 @@ export class IORef<A> {
     }
   }
   /**
-   * @remarks
-   * Added in 1.0.0
-   * @remarks
-   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+   * @meta
+   * {@since 0.1.0}
+   * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   modify(f: (a: A) => A): IO<void> {
@@ -66,12 +61,10 @@ export class IORef<A> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function newIORef<A>(a: A): IO<IORef<A>> {

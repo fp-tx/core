@@ -21,8 +21,8 @@
  *
  *   - `¬a <-> a → 0`
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type BoundedDistributiveLattice } from './BoundedDistributiveLattice'
@@ -32,12 +32,10 @@ import { type BoundedDistributiveLattice } from './BoundedDistributiveLattice'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface HeytingAlgebra<A> extends BoundedDistributiveLattice<A> {

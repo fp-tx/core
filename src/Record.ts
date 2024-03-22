@@ -2,8 +2,8 @@
  * The `Record` module enables dealing with Typescript's `Record<K, T>` type in a functional way, basically treating it
  * as a `Functor` in `T`.
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import {
@@ -62,10 +62,6 @@ import { type PipeableWilt1, type PipeableWither1, wiltDefault, type Witherable1
 /**
  * Calculate the number of key/value pairs in a `Record`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -74,6 +70,9 @@ import { type PipeableWilt1, type PipeableWither1, wiltDefault, type Witherable1
  * assert.deepStrictEqual(size({ a: true, b: 2, c: 'three' }), 3)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const size: <A>(r: Record<string, A>) => number = RR.size
@@ -81,10 +80,6 @@ export const size: <A>(r: Record<string, A>) => number = RR.size
 /**
  * Test whether a `Record` is empty.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -94,6 +89,9 @@ export const size: <A>(r: Record<string, A>) => number = RR.size
  * assert.deepStrictEqual(isEmpty({ a: 3 }), false)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const isEmpty: <A>(r: Record<string, A>) => boolean = RR.isEmpty
@@ -106,10 +104,6 @@ const keys_ =
 /**
  * The keys of a `Record`, sorted alphabetically.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -118,6 +112,9 @@ const keys_ =
  * assert.deepStrictEqual(keys({ c: 1, a: 2, b: 3 }), ['a', 'b', 'c'])
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const keys: <K extends string>(r: Record<K, unknown>) => Array<K> = /*#__PURE__*/ keys_(S.Ord)
@@ -126,10 +123,6 @@ export const keys: <K extends string>(r: Record<K, unknown>) => Array<K> = /*#__
  * Map a `Record` into an `Array`. It passes each key/value pair to the iterating function and collects the results in
  * an array, sorted alphabetically by the original key.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -141,6 +134,9 @@ export const keys: <K extends string>(r: Record<K, unknown>) => Array<K> = /*#__
  * assert.deepStrictEqual(collect(Ord)(f)(x), ['A-foo', 'B-false', 'C-3'])
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function collect(O: Ord<string>): <K extends string, A, B>(f: (k: K, a: A) => B) => (r: Record<K, A>) => Array<B>
@@ -172,12 +168,6 @@ export function collect<A, B>(
 /**
  * Get a sorted `Array` of the key/value pairs contained in a `Record`. Sorted alphabetically by key.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -191,6 +181,10 @@ export function collect<A, B>(
  * ])
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const toArray: <K extends string, A>(r: Record<K, A>) => Array<[K, A]> = /*#__PURE__*/ collect(S.Ord)((k, a) => [
@@ -205,10 +199,6 @@ export const toArray: <K extends string, A>(r: Record<K, A>) => Array<[K, A]> = 
  * instance of `U`, providing an iterating function that iterates over each key/value pair in the record sorted
  * alphabetically by key.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -225,6 +215,9 @@ export const toArray: <K extends string, A>(r: Record<K, A>) => Array<[K, A]> = 
  * ])
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function toUnfoldable<F extends URIS>(
@@ -242,10 +235,6 @@ export function toUnfoldable<F>(U: Unfoldable<F>): <A>(r: Record<string, A>) => 
 /**
  * Insert or replace a key/value pair in a `Record`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -255,6 +244,9 @@ export function toUnfoldable<F>(U: Unfoldable<F>): <A>(r: Record<string, A>) => 
  * assert.deepStrictEqual(upsertAt('c', 5)({ a: 1, b: 2 }), { a: 1, b: 2, c: 5 })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const upsertAt: <A>(k: string, a: A) => (r: Record<string, A>) => Record<string, A> = RR.upsertAt
@@ -264,10 +256,6 @@ export const upsertAt: <A>(k: string, a: A) => (r: Record<string, A>) => Record<
  *
  * Note. This function is not pipeable because is a `Refinement`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -277,6 +265,9 @@ export const upsertAt: <A>(k: string, a: A) => (r: Record<string, A>) => Record<
  * assert.deepStrictEqual(has('c', { a: 1, b: 2 }), false)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const has: <K extends string>(k: string, r: Record<K, unknown>) => k is K = RR.has
@@ -284,10 +275,6 @@ export const has: <K extends string>(k: string, r: Record<K, unknown>) => k is K
 /**
  * Delete a key and value from a `Record`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -297,6 +284,9 @@ export const has: <K extends string>(k: string, r: Record<K, unknown>) => k is K
  * assert.deepStrictEqual(deleteAt('c')({ a: 1, b: 2 }), { a: 1, b: 2 })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function deleteAt<K extends string>(
@@ -316,10 +306,6 @@ export function deleteAt(k: string): <A>(r: Record<string, A>) => Record<string,
 /**
  * Replace a key/value pair in a `Record`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -327,6 +313,9 @@ export function deleteAt(k: string): <A>(r: Record<string, A>) => Record<string,
  *
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const updateAt = <A>(k: string, a: A): (<K extends string>(r: Record<K, A>) => Option<Record<K, A>>) =>
@@ -335,10 +324,6 @@ export const updateAt = <A>(k: string, a: A): (<K extends string>(r: Record<K, A
 /**
  * Applies a mapping function to one spcific key/value pair in a `Record`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -346,6 +331,9 @@ export const updateAt = <A>(k: string, a: A): (<K extends string>(r: Record<K, A
  *
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const modifyAt =
@@ -362,10 +350,6 @@ export const modifyAt =
 /**
  * Delete a key and value from a `Record`, returning the value as well as the subsequent `Record`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -373,6 +357,9 @@ export const modifyAt =
  *
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function pop<K extends string>(
@@ -390,10 +377,6 @@ export function pop(k: string): <A>(r: Record<string, A>) => Option<[A, Record<s
 /**
  * Test whether one `Record` contains all of the keys and values contained in another `Record`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -412,6 +395,9 @@ export function pop(k: string): <A>(r: Record<string, A>) => Option<[A, Record<s
  * assert.deepStrictEqual(isSubrecord(string.Eq)({ a: 'foo', b: 'bar' })({ a: 'foo', b: 'bar', c: 'baz' }), false)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const isSubrecord: <A>(E: Eq<A>) => {
@@ -423,12 +409,11 @@ export const isSubrecord: <A>(E: Eq<A>) => {
 /**
  * Lookup the value for a key in a `Record`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const lookup: {
@@ -439,10 +424,6 @@ export const lookup: {
 /**
  * Map a `Record` passing the key/value pairs to the iterating function.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -452,6 +433,9 @@ export const lookup: {
  * assert.deepStrictEqual(mapWithIndex(f)({ a: 3, b: 5 }), { a: 'A-3', b: 'B-5' })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const mapWithIndex: <K extends string, A, B>(f: (k: K, a: A) => B) => (fa: Record<K, A>) => Record<K, B> =
@@ -460,12 +444,6 @@ export const mapWithIndex: <K extends string, A, B>(f: (k: K, a: A) => B) => (fa
 /**
  * Map a `Record` passing the values to the iterating function.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -475,6 +453,10 @@ export const mapWithIndex: <K extends string, A, B>(f: (k: K, a: A) => B) => (fa
  * assert.deepStrictEqual(map(f)({ a: 3, b: 5 }), { a: '-3-', b: '-5-' })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const map: <A, B>(f: (a: A) => B) => <K extends string>(fa: Record<K, A>) => Record<K, B> = RR.map
@@ -483,10 +465,6 @@ export const map: <A, B>(f: (a: A) => B) => <K extends string>(fa: Record<K, A>)
  * Reduces a `Record` passing each key/value pair to the iterating function. Entries are processed in the order, sorted
  * by key according to the given `Ord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -501,6 +479,9 @@ export const map: <A, B>(f: (a: A) => B) => <K extends string>(fa: Record<K, A>)
  * ])
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function reduceWithIndex(
@@ -522,10 +503,6 @@ export function reduceWithIndex<A, B>(
  * Map and fold a `Record`. Map the `Record` passing each key/value pair to the iterating function. Then fold the
  * results using the provided `Monoid`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -539,6 +516,9 @@ export function reduceWithIndex<A, B>(
  * assert.deepStrictEqual(foldMapWithIndex(Ord)(m)(f)(x), 'a-1 -> b-2 -> c-3')
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function foldMapWithIndex(
@@ -564,10 +544,6 @@ export function foldMapWithIndex<M>(
  * Same as `reduceWithIndex`, but reduce starting from the right (i.e. in reverse order, from the last to the first
  * entry according to the given `Ord`).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -582,6 +558,9 @@ export function foldMapWithIndex<M>(
  * ])
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function reduceRightWithIndex(
@@ -602,10 +581,6 @@ export function reduceRightWithIndex<A, B>(
 /**
  * Create a `Record` with one key/value pair.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -614,15 +589,17 @@ export function reduceRightWithIndex<A, B>(
  * assert.deepStrictEqual(singleton('a', 1), { a: 1 })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const singleton: <A>(k: string, a: A) => Record<string, A> = RR.singleton
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function traverseWithIndex<F extends URIS4>(
@@ -659,10 +636,9 @@ export function traverseWithIndex<F>(
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function traverse<F extends URIS4>(
@@ -701,10 +677,6 @@ export function traverse<F>(
  *
  * `sequence` in `Record` is equivalent to `sequenceS` in `Apply.ts`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -723,6 +695,9 @@ export function traverse<F>(
  * )
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function sequence<F extends URIS3>(
@@ -746,12 +721,10 @@ export function sequence<F>(F: Applicative<F>): <A>(ta: Record<string, HKT<F, A>
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const wither: PipeableWither1<URI> = <F>(
@@ -762,12 +735,10 @@ export const wither: PipeableWither1<URI> = <F>(
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const wilt: PipeableWilt1<URI> = <F>(
@@ -783,10 +754,6 @@ export const wilt: PipeableWilt1<URI> = <F>(
  * Maps a `Record` with a function returning an `Either` and partitions the resulting `Record` into `Left`s and
  * `Right`s.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -806,6 +773,9 @@ export const wilt: PipeableWilt1<URI> = <F>(
  * })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const partitionMapWithIndex: <K extends string, A, B, C>(
@@ -815,10 +785,6 @@ export const partitionMapWithIndex: <K extends string, A, B, C>(
 /**
  * Partition a `Record` into two parts according to a predicate that takes a key and a value.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -838,6 +804,9 @@ export const partitionMapWithIndex: <K extends string, A, B, C>(
  * )
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function partitionWithIndex<K extends string, A, B extends A>(
@@ -859,10 +828,6 @@ export function partitionWithIndex<A>(
  * Maps a `Record` with an iterating function that takes key and value and returns an `Option`, keeping only the `Some`
  * values and discarding `None`s.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -876,6 +841,9 @@ export function partitionWithIndex<A>(
  * })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const filterMapWithIndex: <K extends string, A, B>(
@@ -885,10 +853,6 @@ export const filterMapWithIndex: <K extends string, A, B>(
 /**
  * Produce a new `Record` keeping only the entries that satisfy a predicate taking key and value as input.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -902,6 +866,9 @@ export const filterMapWithIndex: <K extends string, A, B>(
  * )
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function filterWithIndex<K extends string, A, B extends A>(
@@ -923,10 +890,9 @@ export function filterWithIndex<A>(
  * Create a `Record` from a foldable collection of key/value pairs, using the specified `Magma` to combine values for
  * duplicate keys.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function fromFoldable<F extends URIS3, A>(
@@ -949,12 +915,6 @@ export function fromFoldable<F, A>(M: Magma<A>, F: FoldableHKT<F>): (fka: HKT<F,
 /**
  * Alias of [`toArray`](#toArray).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -966,6 +926,10 @@ export function fromFoldable<F, A>(M: Magma<A>, F: FoldableHKT<F>): (fka: HKT<F,
  * ])
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const toEntries = toArray
@@ -973,12 +937,6 @@ export const toEntries = toArray
 /**
  * Converts an `Array` of `[key, value]` tuples into a `Record`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -994,6 +952,10 @@ export const toEntries = toArray
  * )
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromEntries = <A>(fa: Array<[string, A]>): Record<string, A> => fromFoldable(Se.last<A>(), A.Foldable)(fa)
@@ -1004,10 +966,6 @@ export const fromEntries = <A>(fa: Array<[string, A]>): Record<string, A> => fro
  * - Map to key/value pairs
  * - Combine values for duplicate keys.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1041,6 +999,9 @@ export const fromEntries = <A>(fa: Array<[string, A]>): Record<string, A> => fro
  * )
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function fromFoldableMap<F extends URIS3, B>(
@@ -1069,10 +1030,6 @@ export function fromFoldableMap<F, B>(
 /**
  * Test if every value in a `Record` satisfies the predicate.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1082,6 +1039,9 @@ export function fromFoldableMap<F, B>(
  * assert.deepStrictEqual(every((n: number) => n >= 0)({ a: 1, b: -1 }), false)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const every: {
@@ -1092,10 +1052,6 @@ export const every: {
 /**
  * Test if at least one value in a `Record` satisfies the predicate.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1105,6 +1061,9 @@ export const every: {
  * assert.deepStrictEqual(some((n: number) => n >= 0)({ a: -1, b: -2 }), false)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const some: <A>(predicate: (a: A) => boolean) => (r: Record<string, A>) => boolean = RR.some
@@ -1113,10 +1072,6 @@ export const some: <A>(predicate: (a: A) => boolean) => (r: Record<string, A>) =
 /**
  * Given an `Eq` checks if a `Record` contains an entry with value equal to a provided value.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1127,6 +1082,9 @@ export const some: <A>(predicate: (a: A) => boolean) => (r: Record<string, A>) =
  * assert.deepStrictEqual(elem(number.Eq)(-7, { foo: 123, bar: 234 }), false)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const elem: <A>(E: Eq<A>) => {
@@ -1138,10 +1096,6 @@ export const elem: <A>(E: Eq<A>) => {
  * Union of two `Record`s. Takes two `Record`s and produces a `Record` combining all the entries of the two inputs. It
  * uses the `concat` function of the provided `Magma` to combine the elements with the same key.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1154,6 +1108,9 @@ export const elem: <A>(E: Eq<A>) => {
  * assert.deepStrictEqual(union(m2)({ a: 3, c: 3 })({ a: 1, b: 2 }), { a: 1, b: 2, c: 3 })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const union = <A>(
@@ -1175,10 +1132,6 @@ export const union = <A>(
  * Intersection of two `Record`s. Takes two `Record`s and produces a `Record` combining only the entries of the two
  * inputswith the same key. It uses the `concat` function of the provided `Magma` to combine the elements.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1191,6 +1144,9 @@ export const union = <A>(
  * assert.deepStrictEqual(intersection(m2)({ a: 3, c: 3 })({ a: 1, b: 2 }), { a: 1 })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const intersection =
@@ -1207,10 +1163,6 @@ export const intersection =
  * Difference between two `Record`s. Takes two `Record`s and produces a `Record` composed by the entries of the two
  * inputs, removing the entries with the same key in both inputs.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1221,6 +1173,9 @@ export const intersection =
  * assert.deepStrictEqual(difference({ a: 3, c: 3 })({ a: 1, b: 2 }), { b: 2, c: 3 })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const difference =
@@ -1282,12 +1237,6 @@ const _traverseWithIndex =
  * Given a `Predicate`, it produces a new `Record` keeping only the entries with a value that satisfies the provided
  * predicate.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1299,6 +1248,10 @@ const _traverseWithIndex =
  * })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const filter: {
@@ -1311,12 +1264,6 @@ export const filter: {
  * Maps a `Record` with an iterating function that returns an `Option` and it keeps only the `Some` values discarding
  * the `None`s.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1330,6 +1277,10 @@ export const filter: {
  * })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Record<string, A>) => Record<string, B> = RR.filterMap
@@ -1337,12 +1288,6 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Record<string, A>
 /**
  * Partition a `Record` into two parts according to a `Predicate`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1359,6 +1304,10 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Record<string, A>
  * })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const partition: {
@@ -1373,12 +1322,6 @@ export const partition: {
  * Maps a `Record` with a function returning an `Either` and partitions the resulting `Record` into `Left`s and
  * `Right`s.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1397,6 +1340,10 @@ export const partition: {
  * })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const partitionMap: <A, B, C>(
@@ -1407,12 +1354,6 @@ export const partitionMap: <A, B, C>(
  * Reduces a `Record` passing each value to the iterating function. Entries are processed in order, sorted by key
  * according to the given `Ord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1423,6 +1364,10 @@ export const partitionMap: <A, B, C>(
  * assert.deepStrictEqual(reduce(Ord)([] as string[], (b, a) => [...b, `-${a}-`])(x), ['-foo-', '-false-', '-3-'])
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function reduce(O: Ord<string>): <A, B>(b: B, f: (b: B, a: A) => B) => (fa: Record<string, A>) => B
@@ -1442,12 +1387,6 @@ export function reduce<A, B>(
  * Map and fold a `Record`. Map the `Record` passing each value to the iterating function. Then fold the results using
  * the provided `Monoid`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1461,6 +1400,10 @@ export function reduce<A, B>(
  * assert.deepStrictEqual(foldMap(Ord)(m)(f)(x), '-1- -> -2- -> -3-')
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function foldMap(O: Ord<string>): <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => (fa: Record<string, A>) => M
@@ -1482,12 +1425,6 @@ export function foldMap<M>(
  * Same as `reduce` but entries are processed _from the right_, i.e. in reverse order, from the last to the first entry,
  * according to the given `Ord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1502,6 +1439,10 @@ export function foldMap<M>(
  * ])
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function reduceRight(O: Ord<string>): <A, B>(b: B, f: (a: A, b: B) => B) => (fa: Record<string, A>) => B
@@ -1520,12 +1461,6 @@ export function reduceRight<A, B>(
 /**
  * Compact a `Record` of `Option`s discarding the `None` values and keeping the `Some` values.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1538,6 +1473,10 @@ export function reduceRight<A, B>(
  * })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const compact: <A>(fa: Record<string, Option<A>>) => Record<string, A> = RR.compact
@@ -1545,12 +1484,6 @@ export const compact: <A>(fa: Record<string, Option<A>>) => Record<string, A> = 
 /**
  * Separate a `Record` of `Either`s into `Left`s and `Right`s.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1568,29 +1501,29 @@ export const compact: <A>(fa: Record<string, Option<A>>) => Record<string, A> = 
  * })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const separate: <A, B>(fa: Record<string, Either<A, B>>) => Separated<Record<string, A>, Record<string, B>> =
   RR.separate
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const URI = 'Record'
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export type URI = typeof URI
@@ -1605,12 +1538,6 @@ declare module './HKT' {
  * Produces a `Show` for a `Record`, given a `Show` for the base type (a `Show` produces a human-readable representation
  * of an instance). `Record` entries are sorted by key with the provided `Ord`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1623,6 +1550,10 @@ declare module './HKT' {
  * assert.deepStrictEqual(sRecord.show({ b: 2, a: 1 }), '{ "a": 1, "b": 2 }')
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getShow(O: Ord<string>): <A>(S: Show<A>) => Show<Record<string, A>>
@@ -1641,12 +1572,6 @@ export function getShow<A>(
 /**
  * Given an `Eq` for the base type, it produces an `Eq` for a `Record` of that base type.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1659,6 +1584,10 @@ export function getShow<A>(
  * assert.deepStrictEqual(eq.equals({ a: 'foo' }, { a: 'foo' }), true)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getEq: <K extends string, A>(E: Eq<A>) => Eq<Record<K, A>> = RR.getEq
@@ -1667,12 +1596,6 @@ export const getEq: <K extends string, A>(E: Eq<A>) => Eq<Record<K, A>> = RR.get
  * Returns a `Monoid` instance for `Record`s, given a `Semigroup` instance for the base type. The `Monoid` makes the
  * union of two `Record`s comining the overlapping entries with the provided `Semigroup`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1687,17 +1610,19 @@ export const getEq: <K extends string, A>(E: Eq<A>) => Eq<Record<K, A>> = RR.get
  * })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getMonoid: <K extends string, A>(S: Semigroup<A>) => Monoid<Record<K, A>> = RR.getMonoid
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Functor: Functor1<URI> = {
@@ -1708,12 +1633,6 @@ export const Functor: Functor1<URI> = {
 /**
  * Takes a value and a `Record` of functions and returns a `Record` by applying each function to the input value.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1726,17 +1645,19 @@ export const Functor: Functor1<URI> = {
  * })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FunctorWithIndex: FunctorWithIndex1<URI, string> = {
@@ -1748,12 +1669,10 @@ export const FunctorWithIndex: FunctorWithIndex1<URI, string> = {
 /**
  * Produces a `Foldable` instance for a `Record`, using the provided `Ord` to sort the `Record`'s entries by key.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getFoldable = (O: Ord<string>): Foldable1<URI> => ({
@@ -1767,12 +1686,10 @@ export const getFoldable = (O: Ord<string>): Foldable1<URI> => ({
  * Produces a `FoldableWithIndex1` instance for a `Record`, using the provided `Ord` to sort the `Record`'s entries by
  * key.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getFoldableWithIndex = (O: Ord<string>): FoldableWithIndex1<URI, string> => ({
@@ -1786,12 +1703,10 @@ export const getFoldableWithIndex = (O: Ord<string>): FoldableWithIndex1<URI, st
 })
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Compactable: Compactable1<URI> = {
@@ -1801,12 +1716,10 @@ export const Compactable: Compactable1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Filterable: Filterable1<URI> = {
@@ -1821,12 +1734,10 @@ export const Filterable: Filterable1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FilterableWithIndex: FilterableWithIndex1<URI, string> = {
@@ -1848,12 +1759,10 @@ export const FilterableWithIndex: FilterableWithIndex1<URI, string> = {
 /**
  * Produces a `Traversable` instance for a `Record`, using the provided `Ord` to sort the `Record`'s entries by key.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getTraversable = (O: Ord<string>): Traversable1<URI> => ({
@@ -1870,12 +1779,10 @@ export const getTraversable = (O: Ord<string>): Traversable1<URI> => ({
  * Produces a `TraversableWithIndex` instance for a `Record`, using the provided `Ord` to sort the `Record`'s entries by
  * key.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getTraversableWithIndex = (O: Ord<string>): TraversableWithIndex1<URI, string> => ({
@@ -1894,12 +1801,10 @@ export const getTraversableWithIndex = (O: Ord<string>): TraversableWithIndex1<U
 })
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getWitherable = (O: Ord<string>): Witherable1<URI> => {
@@ -1927,12 +1832,6 @@ export const getWitherable = (O: Ord<string>): Witherable1<URI> => {
  * Given a `Semigroup` in the base type, it produces a `Semigroup` in the `Record` of the base type. The resulting
  * `Semigroup` concatenates two `Record`s by `union`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1944,6 +1843,10 @@ export const getWitherable = (O: Ord<string>): Witherable1<URI> => {
  * assert.deepStrictEqual(sRecord.concat({ a: 1, b: 2 }, { b: 3, c: 4 }), { a: 1, b: -1, c: 4 })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getUnionSemigroup = <A>(S: Semigroup<A>): Semigroup<Record<string, A>> => {
@@ -1958,12 +1861,6 @@ export const getUnionSemigroup = <A>(S: Semigroup<A>): Semigroup<Record<string, 
  * `Monoid` makes the union of two `Record`s combining the entries that have the same key with the provided
  * `Semigroup`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1978,6 +1875,10 @@ export const getUnionSemigroup = <A>(S: Semigroup<A>): Semigroup<Record<string, 
  * })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getUnionMonoid = <A>(S: Semigroup<A>): Monoid<Record<string, A>> => ({
@@ -1989,12 +1890,6 @@ export const getUnionMonoid = <A>(S: Semigroup<A>): Monoid<Record<string, A>> =>
  * Given a `Semigroup` in the base type, it produces a `Semigroup` in the `Record` of the base type. The resulting
  * `Semigroup` concatenates two `Record`s by `intersection`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2006,6 +1901,10 @@ export const getUnionMonoid = <A>(S: Semigroup<A>): Monoid<Record<string, A>> =>
  * assert.deepStrictEqual(sRecord.concat({ a: 1, b: 2 }, { b: 3, c: 4 }), { b: -1 })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getIntersectionSemigroup = <A>(S: Semigroup<A>): Semigroup<Record<string, A>> => {
@@ -2018,12 +1917,6 @@ export const getIntersectionSemigroup = <A>(S: Semigroup<A>): Semigroup<Record<s
 /**
  * Produces a `Magma` with a `concat` function that combines two `Record`s by making the `difference`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -2037,6 +1930,10 @@ export const getIntersectionSemigroup = <A>(S: Semigroup<A>): Semigroup<Record<s
  * assert.deepStrictEqual(m.concat(r1, r2), { c: 3, b: 2 })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getDifferenceMagma = <A>(): Magma<Record<string, A>> => ({
@@ -2050,11 +1947,10 @@ export const getDifferenceMagma = <A>(): Magma<Record<string, A>> => ({
 /**
  * Use `getFoldable` instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Foldable: Foldable1<URI> = {
@@ -2067,11 +1963,10 @@ export const Foldable: Foldable1<URI> = {
 /**
  * Use `getFoldableWithIndex` instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FoldableWithIndex: FoldableWithIndex1<URI, string> = {
@@ -2087,11 +1982,10 @@ export const FoldableWithIndex: FoldableWithIndex1<URI, string> = {
 /**
  * Use `getTraversable` instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Traversable: Traversable1<URI> = {
@@ -2107,11 +2001,10 @@ export const Traversable: Traversable1<URI> = {
 /**
  * Use the `getTraversableWithIndex` instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const TraversableWithIndex: TraversableWithIndex1<URI, string> = {
@@ -2135,11 +2028,10 @@ const _wilt = /*#__PURE__*/ wiltDefault(Traversable, Compactable)
 /**
  * Use `getWitherable` instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Witherable: Witherable1<URI> = {
@@ -2163,11 +2055,10 @@ export const Witherable: Witherable1<URI> = {
 /**
  * Use a new `{}` instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const empty: Record<string, never> = {}
@@ -2175,11 +2066,10 @@ export const empty: Record<string, never> = {}
 /**
  * Use [`upsertAt`](#upsertat) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const insertAt: <A>(k: string, a: A) => (r: Record<string, A>) => Record<string, A> = upsertAt
@@ -2187,11 +2077,10 @@ export const insertAt: <A>(k: string, a: A) => (r: Record<string, A>) => Record<
 /**
  * Use [`has`](#has) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const hasOwnProperty: <K extends string>(k: string, r: Record<K, unknown>) => k is K = RR.hasOwnProperty
@@ -2200,11 +2089,10 @@ export const hasOwnProperty: <K extends string>(k: string, r: Record<K, unknown>
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `R.Functor` instead of `R.record` (where `R` is from `import R from 'fp-ts/Record'`)
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const record: FunctorWithIndex1<URI, string> &

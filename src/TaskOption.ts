@@ -1,6 +1,6 @@
 /**
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Alt1 } from './Alt'
@@ -54,12 +54,10 @@ import { guard as guard_, type Zero1 } from './Zero'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface TaskOption<A> extends Task<Option<A>> {}
@@ -69,23 +67,19 @@ export interface TaskOption<A> extends Task<Option<A>> {}
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const some: <A>(a: A) => TaskOption<A> = /*#__PURE__*/ OT.some(T.Pointed)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromPredicate: {
@@ -99,67 +93,55 @@ export const fromPredicate: {
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromOption: <A>(fa: Option<A>) => TaskOption<A> = T.of
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromEither: <A>(fa: Either<unknown, A>) => TaskOption<A> = /*#__PURE__*/ OT.fromEither(T.Pointed)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromIO: <A>(fa: IO<A>) => TaskOption<A> = ma => fromTask(T.fromIO(ma))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromTask: <A>(fa: Task<A>) => TaskOption<A> = /*#__PURE__*/ OT.fromF(T.Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromTaskEither: <A>(fa: TaskEither<unknown, A>) => TaskOption<A> = /*#__PURE__*/ T.map(O.fromEither)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const match: <B, A>(onNone: () => B, onSome: (a: A) => B) => (ma: TaskOption<A>) => Task<B> =
@@ -170,12 +152,10 @@ export const match: <B, A>(onNone: () => B, onSome: (a: A) => B) => (ma: TaskOpt
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const matchW: <B, A, C>(onNone: () => B, onSome: (a: A) => C) => (ma: TaskOption<A>) => Task<B | C> =
@@ -184,12 +164,10 @@ export const matchW: <B, A, C>(onNone: () => B, onSome: (a: A) => C) => (ma: Tas
 /**
  * The `E` suffix (short for **E**ffect) means that the handlers return an effect (`Task`).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const matchE: <B, A>(onNone: () => Task<B>, onSome: (a: A) => Task<B>) => (ma: TaskOption<A>) => Task<B> =
@@ -198,12 +176,10 @@ export const matchE: <B, A>(onNone: () => Task<B>, onSome: (a: A) => Task<B>) =>
 /**
  * Alias of [`matchE`](#matche).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fold = matchE
@@ -213,12 +189,10 @@ export const fold = matchE
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const matchEW: <B, C, A>(
@@ -229,23 +203,19 @@ export const matchEW: <B, C, A>(
 /**
  * Alias of [`matchEW`](#matchew).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const foldW = matchEW
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getOrElse: <A>(onNone: LazyArg<Task<A>>) => (fa: TaskOption<A>) => Task<A> = /*#__PURE__*/ OT.getOrElse(
@@ -257,23 +227,19 @@ export const getOrElse: <A>(onNone: LazyArg<Task<A>>) => (fa: TaskOption<A>) => 
  *
  * The `W` suffix (short for **W**idening) means that the handler return type will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getOrElseW: <B>(onNone: LazyArg<Task<B>>) => <A>(ma: TaskOption<A>) => Task<A | B> = getOrElse as any
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromNullable: <A>(a: A) => TaskOption<NonNullable<A>> = /*#__PURE__*/ OT.fromNullable(T.Pointed)
@@ -283,12 +249,10 @@ export const fromNullable: <A>(a: A) => TaskOption<NonNullable<A>> = /*#__PURE__
  *
  * See also [`tryCatchK`](#trycatchk).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Interop
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Interop}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tryCatch =
@@ -304,12 +268,10 @@ export const tryCatch =
 /**
  * Converts a function returning a `Promise` to one returning a `TaskOption`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Interop
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Interop}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tryCatchK =
@@ -318,12 +280,10 @@ export const tryCatchK =
     tryCatch(() => f(...a))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromNullableK: <A extends ReadonlyArray<unknown>, B>(
@@ -331,12 +291,10 @@ export const fromNullableK: <A extends ReadonlyArray<unknown>, B>(
 ) => (...a: A) => TaskOption<NonNullable<B>> = /*#__PURE__*/ OT.fromNullableK(T.Pointed)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainNullableK: <A, B>(
@@ -348,12 +306,10 @@ export const chainNullableK: <A, B>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromOptionK: <A extends ReadonlyArray<unknown>, B>(
@@ -361,12 +317,10 @@ export const fromOptionK: <A extends ReadonlyArray<unknown>, B>(
 ) => (...a: A) => TaskOption<B> = /*#__PURE__*/ OT.fromOptionK(T.Pointed)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainOptionK: <A, B>(f: (a: A) => Option<B>) => (ma: TaskOption<A>) => TaskOption<B> =
@@ -376,21 +330,18 @@ export const chainOptionK: <A, B>(f: (a: A) => Option<B>) => (ma: TaskOption<A>)
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const map: <A, B>(f: (a: A) => B) => (fa: TaskOption<A>) => TaskOption<B> = /*#__PURE__*/ OT.map(T.Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ap: <A>(fa: TaskOption<A>) => <B>(fab: TaskOption<(a: A) => B>) => TaskOption<B> = /*#__PURE__*/ OT.ap(
@@ -398,12 +349,10 @@ export const ap: <A>(fa: TaskOption<A>) => <B>(fab: TaskOption<(a: A) => B>) => 
 )
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const of: <A>(a: A) => TaskOption<A> = some
@@ -424,12 +373,10 @@ const _FromTask: _.FromTask<TaskOptionTypeLambda> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMap: {
@@ -443,12 +390,10 @@ const _FlatMap: _.FlatMap<TaskOptionTypeLambda> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMapIO: {
@@ -457,12 +402,10 @@ export const flatMapIO: {
 } = /*#__PURE__*/ _.flatMapIO(_FromIO, _FlatMap)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMapTask: {
@@ -471,23 +414,19 @@ export const flatMapTask: {
 } = /*#__PURE__*/ _.flatMapTask(_FromTask, _FlatMap)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatten: <A>(mma: TaskOption<TaskOption<A>>) => TaskOption<A> = /*#__PURE__*/ flatMap(identity)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const alt: <A>(second: LazyArg<TaskOption<A>>) => (first: TaskOption<A>) => TaskOption<A> = /*#__PURE__*/ OT.alt(
@@ -499,74 +438,62 @@ export const alt: <A>(second: LazyArg<TaskOption<A>>) => (first: TaskOption<A>) 
  *
  * The `W` suffix (short for **W**idening) means that the return types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const altW: <B>(second: LazyArg<TaskOption<B>>) => <A>(first: TaskOption<A>) => TaskOption<A | B> = alt as any
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const zero: <A>() => TaskOption<A> = /*#__PURE__*/ OT.zero(T.Pointed)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const throwError: MonadThrow1<URI>['throwError'] = zero
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const none: TaskOption<never> = /*#__PURE__*/ zero()
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const compact: Compactable1<URI>['compact'] = /*#__PURE__*/ compact_(T.Functor, O.Compactable)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const separate: Compactable1<URI>['separate'] = /*#__PURE__*/ separate_(T.Functor, O.Compactable, O.Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const filter: {
@@ -576,24 +503,20 @@ export const filter: {
 } = /*#__PURE__*/ filter_(T.Functor, O.Filterable)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fga: TaskOption<A>) => TaskOption<B> =
   /*#__PURE__*/ filterMap_(T.Functor, O.Filterable)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const partition: {
@@ -603,12 +526,10 @@ export const partition: {
 } = /*#__PURE__*/ partition_(T.Functor, O.Filterable)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Filtering
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Filtering}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const partitionMap: <A, B, C>(
@@ -638,23 +559,19 @@ const _partition: Filterable1<URI>['partition'] = <A>(fa: TaskOption<A>, predica
 const _partitionMap: Filterable1<URI>['partitionMap'] = (fa, f) => pipe(fa, partitionMap(f))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const URI = 'TaskOption'
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export type URI = typeof URI
@@ -666,12 +583,10 @@ declare module './HKT' {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Functor: Functor1<URI> = {
@@ -682,12 +597,10 @@ export const Functor: Functor1<URI> = {
 /**
  * Maps the `Some` value of this `TaskOption` to the specified constant value.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const as: {
@@ -698,34 +611,28 @@ export const as: {
 /**
  * Maps the `Some` value of this `TaskOption` to the void constant value.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const asUnit: <_>(self: TaskOption<_>) => TaskOption<void> = asUnit_(Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Pointed: Pointed1<URI> = {
@@ -736,12 +643,10 @@ export const Pointed: Pointed1<URI> = {
 /**
  * Runs computations in parallel.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApplyPar: Apply1<URI> = {
@@ -753,10 +658,9 @@ export const ApplyPar: Apply1<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apFirst = /*#__PURE__*/ apFirst_(ApplyPar)
@@ -764,10 +668,9 @@ export const apFirst = /*#__PURE__*/ apFirst_(ApplyPar)
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
@@ -775,12 +678,10 @@ export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
 /**
  * Runs computations in parallel.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApplicativePar: Applicative1<URI> = {
@@ -795,12 +696,10 @@ const _apSeq: Apply1<URI>['ap'] = (fab, fa) => flatMap(fab, f => pipe(fa, map(f)
 /**
  * Runs computations sequentially.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApplySeq: Apply1<URI> = {
@@ -812,12 +711,10 @@ export const ApplySeq: Apply1<URI> = {
 /**
  * Runs computations sequentially.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApplicativeSeq: Applicative1<URI> = {
@@ -828,12 +725,10 @@ export const ApplicativeSeq: Applicative1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Chain: chainable.Chain1<URI> = {
@@ -844,12 +739,10 @@ export const Chain: chainable.Chain1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instance methods
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instance methods}
+ * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export const chainRec: ChainRec1<URI>['chainRec'] =
@@ -874,12 +767,10 @@ export const chainRec: ChainRec1<URI>['chainRec'] =
 /**
  * ChainRec for `TaskOption`
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export const ChainRec: ChainRec1<URI> = {
@@ -888,12 +779,10 @@ export const ChainRec: ChainRec1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FromEither: FromEither1<URI> = {
@@ -902,12 +791,10 @@ export const FromEither: FromEither1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FromIO: FromIO1<URI> = {
@@ -916,12 +803,10 @@ export const FromIO: FromIO1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FromTask: FromTask1<URI> = {
@@ -934,12 +819,10 @@ export const FromTask: FromTask1<URI> = {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Combinators
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Combinators}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tap: {
@@ -951,12 +834,6 @@ export const tap: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Combinators
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -979,6 +856,10 @@ export const tap: {
  * test()
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Combinators}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tapEither: {
@@ -990,12 +871,6 @@ export const tapEither: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Combinators
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1021,6 +896,10 @@ export const tapEither: {
  * test()
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Combinators}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tapIO: {
@@ -1032,12 +911,6 @@ export const tapIO: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Combinators
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1054,6 +927,10 @@ export const tapIO: {
  * test()
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Combinators}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tapTask: {
@@ -1062,12 +939,10 @@ export const tapTask: {
 } = /*#__PURE__*/ dual(2, tapTask_(FromTask, Chain))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Alt: Alt1<URI> = {
@@ -1077,12 +952,10 @@ export const Alt: Alt1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Zero: Zero1<URI> = {
@@ -1091,23 +964,19 @@ export const Zero: Zero1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const guard = /*#__PURE__*/ guard_(Zero, Pointed)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Alternative: Alternative1<URI> = {
@@ -1120,12 +989,10 @@ export const Alternative: Alternative1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Monad: Monad1<URI> = {
@@ -1137,12 +1004,10 @@ export const Monad: Monad1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const MonadIO: MonadIO1<URI> = {
@@ -1155,12 +1020,10 @@ export const MonadIO: MonadIO1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const MonadThrow: MonadThrow1<URI> = {
@@ -1169,12 +1032,10 @@ export const MonadThrow: MonadThrow1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const MonadTask: MonadTask1<URI> = {
@@ -1188,12 +1049,10 @@ export const MonadTask: MonadTask1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Compactable: Compactable1<URI> = {
@@ -1203,12 +1062,10 @@ export const Compactable: Compactable1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Filterable: Filterable1<URI> = {
@@ -1223,12 +1080,10 @@ export const Filterable: Filterable1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => IO<B>) => (...a: A) => TaskOption<B> =
@@ -1237,12 +1092,10 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => IO<B
 /**
  * Alias of `flatMapIO`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainIOK: <A, B>(f: (a: A) => IO<B>) => (first: TaskOption<A>) => TaskOption<B> = flatMapIO
@@ -1250,23 +1103,19 @@ export const chainIOK: <A, B>(f: (a: A) => IO<B>) => (first: TaskOption<A>) => T
 /**
  * Alias of `tapIO`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => (first: TaskOption<A>) => TaskOption<A> = tapIO
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
@@ -1274,12 +1123,10 @@ export const fromEitherK: <E, A extends ReadonlyArray<unknown>, B>(
 ) => (...a: A) => TaskOption<B> = /*#__PURE__*/ fromEitherK_(FromEither)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: TaskOption<A>) => TaskOption<B> =
@@ -1288,23 +1135,19 @@ export const chainEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: TaskOpti
 /**
  * Alias of `tapEither`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirstEitherK: <E, A, B>(f: (a: A) => Either<E, B>) => (ma: TaskOption<A>) => TaskOption<A> = tapEither
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => T.Task<B>) => (...a: A) => TaskOption<B> =
@@ -1313,12 +1156,10 @@ export const fromTaskK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => T.
 /**
  * Alias of `flatMapTask`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => (first: TaskOption<A>) => TaskOption<B> = flatMapTask
@@ -1326,12 +1167,10 @@ export const chainTaskK: <A, B>(f: (a: A) => T.Task<B>) => (first: TaskOption<A>
 /**
  * Alias of `tapTask`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => (first: TaskOption<A>) => TaskOption<A> = tapTask
@@ -1341,23 +1180,19 @@ export const chainFirstTaskK: <A, B>(f: (a: A) => T.Task<B>) => (first: TaskOpti
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Do: TaskOption<{}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
@@ -1366,24 +1201,20 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @remarks
-   * Added in 1.0.0
-   * @remarks
-   * Category: Do notation
-   * @remarks
-   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+   * @meta
+   * {@since 0.1.0}
+   * {@category Do notation}
+   * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   let_ as let,
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
@@ -1399,31 +1230,27 @@ const do_: <MA extends TaskOptionIterable<any>, A>(
 
 export {
   /**
-   * @remarks
-   * Added in 1.0.0
-   * @remarks
-   * Category: Do notation
+   * @meta
+   * {@since 0.1.0}
+   * {@category Do notation}
    * @public
    */
   do_ as do,
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apS = /*#__PURE__*/ apS_(ApplyPar)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApT: TaskOption<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
@@ -1435,12 +1262,10 @@ export const ApT: TaskOption<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArra
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(ApplicativePar)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndex = <A, B>(
@@ -1451,12 +1276,10 @@ export const traverseReadonlyNonEmptyArrayWithIndex = <A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativePar)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyArrayWithIndex = <A, B>(
@@ -1469,12 +1292,10 @@ export const traverseReadonlyArrayWithIndex = <A, B>(
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndexSeq =
@@ -1500,12 +1321,10 @@ export const traverseReadonlyNonEmptyArrayWithIndexSeq =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyArrayWithIndexSeq = <A, B>(
@@ -1518,12 +1337,10 @@ export const traverseReadonlyArrayWithIndexSeq = <A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseArrayWithIndex: <A, B>(
@@ -1533,12 +1350,10 @@ export const traverseArrayWithIndex: <A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseArray: <A, B>(
@@ -1548,12 +1363,10 @@ export const traverseArray: <A, B>(
 /**
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const sequenceArray: <A>(as: ReadonlyArray<TaskOption<A>>) => TaskOption<ReadonlyArray<A>> =
@@ -1562,12 +1375,10 @@ export const sequenceArray: <A>(as: ReadonlyArray<TaskOption<A>>) => TaskOption<
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseSeqArrayWithIndex: <A, B>(
@@ -1577,12 +1388,10 @@ export const traverseSeqArrayWithIndex: <A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverse(ApplicativeSeq)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseSeqArray: <A, B>(
@@ -1592,12 +1401,10 @@ export const traverseSeqArray: <A, B>(
 /**
  * Equivalent to `ReadonlyArray#sequence(ApplicativeSeq)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const sequenceSeqArray: <A>(as: ReadonlyArray<TaskOption<A>>) => TaskOption<ReadonlyArray<A>> =
@@ -1610,12 +1417,10 @@ export const sequenceSeqArray: <A>(as: ReadonlyArray<TaskOption<A>>) => TaskOpti
 /**
  * Alias of `flatMap`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chain: <A, B>(f: (a: A) => TaskOption<B>) => (ma: TaskOption<A>) => TaskOption<B> = flatMap
@@ -1623,12 +1428,10 @@ export const chain: <A, B>(f: (a: A) => TaskOption<B>) => (ma: TaskOption<A>) =>
 /**
  * Alias of `tap`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirst: <A, B>(f: (a: A) => TaskOption<B>) => (first: TaskOption<A>) => TaskOption<A> = tap

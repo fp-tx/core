@@ -5,8 +5,8 @@
  *
  * - Bounded: `bottom <= a <= top`
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import * as O from './Ord'
@@ -17,12 +17,10 @@ import { type Ord } from './Ord'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Bounded<A> extends Ord<A> {
@@ -37,12 +35,10 @@ export interface Bounded<A> extends Ord<A> {
 /**
  * Clamp a value between bottom and top values.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Utils
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Utils}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const clamp = <A>(B: Bounded<A>): ((a: A) => A) => O.clamp(B)(B.bottom, B.top)
@@ -50,12 +46,10 @@ export const clamp = <A>(B: Bounded<A>): ((a: A) => A) => O.clamp(B)(B.bottom, B
 /**
  * Reverses the Ord of a bound and swaps top and bottom values.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Utils
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Utils}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const reverse = <A>(B: Bounded<A>): Bounded<A> => {
@@ -73,13 +67,12 @@ export const reverse = <A>(B: Bounded<A>): Bounded<A> => {
 // -------------------------------------------------------------------------------------
 
 /**
- * Use [`Bounded`](./number.ts.html#bounded) instead.
+ * Use [`Bounded`](./number#bounded) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const boundedNumber: Bounded<number> = {

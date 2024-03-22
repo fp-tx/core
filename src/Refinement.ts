@@ -1,6 +1,6 @@
 /**
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Either } from './Either'
@@ -12,10 +12,9 @@ import { type Option } from './Option'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Refinement<A, B extends A> {
@@ -30,12 +29,10 @@ export interface Refinement<A, B extends A> {
  * Returns a `Refinement` from a `Option` returning function. This function ensures that a `Refinement` definition is
  * type-safe.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromOptionK = <A, B extends A>(getOption: (a: A) => Option<B>): Refinement<A, B> => {
@@ -43,12 +40,10 @@ export const fromOptionK = <A, B extends A>(getOption: (a: A) => Option<B>): Ref
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromEitherK = <A, B extends A>(getEither: (a: A) => Either<unknown, B>): Refinement<A, B> => {
@@ -56,12 +51,10 @@ export const fromEitherK = <A, B extends A>(getEither: (a: A) => Either<unknown,
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const id = <A>(): Refinement<A, A> => {
@@ -73,10 +66,9 @@ export const id = <A>(): Refinement<A, A> => {
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const not =
@@ -85,10 +77,9 @@ export const not =
     !refinement(a)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const or =
@@ -98,10 +89,9 @@ export const or =
     first(a) || second(a)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const and =
@@ -111,10 +101,9 @@ export const and =
     first(a) && second(a)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const zero = <A, B extends A>(): Refinement<A, B> => {
@@ -122,10 +111,9 @@ export const zero = <A, B extends A>(): Refinement<A, B> => {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const compose =

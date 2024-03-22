@@ -1,25 +1,23 @@
 /**
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Either, tryCatch } from './Either'
 import { identity } from './function'
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export type Json = boolean | number | string | null | JsonArray | JsonRecord
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface JsonRecord {
@@ -27,10 +25,9 @@ export interface JsonRecord {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface JsonArray extends ReadonlyArray<Json> {}
@@ -38,10 +35,6 @@ export interface JsonArray extends ReadonlyArray<Json> {}
 /**
  * Converts a JavaScript Object Notation (JSON) string into a `Json` type.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -56,6 +49,9 @@ export interface JsonArray extends ReadonlyArray<Json> {}
  * )
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const parse = (s: string): Either<unknown, Json> => tryCatch(() => JSON.parse(s), identity)
@@ -63,10 +59,6 @@ export const parse = (s: string): Either<unknown, Json> => tryCatch(() => JSON.p
 /**
  * Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -86,6 +78,9 @@ export const parse = (s: string): Either<unknown, Json> => tryCatch(() => JSON.p
  * )
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const stringify = <A>(a: A): Either<unknown, string> =>

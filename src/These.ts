@@ -17,8 +17,8 @@
  *
  * Adapted from https://github.com/purescript-contrib/purescript-these
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Applicative, type Applicative2C } from './Applicative'
@@ -57,12 +57,10 @@ import { type PipeableTraverse2, type Traversable2 } from './Traversable'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Both<E, A> {
@@ -72,12 +70,10 @@ export interface Both<E, A> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export type These<E, A> = Either<E, A> | Both<E, A>
@@ -89,12 +85,10 @@ export type These<E, A> = Either<E, A> | Both<E, A>
 /**
  * Returns `true` if the these is an instance of `Left`, `false` otherwise
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Refinements
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Refinements}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const isLeft = <E>(fa: These<E, unknown>): fa is Left<E> => fa._tag === 'Left'
@@ -102,12 +96,10 @@ export const isLeft = <E>(fa: These<E, unknown>): fa is Left<E> => fa._tag === '
 /**
  * Returns `true` if the these is an instance of `Right`, `false` otherwise
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Refinements
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Refinements}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const isRight = <A>(fa: These<unknown, A>): fa is Right<A> => fa._tag === 'Right'
@@ -115,12 +107,10 @@ export const isRight = <A>(fa: These<unknown, A>): fa is Right<A> => fa._tag ===
 /**
  * Returns `true` if the these is an instance of `Both`, `false` otherwise
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Refinements
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Refinements}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function isBoth<E, A>(fa: These<E, A>): fa is Both<E, A> {
@@ -132,12 +122,10 @@ export function isBoth<E, A>(fa: These<E, A>): fa is Both<E, A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function left<E = never, A = never>(left: E): These<E, A> {
@@ -145,12 +133,10 @@ export function left<E = never, A = never>(left: E): These<E, A> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function right<E = never, A = never>(right: A): These<E, A> {
@@ -158,12 +144,10 @@ export function right<E = never, A = never>(right: A): These<E, A> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function both<E, A>(left: E, right: A): These<E, A> {
@@ -175,12 +159,10 @@ export function both<E, A>(left: E, right: A): These<E, A> {
  *
  * The `W` suffix (short for **W**idening) means that the handler return types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const matchW =
@@ -199,23 +181,19 @@ export const matchW =
 /**
  * Alias of [`matchW`](#matchw).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const foldW = matchW
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const match: <E, A, B>(
@@ -227,32 +205,27 @@ export const match: <E, A, B>(
 /**
  * Alias of [`match`](#match).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Pattern matching
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Pattern matching}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fold = match
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const swap: <E, A>(fa: These<E, A>) => These<A, E> = match(right, left, (e, a) => both(a, e))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getShow<E, A>(SE: Show<E>, SA: Show<A>): Show<These<E, A>> {
@@ -266,12 +239,10 @@ export function getShow<E, A>(SE: Show<E>, SA: Show<A>): Show<These<E, A>> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getEq<E, A>(EE: Eq<E>, EA: Eq<A>): Eq<These<E, A>> {
@@ -283,12 +254,10 @@ export function getEq<E, A>(EE: Eq<E>, EA: Eq<A>): Eq<These<E, A>> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getSemigroup<E, A>(SE: Semigroup<E>, SA: Semigroup<A>): Semigroup<These<E, A>> {
@@ -309,12 +278,10 @@ export function getSemigroup<E, A>(SE: Semigroup<E>, SA: Semigroup<A>): Semigrou
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getApply = <E>(S: Semigroup<E>): Apply2C<URI, E> => ({
@@ -336,12 +303,10 @@ export const getApply = <E>(S: Semigroup<E>): Apply2C<URI, E> => ({
 })
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getApplicative<E>(S: Semigroup<E>): Applicative2C<URI, E> {
@@ -356,12 +321,10 @@ export function getApplicative<E>(S: Semigroup<E>): Applicative2C<URI, E> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getChain<E>(S: Semigroup<E>): Chain2C<URI, E> {
@@ -392,12 +355,10 @@ export function getChain<E>(S: Semigroup<E>): Chain2C<URI, E> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getMonad<E>(S: Semigroup<E>): Monad2C<URI, E> & MonadThrow2C<URI, E> {
@@ -416,12 +377,6 @@ export function getMonad<E>(S: Semigroup<E>): Monad2C<URI, E> & MonadThrow2C<URI
 /**
  * Returns an `E` value if possible
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -433,6 +388,10 @@ export function getMonad<E>(S: Semigroup<E>): Monad2C<URI, E> & MonadThrow2C<URI
  * assert.deepStrictEqual(getLeft(both('a', 1)), some('a'))
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getLeft<E, A>(fa: These<E, A>): Option<E> {
@@ -446,12 +405,6 @@ export function getLeft<E, A>(fa: These<E, A>): Option<E> {
 /**
  * Returns an `A` value if possible
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -463,6 +416,10 @@ export function getLeft<E, A>(fa: These<E, A>): Option<E> {
  * assert.deepStrictEqual(getRight(both('a', 1)), some(1))
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getRight<E, A>(fa: These<E, A>): Option<A> {
@@ -475,12 +432,6 @@ export function getRight<E, A>(fa: These<E, A>): Option<A> {
 
 // TODO: make lazy in v3
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -491,6 +442,10 @@ export function getRight<E, A>(fa: These<E, A>): Option<A> {
  * assert.deepStrictEqual(leftOrBoth('a')(some(1)), both('a', 1))
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function leftOrBoth<E>(e: E): <A>(ma: Option<A>) => These<E, A> {
@@ -499,12 +454,6 @@ export function leftOrBoth<E>(e: E): <A>(ma: Option<A>) => These<E, A> {
 
 // TODO: make lazy in v3
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -515,6 +464,10 @@ export function leftOrBoth<E>(e: E): <A>(ma: Option<A>) => These<E, A> {
  * assert.deepStrictEqual(rightOrBoth(1)(some('a')), both('a', 1))
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function rightOrBoth<A>(a: A): <E>(me: Option<E>) => These<E, A> {
@@ -524,12 +477,6 @@ export function rightOrBoth<A>(a: A): <E>(me: Option<E>) => These<E, A> {
 /**
  * Returns the `E` value if and only if the value is constructed with `Left`
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -541,6 +488,10 @@ export function rightOrBoth<A>(a: A): <E>(me: Option<E>) => These<E, A> {
  * assert.deepStrictEqual(getLeftOnly(both('a', 1)), none)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getLeftOnly<E, A>(fa: These<E, A>): Option<E> {
@@ -550,12 +501,6 @@ export function getLeftOnly<E, A>(fa: These<E, A>): Option<E> {
 /**
  * Returns the `A` value if and only if the value is constructed with `Right`
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -567,6 +512,10 @@ export function getLeftOnly<E, A>(fa: These<E, A>): Option<E> {
  * assert.deepStrictEqual(getRightOnly(both('a', 1)), none)
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getRightOnly<E, A>(fa: These<E, A>): Option<A> {
@@ -576,12 +525,6 @@ export function getRightOnly<E, A>(fa: These<E, A>): Option<A> {
 /**
  * Takes a pair of `Option`s and attempts to create a `These` from them
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -594,6 +537,10 @@ export function getRightOnly<E, A>(fa: These<E, A>): Option<A> {
  * assert.deepStrictEqual(fromOptions(some('a'), some(1)), some(both('a', 1)))
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromOptions = <E, A>(fe: Option<E>, fa: Option<A>): Option<These<E, A>> =>
@@ -629,12 +576,10 @@ const _traverse = <F>(
 /**
  * Map a pair of functions over the two type arguments of the bifunctor.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: These<E, A>) => These<G, B> = (f, g) => fa =>
@@ -645,12 +590,10 @@ export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: These<E
 /**
  * Map a function over the first type argument of a bifunctor.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Error handling
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Error handling}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: These<E, A>) => These<G, A> = f => fa =>
@@ -662,12 +605,10 @@ export const mapLeft: <E, G>(f: (e: E) => G) => <A>(fa: These<E, A>) => These<G,
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const map: <A, B>(f: (a: A) => B) => <E>(fa: These<E, A>) => These<E, B> = f => fa =>
@@ -676,48 +617,40 @@ export const map: <A, B>(f: (a: A) => B) => <E>(fa: These<E, A>) => These<E, B> 
   : both(fa.left, f(fa.right))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const reduce: <A, B>(b: B, f: (b: B, a: A) => B) => <E>(fa: These<E, A>) => B = (b, f) => fa =>
   isLeft(fa) ? b : f(b, fa.right)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const foldMap: <M>(M: Monoid<M>) => <A>(f: (a: A) => M) => <E>(fa: These<E, A>) => M = M => f => fa =>
   isLeft(fa) ? M.empty : f(fa.right)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Folding
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Folding}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const reduceRight: <A, B>(b: B, f: (a: A, b: B) => B) => <E>(fa: These<E, A>) => B = (b, f) => fa =>
   isLeft(fa) ? b : f(fa.right, b)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverse: PipeableTraverse2<URI> =
@@ -729,12 +662,10 @@ export const traverse: PipeableTraverse2<URI> =
     : F.map(f(ta.right), b => both(ta.left, b))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const sequence: Traversable2<URI>['sequence'] =
@@ -748,34 +679,28 @@ export const sequence: Traversable2<URI>['sequence'] =
   }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const of: <E = never, A = never>(right: A) => These<E, A> = right
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const URI = 'These'
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export type URI = typeof URI
@@ -787,12 +712,10 @@ declare module './HKT' {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Functor: Functor2<URI> = {
@@ -801,23 +724,19 @@ export const Functor: Functor2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Pointed: Pointed2<URI> = {
@@ -826,12 +745,10 @@ export const Pointed: Pointed2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Bifunctor: Bifunctor2<URI> = {
@@ -841,12 +758,10 @@ export const Bifunctor: Bifunctor2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FromThese: FromThese2<URI> = {
@@ -855,12 +770,10 @@ export const FromThese: FromThese2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Foldable: Foldable2<URI> = {
@@ -871,12 +784,10 @@ export const Foldable: Foldable2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Traversable: Traversable2<URI> = {
@@ -890,12 +801,10 @@ export const Traversable: Traversable2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FromEither: FromEither2<URI> = {
@@ -904,12 +813,10 @@ export const FromEither: FromEither2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromPredicate: {
@@ -919,24 +826,20 @@ export const fromPredicate: {
 } = /*#__PURE__*/ fromPredicate_(FromEither)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromOption: <E>(onNone: LazyArg<E>) => <A>(fa: Option<A>) => These<E, A> =
   /*#__PURE__*/ fromOption_(FromEither)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromOptionK: <E>(
@@ -949,10 +852,9 @@ export const fromOptionK: <E>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const elem =
@@ -962,10 +864,9 @@ export const elem =
     isLeft(ma) ? false : E.equals(a, ma.right)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const exists =
@@ -974,12 +875,6 @@ export const exists =
     isLeft(ma) ? false : predicate(ma.right)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -1008,6 +903,10 @@ export const exists =
  * )
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const toTuple2 =
@@ -1024,11 +923,10 @@ export const toTuple2 =
 /**
  * Use [`toTuple2`](#totuple2) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const toTuple = <E, A>(e: E, a: A): ((fa: These<E, A>) => [E, A]) =>
@@ -1038,10 +936,9 @@ export const toTuple = <E, A>(e: E, a: A): ((fa: These<E, A>) => [E, A]) =>
   ) as any
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApT: These<never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
@@ -1053,12 +950,10 @@ export const ApT: These<never, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyAr
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(getApplicative(S))`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndex =
@@ -1090,12 +985,10 @@ export const traverseReadonlyNonEmptyArrayWithIndex =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(getApplicative(S))`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyArrayWithIndex =
@@ -1113,11 +1006,10 @@ export const traverseReadonlyArrayWithIndex =
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `T.Functor` instead of `T.these` (where `T` is from `import T from 'fp-ts/These'`)
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const these: Functor2<URI> & Bifunctor2<URI> & Foldable2<URI> & Traversable2<URI> = {

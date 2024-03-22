@@ -8,8 +8,8 @@
  *
  * Boolean algebras generalize classical logic: one is equivalent to "true" and zero is equivalent to "false".
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { getBooleanAlgebra } from './function'
@@ -20,12 +20,10 @@ import { type HeytingAlgebra } from './HeytingAlgebra'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface BooleanAlgebra<A> extends HeytingAlgebra<A> {}
@@ -37,10 +35,9 @@ export interface BooleanAlgebra<A> extends HeytingAlgebra<A> {}
 /**
  * Every boolean algebras has a dual algebra, which involves reversing one/zero as well as join/meet.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const reverse = <A>(B: BooleanAlgebra<A>): BooleanAlgebra<A> => ({
@@ -57,12 +54,10 @@ export const reverse = <A>(B: BooleanAlgebra<A>): BooleanAlgebra<A> => ({
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const booleanAlgebraVoid: BooleanAlgebra<void> = {
@@ -81,23 +76,21 @@ export const booleanAlgebraVoid: BooleanAlgebra<void> = {
 /**
  * Use [`reverse`](#reverse) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getDualBooleanAlgebra = reverse
 
 /**
- * Use [`BooleanAlgebra`](./boolean.ts.html#booleanalgebra) instead.
+ * Use [`BooleanAlgebra`](./boolean#booleanalgebra) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const booleanAlgebraBoolean: BooleanAlgebra<boolean> = {
@@ -110,13 +103,12 @@ export const booleanAlgebraBoolean: BooleanAlgebra<boolean> = {
 }
 
 /**
- * Use [`getBooleanAlgebra`](./function.ts.html#getbooleanalgebra) instead.
+ * Use [`getBooleanAlgebra`](./function#getbooleanalgebra) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getFunctionBooleanAlgebra: <B>(B: BooleanAlgebra<B>) => <A = never>() => BooleanAlgebra<(a: A) => B> =

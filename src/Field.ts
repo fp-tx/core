@@ -1,8 +1,8 @@
 /**
  * Adapted from https://github.com/purescript/purescript-prelude/blob/master/src/Data/Field.purs
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Eq } from './Eq'
@@ -13,12 +13,10 @@ import { type Ring } from './Ring'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Field<A> extends Ring<A> {
@@ -34,10 +32,9 @@ export interface Field<A> extends Ring<A> {
 /**
  * The _greatest common divisor_ of two values
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function gcd<A>(E: Eq<A>, field: Field<A>): (x: A, y: A) => A {
@@ -49,10 +46,9 @@ export function gcd<A>(E: Eq<A>, field: Field<A>): (x: A, y: A) => A {
 /**
  * The _least common multiple_ of two values
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function lcm<A>(E: Eq<A>, F: Field<A>): (x: A, y: A) => A {
@@ -66,13 +62,12 @@ export function lcm<A>(E: Eq<A>, F: Field<A>): (x: A, y: A) => A {
 // -------------------------------------------------------------------------------------
 
 /**
- * Use [`Field`](./number.ts.html#field) instead.
+ * Use [`Field`](./number#field) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fieldNumber: Field<number> = {

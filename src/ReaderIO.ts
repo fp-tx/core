@@ -1,6 +1,6 @@
 /**
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Applicative2 } from './Applicative'
@@ -30,12 +30,10 @@ import * as RT from './ReaderT'
 import { type ReadonlyNonEmptyArray } from './ReadonlyNonEmptyArray'
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 
@@ -48,23 +46,19 @@ export interface ReaderIO<R, A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromReader: <R, A>(fa: Reader<R, A>) => ReaderIO<R, A> = /*#__PURE__*/ RT.fromReader(I.Pointed)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromIO: <A, R = unknown>(fa: IO<A>) => ReaderIO<R, A> = /*#__PURE__*/ R.of
@@ -77,10 +71,9 @@ export const fromIO: <A, R = unknown>(fa: IO<A>) => ReaderIO<R, A> = /*#__PURE__
  * Changes the value of the local context during the execution of the action `ma` (similar to `Contravariant`'s
  * `contramap`).
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const local: <R2, R1>(f: (r2: R2) => R1) => <A>(ma: ReaderIO<R1, A>) => ReaderIO<R2, A> = R.local
@@ -90,12 +83,10 @@ export const local: <R2, R1>(f: (r2: R2) => R1) => <A>(ma: ReaderIO<R1, A>) => R
  *
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const asksReaderIOW: <R1, R2, A>(f: (r1: R1) => ReaderIO<R2, A>) => ReaderIO<R1 & R2, A> = R.asksReaderW
@@ -103,12 +94,10 @@ export const asksReaderIOW: <R1, R2, A>(f: (r1: R1) => ReaderIO<R2, A>) => Reade
 /**
  * Effectfully accesses the environment.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const asksReaderIO: <R, A>(f: (r: R) => ReaderIO<R, A>) => ReaderIO<R, A> = asksReaderIOW
@@ -120,21 +109,18 @@ const _ap: Apply2<URI>['ap'] = (fab, fa) => pipe(fab, ap(fa))
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const map: <A, B>(f: (a: A) => B) => <R>(fa: ReaderIO<R, A>) => ReaderIO<R, B> = /*#__PURE__*/ RT.map(I.Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ap: <R, A>(fa: ReaderIO<R, A>) => <B>(fab: ReaderIO<R, (a: A) => B>) => ReaderIO<R, B> =
@@ -145,33 +131,28 @@ export const ap: <R, A>(fa: ReaderIO<R, A>) => <B>(fab: ReaderIO<R, (a: A) => B>
  *
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apW: <R2, A>(fa: ReaderIO<R2, A>) => <R1, B>(fab: ReaderIO<R1, (a: A) => B>) => ReaderIO<R1 & R2, B> =
   ap as any
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const of: <R = unknown, A = never>(a: A) => ReaderIO<R, A> = /*#__PURE__*/ RT.of(I.Pointed)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMap: {
@@ -184,46 +165,38 @@ export const flatMap: {
  *
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flattenW: <R1, R2, A>(mma: ReaderIO<R1, ReaderIO<R2, A>>) => ReaderIO<R1 & R2, A> =
   /*#__PURE__*/ flatMap(identity)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatten: <R, A>(mma: ReaderIO<R, ReaderIO<R, A>>) => ReaderIO<R, A> = flattenW
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const URI = 'ReaderIO'
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export type URI = typeof URI
@@ -235,12 +208,10 @@ declare module './HKT' {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Functor: Functor2<URI> = {
@@ -251,12 +222,10 @@ export const Functor: Functor2<URI> = {
 /**
  * Maps the value to the specified constant value.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const as: {
@@ -267,34 +236,28 @@ export const as: {
 /**
  * Maps the value to the void constant value.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const asUnit: <R, _>(self: ReaderIO<R, _>) => ReaderIO<R, void> = asUnit_(Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Pointed: Pointed2<URI> = {
@@ -303,12 +266,10 @@ export const Pointed: Pointed2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Apply: Apply2<URI> = {
@@ -320,10 +281,9 @@ export const Apply: Apply2<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apFirst = /*#__PURE__*/ apFirst_(Apply)
@@ -331,21 +291,18 @@ export const apFirst = /*#__PURE__*/ apFirst_(Apply)
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apSecond = /*#__PURE__*/ apSecond_(Apply)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Applicative: Applicative2<URI> = {
@@ -356,12 +313,10 @@ export const Applicative: Applicative2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Chain: chainable.Chain2<URI> = {
@@ -372,12 +327,10 @@ export const Chain: chainable.Chain2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instance methods
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instance methods}
+ * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export const chainRec: ChainRec2<URI>['chainRec'] = (a, f) => r => () => {
@@ -391,12 +344,10 @@ export const chainRec: ChainRec2<URI>['chainRec'] = (a, f) => r => () => {
 /**
  * ChainRec for `ReaderIO`
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export const ChainRec: ChainRec2<URI> = {
@@ -405,12 +356,10 @@ export const ChainRec: ChainRec2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Monad: Monad2<URI> = {
@@ -422,12 +371,10 @@ export const Monad: Monad2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const MonadIO: MonadIO2<URI> = {
@@ -440,12 +387,10 @@ export const MonadIO: MonadIO2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FromIO: FromIO2<URI> = {
@@ -454,12 +399,10 @@ export const FromIO: FromIO2<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FromReader: FromReader2<URI> = {
@@ -488,12 +431,10 @@ const _FromReader: _.FromReader<ReaderIOTypeLambda> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMapIO: {
@@ -502,12 +443,10 @@ export const flatMapIO: {
 } = _.flatMapIO(_FromIO, _FlatMap)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMapReader: {
@@ -519,12 +458,10 @@ export const flatMapReader: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Combinators
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Combinators}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tap: {
@@ -536,12 +473,6 @@ export const tap: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Combinators
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -562,6 +493,10 @@ export const tap: {
  * test()
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Combinators}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tapIO: {
@@ -573,12 +508,10 @@ export const tapIO: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Combinators
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Combinators}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tapReader: {
@@ -587,12 +520,10 @@ export const tapReader: {
 } = /*#__PURE__*/ dual(2, tapReader_(FromReader, Chain))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
@@ -602,12 +533,10 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(
 /**
  * Alias of `flatMapIO`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainIOK: <A, B>(f: (a: A) => I.IO<B>) => <E>(first: ReaderIO<E, A>) => ReaderIO<E, B> = flatMapIO
@@ -615,12 +544,10 @@ export const chainIOK: <A, B>(f: (a: A) => I.IO<B>) => <E>(first: ReaderIO<E, A>
 /**
  * Alias of `tapIO`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirstIOK: <A, B>(f: (a: A) => I.IO<B>) => <E>(first: ReaderIO<E, A>) => ReaderIO<E, A> = tapIO
@@ -628,12 +555,10 @@ export const chainFirstIOK: <A, B>(f: (a: A) => I.IO<B>) => <E>(first: ReaderIO<
 /**
  * Reads the current context.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ask = /*#__PURE__*/ ask_(FromReader)
@@ -641,23 +566,19 @@ export const ask = /*#__PURE__*/ ask_(FromReader)
 /**
  * Projects a value from the global context in a `ReaderIO`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const asks = /*#__PURE__*/ asks_(FromReader)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromReaderK: <A extends ReadonlyArray<unknown>, R, B>(
@@ -667,12 +588,10 @@ export const fromReaderK: <A extends ReadonlyArray<unknown>, R, B>(
 /**
  * Alias of `flatMapReader`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainReaderK: <A, R, B>(f: (a: A) => R.Reader<R, B>) => (ma: ReaderIO<R, A>) => ReaderIO<R, B> =
@@ -685,12 +604,10 @@ export const chainReaderK: <A, R, B>(f: (a: A) => R.Reader<R, B>) => (ma: Reader
  *
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainReaderKW: <A, R1, B>(
@@ -700,12 +617,10 @@ export const chainReaderKW: <A, R1, B>(
 /**
  * Alias of `tapReader`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirstReaderK: <A, R, B>(f: (a: A) => R.Reader<R, B>) => (ma: ReaderIO<R, A>) => ReaderIO<R, A> =
@@ -718,12 +633,10 @@ export const chainFirstReaderK: <A, R, B>(f: (a: A) => R.Reader<R, B>) => (ma: R
  *
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirstReaderKW: <A, R1, B>(
@@ -735,34 +648,28 @@ export const chainFirstReaderKW: <A, R1, B>(
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Do: ReaderIO<unknown, {}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
@@ -770,12 +677,10 @@ export const bind = /*#__PURE__*/ chainable.bind(Chain)
 /**
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bindW: <N extends string, A, R2, B>(
@@ -785,12 +690,10 @@ export const bindW: <N extends string, A, R2, B>(
   bind as any
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apS = /*#__PURE__*/ apS_(Apply)
@@ -800,12 +703,10 @@ export const apS = /*#__PURE__*/ apS_(Apply)
  *
  * The `W` suffix (short for **W**idening) means that the environment types will be merged.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apSW: <N extends string, A, R2, B>(
@@ -815,10 +716,9 @@ export const apSW: <N extends string, A, R2, B>(
   apS as any
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApT: ReaderIO<unknown, readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
@@ -837,10 +737,9 @@ const do_: <MA extends ReaderIOIterable<any, any>, A>(
 
 export {
   /**
-   * @remarks
-   * Added in 1.0.0
-   * @remarks
-   * Category: Do notation
+   * @meta
+   * {@since 0.1.0}
+   * {@category Do notation}
    * @public
    */
   do_ as do,
@@ -853,12 +752,10 @@ export {
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(Applicative)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndex = <A, R, B>(
@@ -869,12 +766,10 @@ export const traverseReadonlyNonEmptyArrayWithIndex = <A, R, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyArrayWithIndex = <A, R, B>(
@@ -887,12 +782,10 @@ export const traverseReadonlyArrayWithIndex = <A, R, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseArrayWithIndex: <A, R, B>(
@@ -902,12 +795,10 @@ export const traverseArrayWithIndex: <A, R, B>(
 /**
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseArray = <A, R, B>(
@@ -917,12 +808,10 @@ export const traverseArray = <A, R, B>(
 /**
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const sequenceArray: <R, A>(arr: ReadonlyArray<ReaderIO<R, A>>) => ReaderIO<R, ReadonlyArray<A>> =
@@ -935,12 +824,10 @@ export const sequenceArray: <R, A>(arr: ReadonlyArray<ReaderIO<R, A>>) => Reader
 /**
  * Alias of `flatMap`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chain: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (ma: ReaderIO<R, A>) => ReaderIO<R, B> = flatMap
@@ -948,12 +835,10 @@ export const chain: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (ma: ReaderIO<R, A
 /**
  * Alias of `flatMap`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainW: <A, R2, B>(f: (a: A) => ReaderIO<R2, B>) => <R1>(ma: ReaderIO<R1, A>) => ReaderIO<R1 & R2, B> =
@@ -962,12 +847,10 @@ export const chainW: <A, R2, B>(f: (a: A) => ReaderIO<R2, B>) => <R1>(ma: Reader
 /**
  * Alias of `tap`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirst: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (first: ReaderIO<R, A>) => ReaderIO<R, A> = tap
@@ -975,12 +858,10 @@ export const chainFirst: <A, R, B>(f: (a: A) => ReaderIO<R, B>) => (first: Reade
 /**
  * Alias of `tap`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirstW: <A, R2, B>(

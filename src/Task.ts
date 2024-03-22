@@ -8,8 +8,8 @@
  * `Task<A>` represents an asynchronous computation that yields a value of type `A` and **never fails**. If you want to
  * represent an asynchronous computation that may fail, please see `TaskEither`.
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type Applicative1, getApplicativeMonoid } from './Applicative'
@@ -43,12 +43,10 @@ import { type Semigroup } from './Semigroup'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Task<A> {
@@ -60,12 +58,10 @@ export interface Task<A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Conversions
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Conversions}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromIO: <A>(fa: IO<A>) => Task<A> = ma => () => Promise.resolve().then(ma)
@@ -77,10 +73,6 @@ export const fromIO: <A>(fa: IO<A>) => Task<A> = ma => () => Promise.resolve().t
 /**
  * Creates a task that will complete after a time delay
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -105,6 +97,9 @@ export const fromIO: <A>(fa: IO<A>) => Task<A> = ma => () => Promise.resolve().t
  * test()
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function delay(millis: number): <A>(ma: Task<A>) => Task<A> {
@@ -124,45 +119,38 @@ const _apSeq: Apply1<URI>['ap'] = (fab, fa) => flatMap(fab, f => pipe(fa, map(f)
  * `map` can be used to turn functions `(a: A) => B` into functions `(fa: F<A>) => F<B>` whose argument and return types
  * use the type constructor `F` to represent some computational context.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const map: <A, B>(f: (a: A) => B) => (fa: Task<A>) => Task<B> = f => fa => () =>
   Promise.resolve().then(fa).then(f)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ap: <A>(fa: Task<A>) => <B>(fab: Task<(a: A) => B>) => Task<B> = fa => fab => () =>
   Promise.all([Promise.resolve().then(fab), Promise.resolve().then(fa)]).then(([f, a]) => f(a))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Constructors
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Constructors}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const of: <A>(a: A) => Task<A> = a => () => Promise.resolve(a)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMap: {
@@ -178,34 +166,28 @@ export const flatMap: {
 )
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatten: <A>(mma: Task<Task<A>>) => Task<A> = /*#__PURE__*/ flatMap(identity)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const URI = 'Task'
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Type lambdas
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Type lambdas}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export type URI = typeof URI
@@ -221,12 +203,6 @@ declare module './HKT' {
  *
  * Note: uses `Promise.race` internally.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -242,6 +218,10 @@ declare module './HKT' {
  * test()
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function getRaceMonoid<A = never>(): Monoid<Task<A>> {
@@ -252,12 +232,10 @@ export function getRaceMonoid<A = never>(): Monoid<Task<A>> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Functor: Functor1<URI> = {
@@ -268,12 +246,10 @@ export const Functor: Functor1<URI> = {
 /**
  * Maps the value to the specified constant value.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const as: {
@@ -284,34 +260,28 @@ export const as: {
 /**
  * Maps the value to the void constant value.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const asUnit: <_>(self: Task<_>) => Task<void> = asUnit_(Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Mapping
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Mapping}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flap = /*#__PURE__*/ flap_(Functor)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Pointed: Pointed1<URI> = {
@@ -322,12 +292,10 @@ export const Pointed: Pointed1<URI> = {
 /**
  * Runs computations in parallel.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApplyPar: Apply1<URI> = {
@@ -339,10 +307,9 @@ export const ApplyPar: Apply1<URI> = {
 /**
  * Combine two effectful actions, keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apFirst = /*#__PURE__*/ apFirst_(ApplyPar)
@@ -350,10 +317,9 @@ export const apFirst = /*#__PURE__*/ apFirst_(ApplyPar)
 /**
  * Combine two effectful actions, keeping only the result of the second.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
@@ -361,12 +327,10 @@ export const apSecond = /*#__PURE__*/ apSecond_(ApplyPar)
 /**
  * Runs computations in parallel.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApplicativePar: Applicative1<URI> = {
@@ -379,12 +343,10 @@ export const ApplicativePar: Applicative1<URI> = {
 /**
  * Runs computations sequentially.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApplySeq: Apply1<URI> = {
@@ -396,12 +358,10 @@ export const ApplySeq: Apply1<URI> = {
 /**
  * Runs computations sequentially.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApplicativeSeq: Applicative1<URI> = {
@@ -412,12 +372,10 @@ export const ApplicativeSeq: Applicative1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Chain: chainable.Chain1<URI> = {
@@ -428,12 +386,10 @@ export const Chain: chainable.Chain1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instance methods
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instance methods}
+ * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export const chainRec: ChainRec1<URI>['chainRec'] = (a, f) => async () => {
@@ -447,12 +403,10 @@ export const chainRec: ChainRec1<URI>['chainRec'] = (a, f) => async () => {
 /**
  * ChainRec for `Task`
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2022-present Jacob Alford}
  * @public
  */
 export const ChainRec: ChainRec1<URI> = {
@@ -461,12 +415,10 @@ export const ChainRec: ChainRec1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Monad: Monad1<URI> = {
@@ -478,12 +430,10 @@ export const Monad: Monad1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const MonadIO: MonadIO1<URI> = {
@@ -496,22 +446,19 @@ export const MonadIO: MonadIO1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromTask: <A>(fa: Task<A>) => Task<A> = identity
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const MonadTask: MonadTask1<URI> = {
@@ -525,12 +472,10 @@ export const MonadTask: MonadTask1<URI> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FromIO: FromIO1<URI> = {
@@ -554,12 +499,10 @@ const _FromIO: _.FromIO<TaskTypeLambda> = {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Sequencing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Sequencing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const flatMapIO: {
@@ -571,12 +514,10 @@ export const flatMapIO: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Combinators
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Combinators}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tap: {
@@ -588,12 +529,6 @@ export const tap: {
  * Composes computations in sequence, using the return value of one computation to determine the next computation and
  * keeping only the result of the first.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Combinators
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -614,6 +549,10 @@ export const tap: {
  * test()
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Combinators}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tapIO: {
@@ -622,12 +561,10 @@ export const tapIO: {
 } = /*#__PURE__*/ dual(2, tapIO_(FromIO, Chain))
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Lifting
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Lifting}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => IO<B>) => (...a: A) => Task<B> =
@@ -636,12 +573,10 @@ export const fromIOK: <A extends ReadonlyArray<unknown>, B>(f: (...a: A) => IO<B
 /**
  * Alias of `flatMapIO`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainIOK: <A, B>(f: (a: A) => IO<B>) => (first: Task<A>) => Task<B> = flatMapIO
@@ -649,23 +584,19 @@ export const chainIOK: <A, B>(f: (a: A) => IO<B>) => (first: Task<A>) => Task<B>
 /**
  * Alias of `tapIO`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirstIOK: <A, B>(f: (a: A) => IO<B>) => (first: Task<A>) => Task<A> = tapIO
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const FromTask: FromTask1<URI> = {
@@ -681,10 +612,9 @@ export const FromTask: FromTask1<URI> = {
 /**
  * A `Task` that never completes.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const never: Task<never> = () => new Promise(_ => undefined)
@@ -694,23 +624,19 @@ export const never: Task<never> = () => new Promise(_ => undefined)
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const Do: Task<{}> = /*#__PURE__*/ of(_.emptyRecord)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bindTo = /*#__PURE__*/ bindTo_(Functor)
@@ -719,24 +645,20 @@ const let_ = /*#__PURE__*/ let__(Functor)
 
 export {
   /**
-   * @remarks
-   * Added in 1.0.0
-   * @remarks
-   * Category: Do notation
-   * @remarks
-   * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+   * @meta
+   * {@since 0.1.0}
+   * {@category Do notation}
+   * {@license MIT – Copyright (c) 2017-present Giulio Canti}
    * @public
    */
   let_ as let,
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const bind = /*#__PURE__*/ chainable.bind(Chain)
@@ -752,31 +674,27 @@ const do_: <MA extends TaskIterable<any>, A>(
 
 export {
   /**
-   * @remarks
-   * Added in 1.0.0
-   * @remarks
-   * Category: Do notation
+   * @meta
+   * {@since 0.1.0}
+   * {@category Do notation}
    * @public
    */
   do_ as do,
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Do notation
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Do notation}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const apS = /*#__PURE__*/ apS_(ApplyPar)
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const ApT: Task<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
@@ -788,12 +706,10 @@ export const ApT: Task<readonly []> = /*#__PURE__*/ of(_.emptyReadonlyArray)
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(ApplicativePar)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndex =
@@ -805,12 +721,10 @@ export const traverseReadonlyNonEmptyArrayWithIndex =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativePar)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyArrayWithIndex = <A, B>(
@@ -823,12 +737,10 @@ export const traverseReadonlyArrayWithIndex = <A, B>(
 /**
  * Equivalent to `ReadonlyNonEmptyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyNonEmptyArrayWithIndexSeq =
@@ -853,12 +765,10 @@ export const traverseReadonlyNonEmptyArrayWithIndexSeq =
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseReadonlyArrayWithIndexSeq = <A, B>(
@@ -871,12 +781,10 @@ export const traverseReadonlyArrayWithIndexSeq = <A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(Applicative)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseArrayWithIndex: <A, B>(
@@ -886,12 +794,10 @@ export const traverseArrayWithIndex: <A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverse(Applicative)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseArray = <A, B>(f: (a: A) => Task<B>): ((as: ReadonlyArray<A>) => Task<ReadonlyArray<B>>) =>
@@ -900,12 +806,10 @@ export const traverseArray = <A, B>(f: (a: A) => Task<B>): ((as: ReadonlyArray<A
 /**
  * Equivalent to `ReadonlyArray#sequence(Applicative)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const sequenceArray: <A>(arr: ReadonlyArray<Task<A>>) => Task<ReadonlyArray<A>> =
@@ -914,12 +818,10 @@ export const sequenceArray: <A>(arr: ReadonlyArray<Task<A>>) => Task<ReadonlyArr
 /**
  * Equivalent to `ReadonlyArray#traverseWithIndex(ApplicativeSeq)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseSeqArrayWithIndex: <A, B>(
@@ -929,12 +831,10 @@ export const traverseSeqArrayWithIndex: <A, B>(
 /**
  * Equivalent to `ReadonlyArray#traverse(ApplicativeSeq)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const traverseSeqArray = <A, B>(f: (a: A) => Task<B>): ((as: ReadonlyArray<A>) => Task<ReadonlyArray<B>>) =>
@@ -943,12 +843,10 @@ export const traverseSeqArray = <A, B>(f: (a: A) => Task<B>): ((as: ReadonlyArra
 /**
  * Equivalent to `ReadonlyArray#sequence(ApplicativeSeq)`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Traversing
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Traversing}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const sequenceSeqArray: <A>(arr: ReadonlyArray<Task<A>>) => Task<ReadonlyArray<A>> =
@@ -961,12 +859,10 @@ export const sequenceSeqArray: <A>(arr: ReadonlyArray<Task<A>>) => Task<Readonly
 /**
  * Alias of `flatMap`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chain: <A, B>(f: (a: A) => Task<B>) => (ma: Task<A>) => Task<B> = flatMap
@@ -974,12 +870,10 @@ export const chain: <A, B>(f: (a: A) => Task<B>) => (ma: Task<A>) => Task<B> = f
 /**
  * Alias of `tap`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Legacy
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Legacy}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const chainFirst: <A, B>(f: (a: A) => Task<B>) => (first: Task<A>) => Task<A> = tap
@@ -992,11 +886,10 @@ export const chainFirst: <A, B>(f: (a: A) => Task<B>) => (first: Task<A>) => Tas
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `T.Functor` instead of `T.task` (where `T` is from `import T from 'fp-ts/Task'`)
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const task: Monad1<URI> & MonadTask1<URI> = {
@@ -1013,11 +906,10 @@ export const task: Monad1<URI> & MonadTask1<URI> = {
  * This instance is deprecated, use small, specific instances instead. For example if a function needs a `Functor`
  * instance, pass `T.Functor` instead of `T.taskSeq` (where `T` is from `import T from 'fp-ts/Task'`)
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const taskSeq: Monad1<URI> & MonadTask1<URI> = {
@@ -1031,27 +923,25 @@ export const taskSeq: Monad1<URI> & MonadTask1<URI> = {
 }
 
 /**
- * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+ * Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getSemigroup: <A>(S: Semigroup<A>) => Semigroup<Task<A>> = /*#__PURE__*/ getApplySemigroup_(ApplySeq)
 
 /**
- * Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+ * Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
  *
  * Lift a monoid into 'Task', the inner values are concatenated using the provided `Monoid`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getMonoid: <A>(M: Monoid<A>) => Monoid<Task<A>> = /*#__PURE__*/ getApplicativeMonoid(ApplicativeSeq)

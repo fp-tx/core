@@ -7,8 +7,8 @@
  *
  * Adapted from https://github.com/purescript/purescript-prelude/blob/master/src/Data/Ring.purs
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { getRing } from './function'
@@ -19,12 +19,10 @@ import { type Semiring } from './Semiring'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Ring<A> extends Semiring<A> {
@@ -38,10 +36,6 @@ export interface Ring<A> extends Semiring<A> {
 /**
  * Given a tuple of `Ring`s returns a `Ring` for the tuple
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -56,6 +50,9 @@ export interface Ring<A> extends Semiring<A> {
  * assert.deepStrictEqual(R.zero, [0, 0, 0])
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const tuple = <A extends ReadonlyArray<unknown>>(...rings: { [K in keyof A]: Ring<A[K]> }): Ring<Readonly<A>> =>
@@ -74,10 +71,9 @@ export const tuple = <A extends ReadonlyArray<unknown>>(...rings: { [K in keyof 
 /**
  * `negate x` can be used as a shorthand for `zero - x`
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const negate =
@@ -92,11 +88,10 @@ export const negate =
 /**
  * Use [`tuple`](#tuple) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getTupleRing: <T extends ReadonlyArray<Ring<any>>>(
@@ -104,13 +99,12 @@ export const getTupleRing: <T extends ReadonlyArray<Ring<any>>>(
 ) => Ring<{ [K in keyof T]: T[K] extends Ring<infer A> ? A : never }> = tuple as any
 
 /**
- * Use [`getRing`](./function.ts.html#getring) instead.
+ * Use [`getRing`](./function#getring) instead.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @deprecated Zone of Death
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getFunctionRing: <A, B>(R: Ring<B>) => Ring<(a: A) => B> = getRing

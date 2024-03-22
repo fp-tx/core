@@ -13,5 +13,6 @@
     "stripInternal": true,
     "types": ["node", "jest"]
   },
-  "include": ["./src/**/*.ts", "./test/**/*.ts", "./perf/**/*.ts", "./tsup.config.ts"]
+  "include": ["./src/**/*.ts", "./test/**/*.ts", "./perf/**/*.ts", "./tsup.config.ts"],
+  "references": [{ "path": "./tsconfig.docs.json" }]
 }

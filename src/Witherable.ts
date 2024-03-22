@@ -3,8 +3,8 @@
  *
  * Adapted from https://github.com/LiamGoodacre/purescript-filterable/blob/master/src/Data/Witherable.purs
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import {
@@ -35,12 +35,10 @@ import {
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Witherable<T> extends Traversable<T>, Filterable<T> {
@@ -52,12 +50,10 @@ export interface Witherable<T> extends Traversable<T>, Filterable<T> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Witherable1<T extends URIS> extends Traversable1<T>, Filterable1<T> {
@@ -66,12 +62,10 @@ export interface Witherable1<T extends URIS> extends Traversable1<T>, Filterable
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Witherable2<T extends URIS2> extends Traversable2<T>, Filterable2<T> {
@@ -80,12 +74,10 @@ export interface Witherable2<T extends URIS2> extends Traversable2<T>, Filterabl
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Witherable2C<T extends URIS2, TL> extends Traversable2C<T, TL>, Filterable2C<T, TL> {
@@ -94,12 +86,10 @@ export interface Witherable2C<T extends URIS2, TL> extends Traversable2C<T, TL>,
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Witherable3<T extends URIS3> extends Traversable3<T>, Filterable3<T> {
@@ -108,10 +98,9 @@ export interface Witherable3<T extends URIS3> extends Traversable3<T>, Filterabl
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Wither<W> {
@@ -132,10 +121,9 @@ export interface Wither<W> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Wither1<W extends URIS> {
@@ -156,10 +144,9 @@ export interface Wither1<W extends URIS> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Wither2<W extends URIS2> {
@@ -179,10 +166,9 @@ export interface Wither2<W extends URIS2> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Wither2C<W extends URIS2, E> {
@@ -202,10 +188,9 @@ export interface Wither2C<W extends URIS2, E> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Wither3<W extends URIS3> {
@@ -233,10 +218,9 @@ export interface Wither3<W extends URIS3> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Wilt<W> {
@@ -267,10 +251,9 @@ export interface Wilt<W> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Wilt1<W extends URIS> {
@@ -304,10 +287,9 @@ export interface Wilt1<W extends URIS> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Wilt2<W extends URIS2> {
@@ -344,10 +326,9 @@ export interface Wilt2<W extends URIS2> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Wilt2C<W extends URIS2, E> {
@@ -384,10 +365,9 @@ export interface Wilt2C<W extends URIS2, E> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface Wilt3<W extends URIS3> {
@@ -428,10 +408,9 @@ export interface Wilt3<W extends URIS3> {
 //
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface PipeableWither<W> {
@@ -452,10 +431,9 @@ export interface PipeableWither<W> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface PipeableWither1<W extends URIS> {
@@ -478,10 +456,9 @@ export interface PipeableWither1<W extends URIS> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface PipeableWither2<W extends URIS2> {
@@ -503,10 +480,9 @@ export interface PipeableWither2<W extends URIS2> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface PipeableWither2C<W extends URIS2, WE> {
@@ -526,10 +502,9 @@ export interface PipeableWither2C<W extends URIS2, WE> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface PipeableWither3<W extends URIS3> {
@@ -561,10 +536,9 @@ export interface PipeableWither3<W extends URIS3> {
 //
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface PipeableWilt<W> {
@@ -597,10 +571,9 @@ export interface PipeableWilt<W> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface PipeableWilt1<W extends URIS> {
@@ -633,10 +606,9 @@ export interface PipeableWilt1<W extends URIS> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface PipeableWilt2<W extends URIS2> {
@@ -668,10 +640,9 @@ export interface PipeableWilt2<W extends URIS2> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface PipeableWilt2C<W extends URIS2, WE> {
@@ -703,10 +674,9 @@ export interface PipeableWilt2C<W extends URIS2, WE> {
 }
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface PipeableWilt3<W extends URIS3> {
@@ -744,12 +714,10 @@ export interface PipeableWilt3<W extends URIS3> {
 /**
  * Return a `wilt` implementation from `Traversable` and `Compactable`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Defaults
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Defaults}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function wiltDefault<W extends URIS2, E>(T: Traversable2C<W, E>, C: Compactable2<W>): Witherable2C<W, E>['wilt']
@@ -768,12 +736,10 @@ export function wiltDefault<W>(T: Traversable<W>, C: Compactable<W>): Witherable
 /**
  * Return a `wither` implementation from `Traversable` and `Compactable`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Defaults
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Defaults}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function witherDefault<W extends URIS2, E>(
@@ -798,10 +764,9 @@ export function witherDefault<W>(T: Traversable<W>, C: Compactable<W>): Witherab
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface FilterE1<G extends URIS> {
@@ -828,10 +793,9 @@ export interface FilterE1<G extends URIS> {
  *
  * See `ReadonlyArray`'s `filterE` for an example of usage.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export function filterE<G extends URIS>(W: Witherable1<G>): FilterE1<G>

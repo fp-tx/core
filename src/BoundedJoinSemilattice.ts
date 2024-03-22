@@ -3,8 +3,8 @@
  *
  * - `a ∨ 0 <-> a`
  *
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import { type JoinSemilattice } from './JoinSemilattice'
@@ -14,12 +14,10 @@ import { type JoinSemilattice } from './JoinSemilattice'
 // -------------------------------------------------------------------------------------
 
 /**
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Model
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
+ * @meta
+ * {@since 0.1.0}
+ * {@category Model}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export interface BoundedJoinSemilattice<A> extends JoinSemilattice<A> {

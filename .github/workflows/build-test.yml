@@ -54,3 +54,7 @@ jobs:
 
       - name: Run Build
         run: pnpm run prerelease
+
+      # TODO: add docs build to CI checks
+      # - name: Test Build Docs
+      #   run: pnpm run docs:prepare

@@ -1,6 +1,6 @@
 /**
- * @remarks
- * Added in 1.0.0
+ * @meta
+ * {@since 0.1.0}
  * @packageDocumentation
  */
 import * as _ from './internal'
@@ -13,12 +13,6 @@ import { type Semigroup } from './Semigroup'
 /**
  * Return a semigroup which works like `Object.assign`.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Category: Instances
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -33,6 +27,10 @@ import { type Semigroup } from './Semigroup'
  * assert.deepStrictEqual(S.concat({ name: 'name', age: 23 }, { name: 'name', age: 24 }), { name: 'name', age: 24 })
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@category Instances}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const getAssignSemigroup = <A extends object = never>(): Semigroup<A> => ({
@@ -46,10 +44,6 @@ export const getAssignSemigroup = <A extends object = never>(): Semigroup<A> => 
 /**
  * Creates a new object by recursively evolving a shallow copy of `a`, according to the `transformation` functions.
  *
- * @remarks
- * Added in 1.0.0
- * @remarks
- * Original License: MIT – Copyright (c) 2017-present Giulio Canti
  * @example
  *
  * ```typescript
@@ -68,6 +62,9 @@ export const getAssignSemigroup = <A extends object = never>(): Semigroup<A> => 
  * )
  * ```
  *
+ * @meta
+ * {@since 0.1.0}
+ * {@license MIT – Copyright (c) 2017-present Giulio Canti}
  * @public
  */
 export const evolve =
