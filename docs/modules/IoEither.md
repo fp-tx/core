@@ -349,7 +349,7 @@ export declare const ChainRec: ChainRec2<URI>
 
 #### License
 
-* MIT – Copyright (c) 2017-present Giulio Canti
+* MIT – Copyright (c) 2022-present Jacob Alford
 
 ---
 
@@ -1072,7 +1072,7 @@ export declare const altW: <E2, B>(
 The default [`Alt`](#alt) instance returns the last error, if you want to get all errors you need to provide a way to concatenate them via a `Semigroup`.
 
 
-See [`getAltValidation`](./Either.ts.html#getaltvalidation).
+See [`getAltValidation`](./Either#getaltvalidation).
 
 
 
@@ -1101,7 +1101,7 @@ export declare function getAltIOValidation<E>(S: Semigroup<E>): Alt2C<URI, E>
 The default [`ApplicativePar`](#applicativepar) instance returns the first error, if you want to get all errors you need to provide a way to concatenate them via a `Semigroup`.
 
 
-See [`getApplicativeValidation`](./Either.ts.html#getapplicativevalidation).
+See [`getApplicativeValidation`](./Either#getapplicativevalidation).
 
 
 
@@ -1514,7 +1514,7 @@ export declare const chainRec: ChainRec2<URI>['chainRec']
 
 #### License
 
-* MIT – Copyright (c) 2017-present Giulio Canti
+* MIT – Copyright (c) 2022-present Jacob Alford
 
 ## Interop
 
@@ -3238,7 +3238,7 @@ export declare const do_: <MA extends IOEitherIterable<any, any>, A>(
 
 ### ~~`getApplyMonoid`~~
 
-Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
 
 
 
@@ -3264,7 +3264,7 @@ export declare const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<IOEither<E, 
 
 ### ~~`getApplySemigroup`~~
 
-Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
 
 
 
@@ -3319,7 +3319,7 @@ export declare function getIOValidation<E>(
 
 ### ~~`getSemigroup`~~
 
-Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
 
 
 

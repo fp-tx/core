@@ -1010,7 +1010,7 @@ export declare const fromIO: <A>(fa: IO<A>) => IO<A>
 
 ### ~~`getMonoid`~~
 
-Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
 
 
 
@@ -1036,7 +1036,7 @@ export declare const getMonoid: <A>(M: Monoid<A>) => Monoid<IO<A>>
 
 ### ~~`getSemigroup`~~
 
-Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
 
 
 

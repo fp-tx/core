@@ -1337,7 +1337,7 @@ export declare const functorTaskThese: Functor2<URI>
 
 ### ~~`getSemigroup`~~
 
-Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
 
 
 

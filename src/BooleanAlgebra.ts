@@ -85,7 +85,7 @@ export const booleanAlgebraVoid: BooleanAlgebra<void> = {
 export const getDualBooleanAlgebra = reverse
 
 /**
- * Use [`BooleanAlgebra`](./boolean.ts.html#booleanalgebra) instead.
+ * Use [`BooleanAlgebra`](./boolean#booleanalgebra) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -103,7 +103,7 @@ export const booleanAlgebraBoolean: BooleanAlgebra<boolean> = {
 }
 
 /**
- * Use [`getBooleanAlgebra`](./function.ts.html#getbooleanalgebra) instead.
+ * Use [`getBooleanAlgebra`](./function#getbooleanalgebra) instead.
  *
  * @deprecated Zone of Death
  * @meta

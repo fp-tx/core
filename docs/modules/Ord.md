@@ -721,7 +721,7 @@ export declare const ord: Contravariant1<URI>
 
 ### ~~`ordBoolean`~~
 
-Use [`Ord`](./boolean.ts.html#ord) instead.
+Use [`Ord`](./boolean#ord) instead.
 
 
 
@@ -747,7 +747,7 @@ export declare const ordBoolean: Ord<boolean>
 
 ### ~~`ordDate`~~
 
-Use [`Ord`](./Date.ts.html#ord) instead.
+Use [`Ord`](./Date#ord) instead.
 
 
 
@@ -773,7 +773,7 @@ export declare const ordDate: Ord<Date>
 
 ### ~~`ordNumber`~~
 
-Use [`Ord`](./number.ts.html#ord) instead.
+Use [`Ord`](./number#ord) instead.
 
 
 
@@ -799,7 +799,7 @@ export declare const ordNumber: Ord<number>
 
 ### ~~`ordString`~~
 
-Use [`Ord`](./string.ts.html#ord) instead.
+Use [`Ord`](./string#ord) instead.
 
 
 

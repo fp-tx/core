@@ -94,7 +94,7 @@ export const getStructShow: <O extends ReadonlyRecord<string, any>>(shows: { [K 
   struct
 
 /**
- * Use [`Show`](./boolean.ts.html#show) instead.
+ * Use [`Show`](./boolean#show) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -107,7 +107,7 @@ export const showBoolean: Show<boolean> = {
 }
 
 /**
- * Use [`Show`](./string.ts.html#show) instead.
+ * Use [`Show`](./string#show) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -120,7 +120,7 @@ export const showString: Show<string> = {
 }
 
 /**
- * Use [`Show`](./number.ts.html#show) instead.
+ * Use [`Show`](./number#show) instead.
  *
  * @deprecated Zone of Death
  * @meta

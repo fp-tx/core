@@ -313,7 +313,7 @@ export declare const ChainRec: ChainRec1<URI>
 
 #### License
 
-* MIT – Copyright (c) 2017-present Giulio Canti
+* MIT – Copyright (c) 2022-present Jacob Alford
 
 ---
 
@@ -1591,7 +1591,7 @@ export declare const chainRec: ChainRec1<URI>['chainRec']
 
 #### License
 
-* MIT – Copyright (c) 2017-present Giulio Canti
+* MIT – Copyright (c) 2022-present Jacob Alford
 
 ## Interop
 
@@ -2902,7 +2902,7 @@ export declare const extend: <A, B>(f: (wa: Option<A>) => B) => (wa: Option<A>) 
 
 ### ~~`getApplyMonoid`~~
 
-Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
 
 
 
@@ -2928,7 +2928,7 @@ export declare const getApplyMonoid: <A>(M: Monoid<A>) => Monoid<Option<A>>
 
 ### ~~`getApplySemigroup`~~
 
-Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
 
 
 

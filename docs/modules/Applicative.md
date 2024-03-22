@@ -508,7 +508,7 @@ export interface ApplicativeCompositionHKT2C<F, G extends URIS2, E> extends Func
 
 ### ~~`getApplicativeComposition`~~
 
-Use [`ap`](./Apply.ts.html#ap) instead.
+Use [`ap`](./Apply#ap) instead.
 
 
 

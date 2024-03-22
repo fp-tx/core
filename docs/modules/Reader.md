@@ -219,7 +219,7 @@ export declare const ChainRec: ChainRec2<URI>
 
 #### License
 
-* MIT – Copyright (c) 2017-present Giulio Canti
+* MIT – Copyright (c) 2022-present Jacob Alford
 
 ---
 
@@ -726,7 +726,7 @@ export declare const chainRec: ChainRec2<URI>['chainRec']
 
 #### License
 
-* MIT – Copyright (c) 2017-present Giulio Canti
+* MIT – Copyright (c) 2022-present Jacob Alford
 
 ## Legacy
 
@@ -1409,7 +1409,7 @@ export declare const first: Strong2<URI>['first']
 
 ### ~~`getMonoid`~~
 
-Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
 
 
 
@@ -1435,7 +1435,7 @@ export declare const getMonoid: <R, A>(M: Monoid<A>) => Monoid<Reader<R, A>>
 
 ### ~~`getSemigroup`~~
 
-Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
 
 
 

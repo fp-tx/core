@@ -324,7 +324,7 @@ export const concatAll: <A>(S: Semigroup<A>) => (startWith: A) => (as: ReadonlyA
 export const semigroupVoid: Semigroup<void> = constant<void>(undefined)
 
 /**
- * Use [`getAssignSemigroup`](./struct.ts.html#getAssignSemigroup) instead.
+ * Use [`getAssignSemigroup`](./struct#getAssignSemigroup) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -447,7 +447,7 @@ export function fold<A>(S: Semigroup<A>): (startWith: A, as?: ReadonlyArray<A>) 
 }
 
 /**
- * Use [`SemigroupAll`](./boolean.ts.html#SemigroupAll) instead.
+ * Use [`SemigroupAll`](./boolean#SemigroupAll) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -460,7 +460,7 @@ export const semigroupAll: Semigroup<boolean> = {
 }
 
 /**
- * Use [`SemigroupAny`](./boolean.ts.html#SemigroupAny) instead.
+ * Use [`SemigroupAny`](./boolean#SemigroupAny) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -473,7 +473,7 @@ export const semigroupAny: Semigroup<boolean> = {
 }
 
 /**
- * Use [`getSemigroup`](./function.ts.html#getSemigroup) instead.
+ * Use [`getSemigroup`](./function#getSemigroup) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -484,7 +484,7 @@ export const semigroupAny: Semigroup<boolean> = {
 export const getFunctionSemigroup: <S>(S: Semigroup<S>) => <A = never>() => Semigroup<(a: A) => S> = getSemigroup
 
 /**
- * Use [`Semigroup`](./string.ts.html#Semigroup) instead.
+ * Use [`Semigroup`](./string#Semigroup) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -497,7 +497,7 @@ export const semigroupString: Semigroup<string> = {
 }
 
 /**
- * Use [`SemigroupSum`](./number.ts.html#SemigroupSum) instead.
+ * Use [`SemigroupSum`](./number#SemigroupSum) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -510,7 +510,7 @@ export const semigroupSum: Semigroup<number> = {
 }
 
 /**
- * Use [`SemigroupProduct`](./number.ts.html#SemigroupProduct) instead.
+ * Use [`SemigroupProduct`](./number#SemigroupProduct) instead.
  *
  * @deprecated Zone of Death
  * @meta

@@ -73,7 +73,7 @@ export interface BooleanAlgebra<A> extends HeytingAlgebra<A> {}
 
 ### ~~`booleanAlgebraBoolean`~~
 
-Use [`BooleanAlgebra`](./boolean.ts.html#booleanalgebra) instead.
+Use [`BooleanAlgebra`](./boolean#booleanalgebra) instead.
 
 
 
@@ -125,7 +125,7 @@ export declare const getDualBooleanAlgebra: <A>(B: BooleanAlgebra<A>) => Boolean
 
 ### ~~`getFunctionBooleanAlgebra`~~
 
-Use [`getBooleanAlgebra`](./function.ts.html#getbooleanalgebra) instead.
+Use [`getBooleanAlgebra`](./function#getbooleanalgebra) instead.
 
 
 

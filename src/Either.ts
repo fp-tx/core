@@ -2031,7 +2031,7 @@ export const chainFirstW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Eit
 // -------------------------------------------------------------------------------------
 
 /**
- * Use [`Json`](./Json.ts.html) module instead.
+ * Use [`Json`](./Json) module instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -2042,7 +2042,7 @@ export const chainFirstW: <E2, A, B>(f: (a: A) => Either<E2, B>) => <E1>(ma: Eit
 export type Json = boolean | number | string | null | JsonArray | JsonRecord
 
 /**
- * Use [`Json`](./Json.ts.html) module instead.
+ * Use [`Json`](./Json) module instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -2055,7 +2055,7 @@ export interface JsonRecord {
 }
 
 /**
- * Use [`Json`](./Json.ts.html) module instead.
+ * Use [`Json`](./Json) module instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -2066,7 +2066,7 @@ export interface JsonRecord {
 export interface JsonArray extends ReadonlyArray<Json> {}
 
 /**
- * Use [`parse`](./Json.ts.html#parse) instead.
+ * Use [`parse`](./Json#parse) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -2079,7 +2079,7 @@ export function parseJSON<E>(s: string, onError: (reason: unknown) => E): Either
 }
 
 /**
- * Use [`stringify`](./Json.ts.html#stringify) instead.
+ * Use [`stringify`](./Json#stringify) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -2133,7 +2133,7 @@ export const either: Monad2<URI> &
 }
 
 /**
- * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+ * Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
  *
  * Semigroup returning the left-most `Left` value. If both operands are `Right`s then the inner values are concatenated
  * using the provided `Semigroup`
@@ -2148,7 +2148,7 @@ export const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<Either<E, A
   /*#__PURE__*/ getApplySemigroup_(Apply)
 
 /**
- * Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+ * Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -2160,7 +2160,7 @@ export const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<Either<E, A>> =
   /*#__PURE__*/ getApplicativeMonoid(Applicative)
 
 /**
- * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+ * Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -2172,7 +2172,7 @@ export const getValidationSemigroup = <E, A>(SE: Semigroup<E>, SA: Semigroup<A>)
   getApplySemigroup_(getApplicativeValidation(SE))(SA)
 
 /**
- * Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+ * Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
  *
  * @deprecated Zone of Death
  * @meta

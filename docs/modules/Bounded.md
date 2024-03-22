@@ -101,7 +101,7 @@ export declare const reverse: <A>(B: Bounded<A>) => Bounded<A>
 
 ### ~~`boundedNumber`~~
 
-Use [`Bounded`](./number.ts.html#bounded) instead.
+Use [`Bounded`](./number#bounded) instead.
 
 
 

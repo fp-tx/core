@@ -49,7 +49,7 @@ export interface Field<A> extends Ring<A> {
 
 ### ~~`fieldNumber`~~
 
-Use [`Field`](./number.ts.html#field) instead.
+Use [`Field`](./number#field) instead.
 
 
 

@@ -358,7 +358,7 @@ export declare const getFirstSemigroup: <A = never>() => Semigroup<A>
 
 ### ~~`getFunctionSemigroup`~~
 
-Use [`getSemigroup`](./function.ts.html#getSemigroup) instead.
+Use [`getSemigroup`](./function#getSemigroup) instead.
 
 
 
@@ -488,7 +488,7 @@ export declare const getMeetSemigroup: <A>(O: Or.Ord<A>) => Semigroup<A>
 
 ### ~~`getObjectSemigroup`~~
 
-Use [`getAssignSemigroup`](./struct.ts.html#getAssignSemigroup) instead.
+Use [`getAssignSemigroup`](./struct#getAssignSemigroup) instead.
 
 
 
@@ -643,7 +643,7 @@ assert.deepStrictEqual(reverse(S.Semigroup).concat('a', 'b'), 'ba')
 
 ### ~~`semigroupAll`~~
 
-Use [`SemigroupAll`](./boolean.ts.html#SemigroupAll) instead.
+Use [`SemigroupAll`](./boolean#SemigroupAll) instead.
 
 
 
@@ -669,7 +669,7 @@ export declare const semigroupAll: Semigroup<boolean>
 
 ### ~~`semigroupAny`~~
 
-Use [`SemigroupAny`](./boolean.ts.html#SemigroupAny) instead.
+Use [`SemigroupAny`](./boolean#SemigroupAny) instead.
 
 
 
@@ -695,7 +695,7 @@ export declare const semigroupAny: Semigroup<boolean>
 
 ### ~~`semigroupProduct`~~
 
-Use [`SemigroupProduct`](./number.ts.html#SemigroupProduct) instead.
+Use [`SemigroupProduct`](./number#SemigroupProduct) instead.
 
 
 
@@ -721,7 +721,7 @@ export declare const semigroupProduct: Semigroup<number>
 
 ### ~~`semigroupString`~~
 
-Use [`Semigroup`](./string.ts.html#Semigroup) instead.
+Use [`Semigroup`](./string#Semigroup) instead.
 
 
 
@@ -747,7 +747,7 @@ export declare const semigroupString: Semigroup<string>
 
 ### ~~`semigroupSum`~~
 
-Use [`SemigroupSum`](./number.ts.html#SemigroupSum) instead.
+Use [`SemigroupSum`](./number#SemigroupSum) instead.
 
 
 

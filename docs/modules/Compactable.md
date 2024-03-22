@@ -518,7 +518,7 @@ export interface CompactableComposition2C1<F extends URIS2, G extends URIS, E> e
 
 ### ~~`Separated`~~
 
-Use [`Separated`](./Separated.ts.html#separated) instead.
+Use [`Separated`](./Separated#separated) instead.
 
 
 

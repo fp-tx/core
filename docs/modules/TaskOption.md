@@ -355,7 +355,7 @@ export declare const ChainRec: ChainRec1<URI>
 
 #### License
 
-* MIT – Copyright (c) 2017-present Giulio Canti
+* MIT – Copyright (c) 2022-present Jacob Alford
 
 ---
 
@@ -1409,7 +1409,7 @@ export declare const chainRec: ChainRec1<URI>['chainRec']
 
 #### License
 
-* MIT – Copyright (c) 2017-present Giulio Canti
+* MIT – Copyright (c) 2022-present Jacob Alford
 
 ## Interop
 

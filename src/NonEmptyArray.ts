@@ -1606,7 +1606,7 @@ export function groupSort<A>(O: Ord<A>): (as: Array<A>) => Array<NonEmptyArray<A
 }
 
 /**
- * Use [`filter`](./Array.ts.html#filter) instead.
+ * Use [`filter`](./Array#filter) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -1622,7 +1622,7 @@ export function filter<A>(predicate: Predicate<A>): (as: NonEmptyArray<A>) => Op
 }
 
 /**
- * Use [`filterWithIndex`](./Array.ts.html#filterwithindex) instead.
+ * Use [`filterWithIndex`](./Array#filterwithindex) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -1658,7 +1658,7 @@ export const uncons: <A>(as: NonEmptyArray<A>) => [A, Array<A>] = unprepend
 export const unsnoc: <A>(as: NonEmptyArray<A>) => [Array<A>, A] = unappend
 
 /**
- * Use [`prepend`](./Array.ts.html#prepend) instead.
+ * Use [`prepend`](./Array#prepend) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -1674,7 +1674,7 @@ export function cons<A>(head: A, tail?: Array<A>): NonEmptyArray<A> | ((tail: Ar
 }
 
 /**
- * Use [`append`](./Array.ts.html#append) instead.
+ * Use [`append`](./Array#append) instead.
  *
  * @deprecated Zone of Death
  * @meta

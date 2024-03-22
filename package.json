@@ -36,6 +36,7 @@
     "docs:ls": "pnpm run docs:prepare && :",
     "docs:start": "docusaurus start",
     "docs:build": "docusaurus build",
+    "docs:all": "pnpm run prerelease && pnpm run docs:prepare && pnpm run docs:build",
     "docs:serve": "docusaurus serve"
   },
   "lint-staged": {

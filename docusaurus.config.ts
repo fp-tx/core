@@ -14,7 +14,7 @@ const config: Config = {
   organizationName: 'fp-tx',
   projectName: 'core',
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   presets: [

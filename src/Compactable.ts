@@ -425,7 +425,7 @@ export function getCompactableComposition<F, G>(
 }
 
 /**
- * Use [`Separated`](./Separated.ts.html#separated) instead.
+ * Use [`Separated`](./Separated#separated) instead.
  *
  * @deprecated Use `Separated` instead
  * @meta

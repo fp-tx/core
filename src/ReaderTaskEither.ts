@@ -893,7 +893,7 @@ export function getFilterable<E>(M: Monoid<E>): Filterable3C<URI, E> {
  * The default [`ApplicativePar`](#applicativepar) instance returns the first error, if you want to get all errors you
  * need to provide a way to concatenate them via a `Semigroup`.
  *
- * See [`getApplicativeValidation`](./Either.ts.html#getapplicativevalidation).
+ * See [`getApplicativeValidation`](./Either#getapplicativevalidation).
  *
  * @meta
  * {@since 1.0.0}
@@ -916,7 +916,7 @@ export function getApplicativeReaderTaskValidation<E>(A: Apply1<T.URI>, S: Semig
  * The default [`Alt`](#alt) instance returns the last error, if you want to get all errors you need to provide a way to
  * concatenate them via a `Semigroup`.
  *
- * See [`getAltValidation`](./Either.ts.html#getaltvalidation).
+ * See [`getAltValidation`](./Either#getaltvalidation).
  *
  * @meta
  * {@since 1.0.0}
@@ -2845,7 +2845,7 @@ export const readerTaskEitherSeq: typeof readerTaskEither = {
 }
 
 /**
- * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+ * Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
  *
  * Semigroup returning the left-most `Left` value. If both operands are `Right`s then the inner values are concatenated
  * using the provided `Semigroup`
@@ -2860,7 +2860,7 @@ export const getApplySemigroup: <R, E, A>(S: Semigroup<A>) => Semigroup<ReaderTa
   /*#__PURE__*/ getApplySemigroup_(ApplySeq)
 
 /**
- * Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+ * Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -2872,7 +2872,7 @@ export const getApplyMonoid: <R, E, A>(M: Monoid<A>) => Monoid<ReaderTaskEither<
   /*#__PURE__*/ getApplicativeMonoid(ApplicativeSeq)
 
 /**
- * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+ * Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
  *
  * @deprecated Zone of Death
  * @meta

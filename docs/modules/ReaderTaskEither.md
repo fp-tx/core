@@ -440,7 +440,7 @@ export declare const ChainRec: ChainRec3<URI>
 
 #### License
 
-* MIT – Copyright (c) 2017-present Giulio Canti
+* MIT – Copyright (c) 2022-present Jacob Alford
 
 ---
 
@@ -1901,7 +1901,7 @@ export declare const altW: <R2, E2, B>(
 The default [`Alt`](#alt) instance returns the last error, if you want to get all errors you need to provide a way to concatenate them via a `Semigroup`.
 
 
-See [`getAltValidation`](./Either.ts.html#getaltvalidation).
+See [`getAltValidation`](./Either#getaltvalidation).
 
 
 
@@ -1930,7 +1930,7 @@ export declare function getAltReaderTaskValidation<E>(S: Semigroup<E>): Alt3C<UR
 The default [`ApplicativePar`](#applicativepar) instance returns the first error, if you want to get all errors you need to provide a way to concatenate them via a `Semigroup`.
 
 
-See [`getApplicativeValidation`](./Either.ts.html#getapplicativevalidation).
+See [`getApplicativeValidation`](./Either#getapplicativevalidation).
 
 
 
@@ -2356,7 +2356,7 @@ export declare const chainRec: ChainRec3<URI>['chainRec']
 
 #### License
 
-* MIT – Copyright (c) 2017-present Giulio Canti
+* MIT – Copyright (c) 2022-present Jacob Alford
 
 ## Legacy
 
@@ -5196,7 +5196,7 @@ export declare const do_: <MA extends ReaderTaskEitherIterable<any, any, any>, A
 
 ### ~~`getApplyMonoid`~~
 
-Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
 
 
 
@@ -5222,7 +5222,7 @@ export declare const getApplyMonoid: <R, E, A>(M: Monoid<A>) => Monoid<ReaderTas
 
 ### ~~`getApplySemigroup`~~
 
-Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
 
 
 Semigroup returning the left-most `Left` value. If both operands are `Right`s then the inner values are concatenated using the provided `Semigroup`
@@ -5251,7 +5251,7 @@ export declare const getApplySemigroup: <R, E, A>(S: Semigroup<A>) => Semigroup<
 
 ### ~~`getSemigroup`~~
 
-Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
 
 
 

@@ -235,10 +235,10 @@ export declare const getDualMonoid: <A>(M: Monoid<A>) => Monoid<A>
 
 ### ~~`getEndomorphismMonoid`~~
 
-Use [`getEndomorphismMonoid`](./function.ts.html#getendomorphismmonoid) instead.
+Use [`getEndomorphismMonoid`](./function#getendomorphismmonoid) instead.
 
 
-**Note**. The execution order in [`getEndomorphismMonoid`](./function.ts.html#getendomorphismmonoid) is reversed.
+**Note**. The execution order in [`getEndomorphismMonoid`](./function#getendomorphismmonoid) is reversed.
 
 
 
@@ -264,7 +264,7 @@ export declare const getEndomorphismMonoid: <A = never>() => Monoid<Endomorphism
 
 ### ~~`getFunctionMonoid`~~
 
-Use [`getMonoid`](./function.ts.html#getmonoid) instead.
+Use [`getMonoid`](./function#getmonoid) instead.
 
 
 
@@ -400,7 +400,7 @@ export declare const getTupleMonoid: <T extends ReadonlyArray<Monoid<any>>>(
 
 ### ~~`monoidAll`~~
 
-Use [`MonoidAll`](./boolean.ts.html#monoidall) instead.
+Use [`MonoidAll`](./boolean#monoidall) instead.
 
 
 
@@ -426,7 +426,7 @@ export declare const monoidAll: Monoid<boolean>
 
 ### ~~`monoidAny`~~
 
-Use [`MonoidAny`](./boolean.ts.html#monoidany) instead.
+Use [`MonoidAny`](./boolean#monoidany) instead.
 
 
 
@@ -452,7 +452,7 @@ export declare const monoidAny: Monoid<boolean>
 
 ### ~~`monoidProduct`~~
 
-Use [`MonoidProduct`](./number.ts.html#monoidproduct) instead.
+Use [`MonoidProduct`](./number#monoidproduct) instead.
 
 
 
@@ -478,7 +478,7 @@ export declare const monoidProduct: Monoid<number>
 
 ### ~~`monoidString`~~
 
-Use [`Monoid`](./string.ts.html#monoid) instead.
+Use [`Monoid`](./string#monoid) instead.
 
 
 
@@ -504,7 +504,7 @@ export declare const monoidString: Monoid<string>
 
 ### ~~`monoidSum`~~
 
-Use [`MonoidSum`](./number.ts.html#monoidsum) instead.
+Use [`MonoidSum`](./number#monoidsum) instead.
 
 
 
@@ -530,7 +530,7 @@ export declare const monoidSum: Monoid<number>
 
 ### ~~`monoidVoid`~~
 
-Use [`Monoid`](./void.ts.html#monoid) instead.
+Use [`Monoid`](./void#monoid) instead.
 
 
 

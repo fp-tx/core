@@ -330,7 +330,7 @@ export declare const eq: Contravariant1<URI>
 
 ### ~~`eqBoolean`~~
 
-Use [`Eq`](./boolean.ts.html#eq) instead.
+Use [`Eq`](./boolean#eq) instead.
 
 
 
@@ -356,7 +356,7 @@ export declare const eqBoolean: Eq<boolean>
 
 ### ~~`eqDate`~~
 
-Use [`Eq`](./Date.ts.html#eq) instead.
+Use [`Eq`](./Date#eq) instead.
 
 
 
@@ -382,7 +382,7 @@ export declare const eqDate: Eq<Date>
 
 ### ~~`eqNumber`~~
 
-Use [`Eq`](./number.ts.html#eq) instead.
+Use [`Eq`](./number#eq) instead.
 
 
 
@@ -408,7 +408,7 @@ export declare const eqNumber: Eq<number>
 
 ### ~~`eqString`~~
 
-Use [`Eq`](./string.ts.html#eq) instead.
+Use [`Eq`](./string#eq) instead.
 
 
 

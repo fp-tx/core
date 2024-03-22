@@ -1675,7 +1675,7 @@ export function groupSort<A>(O: Ord<A>): (as: ReadonlyArray<A>) => ReadonlyArray
 }
 
 /**
- * Use [`filter`](./ReadonlyArray.ts.html#filter) instead.
+ * Use [`filter`](./ReadonlyArray#filter) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -1695,7 +1695,7 @@ export function filter<A>(predicate: Predicate<A>): (as: ReadonlyNonEmptyArray<A
 }
 
 /**
- * Use [`filterWithIndex`](./ReadonlyArray.ts.html#filterwithindex) instead.
+ * Use [`filterWithIndex`](./ReadonlyArray#filterwithindex) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -1731,7 +1731,7 @@ export const uncons: <A>(as: ReadonlyNonEmptyArray<A>) => readonly [A, ReadonlyA
 export const unsnoc: <A>(as: ReadonlyNonEmptyArray<A>) => readonly [ReadonlyArray<A>, A] = unappend
 
 /**
- * Use [`prepend`](./ReadonlyArray.ts.html#prepend) instead.
+ * Use [`prepend`](./ReadonlyArray#prepend) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -1750,7 +1750,7 @@ export function cons<A>(
 }
 
 /**
- * Use [`append`](./ReadonlyArray.ts.html#append) instead.
+ * Use [`append`](./ReadonlyArray#append) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -1761,7 +1761,7 @@ export function cons<A>(
 export const snoc = <A>(init: ReadonlyArray<A>, end: A): ReadonlyNonEmptyArray<A> => pipe(init, concat([end]))
 
 /**
- * Use [`insertAt`](./ReadonlyArray.ts.html#insertat) instead.
+ * Use [`insertAt`](./ReadonlyArray#insertat) instead.
  *
  * @deprecated Zone of Death
  * @meta

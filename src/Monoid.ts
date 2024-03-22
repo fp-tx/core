@@ -238,7 +238,7 @@ export const concatAll = <A>(M: Monoid<A>): ((as: ReadonlyArray<A>) => A) => Se.
 // -------------------------------------------------------------------------------------
 
 /**
- * Use [`Monoid`](./void.ts.html#monoid) instead.
+ * Use [`Monoid`](./void#monoid) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -322,7 +322,7 @@ export const getMeetMonoid = min
 export const fold = concatAll
 
 /**
- * Use [`MonoidAll`](./boolean.ts.html#monoidall) instead.
+ * Use [`MonoidAll`](./boolean#monoidall) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -336,7 +336,7 @@ export const monoidAll: Monoid<boolean> = {
 }
 
 /**
- * Use [`MonoidAny`](./boolean.ts.html#monoidany) instead.
+ * Use [`MonoidAny`](./boolean#monoidany) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -350,7 +350,7 @@ export const monoidAny: Monoid<boolean> = {
 }
 
 /**
- * Use [`getMonoid`](./function.ts.html#getmonoid) instead.
+ * Use [`getMonoid`](./function#getmonoid) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -361,9 +361,9 @@ export const monoidAny: Monoid<boolean> = {
 export const getFunctionMonoid: <M>(M: Monoid<M>) => <A = never>() => Monoid<(a: A) => M> = getFM
 
 /**
- * Use [`getEndomorphismMonoid`](./function.ts.html#getendomorphismmonoid) instead.
+ * Use [`getEndomorphismMonoid`](./function#getendomorphismmonoid) instead.
  *
- * **Note**. The execution order in [`getEndomorphismMonoid`](./function.ts.html#getendomorphismmonoid) is reversed.
+ * **Note**. The execution order in [`getEndomorphismMonoid`](./function#getendomorphismmonoid) is reversed.
  *
  * @deprecated Zone of Death
  * @meta
@@ -374,7 +374,7 @@ export const getFunctionMonoid: <M>(M: Monoid<M>) => <A = never>() => Monoid<(a:
 export const getEndomorphismMonoid = <A = never>(): Monoid<Endomorphism<A>> => reverse(getEM())
 
 /**
- * Use [`Monoid`](./string.ts.html#monoid) instead.
+ * Use [`Monoid`](./string#monoid) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -388,7 +388,7 @@ export const monoidString: Monoid<string> = {
 }
 
 /**
- * Use [`MonoidSum`](./number.ts.html#monoidsum) instead.
+ * Use [`MonoidSum`](./number#monoidsum) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -402,7 +402,7 @@ export const monoidSum: Monoid<number> = {
 }
 
 /**
- * Use [`MonoidProduct`](./number.ts.html#monoidproduct) instead.
+ * Use [`MonoidProduct`](./number#monoidproduct) instead.
  *
  * @deprecated Zone of Death
  * @meta

@@ -923,7 +923,7 @@ export const taskSeq: Monad1<URI> & MonadTask1<URI> = {
 }
 
 /**
- * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+ * Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -934,7 +934,7 @@ export const taskSeq: Monad1<URI> & MonadTask1<URI> = {
 export const getSemigroup: <A>(S: Semigroup<A>) => Semigroup<Task<A>> = /*#__PURE__*/ getApplySemigroup_(ApplySeq)
 
 /**
- * Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+ * Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
  *
  * Lift a monoid into 'Task', the inner values are concatenated using the provided `Monoid`.
  *

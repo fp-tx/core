@@ -50,7 +50,7 @@ export interface Semiring<A> {
 // -------------------------------------------------------------------------------------
 
 /**
- * Use [`getSemiring`](./function.ts.html#getsemiring) instead.
+ * Use [`getSemiring`](./function#getsemiring) instead.
  *
  * @deprecated Zone of Death
  * @meta

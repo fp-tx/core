@@ -48,7 +48,7 @@ export interface Semiring<A> {
 
 ### ~~`getFunctionSemiring`~~
 
-Use [`getSemiring`](./function.ts.html#getsemiring) instead.
+Use [`getSemiring`](./function#getsemiring) instead.
 
 
 

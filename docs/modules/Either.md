@@ -2841,7 +2841,7 @@ export declare const ApT: Either<never, readonly []>
 
 ### ~~`Json`~~
 
-Use [`Json`](./Json.ts.html) module instead.
+Use [`Json`](./Json) module instead.
 
 
 
@@ -2867,7 +2867,7 @@ export type Json = boolean | number | string | null | JsonArray | JsonRecord
 
 ### ~~`JsonArray`~~
 
-Use [`Json`](./Json.ts.html) module instead.
+Use [`Json`](./Json) module instead.
 
 
 
@@ -2893,7 +2893,7 @@ export interface JsonArray extends ReadonlyArray<Json> {}
 
 ### ~~`JsonRecord`~~
 
-Use [`Json`](./Json.ts.html) module instead.
+Use [`Json`](./Json) module instead.
 
 
 
@@ -3240,7 +3240,7 @@ export declare const extend: <E, A, B>(f: (wa: Either<E, A>) => B) => (wa: Eithe
 
 ### ~~`getApplyMonoid`~~
 
-Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
 
 
 
@@ -3266,7 +3266,7 @@ export declare const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<Either<E, A>
 
 ### ~~`getApplySemigroup`~~
 
-Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
 
 
 Semigroup returning the left-most `Left` value. If both operands are `Right`s then the inner values are concatenated using the provided `Semigroup`
@@ -3331,7 +3331,7 @@ export declare function getValidation<E>(
 
 ### ~~`getValidationMonoid`~~
 
-Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
 
 
 
@@ -3357,7 +3357,7 @@ export declare const getValidationMonoid: <E, A>(SE: Semigroup<E>, MA: Monoid<A>
 
 ### ~~`getValidationSemigroup`~~
 
-Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
 
 
 
@@ -3403,7 +3403,7 @@ export declare const let_: <N extends string, A, B>(
 
 ### ~~`parseJSON`~~
 
-Use [`parse`](./Json.ts.html#parse) instead.
+Use [`parse`](./Json#parse) instead.
 
 
 
@@ -3430,7 +3430,7 @@ export declare function parseJSON<E>(s: string, onError: (reason: unknown) => E)
 
 ### ~~`stringifyJSON`~~
 
-Use [`stringify`](./Json.ts.html#stringify) instead.
+Use [`stringify`](./Json#stringify) instead.
 
 
 

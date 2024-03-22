@@ -67,7 +67,7 @@ export const reverse = <A>(B: Bounded<A>): Bounded<A> => {
 // -------------------------------------------------------------------------------------
 
 /**
- * Use [`Bounded`](./number.ts.html#bounded) instead.
+ * Use [`Bounded`](./number#bounded) instead.
  *
  * @deprecated Zone of Death
  * @meta

@@ -569,7 +569,7 @@ declare module './HKT' {
  * The default [`ApplicativePar`](#applicativepar) instance returns the first error, if you want to get all errors you
  * need to provide a way to concatenate them via a `Semigroup`.
  *
- * See [`getApplicativeValidation`](./Either.ts.html#getapplicativevalidation).
+ * See [`getApplicativeValidation`](./Either#getapplicativevalidation).
  *
  * @meta
  * {@since 1.0.0}
@@ -592,7 +592,7 @@ export function getApplicativeIOValidation<E>(S: Semigroup<E>): Applicative2C<UR
  * The default [`Alt`](#alt) instance returns the last error, if you want to get all errors you need to provide a way to
  * concatenate them via a `Semigroup`.
  *
- * See [`getAltValidation`](./Either.ts.html#getaltvalidation).
+ * See [`getAltValidation`](./Either#getaltvalidation).
  *
  * @meta
  * {@since 1.0.0}
@@ -1758,7 +1758,7 @@ export const ioEither: Monad2<URI> & Bifunctor2<URI> & Alt2<URI> & MonadIO2<URI>
 }
 
 /**
- * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+ * Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -1770,7 +1770,7 @@ export const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<IOEither<E,
   /*#__PURE__*/ getApplySemigroup_(ApplyPar)
 
 /**
- * Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+ * Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -1782,7 +1782,7 @@ export const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<IOEither<E, A>> =
   /*#__PURE__*/ getApplicativeMonoid(ApplicativePar)
 
 /**
- * Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+ * Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
  *
  * @deprecated Zone of Death
  * @meta

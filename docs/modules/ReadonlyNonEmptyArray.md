@@ -1736,7 +1736,7 @@ export declare function concatW<B>(
 
 ### ~~`cons`~~
 
-Use [`prepend`](./ReadonlyArray.ts.html#prepend) instead.
+Use [`prepend`](./ReadonlyArray#prepend) instead.
 
 
 
@@ -1815,7 +1815,7 @@ export declare const extend: <A, B>(
 
 ### ~~`filter`~~
 
-Use [`filter`](./ReadonlyArray.ts.html#filter) instead.
+Use [`filter`](./ReadonlyArray#filter) instead.
 
 
 
@@ -1856,7 +1856,7 @@ export declare function filter<A>(
 
 ### ~~`filterWithIndex`~~
 
-Use [`filterWithIndex`](./ReadonlyArray.ts.html#filterwithindex) instead.
+Use [`filterWithIndex`](./ReadonlyArray#filterwithindex) instead.
 
 
 
@@ -2096,7 +2096,7 @@ assert.deepStrictEqual(init([1]), [])
 
 ### ~~`insertAt`~~
 
-Use [`insertAt`](./ReadonlyArray.ts.html#insertat) instead.
+Use [`insertAt`](./ReadonlyArray#insertat) instead.
 
 
 
@@ -2503,7 +2503,7 @@ assert.deepStrictEqual(rotate(-2)([1, 2, 3, 4, 5]), [3, 4, 5, 1, 2])
 
 ### ~~`snoc`~~
 
-Use [`append`](./ReadonlyArray.ts.html#append) instead.
+Use [`append`](./ReadonlyArray#append) instead.
 
 
 

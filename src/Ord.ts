@@ -528,7 +528,7 @@ const strictOrd = {
 }
 
 /**
- * Use [`Ord`](./boolean.ts.html#ord) instead.
+ * Use [`Ord`](./boolean#ord) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -539,7 +539,7 @@ const strictOrd = {
 export const ordBoolean: Ord<boolean> = strictOrd
 
 /**
- * Use [`Ord`](./string.ts.html#ord) instead.
+ * Use [`Ord`](./string#ord) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -550,7 +550,7 @@ export const ordBoolean: Ord<boolean> = strictOrd
 export const ordString: Ord<string> = strictOrd
 
 /**
- * Use [`Ord`](./number.ts.html#ord) instead.
+ * Use [`Ord`](./number#ord) instead.
  *
  * @deprecated Zone of Death
  * @meta
@@ -561,7 +561,7 @@ export const ordString: Ord<string> = strictOrd
 export const ordNumber: Ord<number> = strictOrd
 
 /**
- * Use [`Ord`](./Date.ts.html#ord) instead.
+ * Use [`Ord`](./Date#ord) instead.
  *
  * @deprecated Zone of Death
  * @meta

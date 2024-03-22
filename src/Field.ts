@@ -62,7 +62,7 @@ export function lcm<A>(E: Eq<A>, F: Field<A>): (x: A, y: A) => A {
 // -------------------------------------------------------------------------------------
 
 /**
- * Use [`Field`](./number.ts.html#field) instead.
+ * Use [`Field`](./number#field) instead.
  *
  * @deprecated Zone of Death
  * @meta

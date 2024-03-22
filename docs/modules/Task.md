@@ -256,7 +256,7 @@ export declare const ChainRec: ChainRec1<URI>
 
 #### License
 
-* MIT – Copyright (c) 2017-present Giulio Canti
+* MIT – Copyright (c) 2022-present Jacob Alford
 
 ---
 
@@ -704,7 +704,7 @@ export declare const chainRec: ChainRec1<URI>['chainRec']
 
 #### License
 
-* MIT – Copyright (c) 2017-present Giulio Canti
+* MIT – Copyright (c) 2022-present Jacob Alford
 
 ## Legacy
 
@@ -1532,7 +1532,7 @@ export declare const fromTask: <A>(fa: Task<A>) => Task<A>
 
 ### ~~`getMonoid`~~
 
-Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
 
 
 Lift a monoid into 'Task', the inner values are concatenated using the provided `Monoid`.
@@ -1561,7 +1561,7 @@ export declare const getMonoid: <A>(M: Monoid<A>) => Monoid<Task<A>>
 
 ### ~~`getSemigroup`~~
 
-Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
 
 
 

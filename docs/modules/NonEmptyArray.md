@@ -1652,7 +1652,7 @@ export declare function concatW<B>(second: Array<B>): <A>(first: NonEmptyArray<A
 
 ### ~~`cons`~~
 
-Use [`prepend`](./Array.ts.html#prepend) instead.
+Use [`prepend`](./Array#prepend) instead.
 
 
 
@@ -1775,7 +1775,7 @@ export declare const extract: Comonad1<URI>['extract']
 
 ### ~~`filter`~~
 
-Use [`filter`](./Array.ts.html#filter) instead.
+Use [`filter`](./Array#filter) instead.
 
 
 
@@ -1814,7 +1814,7 @@ export declare function filter<A>(predicate: Predicate<A>): (as: NonEmptyArray<A
 
 ### ~~`filterWithIndex`~~
 
-Use [`filterWithIndex`](./Array.ts.html#filterwithindex) instead.
+Use [`filterWithIndex`](./Array#filterwithindex) instead.
 
 
 
@@ -2454,7 +2454,7 @@ assert.deepStrictEqual(rotate(-2)([1, 2, 3, 4, 5]), [3, 4, 5, 1, 2])
 
 ### ~~`snoc`~~
 
-Use [`append`](./Array.ts.html#append) instead.
+Use [`append`](./Array#append) instead.
 
 
 

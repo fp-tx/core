@@ -320,7 +320,7 @@ export interface ApplicativeComposition22C<F extends URIS2, G extends URIS2, E> 
 }
 
 /**
- * Use [`ap`](./Apply.ts.html#ap) instead.
+ * Use [`ap`](./Apply#ap) instead.
  *
  * @deprecated Zone of Death
  * @meta

@@ -402,7 +402,7 @@ export declare const ChainRec: ChainRec2<URI>
 
 #### License
 
-* MIT – Copyright (c) 2017-present Giulio Canti
+* MIT – Copyright (c) 2022-present Jacob Alford
 
 ---
 
@@ -1402,7 +1402,7 @@ export declare const altW: <E2, B>(
 The default [`Alt`](#alt) instance returns the last error, if you want to get all errors you need to provide a way to concatenate them via a `Semigroup`.
 
 
-See [`getAltValidation`](./Either.ts.html#getaltvalidation).
+See [`getAltValidation`](./Either#getaltvalidation).
 
 
 
@@ -1943,7 +1943,7 @@ export declare const chainRec: ChainRec2<URI>['chainRec']
 
 #### License
 
-* MIT – Copyright (c) 2017-present Giulio Canti
+* MIT – Copyright (c) 2022-present Jacob Alford
 
 ## Interop
 
@@ -4119,7 +4119,7 @@ export declare const do_: <MA extends TaskEitherIterable<any, any>, A>(
 
 ### ~~`getApplyMonoid`~~
 
-Use [`getApplicativeMonoid`](./Applicative.ts.html#getapplicativemonoid) instead.
+Use [`getApplicativeMonoid`](./Applicative#getapplicativemonoid) instead.
 
 
 
@@ -4145,7 +4145,7 @@ export declare const getApplyMonoid: <E, A>(M: Monoid<A>) => Monoid<TaskEither<E
 
 ### ~~`getApplySemigroup`~~
 
-Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
 
 
 
@@ -4171,7 +4171,7 @@ export declare const getApplySemigroup: <E, A>(S: Semigroup<A>) => Semigroup<Tas
 
 ### ~~`getSemigroup`~~
 
-Use [`getApplySemigroup`](./Apply.ts.html#getapplysemigroup) instead.
+Use [`getApplySemigroup`](./Apply#getapplysemigroup) instead.
 
 
 

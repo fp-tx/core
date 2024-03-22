@@ -48,7 +48,7 @@ export interface Ring<A> extends Semiring<A> {
 
 ### ~~`getFunctionRing`~~
 
-Use [`getRing`](./function.ts.html#getring) instead.
+Use [`getRing`](./function#getring) instead.
 
 
 

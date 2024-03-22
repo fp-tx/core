@@ -109,7 +109,7 @@ export declare const getTupleShow: <T extends ReadonlyArray<Show<any>>>(
 
 ### ~~`showBoolean`~~
 
-Use [`Show`](./boolean.ts.html#show) instead.
+Use [`Show`](./boolean#show) instead.
 
 
 
@@ -135,7 +135,7 @@ export declare const showBoolean: Show<boolean>
 
 ### ~~`showNumber`~~
 
-Use [`Show`](./number.ts.html#show) instead.
+Use [`Show`](./number#show) instead.
 
 
 
@@ -161,7 +161,7 @@ export declare const showNumber: Show<number>
 
 ### ~~`showString`~~
 
-Use [`Show`](./string.ts.html#show) instead.
+Use [`Show`](./string#show) instead.
 
 
 
